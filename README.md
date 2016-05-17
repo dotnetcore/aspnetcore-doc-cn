@@ -7,7 +7,13 @@
 + [API](https://docs.asp.net/projects/api)([github](https://github.com/aspnet/docs/blob/master/api/index.rst))
 + [Tutorials](https://docs.asp.net/en/latest/tutorials/index.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/tutorials/index.rst))
     * [Your First ASP.NET Core Application on a Mac Using Visual Studio Code](https://docs.asp.net/en/latest/tutorials/your-first-mac-aspnet.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/tutorials/your-first-mac-aspnet.rst))
-    * [Create an ASP.NET Core web app in Visual Studio Code](https://azure.microsoft.com/documentation/articles/web-sites-create-web-app-using-vscode/)
+      - Setting Up Your Development Environment
+      - Scaffolding Applications Using Yeoman
+      - Developing ASP.NET Applications on a Mac With Visual Studio Code
+      - Running Locally Using Kestrel
+      - Publishing to Azure
+      - Additional Resources
+    * [Create an ASP.NET Core web app in Visual Studio Code](https://azure.microsoft.com/documentation/articles/web-sites-create-web-app-using-vscode/)([github](https://github.com/Azure/azure-content/blob/master/articles/app-service-web/web-sites-create-web-app-using-vscode.md))
     * [Building your first ASP.NET Core MVC Application](https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/tutorials/first-mvc-app/index.rst))
         - [Getting started with ASP.NET Core MVC](https://docs.asp.net/en/latest/tutorials/first-mvc-app/start-mvc.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/tutorials/first-mvc-app/start-mvc.rst))
         - [Adding a controller](https://docs.asp.net/en/latest/tutorials/first-mvc-app/adding-controller.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/tutorials/first-mvc-app/adding-controller.rst))
