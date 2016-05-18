@@ -205,24 +205,24 @@
           + Additional Resources
         - **【DELAY】** [HTML Helpers](https://docs.asp.net/en/latest/mvc/views/html-helpers.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/html-helpers.rst))
         - [Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/index.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/index.rst))
-        - [Introduction to Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/intro.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/intro.rst))
-          + What are Tag Helpers?
-          + What Tag Helpers provide
-          + Managing Tag Helper scope
-          + IntelliSense support for Tag Helpers
-          + Tag Helpers compared to HTML Helpers
-          + Tag Helpers compared to Web Server Controls
-          + Customizing the Tag Helper element font
-          + Additional Resources
-        - [Authoring Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/authoring.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/authoring.rst))
-          + Getting started with Tag Helpers
-          + Starting the email Tag Helper
-          + A working email Tag Helper
-          + The bold Tag Helper
-          + Web site information Tag Helper
-          + Condition Tag Helper
-          + Inspecting and retrieving child content
-        - **【DELAY】** [Advanced Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/advanced.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/advanced.rst))
+          + [Introduction to Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/intro.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/intro.rst))
+            * What are Tag Helpers?
+            * What Tag Helpers provide
+            * Managing Tag Helper scope
+            * IntelliSense support for Tag Helpers
+            * Tag Helpers compared to HTML Helpers
+            * Tag Helpers compared to Web Server Controls
+            * Customizing the Tag Helper element font
+            * Additional Resources
+          + [Authoring Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/authoring.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/authoring.rst))
+            * Getting started with Tag Helpers
+            * Starting the email Tag Helper
+            * A working email Tag Helper
+            * The bold Tag Helper
+            * Web site information Tag Helper
+            * Condition Tag Helper
+            * Inspecting and retrieving child content
+          + **【DELAY】** [Advanced Tag Helpers](https://docs.asp.net/en/latest/mvc/views/tag-helpers/advanced.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/tag-helpers/advanced.rst))
         - **【DELAY】** [Partial Views](https://docs.asp.net/en/latest/mvc/views/partial.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/partial.rst))
         - [Injecting Services Into Views](https://docs.asp.net/en/latest/mvc/views/dependency-injection.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/dependency-injection.rst))
           + A Simple Example
@@ -235,10 +235,10 @@
           + Invoking a view component
           + Walkthrough: Creating a simple view component
           + Additional Resources
-        - **【DELAY】** [Creating a Custom View Engine]()([github]())
-        - **【DELAY】** [Building Mobile Specific Views]()([github]())
-    * [Controllers]()([github]())
-        - [Controllers, Actions, and Action Results]()([github]())
+        - **【DELAY】** [Creating a Custom View Engine](https://docs.asp.net/en/latest/mvc/views/custom-view-engine.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/custom-view-engine.rst))
+        - **【DELAY】** [Building Mobile Specific Views](https://docs.asp.net/en/latest/mvc/views/mobile.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/mobile.rst))
+    * [Controllers](https://docs.asp.net/en/latest/mvc/index.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/index.rst))
+        - [Controllers, Actions, and Action Results](https://docs.asp.net/en/latest/mvc/controllers/actions.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/controllers/actions.rst))
         - **【DELAY】** [Routing to Controller Actions](https://docs.asp.net/en/latest/mvc/views/custom-view-engine.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/custom-view-engine.rst))
         - **【DELAY】** [Error Handling](https://docs.asp.net/en/latest/mvc/views/mobile.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/views/mobile.rst))
         - [Filters](https://docs.asp.net/en/latest/mvc/controllers/filters.html)([github](https://github.com/aspnet/Docs/blob/master/aspnet/mvc/controllers/filters.rst))
