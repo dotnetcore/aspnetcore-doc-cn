@@ -1,11 +1,11 @@
 Model Binding 模型绑定
 ======================
 
-By `Rachel Appel`_ 
+作者： `Rachel Appel`_ 
 
-翻译：`娄宇(Lyrics) <http://github.com/xbuilder>`_
+翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对：
+校对： `凌军州 <#>`_ 、`何镇汐 <#>`_
 
 .. contents:: Sections 章节:
   :local:
@@ -49,7 +49,7 @@ Since the route template looks like this, ``{controller=Home}/{action=Index}/{id
 
 MVC will try to bind request data to the action parameters by name. MVC will look for values for each parameter using the parameter name and the names of its public settable properties. In the above example, the only action parameter is named ``id``, which MVC binds to the value with the same name in the route values. In addition to route values MVC will bind data from various parts of the request and it does so in a set order. Below is a list of the data sources in the order that model binding looks through them:
 
-MVC 尝试通过参数名去讲请求数据绑定到 Action 的参数上。 MVC 将查询所有的参数名( HTTP 请求中的)和可写属性名称相同的(不区分大小写)。在上面的例子中，只有一个参数命名为 ``id`` ， MVC 将路由值中名称相同的值绑定过去。除了路由数据之外， MVC 会以一种固定的顺序从 HTTP 请求中的其他部分绑定数据。下面是模型绑定的数据源列表的绑定顺序：
+MVC 尝试通过参数名将请求数据绑定到 Action 的参数上。 MVC 将查询所有的参数名( HTTP 请求中的)和可写属性名称相同的(不区分大小写)。在上面的例子中，只有一个参数命名为 ``id`` ， MVC 将路由值中名称相同的值绑定过去。除了路由数据之外， MVC 会以一种固定的顺序从 HTTP 请求中的其他部分绑定数据。下面是模型绑定的数据源列表的绑定顺序：
  
 #. ``Form values``: These are form values that go in the HTTP request using the POST method. (including jQuery POST requests).
 #. ``Route values``: The set of route values provided by `routing <https://docs.asp.net/projects/mvc/en/latest/controllers/routing.html>`_. 
@@ -57,9 +57,9 @@ MVC 尝试通过参数名去讲请求数据绑定到 Action 的参数上。 MVC 
 
 分割线----------
 
-#. ``Form values``: 这是通过HTTP POST请求发送的表单数据.(包括 jQuery POST 请求)。
+#. ``Form values``: 这是通过 HTTP POST 请求发送的表单数据(包括 jQuery POST 请求)。
 #. ``Route values``: 路由数据集由 `路由 <https://docs.asp.net/projects/mvc/en/latest/controllers/routing.html>`_ 提供。
-#. ``Query strings``: URI的查询字符串的一部分。
+#. ``Query strings``: URI 的查询字符串的一部分。
 
 .. note:: Form values, route data, and query strings are all stored as name-value pairs.
 
