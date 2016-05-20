@@ -19,7 +19,7 @@ Introduction to model binding
 
 Model binding in MVC maps data from HTTP requests to action method parameters. The parameters may be simple types such as strings, integers, or floats, or they may be complex types. This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data. MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app. Writing your own text to type converter code is tedious, and error prone. 
 
-MVC 中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法里。这些参数可以是 string， interger， float 这样的简单类型，也可以是复杂类型。MVC 通过抽象绑定解决了这些问题，所以开发者们不必继续在每一个应用中反复编写同样的代码.自己编写文本到类型的转换代码是冗长并且容易出错的。
+MVC 中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法里。这些参数可以是 string， interger， float 这样的简单类型，也可以是复杂类型。MVC 通过抽象绑定解决了这些问题，所以开发者们不必继续在每一个应用中反复编写同样的代码。自己编写文本到类型的转换代码是冗长并且容易出错的。
 
 How model binding works
 -----------------------
@@ -29,7 +29,7 @@ How model binding works
 
 When MVC receives an HTTP request, it routes it to a specific action method of a controller. It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method's parameters. For example, consider the following URL:
 
-当 MVC 收到一个 HTTP 请求，它将其路由到一个 Controller 下的特定 Action 。它基于路由数据来决定运行哪个 Action 方法，然后将值从 HTTP 请求绑定到 Action 方法的参数中。例如，考虑以下URL：
+当 MVC 收到一个 HTTP 请求，它将其路由到一个 Controller 下特定的 Action 。它基于路由数据来决定运行哪个 Action 方法，然后将值从 HTTP 请求绑定到 Action 方法的参数中。例如，考虑以下URL：
 
 
 `http://contoso.com/movies/edit/2`
