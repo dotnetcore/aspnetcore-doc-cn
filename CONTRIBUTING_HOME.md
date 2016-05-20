@@ -52,7 +52,7 @@
 -->
 
 * [ASP.NET Core 论坛](https://forums.asp.net/1255.aspx/1?ASP+NET+5)
-* [StackOverflow](https://stackoverflow.com/) 带有 [`asp.net-core`](https://stackoverflow.com/questions/tagged/asp.net-core), [`asp.net-core-mvc`](https://stackoverflow.com/questions/tagged/asp.net-core-mvc), 或 [`entity-framework-core`](https://stackoverflow.com/questions/tagged/entity-framework-core) 标签的频道.
+* [StackOverflow](https://stackoverflow.com/) 带有 [`asp.net-core`](https://stackoverflow.com/questions/tagged/asp.net-core), [`asp.net-core-mvc`](https://stackoverflow.com/questions/tagged/asp.net-core-mvc) 或 [`entity-framework-core`](https://stackoverflow.com/questions/tagged/entity-framework-core) 标签的频道.
 * [JabbR chat room](https://jabbr.net/#/rooms/AspNetCore) 用于与社区和项目处理者进行即时讨论。
 
 
