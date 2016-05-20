@@ -2,6 +2,7 @@
 # 如何贡献
 
 翻译：[刘怡(AlexLEWIS)](http://github.com/alexinea)
+
 校对：
 
 <!--One of the easiest ways to contribute is to participate in discussions and discuss issues. You can also contribute by submitting pull requests with code changes.-->
