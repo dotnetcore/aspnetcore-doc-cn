@@ -24,8 +24,8 @@ MVC 中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法�
 How model binding works
 -----------------------
 
-模型绑定如何工作的
-------------------
+模型绑定是如何工作的
+-------------------
 
 When MVC receives an HTTP request, it routes it to a specific action method of a controller. It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method's parameters. For example, consider the following URL:
 
