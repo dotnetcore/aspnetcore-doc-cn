@@ -19,7 +19,7 @@ Introduction to model binding
 
 Model binding in MVC maps data from HTTP requests to action method parameters. The parameters may be simple types such as strings, integers, or floats, or they may be complex types. This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data. MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app. Writing your own text to type converter code is tedious, and error prone. 
 
-MVC中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法里。这些参数可以是 strings， intergers， floats 这样的简单类型，也可以是复杂类型数据。MVC 通过抽象绑定去解决了这些问题，所以开发者们不必继续在每一个app中反复编写同样的代码.自己编写文本到类型的转换代码是冗长并且容易出错的。
+MVC 中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法里。这些参数可以是 strings， intergers， floats 这样的简单类型，也可以是复杂类型数据。MVC 通过抽象绑定去解决了这些问题，所以开发者们不必继续在每一个app中反复编写同样的代码.自己编写文本到类型的转换代码是冗长并且容易出错的。
 
 How model binding works
 -----------------------
@@ -29,7 +29,7 @@ How model binding works
 
 When MVC receives an HTTP request, it routes it to a specific action method of a controller. It determines which action method to run based on what is in the route data, then it binds values from the HTTP request to that action method's parameters. For example, consider the following URL:
 
-当MVC收到一个 HTTP 请求，它将其路由到一个Controller下的特定Action。它基于路由数据来决定运行哪个Action方法，然后将值从HTTP请求绑定到Action方法的参数中。例如，考虑以下URL：
+当 MVC 收到一个 HTTP 请求，它将其路由到一个 Controller 下的特定 Action 。它基于路由数据来决定运行哪个 Action 方法，然后将值从 HTTP 请求绑定到 Action 方法的参数中。例如，考虑以下URL：
 
 
 `http://contoso.com/movies/edit/2`
@@ -49,7 +49,7 @@ Since the route template looks like this, ``{controller=Home}/{action=Index}/{id
 
 MVC will try to bind request data to the action parameters by name. MVC will look for values for each parameter using the parameter name and the names of its public settable properties. In the above example, the only action parameter is named ``id``, which MVC binds to the value with the same name in the route values. In addition to route values MVC will bind data from various parts of the request and it does so in a set order. Below is a list of the data sources in the order that model binding looks through them:
 
-MVC尝试通过参数名去讲请求数据绑定到Action的参数上。 MVC 将查询所有的参数名(HTTP请求中的)和可写属性名称相同的(不区分大小写)。在上面的例子中，只有一个参数命名为 ``id`` ，MVC将路由值中名称相同的值绑定过去。除了路由数据之外，MVC会以一种固定的顺序从HTTP请求中的其他部分绑定数据。下面是模型绑定的数据源列表的绑定顺序：
+MVC 尝试通过参数名去讲请求数据绑定到 Action 的参数上。 MVC 将查询所有的参数名( HTTP 请求中的)和可写属性名称相同的(不区分大小写)。在上面的例子中，只有一个参数命名为 ``id`` ， MVC 将路由值中名称相同的值绑定过去。除了路由数据之外， MVC 会以一种固定的顺序从 HTTP 请求中的其他部分绑定数据。下面是模型绑定的数据源列表的绑定顺序：
  
 #. ``Form values``: These are form values that go in the HTTP request using the POST method. (including jQuery POST requests).
 #. ``Route values``: The set of route values provided by `routing <https://docs.asp.net/projects/mvc/en/latest/controllers/routing.html>`_. 
@@ -71,11 +71,11 @@ Since model binding asked for a key named ``id`` and there is nothing named ``id
 
 So far the example uses simple types. In MVC simple types are any .NET primitive type or type with a string type converter. If the action method's parameter were a class such as the ``Movie`` type, which contains both simple and complex types as properties, MVC's model binding will still handle it nicely. It uses reflection and recursion to traverse the properties of complex types looking for matches. Model binding looks for the pattern parameter_name.property_name to bind values to properties. If it doesn't find matching values of this form, it will attempt to bind using just the property name. For those types such as ``Collection`` types, model binding looks for matches to `parameter_name[index]` or just `[index]`. Model binding treats  ``Dictionary`` types similarly, asking for `parameter_name[key]` or just `[key]`, as long as they keys are simple types. Keys that are supported match the field names HTML and tag helpers generated for the same model type. This enables round-tripping values so that the form fields remain filled with the user's input for their convenience, for example, when bound data from a create or edit did not pass validation.
 
-到目前为止的例子使用的都是简单类型。在 MVC 中简单类型是任何 .NET 原始类型或者带字符串的类型的转换器。如果Action方法的参数是一个类，比如说 ``Movie`` 类型，这个类包含简单类型和复杂类型的属性， MVC 的模型绑定仍然可以很好的处理它。它使用反射和递归遍历复杂类型寻找匹配的属性。模型绑定寻找 `parameter_name.parameter_name` 的规律去绑定值到属性上。如果没有从表单中找到匹配的值，将尝试只通过 `property_name` 进行绑定。对于那些 ``集合(Collection)`` 类型，模型绑定会去匹配 `parameter_name[index]` 或者只是 `[index]`。模型绑定对待 ``字典(Dictionary)`` 类型也是一样，寻找 `parameter_name[key]` 或只是 `[key]` ，前提是他们的 Key 是简单类型。 Key 支持匹配 HTML 和 Tag Helpers 为相同的模型类型生成的字段名。当创建或者编辑的绑定数据未通过验证的时候，回传值使得用户输入的表单字段仍然保留，方便了用户(不必重新输入全部数据)。
+到目前为止的例子使用的都是简单类型。在 MVC 中简单类型是任何 .NET 原始类型或者带字符串的类型的转换器。如果 Action 方法的参数是一个类，比如说 ``Movie`` 类型，这个类包含简单类型和复杂类型的属性， MVC 的模型绑定仍然可以很好的处理它。它使用反射和递归遍历复杂类型寻找匹配的属性。模型绑定寻找 `parameter_name.parameter_name` 的规律去绑定值到属性上。如果没有从表单中找到匹配的值，将尝试只通过 `property_name` 进行绑定。对于那些 ``集合(Collection)`` 类型，模型绑定会去匹配 `parameter_name[index]` 或者只是 `[index]` 。模型绑定对待 ``字典(Dictionary)`` 类型也是一样，寻找 `parameter_name[key]` 或只是 `[key]` ，前提是他们的 Key 是简单类型。 Key 支持匹配 HTML 和 Tag Helpers 为相同的模型类型生成的字段名。当创建或者编辑的绑定数据未通过验证的时候，回传值使得用户输入的表单字段仍然保留，方便了用户(不必重新输入全部数据)。
 
 In order for binding to happen the class must have a public default constructor and member to be bound must be public writable properties. When model binding happens the class will only be instantiated using the public default constructor, then the properties can be set.
 
-为了绑定发生，这个类必须有一个public的默认构造函数，并且被绑定的成员必须是public并且可写的属性。当模型绑定发生的时候只会通过默认的构造函数去实例化类型，然后设置属性的值。
+为了绑定发生，这个类必须有一个 public 的默认构造函数，并且被绑定的成员必须是 public 并且可写的属性。当模型绑定发生的时候只会通过默认的构造函数去实例化类型，然后设置属性的值。
 
 When a parameter is bound, model binding stops looking for values with that name and it moves on to bind the next parameter. If binding fails, MVC does not throw an error. You can query for model state errors by checking the ``ModelState.IsValid`` property. 
 
@@ -160,4 +160,4 @@ ASP.NET 选择输入格式化器基于 `Content-Type <https://www.w3.org/Protoco
 
 Code in the `Startup.cs` file contains a ``ConfigureServices`` method with a ``services`` argument you can use to build up services for your ASP.NET app. In the sample, we are adding an XML formatter as a service that MVC will provide for this app. The ``options`` argument passed into the ``AddMvc`` method allows you to add and manage filters, formatters, and other system options from MVC upon app startup. Then apply the ``Consumes`` attribute to controller classes or action methods to work with the format you want. 
 
-`Startup.cs` 文件中的代码包含了一个带有 ``services`` 参数的 ``ConfigureServices`` 方法，你可以使用它来为你的 ASP.NET 应用构建服务。在示例中，我们添加一个 XML 格式化器作为一个在此应用中 MVC 能够提供的的服务。 ``options`` 参数传入 ``AddMvc`` 方法允许你去添加和管理过滤器(Filter)，格式化器(Formatter),以及其它 MVC 的系统选项从应用中启动。然后应用 ``各种各样的`` Attribute 到 Controller 类或者 Action 方法上去实现你预期的效果。
+`Startup.cs` 文件中的代码包含了一个带有 ``services`` 参数的 ``ConfigureServices`` 方法，你可以使用它来为你的 ASP.NET 应用构建服务。在示例中，我们添加一个 XML 格式化器作为一个在此应用中 MVC 能够提供的的服务。 ``options`` 参数传入 ``AddMvc`` 方法允许你去添加和管理过滤器( Filter )，格式化器( Formatter ),以及其它 MVC 的系统选项从应用中启动。然后应用 ``各种各样的`` Attribute 到 Controller 类或者 Action 方法上去实现你预期的效果。
