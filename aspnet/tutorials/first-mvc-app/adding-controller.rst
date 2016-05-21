@@ -1,13 +1,24 @@
+添加一个 Controller
+===================
+
 Adding a controller
 ==================================================
 
-By `Rick Anderson`_
+作者： `Rick Anderson`_
+
+翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
+
+校对：
 
 The Model-View-Controller (MVC) architectural pattern separates an app into three main components: the **M**\odel, the **V**\iew, and the **C**\ontroller. The MVC pattern helps you create apps that are testable and easier to maintain and update than traditional monolithic apps. MVC-based apps contain:
+
+Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主要的组件： **M**\odel, **V**\iew, 以及 **C**\ontroller 。 MVC 模式帮助你创建可测试的应用程序，比传统的单块应用程序更加容易去维护和更新。基于 MVC 的程序包含：
 
 - **M**\odels: Classes that represent the data of the app and that use validation logic to enforce business rules for that data. Typically, model objects retrieve and store model state in a database. In this tutorial, a ``Movie`` model retrieves movie data from a database, provides it to the view or updates it. Updated data is written to a SQL Server database.
 - **V**\iews: Views are the components that display the app's user interface (UI). Generally, this UI displays the model data. 
 - **C**\ontrollers: Classes that handle browser requests, retrieve model data, and then specify view templates that return a response to the browser. In an MVC app, the view only displays information; the controller handles and responds to user input and interaction. For example, the controller handles route data and query-string values, and passes these values to the model. The model might use these values to query the database.
+
+
 
 The MVC pattern helps you create apps that separate the different aspects of the app (input logic, business logic, and UI logic), while providing a loose coupling between these elements. The pattern specifies where each kind of logic should be located in the app. The UI logic belongs in the view. Input logic belongs in the controller. Business logic belongs in the model. This separation helps you manage complexity when you build an app, because it enables you to work on one aspect of the implementation at a time without impacting the code of another. For example, you can work on the view code without depending on the business logic code. 
 
