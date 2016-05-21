@@ -3,7 +3,7 @@
 
 翻译：[刘怡(AlexLEWIS)](http://github.com/alexinea)
 
-校对：
+校对：[何镇汐](https://github.com/UtilCore)，孟帅洋，夏申斌，[王绍明](https://github.com/ShaomingCode)，[赵亮(BeiMeng)](https://github.com/BeiMeng)
 
 <!--One of the easiest ways to contribute is to participate in discussions and discuss issues. You can also contribute by submitting pull requests with code changes.-->
 
