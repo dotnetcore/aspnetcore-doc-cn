@@ -1,6 +1,10 @@
 Getting Started
 ===============
 
+翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
+
+校对：
+
 1. Install `.NET Core`_
 
 1. 安装 `.NET Core`_
