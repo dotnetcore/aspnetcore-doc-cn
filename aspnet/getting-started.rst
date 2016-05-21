@@ -3,7 +3,7 @@ Getting Started 入门
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对：
+校对： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
 1. Install `.NET Core`_
 
