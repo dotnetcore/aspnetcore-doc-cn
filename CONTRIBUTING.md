@@ -75,7 +75,7 @@ You can also install [sphinx-autobuild](https://github.com/GaretJax/sphinx-autob
 2. 导航到 Docs 仓库主项目的子目录中的一个，比如 `mvc`、`aspnet` 或 `webhooks`。
 3. 运行 ``make``（Windows 上的 make.bat，Mac/Linux 上的 Makefile）
     ```make livehtml```
-4. 访问 http://127.0.0.1:8000` 阅读本地生成的文档。
+4. 访问 `http://127.0.0.1:8000` 阅读本地生成的文档。
 5. 敲击 `^C` 关闭本地服务器。
 
 <!--## Adding Content ##-->
