@@ -1,5 +1,5 @@
-Getting Started
-===============
+Getting Started 入门
+====================
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
@@ -21,7 +21,7 @@ Getting Started
 
 3. Update the *project.json* file to add the Kestrel HTTP server package as a dependency:
 
-3. 编辑 *project.json* 文件添加 Kestrel HTTP server 包引用:
+3. 编辑 *project.json* 文件，添加 Kestrel HTTP server 包引用:
 
   .. literalinclude:: getting-started/sample/aspnetcoreapp/project.json
     :language: c#

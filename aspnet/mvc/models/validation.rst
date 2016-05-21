@@ -4,13 +4,13 @@ Model Validation 模型验证
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： 
+校对： `孟帅洋 <#>`_
 
 In this article:
 
-在这篇文章：
+在这篇文章中：
 
-.. contents:: Sections
+.. contents:: Sections 节
   :local:
   :depth: 1
 
@@ -22,7 +22,7 @@ Introduction to model validation
 
 Before an app stores data in a database, the app must validate the data. Data must be checked for potential security threats, verified that it is appropriately formatted by type and size, and it must conform to your rules. Validation is necessary although it can be redundant and tedious to implement. In MVC, validation happens on both the client and server. 
 
-在一个应用程序将数据存储到数据库之前，这个应用程序必须验证数据。数据必须检查潜在的安全隐患，验证类型和大小是正确并且符合你所制定的规则的。尽管验证的实现可能会是冗余和繁琐的，却是有必要的。在 MVC 中，验证发生在客户端和服务器端。
+在一个应用程序将数据存储到数据库之前，这个应用程序必须验证数据。数据必须检查潜在的安全隐患，验证类型和大小是正确并且符合你所制定的规则。尽管验证的实现可能会是冗余和繁琐的，却是有必要的。在 MVC 中，验证发生在客户端和服务器端。
 
 Fortunately, .NET has abstracted validation into validation attributes. These attributes contain validation code, thereby reducing the amount of code you must write. 
 
@@ -36,7 +36,7 @@ Validation Attributes
 
 Validation attributes are a way to configure model validation so it's similar conceptually to validation on fields in database tables. This includes constraints such as assigning data types or required fields. Other types of validation include applying patterns to data to enforce business rules, such as a credit card, phone number, or email address. Validation attributes make enforcing these requirements much simpler and easier to use.
 
-验证 Attribute 是一种配置模型验证的方法，类似在数据库表中验证字段的概念。它包含了指定数据类型或者必填字段等等约束。其它类型的验证包括将强制的业务规则应用到数据验证，比如验一个信用卡号，一个手机号码，或者一个 Email 地址。 验证 Attribute 使这些要求更简单，更容易使用。
+验证 Attribute 是一种配置模型验证的方法，类似在数据库表中验证字段的概念。它包含了指定数据类型或者必填字段等约束。其它类型的验证包括将强制的业务规则应用到数据验证，比如验一个信用卡号，一个手机号码，或者一个 Email 地址。 验证 Attribute 使这些要求更简单，更容易使用。
 
 Below is an annotated ``Movie`` model from an app that stores information about movies and TV shows. Most of the properties are required and several string properties have length requirements. Additionally, there is a numeric range restriction in place for the ``Price`` property from 0 to $999.99, along with a custom validation attribute.
 
@@ -138,7 +138,7 @@ In the following sample, a business rule that states that users may not set the 
    
 The ``movie`` variable above represents a ``Movie`` object that contains the data from the form submission to validate. In this case, the validation code checks the date and genre in the ``IsValid`` method of the ``ClassicMovieAttribute`` class as per the rules. Upon successful validation ``IsValid`` returns a ``ValidationResult.Success`` code, and when validation fails, a ``ValidationResult`` with an error message. When a user modifies the ``Genre`` field and submits the form, the ``IsValid`` method of the ``ClassicMovieAttribute`` will verify whether the movie is a classic. Like any built-in attribute, apply the ``ClassicMovieAttribute`` to a property such as ``ReleaseDate`` to ensure validation happens, as shown in the previous code sample. Since the example works only with ``Movie`` types, a better option is to use ``IValidatableObject`` as shown in the following paragraph.
 
-上面的 ``movie`` 变量代表一个包含了表单提交数据并等待验证的 ``Movie`` 的对象。在这个例子中，``ClassicMovieAttribute`` 类的 ``IsValid`` 方案按照规定检查了日期和分类( Genre )。当验证成功， ``IsValid`` 方法返回一个 ``ValidationResult.Success`` 枚举码；当验证失败，返回一个带有错误消息的 ``ValidationResult`` 。当用户修改了 ``Genre`` 字段并且提交表单， ``ClassicMovieAttribute`` 中的 ``IsValid`` 方法将验证电影是否是经典( Classic )。如同其他内置的 Attribute 一样，应用 ``ClassicMovieAttribute`` 到比如 ``ReleaseDate`` 这个属性上来确保验证发生，如果之前例子中的演示代码一样。因为这个例子仅对 ``Movie`` 类型有效，一个更好的选择使用下面段落介绍的 ``IValidatableObject``。
+上面的 ``movie`` 变量代表一个包含了表单提交数据并等待验证的 ``Movie`` 的对象。在这个例子中，``ClassicMovieAttribute`` 类的 ``IsValid`` 方法按照规定检查了日期和分类( Genre )。当验证成功， ``IsValid`` 方法返回一个 ``ValidationResult.Success`` 枚举码；当验证失败，返回一个带有错误消息的 ``ValidationResult`` 。当用户修改了 ``Genre`` 字段并且提交表单， ``ClassicMovieAttribute`` 中的 ``IsValid`` 方法将验证电影是否是经典( Classic )。如同其他内置的 Attribute 一样，应用 ``ClassicMovieAttribute`` 到比如 ``ReleaseDate`` 这个属性上来确保验证发生，如果之前例子中的演示代码一样。因为这个例子仅对 ``Movie`` 类型有效，一个更好的选择使用下面段落介绍的 ``IValidatableObject``。
 
 Alternatively, this same code could be placed in the model instead by implementing the ``Validate`` method on the ``IValidatableObject`` interface. While custom validation attributes work well for validating individual properties, implementing ``IValidatableObject`` can be used to implement class-level validation as seen here.
 
