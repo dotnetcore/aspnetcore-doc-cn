@@ -1,8 +1,12 @@
 .. _fundamentals-middleware:
 
-Middleware
-==========
+Middleware 中间件
+==================
 By `Steve Smith`_ and `Rick Anderson`_
+
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
 
 .. contents:: Sections:
   :local:
@@ -10,7 +14,12 @@ By `Steve Smith`_ and `Rick Anderson`_
 
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/middleware/sample>`__
 
+`访问或下载样例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/middleware/sample>`__
+
 What is middleware
+------------------
+
+什么是中间件
 ------------------
 
 Middleware are software components that are assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the request on to the next component in the pipeline, and can perform certain actions before and after the next component is invoked in the pipeline. Request delegates are used to build the request pipeline. The request delegates handle each HTTP request.
@@ -20,6 +29,9 @@ Request delegates are configured using `Run <https://docs.asp.net/projects/api/e
 :doc:`/migration/http-modules` explains the difference between request pipelines in ASP.NET Core and the previous versions and provides more middleware samples.
 
 Creating a middleware pipeline with IApplicationBuilder
+-------------------------------------------------------
+
+用 IApplicationBuilder 创建中间件管道
 -------------------------------------------------------
 
 The ASP.NET request pipeline consists of a sequence of request delegates, called one after the next, as this diagram shows (the thread of execution follows the black arrows):
@@ -137,6 +149,9 @@ You can also nest Maps:
 Built-in middleware
 -------------------
 
+内置中间件
+-------------------
+
 ASP.NET ships with the following middleware components:
 
 
@@ -161,6 +176,9 @@ ASP.NET ships with the following middleware components:
 .. _middleware-writing-middleware:
 
 Writing middleware
+------------------
+
+编写中间件
 ------------------
 
 The `CodeLabs middleware tutorial <https://github.com/Microsoft-Build-2016/CodeLabs-WebDev/tree/master/Module2-AspNetCore>`__ provides a good introduction to writing middleware.
@@ -198,6 +216,9 @@ Testing the middleware (by setting the ``Hosting:Environment`` environment varia
 .. note:: The `UseStaticFiles <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/StaticFileExtensions/index.html#meth-Microsoft.AspNet.Builder.StaticFileExtensions.UseStaticFiles>`_ extension method (which creates the `StaticFileMiddleware <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/StaticFiles/StaticFileMiddleware/index.html>`_) also uses ``UseMiddleware<T>``. In this case, the ``StaticFileOptions`` parameter is passed in, but other constructor parameters are supplied by ``UseMiddleware<T>`` and dependency injection.
 
 Additional Resources
+--------------------
+
+扩展资源
 --------------------
 
 - `CodeLabs middleware tutorial <https://github.com/Microsoft-Build-2016/CodeLabs-WebDev/tree/master/Module2-AspNetCore>`__

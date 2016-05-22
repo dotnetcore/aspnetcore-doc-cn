@@ -4,7 +4,7 @@
 
 翻译：[刘怡(AlexLEWIS)](http://github.com/alexinea)
 
-校对：
+校对：[刘浩扬(Landiro)](https://github.com/liuhaoyang)
 
 <!--Information on contributing to this repo is in the [Contributing Guide](https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md) in the Home repo.-->
 
@@ -41,16 +41,27 @@
 
 
 1. [下载 python](https://www.python.org/downloads/) 2.7.10+（推荐安装 3.4）。
+
 2. 如果你是在 Windows 上安装，请同时确认 Python 的安装目录和 Python scripts 目录已被添加到 `PATH` 环境变量中。比如你把 Python 安装到了 C:\python34 目录，那么你需要把 `c:\python34;c:\python34\scripts` 添加到 `PATH` 环境变量中。
-3. 通过命令行提示安装 Sphinx 并在 Python 命令下运行（注：此操作需花费几分钟）。
+
+3. 通过命令行提示安装 Sphinx ，需要在 Python 命令下运行：（注，此操作需花费几分钟）
+
     ```pip install sphinx```
+	
 4. 默认情况下，当你安装 Sphinx 时会自动安装 ReadTheDocs 风格的自定义主题。如果你要更新已安装的该主题版本，可以这样：
+
     ```pip install -U sphinx_rtd_theme```
+	
 5. 安装 Sphinx .NET domain：
+
     ```pip install sphinxcontrib-dotnetdomain```
+	
 6. 导航到 Docs 仓库主项目的子目录中的一个，比如 `mvc`、`aspnet` 或 `webhooks`。
+
 7. 运行 ``make``（Windows 上的 make.bat，Mac/Linux 上的 Makefile）
+
     ```make html```
+	
 8. 当 make 完成后，生成的文档将位于 .../docs/&lt;project&gt;/_build/html 目录下。直接用浏览器打开 `index.html` 就能看到所生成的该项目的文档了。
 
 <!--## Use autobuild to easily view site changes locally ##-->
@@ -71,11 +82,17 @@ You can also install [sphinx-autobuild](https://github.com/GaretJax/sphinx-autob
 -->
 
 1. 安装 sphinx-autobuild
+
     ```pip install sphinx-autobuild```
+	
 2. 导航到 Docs 仓库主项目的子目录中的一个，比如 `mvc`、`aspnet` 或 `webhooks`。
+
 3. 运行 ``make``（Windows 上的 make.bat，Mac/Linux 上的 Makefile）
+
     ```make livehtml```
+	
 4. 访问 `http://127.0.0.1:8000` 阅读本地生成的文档。
+
 5. 敲击 `^C` 关闭本地服务器。
 
 <!--## Adding Content ##-->
