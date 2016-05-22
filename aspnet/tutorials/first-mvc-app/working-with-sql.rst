@@ -1,7 +1,9 @@
 Working with SQL Server LocalDB    用本地SQL Server数据库
 ===============================================
 
-By `Rick Anderson`_    作者：Rick Anderson
+翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
+
+校对： `
 
 The ``ApplicationDbContext`` class handles the task of connecting to the database and mapping ``Movie`` objects to database records. The database context is registered with the :doc:`Dependency Injection  </fundamentals/dependency-injection>` container in the ``ConfigureServices`` method in the *Startup.cs* file:
    ApplicationDbContext类负责链接数据库并将Movie对象和数据记录进行映射。Startup.cs文件中，数据库上下文是在ConfigureServices方法中用Dependency Injection容器进行注入的。
