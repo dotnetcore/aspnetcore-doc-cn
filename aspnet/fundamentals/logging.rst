@@ -3,7 +3,7 @@
 Logging 日志
 =============
 
-By `Steve Smith`_
+作者： `Steve Smith`_
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 

@@ -2,7 +2,7 @@
 
 Configuration 配置
 ===================
-`Steve Smith`_, `Daniel Roth`_
+作者： `Steve Smith`_, `Daniel Roth`_
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
