@@ -2,8 +2,7 @@ Introduction to ASP.NET Core
 ============================
 
 By `Daniel Roth`_
-作者：Daniel Roth`_
-翻译：王健（https://github.com/wjhgzx）
+作者：Daniel Roth` 翻译：王健（https://github.com/wjhgzx）
 
 ASP.NET Core is a significant redesign of ASP.NET. This topic introduces the new concepts in ASP.NET Core and explains how they help you develop modern web apps.
 
@@ -19,19 +18,19 @@ What is ASP.NET Core?
 
 ASP.NET Core is a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET. We built it from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core applications cross-platform on Windows, Mac and Linux. ASP.NET Core is fully open source on `GitHub <https://github.com/aspnet/home>`_.
 
-ASP.NET Core 是使用.NET来构建基于云的现代化网络应用的一种新开源和跨平台的框架。我们重新设计它来为部署在云上或运行在本地的应用程序提供一种优化过的开发框架。它由最小开销的模块化组件组成，让您构建解决方案的同时保持灵活性。您可以开发并跨平台运行ASP.NET Core 应用程序在Windows，Mac和Linux上。ASP.NET Core 完全开源于`GitHub` <https://github.com/aspnet/home>.
+ASP.NET Core 是使用.NET来构建基于云的现代化网络应用的一种新开源和跨平台的框架。我们重新设计它来为部署在云上或运行在本地的应用程序提供一种优化过的开发框架。它由最小开销的模块化组件组成，让您构建解决方案的同时保持灵活性。您可以开发并跨平台运行 ASP.NET Core 应用程序在Windows，Mac 和 Linux 上。ASP.NET Core 完全开源于`GitHub` <https://github.com/aspnet/home>.
 
 Why build ASP.NET Core?
-为什么开发ASP.NET Core?
+为什么开发 ASP.NET Core?
 -----------------------
 
 The first preview release of ASP.NET came out almost 15 years ago as part of the .NET Framework.  Since then millions of developers have used it to build and run great web applications, and over the years we have added and evolved many, many capabilities to it.
 
-ASP.NET的第一个预览版作为.NET Framework的一部分，出来了差不多15年。从那时起，数以百万计的开发人员使用它来构建和运行伟大的Web应用程序，多年来我们已经为它加入并发展了很多很多的功能。
+ASP.NET 的第一个预览版作为.NET Framework 的一部分，出来了差不多15年。从那时起，数以百万计的开发人员使用它来构建和运行伟大的Web应用程序，多年来我们已经为它加入并发展了很多很多的功能。
 
 With ASP.NET Core we are making a number of architectural changes that make the core web framework much leaner and more modular. ASP.NET Core is no longer based on System.Web.dll, but is instead based on a set of granular and well factored NuGet packages allowing you to optimize your app to have just what you need. You can reduce the surface area of your application to improve security, reduce your servicing burden and also to improve performance in a true pay-for-what-you-use model.
 
-使用ASP.NET Core，我们带来了一系列的变化，使核心网络架构更为精简和更具模块化。ASP.NET Core不再基于System.Web.dll，而是基于一组细化和良好分解的NuGet包让您可以优化您的应用程序并且只取您所需要的部分。您可以减少应用程序的外部区域，以提高安全性，降低您的维护负担，也在真正的为你所付费使用的部分提高了性能。
+使用ASP.NET Core，我们带来了一系列的变化，使核心网络架构更为精简和更具模块化。ASP.NET Core 不再基于 System.Web.dll，而是基于一组细化和良好分解的NuGet包让您可以优化您的应用程序并且只取您所需要的部分。您可以减少应用程序的外部区域，以提高安全性，降低您的维护负担，也在真正的为你所付费使用的部分提高了性能。
 
 ASP.NET Core is built with the needs of modern Web applications in mind, including a unified story for building Web UI and Web APIs that integrate with today's modern client-side frameworks and development workflows. ASP.NET Core is also built to be cloud-ready by introducing environment-based configuration and by providing built-in dependency injection support.
 
@@ -39,7 +38,7 @@ ASP.NET Core 是在现代化的web应用程序的需求下构建的，其中包�
 
 To appeal to a broader audience of developers, ASP.NET Core supports cross-platform development on Windows, Mac and Linux. The entire ASP.NET Core stack is open source and encourages community contributions and engagement. ASP.NET Core comes with a new, agile project system in Visual Studio while also providing a complete command-line interface so that you can develop using the tools of your choice.
 
-为了吸引更广泛的开发者受众，ASP.NET Core支持Windows，Mac和Linux的跨平台开发。整个ASP.NET Core协议栈是开源的，并鼓励社区的贡献和参与。 ASP.NET Core 在Visual Studio中配备了一个新的，灵活的项目系统，同时还提供了完整的命令行界面，使您可以使用您选择的工具进行开发。
+为了吸引更广泛的开发者受众，ASP.NET Core 支持 Windows，Mac和Linux 的跨平台开发。整个 ASP.NET Core 协议栈是开源的，并鼓励社区的贡献和参与。ASP.NET Core 在 Visual Studio 中配备了一个新的，灵活的项目系统，同时还提供了完整的命令行界面，使您可以使用您选择的工具进行开发。
 
 In summary, with ASP.NET Core you gain the following foundational improvements:
 
@@ -96,6 +95,19 @@ ASP.NET Core 应用程序使用public的Startup类来定义：
       }
   }
 
+.. code-block:: c#
+
+  public class Startup
+  {
+      public void ConfigureServices(IServiceCollection services)
+      {
+      }
+
+      public void Configure(IApplicationBuilder app)
+      {
+      }
+  }
+
 The ``ConfigureServices`` method defines the services used by your application and the ``Configure`` method is used to define what middleware makes up your request pipeline. See :doc:`/fundamentals/startup` for more details.
 
 ``ConfigureServices``方法定义了应用程序上使用的服务，``Configure``方法用于定义由哪些中间件来装配您的请求管线。请参阅：doc:`/fundamentals/startup`了解更多详情
@@ -106,7 +118,7 @@ Services
 
 A service is a component that is intended for common consumption in an application. Services are made available through dependency injection. ASP.NET Core includes a simple built-in inversion of control (IoC) container that supports constructor injection by default, but can be easily replaced with your IoC container of choice. See :doc:`/fundamentals/dependency-injection` for more details.
 
-服务是用于在应用程序共同消费的组件。服务是通过依赖注入提供。 ASP.NET Core包括简单的内置控制反转容器，默认情况下支持构造函数注入，但是可以轻松替换为您自己选择的IOC容器。请参阅：DOC：`/基础/依赖性的injection`了解更多详情。
+服务是用于在应用程序共同消费的组件。服务是通过依赖注入提供。 ASP.NET Core 包括简单的内置控制反转容器，默认情况下支持构造函数注入，但是可以轻松替换为您自己选择的IOC容器。请参阅：DOC：`/基础/依赖性的injection`了解更多详情。
 
 Services in ASP.NET Core come in three varieties: singleton, scoped and transient. Transient services are created each time they’re requested from the container. Scoped services are created only if they don’t already exist in the current scope. For Web applications, a container scope is created for each request, so you can think of scoped services as per request. Singleton services are only ever created once.
 
