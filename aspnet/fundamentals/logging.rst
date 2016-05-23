@@ -1,21 +1,32 @@
 .. _fundamentals-logging:
 
-Logging
-=======
+Logging 日志
+=============
 
 By `Steve Smith`_
 
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
+
 ASP.NET Core has built-in support for logging, and allows developers to easily leverage their preferred logging framework's functionality as well. Implementing logging in your application requires a minimal amount of setup code. Once this is in place, logging can be added wherever it is desired.
+
+ASP.NET Core 内建支持日志，也允许开发人员轻松切换为他们想用的其他日志框架。尽量用最少的代码来实现应用程序日志，只要做到这点，就能想在哪里加就能在那里加日志记录。
 
 .. contents:: Sections:
   :local:
   :depth: 1
 
-
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/logging/sample>`__
+
+`访问或下载样例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/logging/sample>`__
 
 Implementing Logging in your Application
 ----------------------------------------
+
+在应用程序中实现日志
+-----------------------------------------
+
 
 Adding logging to a component in your application is done by requesting either an ``ILoggerFactory`` or an ``ILogger<T>`` via :doc:`dependency-injection`. If an ``ILoggerFactory`` is requested, a logger must be created using its ``CreateLogger`` method. The following example shows how to do this within the ``Configure`` method in the ``Startup`` class:
 
@@ -53,10 +64,17 @@ Within each controller action, logging is done through the use of the local fiel
 Working with ILogger<T>
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+使用 ILogger<T>
+^^^^^^^^^^^^^^^^^^^^^^^
+
 As we have just seen, your application can request an instance of ``ILogger<T>`` as a dependency in a class's constructor, where ``T`` is the type performing logging. The ``TodoController`` shows an example of this approach. When this technique is used, the logger will automatically use the type's name as its category name. By requesting an instance of ``ILogger<T>``, your class doesn't need to create an instance of a logger via ``ILoggerFactory``. You can use this approach anywhere you don't need the additional functionality offered by ``ILoggerFactory``.
 
 Logging Verbosity Levels
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+日志记录级别
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 When adding logging statements to your application, you must specify a `LogLevel <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Logging/LogLevel/index.html>`_. The LogLevel allows you to control the verbosity of the logging output from your application, as well as the ability to pipe different kinds of log messages to different loggers. For example, you may wish to log debug messages to a local file, but log errors to the machine's event log or a database.
 
@@ -118,6 +136,9 @@ The console logger prefixes verbose output with "verbose: " and uses a gray font
 Scopes
 ^^^^^^
 
+范围
+^^^^^
+
 In the course of logging information within your application, you can group a set of logical operations within a *scope*. A scope is an ``IDisposable`` type returned by calling the ``BeginScopeImpl`` method, which lasts from the moment it is created until it is disposed. The built-in ``TraceSource`` logger returns a scope instance that is responsible for starting and stopping tracing operations. Any logging state, such as a transaction id, is attached to the scope when it is created.
 
 Scopes are not required, and should be used sparingly, if at all. They're best used for operations that have a distinct beginning and end, such as a transaction involving multiple resources.
@@ -125,12 +146,18 @@ Scopes are not required, and should be used sparingly, if at all. They're best u
 Configuring Logging in your Application
 ----------------------------------------
 
+在应用程序中配置日志
+-----------------------------------------
+
 To configure logging in your ASP.NET application, you should resolve ``ILoggerFactory`` in the ``Configure`` method in your ``Startup`` class. ASP.NET will automatically provide an instance of ``ILoggerFactory`` using :doc:`dependency-injection` when you add a parameter of this type to the ``Configure`` method. Once you've added ``ILoggerFactory`` as a parameter, you configure loggers within the ``Configure`` method by calling methods (or extension methods) on the logger factory. We have already seen an example of this configuration at the beginning of this article, when we added console logging by simply calling ``loggerFactory.AddConsole``. In addition to adding loggers, you can also control the verbosity of the application's logging by setting the ``MinimumLevel`` property on the logger factory. The default verbosity is ``Verbose``.
 
 .. note:: You can specify the minimum logging level each logger provider will use as well. For example, the ``AddConsole`` extension method supports an optional parameter for setting its minimum ``LogLevel``.
 
 Configuring TraceSource Logging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+配置 TraceSource 日志
+^^^^^^^^^^^^^^^^^^^^^
 
 When running on the full .NET Framework you can configuring logging to use the existing `System.Diagnostics.TraceSource <https://msdn.microsoft.com/en-us/library/system.diagnostics.tracesource(v=vs.110).aspx>`_ libraries and providers, including easy access to the Windows event log. ``TraceSource`` allows you to route messages to a variety of listeners and is already in use by many organizations.
 
@@ -176,6 +203,9 @@ In addition to working with `TraceSourceLogger`, you can also log directly to th
 Configuring Other Providers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+配置其它提供程序
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 In addition to the built-in loggers, you can configure logging to use other providers. Add the appropriate package to your *project.json* file, and then configure it just like any other provider. Typically, these packages should include extension methods on ``ILoggerFactory`` to make it easy to add them.
 
 .. note:: The ASP.NET team is still working with third party logging providers to publish support for this logging model. Once these ship, we will include links to them here.
@@ -183,6 +213,9 @@ In addition to the built-in loggers, you can configure logging to use other prov
 You can create your own custom providers as well, to support other logging frameworks or your own internal logging requirements.
 
 Logging Recommendations
+-----------------------
+
+日志记录建议
 -----------------------
 
 The following are some recommendations you may find helpful when implementing logging in your ASP.NET applications.
@@ -203,5 +236,8 @@ The following are some recommendations you may find helpful when implementing lo
 
 Summary
 -------
+
+总结
+--------
 
 ASP.NET provides built-in support for logging, which can easily be configured within the ``Startup`` class and used throughout the application. Logging verbosity can be configured globally and per logging provider to ensure actionable information is logged appropriately. Built-in providers for console and trace source logging are included in the framework; other logging frameworks can easily be configured as well.
