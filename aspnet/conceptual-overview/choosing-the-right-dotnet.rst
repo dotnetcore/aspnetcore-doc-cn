@@ -2,8 +2,7 @@ Choosing the Right .NET For You on the Server
 为您的服务器选择合适版本的.NET（的框架）
 
 By `Daniel Roth`
-作者：`Daniel Roth`
-翻译：王健
+作者：`Daniel Roth`  翻译：王健
 
 ASP.NET Core is based on the .NET Core project model, which supports building applications that can run cross-platform on Windows, Mac and Linux. When building a .NET Core project you also have a choice of which .NET flavor to target your application at: .NET Framework (CLR), .NET Core (CoreCLR) or Mono. Which .NET flavor should you choose? Let's look at the pros and cons of each one.
 
