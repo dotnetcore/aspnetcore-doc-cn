@@ -4,11 +4,11 @@
 
 翻译：[刘怡(AlexLEWIS)](http://github.com/alexinea)
 
-校对：[刘浩扬(Landiro)](https://github.com/liuhaoyang)
+校对：[刘浩杨(L)](https://github.com/liuhaoyang)，[孟帅洋(书缘)](https://github.com/mengshuaiyang)
 
 <!--Information on contributing to this repo is in the [Contributing Guide](https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md) in the Home repo.-->
 
-关于向本仓库贡献的详细阐述位于 aspnet 组织 Home 仓库的 [贡献指南（Contributing Guide）](https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md) 中。
+关于向本仓库贡献的详细阐述位于 aspnet 组织 Home 仓库的 [贡献指南（Contributing Guide）](https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md) 中（[点击此处查看中文版](https://github.com/dotnetcore/AspNetCore-Docs-CN/blob/master/CONTRIBUTING_HOME.md)）。
 
 <!--The documentation is built using [Sphinx](http://sphinx-doc.org) and [reStructuredText](http://sphinx-doc.org/rest.html), and then hosted by [ReadTheDocs](http://aspnet.readthedocs.org).-->
 
@@ -108,15 +108,15 @@ Before adding content, submit an issue with a suggestion for your proposed artic
 Also, please review the following style guides:
 -->
 
-同样的，请回顾一下这些风格指南：
+同样的，请回顾一下这些样式指南：
 
 <!--
 - [Sphinx Style Guide](http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html)
 - [ASP.NET Docs Style Guide](http://docs.asp.net/en/latest/contribute/style-guide.html)
 -->
 
-- [Sphinx 风格指南](http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html)
-- [ASP.NET 文档风格指南](http://docs.asp.net/en/latest/contribute/style-guide.html)
+- [Sphinx 样式指南](http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html)
+- [ASP.NET 文档样式指南](http://docs.asp.net/en/latest/contribute/style-guide.html)
 
 <!--
 Articles should be organized into logical groups or sections. Each section should be given a named folder (e.g. /yourfirst). That section contains the rst files for all articles in the section. For images and other static resources, create a subfolder that matches the name of the article. Within this subfolder, create a ``sample`` folder for code samples and a  ``_static`` folder for images and other static content.
@@ -176,7 +176,7 @@ Author information should be placed in the _authors folder following the example
 **Step 4:** Write your article, placing the article in its own folder and any needed images in a _static folder located in the same folder as the article. Be sure to follow the [ASP.NET Docs Style Guide](http://docs.asp.net/en/latest/contribute/style-guide.html). If you have code samples, place them in a folder within the `/samples/` folder.
 -->
 
-**第四步：** 开始编写。把文章放在对应的文件夹下，所有的图片放在文件夹下的 _static 子文件夹中。确保你已遵循了 [ASP.NET 文档风格指南](http://docs.asp.net/en/latest/contribute/style-guide.html) 的要求。如果你还附有代码样例，则把样例放在 `/samples/` 文件夹内。
+**第四步：** 开始编写。把文章放在对应的文件夹下，所有的图片放在文件夹下的 _static 子文件夹中。确保你已遵循了 [ASP.NET 文档样式指南](http://docs.asp.net/en/latest/contribute/style-guide.html) 的要求。如果你还附有代码样例，则把样例放在 `/samples/` 文件夹内。
 
 <!--
 **Step 5:** Submit a Pull Request from your branch to `aspnet/docs/master`.

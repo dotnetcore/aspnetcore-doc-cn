@@ -2,7 +2,7 @@
 
 Working with Static Files 处理静态文件
 ======================================
-By `Tom Archer`_
+作者： `Tom Archer`_
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 

@@ -3,11 +3,11 @@
 ASP.NET Docs Style Guide ASP.NET 文档风格指南
 ==============================================
 
-By `Steve Smith`_
+作者： `Steve Smith`_
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
-校对： 
+校对： `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_
 
 This document provides an overview of how articles published on `docs.asp.net <http://docs.asp.net>`_ should be formatted. You can actually use this file, itself, as a template when contributing articles.
 
@@ -263,6 +263,8 @@ The code block ends when you begin a new paragraph without indentation. `Sphinx 
 
 .. _Captions: 
 
+.. _标题定位: 
+
 Line numbers should only be used while editing to assist in find the line numbers to emphasize. Code blocks also support line numbers and emphasizing or highlighting certain lines:
 
 在编辑时可以通过使用行号来强调指定行。代码块同样支持一组行号以便突出和高亮某几行：
@@ -399,7 +401,7 @@ This would include the first and fourth line, and then line 20 through the end o
 
 Literal includes also support `Captions`_ and names, as with ``code-block`` elements. If the ``caption`` is left blank, the file name will be used as the caption. Note that captions and names are available with Sphinx 1.3, which the ReadTheDocs theme used by this system is not yet updated to support.
 
-文本包含同样支持标题 `Captions`_ 和名称，就和 ``code-block`` 元素一样。如果 ``caption`` 留空，则会使用文件名替换之。注意，标题和名称都被 Sphinx 1.3 所支持，但这些暂时还不被 ReadTheDocs 主题所支持。
+文本包含同样支持标题 `标题定位`_ 和名称，就和 ``code-block`` 元素一样。如果 ``caption`` 留空，则会使用文件名替换之。注意，标题和名称都被 Sphinx 1.3 所支持，但这些暂时还不被 ReadTheDocs 主题所支持。
 
 Format code to eliminate or minimize horizontal scroll bars.
 
@@ -459,4 +461,4 @@ Summary
 This style guide is intended to help contributors quickly create new articles for `docs.asp.net <http://docs.asp.net>`_. It includes the most common RST syntax elements that are used, as well as overall document organization guidance. If you discover mistakes or gaps in this guide, please `submit an issue <https://github.com/aspnet/docs/issues>`_.
 
 
-本指南的目的是帮助广大贡献者能为 `docs.asp.net <http://docs.asp.net>`_快速创建新文章。本指南包含了大部分常用的 RST 语法元素以及完整的文档组织指导。若你在阅读本指南时发现错误，请`通过 issue 提交给我们 <https://github.com/aspnet/docs/issues>`_。
+本指南的目的是帮助广大贡献者能为 `docs.asp.net <http://docs.asp.net>`_ 快速创建新文章。本指南包含了大部分常用的 RST 语法元素以及完整的文档组织指导。若你在阅读本指南时发现错误，请`通过 issue 提交给我们 <https://github.com/aspnet/docs/issues>`_ 。
