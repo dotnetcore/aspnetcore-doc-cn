@@ -1,5 +1,5 @@
 Choosing the Right .NET For You on the Server
-为您的服务器选择合适版本的的.NET（的框架）
+为您的服务器选择合适版本的.NET（的框架）
 
 By `Daniel Roth`
 作者：`Daniel Roth`
