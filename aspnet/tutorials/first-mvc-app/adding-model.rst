@@ -4,7 +4,7 @@
 Adding a model
 ==================================================
 
-翻译： `Rick Anderson`_
+作者： `Rick Anderson`_
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
