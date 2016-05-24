@@ -28,9 +28,11 @@ Scaffolding Applications Using Yeoman
 
 Follow the instruction in :doc:`/client-side/yeoman` to create an ASP.NET Core project.
 
-按照:doc:`/client-side/yeoman` 的指引来创建一个ASP.NET Core 项目.
+按照:doc:`/client-side/yeoman`这边文章的指引来创建一个ASP.NET Core 项目.
 
 Developing ASP.NET Applications on a Mac With Visual Studio Code
+----------------------------------------------------------------
+在Mac平台用Visual Studio Code开发ASP.NET 应用
 ----------------------------------------------------------------
 
 - Start **Visual Studio Code**
