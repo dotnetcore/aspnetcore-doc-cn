@@ -13,6 +13,8 @@ This article will show you how to write your first ASP.NET Core application on a
 
 Setting Up Your Development Environment
 ---------------------------------------
+配置开发环境
+---------------------------------------
 
 To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__.
 
