@@ -1,7 +1,10 @@
 .. _fundamentals-logging:
 
-Logging 日志
-=============
+Logging 
+=======
+
+日志
+======
 
 作者： `Steve Smith`_
 
