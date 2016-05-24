@@ -204,19 +204,27 @@ You can deploy to Azure Web Apps directly using Git.
 
 Record the Git URL for the Web App from the Azure portal:
 
+将此Web应用在Azure中的Git URL记录下来:
+
 .. image:: your-first-mac-aspnet/_static/azure-portal.png
 
 - In a Terminal window, add a remote named ``azure`` with the Git URL you noted previously.
 
+- 打开一个终,用先前记录下的Git URL地址添一个名称为``azure`` 的远程命名.
+
   - ``git remote add azure https://ardalis-git@firstaspnetcoremac.scm.azurewebsites.net:443/firstaspnetcoremac.git``
 
 - Push to master.
+
+- 推送到master分支.
 
   - ``git push azure master`` to deploy. 
 
   .. image:: your-first-mac-aspnet/_static/git-push-azure-master.png
 
 - Browse to the newly deployed web app. You should see ``Hello world!``
+
+- 浏览刚刚部署上的web应用.你应该看到浏览器输出 ``Hello world!``
 
 .. .. image:: your-first-mac-aspnet/_static/azure.png 
 
