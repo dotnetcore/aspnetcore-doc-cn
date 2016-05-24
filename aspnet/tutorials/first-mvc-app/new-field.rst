@@ -1,16 +1,18 @@
-Adding a New Field
+添加新的字段
 ================================================
 
-By `Rick Anderson`_
+作者 `Rick Anderson`_
+翻译 `谢炀（kiler）`_
 
-In this section you'll use `Entity Framework <http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html>`__ Code First Migrations to add a new field to the model and migrate that change to the database.
 
-When you use EF Code First to automatically create a database, Code First adds a table to the database to help track whether the schema of the database is in sync with the model classes it was generated from. If they aren't in sync, EF throws an exception. This makes it easier to track down issues at development time that you might otherwise only find (by obscure errors) at run time.
+在这个章节你将使用 `Entity Framework <http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html>`__ Code First 迁移模型中新加的字段，从而将模型字段变更同步到数据库.
 
-Adding a Rating Property to the Movie Model
+当你使用EF Code First模式自动创建一个数据库, Code First模式添加到数据库的表将帮助你来跟踪数据库的数据结构是否和从它生成的模型类是同步的. 如果不同步, EF会抛出异常. 这将有助于你在开发阶段就发现错误，否则可能要到运行时才能发现这个错误了 (通过一个很隐蔽的错误信息).
+
+添加一个Rating字段到Movie模型
 ---------------------------------------------
 
-Open the *Models/Movie.cs* file and add a ``Rating`` property:
+打开*Models/Movie.cs*文件添加一个``Rating``属性:
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/MovieDateRating.cs
   :language: c#
@@ -18,44 +20,44 @@ Open the *Models/Movie.cs* file and add a ``Rating`` property:
   :dedent: 4
   :emphasize-lines: 11
 
-Build the app (Ctrl+Shift+B).
+Buil应用程序(Ctrl+Shift+B).
 
-Because you've added a new field to the ``Movie`` class, you also need to update the binding white list so this new property will be included. Update the ``[Bind]`` attribute for ``Create`` and ``Edit`` action methods to include the ``Rating`` property:
+因为你添加了一个新的字段到``Movie``类, 你还需要更新绑定白名单列表以便于将这个新的属性将包括在内. 为``Create``以及``Edit`` action 方法更新``[Bind]``属性以便于``Rating``字段:
 
 .. code-block:: c#
 
  [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")]
 
-You also need to update the view templates in order to display, create and edit the new ``Rating`` property in the browser view.
+为了把这个字段显示出来你必须更新视图, 在浏览器视图中创建或者编辑一个新的``Rating``属性.
 
-Edit the */Views/Movies/Index.cshtml* file and add a ``Rating`` field:
+编辑*/Views/Movies/Index.cshtml*文件并添加一个``Rating``字段:
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/IndexGenreRating.cshtml
   :language: HTML
   :emphasize-lines: 16,37
   :lines: 24-61
 
-Update the */Views/Movies/Create.cshtml* with a ``Rating`` field. You can copy/paste the previous "form group" and let intelliSense help you update the fields. IntelliSense works with :doc:`Tag Helpers </mvc/views/tag-helpers/intro>`.
+更新*/Views/Movies/Create.cshtml*文件添加 ``Rating``字段.你可以从上一个"form group"拷贝/粘帖以便于让让智能感知帮助你更新字段. 智能感知参考 :doc:`Tag Helpers </mvc/views/tag-helpers/intro>`.
 
 .. image:: new-field/_static/cr.png
 
-The app won't work until we update the DB to include the new field. If you run it now, you'll get the following ``SqlException``:
+在我们在数据库里面包含了新的字段之前应用程序无法正常工作。如果现在就把程序跑起来，程序会抛出``SqlException``异常：
 
 .. image:: new-field/_static/se.png
 
-You're seeing this error because the updated Movie model class is different than the schema of the Movie table of the existing database. (There's no Rating column in the database table.)
+你会看到这个错误是因为更新过Movie模型和数据库中存在的Movie的结构是不对应的. (数据库表中没有Rating字段.)
 
-There are a few approaches to resolving the error:
+有以下几种方法解决这个问题:
 
-#. Have the Entity Framework automatically drop and re-create the database based on the new model class schema. This approach is very convenient early in the development cycle when you are doing active development on a test database; it allows you to quickly evolve the model and database schema together. The downside, though, is that you lose existing data in the database — so you don't want to use this approach on a production database! Using an initializer to automatically seed a database with test data is often a productive way to develop an application.
+#. Entity Framework可以基于新的模型类自动删除并重建数据库结构。在开发环节的早期阶段，当你的所有的开发任务都还在测试数据库上进行的时候，这种操作方式当你是非常方便的;它可以让你快速的同时更新模型类和数据库结构。这种模式也有不足之处，那就是你会丢失数据库中的现有的数据 - 这是你在连接生产数据库开发的时候所不愿意看到的！使用初始化方法自动填充测试数据数据库往往是开发应用程序的一个有效的方式。
 
-#. Explicitly modify the schema of the existing database so that it matches the model classes. The advantage of this approach is that you keep your data. You can make this change either manually or by creating a database change script.
+#. 显式修改现有数据库的结构使得它的模型类相匹配。这种方法的好处是，你可以保留你录入过的数据。您可以手动修改或通过执行一个自动创建的数据库更改脚本进行变更.
 
-#. Use Code First Migrations to update the database schema.
+#. 采用Code First迁移来更新数据库结构.
 
-For this tutorial, we'll use Code First Migrations.
+对于本教程, 我们采用Code First迁移.
 
-Update the ``SeedData`` class so that it provides a value for the new column. A sample change is shown below, but you'll want to make this change for each ``new Movie``.
+更新``SeedData``类以便于为新的的字段提供值. 样本数据的变化如下图所示, 但是也许你希望对每个``new Movie``都应用这个变更.
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/SeedDataRating.cs
   :language: c#
@@ -63,15 +65,17 @@ Update the ``SeedData`` class so that it provides a value for the new column. A 
   :dedent: 16
   :emphasize-lines: 6
 
-Build the solution then open a command prompt. Enter the following commands:
+Build解决方案，然后打开命令提示符。输入以下命令:
 
 .. code-block:: console
 
   dotnet ef migrations add Rating
   dotnet ef database update
 
-The ``migrations add`` command tells the migration framework to examine the current ``Movie`` model with the current ``Movie`` DB schema and create the necessary code to migrate the DB to the new model. The name "Rating" is arbitrary and is used to name the migration file. It's helpful to use a meaningful name for the migration step.
+``migrations add``命令通知数据库迁移框架检查``Movie``模型是否当前``Movie``数据库表结构一致，如果不一致，就会创建新的必要的代码把数据库迁移到新的模型. "Rating" 名字可以是任意的，只是迁移文件的标识符。采用有意义的名字有助于迁移操作。
 
-If you delete all the records in the DB, the initialize will seed the DB and include the ``Rating`` field. You can do this with the delete links in the browser or from SSOX.
 
-Run the app and verify you can create/edit/display movies with a ``Rating`` field. You should also add the ``Rating`` field to the ``Edit``, ``Details``, and ``Delete`` view templates.
+如果在数据库中删除所有记录，数据库将会被初始化并添加``Rating``字段。您可以在浏览器或者SSOX（貌似微软的一个VPN移动App）中点击删除链接。
+
+
+运行应用程序并验证您可以用``Rating``场创建/编辑/显示电影。你也应该在``Rating``字段添加到``Edit``，``Details``和``Delete``视图模板。
