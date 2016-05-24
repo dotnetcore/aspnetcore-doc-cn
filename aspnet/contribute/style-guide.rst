@@ -1,7 +1,10 @@
 .. _style-guide:
 
-ASP.NET Docs Style Guide ASP.NET 文档风格指南
-==============================================
+ASP.NET Docs Style Guide 
+========================
+
+ASP.NET 文档风格指南
+======================
 
 作者： `Steve Smith`_
 

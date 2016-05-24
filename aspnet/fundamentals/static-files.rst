@@ -1,7 +1,11 @@
 .. _fundamentals-static-files:
 
-Working with Static Files 处理静态文件
-======================================
+Working with Static Files 
+=========================
+
+处理静态文件
+=============
+
 作者： `Tom Archer`_
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
