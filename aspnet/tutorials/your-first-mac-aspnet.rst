@@ -43,11 +43,13 @@ Developing ASP.NET Applications on a Mac With Visual Studio Code
 
 - Tap **File > Open** and navigate to your Empty ASP.NET Core app
 
-- Tap **File > Open** and navigate to your Empty ASP.NET Core app
+- 打开 **File > Open** 然后选中之前创建的空ASP.NET Core应用
 
 .. image:: your-first-mac-aspnet/_static/file-open.png
 
 From a Terminal / bash prompt, run ``dotnet restore`` to restore the project's dependencies. Alternately, you can enter ``command shift p`` in Visual Studio Code and then type ``dot`` as shown:
+
+通过 a Terminal 或者 bash prompt, 运行 ``dotnet restore``来还原项目的依赖. 或者在Visual Studio Code按住``command shift p``然后输入``dot``,入下图所示:
 
 .. image:: your-first-mac-aspnet/_static/dotnet-restore.png
 
