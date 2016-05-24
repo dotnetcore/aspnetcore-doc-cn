@@ -88,6 +88,8 @@ The Explore viewlet allows you to quickly navigate within the folder system, as 
 
 The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.
 
+在搜索视图中可以在文档结构中对文件名和内容快速查找.
+
 *Code* will integrate with Git if it is installed on your system. You can easily initialize a new repository, make commits, and push changes from the Git viewlet.
 
 .. image:: your-first-mac-aspnet/_static/vscode-git.png
