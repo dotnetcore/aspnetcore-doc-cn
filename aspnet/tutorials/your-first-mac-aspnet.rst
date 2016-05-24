@@ -139,14 +139,23 @@ The sample is configured to use :ref:`Kestrel <kestrel>` for the web server. You
 
 - Run ``dotnet run`` command to launch the app
 
+- 运行 ``dotnet run`` 命令启动应用
+
 - Navigate to ``localhost:5000``:
+
+- 浏览器中访问 ``localhost:5000``:
 
 .. image:: your-first-mac-aspnet/_static/hello-world.png
 
 - To stop the web server enter ``Ctrl+C``.
 
+- 通过 ``Ctrl+C`` 停止web服务器.
+
 
 Publishing to Azure
+-------------------
+
+部署到 to Azure
 -------------------
 
 Once you've developed your application, you can easily use the Git integration built into Visual Studio Code to push updates to production, hosted on `Microsoft Azure <http://azure.microsoft.com>`_. 
