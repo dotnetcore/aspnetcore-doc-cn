@@ -1,10 +1,16 @@
 .. _fundamentals-configuration:
 
-Configuration
-=============
-`Steve Smith`_, `Daniel Roth`_
+Configuration 配置
+===================
+作者： `Steve Smith`_, `Daniel Roth`_
+
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
 
 ASP.NET Core supports a variety of different configuration options. Application configuration data can come from files using built-in support for JSON, XML, and INI formats, as well as from environment variables. You can also write your own :ref:`custom configuration provider <custom-config-providers>`.
+
+ASP.NET Core 支持多种配置选项。应用程序配置数据内建支持读取 JSON、XML 和 INI 格式的配置文件和环境变量。你也编写自己的:ref:`自定义配置提供程序 <custom-config-providers>`。
 
 .. contents:: Sections:
   :local:
@@ -12,7 +18,12 @@ ASP.NET Core supports a variety of different configuration options. Application 
 
 `View or download sample code <https://github.com/aspnet/docs/tree/master/aspnet/fundamentals/configuration/sample>`__
 
+`访问或下载样例代码 <https://github.com/aspnet/docs/tree/master/aspnet/fundamentals/configuration/sample>`__
+
 Getting and setting configuration settings
+------------------------------------------
+
+获取和设置配置
 ------------------------------------------
 
 ASP.NET Core's configuration system has been re-architected from previous versions of ASP.NET, which relied on ``System.Configuration`` and XML configuration files like ``web.config``. The new :doc:`configuration model </fundamentals/configuration>` provides streamlined access to key/value based settings that can be retrieved from a variety of providers. Applications and frameworks can then access configured settings using the new :ref:`Options pattern <options-config-objects>`
@@ -51,6 +62,9 @@ The settings required by your application and the mechanism used to specify thos
 .. note:: You could store your ``Configuration`` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the :ref:`Options pattern <options-config-objects>` to avoid these issues.
 
 Using the built-in providers
+----------------------------
+
+使用内建提供程序
 ----------------------------
 
 The configuration framework has built-in support for JSON, XML, and INI configuration files, as well as support for in-memory configuration (directly setting values in code) and the ability to pull configuration from environment variables and command line parameters. Developers are not limited to using a single configuration provider. In fact several may be set up together such that a default configuration is overridden by settings from another provider if they are present.
@@ -95,6 +109,9 @@ When run, the program will display the default value unless a command line param
 .. _options-config-objects:
 
 Using Options and configuration objects
+---------------------------------------
+
+使用选项和配置对象
 ---------------------------------------
 
 Using the options pattern you can easily convert any class (or POCO - Plain Old CLR Object) into a settings class. It's recommended that you create well-factored settings objects that correspond to certain features within your application, thus following the Interface Segregation Principle (ISP) (classes depend only on the configuration settings they use) as well as Separation of Concerns (settings for disparate parts of your app are managed separately, and thus are less likely to negatively impact one another).
@@ -151,9 +168,15 @@ You can have multiple ``IConfigureOptions<TOption>`` services for the same optio
 Writing custom providers
 ------------------------
 
+编写自定义提供程序
+------------------------
+
 In addition to using the built-in configuration providers, you can also write your own. To do so, you simply inherit from ``ConfigurationProvider``, and populate the ``Data`` property with the settings from your configuration provider.
 
 Example: Entity Framework Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+例子：Entity Framework 设置
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You may wish to store some of your application's settings in a database, and access them using Entity Framework (EF). There are many ways in which you could choose to store such values, ranging from a simple table with a column for the setting name and another column for the setting value, to having separate columns for each setting value. In this example, I'm going to create a simple configuration provider that reads name-value pairs from a database using EF.
@@ -203,6 +226,9 @@ Run the application to see the configured values:
 .. image:: configuration/_static/custom-config.png
 
 Summary
+-------
+
+总结
 -------
 
 ASP.NET Core provides a very flexible configuration model that supports a number of different file-based options, as well as command-line, in-memory, and environment variables. It works seamlessly with the options model so that you can inject strongly typed settings into your application or framework. You can create your own custom configuration providers as well, which can work with or replace the built-in providers, allowing for extreme flexibility. 
