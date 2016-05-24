@@ -68,6 +68,7 @@ If this is your first time using Visual Studio Code (or just *Code* for short), 
 Visual Studio Code提供了一个非常简单,快速和简洁的界面来快速的管理文件，并切还提供了一些工具可以用来非常高效的编写代码.如果你是第一次使用它,可以注意一下.
 
 In the left navigation bar, there are four icons, representing four viewlets:
+
 - Explore
 - Search
 - Git
@@ -82,6 +83,8 @@ In the left navigation bar, there are four icons, representing four viewlets:
 - 调试
 
 The Explore viewlet allows you to quickly navigate within the folder system, as well as easily see the files you are currently working with. It displays a badge to indicate whether any files have unsaved changes, and new folders and files can easily be created (without having to open a separate dialog window). You can easily Save All from a menu option that appears on mouse over, as well.
+
+在资源管理器视图下你可以快速浏览文件系统,并且能很容易看到当前正在使用的文件.它会显示一个标记来表明是否有有尚未保存的更改同时可以在不打开其它对话框的情况下轻松的创建文件或者文件夹.
 
 The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.
 
