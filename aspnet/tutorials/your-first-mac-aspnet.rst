@@ -65,6 +65,8 @@ This empty project template simply displays "Hello World!". Open *Startup.cs* in
 
 If this is your first time using Visual Studio Code (or just *Code* for short), note that it provides a very streamlined, fast, clean interface for quickly working with files, while still providing tooling to make writing code extremely productive. 
 
+如果你是第一次使用 Visual Studio Code,那请注意一下，它提供了一个非常简单,快速和简洁的界面来快速的管理文件，并切还提供了工具可以用来非常高效的编写代码
+
 In the left navigation bar, there are four icons, representing four viewlets:
 
 - Explore
