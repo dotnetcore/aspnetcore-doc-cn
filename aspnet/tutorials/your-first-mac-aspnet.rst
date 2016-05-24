@@ -102,7 +102,8 @@ The Debug viewlet supports interactive debugging of applications.
 
 Finally, Code's editor has a ton of great features. You'll notice unused using statements are underlined and can be removed automatically by using ``command .`` when the lightbulb icon appears. Classes and methods also display how many references there are in the project to them. If you're coming from Visual Studio, Code includes many of the same keyboard shortcuts, such as ``command k c`` to comment a block of code, and ``command k u`` to uncomment.
 
-Finally, Code's editor has a ton of great features. You'll notice unused using statements are underlined and can be removed automatically by using ``command .`` when the lightbulb icon appears. Classes and methods also display how many references there are in the project to them. If you're coming from Visual Studio, Code includes many of the same keyboard shortcuts, such as ``command k c`` to comment a block of code, and ``command k u`` to uncomment.
+Visual Studio Code还有很多功能更. 你会发现未使用using语句会带有下划线，单出现现灯泡图标,可以通过 ``command .`` 自动删除.
+类和方法还可以显示在项目中被引用了多少次. 如果你使用过 Visual Studio,你会发现有很多相似的快捷键,例如 ``command k c`` 用来注释代码, and ``command k u`` 用来解除注释.
 
 Running Locally Using Kestrel
 -----------------------------
