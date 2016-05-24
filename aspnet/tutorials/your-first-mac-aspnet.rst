@@ -18,6 +18,8 @@ Setting Up Your Development Environment
 
 To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__.
 
+在开发机器上下载并且安装 `.NET Core`_ and _ 带有 `C# 扩展的 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__ `Visual Studio Code`.
+
 Scaffolding Applications Using Yeoman
 -------------------------------------
 
