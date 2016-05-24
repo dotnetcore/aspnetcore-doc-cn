@@ -23,7 +23,12 @@ To setup your development machine download and install `.NET Core`_ and `Visual 
 Scaffolding Applications Using Yeoman
 -------------------------------------
 
+用Yeoman创建应用程序
+-------------------------------------
+
 Follow the instruction in :doc:`/client-side/yeoman` to create an ASP.NET Core project.
+
+按照:doc:`/client-side/yeoman` 的指引来创建一个ASP.NET Core 项目.
 
 Developing ASP.NET Applications on a Mac With Visual Studio Code
 ----------------------------------------------------------------
