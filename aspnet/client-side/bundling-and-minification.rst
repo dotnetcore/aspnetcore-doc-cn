@@ -1,9 +1,9 @@
-Bundling and Minification
+Bundling（打包） 和 Minification（压缩）
 =========================
 
 By `Rick Anderson`_, `Erik Reitan`_ and `Daniel Roth`_
 
-Bundling and minification are two techniques you can use in ASP.NET to improve page load performance for your web application. Bundling combines multiple files into a single file. Minification performs a variety of different code optimizations to scripts and CSS, which results in smaller payloads. Used together, bundling and minification improves load time performance by reducing the number of requests to the server and reducing the size of the requested assets (such as CSS and JavaScript files).
+Bundling（打包） 和 Minification（压缩）是ASP.NET里面用来提升你的Web应用程序页面加载性能的技术手段. Bundling（打包）可以把多个文件合成到一个文件. Minification（压缩） performs a variety of different code optimizations to scripts and CSS, which results in smaller payloads. Used together, bundling and minification improves load time performance by reducing the number of requests to the server and reducing the size of the requested assets (such as CSS and JavaScript files).
 
 This article explains the benefits of using bundling and minification, including how these features can be used with ASP.NET Core applications. 
 
