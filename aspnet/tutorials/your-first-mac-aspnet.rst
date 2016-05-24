@@ -68,13 +68,13 @@ If this is your first time using Visual Studio Code (or just *Code* for short), 
 Visual Studio Code提供了一个非常简单,快速和简洁的界面来快速的管理文件，并切还提供了一些工具可以用来非常高效的编写代码.如果你是第一次使用它,可以注意一下.
 
 In the left navigation bar, there are four icons, representing four viewlets:
-
-在左边的导航栏有四个图标,代表四种视图
-
 - Explore
 - Search
 - Git
 - Debug
+
+
+在左边的导航栏有四个图标,代表四种视图
 
 - 资源管理器
 - 搜索
