@@ -92,9 +92,15 @@ The Search viewlet allows you to quickly search within the folder structure, sea
 
 *Code* will integrate with Git if it is installed on your system. You can easily initialize a new repository, make commits, and push changes from the Git viewlet.
 
+如果你安装了Git你的代码将会和它关联. 在Git视图中你很容易初始化一个新repository,进行提交和推送变更.
+
 .. image:: your-first-mac-aspnet/_static/vscode-git.png
 
 The Debug viewlet supports interactive debugging of applications.
+
+调试视图支持应用程序的交互式调试.
+
+Finally, Code's editor has a ton of great features. You'll notice unused using statements are underlined and can be removed automatically by using ``command .`` when the lightbulb icon appears. Classes and methods also display how many references there are in the project to them. If you're coming from Visual Studio, Code includes many of the same keyboard shortcuts, such as ``command k c`` to comment a block of code, and ``command k u`` to uncomment.
 
 Finally, Code's editor has a ton of great features. You'll notice unused using statements are underlined and can be removed automatically by using ``command .`` when the lightbulb icon appears. Classes and methods also display how many references there are in the project to them. If you're coming from Visual Studio, Code includes many of the same keyboard shortcuts, such as ``command k c`` to comment a block of code, and ``command k u`` to uncomment.
 
