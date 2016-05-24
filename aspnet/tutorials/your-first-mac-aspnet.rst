@@ -65,14 +65,21 @@ This empty project template simply displays "Hello World!". Open *Startup.cs* in
 
 If this is your first time using Visual Studio Code (or just *Code* for short), note that it provides a very streamlined, fast, clean interface for quickly working with files, while still providing tooling to make writing code extremely productive. 
 
-如果你是第一次使用 Visual Studio Code,那请注意一下，它提供了一个非常简单,快速和简洁的界面来快速的管理文件，并切还提供了工具可以用来非常高效的编写代码
+Visual Studio Code提供了一个非常简单,快速和简洁的界面来快速的管理文件，并切还提供了一些工具可以用来非常高效的编写代码.如果你是第一次使用它,可以注意一下.
 
 In the left navigation bar, there are four icons, representing four viewlets:
+
+在左边的导航栏有四个图标,代表四种视图
 
 - Explore
 - Search
 - Git
 - Debug
+
+- 资源管理器
+- 搜索
+- Git
+- 调试
 
 The Explore viewlet allows you to quickly navigate within the folder system, as well as easily see the files you are currently working with. It displays a badge to indicate whether any files have unsaved changes, and new folders and files can easily be created (without having to open a separate dialog window). You can easily Save All from a menu option that appears on mouse over, as well.
 
