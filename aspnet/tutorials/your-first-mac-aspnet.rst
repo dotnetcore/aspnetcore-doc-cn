@@ -169,9 +169,13 @@ Initialize Git
 
 Initialize Git in the folder you're working in. Tap on the Git viewlet and click the ``Initialize Git repository`` button.
 
+在你使用的文件夹中初始化Git. 切换到Git视图 然后点击 ``Initialize Git repository`` 按钮.
+
 .. image:: your-first-mac-aspnet/_static/vscode-git-commit.png
 
 Add a commit message and tap enter or tap the checkmark icon to commit the staged files. 
+
+添加提交信息然后切换到输入或者复选框来提阶段性文件. 
 
 .. image:: your-first-mac-aspnet/_static/init-commit.png
 
