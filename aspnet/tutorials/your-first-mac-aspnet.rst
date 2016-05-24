@@ -160,9 +160,11 @@ Publishing to Azure
 
 Once you've developed your application, you can easily use the Git integration built into Visual Studio Code to push updates to production, hosted on `Microsoft Azure <http://azure.microsoft.com>`_. 
 
-一旦你已经部署了你的引用,你可以轻松的使用集成在Visual Studio Code中的Git将你的更新推送到基于 `Microsoft Azure <http://azure.microsoft.com>` 生产环境. 
+一旦你已经部署了你的引用,你可以轻松的使用集成在Visual Studio Code中的Git将你的更新推送到基于  `Microsoft Azure <http://azure.microsoft.com>`_ 生产环境. 
 
 Initialize Git
+^^^^^^^^^^^^^^
+初始化 Git
 ^^^^^^^^^^^^^^
 
 Initialize Git in the folder you're working in. Tap on the Git viewlet and click the ``Initialize Git repository`` button.
