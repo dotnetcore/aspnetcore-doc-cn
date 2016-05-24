@@ -32,12 +32,16 @@ Follow the instruction in :doc:`/client-side/yeoman` to create an ASP.NET Core p
 
 Developing ASP.NET Applications on a Mac With Visual Studio Code
 ----------------------------------------------------------------
-在Mac平台用Visual Studio Code开发ASP.NET 应用
+在Mac平台上用Visual Studio Code开发ASP.NET 应用
 ----------------------------------------------------------------
 
 - Start **Visual Studio Code**
 
+- 运行 **Visual Studio Code**
+
 .. image:: your-first-mac-aspnet/_static/vscode-welcome.png
+
+- Tap **File > Open** and navigate to your Empty ASP.NET Core app
 
 - Tap **File > Open** and navigate to your Empty ASP.NET Core app
 
