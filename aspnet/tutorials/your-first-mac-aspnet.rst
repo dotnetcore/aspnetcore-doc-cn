@@ -7,6 +7,8 @@ By `Daniel Roth`_, `Steve Smith`_ and `Rick Anderson`_
 
 This article will show you how to write your first ASP.NET Core application on a Mac.
 
+本文将指导你如在和Mac平台下创建ASP.NET Core应用.
+
 .. contents:: Sections:
   :local:
   :depth: 1
@@ -193,6 +195,8 @@ You can deploy to Azure Web Apps directly using Git.
 你可以通过git将网站直接部署到Azure. 
 
 - `Create a new Web App <https://tryappservice.azure.com/>`__ in Azure. If you don't have an Azure account, you can `create a free trial <http://azure.microsoft.com/en-us/pricing/free-trial/>`__. 
+
+- `在Azure创一个一个Web应用 <https://tryappservice.azure.com/>`__  . 如果你没有Azure账号, 你可以免费创建一个使用账号 <http://azure.microsoft.com/en-us/pricing/free-trial/>`__. 
 
 - Configure the Web App in Azure to support `continuous deployment using Git <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__.
 
