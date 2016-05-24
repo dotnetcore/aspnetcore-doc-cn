@@ -200,6 +200,8 @@ You can deploy to Azure Web Apps directly using Git.
 
 - Configure the Web App in Azure to support `continuous deployment using Git <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__.
 
+- 在Azure将Web应用设置为通过Git持续部署 `continuous deployment using Git <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__.
+
 Record the Git URL for the Web App from the Azure portal:
 
 .. image:: your-first-mac-aspnet/_static/azure-portal.png
