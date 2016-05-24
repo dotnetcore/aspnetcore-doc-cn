@@ -1,7 +1,12 @@
 .. _fundamentals-configuration:
 
-Configuration 配置
-===================
+Configuration
+=============
+
+配置
+=============
+
+
 作者： `Steve Smith`_, `Daniel Roth`_
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
