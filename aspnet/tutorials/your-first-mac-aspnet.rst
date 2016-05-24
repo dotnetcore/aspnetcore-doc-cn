@@ -181,10 +181,16 @@ Add a commit message and tap enter or tap the checkmark icon to commit the stage
 
 Git is tracking changes, so if you make an update to a file, the Git viewlet will display the files that have changed since your last commit.
 
+Git会一直跟着变更,因此你可以对文件进行更新,Git视图会显示自上次提交之后所更改的文件.
+
 Initialize Azure Website
+^^^^^^^^^^^^^^^^^^^^^^^^
+初始化 Azure 网站
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can deploy to Azure Web Apps directly using Git. 
+
+你可以通过git将网站直接部署到Azure. 
 
 - `Create a new Web App <https://tryappservice.azure.com/>`__ in Azure. If you don't have an Azure account, you can `create a free trial <http://azure.microsoft.com/en-us/pricing/free-trial/>`__. 
 
