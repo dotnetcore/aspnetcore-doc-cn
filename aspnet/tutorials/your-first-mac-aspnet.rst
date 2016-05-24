@@ -55,7 +55,11 @@ From a Terminal / bash prompt, run ``dotnet restore`` to restore the project's d
 
 You can run commands directly from within Visual Studio Code, including ``dotnet restore`` and any tools referenced in the *project.json* file, as well as custom tasks defined in *.vscode/tasks.json*.
 
+  ``dotnet restore`` 和在 *project.json* 文件中引用的所有工具, 以及在 *.vscode/tasks.json* 自定定义的任务都可以在Visual Studio Code直接运行.
+
 This empty project template simply displays "Hello World!". Open *Startup.cs* in Visual Studio Code to see how this is configured:
+
+这个由模板创建出来的空项目仅会显示一个"Hello World!". 在Visual Studio Code 打开 *Startup.cs* 看看它是如何配置的:
 
 .. image:: your-first-mac-aspnet/_static/vscode-startupcs.png
 
