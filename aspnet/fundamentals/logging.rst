@@ -20,6 +20,10 @@ ASP.NET Core 内建支持日志，也允许开发人员轻松切换为他们想�
   :local:
   :depth: 1
 
+.. contents:: 章节:
+  :local:
+  :depth: 1
+
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/logging/sample>`__
 
 `访问或下载样例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/logging/sample>`__
