@@ -57,7 +57,7 @@ From a Terminal / bash prompt, run ``dotnet restore`` to restore the project's d
 
 You can run commands directly from within Visual Studio Code, including ``dotnet restore`` and any tools referenced in the *project.json* file, as well as custom tasks defined in *.vscode/tasks.json*.
 
-  ``dotnet restore`` 和在 *project.json* 文件中引用的所有工具, 以及在 *.vscode/tasks.json* 自定定义的任务都可以在Visual Studio Code直接运行.
+  ``dotnet restore`` 和在 *project.json* 文件中引用的所有工具, 以及在 *.vscode/tasks.json* 自定义的任务都可以在Visual Studio Code直接运行.
 
 This empty project template simply displays "Hello World!". Open *Startup.cs* in Visual Studio Code to see how this is configured:
 
@@ -67,7 +67,7 @@ This empty project template simply displays "Hello World!". Open *Startup.cs* in
 
 If this is your first time using Visual Studio Code (or just *Code* for short), note that it provides a very streamlined, fast, clean interface for quickly working with files, while still providing tooling to make writing code extremely productive. 
 
-Visual Studio Code提供了一个非常简单,快速和简洁的界面来快速的管理文件，并切还提供了一些工具可以用来非常高效的编写代码.如果你是第一次使用它,可以注意一下.
+如果你是第一次使用Visual Studio CodeVisual Studio Code你会发现它提供了一个非常简单,快速和简洁的界面来快速的管理文件，并且还提供了一些工具可以用来非常高效的编写代码.
 
 In the left navigation bar, there are four icons, representing four viewlets:
 
@@ -86,7 +86,7 @@ In the left navigation bar, there are four icons, representing four viewlets:
 
 The Explore viewlet allows you to quickly navigate within the folder system, as well as easily see the files you are currently working with. It displays a badge to indicate whether any files have unsaved changes, and new folders and files can easily be created (without having to open a separate dialog window). You can easily Save All from a menu option that appears on mouse over, as well.
 
-在资源管理器视图下你可以快速浏览文件系统,并且能很容易看到当前正在使用的文件.它会显示一个标记来表明是否有有尚未保存的更改同时可以在不打开其它对话框的情况下轻松的创建文件或者文件夹.
+在资源管理器视图下你可以快速浏览文件系统,并且能很容易看到当前正在使用的文件.它会显示一个标记来表明是否有尚未保存的更改并且可以在不打开其它对话框的情况下轻松的创建文件或者文件夹.同样的在鼠标悬浮的地方会出现一个菜单选项，通过它可以很容易的将所有文件保存.
 
 The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.
 
