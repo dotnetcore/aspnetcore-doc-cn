@@ -21,6 +21,10 @@ ASP.NET Core 支持多种配置选项。应用程序配置数据内建支持读�
   :local:
   :depth: 1
 
+.. contents:: 章节:
+  :local:
+  :depth: 1
+
 `View or download sample code <https://github.com/aspnet/docs/tree/master/aspnet/fundamentals/configuration/sample>`__
 
 `访问或下载样例代码 <https://github.com/aspnet/docs/tree/master/aspnet/fundamentals/configuration/sample>`__

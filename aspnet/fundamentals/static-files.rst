@@ -16,7 +16,11 @@ Static files, which include HTML files, CSS files, image files, and JavaScript f
 
 静态文件，包括 HTML 文件、CSS 文件、图片文件以及 JavaScript 文件，会被应用程序直接提供给客户端。在本文，我们将覆盖以下有关于 ASP.NET Core 与静态文件的话题。
 
-.. contents:: Sections
+.. contents:: Sections:
+  :local:
+  :depth: 1
+
+.. contents:: 章节:
   :local:
   :depth: 1
 
