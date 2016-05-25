@@ -7,9 +7,9 @@ By `Daniel Roth`_, `Steve Smith`_ and `Rick Anderson`_
 
 作者 `Daniel Roth`_, `Steve Smith`_ and `Rick Anderson`_
 
-翻译者 `赵志刚`
+翻译者 `赵志刚`_ 
 
-审稿人 `何镇汐`
+审稿人 `何镇汐`_ 
 
 This article will show you how to write your first ASP.NET Core application on a Mac.
 
