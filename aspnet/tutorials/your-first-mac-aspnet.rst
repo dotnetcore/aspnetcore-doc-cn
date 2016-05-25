@@ -26,7 +26,7 @@ Setting Up Your Development Environment
 
 To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__.
 
-在开发机器上下载并且安装 `.NET Core`_ 和带有 `C# 扩展的 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__ `Visual Studio Code`.
+在开发机器上下载并且安装 `.NET Core`_ 和带有 `C# 扩展的 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__ `Visual Studio Code`。
 
 Scaffolding Applications Using Yeoman
 -------------------------------------
@@ -83,7 +83,7 @@ In the left navigation bar, there are four icons, representing four viewlets:
 - Debug
 
 
-在左边的导航栏有四个图标,代表四种视图
+在左边的导航栏有四个图标，代表四种视图
 
 - 资源管理器
 - 搜索
@@ -96,11 +96,11 @@ The Explore viewlet allows you to quickly navigate within the folder system, as 
 
 The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.
 
-在搜索视图中可以在文档结构中对文件名和内容快速查找.
+在搜索视图中可以在文档结构中对文件名和内容快速查找。
 
 *Code* will integrate with Git if it is installed on your system. You can easily initialize a new repository, make commits, and push changes from the Git viewlet.
 
-如果你已安装 GIT，Code 将与之关联。在Git视图中你很容易初始化一个新repository,进行提交和推送变更.
+如果你已安装 GIT，Code 将与之关联。在Git视图中你很容易初始化一个新 repository，进行提交和推送变更.
 
 .. image:: your-first-mac-aspnet/_static/vscode-git.png
 
@@ -177,7 +177,7 @@ Initialize Git
 
 Initialize Git in the folder you're working in. Tap on the Git viewlet and click the ``Initialize Git repository`` button.
 
-为你的工作文件夹初始化 GIT。切换到Git视图 然后点击 ``Initialize Git repository`` 按钮.
+为你的工作文件夹初始化 GIT。切换到Git视图 然后点击 ``Initialize Git repository`` 按钮。
 
 .. image:: your-first-mac-aspnet/_static/vscode-git-commit.png
 
@@ -198,11 +198,11 @@ Initialize Azure Website
 
 You can deploy to Azure Web Apps directly using Git. 
 
-你可以通过git将应用程序直接部署到Azure. 
+你可以通过git将应用程序直接部署到Azure。
 
 - `Create a new Web App <https://tryappservice.azure.com/>`__ in Azure. If you don't have an Azure account, you can `create a free trial <http://azure.microsoft.com/en-us/pricing/free-trial/>`__. 
 
-- `在 Azure 创建一个 Web 应用程序 <https://tryappservice.azure.com/>`__  . 如果你没有Azure账号, `你可以免费创建一个试用账号 <http://azure.microsoft.com/en-us/pricing/free-trial/>`__. 
+- `在 Azure 创建一个 Web 应用程序 <https://tryappservice.azure.com/>`__  。如果你没有Azure账号, `你可以免费创建一个试用账号 <http://azure.microsoft.com/en-us/pricing/free-trial/>`__。
 
 - Configure the Web App in Azure to support `continuous deployment using Git <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__.
 
@@ -222,9 +222,11 @@ Record the Git URL for the Web App from the Azure portal:
 
 - Push to master.
 
-- 推送到master分支.
+- 推送到master分支。
 
   - ``git push azure master`` to deploy. 
+  
+  - 使用``git push azure master`` 部署。
 
   .. image:: your-first-mac-aspnet/_static/git-push-azure-master.png
 
