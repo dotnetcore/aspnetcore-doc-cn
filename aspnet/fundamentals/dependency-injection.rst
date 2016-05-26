@@ -34,11 +34,11 @@ Dependency injection (DI) is a technique for achieving loose coupling between ob
 
 When classes are designed with DI in mind, they are more loosely coupled because they do not have direct, hard-coded dependencies on their collaborators. This follows the `Dependency Inversion Principle <http://deviq.com/dependency-inversion-principle/>`_, which states that *"high level modules should not depend on low level modules; both should depend on abstractions."* Instead of referencing specific implementations, classes request abstractions (typically ``interfaces``) which are provided to them when they are constructed. Extracting dependencies into interfaces and providing implementations of these interfaces as parameters is also an example of the `Strategy design pattern <http://deviq.com/strategy-design-pattern/>`_.
 
-当类的设计使用 DI 思想，它们更加松耦合，因为它们没有直接和硬编码的依赖于它们的合作者。这遵循 `依赖倒置原则（Dependency Inversion Principle）<http://deviq.com/dependency-inversion-principle/>`_，其中指出 *"高层模块不应该依赖于低层模块；两者都应该依赖于抽象。"* 类要求在它们构造时向其提供抽象（通常是 ``interfaces`` ），而不是引用特定的实现。提取接口的依赖关系和提供这些接口的实现作为参数也是 `策略设计模式（Strategy design pattern）<http://deviq.com/strategy-design-pattern/>`_ 的一个示例。
+当类的设计使用 DI 思想，它们更加松耦合，因为它们没有直接和硬编码的依赖于它们的合作者。这遵循 `依赖倒置原则（Dependency Inversion Principle） <http://deviq.com/dependency-inversion-principle/>`_，其中指出 *"高层模块不应该依赖于低层模块；两者都应该依赖于抽象。"* 类要求在它们构造时向其提供抽象（通常是 ``interfaces`` ），而不是引用特定的实现。提取接口的依赖关系和提供这些接口的实现作为参数也是 `策略设计模式（Strategy design pattern） <http://deviq.com/strategy-design-pattern/>`_ 的一个示例。
 
 When a system is designed to use DI, with many classes requesting their dependencies via their constructor (or properties), it's helpful to have a class dedicated to creating these classes with their associated dependencies. These classes are referred to as *containers*, or more specifically, `Inversion of Control (IoC) <http://deviq.com/inversion-of-control/>`_ containers or Dependency Injection (DI) containers. A container is essentially a factory that is responsible for providing instances of types that are requested from it. If a given type has declared that it has dependencies, and the container has been configured to provide the dependency types, it will create the dependencies as part of creating the requested instance. In this way, complex dependency graphs can be provided to classes without the need for any hard-coded object construction. In addition to creating objects with their dependencies, containers typically manage object lifetimes within the application.
 
-当系统被设计为使用 DI ，很多类通过它们的构造函数（或属性）请求其依赖关系，有一个类被用来创建这些类及其相关的依赖关系是很有帮助的。这些类被称为 *容器（containers）* ，或者更具体地，`控制反转（Inversion of Control , IoC）<http://deviq.com/inversion-of-control/>`_ 容器或者依赖注入（Dependency injection , DI）容器。容器本质上是一个工厂，负责提供向它请求的类型实例。如果一个给定类型声明它具有依赖关系，并且容器已经被配置为提供依赖类型，它将把创建依赖关系作为创建请求实例的一部分。通过这种方式，可以向类型提供复杂的依赖关系而不需要任何硬编码的类型构造。除了创建对象的依赖关系，容器通常还会管理应用程序中对象的生命周期。
+当系统被设计为使用 DI ，很多类通过它们的构造函数（或属性）请求其依赖关系，有一个类被用来创建这些类及其相关的依赖关系是很有帮助的。这些类被称为 *容器（containers）* ，或者更具体地，`控制反转（Inversion of Control , IoC） <http://deviq.com/inversion-of-control/>`_ 容器或者依赖注入（Dependency injection , DI）容器。容器本质上是一个工厂，负责提供向它请求的类型实例。如果一个给定类型声明它具有依赖关系，并且容器已经被配置为提供依赖类型，它将把创建依赖关系作为创建请求实例的一部分。通过这种方式，可以向类型提供复杂的依赖关系而不需要任何硬编码的类型构造。除了创建对象的依赖关系，容器通常还会管理应用程序中对象的生命周期。
 
 ASP.NET Core includes a simple built-in container (represented by the ``IServiceProvider`` interface) that supports constructor injection by default, and ASP.NET makes certain services available through DI. ASP.NET's container refers to the types it manages as *services*. Throughout the rest of this article, *services* will refer to types that are managed by ASP.NET Core's IoC container. You configure the built-in container's services in the ``ConfigureServices`` method in your application's ``Startup`` class.
 
@@ -77,6 +77,8 @@ ASP.NET 提供的功能和中间件，例如 MVC，遵循约定使用单一的 A
 
 Of course, in addition to configuring the application to take advantage of various framework features, you can also use ``ConfigureServices`` to configure your own application services.
 
+当然，除了使用各种框架功能配置应用程序，你也能够使用 ``ConfigureServices`` 配置你自己的应用程序服务。
+
 Registering Your Own Services
 -----------------------------
 注册你自己的服务
@@ -101,7 +103,7 @@ The ``AddTransient`` method is used to map abstract types to concrete services t
 
 In the sample for this article, there is a simple controller that displays character names, called ``CharactersController``. Its ``Index`` method displays the current list of characters that have been stored in the application, and initializes the collection with a handful of characters if none exist. Note that although this application uses Entity Framework Core and the ``ApplicationDbContext`` class for its persistence, none of that is apparent in the controller. Instead, the specific data access mechanism has been abstracted behind an interface, ``ICharacterRepository``, which follows the `repository pattern <http://deviq.com/repository-pattern/>`_. An instance of ``ICharacterRepository`` is requested via the constructor and assigned to a private field, which is then used to access characters as necessary.
 
-在这篇文章的示例中，有一个名称为 ``CharactersController`` 的简单控制器。它的 ``Index`` 方法显示已经存储在应用程序中的当前字符列表，并且初始化具有少量字符的集合如果它不存在的话。值得注意的是，虽然应用程序使用 Entity Framework Core 和 ``ApplicationDbContext`` 类作为持久化，这在控制器中都不是显而易见的。相反，具体的数据访问机制被抽象在遵循  `仓储模式（repository pattern）<http://deviq.com/repository-pattern/>`_ 的 ``ICharacterRepository`` 接口后面。 ``ICharacterRepository`` 的实例是通过构造函数请求并分配给一个私有字段，然后用来访问所需的字符。
+在这篇文章的示例中，有一个名称为 ``CharactersController`` 的简单控制器。它的 ``Index`` 方法显示已经存储在应用程序中的当前字符列表，并且初始化具有少量字符的集合如果它不存在的话。值得注意的是，虽然应用程序使用 Entity Framework Core 和 ``ApplicationDbContext`` 类作为持久化，这在控制器中都不是显而易见的。相反，具体的数据访问机制被抽象在遵循  `仓储模式（repository pattern） <http://deviq.com/repository-pattern/>`_ 的 ``ICharacterRepository`` 接口后面。 ``ICharacterRepository`` 的实例是通过构造函数请求并分配给一个私有字段，然后用来访问所需的字符。
 
 .. literalinclude:: dependency-injection/sample/DependencyInjectionSample/Controllers/CharactersController.cs
   :language: c#
