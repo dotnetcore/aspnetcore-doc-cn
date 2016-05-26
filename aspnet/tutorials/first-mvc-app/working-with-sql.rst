@@ -5,8 +5,8 @@ Working with SQL Server LocalDB    用本地SQL Server数据库
 
 校对： `
 
-The ``ApplicationDbContext`` class handles the task of connecting to the database and mapping ``Movie`` objects to database records. The database context is registered with the :doc:`Dependency Injection  </fundamentals/dependency-injection>` container in the ``ConfigureServices`` method in the *Startup.cs* file:
-   ApplicationDbContext类负责链接数据库并将Movie对象和数据记录进行映射。Startup.cs文件中，数据库上下文是在ConfigureServices方法中用Dependency Injection容器进行注入的。
+ The ``ApplicationDbContext`` class handles the task of connecting to the database and mapping ``Movie`` objects to database records. The database context is registered with the :doc:`Dependency Injection  </fundamentals/dependency-injection>` container in the ``ConfigureServices`` method in the *Startup.cs* file:
+  ApplicationDbContext类负责链接数据库并将Movie对象和数据记录进行映射。Startup.cs文件中，数据库上下文是在ConfigureServices方法中用Dependency Injection容器进行注入的。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -22,8 +22,7 @@ ASP.NET Core Configuration系统读取ConnectionString，为了本地开发，从appsettings.
   :emphasize-lines: 3
 
 When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server. See :doc:`Configuration </fundamentals/configuration>` .
-当应用程序部署到测试服务器或者生产服务器时，用环境变量或者另一种方法来设置实际数据库的连接字符串。
-看Configuration。
+ 当应用程序部署到测试服务器或者生产服务器时，用环境变量或者另一种方法来设置实际数据库的连接字符串。看Configuration。
 
 SQL Server Express LocalDB
 SQL Server Express 本地数据库
