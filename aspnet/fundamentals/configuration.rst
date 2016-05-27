@@ -190,7 +190,11 @@ Example: Entity Framework Settings
 
 You may wish to store some of your application's settings in a database, and access them using Entity Framework (EF). There are many ways in which you could choose to store such values, ranging from a simple table with a column for the setting name and another column for the setting value, to having separate columns for each setting value. In this example, I'm going to create a simple configuration provider that reads name-value pairs from a database using EF.
 
+你或许希望将应用程序的配置保存在数据库中，然后通过 EntityFramework（EF）来访问它们。保存这些配置值有很多办法可以选择，比方说一张简易表格，一列表示配置名、另一列表示配置的值。在本例中，我将创建一个简易的配置提供程序，通过 EF 从数据库中读取名值对（name-value pair）。
+
 To start off we'll define a simple ``ConfigurationValue`` entity for storing configuration values in the database:
+
+在开始之前我们先定义一个简单的 ``ConfigurationValue`` 实体模型用来表示存储在数据库中的配置值。
 
 .. literalinclude:: configuration/sample/src/CustomConfigurationProvider/ConfigurationValue.cs
   :linenos:
@@ -200,6 +204,8 @@ To start off we'll define a simple ``ConfigurationValue`` entity for storing con
 
 We also need a ``ConfigurationContext`` to store and access the configured values using EF:
 
+然后需要一个 ``ConfigurationContext`` 用来通过 EF 存储和访问配置值
+
 .. literalinclude:: configuration/sample/src/CustomConfigurationProvider/ConfigurationContext.cs
   :linenos:
   :language: c#
@@ -208,6 +214,8 @@ We also need a ``ConfigurationContext`` to store and access the configured value
 
 Next, create the custom configuration provider by inheriting from ``ConfigurationProvider``. The configuration data is loaded by overriding the ``Load`` method, which reads in all of the configuration data from the configured database. For demonstration purposes, the configuration provider also takes care of initializing the database if it hasn't already been created and populated:
 
+接着，通过继承 ``ConfigurationProvider`` 创建一个定制的配置提供程序。
+
 .. literalinclude:: configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs
   :linenos:
   :language: c#
@@ -215,6 +223,8 @@ Next, create the custom configuration provider by inheriting from ``Configuratio
   :dedent: 4
 
 By convention we also add an ``AddEntityFramework`` extension method for adding the configuration provider:
+
+按惯例，我们同样可以添加一个 ``AddEntityFramework`` 扩展方法来增加配置提供程序：
 
 .. literalinclude:: configuration/sample/src/CustomConfigurationProvider/EntityFrameworkConfigurationProvider.cs
   :linenos:
@@ -232,6 +242,8 @@ You can see an example of how to use this custom ``ConfigurationProvider`` in yo
 
 Run the application to see the configured values:
 
+运行程序，看到所配置的值。
+
 .. image:: configuration/_static/custom-config.png
 
 Summary
@@ -242,4 +254,4 @@ Summary
 
 ASP.NET Core provides a very flexible configuration model that supports a number of different file-based options, as well as command-line, in-memory, and environment variables. It works seamlessly with the options model so that you can inject strongly typed settings into your application or framework. You can create your own custom configuration providers as well, which can work with or replace the built-in providers, allowing for extreme flexibility. 
 
-ASP.NET Core
+ASP.NET Core 提供了非常灵活的配置模型，支持多种配置文件类型、命令行、内存和环境变量。它能与配置模型无缝协作，因此你可为你的应用程序或框架注入强类型配置。你也可以创建自己定制的配置提供程序，用于协同或取代内置提供程序，保证了最大程序的灵活性。
