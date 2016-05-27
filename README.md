@@ -8,6 +8,7 @@
 
 （以下排序按照贡献者本名的汉语拼音排列）
 
++ 杜海洋(GS)
 + [何镇汐](https://github.com/UtilCore)
 + 凌军州
 + [刘浩杨(L)](https://github.com/liuhaoyang)
