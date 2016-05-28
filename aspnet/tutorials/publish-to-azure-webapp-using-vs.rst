@@ -5,18 +5,18 @@
 翻译 `谢炀（kiler）`_
 校对 
 
-本文描述了如何使用 Visual Studio 将一个 Web 应用程序发布到 Azure 云
+本文描述了如何使用 Visual Studio 将一个 Web 应用程序发布到 Azure 云。
 
-**注意:** 为了完成这个教程, 你必须拥有一个微软 Azure 帐号. 如果没有账户, 你可以 `激活你的 MSDN 订阅用户权益`_ 或者 `注册免费试用版`_.
+**注意:** 为了完成这个教程, 你必须拥有一个微软 Azure 帐号。如果没有账户, 你可以 `激活你的 MSDN 订阅用户权益`_ 或者 `注册免费试用版`_。
 
 .. _`激活你的 MSDN 订阅用户权益`: http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
 .. _`注册免费试用版`: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 
 
-创建一个新的 ASP.NET Web 应用程序或者打开一个已存在的 ASP.NETWeb 应用程序. 
+创建一个新的 ASP.NET Web 应用程序或者打开一个已存在的 ASP.NETWeb 应用程序。
 
-1. 在 Visual Studio 的 **Solution Explorer** 里面, 右击项目选择 **Publish**.
+1. 在 Visual Studio 的 **Solution Explorer** 里面, 右击项目选择 **Publish**。
 
 .. image:: publish-to-azure-webapp-using-vs/_static/01-Publish.png
 
