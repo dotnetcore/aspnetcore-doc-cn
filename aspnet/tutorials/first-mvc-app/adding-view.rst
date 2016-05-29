@@ -61,6 +61,7 @@ Navigate to ``http://localhost:xxxx/HelloWorld``. The ``Index`` method in the ``
 .. image:: adding-view/_static/hell_template.png
 
 If your browser window is small (for example on a mobile device), you might need to toggle (tap) the `Bootstrap navigation button <http://getbootstrap.com/components/#navbar>`__ in the upper right to see the to the **Home**, **About**, **Contact**, **Register** and **Log in** links.
+
 如果浏览器窗体比较小（比如在手机设备上），可能需要点击右上方的 `Bootstrap navigation button <http://getbootstrap.com/components/#navbar>`__ 就能看到 **Home**, **About**, **Contact**, **Register** 和 **Log in** 的链接.
 
 .. image:: adding-view/_static/1.png
