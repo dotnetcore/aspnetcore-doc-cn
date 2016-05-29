@@ -3,8 +3,6 @@
 
 作者 `Steve Smith`_ 翻译：王健
 
-ASP.NET Core has been designed with testability in mind, so that creating unit tests for your applications is easier than ever before. This article briefly introduces unit tests (and how they differ from other kinds of tests) and demonstrates how to add a test project to your solution and then run unit tests using either the command line or Visual Studio.
-
 ASP.NET Core在设计时考虑到可测试性，让你的应用程序创建单元测试比以往任何时候都更容易。本文简要介绍了单元测试（以及他们从其他类型的测试的区别），并演示了如何添加测试项目到您的解决方案，然后使用命令行或Visual Studio运行单元测试。
 
 .. contents:: Sections:
