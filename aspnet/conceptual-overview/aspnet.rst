@@ -1,4 +1,6 @@
 Introduction to ASP.NET Core
+ASP.NET Core介绍
+============================
 ============================
 
 By `Daniel Roth`_
@@ -18,12 +20,14 @@ ASP.NET CORE 是ASP.NET的一个重要的重新设计。这个主题将介绍ASP
 What is ASP.NET Core?
 什么是ASP.NET Core?
 ---------------------
+---------------------
 
 ASP.NET Core is a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET. We built it from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core applications cross-platform on Windows, Mac and Linux. ASP.NET Core is fully open source on `GitHub <https://github.com/aspnet/home>`_.
 ASP.NET Core 是使用.NET来构建基于云的现代化网络应用的一种新开源和跨平台的框架。我们重新设计它来为部署在云上或运行在本地的应用程序提供一种优化过的开发框架。它由最小开销的模块化组件组成，让您构建解决方案的同时保持灵活性。您可以开发并跨平台运行 ASP.NET Core 应用程序在Windows，Mac 和 Linux 上。ASP.NET Core 完全开源于`GitHub` <https://github.com/aspnet/home>.
 
 Why build ASP.NET Core?
 为什么开发 ASP.NET Core?
+-----------------------
 -----------------------
 
 The first preview release of ASP.NET came out almost 15 years ago as part of the .NET Framework.  Since then millions of developers have used it to build and run great web applications, and over the years we have added and evolved many, many capabilities to it.
@@ -74,6 +78,7 @@ In summary, with ASP.NET Core you gain the following foundational improvements:
 Application anatomy
 应用程序剖析
 -------------------
+-------------------
 
 ASP.NET Core applications are defined using a public ``Startup`` class:
 ASP.NET Core 应用程序定义了一个public的Startup类：
@@ -110,6 +115,7 @@ The ``ConfigureServices`` method defines the services used by your application a
 Services
 服务
 --------
+--------
 
 A service is a component that is intended for common consumption in an application. Services are made available through dependency injection. ASP.NET Core includes a simple built-in inversion of control (IoC) container that supports constructor injection by default, but can be easily replaced with your IoC container of choice. See :doc:`/fundamentals/dependency-injection` for more details.
 
@@ -121,6 +127,7 @@ ASP.NET Core服务有三种类型：单例，范围和瞬态的。瞬态服务�
 
 Middleware
 中间件
+----------
 ----------
 
 In ASP.NET Core you compose your request pipeline using :doc:`/fundamentals/middleware`. ASP.NET Core middleware perform asynchronous logic on an ``HttpContext`` and then optionally  invoke the next middleware in the sequence or terminate the request directly. You generally "Use" middleware by invoking a corresponding extension method on the ``IApplicationBuilder`` in your ``Configure`` method.
@@ -149,6 +156,7 @@ You can use any `OWIN <http://owin.org>`_-based middleware with ASP.NET Core. Se
 Servers
 服务器
 -------
+-------
 
 The ASP.NET Core hosting model does not directly listen for requests, but instead relies on an HTTP :doc:`server </fundamentals/servers>` implementation to surface the request to the application as a set of feature interfaces that can be composed into an HttpContext. ASP.NET Core includes a managed cross-platform web server, called :ref:`Kestrel <kestrel>`, that you would typically run behind a production web server like `IIS <https://iis.net>`__ or `nginx <http://nginx.org>`__.
 
@@ -156,6 +164,7 @@ ASP.NET的核心托管模型不直接侦听请求，而是依赖于一种HTTP服
 
 Web root
 Web根节点
+--------
 --------
 
 The Web root of your application is the root location in your project from which HTTP requests are handled (ex. handling of static file requests). The Web root of an ASP.NET Core application is configured using the "webroot" property in your project.json file.
@@ -165,6 +174,7 @@ The Web root of your application is the root location in your project from which
 
 Configuration
 配置
+-------------
 -------------
 
 ASP.NET Core uses a new configuration model for handling of simple name-value pairs that is not based on System.Configuration or web.config. This new configuration model pulls from an ordered set of configuration providers. The built-in configuration providers support a variety of file formats (XML, JSON, INI) and also environment variables to enable environment-based configuration. You can also write your own custom configuration providers. Environments, like Development and Production, are a first-class notion in ASP.NET Core and can also be set up using environment variables:
@@ -184,7 +194,7 @@ See :doc:`/fundamentals/configuration` for more details on the new configuration
 Client-side development
 客户端开发
 -----------------------
+-----------------------
 
 ASP.NET Core is designed to integrate seamlessly with a variety of client-side frameworks, including :doc:`AngularJS </client-side/angular>`, :doc:`KnockoutJS </client-side/knockout>` and :doc:`Bootstrap </client-side/bootstrap>`. See :doc:`/client-side/index` for more details.
-
 ASP.NET Core被设计成与多种客户端框架无缝集成，包括:doc:`AngularJS </client-side/angular>`, :doc:`KnockoutJS </client-side/knockout>` and :doc:`Bootstrap </client-side/bootstrap>`。请参阅 :doc:`/client-side/index`获取更多详情。
