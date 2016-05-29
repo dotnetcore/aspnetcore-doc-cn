@@ -2,13 +2,16 @@ Introduction to ASP.NET Core
 ============================
 
 By `Daniel Roth`_
-作者：Daniel Roth` 翻译：王健（https://github.com/wjhgzx）
+作者：Daniel Roth` 翻译：王健
 
 ASP.NET Core is a significant redesign of ASP.NET. This topic introduces the new concepts in ASP.NET Core and explains how they help you develop modern web apps.
-
 ASP.NET CORE 是ASP.NET的一个重要的重新设计。这个主题将介绍ASP.NET Core 的新概念，并讲述它如何帮助你开发现代化的web应用。
 
 .. contents:: Sections:
+  :local:
+  :depth: 1
+  
+  .. contents:: 节:
   :local:
   :depth: 1
   
@@ -17,7 +20,6 @@ What is ASP.NET Core?
 ---------------------
 
 ASP.NET Core is a new open-source and cross-platform framework for building modern cloud-based Web applications using .NET. We built it from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions. You can develop and run your ASP.NET Core applications cross-platform on Windows, Mac and Linux. ASP.NET Core is fully open source on `GitHub <https://github.com/aspnet/home>`_.
-
 ASP.NET Core 是使用.NET来构建基于云的现代化网络应用的一种新开源和跨平台的框架。我们重新设计它来为部署在云上或运行在本地的应用程序提供一种优化过的开发框架。它由最小开销的模块化组件组成，让您构建解决方案的同时保持灵活性。您可以开发并跨平台运行 ASP.NET Core 应用程序在Windows，Mac 和 Linux 上。ASP.NET Core 完全开源于`GitHub` <https://github.com/aspnet/home>.
 
 Why build ASP.NET Core?
@@ -25,19 +27,15 @@ Why build ASP.NET Core?
 -----------------------
 
 The first preview release of ASP.NET came out almost 15 years ago as part of the .NET Framework.  Since then millions of developers have used it to build and run great web applications, and over the years we have added and evolved many, many capabilities to it.
-
 ASP.NET 的第一个预览版作为.NET Framework 的一部分，出来了差不多15年。从那时起，数以百万计的开发人员使用它来构建和运行伟大的Web应用程序，多年来我们已经为它加入并发展了很多很多的功能。
 
 With ASP.NET Core we are making a number of architectural changes that make the core web framework much leaner and more modular. ASP.NET Core is no longer based on System.Web.dll, but is instead based on a set of granular and well factored NuGet packages allowing you to optimize your app to have just what you need. You can reduce the surface area of your application to improve security, reduce your servicing burden and also to improve performance in a true pay-for-what-you-use model.
-
 使用ASP.NET Core，我们带来了一系列的变化，使核心网络架构更为精简和更具模块化。ASP.NET Core 不再基于 System.Web.dll，而是基于一组细化和良好分解的NuGet包让您可以优化您的应用程序并且只取您所需要的部分。您可以减少应用程序的外部区域，以提高安全性，降低您的维护负担，也在真正的为你所付费使用的部分提高了性能。
 
 ASP.NET Core is built with the needs of modern Web applications in mind, including a unified story for building Web UI and Web APIs that integrate with today's modern client-side frameworks and development workflows. ASP.NET Core is also built to be cloud-ready by introducing environment-based configuration and by providing built-in dependency injection support.
-
-ASP.NET Core 是在现代化的web应用程序的需求下构建的，其中包括构建与今天的现代化客户端框架和开发工作流程集成的统一规范的Web用户界面和Web API（的需求）。ASP.NET Core也被设计为云就绪，通过引入基于环境的配置和提供内置的依赖注入的支持来实现。
+ASP.NET Core 是在现代化的web应用程序的需求下构建的，其中包括构建与今天的现代化客户端框架和开发工作流程集成的统一规范的Web用户界面和Web API（的需求）。ASP.NET Core通过引入基于环境的配置和提供内置的依赖注入实现了cloud-ready。
 
 To appeal to a broader audience of developers, ASP.NET Core supports cross-platform development on Windows, Mac and Linux. The entire ASP.NET Core stack is open source and encourages community contributions and engagement. ASP.NET Core comes with a new, agile project system in Visual Studio while also providing a complete command-line interface so that you can develop using the tools of your choice.
-
 为了吸引更广泛的开发者受众，ASP.NET Core 支持 Windows，Mac和Linux 的跨平台开发。整个 ASP.NET Core 协议栈是开源的，并鼓励社区的贡献和参与。ASP.NET Core 在 Visual Studio 中配备了一个新的，灵活的项目系统，同时还提供了完整的命令行界面，使您可以使用您选择的工具进行开发。
 
 In summary, with ASP.NET Core you gain the following foundational improvements:
@@ -54,8 +52,6 @@ In summary, with ASP.NET Core you gain the following foundational improvements:
 - Build and run cross-platform ASP.NET apps on Windows, Mac and Linux
 - Open source and community focused
 
-
-
 综上所述，通过ASP.NET Core您将获得以下基本改进：
 
  - 新的轻量级，模块化的HTTP请求管道
@@ -64,7 +60,7 @@ In summary, with ASP.NET Core you gain the following foundational improvements:
  - 完全通过NuGet包进行装载
  - 对创建和使用的NuGet包提供完整支持
  - 对Web UI和Web API的单对准网络堆栈
- - 云就绪基于环境的配置
+ - Cloud-ready基于环境的配置
  - 内置支持依赖注入
  - 新的工具，简化了现代Web开发
  - 构建并运行在Windows，Mac和Linux的跨平台ASP.NET应用
@@ -80,7 +76,7 @@ Application anatomy
 -------------------
 
 ASP.NET Core applications are defined using a public ``Startup`` class:
-ASP.NET Core 应用程序使用public的Startup类来定义：
+ASP.NET Core 应用程序定义了一个public的Startup类：
 
 .. code-block:: c#
 
@@ -109,7 +105,6 @@ ASP.NET Core 应用程序使用public的Startup类来定义：
   }
 
 The ``ConfigureServices`` method defines the services used by your application and the ``Configure`` method is used to define what middleware makes up your request pipeline. See :doc:`/fundamentals/startup` for more details.
-
 ``ConfigureServices``方法定义了应用程序上使用的服务，``Configure``方法用于定义由哪些中间件来装配您的请求管线。请参阅：doc:`/fundamentals/startup`了解更多详情
 
 Services
@@ -140,6 +135,11 @@ ASP.NET Core 配备了丰富的预先构建的中间件：
 - :doc:`/fundamentals/diagnostics`
 - :doc:`/security/authentication/index`
 
+- :doc:`/fundamentals/static-files`
+- :doc:`/fundamentals/routing`
+- :doc:`/fundamentals/diagnostics`
+- :doc:`/security/authentication/index`
+
 You can also author your own :doc:`custom middleware </fundamentals/middleware>`.
 您也可以开发您自己的中间件。:doc:`custom middleware </fundamentals/middleware>`.
 
@@ -155,7 +155,7 @@ The ASP.NET Core hosting model does not directly listen for requests, but instea
 ASP.NET的核心托管模型不直接侦听请求，而是依赖于一种HTTP服务器:doc:`server </fundamentals/servers>`实现使对应用程序的请求暴露为一套能被组装进HttpContext的功能接口。 ASP.NET Core 包括托管的跨平台Web服务器，叫做：ref:`Kestrel <kestrel>`，你通常会在生产web服务器如`IIS<https://iis.net>`__或` nginx<http://nginx.org>`背后运行它。
 
 Web root
-web根节点
+Web根节点
 --------
 
 The Web root of your application is the root location in your project from which HTTP requests are handled (ex. handling of static file requests). The Web root of an ASP.NET Core application is configured using the "webroot" property in your project.json file.
@@ -188,10 +188,3 @@ Client-side development
 ASP.NET Core is designed to integrate seamlessly with a variety of client-side frameworks, including :doc:`AngularJS </client-side/angular>`, :doc:`KnockoutJS </client-side/knockout>` and :doc:`Bootstrap </client-side/bootstrap>`. See :doc:`/client-side/index` for more details.
 
 ASP.NET Core被设计成与多种客户端框架无缝集成，包括:doc:`AngularJS </client-side/angular>`, :doc:`KnockoutJS </client-side/knockout>` and :doc:`Bootstrap </client-side/bootstrap>`。请参阅 :doc:`/client-side/index`获取更多详情。
-
-----------
-## 
-
- 1. 标题
-
- ##
