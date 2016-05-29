@@ -1,24 +1,25 @@
-Integration Testing
+集成测试
 ===================
 
-By `Steve Smith`_
+作者： `Steve Smith`_ 翻译：王健
 
-Integration testing ensures that an application's components function correctly when assembled together. ASP.NET Core supports integration testing using unit test frameworks and a built-in test web host that can be used to handle requests without network overhead.
+
+集成测试确保应用程序的组件组装在一起时正常工作。 ASP.NET Core支持使用单元测试框架和可用于处理没有网络开销请求的内置测试的网络主机集成测试。
 
 .. contents:: Sections:
   :local:
   :depth: 1
 
-`View or download sample code <https://github.com/aspnet/docs/tree/master/aspnet/testing/integration-testing/sample>`__
+`查看或下载代码 <https://github.com/aspnet/docs/tree/master/aspnet/testing/integration-testing/sample>`__
 
-Introduction to Integration Testing
+集成测试介绍
 -----------------------------------
+ 
+集成测试验证应用程序不同的部位是否正确地组装在一起。不像单元测试 :doc:`unit-testing`，集成测试经常涉及到应用基础设施，如数据库，文件系统，网络资源或网页的请求和响应。单元测试用赝品或模拟对象代替这些问题，但集成测试的目的是为了确认该系统与这些系统的预期运行一致。
 
-Integration tests verify that different parts of an application work correctly together. Unlike :doc:`unit-testing`, integration tests frequently involve application infrastructure concerns, such as a database, file system, network resources, or web requests and responses. Unit tests use fakes or mock objects in place of these concerns, but the purpose of integration tests is to confirm that the system works as expected with these systems.
+集成测试，因为它们执行较大的代码段，并且它们依赖于基础结构组件，往往要比单元测试慢几个数量级。因此，限制你写多少集成测试，特别是如果你可以测试与单元测试相同的行为，是一个不错的选择。
 
-Integration tests, because they exercise larger segments of code and because they rely on infrastructure elements, tend to be orders of magnitude slower than unit tests. Thus, it's a good idea to limit how many integration tests you write, especially if you can test the same behavior with a unit test.
-
-.. tip:: If some behavior can be tested using either a unit test or an integration test, prefer the unit test, since it will be almost always be faster. You might have dozens or hundreds of unit tests with many different inputs, but just a handful of integration tests covering the most important scenarios.
+.. tip:: 如果某些行为可以使用一个单元测试或集成测试进行测试，优先单元测试，因为这几乎总是会更快的。你可能有几十或几百个单元测试有许多不同的输入，而只是一个集成测试覆盖了最重要的屈指可数的场景。
 
 Testing the logic within your own methods is usually the domain of unit tests. Testing how your application works within its framework (e.g. ASP.NET) or with a database is where integration tests come into play. It doesn't take too many integration tests to confirm that you're able to write a row to and then read a row from the database. You don't need to test every possible permutation of your data access code - you only need to test enough to give you confidence that your application is working properly.
 
