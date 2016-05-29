@@ -1,4 +1,4 @@
-ASP.NET Core介绍
+Introduction to ASP.NET Core
 ============================
 
 作者： `Daniel Roth`_
@@ -6,17 +6,10 @@ ASP.NET Core介绍
 
 ASP.NET CORE 是ASP.NET的一个重要的重新设计。这个主题将介绍ASP.NET Core 的新概念，并讲述它如何帮助你开发现代化的web应用。
 
+
 .. contents:: Sections:
   :local:
   :depth: 1
-  什么是ASP.NET Core?
-  为什么开发 ASP.NET Core?
-  应用程序剖析
-  服务
-  中间件
-  服务器
-  配置
-  客户端开发
   
 什么是ASP.NET Core?
 ---------------------
@@ -47,7 +40,6 @@ ASP.NET Core 是在现代化的web应用程序的需求下构建的，其中包�
  - 新的工具，简化了现代Web开发
  - 构建并运行在Windows，Mac和Linux的跨平台ASP.NET应用
  - 开源和关注社区
-
 
 应用程序剖析
 -------------------
@@ -120,3 +112,5 @@ ASP.NET Core 使用了一种新的处理简单键值对的配置模型，它并�
 -----------------------
 
 ASP.NET Core被设计成与多种客户端框架无缝集成，包括:doc:`AngularJS </client-side/angular>`, :doc:`KnockoutJS </client-side/knockout>` and :doc:`Bootstrap </client-side/bootstrap>`。请参阅 :doc:`/client-side/index`获取更多详情。
+
+
