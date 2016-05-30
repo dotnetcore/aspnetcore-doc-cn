@@ -162,7 +162,7 @@ Serving a default document
 
 Setting a default home page gives site visitors a place to start when visiting your site. Without a default site users will see a blank page unless they enter a fully qualified URI to a document.  In order for your Web app to serve a default page without the user having to fully qualify the URI, call the ``UseDefaultFiles`` extension method from ``Startup.Configure`` as follows.
 
-设置默认首页能给每个访问你站点的访问者一个起始页。如果不设这么一个默认页，用户访问站点会看到一个空白页，出给他们输入文档的完整的 URI。为使站点能提供默认页，避免用户输入完整 URI，须在 ``Startup.Configure`` 中调用 ``UseDefaultFiles`` 扩展方法：
+设置默认首页能给每个访问你站点的访问者一个起始页。如果不设这么一个默认页，用户访问站点会看到一个空白页，除非他们输入文档的完整的 URI。为使站点能提供默认页，避免用户输入完整 URI，须在 ``Startup.Configure`` 中调用 ``UseDefaultFiles`` 扩展方法：
 
 .. code-block:: c#
   :emphasize-lines: 5-6
@@ -227,16 +227,18 @@ In addition to the ``UseStaticFiles``, ``UseDefaultFiles``, and ``UseDirectoryBr
 .. code-block:: c#
 
   // Enable all static file middleware (serving of static files and default files) EXCEPT directory browsing.
+  //使所有静态文件中间件生效（静态文件与默认文件）除了目录浏览
   app.UseFileServer();
 
 .. code-block:: c#
 
   // Enables all static file middleware (serving of static files, default files, and directory browsing).
+  //使所有静态文件中间件生效（静态文件、默认文件与目录浏览）
   app.UseFileServer(enableDirectoryBrowsing: true);
 
 As with the ``UseStaticFiles``, ``UseDefaultFiles``, and ``UseDirectoryBrowser`` methods, if you wish to serve files that exist outside the webroot, you instantiate and configure an "options" object that you pass as a parameter to ``UseFileServer``. For example, let's say you have the following directory hierarchy in your Web app:
 
-作为一个集合了 ``UseStaticFiles``、``UseDefaultFiles`` 和 ``UseDirectoryBrowser`` 方法于一体的方法，吐过你希望提供网络根目录之外存在的文件，你要实例化并配置一个「options」对象传递给 ``UseFileServer`` 的参数。比方说在你的应用中有如下层次的目录：
+作为一个集合了 ``UseStaticFiles``、``UseDefaultFiles`` 和 ``UseDirectoryBrowser`` 方法于一体的方法，如果你希望提供网络根目录之外存在的文件，你要实例化并配置一个「options」对象传递给 ``UseFileServer`` 的参数。比方说在你的应用中有如下层次的目录：
 
 - wwwroot
 
