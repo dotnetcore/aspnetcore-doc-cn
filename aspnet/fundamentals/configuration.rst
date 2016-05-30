@@ -37,9 +37,15 @@ Getting and setting configuration settings
 
 ASP.NET Core's configuration system has been re-architected from previous versions of ASP.NET, which relied on ``System.Configuration`` and XML configuration files like ``web.config``. The new :doc:`configuration model </fundamentals/configuration>` provides streamlined access to key/value based settings that can be retrieved from a variety of providers. Applications and frameworks can then access configured settings using the new :ref:`Options pattern <options-config-objects>`
 
+ASP.NET Core 配置系统针对以前的 ASP.NET 版本（依赖于 ``System.Configuration`` 和 XML 配置文件（如 ``Web.config``））进行了重新架构。新的 :doc:`配置模型 </fundamentals/configuration>` 提供了精简高效的通过检索多样化提供程序的获取基于键/值对配置的能力。应用程序和框架可以通过新的 :ref:`选择模式 <options-config-objects>` 访问配置。
+
 To work with settings in your ASP.NET application, it is recommended that you only instantiate an instance of ``Configuration`` in your application's ``Startup`` class. Then, use the :ref:`Options pattern <options-config-objects>` to access individual settings.
 
+在 ASP.NET 应用程序中，建议你在应用程序的 ``Startup`` 类中只实例化一个 ``Configuration`` 实例。然后使用 :ref:`选择模式 <options-config-objects>` 来访问各自的设置。
+
 At its simplest, the ``Configuration`` class is just a collection of ``Providers``, which provide the ability to read and write name/value pairs. You must configure at least one provider in order for ``Configuration`` to function correctly. The following sample shows how to test working with ``Configuration`` as a key/value store:
+
+简单来说，``Configuration`` 类只是一个提供了读写名/值对能力的 ``Providers`` 集合。你至少需要配置一个提供程序，使得 ``Configuration`` 能正常工作。下例演示了如何测试把 ``Configuration`` 作为一个键/值对存储来处理。
 
 .. code-block:: c#
   :linenos:
@@ -60,6 +66,8 @@ At its simplest, the ``Configuration`` class is just a collection of ``Providers
 
 It's not unusual to store configuration values in a hierarchical structure, especially when using external files (e.g. JSON, XML, INI). In this case, configuration values can be retrieved using a ``:`` separated key, starting from the root of the hierarchy. For example, consider the following *appsettings.json* file:
 
+一般不会把配置值存储在一个有层次的结构中，尤其是使用外部文件（如 JSON、XML、INI）时。在此情况下，可以使用以“:”符号分隔（从层次结构的根开始）的键来取回配置值。以下面的 *appsettings.json* 文件为例：
+
 .. _config-json:
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/appsettings.json
@@ -68,9 +76,15 @@ It's not unusual to store configuration values in a hierarchical structure, espe
 
 The application uses configuration to configure the right connection string. Access to the ``ConnectionString`` setting is achieved through this key: ``Data:DefaultConnection:ConnectionString``.
 
+应用程序使用 configuration 配置正确的连接字符串。可以通过键 ``Data:DefaultConnection:ConnectionString`` 来访问 ``ConnectionString`` 的设置。
+
 The settings required by your application and the mechanism used to specify those settings (configuration being one example) can be decoupled using the :ref:`options pattern <options-config-objects>`. To use the options pattern you create your own settings class (probably several different classes, corresponding to different cohesive groups of settings) that you can inject into your application using an options service. You can then specify your settings using configuration or whatever mechanism you choose.
 
+应用程序所需要的设置和指定配置的机制（configuration 便是一例）都可通过使用 :ref:`选择模式 <options-config-objects>` 解耦。创建自己的配置类（可以是几个不同的类，分别对应不同的配置组），而后通过选项服务注入到应用程序中。然后你就可以通过配置或其它你所选择的机制来设置了。
+
 .. note:: You could store your ``Configuration`` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the :ref:`Options pattern <options-config-objects>` to avoid these issues.
+
+.. note:: 你可将 ``Configuration`` 实例设计为一个服务，但这会导致不必要地把应用程序和配置系统与指定配置键耦合在一起。相反可通过 :ref:`选项模式 <options-config-objects>` 来避免这一问题。
 
 Using the built-in providers
 ----------------------------
