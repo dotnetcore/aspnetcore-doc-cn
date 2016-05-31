@@ -1,5 +1,5 @@
 集成测试
-===================
+========
 
 作者： `Steve Smith`_ 翻译：王健
 
@@ -31,7 +31,7 @@ ASP.NET 集成测试
 .. tip:: 单独的单元测试和集成测试使用不同的项目。这有助于确保您不小心将基础设施问题引入到您的单元测试中，让您轻松选择运行所有的测试，或是一组或其他。
 
 测试宿主
-^^^^^^^
+--------
 
 ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET应用程序，用于处理测试请求，而不需要一个真实的虚拟宿主。所提供的示例包括被配置为使用 `xUnit`_ 的集成测试项目和测试主机，您可以从*project.json* 文件中进行查看。
 
@@ -73,11 +73,10 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 .. note:: 您可以从 :doc:`unit-testing`的文章中了解更多关于单元测试的内容。
 
 现在，我们有一组通过的测试，是一个好的机会来考虑我们是否对设计应用程序的方案感到满意了。如果我们发现任何
-代码异味`code smells <http://deviq.com/code-smells/>`_，这将是一个重构应用程序来改善设计的好时机。
-Refactoring to use Middleware
------------------------------
+代码异味`<http://deviq.com/code-smells/>`_，这将是一个重构应用程序来改善设计的好时机。
 
-Refactoring is the process of changing an application's code to improve its design without changing its behavior. It should ideally be done when there is a suite of passing tests, since these help ensure the system's behavior remains the same before and after the changes. Looking at the way in which the prime checking logic is implemented in our web application, we see:
+使用中间件重构
+-------------
 
 重构是改变一个应用程序的代码，以提高其设计而不改变其行为的过程。当有一套通过的测试，重构将理想的进行，因为这些有助于确保系统的行为在重构之前和之后保持不变。看看素数检测逻辑在我们的web应用程序中的实现方式，我们发现：
 
@@ -166,7 +165,7 @@ Following this refactoring, we are confident that the web application still work
 集成测试提供了比单元测试更高层次的验证。它测试应用程序的基础设施和应用程序的不同部分如何一起工作。 ASP.NET Core 有很大可测试性，并附带了``TestServer``这使得为Web服务器endpoint连布置集成测试变得非常简单。
 
 附加的资源
---------------------
+---------
 
 - :doc:`unit-testing`
 - :doc:`/fundamentals/middleware`
