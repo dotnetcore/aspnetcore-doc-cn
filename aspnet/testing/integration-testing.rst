@@ -161,7 +161,8 @@ Following this refactoring, we are confident that the web application still work
 
 在这一重构之后，我们有信心Web应用程序仍然像之前一样工作，因为我们的集成测试都是通过的。
 
-.. tip:: 当您完成重构并且所有测试都通过后，提交您的变更到源代码管理中，是一个好的主意。如果您正尝试测试驱动开发，`consider adding Commit to your Red-Green-Refactor cycle<http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_.
+.. tip:: 当您完成重构并且所有测试都通过后，提交您的变更到源代码管理中，是一个好的主意。如果您正尝试测试驱动开发，考虑提交代码到你的 Red-Green-Refacotr 循环中
+'<http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_.
 
 总结
 -------
