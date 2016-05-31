@@ -57,8 +57,6 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 
 在测试的行动部分，发起一个对``TestServer``实例的“/”路径的请求，并且响应读回字符串。这个字符串将与预期的字符串"Hello World!"进行对比。如果匹配，测试通过，否则测试失败。
 
-Now we can add a few additional integration tests to confirm that the prime checking functionality works via the web application:
-
 现在我们可以添加一些附加的集成测试，来确认通过web应用程序的素数检测功能性工作：
 
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs
@@ -67,8 +65,6 @@ Now we can add a few additional integration tests to confirm that the prime chec
   :lines: 10-68
   :dedent: 4
   :emphasize-lines: 8-9
-
-Note that we're not really trying to test the correctness of our prime number checker with these tests, but rather that the web application is doing what we expect. We already have unit test coverage that gives us confidence in ``PrimeService``, as you can see here:
 
 需要注意的是，我们并不是真的想测试我们使用这些测试质数检查的正确性，而是确认Web应用程序在我们期待的事情。我们已经有单元测试覆盖率，让我们对``PrimeService``有信心，您可以在这里看到：
 
