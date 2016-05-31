@@ -163,8 +163,6 @@ Following this refactoring, we are confident that the web application still work
 总结
 -------
 
-Integration testing provides a higher level of verification than unit testing. It tests application infrastructure and how different parts of an application work together. ASP.NET Core is very testable, and ships with a ``TestServer`` that makes wiring up integration tests for web server endpoints very easy.
-
 集成测试提供了比单元测试更高层次的验证。它测试应用程序的基础设施和应用程序的不同部分如何一起工作。 ASP.NET Core 有很大可测试性，并附带了``TestServer``这使得为Web服务器endpoint连布置集成测试变得非常简单。
 
 附加的资源
