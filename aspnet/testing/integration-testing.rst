@@ -152,9 +152,7 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
   :dedent: 8
   :emphasize-lines: 11
 
-Following this refactoring, we are confident that the web application still works as before, since our integration tests are all passing.
-
-在这一重构之后，我们有信心Web应用程序仍然像之前一样工作，因为我们的集成测试都是通过的。
+在这重构之后，我们有信心Web应用程序仍然像之前一样工作，因为我们的集成测试都是通过的。
 
 .. tip:: 当您完成重构并且所有测试都通过后，提交您的变更到源代码管理中，是一个好的主意。如果您正尝试测试驱动开发，考虑提交代码到你的 Red-Green-Refacotr 循环中
 '<http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_.
