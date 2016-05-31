@@ -4,7 +4,7 @@ Controller 方法与视图
 作者 `Rick Anderson`_
 翻译 `谢炀(kiler)`_
 
-我们已经初步的创建了一个movie应用程序, 但是展示并不理想. 我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词.
+我们已经初步的创建了一个 movie 应用程序, 但是展示并不理想. 我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词.
 
 .. image:: working-with-sql/_static/m55.png
 
@@ -40,7 +40,7 @@ Visual studio 会自动导入 ``using System.ComponentModel.DataAnnotations;`` �
 
 我们会在下一篇文章中继续发掘 `DataAnnotations <http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 的内容. `Display <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx>`__ 标签用来指定字段的显示名 (在本示例中 "Release Date" 会替代 "ReleaseDate").  `DataType <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx>`__ 属性制定数据类型,在本示例是日期类型, 所以字段中存储的时间信息不会被显示。
 
-浏览 ``Movies`` 控制器并把鼠标悬停于 **Edit** 链接上可以看到目标URL.
+浏览 ``Movies`` 控制器并把鼠标悬停于 **Edit** 链接上可以看到目标 URL.
 
 .. image:: controller-methods-views/_static/edit7.png
 
@@ -54,7 +54,7 @@ Visual studio 会自动导入 ``using System.ComponentModel.DataAnnotations;`` �
   :dedent: 12
   :emphasize-lines: 2-4
 
-:doc:`Tag Helpers </mvc/views/tag-helpers/intro>`允许服务器端代码在 Razor 文件中创建和生成 HTML 元素. 在上面的代码中, `AnchorTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/AnchorTagHelper/index.html>`__ 通过 controller 方法以及路由ID 动态生成 HTML ``href`` 属性值. 你可以在你熟悉的浏览器中试用 **View Source** 菜单或者使用 **F12** 工具来检查你生成的 HTML 标签.  **F12** 工具如下图 .
+:doc:`Tag Helpers </mvc/views/tag-helpers/intro>`允许服务器端代码在 Razor 文件中创建和生成 HTML 元素. 在上面的代码中, `AnchorTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/AnchorTagHelper/index.html>`__ 通过 controller 方法以及路由ID 动态生成 HTML ``href`` 属性值. 你可以在你熟悉的浏览器中使用 **View Source** 菜单或者使用 **F12** 工具来检查你生成的 HTML 标签.  **F12** 工具如下图 .
 
 .. image:: controller-methods-views/_static/f12.png
 
@@ -66,11 +66,11 @@ Visual studio 会自动导入 ``using System.ComponentModel.DataAnnotations;`` �
   :dedent: 12
   :emphasize-lines: 5
 
-ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 翻译成发送到``Movies`` controller 的 ``Edit`` action 方法的请求并带上值为4 的 ``ID`` 参数. (Controller 方法其实就是指带 action 方法.)
+ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到``Movies`` controller 的 ``Edit`` action 方法的请求并带上值为4 的 ``ID`` 参数. (Controller 方法其实就是指带 action 方法.)
 
 :doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的功能之一. 参考 `附录资源`_ 获取更多信息.
 
-打开 ``Movies`` controller 并查看连个 ``Edit`` action 方法:
+打开 ``Movies`` controller 并查看两个 ``Edit`` action 方法:
 
 .. image:: controller-methods-views/_static/1.png
 
@@ -115,7 +115,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 翻译成发送到``
  :lines: 68-82
  :dedent: 8
 
-当脚手架工具创建 Edit 视图的时候, 他会检查 ``Movie`` 类并创建代码试用 ``<label>`` 以及 ``<input>`` 元素来来呈现类的每一个属性. =下面的代码展示了 visual studio 脚手架工具生成的 Edit 视图:
+当脚手架工具创建 Edit 视图的时候, 他会检查 ``Movie`` 类并创建代码使用 ``<label>`` 以及 ``<input>`` 元素来来呈现类的每一个属性. 下面的代码展示了 visual studio 脚手架工具生成的 Edit 视图:
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/EditCopy.cshtml
   :language: HTML
@@ -146,13 +146,13 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 翻译成发送到``
 ``[ValidateAntiForgeryToken]`` 标签验证 :doc:`Form Tag Helper </mvc/views/working-with-forms>` 生成的存放在隐藏域中的 `XSRF <:doc:/security/anti-request-forgery>`__ 反伪造标记。
 
 
-:doc:`模型绑定 </mvc/models/model-binding>` 机制以发送表单数据并创建 ``Movie`` 对象作为 ``movie`` 参数。``ModelState.IsValid``方法验证表单提交的数据可以用来修改（编辑或更新）一个``Movie``对象。 ``ModelState.IsValid`` 方法用于验证表单提交的数据是否可以用阿里 修改 (编辑或者更新) ``Movie`` 对象. 如果数据有效，就饿可以保存. 更新(编辑) movie 数据会被存到数据库通过database context 的 ``SaveChangesAsync`` 方法. 数据保存完毕以后, 代码把用户重新引导到 ``MoviesController`` 类的 ``Index`` action 方法, 显示 Moive 集合的页面,包含了最新的数据改动.
+:doc:`模型绑定 </mvc/models/model-binding>` 机制以发送表单数据并创建 ``Movie`` 对象作为 ``movie`` 参数。``ModelState.IsValid`` 方法验证表单提交的数据可以用来修改（编辑或更新）一个 ``Movie`` 对象。  如果数据有效，就可以保存. 更新(编辑) movie 数据会被存到数据库通过 database context 的 ``SaveChangesAsync`` 方法. 数据保存完毕以后, 代码把用户重新引导到 ``MoviesController`` 类的 ``Index`` action 方法, 显示 Moive 集合的页面,包含了最新的数据改动.
 
-表单数据被发布到服务器之前，客户端校验会检查所有字段上的验证规则。如果有任何验证错误，则显示错误消息，并且表单数据不会被发送。如果禁用了JavaScript，将不会有客户端验证，但服务器端将检测出发送数据是无效的，表单依旧会显示出错误信息。在稍后的教程中，我们会探讨 :doc:`/mvc/models/validation` 更多关于验证的细节.  *Views/Book/Edit.cshtml* 视图模版中的 :doc:`Validation Tag Helper </mvc/views/working-with-forms>`  负责显示错误信息.
+表单数据被发布到服务器之前，客户端校验会检查所有字段上的验证规则。如果有任何验证错误，则显示错误消息，并且表单数据不会被发送。如果禁用了 JavaScript，将不会有客户端验证，但服务器端将检测出发送数据是无效的，表单依旧会显示出错误信息。在稍后的教程中，我们会探讨 :doc:`/mvc/models/validation` 更多关于验证的细节.  *Views/Book/Edit.cshtml* 视图模版中的 :doc:`Validation Tag Helper </mvc/views/working-with-forms>`  负责显示错误信息.
 
 .. image:: controller-methods-views/_static/val.png
 
-所有的movie controller的 ``HttpGet`` 方法都遵循类似的模式. 它们获取一个对象(或者对象列表, 比如 ``Index``), 把对象 (模型) 传递到视图. ``Create`` 方法创建一个空的对象到 ``Create`` 视图. 所有的如 创建, 编辑, 删除, 或者其他的修改数据的方法 在不同的  ``[HttpPost]`` 方法重载中执行. 在 HTTP GET 方法中修改数据有安全风险, 参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__. 在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
+movie controller 的所有 HttpGet 方法都遵循类似的模式. 它们获取一个对象(或者对象列表, 比如 ``Index``), 把对象 (模型) 传递到视图. ``Create`` 方法创建一个空的对象到 ``Create`` 视图. 所有的如 创建, 编辑, 删除, 或者其他的修改数据的方法 在不同的  ``[HttpPost]`` 方法重载中执行. 在 HTTP GET 方法中修改数据有安全风险, 参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__. 在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
 
 附录资源
 -----------------------
