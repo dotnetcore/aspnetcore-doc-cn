@@ -179,9 +179,11 @@ Exception error
 
 .. note:: Some loggers, such as the built-in ``ConsoleLogger`` used in this article, will ignore the ``eventId`` parameter. If you need to display it, you can include it in the message string. This is done in the following sample so you can easily see the eventId associated with each message, but in practice you would not typically include it in the log message.
 
-
+.. note:: 像本文中所使用的 ``ConsoleLogger`` 这类内建的日志记录器会忽略 ``eventId`` 参数。如果你需要显示它，你可以把它包含在消息文本内。在下例中你可以轻松发现 eventId 被关联到每一条消息，但实际上你通常不会将它包含在日志信息中。
 
 In the ``TodoController`` example, event id constants are defined for each event, and log statements are configured at the appropriate verbosity level based on the success of the operation. In this case, successful operations log as ``Information`` and not found results are logged as ``Warning`` (error handling is not shown).
+
+在 ``TodoController`` 这个例子中，事件 id 常数为每一个事件定义，根据操作是否成功配置日志语句的详细级别。在这种情况下，成功操作记录为 ``Information``，数据未发现则记录为 ``Warning``（不显示错误处理）。
 
 .. literalinclude:: logging/sample/src/TodoApi/Controllers/TodoController.cs
   :language: c#
@@ -191,12 +193,11 @@ In the ``TodoController`` example, event id constants are defined for each event
 
 .. note:: It is recommended that you perform application logging at the level of your application and its APIs, not at the level of the framework. The framework already has logging built in which can be enabled simply by setting the appropriate logging verbosity level.
 
+.. note:: 建议在应用程序及其 API 上执行应用程序日志记录，而不是在框架级别上记录。框架已经有了一个内建的能够简单通过设置启用相应日志级别的日志记录器了。
+
 To see more detailed logging at the framework level, you can adjust the `LogLevel` specified to your logging provider to something more verbose (like `Debug` or `Verbose`). For example, if modify the `AddConsole` call in the `Configure` method to use `LogLevel.Verbose` and run the application, the result shows much framework-level detail about the request:
 
-要查看框架级别的详细日志，可以调整指定的
-
-要查看更详细的日志在框架级，可以调整指定你的日志提供商的东西更详细的（如`Debug`或`Verbose`）的`LogLevel`。例如，如果修改`AddConsole`调用在`Configure`方法来使用`LogLevel.Verbose`并运行应用程序，结果显示有关要求太多框架级别的细节：
-
+要查看框架级别的详细日志，可以为日志提供程序调整为指定的日志级别，这样就能得到更为详细的日知录（如 `Debug` 或 `Veerbose`）。比如，如果在 `Configure` 方法中修改 `AddConsole` 调用的日志级别，改为使用 `LogLevel.Verbose` 并运行应用程序的话，框架级别的详细日志就会像下图这般显示：
 
 .. image:: logging/_static/console-logger-verbose-output.png
 
@@ -207,12 +208,16 @@ The console logger prefixes verbose output with "verbose: " and uses a gray font
 Scopes
 ^^^^^^
 
-范围
+作用域
 ^^^^^
 
 In the course of logging information within your application, you can group a set of logical operations within a *scope*. A scope is an ``IDisposable`` type returned by calling the ``BeginScopeImpl`` method, which lasts from the moment it is created until it is disposed. The built-in ``TraceSource`` logger returns a scope instance that is responsible for starting and stopping tracing operations. Any logging state, such as a transaction id, is attached to the scope when it is created.
 
+在应用程序记录日志信息的过程中，你可以将一组逻辑操作用 *作用域* 打包为一组。作用也是一种 ``IDisposable`` 类型，通过调用 ``BeginScopeImpl`` 方法来返回，它自创建之刻起存在，直至释放为止。内建的 ``TranceSource`` 日志记录器会返回一个作用域实例用来响应启动与停止跟踪操作。任何诸如事务 ID 这样的日志状态始一创建便关联到作用域了。
+
 Scopes are not required, and should be used sparingly, if at all. They're best used for operations that have a distinct beginning and end, such as a transaction involving multiple resources.
+
+作用域不是必须的，而且需要谨慎使用。它们适合用于具有比较明显的开始和结束的操作，比如在一个事务中调用多个资源。
 
 Configuring Logging in your Application
 ----------------------------------------
@@ -222,7 +227,11 @@ Configuring Logging in your Application
 
 To configure logging in your ASP.NET application, you should resolve ``ILoggerFactory`` in the ``Configure`` method in your ``Startup`` class. ASP.NET will automatically provide an instance of ``ILoggerFactory`` using :doc:`dependency-injection` when you add a parameter of this type to the ``Configure`` method. Once you've added ``ILoggerFactory`` as a parameter, you configure loggers within the ``Configure`` method by calling methods (or extension methods) on the logger factory. We have already seen an example of this configuration at the beginning of this article, when we added console logging by simply calling ``loggerFactory.AddConsole``. In addition to adding loggers, you can also control the verbosity of the application's logging by setting the ``MinimumLevel`` property on the logger factory. The default verbosity is ``Verbose``.
 
+为在 ASP.NET 应用程序中配置日志，你须在 ``Startup`` 类 ``Configure`` 方法中解析 ``ILoggerFactory``。ASP.NET 会基于 :doc:`dependency-injection` 以参数的形式自动为 ``Configure`` 方法提供 ``ILoggerFactory`` 实例。当你把 ``ILoggerFactory`` 添作参数时，在 ``Configure`` 中，通过在日志记录器工厂上调用方法（或扩展方法）来配置日志记录器。我们已在本文开头处看到，通过简单地调用 ``loggerFactory.AddConsole`` 来加入控制台日志记录。除了添加日志记录器，你还可以通过设置日志记录器工厂的 ``MinimumLevel`` 属性来控制应用程序地址的详细程度。默认的详细程度是 ``Verbose`` 。
+
 .. note:: You can specify the minimum logging level each logger provider will use as well. For example, the ``AddConsole`` extension method supports an optional parameter for setting its minimum ``LogLevel``.
+
+.. note:: 你可以为每一个日志记录器提供程序指定最低的日志级别。比如 ``AddConsole`` 扩展方法通过参数来支持设置最低的日志级别。
 
 Configuring TraceSource Logging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,7 +241,11 @@ Configuring TraceSource Logging
 
 When running on the full .NET Framework you can configuring logging to use the existing `System.Diagnostics.TraceSource <https://msdn.microsoft.com/en-us/library/system.diagnostics.tracesource(v=vs.110).aspx>`_ libraries and providers, including easy access to the Windows event log. ``TraceSource`` allows you to route messages to a variety of listeners and is already in use by many organizations.
 
+当运行在完整的 .NET 框架之上时，你可以使用现有的 `System.Diagnostics.TraceSource <https://msdn.microsoft.com/en-us/library/system.diagnostics.tracesource(v=vs.110).aspx>`_ 类库和提供程序来配置日志，包括轻松访问到 Windows 事件日志。``TraceSource`` 允许你将消息路由到不同的监听器上，而这已经被很多组织所使用。
+
 First, be sure to add the ``Microsoft.Extensions.Logging.TraceSource`` package to your project (in *project.json*):
+
+首先，确保项目已添加了 ``Microsoft.Extensions.Logging.TraceSource`` 包（在 *project.json* 中）：
 
 .. literalinclude:: logging/sample/src/TodoApi/project.json
   :language: javascript
@@ -241,13 +254,19 @@ First, be sure to add the ``Microsoft.Extensions.Logging.TraceSource`` package t
 
 The following example demonstrates how to configure two separate ``TraceSourceLogger`` instances for an application, both logging only ``Critical`` messages. Each call to ``AddTraceSource`` takes a ``TraceListener``. The first call configures a ``ConsoleTraceListener``; the second one configures an ``EventLogTraceListener`` to write to the ``Application`` event log. These two listeners are not available in .NET Core, so their configuration is wrapped in a conditional compilation statement.
 
+在下例中演示了如何配置在同一个应用程序中两个独立的 ``TraceSourceLogger`` 实例，两个日志都只记录 ``Critical``  消息。每次调用 ``AddTraceSource`` 都需要一个 ``TraceListener`` 。第一次调用配置了一个 ``ConsoleTraceListener``，第二次配置了一个 ``EventLogTraceListener``，两个监听器都用于写 ``Application`` 事件日志。这两个监听器在 .NET Core 中都不可用，因此它们的配置需要被包裹在条件编译语句中。
+
 .. literalinclude:: logging/sample/src/TodoApi/Startup.cs
   :language: c#
   :lines: 40-48
 
 The sample above also demonstrates setting the ``MinimumLevel`` on the logger factory. However, this specified level is simply the default for new factories, but can still be overridden by individually configured loggers. In this case, the ``sourceSwitch`` is configured to use ``SourceLevels.Critical``, so only ``Critical`` log messages are picked up by the two ``TraceListener`` instances.
 
+上例还演示了在日志记录器工厂上设置 ``MinimumLevel``。不过这种指定的级别仅仅会成为新工厂的默认值，但仍可被单独配置的日志记录器所覆盖。在这种情况下，``sourceSwitch`` 被配置为使用 ``SourceLevels.Critical``，故只有 ``Critical`` 级别的日志消息才会被两个 ``TraceListener`` 实例得到。
+
 To test out this code, replace the catch-all response with the following ``app.Run`` block:
+
+为测试这段代码，请使用下面的 ``app.Run`` 代码段来替换上面的响应：
 
 .. code-block:: c#
 
@@ -263,13 +282,19 @@ To test out this code, replace the catch-all response with the following ``app.R
 
 With this change in place, when the application is run (on Windows), and a request is made to ``http://localhost:5000/boom``, the following is shown in the console output:
 
+注意变化的地方，当应用程序（在 Windows 上）运行并发出一个到 ``http://localhost:5000/boom`` 的请求，控制台将输出如下：
+
 .. image:: logging/_static/console-trace-boom.png
 
 Examining the Application event log in the Windows Event Viewer, the following event has also been logged as a result of this request:
 
+通过 Windows 事件查看器（Windows Event Viewer）检查应用程序事件日志，将发现下列事件已经被记录在案：
+
 .. image:: logging/_static/eventlog.png
 
 In addition to working with `TraceSourceLogger`, you can also log directly to the event log using the `EventLog logging provider <https://www.nuget.org/packages/Microsoft.Extensions.logging.eventlog>`_. Support for logging using `System.Diagnostics.Debug.WriteLine` is also available using the `Debug logging provider <https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug>`_, the output of which can be seen in Visual Studio's Output window.
+
+除了与 `TraceSourceLogger` 进行协作外，也可以直接用 `事件日志提供程序（EventLog logging provider） <https://www.nuget.org/packages/Microsoft.Extensions.logging.eventlog>`_ 来记录事件日志。也可以通过 `调试日志提供程序（Debug logging provider） <https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug>`_ 来支持使用 `System.Diagnostics.Debug.WriteLine`，其输出可在 Visual Studio 的 Output window 中看到。
 
 Configuring Other Providers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -279,9 +304,15 @@ Configuring Other Providers
 
 In addition to the built-in loggers, you can configure logging to use other providers. Add the appropriate package to your *project.json* file, and then configure it just like any other provider. Typically, these packages should include extension methods on ``ILoggerFactory`` to make it easy to add them.
 
+除内置日志记录器外，你可以配置其它开放商提供的日志。将相应的包添加到 *project.json* 文件中，并以上文同样的方法配置它们。通常情况下，这些包应该会包含 ``ILoggerFactory`` 的扩展方法以便能方便地添加它们。
+
 .. note:: The ASP.NET team is still working with third party logging providers to publish support for this logging model. Once these ship, we will include links to them here.
 
+.. note:: ASP.NET 团队仍在努力与第三方日志提供程序协作以支持此日志模型。一旦就绪，我们将在此包含它们的链接。
+
 You can create your own custom providers as well, to support other logging frameworks or your own internal logging requirements.
+
+你也可以创建自己定制的提供程序来支持其他的日志框架或自己内部的日志需求。
 
 Logging Recommendations
 -----------------------
@@ -305,6 +336,22 @@ The following are some recommendations you may find helpful when implementing lo
 
 7. Application logging code should be related to the business concerns of the application. Increase the logging verbosity to reveal additional framework-related concerns, rather than implementing yourself.
 
+当你在 ASP.NET 应用程序中实现日志时可以参考以下有用建议：
+
+1. 使用正确的 ``LogLevel`` ，这将使不同重要级别的日志消息使用何路由到相关的输出目标。
+
+2. 记录的日志信息要能立即识别问题所在，剔除不必要的冗余信息。
+
+3. 保证日志内容简单明了，直指重要信息。
+
+4. 尽管日志记录器被禁用后将不记录日志，但也请在日志方法的周围增加控制代码，以防止多余的方法调用和日志设置的开销，特别是在循环和对性能要求比较高的方法中。
+
+5. 使用独有的前缀命名日志记录器以确保能快速过滤或禁用。谨记 ``Create<T>`` 扩展方法将创建的日志记录器使用该类的完全限定名作为日志记录器的类别名。
+
+6. 使用作用域时保持谨慎，明晰动作的开始和结束的界限（比如框架提供的 MVC Action 的范围），避免相互嵌套。
+
+7. 应用程序日志代码应关注应用程序 的业务。提高日志的详细程度级别来记录框架相关的问题，而不是日志记录器自己。
+
 Summary
 -------
 
@@ -312,3 +359,5 @@ Summary
 --------
 
 ASP.NET provides built-in support for logging, which can easily be configured within the ``Startup`` class and used throughout the application. Logging verbosity can be configured globally and per logging provider to ensure actionable information is logged appropriately. Built-in providers for console and trace source logging are included in the framework; other logging frameworks can easily be configured as well.
+
+ASP.NET 提供了内建支持的日志，能方便地通过 ``Startup`` 类来配置，并在应用程序中使用。日志记录的详细程序可以在全局配置，也可以为每个日志提供程序单独配置，以确保可操作信息能恰当地被记录下来。框架内建了控制台和跟踪源的日志提供程序；另外其他的日志框架也可以被方便配置。
