@@ -1,9 +1,9 @@
-Knockout.js MVVM 框架
+Knockout.js MVVM Framework
 ==========================
 
-作者 `Steve Smith`_
+By `Steve Smith`_
 
-Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application's client-side behavior. The two main concepts one must learn when working with Knockout's MVVM implementation are Observables and Bindings. 
+Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application's client-side behavior. The two main concepts one must learn when working with Knockout's MVVM implementation are Observables and Bindings.
 
 .. contents:: Sections:
   :local:
@@ -74,7 +74,7 @@ As a simple example, consider the page list below. It includes a ``<span>`` elem
     </body>
   </html>
 
-当在浏览器中查看时, the content of the <span> element is replaced with the value in the viewModel variable:
+When viewed in the browser, the content of the <span> element is replaced with the value in the viewModel variable:
 
 .. image:: knockout/_static/simple-binding-screenshot.png
 
