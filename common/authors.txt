@@ -19,19 +19,3 @@
 .. _Bart Calixto: https://twitter.com/bartmax
 .. _Nadeem Afana: https://twitter.com/NadeemAfana
 .. _Rachel Appel: http://github.com/rachelappel
-.. _何镇汐: https://github.com/UtilCore
-.. _凌军州: https://github.com/dotnetcore
-.. _刘浩杨(L): https://github.com/liuhaoyang
-.. _刘怡(AlexLEWIS): https://github.com/alexinea
-.. _娄宇(Lyrics): https://github.com/xbuilder
-.. _孟帅洋(书缘): https://github.com/mengshuaiyang
-.. _饶景昇(Beck): https://github.com/dotnetcore
-.. _王健(冷酒少): https://github.com/wjhgzx
-.. _王绍明(Shaoming): https://github.com/ShaomingCode
-.. _魏美娟(初见): https://github.com/ChujianA
-.. _夏申斌: https://github.com/xiashenbin
-.. _谢炀(Kiler): https://github.com/kiler398
-.. _张仁建(Stoneqiu): http://www.cnblogs.com/stoneniqiu/
-.. _赵亮(悲梦): https://github.com/BeiMeng
-.. _赵志刚(ぶた旺旺): https://github.com/rdzzg
-.. _布莱恩特: https://github.com/iyacontrol
