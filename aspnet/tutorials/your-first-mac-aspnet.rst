@@ -1,9 +1,13 @@
 Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 =====================================================================
+用Visual Studio Code在Mac平台上创建第一个ASP.NET Core Application
+=================================================================
 
 By `Daniel Roth`_, `Steve Smith`_ and `Rick Anderson`_
 
 This article will show you how to write your first ASP.NET Core application on a Mac.
+
+本文将演示如何在Mac平台上创建ASP.NET Core application
 
 .. contents:: Sections:
   :local:
@@ -14,15 +18,21 @@ Setting Up Your Development Environment
 
 To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__.
 
+开发机器上需要下载并且安装`.NET Core`和带有`C#扩展 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`的 `Visual Studio Code`
+
+
 Scaffolding Applications Using Yeoman
 -------------------------------------
 
 Follow the instruction in :doc:`/client-side/yeoman` to create an ASP.NET Core project.
 
+按照 :doc:`/client-side/yeoman` 的指导去创建一个ASP.NET Core 项目.
+
 Developing ASP.NET Applications on a Mac With Visual Studio Code
 ----------------------------------------------------------------
 
 - Start **Visual Studio Code**
+- 运行 **Visual Studio Code**
 
 .. image:: your-first-mac-aspnet/_static/vscode-welcome.png
 
