@@ -1,48 +1,46 @@
-使用 Visual Studio 发布一个 Azure 云 Web 应用程序 
+Publish to an Azure Web App using Visual Studio
 ===============================================
 
-作者 `Erik Reitan`_
-翻译 `谢炀（kiler）`_
-校对 
+By `Erik Reitan`_
 
-本文描述了如何使用 Visual Studio 将一个 Web 应用程序发布到 Azure 云。
+This article describes how to publish an ASP.NET web app to Azure using Visual Studio. 
 
-**注意:** 为了完成这个教程, 你必须拥有一个微软 Azure 帐号。如果没有账户, 你可以 `激活你的 MSDN 订阅用户权益`_ 或者 `注册免费试用版`_。
+**Note:** To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can `activate your MSDN subscriber benefits`_ or `sign up for a free trial`_.
 
-.. _`激活你的 MSDN 订阅用户权益`: http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+.. _`activate your MSDN subscriber benefits`: http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
 
-.. _`注册免费试用版`: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
+.. _`sign up for a free trial`: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
 
 
-创建一个新的 ASP.NET Web 应用程序或者打开一个已存在的 ASP.NETWeb 应用程序。
+Start by either creating a new ASP.NET web app or opening an existing ASP.NET web app. 
 
-1. 在 Visual Studio 的 **Solution Explorer** 里面, 右击项目选择 **Publish**。
+1. In **Solution Explorer** of Visual Studio, right-click on the project and select **Publish**.
 
 .. image:: publish-to-azure-webapp-using-vs/_static/01-Publish.png
 
-2. 在 **Publish Web** 弹出对话框里面, 点击 **Microsoft Azure Web Apps** 并且登入你的 Azure 订阅账户.
+2. In the **Publish Web** dialog box, click on **Microsoft Azure Web Apps** and log into your Azure subscription.
 
 .. image:: publish-to-azure-webapp-using-vs/_static/02-PublishWebdb.png
 
-3. 在 **Select Existing Web App** 对话框中点击 **New** 在 Azure 云中创建一个新的 Web 应用程序.
+3. Click **New** in the **Select Existing Web App** dialog box to create a new Web app in Azure.
 
 .. image:: publish-to-azure-webapp-using-vs/_static/03-SelectExistingWebAppdb.png
 
-4. 输入站点名和区域.作为可选项你可以创建一个新的数据库服务器, 当然如果你以前创建过了,就可以直接使用. 当你设置完成以后, 点击 **Create**.
+4. Enter a site name and region. You can optionally create a new database server, however if you've created a database server in the past, use that. When you're ready to continue, click **Create**.
 
 .. image:: publish-to-azure-webapp-using-vs/_static/04-CreateWebAppOnMicrosoftAzuredb.png
 
-数据库服务器是一种宝贵的资源。最好使用现有的服务器来测试和开发。这个阶段**不会**验证数据库密码, 如果你输入了一个错误的值, 在你的 Web 应用程序视图访问数据库之前你是不会收到任何错误消息的.
+Database servers are a precious resource. For test and development it's best to use an existing server. There is **no** validation on the database password, so if you enter an incorrect value, you won't get an error until your web app attempts to access the database.
 
-5. 在 **Publish Web** 对话框的 **Connection** 选项卡, 点击 **Publish**.
+5. On the **Connection** tab of the **Publish Web** dialog box, click **Publish**.
 
 .. image:: publish-to-azure-webapp-using-vs/_static/05-PublishWebdb.png
 
-你可以在 Visual Studio 的 **Web Publish Activity** 的窗体查看发布进度.
+You can view the publishing progress in the **Web Publish Activity** window within Visual Studio.
 
 .. image:: publish-to-azure-webapp-using-vs/_static/06-WebPublishActivityWindow.png
 
-当发布到 Azure 的工作完成以后, 你的 Web 应用程序就可以挂载在 Azure 上通过浏览器直接访问了. 
+When publishing to Azure is complete, your web app will be displayed in a browser running on Azure. 
 
 .. image:: publish-to-azure-webapp-using-vs/_static/07-Browser.png
 

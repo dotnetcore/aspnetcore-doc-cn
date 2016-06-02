@@ -1,9 +1,7 @@
-全球化与本地化  
+Globalization and localization   
 ==============================
 
-作者：`Rick Anderson`_, `Damien Bowden`_, `Bart Calixto`_, `Nadeem Afana`_   
-翻译：  谢炀(kiler)   
-校对：
+`Rick Anderson`_, `Damien Bowden`_, `Bart Calixto`_, `Nadeem Afana`_ 
 
 Creating a multilingual website with ASP.NET Core will allow your site to reach a wider audience. ASP.NET Core provides services and middleware for localizing into different languages and cultures.
 
@@ -11,13 +9,13 @@ Internationalization involves `Globalization <https://msdn.microsoft.com/en-us/l
 
 Localization is the process of adapting a globalized app, which you have already processed for localizability, to a particular culture/locale.  For more information see **Globalization and localization terms** near the end of this document.
 
-应用程序本地化包含以下内容:
+App localization involves the following:
 
-#. 让应用程序的内容本地化。
-#. 为不同的文化和语言提供本地化资源包。
-#. 在每个请求中实现语言/文化切换策略。
+#. Make the app's content localizable
+#. Provide localized resources for the languages and cultures you support
+#. Implement a strategy to select the language/culture for each request
 
-.. contents:: 章节:
+.. contents:: Sections:
   :local:
   :depth: 1
 
@@ -313,7 +311,7 @@ The `RFC 4646 <https://www.ietf.org/rfc/rfc4646.txt>`__ format for the culture n
 
 Internationalization is often abbreviated to "I18N". The abbreviation takes the first and last letters and the number of letters between them, so 18 stands for the number of letters between the first "I" and the last "N". The same applies to Globalization (G11N), and Localization (L10N).
 
-术语:
+Terms:
 
 - Globalization (G11N): The process of making an app support different languages and regions.
 - Localization (L10N): The process of customizing an app for a given language and region.
@@ -323,9 +321,9 @@ Internationalization is often abbreviated to "I18N". The abbreviation takes the 
 - Specific culture: A culture that has a specified language and region. (for example "en-US", "en-GB", "es-CL")
 - Locale: A locale is the same as a culture. 
 
-附录资源
+Additional Resources
 ---------------------
 
-- 文中使用的的 `Localization.StarterWeb 项目 <https://github.com/aspnet/entropy>`__ .
-- `VS中的资源文件 <https://msdn.microsoft.com/en-us/library/xbx3z216(v=vs.110).aspx#VSResFiles>`__
-- `.resx文件中的资源 <https://msdn.microsoft.com/en-us/library/xbx3z216(v=vs.110).aspx#ResourcesFiles>`__
+- `Localization.StarterWeb project <https://github.com/aspnet/entropy>`__ used in the article.
+- `Resource Files in Visual Studio <https://msdn.microsoft.com/en-us/library/xbx3z216(v=vs.110).aspx#VSResFiles>`__
+- `Resources in .resx Files <https://msdn.microsoft.com/en-us/library/xbx3z216(v=vs.110).aspx#ResourcesFiles>`__
