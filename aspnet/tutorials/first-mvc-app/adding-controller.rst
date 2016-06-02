@@ -8,7 +8,7 @@ Adding a controller
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对：
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_
 
 The Model-View-Controller (MVC) architectural pattern separates an app into three main components: the **M**\odel, the **V**\iew, and the **C**\ontroller. The MVC pattern helps you create apps that are testable and easier to maintain and update than traditional monolithic apps. MVC-based apps contain:
 
@@ -18,9 +18,9 @@ Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主�
 - **V**\iews: Views are the components that display the app's user interface (UI). Generally, this UI displays the model data. 
 - **C**\ontrollers: Classes that handle browser requests, retrieve model data, and then specify view templates that return a response to the browser. In an MVC app, the view only displays information; the controller handles and responds to user input and interaction. For example, the controller handles route data and query-string values, and passes these values to the model. The model might use these values to query the database.
 
-- **M**\odels: 应用程序中用来表示数据的类,并使用验证逻辑来执行该数据业务规则。通常，Model 对象从数据库查询和存储 Model 状态。在本教程， ``Movie`` Model 从数据库查询电影数据用来显示或更新。更新后的数据写入SQL Server 数据库。
-- **V**\iews: 视图是显示应用程序的用户接口(UI)的组件。通常， UI 显示 Model 数据。
-- **C**\ontrollers: 处理浏览器请求，查询 Model 数据，然后指定视图模板去返回响应到浏览器的类。在 MVC 应用程序中， View 仅仅显示信息； Controller 处理和响应用户的输入和交互。例如， Controller 处理路由数据和查询字符串值，然后将这些值传递给 Model ， Model 可以使用这些值去查询数据库。
+- **M**\odels: 应用程序中用来表示数据的类,并使用验证逻辑来执行该数据业务规则。通常，Model 对象从数据库查询和存储 Model 状态。在本教程， ``Movie`` Model 从数据库查询电影数据用来显示或更新。更新后的数据写入 SQL Server 数据库。
+- **V**\iews: 视图是显示应用程序的用户接口（UI）的组件。通常，UI 用于显示 Model 数据。
+- **C**\ontrollers: 一种类（Class），用于处理浏览器请求，查询 Model 数据，以及将指定视图模板作为响应返回给浏览器。在 MVC 应用程序中，View 仅仅显示信息； Controller 处理和响应用户的输入和交互。例如， Controller 处理路由数据和查询字符串值，然后将这些值传递给 Model ，Model 可以使用这些值去查询数据库。
 
 
 The MVC pattern helps you create apps that separate the different aspects of the app (input logic, business logic, and UI logic), while providing a loose coupling between these elements. The pattern specifies where each kind of logic should be located in the app. The UI logic belongs in the view. Input logic belongs in the controller. Business logic belongs in the model. This separation helps you manage complexity when you build an app, because it enables you to work on one aspect of the implementation at a time without impacting the code of another. For example, you can work on the view code without depending on the business logic code. 
@@ -29,7 +29,7 @@ MVC 模式帮助你创建一个分离不同方面的应用程序(输入逻辑，
 
 We'll be covering all these concepts in this tutorial series and show you how to use them to build a simple movie app. The following image shows the *Models*, *Views* and *Controllers* folders in the MVC project.
 
-我们会在本系列教程中覆盖所有这些概念，并告诉你如何去使用它们构建一个简单的电影应用程序。下面的图片展示了 MVC 项目中的 *Models* 、 *Views* 以及 *Controllers* 文件夹。
+我们会在本系列教程中涵盖所有这些概念，并告诉你如何去使用它们构建一个简单的电影应用程序。下面的图片展示了 MVC 项目中的 *Models* 、 *Views* 以及 *Controllers* 文件夹。
 
 .. image:: adding-controller/_static/mvc1.png
 
@@ -71,7 +71,7 @@ Replace the contents of *Controllers/HelloWorldController.cs* with the following
   
 Every ``public`` method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string.  Note the comments preceding each method:
 
-在 Controller 中的每个 ``public`` 方法可作为一个 HTTP 终结点。在上面的例子中，两个方法都返回 string ,注意它们的注释：
+在 Controller 中的每个 ``public`` 方法都可作为一个 HTTP 端点。在上面的例子中，两个方法都返回 string ,注意它们的注释：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -134,7 +134,7 @@ Let's modify the example slightly so that you can pass some parameter informatio
 
 .. note:: In Visual Studio 2015, when you are running without debugging (Ctl+F5), you don't need to build the app after changing the code. Just save the file, refresh your browser and you can see the changes.
 
-.. note:: 在 Visual Studio 2015 中，当你以非调试模式 (Ctl+F5) 运行，你不需要在修改代码后 Build 应用程序。只需要保存文件，刷新你的浏览器就可以看到改变。
+.. note:: 在 Visual Studio 2015 中，当你以非调试模式 (Ctl+F5) 运行，你不需要在修改代码后生成应用程序。只需要保存文件，刷新你的浏览器就可以看到改变。
 
 Run your app and browse to:
 
@@ -171,7 +171,7 @@ Run the app and enter the following URL:  ``http://localhost:xxx/HelloWorld/Welc
 
 This time the third URL segment  matched the route parameter ``id``. The ``Welcome``  method contains a parameter  ``id`` that matched the URL template in the ``MapRoute`` method. The trailing ``?``  (in ``id?``) indicates the ``id`` parameter is optional.
 
-此时第三个 URL 片段匹配上路由参数 ``id`` 。 ``Welcome`` 方法包含一个和 URL 模板的 ``MapRoute`` 方法 匹配的 ``id`` 参数。跟随的 ``?`` (``id?``) 表示 ``id`` 参数是可选的。
+此时第三个 URL 片段匹配上路由参数 ``id`` 。 ``Welcome`` 方法包含一个与 ``MapRoute`` 内的 URL 模板相匹配的 ``id`` 参数。跟随的 ``?`` (``id?``) 表示 ``id`` 参数是可选的。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
