@@ -3,7 +3,17 @@
 Context headers
 ===============
 
+上下文 Header
+===============
+
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
+
 Background and theory
+---------------------
+
+背景与理论
 ---------------------
 
 In the data protection system, a "key" means an object that can provide authenticated encryption services. Each key is identified by a unique id (a GUID), and it carries with it algorithmic information and entropic material. It is intended that each key carry unique entropy, but the system cannot enforce that, and we also need to account for developers who might change the key ring manually by modifying the algorithmic information of an existing key in the key ring. To achieve our security requirements given these cases the data protection system has a concept of `cryptographic agility <http://research.microsoft.com/apps/pubs/default.aspx?id=121045>`_, which allows securely using a single entropic value across multiple cryptographic algorithms.
@@ -16,6 +26,9 @@ We use this concept of strong PRPs and PRFs to build up a context header. This c
 
 
 CBC-mode encryption + HMAC authentication
+-----------------------------------------
+
+CBC 模式加密 + HMAC 认证
 -----------------------------------------
 
 .. _data-protection-implementation-context-headers-cbc-components:
@@ -111,6 +124,9 @@ The components break down as follows:
 * the HMAC PRF output (76 EB - end).
 
 Galois/Counter Mode encryption + authentication
+-----------------------------------------------
+
+Galois/Counter 模式加密 + 认证
 -----------------------------------------------
 
 The context header consists of the following components:

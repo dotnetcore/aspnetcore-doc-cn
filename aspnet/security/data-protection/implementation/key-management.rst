@@ -3,6 +3,13 @@
 Key Management
 ==============
 
+密钥管理
+==============
+
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
+
 The data protection system automatically manages the lifetime of master keys used to protect and unprotect payloads. Each key can exist in one of four stages.
 
 * Created - the key exists in the key ring but has not yet been activated. The key shouldn't be used for new Protect operations until sufficient time has elapsed that the key has had a chance to propagate to all machines that are consuming this key ring.
@@ -18,6 +25,9 @@ Created, active, and expired keys may all be used to unprotect incoming payloads
 Default key selection
 ---------------------
 
+默认的密钥选择
+---------------------
+
 When the data protection system reads the key ring from the backing repository, it will attempt to locate a "default" key from the key ring. The default key is used for new Protect operations.
 
 The general heuristic is that the data protection system chooses the key with the most recent activation date as the default key. (There's a small fudge factor to allow for server-to-server clock skew.) If the key is expired or revoked, and if the application has not disabled automatic key generation, then a new key will be generated with immediate activation per the :ref:`key expiration and rolling <data-protection-implementation-key-management-expiration>` policy below.
@@ -29,6 +39,9 @@ There is an exception. If the application developer has :ref:`disabled automatic
 .. _data-protection-implementation-key-management-expiration:
 
 Key expiration and rolling
+--------------------------
+
+密钥的过期与启用
 --------------------------
 
 When a key is created, it is automatically given an activation date of { now + 2 days } and an expiration date of { now + 90 days }. The 2-day delay before activation gives the key time to propagate through the system. That is, it allows other applications pointing at the backing store to observe the key at their next auto-refresh period, thus maximizing the chances that when the key ring does become active it has propagated to all applications that might need to use it.
@@ -52,6 +65,9 @@ An administrator can also change the default system-wide, though an explicit cal
 Automatic keyring refresh
 -------------------------
 
+自动刷新密钥环
+-------------------------
+
 When the data protection system initializes, it reads the key ring from the underlying repository and caches it in memory. This cache allows Protect and Unprotect operations to proceed without hitting the backing store. The system will automatically check the backing store for changes approximately every 24 hours or when the current default key expires, whichever comes first.
 
 .. WARNING::
@@ -68,6 +84,9 @@ The sample below demonstrates using the IKeyManager interface to inspect and man
         :linenos:
 
 Key storage
+-----------
+
+密钥存储
 -----------
 
 The data protection system has a heuristic whereby it tries to deduce an appropriate key storage location and encryption at rest mechanism automatically. This is also configurable by the app developer. The following documents discuss the in-box implementations of these mechanisms:
