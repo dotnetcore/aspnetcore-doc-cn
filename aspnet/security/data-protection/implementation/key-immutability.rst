@@ -4,6 +4,10 @@ Key Immutability and Changing Settings
 密钥不可变性与更新配置
 ======================================
 
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
+
 Once an object is persisted to the backing store, its representation is forever fixed. New data can be added to the backing store, but existing data can never be mutated. The primary purpose of this behavior is to prevent data corruption.
 
 一旦对象被持久化到后备存储器，则意味着这将永不可改变。新数据可以添加到后备存储器，但已存在的数据却不会被改变。这么做的主要目的是为了防止数据被破坏。
