@@ -6,6 +6,8 @@
 
 ## 贡献者 ##
 
+### 参与翻译、校对与审稿的贡献者
+
 （以下排序按照贡献者本名的汉语拼音排列）
 
 + 杜海洋(GS)
@@ -20,12 +22,15 @@
 + [王健(冷酒少)](https://github.com/wjhgzx)
 + [王绍明(Shaoming)](https://github.com/ShaomingCode)
 + [魏美娟(初见)](https://github.com/ChujianA)
-+ [吴亦双(莫名)](https://github.com/yesan)（其他类型贡献）
 + [夏申斌](https://github.com/xiashenbin)
 + [谢炀(Kiler)](https://github.com/kiler398)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
 + [赵亮(悲梦)](https://github.com/BeiMeng)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
+
+### 其它类型贡献者
+
++ [吴亦双(莫名)](https://github.com/yesan)
 
 ## 关于 ##
 
