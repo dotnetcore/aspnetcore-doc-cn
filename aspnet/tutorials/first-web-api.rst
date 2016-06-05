@@ -67,7 +67,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 .. image:: first-web-api/_static/add-folder.png
 
-.. note:: 你可以吧模型类放到项目的任何地方, 但是*Models*是约定的默认目录.
+.. note:: 你可以把模型类放到项目的任何地方, 但是 *Models* 是约定的默认目录.
 
 下一步, 添加一个 ``TodoItem`` 类. 右击 *Models* 目录并选择 **Add** > **New Item**.
 
