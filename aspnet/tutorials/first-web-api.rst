@@ -237,7 +237,7 @@ Create
 .. image:: first-web-api/_static/fiddler4.png
 
 
-这是一个简单的 HTTP 会话. 试用 **Raw** 选项卡查看会话数据.
+这是一个简单的 HTTP 会话. 使用 **Raw** 选项卡查看会话数据.
 
 Request::
 
