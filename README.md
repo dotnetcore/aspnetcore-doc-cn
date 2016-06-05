@@ -1,5 +1,7 @@
 # ASP.NET Core Documentation 翻译计划
 
+[![Join the chat at https://gitter.im/dotnetcore/aspnetcore-doc-cn](https://badges.gitter.im/dotnetcore/aspnetcore-doc-cn.svg)](https://gitter.im/dotnetcore/aspnetcore-doc-cn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 本项目为 ASP.NET Core Documentaction 翻译计划的工作项目，非本项目的成员不要直接向仓库推送 Pull Request（正式发表之前，暂不接受外部贡献）。
 
 简体中文翻译文档的正式发布地址暂不对外公布。
