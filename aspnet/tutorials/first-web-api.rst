@@ -80,7 +80,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 .. literalinclude:: first-web-api/sample/src/TodoApi/Models/TodoItem.cs
   :language: c#
 
-添加存储类
+添加仓储类
 ----------------------
 
 *repository* 类是一个封装了数据层的类, 包含了获取数据并映射到实体模型类的业务逻辑。 尽管本例中不使用数据库，但依旧值得去思考 Repository 是如何注入到我们的 Controller 的。在 *Models*  目录下创建 repository 代码。
@@ -99,7 +99,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 生成应用程序确保没有任何编译错误.
 
-注册存储库
+注册仓储库
 -----------------------
 
 定义 repository 接口, 我们可以从使用它的 MVC controller 解耦仓储类，而不是直接在在 controller 里面实例化 ``TodoRepository`` ，我们将会用 ASP.NET Core 内置功能注入 ``ITodoRepository`` ，更多请参考 :doc:`dependency injection </fundamentals/dependency-injection>`.
@@ -129,7 +129,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 .. literalinclude:: first-web-api/sample/src/TodoApi/Controllers/TodoController.cs
   :language: c#
-  :lines: 1-13,67-68
+  :lines: 1-14,67-68
 
 这里定义了一个空的 controller 类. 下一个章节, 我们将添加代码来实现 API.
 
@@ -148,7 +148,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 - ``GET /api/todo``
 - ``GET /api/todo/{id}``
 
-以下是 ``GetAll` 方法 HTTP 响应:
+以下是 ``GetAll`` 方法 HTTP 响应:
 
   HTTP/1.1 200 OK
   Content-Type: application/json; charset=utf-8
@@ -169,7 +169,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 - 把 "[Controller]" 替换为控制器名, 必须是带 "Controller" 后缀的小写名称. 在本示例里面控制器的名字为 "todo"  (不区分大小写). 对于这个例子, controller 的类名是 **Todo**\Controller 并且根名是 "todo". ASP.NET MVC Core 是需要区分大小写的.
 - 如果 ``[HttpGet]``  标签有模版字符串, 附加到路径. 本示例没有模版字符串.
 
-对于 ``GetById`` 方法,  "{id}" 是一个占位符. 在实际的 HTTP 请求中, 客户端会使用 ``todo`` 项的 ID 属性. 作为运行时, 当 MVC 调用 ``GetById`` , 会把 "{id}" 占位置分配到 Url 方法的 ``id`` 参数上去.
+对于 ``GetById`` 方法, 在实际的 HTTP 请求中  "{id}" 是一个占位符, 客户端在运行时会使用 ``todo`` 项的 ID 属性, 当 MVC 调用 ``GetById`` , 会把 "{id}" 占位符分配到 Url 方法的 ``id`` 参数上去.
 
 更换 "api/todo" 的启动 Url
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -179,14 +179,14 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 .. image:: first-web-api/_static/launch.png
 
-了解更多有关请求路由的信息请参考 :doc:`/mvc/controllers/routing`.
+了解更多有关请求路由的信息请参考 :doc:`/mvc/controllers/routing` .
 
 返回值
 ^^^^^^^^^^^^^
 
-``GetAll`` 方法返回一个 CLR 对象. MVC 自动把对象序列化为`JSON <http://www.json.org/>`__ 并把 JSON 对象写入响应消息正文. 响应状态码为 200, 假设没有未处理异常的情况下。（未处理异常一般会被转化为 5xx 错误。）
+``GetAll`` 方法返回一个 CLR 对象. MVC 自动把对象序列化为 `JSON <http://www.json.org/>`__   并把 JSON 对象写入响应消息正文. 响应状态码为 200, 假设没有未处理异常的情况下。（未处理异常一般会被转化为 5xx 错误。）
 
-相反, ``GetById`` 将会返回一个 ``IActionResult`` 类型, 代表一个泛型结果对象. 因为 ``GetById`` 有两个不同的返回值:
+相反, ``GetById`` 将会返回一个 ``IActionResult`` 类型, 代表一个更加通用的结果对象. 因为 ``GetById`` 有两个不同的返回值:
 
 - 如果没有数据项可以匹配 ID, 方法会返回 404 错误，并最终以返回 NotFound 告终。
 - 否则, 方法会返回 200 以及 JSON 响应正文. 并最终以返回 `ObjectResult <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/ObjectResult/index.html>`_ 告终.
@@ -201,18 +201,18 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 .. image:: first-web-api/_static/fiddler1.png
 
-选择 **Composer** 页面. 在 **Parsed** 选项卡中, 输入``http://localhost:port/api/todo``,*port* 是实际的端口号. 点击 **Execute** 发送请求.
+选择 **Composer** 页面. 在 **Parsed** 选项卡中, 输入 ``http://localhost:port/api/todo`` , *port*  是实际的端口号. 点击 **Execute** 发送请求.
 
 .. image:: first-web-api/_static/fiddler2.png
 
-结果会显示在 sessions 列表中. 响应码是200。使用 **Inspectors** 选项开来查看响应内容, 包括请求正文.
+结果会显示在 sessions 列表中. 响应码是200。使用 **Inspectors** 选项卡来查看响应内容, 包括请求正文.
 
 .. image:: first-web-api/_static/fiddler3.png
 
 实现其他的CRUD操作
 ------------------------------------
 
-最后一步是 ``Create``, ``Update``, 以及 ``Delete`` 方法到 controller . 这些方法都是围绕着一个主题，所以我将只显示代码和标注出的主要的区别。
+最后一步是 ``Create``, ``Update``, 以及 ``Delete`` 方法到 controller . 这些方法都是围绕着一个主题，所以我将只列出代码以及标注出主要的区别。
 
 Create
 ^^^^^^
@@ -224,7 +224,8 @@ Create
 
 这是一个 HTTP POST 方法, 用 `[HttpPost] <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/HttpPostAttribute/index.html>`_ 标签声明. `[FromBody] <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/FromBodyAttribute/index.html>`_ 标签告诉 MVC 从 HTTP 请求的正文中获取 to-do 项的值.
 
-`CreatedAtRoute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Controller/index.html>`_ 方法返回 201 响应,这对于在服务器上创建了新的资源的操作的 HTTP POST 方法的标准响应。 ``CreateAtRoute`` 还把 Location 头信息加入到了响应。 Location 头信息指定新创建的 todo 项的 URI。  查看 `10.2.2 201 Created <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_.
+当通过 `CreatedAtRoute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Controller/index.html>`_ 方法向服务器发出 HTTP POST 方法以创建新资源时，将返回标准的 201 响应。
+ ``CreateAtRoute`` 还把 Location 头信息加入到了响应。 Location 头信息指定新创建的 todo 项的 URI。  查看 `10.2.2 201 Created <http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html>`_.
 
 我们使用 Fiddler 来创建和发送一个请求:
 
@@ -268,7 +269,7 @@ Update
   :lines: 44-60
   :dedent: 8
 
-``Update`` 和创建类似 ``Create`` ,但是使用 HTTP PUT. 响应是 `204 (No Content) <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`_.
+``Update`` 类似于 ``Create`` ,但是使用 HTTP PUT. 响应是 `204 (No Content) <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`_.
 根据 HTTP 规范, PUT 请求要求客户端发送整个实体更新，而不仅仅是增量。为了支持局部更新，请使用 HTTP PATCH.
 
 .. image:: first-web-api/_static/put.png
@@ -281,7 +282,7 @@ Delete
   :lines: 62-68
   :dedent: 8
 
-方法返回 204 (无内容) 响应. 这意味着客户端会受到收到 204 响应即使该项目已被删除，或者根本不存在。有两种方法来处理请求删除不存在资源的问题：
+方法返回 204 (无内容) 响应. 这意味着客户端会收到 204 响应即使该项目已被删除，或者根本不存在。有两种方法来处理请求删除不存在资源的问题：
 
 - "Delete" 代表 "删除一个已存在的项", 如果不存在返回 404.
 - "Delete" 代表 "确保该项不在集合中." 如果项目不在集合中, 返回 204.
