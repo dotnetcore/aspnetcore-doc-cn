@@ -3,9 +3,6 @@
 Context headers
 ===============
 
-上下文 Header
-===============
-
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
 校对： 
@@ -131,6 +128,8 @@ Galois/Counter 模式加密 + 认证
 
 The context header consists of the following components:
 
+上下文 header 由以下组成：
+
 * [16 bits] The value 00 01, which is a marker meaning "GCM encryption + authentication".
 * [32 bits] The key length (in bytes, big-endian) of the symmetric block cipher algorithm.
 * [32 bits] The nonce size (in bytes, big-endian) used during authenticated encryption operations. (For our system, this is fixed at nonce size = 96 bits.)
@@ -147,9 +146,13 @@ Example: AES-256-GCM
 
 First, let K\ :sub:`E` = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = ""), where | K\ :sub:`E` | = 256 bits.
 
+首先，假设 K\ :sub:`E` = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "") ，其中 | K\ :sub:`E` | = 256 bits 。
+
 K\ :sub:`E` := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 Next, compute the authentication tag of Enc\ :sub:`GCM` (K\ :sub:`E`, nonce, "") for AES-256-GCM given nonce = 096 and K\ :sub:`E` as above.
+
+接着为 AES-256-GCM 计算 Enc\ :sub:`GCM` (K\ :sub:`E`, nonce, "") 的身份验证标签，其中 nonce = 096， K\ :sub:`E`，如上所述。
 
 result := E7DCCE66DF855A323A6BB7BD7A59BE45
 
@@ -159,6 +162,12 @@ This produces the full context header below::
   00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
   BE 45
 
+这将产生完整的 context header，如下::
+
+  00 01 00 00 00 20 00 00 00 0C 00 00 00 10 00 00
+  00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
+  BE 45
+  
 The components break down as follows:
 
  * the marker (00 01)
@@ -167,3 +176,12 @@ The components break down as follows:
  * the block cipher block size (00 00 00 10)
  * the authentication tag size (00 00 00 10) and 
  * the authentication tag from running the block cipher (E7 DC - end).
+
+分解说明：
+
+ * 特征标记 (00 01)；
+ * 块密钥长度 (00 00 00 20)；
+ * 随机数尺寸 (00 00 00 0C)；
+ * 块密码块尺寸 (00 00 00 10)；
+ * 身份验证标签尺寸 (00 00 00 10)；
+ * 来自运行的块密钥的身份验证标签 (E7 DC - end)。
