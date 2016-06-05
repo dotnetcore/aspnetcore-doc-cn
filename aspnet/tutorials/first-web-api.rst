@@ -99,7 +99,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 生成应用程序确保没有任何编译错误.
 
-注册仓储
+注册仓储 
 -----------------------
 
 定义 repository 接口, 我们可以从使用它的 MVC controller 解耦仓储类，而不是直接在 controller 里面实例化 ``TodoRepository`` ，我们将会用 ASP.NET Core 内置功能注入 ``ITodoRepository`` ，更多请参考 :doc:`dependency injection </fundamentals/dependency-injection>`.
