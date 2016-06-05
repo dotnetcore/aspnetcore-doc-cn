@@ -104,7 +104,7 @@ DELETE /api/todo/{id}  删除指定的item.            无            无
 
 定义 repository 接口, 我们可以从使用它的 MVC controller 解耦仓储类，而不是直接在在 controller 里面实例化 ``TodoRepository`` ，我们将会用 ASP.NET Core 内置功能注入 ``ITodoRepository`` ，更多请参考 :doc:`dependency injection </fundamentals/dependency-injection>`.
 
-这种方式可以更容易地对你的 controller 进行单元测试。单元测试应该注入一个 Mock 或存根版本的 ITodoRepository。通过这样的方式测试范围可以限制在业务逻辑层而非数据访问层。
+这种方式可以更容易地对你的 controller 进行单元测试。单元测试应该注入一个 Mock 或 stub 的 ITodoRepository。通过这样的方式测试范围可以限制在业务逻辑层而非数据访问层。
 
 为了注入 repository 到 controller , 我们必须注册DI容器.打开 *Startup.cs* 文件. 添加以下指令:
 
