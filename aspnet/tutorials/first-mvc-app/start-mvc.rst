@@ -45,13 +45,13 @@ Create a web app
 
 From the Visual Studio **Start** page, tap **New Project**.
 
-从 Visual Studio **起始页** 点击 **新建项目**。
+从 Visual Studio **起始页(Start Page)** 点击 **新建项目(New Project)**。
 
 .. image:: start-mvc/_static/new_project.png
 
 Alternatively, you can use the menus to create a new project. Tap **File > New > Project**.
 
-或者使用菜单创建一个新项目。点击**文件 > 新建 > 项目**。
+或者使用菜单创建一个新项目。点击 **文件(File) > 新建(New) > 项目(Project)**。
 
 .. image:: start-mvc/_static/alt_new_project.png
 
@@ -62,22 +62,22 @@ Complete the **New Project** dialog:
 - Name the project "MvcMovie" (It's important to name the project "MvcMovie" so when you copy code, the namespace will match. )
 - Tap **OK**
 
-完成 **新建项目** 对话框：
+完成 **新建项目(New Project)** 对话框：
 
 - 在左边的窗格, 点击 **Web**
 - 在中间的窗格, 点击 **ASP.NET Core Web Application**
 - 将项目命名为 "MvcMovie" (将项目命名为 "MvcMovie" 非常重要，当你复制代码的时候，命名空间才会匹配 )
-- 点击 **确定**
+- 点击 **确定(OK)**
 
 .. image:: start-mvc/_static/new_project2.png
 
 In the **New ASP.NET Core Web Application - MvcMovie** dialog, tap **Web Application**, and then tap **OK**.
 
-在 **New ASP.NET Core Web Application - MvcMovie** 对话框中，点击 **Web 应用程序**，然后点击 **确定**。
+在 **New ASP.NET Core Web Application - MvcMovie** 对话框中，点击 **Web 应用程序(Web Application)**，然后点击 **确定(OK)**。
 
 .. Warning:: You must have the **Authentication** set to **Individual User Accounts** in this release for the scaffolding engine to work.
 
-.. Warning:: 你必须将 **身份验证** 设置为 **个人用户账户** ，以便基架引擎能正常工作。
+.. Warning:: 你必须将 **身份验证(Authentication)** 设置为 **个人用户账户(Individual User Accounts)** ，以便基架引擎能正常工作。
 
 .. image:: start-mvc/_static/p3.png
 
