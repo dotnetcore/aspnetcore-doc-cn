@@ -34,7 +34,7 @@ Dependency injection (DI) is a technique for achieving loose coupling between ob
 
 When classes are designed with DI in mind, they are more loosely coupled because they do not have direct, hard-coded dependencies on their collaborators. This follows the `Dependency Inversion Principle <http://deviq.com/dependency-inversion-principle/>`_, which states that *"high level modules should not depend on low level modules; both should depend on abstractions."* Instead of referencing specific implementations, classes request abstractions (typically ``interfaces``) which are provided to them when they are constructed. Extracting dependencies into interfaces and providing implementations of these interfaces as parameters is also an example of the `Strategy design pattern <http://deviq.com/strategy-design-pattern/>`_.
 
-当类的设计使用 DI 思想，它们更加松耦合，因为它们没有直接和硬编码的依赖于它们的合作者。这遵循 `依赖倒置原则（Dependency Inversion Principle） <http://deviq.com/dependency-inversion-principle/>`_，其中指出 *"高层模块不应该依赖于低层模块；两者都应该依赖于抽象。"* 类要求在它们构造时向其提供抽象（通常是 ``interfaces`` ），而不是引用特定的实现。提取接口的依赖关系和提供这些接口的实现作为参数也是 `策略设计模式（Strategy design pattern） <http://deviq.com/strategy-design-pattern/>`_ 的一个示例。
+当类的设计使用 DI 思想，它们更加松散耦合，因为它们没有直接硬编码的依赖于它们的合作者。这遵循 `依赖倒置原则（Dependency Inversion Principle） <http://deviq.com/dependency-inversion-principle/>`_，其中指出 *"高层模块不应该依赖于低层模块；两者都应该依赖于抽象。"* 类要求在它们构造时向其提供抽象（通常是 ``interfaces`` ），而不是引用特定的实现。提取接口的依赖关系和提供这些接口的实现作为参数也是 `策略设计模式（Strategy design pattern） <http://deviq.com/strategy-design-pattern/>`_ 的一个示例。
 
 When a system is designed to use DI, with many classes requesting their dependencies via their constructor (or properties), it's helpful to have a class dedicated to creating these classes with their associated dependencies. These classes are referred to as *containers*, or more specifically, `Inversion of Control (IoC) <http://deviq.com/inversion-of-control/>`_ containers or Dependency Injection (DI) containers. A container is essentially a factory that is responsible for providing instances of types that are requested from it. If a given type has declared that it has dependencies, and the container has been configured to provide the dependency types, it will create the dependencies as part of creating the requested instance. In this way, complex dependency graphs can be provided to classes without the need for any hard-coded object construction. In addition to creating objects with their dependencies, containers typically manage object lifetimes within the application.
 
@@ -46,7 +46,7 @@ ASP.NET Core 包含了一个默认支持构造函数注入的简单内置容器�
 
 .. note:: Martin Fowler has written an extensive article on `Inversion of Control Containers and the Dependency Injection Pattern <http://www.martinfowler.com/articles/injection.html>`_. Microsoft Patterns and Practices also has a great description of `Dependency Injection <https://msdn.microsoft.com/en-us/library/dn178469(v=pandp.30).aspx>`__.
 
-.. note:: Martin Fowler 写过一篇全面的文章发表在 `Inversion of Control Containers and the Dependency Injection Pattern <http://www.martinfowler.com/articles/injection.html>`_. Microsoft Patterns and Practices 也有丰富的描述关于 `Dependency Injection <https://msdn.microsoft.com/en-us/library/dn178469(v=pandp.30).aspx>`__.
+.. note:: Martin Fowler 写过一篇全面的文章发表在 `Inversion of Control Containers and the Dependency Injection Pattern <http://www.martinfowler.com/articles/injection.html>`_. Microsoft 模式与实践小组（Microsoft Patterns and Practices）也有丰富的描述关于 `Dependency Injection <https://msdn.microsoft.com/en-us/library/dn178469(v=pandp.30).aspx>`__.
 
 .. note:: This article covers Dependency Injection as it applies to all ASP.NET applications. Dependency Injection within MVC controllers is covered in :doc:`/mvc/controllers/dependency-injection`.
 
@@ -137,7 +137,7 @@ Note that ``CharacterRepository`` requests an ``ApplicationDbContext`` in its co
 
 .. note:: Creating the requested object, and all of the objects it requires, and all of the objects those require, is sometimes referred to as an `object graph`. Likewise, the collective set of dependencies that must be resolved is typically referred to as a `dependency tree` or `dependency graph`.
 
-.. note:: 创建所需要的对象，和它需要的所有对象，以及那些对象需要的所有对象，有时称为一个 `object graph`。同样的，必须解析依赖关系的集合通常称为 `dependency tree` 或者 `dependency graph`。
+.. note:: 创建请求对象，和它需要的所有对象，以及那些对象需要的所有对象，有时称为一个 `对象图（object graph）`。同样的，必须解析依赖关系的集合通常称为 `依赖树（dependency tree）` 或者 `依赖图（dependency graph）`。
 
 
 In this case, both ``ICharacterRepository`` and in turn ``ApplicationDbContext`` must be registered with the services container in ``ConfigureServices`` in ``Startup``. ``ApplicationDbContext`` is configured with the call to the extension method ``AddDbContext<T>``. The following code shows the registration of the ``CharacterRepository`` type.
@@ -196,7 +196,7 @@ To demonstrate the difference between these lifetime and registration options, c
 
 We implement these interfaces using a single class, ``Operation``, that accepts a ``Guid`` in its constructor, or uses a new ``Guid`` if none is provided.
 
-我们实现这些接口使用一个类 ``Operation``，它的构造函数接收一个 ``Guid`` 或使用一个新的 ``Guid`` 如果没有提供的话。
+我们使用 ``Operation`` 类实现这些接口。它的构造函数接收一个 ``Guid``，若未提供则生成一个新的 ``Guid``。
 
 Next, in ``ConfigureServices``, each type is added to the container according to its named lifetime:
 
@@ -258,7 +258,7 @@ Request Services represent the services you configure and request as part of you
 
 Generally, you shouldn't use these properties directly, preferring instead to request the types your classes you require via your class's constructor, and letting the framework inject these dependencies. This yields classes that are easier to test (see :doc:`/testing/index`) and are more loosely coupled.
 
-通常，你不应该直接使用这些属性，而更倾向于通过类的构造函数请求需要的类的类型，并且让框架来注入依赖关系。这将会生成更方便测试 （查看 :doc:`/testing/index`） 和更松耦合的类。
+通常，你不应该直接使用这些属性，而更倾向于通过类的构造函数请求需要的类的类型，并且让框架来注入依赖关系。这将会生成更方便测试 （查看 :doc:`/testing/index`） 和更松散耦合的类。
 
 .. note:: Prefer requesting dependencies as constructor parameters to accessing the ``RequestServices`` collection. 
 
