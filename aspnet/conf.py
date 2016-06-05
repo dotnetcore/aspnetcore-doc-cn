@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ASP.NET'
-copyright = str(datetime.date.today().year) + ', Microsoft. Translation by dotNET Core Studying Group'
+copyright = str(datetime.date.today().year) + ', Microsoft. Translated by dotNET Core Studying Group'
 author = 'Microsoft'
 
 # The version info for the project you're documenting, acts as replacement for
