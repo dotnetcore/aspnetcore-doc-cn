@@ -1,15 +1,15 @@
 Working with SQL Server LocalDB    
 ===============================
-Ê¹ÓÃ SQL Server LocalDB
+ä½¿ç”¨ SQL Server LocalDB
 ================
 
-·­Òë£º `ÎºÃÀ¾ê(³õ¼û) <http://github.com/ChujianA>`_
+ç¿»è¯‘ï¼š `é­ç¾å¨Ÿ(åˆè§) <http://github.com/ChujianA>`_
 
-Ğ£¶Ô£º `
+æ ¡å¯¹ï¼š `
 
  The ``ApplicationDbContext`` class handles the task of connecting to the database and mapping ``Movie`` objects to database records. The database context is registered with the :doc:`Dependency Injection  </fundamentals/dependency-injection>` container in the ``ConfigureServices`` method in the *Startup.cs* file:
 
- ``ApplicationDbContext`` Àà¸ºÔğÁ´½ÓÊı¾İ¿â²¢½« ``Movie`` ¶ÔÏóºÍÊı¾İ¼ÇÂ¼½øĞĞÓ³Éä¡£ *Startup.cs* ÎÄ¼şÖĞ£¬Êı¾İ¿âÉÏÏÂÎÄÊÇÔÚ ``ConfigureServices`` ·½·¨ÖĞÓÃ :doc:`Dependency Injection  </fundamentals/dependency-injection>` ÈİÆ÷½øĞĞ×¢ÈëµÄ¡£
+ ``ApplicationDbContext`` ç±»è´Ÿè´£é“¾æ¥æ•°æ®åº“å¹¶å°† ``Movie`` å¯¹è±¡å’Œæ•°æ®è®°å½•è¿›è¡Œæ˜ å°„ã€‚ *Startup.cs* æ–‡ä»¶ä¸­ï¼Œæ•°æ®åº“ä¸Šä¸‹æ–‡æ˜¯åœ¨ ``ConfigureServices`` æ–¹æ³•ä¸­ç”¨ :doc:`Dependency Injection  </fundamentals/dependency-injection>` å®¹å™¨è¿›è¡Œæ³¨å…¥çš„ã€‚
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -19,7 +19,7 @@ Working with SQL Server LocalDB
 
 The ASP.NET Core :doc:`Configuration </fundamentals/configuration>` system reads the ``ConnectionString``. For local development, it gets the connection string from the *appsettings.json* file:
 
-ASP.NET Core  :doc:`Configuration </fundamentals/configuration>` ÏµÍ³¶ÁÈ¡ ``ConnectionString`` ¡£ÎªÁË±¾µØ¿ª·¢£¬´Ó *appsettings.json* ÎÄ¼şÖĞ»ñÈ¡Á¬½Ó×Ö·û´®¡£
+ASP.NET Core  :doc:`Configuration </fundamentals/configuration>` ç³»ç»Ÿè¯»å– ``ConnectionString`` ã€‚ä¸ºäº†æœ¬åœ°å¼€å‘ï¼Œä» *appsettings.json* æ–‡ä»¶ä¸­è·å–è¿æ¥å­—ç¬¦ä¸²ã€‚
 .. literalinclude:: start-mvc/sample/src/MvcMovie/appsettings.json
   :language: javascript
   :lines: 1-6
@@ -27,7 +27,7 @@ ASP.NET Core  :doc:`Configuration </fundamentals/configuration>` ÏµÍ³¶ÁÈ¡ ``Conn
 
 When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server. See :doc:`Configuration </fundamentals/configuration>` .
 
- µ±Äã²¿ÊğÓ¦ÓÃ³ÌĞòµ½²âÊÔ·şÎñÆ÷»òÕßÉú²ú·şÎñÆ÷Ê±£¬Äã¿ÉÒÔÊ¹ÓÃ»·¾³±äÁ¿»òÕßÁíÒ»ÖÖ·½·¨À´ÉèÖÃÊµ¼ÊÊı¾İ¿âµÄÁ¬½Ó×Ö·û´®¡£¿´ :doc:`Configuration </fundamentals/configuration>` ¡£
+ å½“ä½ éƒ¨ç½²åº”ç”¨ç¨‹åºåˆ°æµ‹è¯•æœåŠ¡å™¨æˆ–è€…ç”Ÿäº§æœåŠ¡å™¨æ—¶ï¼Œä½ å¯ä»¥ä½¿ç”¨ç¯å¢ƒå˜é‡æˆ–è€…å¦ä¸€ç§æ–¹æ³•æ¥è®¾ç½®å®é™…æ•°æ®åº“çš„è¿æ¥å­—ç¬¦ä¸²ã€‚çœ‹ :doc:`Configuration </fundamentals/configuration>` ã€‚
 
 SQL Server Express LocalDB
 --------------------------------
@@ -36,17 +36,17 @@ SQL Server Express LocalDB
 
 LocalDB is a lightweight version of the SQL Server Express Database Engine that is targeted for program development. LocalDB starts on demand and runs in user mode, so there is no complex configuration. By default, LocalDB database creates "\*.mdf" files in the *C:/Users/<user>* directory.
 
-LocalDBÊÇÒ»¸öÕë¶Ô³ÌĞò¿ª·¢µÄÇáÁ¿¼¶°æ±¾µÄSQL Server ExpressÊı¾İ¿âÒıÇæ£¬ÕâÊÇÕë¶Ô³ÌĞò¿ª·¢¡£LocalDB°´ĞèÆô¶¯²¢ÇÒÔÚÓÃ»§Ä£Ê½ÏÂÔËĞĞ£¬ËùÒÔËüÃ»ÓĞ¸´ÔÓµÄÅäÖÃ¡£Ä¬ÈÏÇé¿öÏÂ£¬LocalDBÊı¾İ¿âÔÚ *C:/Users/<user>* Ä¿Â¼ÏÂ´´½¨ "\*.mdf" ÎÄ¼ş¡£
+LocalDBæ˜¯ä¸€ä¸ªé’ˆå¯¹ç¨‹åºå¼€å‘çš„è½»é‡çº§ç‰ˆæœ¬çš„SQL Server Expressæ•°æ®åº“å¼•æ“ï¼Œè¿™æ˜¯é’ˆå¯¹ç¨‹åºå¼€å‘ã€‚LocalDBæŒ‰éœ€å¯åŠ¨å¹¶ä¸”åœ¨ç”¨æˆ·æ¨¡å¼ä¸‹è¿è¡Œï¼Œæ‰€ä»¥å®ƒæ²¡æœ‰å¤æ‚çš„é…ç½®ã€‚é»˜è®¤æƒ…å†µä¸‹ï¼ŒLocalDBæ•°æ®åº“åœ¨ *C:/Users/<user>* ç›®å½•ä¸‹åˆ›å»º "\*.mdf" æ–‡ä»¶ã€‚
 
 - From the **View** menu, open **SQL Server Object Explorer** (SSOX).
 
-´Ó **View** ²Ëµ¥ÖĞ£¬´ò¿ªSQL Server¶ÔÏó×ÊÔ´¹ÜÀíÆ÷£¨**SQL Server Object Explorer** £¬(SSOX)£©.
+ä» **View** èœå•ä¸­ï¼Œæ‰“å¼€SQL Serverå¯¹è±¡èµ„æºç®¡ç†å™¨ï¼ˆ**SQL Server Object Explorer** ï¼Œ(SSOX)ï¼‰.
 
 .. image:: working-with-sql/_static/ssox.png
 
 - Right click on the ``Movie`` table **> View Designer**
 
-ÓÒ»÷ ``Movie`` ±í **> ÊÓÍ¼Éè¼ÆÆ÷£¨View Designer£©**
+å³å‡» ``Movie`` è¡¨ **> è§†å›¾è®¾è®¡å™¨ï¼ˆView Designerï¼‰**
 
 .. image:: working-with-sql/_static/design.png
 
@@ -54,13 +54,13 @@ LocalDBÊÇÒ»¸öÕë¶Ô³ÌĞò¿ª·¢µÄÇáÁ¿¼¶°æ±¾µÄSQL Server ExpressÊı¾İ¿âÒıÇæ£¬ÕâÊÇÕë¶Ô³ÌĞ
 
 Note the key icon next to ``ID``. By default, EF will make a property named ``ID`` the primary key.
 
-×¢ÒâÔ¿³×Í¼±êºóÃæµÄ ``ID``¡£Ä¬ÈÏÇé¿öÏÂ£¬EF½«ÃüÃûÎª ``ID`` µÄÊôĞÔ×÷ÎªÖ÷¼ü¡£
+æ³¨æ„é’¥åŒ™å›¾æ ‡åé¢çš„ ``ID``ã€‚é»˜è®¤æƒ…å†µä¸‹ï¼ŒEFå°†å‘½åä¸º ``ID`` çš„å±æ€§ä½œä¸ºä¸»é”®ã€‚
 
 .. comment: add this when we have it for MVC 6: For more information on EF and MVC, see Tom Dykstra's excellent tutorial on MVC and EF.
 
 - Right click on the ``Movie`` table **> View Data**
 
--ÓÒ»÷ ``Movie`` ±í>**> ²é¿´Êı¾İ£¨View Data£©**
+-å³å‡» ``Movie`` è¡¨>**> æŸ¥çœ‹æ•°æ®ï¼ˆView Dataï¼‰**
 
 .. image:: working-with-sql/_static/ssox2.png
 
@@ -68,19 +68,19 @@ Note the key icon next to ``ID``. By default, EF will make a property named ``ID
 
 Seed the database
 --------------------------
-Ìî³äÊı¾İ¿â
+å¡«å……æ•°æ®åº“
 -------------
 
 Create a new class named ``SeedData`` in the *Models* folder. Replace the generated code with the following:
 
-ÔÚ *Models* ÎÄ¼ş¼ĞÖĞ´´½¨Ò»¸öÃû½Ğ ``SeedData`` µÄĞÂÀà¡£ÓÃÒÔÏÂ´úÂëÌæ»»Éú³ÉµÄ´úÂë¡£
+åœ¨ *Models* æ–‡ä»¶å¤¹ä¸­åˆ›å»ºä¸€ä¸ªåå« ``SeedData`` çš„æ–°ç±»ã€‚ç”¨ä»¥ä¸‹ä»£ç æ›¿æ¢ç”Ÿæˆçš„ä»£ç ã€‚
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/SeedData.cs
   :language: c#
   :lines: 3-62
 
 Notice if there are any movies in the DB, the seed initializer returns.
 
-×¢ÒâÈç¹ûÊı¾İ¿âÉÏÏÂÎÄÖĞ´æÔÚmovies£¬Ìî³ä³õÊ¼»¯Æ÷·µ»Ø¡£
+æ³¨æ„å¦‚æœæ•°æ®åº“ä¸Šä¸‹æ–‡ä¸­å­˜åœ¨moviesï¼Œå¡«å……åˆå§‹åŒ–å™¨è¿”å›ã€‚
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/SeedData.cs
   :language: c#
   :lines: 18-21
@@ -89,7 +89,7 @@ Notice if there are any movies in the DB, the seed initializer returns.
 
 Add the seed initializer to the end of the ``Configure`` method in the *Startup.cs* file: 
 
- *Startup.cs* ÎÄ¼şÖĞ£¬ÔÚ ``Configure`` ·½·¨µÄ×îºóÌí¼ÓÌî³ä³õÊ¼»¯Æ÷¡£
+ *Startup.cs* æ–‡ä»¶ä¸­ï¼Œåœ¨ ``Configure`` æ–¹æ³•çš„æœ€åæ·»åŠ å¡«å……åˆå§‹åŒ–å™¨ã€‚
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
   :lines: 80-88
@@ -98,14 +98,14 @@ Add the seed initializer to the end of the ``Configure`` method in the *Startup.
 
 Test the app
 
-²âÊÔÓ¦ÓÃ³ÌĞò
+æµ‹è¯•åº”ç”¨ç¨‹åº
 
 - Delete all the records in the DB. You can do this with the delete links in the browser or from SSOX.
 
-- ÔÚÊı¾İ¿âÖĞÉ¾³ıËùÓĞµÄ¼ÇÂ¼¡£Äã¿ÉÒÔÔÚä¯ÀÀÆ÷ÖĞÊ¹ÓÃÉ¾³ıÁ´½Ó»òÕßÔÚ SQL Server¶ÔÏó×ÊÔ´¹ÜÀíÆ÷£¨SSOX£©ÖĞ×öÕâ¼şÊÂ¡£
+- åœ¨æ•°æ®åº“ä¸­åˆ é™¤æ‰€æœ‰çš„è®°å½•ã€‚ä½ å¯ä»¥åœ¨æµè§ˆå™¨ä¸­ä½¿ç”¨åˆ é™¤é“¾æ¥æˆ–è€…åœ¨ SQL Serverå¯¹è±¡èµ„æºç®¡ç†å™¨ï¼ˆSSOXï¼‰ä¸­åšè¿™ä»¶äº‹ã€‚
 - Force the app to initialize (call the methods in the ``Startup`` class) so the seed method runs. To force initialization, IIS Express must be stopped and restarted. You can do this with any of the following approaches:
 
-- Ç¿ÖÆÓ¦ÓÃ³ÌĞò³õÊ¼»¯£¨ÔÚ ``Startup`` ÀàÖĞµ÷ÓÃ·½·¨£©£¬ÈÃÌî³ä·½·¨ÔËĞĞ¡£ÎªÁË³õÊ¼»¯£¬IIS Express±ØĞëÍ£Ö¹£¬È»ºóÖØĞÂÆô¶¯¡£¿ÉÒÔÓÃÏÂÁĞµÄÈÎºÎÒ»¸ö·½·¨À´ÊµÏÖ£º
+- å¼ºåˆ¶åº”ç”¨ç¨‹åºåˆå§‹åŒ–ï¼ˆåœ¨ ``Startup`` ç±»ä¸­è°ƒç”¨æ–¹æ³•ï¼‰ï¼Œè®©å¡«å……æ–¹æ³•è¿è¡Œã€‚ä¸ºäº†åˆå§‹åŒ–ï¼ŒIIS Expresså¿…é¡»åœæ­¢ï¼Œç„¶åé‡æ–°å¯åŠ¨ã€‚å¯ä»¥ç”¨ä¸‹åˆ—çš„ä»»ä½•ä¸€ä¸ªæ–¹æ³•æ¥å®ç°ï¼š
 .. comment this no longer works  - ^<Shift>F5 (Hold down the control and Shift keys and tap F5)
   - Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop* Site*
   - .. image:: working-with-sql/_static/iisExIcon.png
@@ -115,12 +115,12 @@ Test the app
 
 .. Note:: If the database doesn't initialize, put a break point on the line ``if (context.Movie.Any())`` and start debugging.
 
-.. Note:: Èç¹ûÊÇÊı¾İ¿âÃ»ÓĞ³õÊ¼»¯£¬ÔÚ ``if (context.Movie.Any())`` ÕâĞĞÉèÖÃ¶Ïµã£¬²¢¿ªÊ¼µ÷ÊÔ
+.. Note:: å¦‚æœæ˜¯æ•°æ®åº“æ²¡æœ‰åˆå§‹åŒ–ï¼Œåœ¨ ``if (context.Movie.Any())`` è¿™è¡Œè®¾ç½®æ–­ç‚¹ï¼Œå¹¶å¼€å§‹è°ƒè¯•
 
 .. image:: working-with-sql/_static/dbg.png
 
 The app shows the seeded data.
 
-Ó¦ÓÃ³ÌĞòÏÔÊ¾ÁË±»Ìî³äµÄÊı¾İ
+åº”ç”¨ç¨‹åºæ˜¾ç¤ºäº†è¢«å¡«å……çš„æ•°æ®
 
 .. image:: working-with-sql/_static/m55.png
