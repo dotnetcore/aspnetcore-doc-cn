@@ -91,9 +91,9 @@ Installing the HttpPlatformHandler Module
 安装 HttpPlatformHandler 组件
 -----------------------------------------
 
-The :ref:`HttpPlatformHandler <http-platformhandler>` is an IIS 7.5+ module which is responsible for process management of HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the HttpPlatformHandler Module for IIS is manual. You will need to install the latest 64-bit version of the `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ on a regular (not Nano) machine. After installing you will need to copy the following files:
+The HttpPlatformHandler is an IIS 7.5+ module which is responsible for process management of HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the HttpPlatformHandler Module for IIS is manual. You will need to install the latest 64-bit version of the `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ on a regular (not Nano) machine. After installing you will need to copy the following files:
 
-:ref:`HttpPlatformHandler <http-platformhandler>` 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 HttpPlatformHandler 组件。你需要在你的常规机(不是 Nano Server) 上安装最新的 64 位版本的 `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ 。安装之后你需要复制以下文件：
+HttpPlatformHandler 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 HttpPlatformHandler 组件。你需要在你的常规机(不是 Nano Server) 上安装最新的 64 位版本的 `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ 。安装之后你需要复制以下文件：
 
 * *%windir%\\System32\\inetsrv\\HttpPlatformHandler.dll*
 * *%windir%\\System32\\inetsrv\\config\\schema\\httpplatform_schema.xml*
