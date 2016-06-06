@@ -1,8 +1,8 @@
-ASP.NET Core MVC 入门
-=====================
+ASP.NET Core MVC 和 Visual Studio 入门
+======================================
 
-Getting started with ASP.NET Core MVC 
-=====================================
+Getting started with ASP.NET Core MVC and Visual Studio 
+=======================================================
 
 
 作者： `Rick Anderson`_
