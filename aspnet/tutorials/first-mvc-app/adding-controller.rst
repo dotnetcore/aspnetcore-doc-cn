@@ -1,4 +1,4 @@
-添加一个 Controller
+添加控制器
 ===================
 
 Adding a controller
@@ -8,7 +8,7 @@ Adding a controller
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_
 
 The Model-View-Controller (MVC) architectural pattern separates an app into three main components: the **M**\odel, the **V**\iew, and the **C**\ontroller. The MVC pattern helps you create apps that are testable and easier to maintain and update than traditional monolithic apps. MVC-based apps contain:
 
