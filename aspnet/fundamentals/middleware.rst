@@ -16,6 +16,10 @@ Middleware
   :local:
   :depth: 1
 
+.. contents:: 章节:
+  :local:
+  :depth: 1
+
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/middleware/sample>`__
 
 `访问或下载样例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/middleware/sample>`__
@@ -32,7 +36,7 @@ Middleware are software components that are assembled into an application pipeli
 
 Request delegates are configured using `Run <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/RunExtensions/index.html>`__, `Map <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/MapExtensions/index.html?highlight=microsoft.aspnet.builder.mapextensions#Microsoft.AspNet.Builder.MapExtensions.Map>`__, and `Use <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/UseExtensions/index.html?highlight=microsoft.aspnet.builder.useextensions#Microsoft.AspNet.Builder.UseExtensions.Use>`__ extension methods on the `IApplicationBuilder <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/IApplicationBuilder/index.html>`_ type that is passed into the ``Configure`` method in the ``Startup`` class. An individual request delegate can be specified in-line as an anonymous method, or it can be defined in a reusable class. These reusable classes  are `middleware`, or `middleware components`. Each middleware component in the request pipeline is responsible for invoking the next component in the pipeline, or short-circuiting the chain if appropriate.
 
-请求委托通过使用 `IApplicationBuilder <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/IApplicationBuilder/index.html>`_ 类型的 `Run <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/RunExtensions/index.html>`__、`Map <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/MapExtensions/index.html?highlight=microsoft.aspnet.builder.mapextensions#Microsoft.AspNet.Builder.MapExtensions.Map>`__ 以及 `Use <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/UseExtensions/index.html?highlight=microsoft.aspnet.builder.useextensions#Microsoft.AspNet.Builder.UseExtensions.Use>`__ 扩展方法来配置，并通过 ``Configure`` 方法传给 ``Startup`` 类。每个单独的请求委托都可以被指定内嵌为一个匿名方法，或其定义在一个可重用的类中。这些可重用的类被称作``中间件``或``中间件组件``。每个位于请求管道内的中间件组件负责调用管道中下一个组件，如果必要或也会短路这个调用链。
+请求委托通过使用 `IApplicationBuilder <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/IApplicationBuilder/index.html>`_ 类型的 `Run <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/RunExtensions/index.html>`__、`Map <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/MapExtensions/index.html?highlight=microsoft.aspnet.builder.mapextensions#Microsoft.AspNet.Builder.MapExtensions.Map>`__ 以及 `Use <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/UseExtensions/index.html?highlight=microsoft.aspnet.builder.useextensions#Microsoft.AspNet.Builder.UseExtensions.Use>`__ 扩展方法来配置，并通过 ``Configure`` 方法传给 ``Startup`` 类。每个单独的请求委托都可以被指定内嵌为一个匿名方法，或其定义在一个可重用的类中。这些可重用的类被称作``中间件``或``中间件组件``。每个位于请求管道内的中间件组件负责调用管道中下一个组件，或适时短路调用链。
 
 :doc:`/migration/http-modules` explains the difference between request pipelines in ASP.NET Core and the previous versions and provides more middleware samples.
 
@@ -93,11 +97,11 @@ The `static file module <https://docs.asp.net/projects/api/en/latest/autoapi/Mic
 
 A request that is handled by the static file module will short circuit the pipeline. (see :doc:`static-files`.) If the request is not handled by the static file module, it's passed on to the `Identity module <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/BuilderExtensions/index.html#methods>`__, which performs authentication. If the request is not authenticated, the pipeline is short circuited. If the request does not fail authentication, the last stage of this pipeline is called, which is the MVC framework.
 
-被静态文件模块处理的请求会在管道中被短路（参见 :doc:`static-files`）。如果请求未被交由静态文件模块来处理，那么它就会被传给 `Identity 模块 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/BuilderExtensions/index.html#methods>`__ 执行身份验证。如果其你去未通过身份验证，则管道将被短路。如果请求的身份验证没有失败，则管道的最后一站便是 MVC 框架。
+被静态文件模块处理的请求会在管道中被短路（参见 :doc:`static-files`）。如果请求未被交由静态文件模块来处理，那么它就会被传给 `Identity 模块 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/BuilderExtensions/index.html#methods>`__ 执行身份验证。如果未通过身份验证，则管道将被短路。如果请求的身份验证没有失败，则管道的最后一站是 MVC 框架。
 
 .. note:: The order in which you add middleware components is generally the order in which they take effect on the request, and then in reverse for the response. This can be critical to your app’s security, performance and functionality. In the code above, the `static file middleware <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/StaticFileExtensions/index.html>`__ is called early in the pipeline so it can handle requests and short circuit without going through unnecessary components. The authentication middleware is added to the pipeline before anything that handles requests that need to be authenticated. Exception handling must be registered before other middleware components in order to catch exceptions thrown by those components. 
 
-.. note:: 你添加中间件组件的顺序通常会影响到它们处理请求的顺序，然后在响应时则以相反的顺序返回。这就是你的应用程序安全、性能和功能的关键之处。在上面的代码中，`静态文件中间件 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/StaticFileExtensions/index.html>`__ 在管道的早期被调用，这样就能处理并及时短路管道，以避免请求走到不必要的组件中。身份验证中间件被添加在所有需要身份认证的处理请求的前面。异常处理必须被注册在其它中间件之前以便捕获其它组件的异常。
+.. note:: 你添加中间件组件的顺序通常会影响到它们处理请求的顺序，然后在响应时则以相反的顺序返回。这对应用程序安全、性能和功能很关键。在上面的代码中，`静态文件中间件 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/StaticFileExtensions/index.html>`__ 在管道的早期被调用，这样就能处理并及时短路管道，以避免请求走到不必要的组件中。身份验证中间件被添加在所有需要身份认证的处理请求的前面。异常处理必须被注册在其它中间件之前以便捕获其它组件的异常。
 
 The simplest possible ASP.NET application sets up a single request delegate that handles all requests. In this case, there isn't really a request "pipeline", so much as a single anonymous function that is called in response to every HTTP request.
 
@@ -152,7 +156,7 @@ Run，Map 与 Use
 
 You configure the HTTP pipeline using `Run <https://docs.asp.snet/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/RunExtensions/index.html>`__, `Map <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/MapExtensions/index.html>`__,  and `Use <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/UseExtensions/index.html>`__. The ``Run`` method short circuits the pipeline (that is, it will not call a ``next`` request delegate). Thus, ``Run`` should only be called at the end of your pipeline. ``Run`` is a convention, and some middleware components may expose their own Run[Middleware] methods that should only run at the end of the pipeline. The following two middleware are equivalent as the ``Use`` version doesn't use the ``next`` parameter:
 
-你可以通过 `Run <https://docs.asp.snet/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/RunExtensions/index.html>`__、`Map <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/MapExtensions/index.html>`__ 和 `Use <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/UseExtensions/index.html>`__ 配置 HTTP 管道。``Run`` 方法将会短路管道（因为它不会调用 ``next`` 请有委托）。``Run`` 是一种惯例，有些中间件组件可能会暴露他们自己的 Run[Middleware] 方法，而这些方法只能在管道末尾处运行。下面这两个中间件等价的，其中有用到 ``Use`` 的版本没有使用 ``next`` 参数：
+你可以通过 `Run <https://docs.asp.snet/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/RunExtensions/index.html>`__、`Map <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/MapExtensions/index.html>`__ 和 `Use <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/UseExtensions/index.html>`__ 配置 HTTP 管道。``Run`` 方法将会短路管道（因为它不会调用 ``next`` 请求委托）。``Run`` 是一种惯例，有些中间件组件可能会暴露他们自己的 Run[Middleware] 方法，而这些方法只能在管道末尾处运行。下面这两个中间件等价的，其中有用到 ``Use`` 的版本没有使用 ``next`` 参数：
 
 .. literalinclude:: middleware/sample/src/MiddlewareSample/Startup.cs
 	:language: c#
@@ -162,7 +166,7 @@ You configure the HTTP pipeline using `Run <https://docs.asp.snet/projects/api/e
 
 .. note:: The `IApplicationBuilder  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/IApplicationBuilder/index.html>`__ interface exposes a single ``Use`` method, so technically they're not all *extension* methods.
 
-.. note:: `IApplicationBuilder  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/IApplicationBuilder/index.html>`__ 接口向外暴露了一个 ``Use`` 方法，因此从技术上来说他们并不是*扩展*方法。
+.. note:: `IApplicationBuilder  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/IApplicationBuilder/index.html>`__ 接口向外暴露了一个 ``Use`` 方法，因此从技术上来说它们并不完全是*扩展*方法。
 
 We've already seen several examples of how to build a request pipeline with ``Use``. ``Map*`` extensions are used as a convention for branching the pipeline. The current implementation supports branching based on the request's path, or using a predicate. The ``Map`` extension method is used to match request delegates based on a request's path. ``Map`` simply accepts a path and a function that configures a separate middleware pipeline. In the following example, any request with the base path of ``/maptest`` will be handled by the pipeline configured in the ``HandleMapTest`` method.
 
