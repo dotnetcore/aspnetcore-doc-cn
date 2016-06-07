@@ -1,49 +1,182 @@
-使用 Visual Studio 发布一个 Azure 云 Web 应用程序 
-===============================================
-
-作者 `Erik Reitan`_
+使用 Visual Studio 发布一个 ASP.NET Core Azure 云 Web 应用程序 
+============================================================
+ 
+作者 `Rick Anderson`_
 翻译 `谢炀（kiler）`_
 校对 
 
-本文描述了如何使用 Visual Studio 将一个 Web 应用程序发布到 Azure 云。
+.. contents:: 章节:
+  :local:
+  :depth: 1
 
-**注意:** 为了完成这个教程, 你必须拥有一个微软 Azure 帐号。如果没有账户, 你可以 `激活你的 MSDN 订阅用户权益`_ 或者 `注册免费试用版`_。
+设置开发环境
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _`激活你的 MSDN 订阅用户权益`: http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+- `安装最新版本的 Azure SDK for Visual Studio 2015 <http://go.microsoft.com/fwlink/?linkid=518003>`__. 如果你之前没有装过 Visual Studio 2015，SDK 会安装 Visual Studio 2015。
 
-.. _`注册免费试用版`: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F
+.. note:: 如果你的机器之前任何依赖都没有安装过，SDK 的安装时间将会超过30分钟。
 
+- 安装 `.NET Core + Visual Studio tooling <http://go.microsoft.com/fwlink/?LinkID=798306>`__
 
-创建一个新的 ASP.NET Web 应用程序或者打开一个已存在的 ASP.NETWeb 应用程序。
+- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__. 你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益<https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__.
 
-1. 在 Visual Studio 的 **Solution Explorer** 里面, 右击项目选择 **Publish**。
+传建一个 Web 应用程序
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: publish-to-azure-webapp-using-vs/_static/01-Publish.png
+在 Visual Studio 的 **Start** 页面, 点击 **New Project**　。
 
-2. 在 **Publish Web** 弹出对话框里面, 点击 **Microsoft Azure Web Apps** 并且登入你的 Azure 订阅账户.
+.. image:: first-mvc-app/start-mvc/_static/new_project.png
 
-.. image:: publish-to-azure-webapp-using-vs/_static/02-PublishWebdb.png
+另外, 你也可以通过菜单新建项目. 点击 **File > New > Project**.
 
-3. 在 **Select Existing Web App** 对话框中点击 **New** 在 Azure 云中创建一个新的 Web 应用程序.
+.. image:: first-mvc-app/start-mvc/_static/alt_new_project.png
 
-.. image:: publish-to-azure-webapp-using-vs/_static/03-SelectExistingWebAppdb.png
+完成 **New Project** 对话框:
 
-4. 输入站点名和区域.作为可选项你可以创建一个新的数据库服务器, 当然如果你以前创建过了,就可以直接使用. 当你设置完成以后, 点击 **Create**.
+- 在右侧面板, 点击 **Web**
+- 在中部面板, 点击 **ASP.NET Core Web Application (.NET Core)**
+- 点击 **OK**
 
-.. image:: publish-to-azure-webapp-using-vs/_static/04-CreateWebAppOnMicrosoftAzuredb.png
+.. image:: publish-to-azure-webapp-using-vs/_static/new_prj.png
 
-数据库服务器是一种宝贵的资源。最好使用现有的服务器来测试和开发。这个阶段**不会**验证数据库密码, 如果你输入了一个错误的值, 在你的 Web 应用程序视图访问数据库之前你是不会收到任何错误消息的.
+在 **New ASP.NET Core Web Application (.NET Core)** 对话框中:
 
-5. 在 **Publish Web** 对话框的 **Connection** 选项卡, 点击 **Publish**.
+- 点击 **Web Application**
+- 确认 **Authentication** 设置为 **Individual User Accounts**
+- 确认 **Host in the cloud** **没有** 被选中
+- 点击 **OK**
 
-.. image:: publish-to-azure-webapp-using-vs/_static/05-PublishWebdb.png
+.. image:: publish-to-azure-webapp-using-vs/_static/noath.png
 
-你可以在 Visual Studio 的 **Web Publish Activity** 的窗体查看发布进度.
+本地测试应用程序
+^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: publish-to-azure-webapp-using-vs/_static/06-WebPublishActivityWindow.png
+- 使用 **Ctl-F5** 运行程序
+- 点击 **About** 和 **Contact** 链接. 根据您的设备显示尺寸的大小，可能需要单击导航图标以显示链接
 
-当发布到 Azure 的工作完成以后, 你的 Web 应用程序就可以挂载在 Azure 上通过浏览器直接访问了. 
+.. image:: publish-to-azure-webapp-using-vs/_static/show.png
 
-.. image:: publish-to-azure-webapp-using-vs/_static/07-Browser.png
+- 点击 **Register** 注册一个新用户. 您可以使用虚构的电子邮件。当你点击提交后，会收到以下错误:
 
+.. image:: publish-to-azure-webapp-using-vs/_static/mig.png
 
+可以通过两个方式来修复这个问题:
+
+- 点击 **Apply Migrations** 当页面发生更新的时候, 刷新屏幕
+- 在项目目录下运行该命令行 :
+
+    dotnet ef database update
+
+应用程序显示用于注册用户的 **邮件注册** 以及 **注销** 链接。
+
+.. image:: publish-to-azure-webapp-using-vs/_static/hello.png
+
+发布应用程序到 Azure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+右击项目选择 **Publish**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/pub.png
+
+在 **Publish** 弹出对话框里, 点击 **Microsoft Azure App Service**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/maas1.png
+
+点击Tap **New** 输入一个新的资源组. 创建新的资源组目的是为了可以方便地删除所有您在本教程中创建在Azure资源。 
+
+.. image:: publish-to-azure-webapp-using-vs/_static/newrg1.png
+
+创建新的资源组以及应用服务计划:
+
+- 点击 **New** 创建资源组并且输入新资源组的名称
+- 点击 **New** 创建应用服务计划并且选择一个你附近的地址. 你可以保留默认生成的名字
+- 点击 **Explore additional Azure services** 创建新的数据库
+
+.. image:: publish-to-azure-webapp-using-vs/_static/cas.png
+
+- 点击绿色的 **+** 图标来创建一个 SQL 数据库
+
+.. image:: publish-to-azure-webapp-using-vs/_static/sql.png
+
+- 在 **Configure SQL Database** 弹出对话框中点击  **New**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/conf.png
+
+- 你可以保持默认 **Server Name**
+- 输入管理员用户密码, 点击 **OK**. 记住用户名密码。
+
+.. image:: publish-to-azure-webapp-using-vs/_static/dbrick.png
+
+- 在  **Configure SQL Database** 弹出对话框中点击 **OK** 
+
+- 在 **Create App Service** 弹出对话框中点击 **Create**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/create_as.png
+
+- 在 **Publish** 弹出对话框中点击 **Next**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/pubc.png
+
+- 在 **Publish** 弹出对话框的 **Settings** 环节:
+
+  - 选中 **Use this connection string at runtime**
+  - 选中 **Apply this migration on publish**
+
+  .. image:: publish-to-azure-webapp-using-vs/_static/pubs.png
+
+- 点击 **Publish**
+
+Visual Studio 将会把你的应用程序部署到 Azure 云，并在浏览器中启动你的云应用。
+
+在 Azure 云中测试你应用程序
+-----------------------
+
+- 测试 **About** 以及 **Contact** 链接
+- 注册新用户
+
+.. image:: publish-to-azure-webapp-using-vs/_static/final.png
+
+更新应用程序
+--------------------
+
+- 编辑 *Views/Home/About.cshtml* Razor 视图文件. 修改内容, 例如 :
+
+.. code-block:: html
+  :emphasize-lines: 7
+
+  @{
+      ViewData["Title"] = "About";
+  }
+  <h2>@ViewData["Title"].</h2>
+  <h3>@ViewData["Message"]</h3>
+
+  <p>My updated about page.</p>
+
+- 右击项目选择 **Publish**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/pub.png
+
+- 点 **Publish** 并在 Azure 云端应用中验证你的修改。
+
+清理
+--------------
+
+如果你完成了应用程序的设置了, 登录 `Azure 面板 <https://portal.azure.com/>`__ 并删除应用。
+
+- 登录 `Azure 面板 <https://portal.azure.com/>`__
+- 在右侧双击 **Resource groups** 并点击你创建的资源组。
+
+.. image:: publish-to-azure-webapp-using-vs/_static/portalrg.png
+
+- 在 **Resource group** 里双击 **Delete**
+- 输入资源名并点击 **Delete**
+
+.. image:: publish-to-azure-webapp-using-vs/_static/rgd.png
+
+下一步
+-----------
+
+- :doc:`/tutorials/first-mvc-app/start-mvc`
+- :doc:`/conceptual-overview/aspnet`
+- :doc:`/fundamentals/index`
+ 
