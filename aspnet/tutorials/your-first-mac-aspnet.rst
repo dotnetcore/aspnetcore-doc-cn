@@ -1,7 +1,7 @@
 Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 =====================================================================
 
-用Visual Studio Code在Mac平台创建第一个ASP.NET Core Application
+用 Visual Studio Code 在 macOS 上创建首个 ASP.NET Core 应用程序
 =====================================================================
 
 作者 `Daniel Roth`_ 、`Steve Smith`_ 以及 `Rick Anderson`_
@@ -12,7 +12,7 @@ Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 
 This article will show you how to write your first ASP.NET Core application on a Mac.
 
-本文指导你如何在 Mac 平台上创建你第一个 ASP.NET Core 应用程序。
+本节将展示如何在 macOS 平台上创建首个 ASP.NET Core 应用程序。
 
 .. contents:: Sections:
   :local:
