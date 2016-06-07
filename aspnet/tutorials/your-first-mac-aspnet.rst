@@ -120,7 +120,7 @@ Running Locally Using Kestrel
 
 The sample is configured to use :ref:`Kestrel <kestrel>` for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
 
-本示例配置使用 :ref:`Kestrel <kestrel>` Web 服务器，可在 *project.json* 文件中查看配置，它被指定为依赖项。
+本示例配置使用 :ref:`Kestrel <kestrel>` Web 服务器，可在 *project.json* 文件的 ``dependencies`` 节点中看到该项配置。
 
 .. code-block:: json
   :emphasize-lines: 11-12
