@@ -1,7 +1,7 @@
-Your First ASP.NET Core Application on a Mac Using Visual Studio Code
+用 Visual Studio Code 在 macOS 上创建首个 ASP.NET Core 应用程序
 =====================================================================
 
-用 Visual Studio Code 在 macOS 上创建首个 ASP.NET Core 应用程序
+Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 =====================================================================
 
 作者 `Daniel Roth`_ 、`Steve Smith`_ 以及 `Rick Anderson`_
@@ -92,7 +92,7 @@ In the left navigation bar, there are four icons, representing four viewlets:
 
 The Explore viewlet allows you to quickly navigate within the folder system, as well as easily see the files you are currently working with. It displays a badge to indicate whether any files have unsaved changes, and new folders and files can easily be created (without having to open a separate dialog window). You can easily Save All from a menu option that appears on mouse over, as well.
 
-在资源管理器视图下你可以快速浏览文件系统，并且能很容易看到当前正在使用的文件。它会显示一个标记来表明哪些文件尚未保存变更，创建新文件夹和文件也很轻松（通过资源管理器视图）创建。当然，如果鼠标经过菜单项，“全部保存”按钮就会出现，点击即可保存全部变更。
+在资源管理器视图下你可以快速浏览文件系统，并且能很容易看到当前正在使用的文件。它会使用一个符号来标识哪些文件尚未保存变更，同时创建新文件夹和文件也很容易（通过资源管理器视图）。当然如果鼠标经过菜单项，「全部保存」按钮就会出现，点击即可保存全部变更。
 
 The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.
 
@@ -204,7 +204,7 @@ You can deploy to Azure Web Apps directly using Git.
 
 - `Create a new Web App <https://tryappservice.azure.com/>`__ in Azure. If you don't have an Azure account, you can `create a free trial <http://azure.microsoft.com/en-us/pricing/free-trial/>`__. 
 
-- `在 Azure 创建一个 Web 应用程序 <https://tryappservice.azure.com/>`__ 。如果你没有Azure账号，`你可以免费创建一个试用账号 <http://azure.microsoft.com/en-us/pricing/free-trial/>`__ 。
+- `在 Azure 创建一个 Web 应用程序 <https://tryappservice.azure.com/>`__ 。如果你没有 Azure 账号，`你可以免费创建一个试用账号 <http://azure.microsoft.com/en-us/pricing/free-trial/>`__ 。
 
 - Configure the Web App in Azure to support `continuous deployment using Git <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__.
 
