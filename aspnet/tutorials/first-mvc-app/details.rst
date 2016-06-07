@@ -1,27 +1,19 @@
 
-Examining the Details and Delete methods
+æ£€æŸ¥è‡ªåŠ¨ç”Ÿæˆçš„Detailæ–¹æ³•å’ŒDeleteæ–¹æ³•
 ======================================================
-²éÑ¯DetailsºÍDelete·½·¨
 
-By `Rick Anderson`_
+ä½œè€… `Rick Anderson`_
+ç¿»è¯‘ `kiler(è°¢ç‚€)`_
 
-×÷Õß `Rick Anderson`_
-
-·­Òë£º `ÎºÃÀ¾ê(³õ¼û) <http://github.com/ChujianA>`_ 
-Ğ£¶Ô£º   
-
-Open the Movie controller and examine the ``Details`` method:
-
-´ò¿ªMovie¿ØÖÆÆ÷²¢ÇÒ²é¿´ ``Details`` ·½·¨£º
+æ‰“å¼€ Movie æ§åˆ¶å™¨å¹¶æŸ¥çœ‹ ``Details`` æ–¹æ³•:
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
  :lines: 29-44
  :dedent: 8
 
-The MVC scaffolding engine that created this action method adds a comment showing a HTTP request that invokes the method. In this case it's a GET request with three URL segments, the ``Movies`` controller, the ``Details`` method and a ``id`` value. Recall these segments are defined in Startup.
+åˆ›å»ºè¿™ä¸ª action æ–¹æ³•çš„ MVC è„šæ‰‹æ¶å¼•æ“æ·»åŠ äº†ä¸€æ®µå¤‡æ³¨è¡¨æ˜ HTTP è¯·æ±‚ä¼šè°ƒç”¨è¿™ä¸ªæ–¹æ³•ã€‚åœ¨æœ¬ä¾‹ä¸­ GET è¯·æ±‚è¢«åˆ†ä¸ºäº†3éƒ¨åˆ† ï¼Œ ``Movies`` controller,  ``Details`` æ–¹æ³• ä»¥åŠ ``id`` å‚æ•°å€¼ã€‚å¦‚ä½•è§£æè¯·æ±‚çš„æ–¹å¼å®šä¹‰åœ¨ Startup é‡Œé¢ã€‚
 
-MVC scaffoldingÒıÇæÌí¼ÓÁËÒ»¸ö×¢ÊÍÏÔÊ¾£¬ÔÚµ÷ÓÃÒ»¸öHTTPÇëÇó·½·¨ÖĞ¡£ÕâÖÖÇé¿öÏÂ£¬GETÇëÇóÓĞ3¸öURL¶Î£¬ ``Movies`` ¿ØÖÆÆ÷£¬ ``Details`` ·½·¨ºÍÒ»¸ö ``id`` Öµ¡£¼ÇµÃÕâÈı¶Î¶¼ÊÇÔÚStartupÖĞ¶¨ÒåµÄ¡£
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -29,46 +21,30 @@ MVC scaffoldingÒıÇæÌí¼ÓÁËÒ»¸ö×¢ÊÍÏÔÊ¾£¬ÔÚµ÷ÓÃÒ»¸öHTTPÇëÇó·½·¨ÖĞ¡£ÕâÖÖÇé¿öÏÂ£¬GET
   :dedent: 8
   :emphasize-lines: 5
 
-Code First makes it easy to search for data using the ``SingleOrDefaultAsync`` method. An important security feature built into the method is that the code verifies that the search method has found a movie before the code tries to do anything with it. For example, a hacker could introduce errors into the site by changing the URL created by the links from  *http://localhost:xxxx/Movies/Details/1* to something like  *http://localhost:xxxx/Movies/Details/12345* (or some other value that doesn't represent an actual movie). If you did not check for a null movie, the app would throw an exception.
+ä»£ç å…ˆè¡Œï¼ˆCode Firstï¼‰æ¨¡å¼ä½¿ç”¨ ``SingleOrDefaultAsync``æ–¹æ³•æ›´æ˜“äºæœç´¢æ•°æ®ã€‚æ–¹æ³•å†…ç½®äº†ä¸€ä¸ªé‡è¦çš„å®‰å…¨ç‚¹ï¼Œå³åœ¨ä»£ç è¯•å›¾å¤„ç†å½±ç‰‡è®°å½•ä¹‹å‰ä»¥ç¡®ä¿æ£€ç´¢æ–¹æ³•æ‰¾åˆ°ä¸€æ¡å½±ç‰‡è®°å½•ã€‚ä¾‹å¦‚ï¼Œé»‘å®¢å¯ä»¥é€šè¿‡ä¿®æ”¹åœ°å€ï¼Œç”± *http://localhost:xxxx/Movies/Details/1*  ä¿®æ”¹ä¸º *http://localhost:xxxx/Movies/Details/12345* ï¼ˆæˆ–è€…å…¶ä»–åœ¨å®é™…å½±ç‰‡åº“ä¸­ä¸å­˜åœ¨çš„å‚æ•°å€¼ï¼‰ã€‚å¦‚æœæ‚¨ä¸æ£€æŸ¥å½±ç‰‡æ˜¯å¦ä¸ºç©ºï¼Œåº”ç”¨ç¨‹åºå°†ä¼šæŠ›å‡ºå¼‚å¸¸ã€‚
+ 
 
-Code FirstÊ¹ÓÃ ``SingleOrDefaultAsync`` ·½·¨ËÑË÷Êı¾İ±È½ÏÈİÒ×¡£Ò»¸öÖØÒª°²È«¹¦ÄÜÄÚÖÃµ½ÁË·½·¨ÖĞ¡£´úÂëÑéÖ¤ËÑË÷·½·¨ÒÑ¾­ÕÒµ½µÄmovie£¬È»ºóÔÙÖ´ĞĞÆäËû´úÂë¡£ÀıÈç£¬ºÚ¿Í¿ÉÒÔÔÚÍøÕ¾ÖĞÍ¨¹ı¸ü¸Ä *http://localhost:xxxx/Movies/Details/1* µ½ *http://localhost:xxxx/Movies/Details/1* £¨»òÕßÒ»Ğ©ÆäËüÖµ£¬²¢²»´ú±íÊµ¼ÊµÄmovie£©´Ó¶øÊ¹µÃÁ´½ÓURL³öÏÖ´íÎó¡£Èç¹ûÄúÃ»ÓĞ¼ì²âÊÇ·ñÊÇ¿Õmovie£¬Ó¦ÓÃ³ÌĞò¾Í»áÅ×³öÒ»¸ö´íÎó¡£
-
-Examine the Delete and DeleteConfirmed methods.
-
-²é¿´DeleteºÍDeleteConfirmed·½·¨
+æŸ¥çœ‹ Delete æ–¹æ³•å’Œ DeleteConfirmed çš„æ–¹æ³•
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
  :lines: 119-145
  :dedent: 8
 
-Note that the ``HTTP GET Delete`` method doesn't delete the specified movie, it returns a view of the movie where you can submit (HttpPost) the deletion. Performing a delete operation in response to a GET request (or for that matter, performing an edit operation, create operation, or any other operation that changes data) opens up a security hole.
+éœ€è¦æ³¨æ„çš„æ˜¯ ``HTTP GET Delete`` æ–¹æ³•ä¸åˆ é™¤æŒ‡å®šçš„å½±ç‰‡ï¼Œå®ƒè¿”å›ä¸€ä¸ªä½ å¯ä»¥æäº¤ (HttpPost) åˆ é™¤æ“ä½œçš„  Movie çš„è§†å›¾ï¼Œæ‚¨å¯ä»¥æ‰§è¡Œï¼ˆHttpPostï¼‰åˆ é™¤æ–¹æ³•æ¥å®Œæˆåˆ é™¤æ“ä½œã€‚å¦‚æœåœ¨ä¸€ä¸ª GET è¯·æ±‚çš„çš„å“åº”ä¸­ï¼ˆç±»ä¼¼çš„ï¼Œæ‰§è¡Œç¼–è¾‘æ“ä½œï¼Œåˆ›å»ºæ“ä½œï¼Œæˆ–ä»»ä½•å…¶ä»–æ›´æ”¹æ•°æ®çš„æ“ä½œï¼‰æ‰§è¡Œåˆ é™¤æ“ä½œï¼Œå°†ä¼šå¸¦æ¥äº†ä¸€ä¸ªå®‰å…¨æ¼æ´ã€‚ 
 
-×¢Òâ ``HTTP GET Delete`` ·½·¨²»»áÉ¾³ıÖ¸¶¨µÄmovie,Ëü·µ»ØÄúÌá½» (HttpPost) É¾³ımovieµÄÒ»¸öÊÓÍ¼¡£Ê¹ÓÃGETÇëÇóÖ´ĞĞÉ¾³ı²Ù×÷£¨»òÕßÖ´ĞĞ±à¼­²Ù×÷£¬´´½¨²Á×ß»òÕß¸ü¸ÄÊı¾İµÄÈÎºÎÆäËû²Ù×÷£©¿ª±ÙÒ»¸ö°²È«Â©¶´¡£
-
-The ``[HttpPost]`` method that deletes the data is named ``DeleteConfirmed`` to give the HTTP POST method a unique signature or name. The two method signatures are shown below:
-
-É¾³ıÊı¾İµÄ ``[HttpPost]`` ·½·¨±»ÃüÃûÎª ``DeleteConfirmed`` ·½·¨£¬ÎªÁË¸øHTTP POST·½·¨Ò»¸öÎ¨Ò»Ç©Ãû»òÃû³Æ¡£ÕâÁ½¸ö·½·¨µÄÇ©ÃûÈçÏÂÍ¼ËùÊ¾£º
-
+åˆ é™¤æ•°æ®çš„ ``[HttpPost]`` æ–¹æ³•ï¼Œè¢«å‘½åä¸º DeleteConfirmed ã€‚ç»™ HTTP POST æ–¹æ³•ä¸€ä¸ªå”¯ä¸€çš„ç­¾åæˆ–åç§°ã€‚è¿™ä¸¤ä¸ªæ–¹æ³•çš„ç­¾åå¦‚ä¸‹ï¼š
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
  :lines: 119-120,135-136,139
  :dedent: 8
 
-The common language runtime (CLR) requires overloaded methods to have a unique parameter signature (same method name but different list of parameters). However, here you need two ``Delete`` methods -- one for GET and one for POST -- that both have the same parameter signature. (They both need to accept a single integer as a parameter.)
+å…¬å…±è¯­è¨€è¿è¡Œåº“ï¼ˆCLRï¼‰éœ€è¦é‡è½½æ–¹æ³•æœ‰ä¸€ä¸ªç‹¬ç‰¹çš„ç­¾åï¼ˆç›¸åŒçš„æ–¹æ³•åï¼Œä½†ä¸åŒçš„å‚æ•°åˆ—è¡¨ï¼‰ã€‚ç„¶è€Œï¼Œåœ¨è¿™é‡Œï¼Œä½ éœ€è¦ä¸¤ä¸ª ``Delete`` æ–¹æ³• ä¸€ä¸ª GET è¯·æ±‚ä¸€ä¸ª POSTè¯·æ±‚ï¼Œå¹¶ä¸”å®ƒä»¬éƒ½å…·æœ‰ç›¸åŒçš„ç­¾åã€‚ï¼ˆå®ƒä»¬éƒ½éœ€è¦æ¥å—ä¸€ä¸ªæ•´æ•°ä½œä¸ºå‚æ•°ï¼‰ã€‚
 
+ä¸ºäº†è§£å†³è¯¥é—®é¢˜ï¼Œæœ‰2ç§è§£å†³æ–¹æ¡ˆå¯ä»¥é€‰æ‹©ã€‚å…¶ä¸­ä¸€ç§æ–¹æ³•æ˜¯ï¼Œèµ‹äºˆæ–¹æ³•ä¸åŒçš„åç§°ã€‚è¿™å°±æ˜¯è„šæ‰‹æ¶æœºåˆ¶åœ¨å‰é¢çš„ä¾‹å­æ‰€åšçš„äº‹æƒ…ã€‚ç„¶è€Œï¼Œè¿™å¼•å…¥äº†ä¸€ä¸ªå°é—®é¢˜ï¼š ASP.NET æ˜ å°„ url å„éƒ¨åˆ†æ¥æ‰§è¡Œæ–¹æ³•ï¼Œå¦‚æœä½ é‡å‘½åä¸€ä¸ªæ–¹æ³•ï¼Œè·¯ç”±é€šå¸¸å°†æ— æ³•æ‰¾åˆ°è¯¥æ–¹æ³•ã€‚è§£å†³çš„åŠæ³•å°±æ˜¯ä½ çœ‹åˆ°çš„ä¾‹å­ä¸­æ‰€åšçš„ï¼Œå³ä¸ºDeleteConfirmedæ–¹æ³•æ·»åŠ ActionNameï¼ˆ"Delete"ï¼‰å±æ€§ã€‚è¿™å°†å½±å“åˆ°è·¯ç”±ç³»ç»Ÿï¼ŒåŒ…å«/ Delete / URLçš„ POSTè¯·æ±‚ä¼šè°ƒç”¨ DeleteConfirmed çš„æ–¹æ³•ã€‚
 
-¹«¹²ÓïÑÔÔËĞĞÊ±ÒªÇóÖØÔØ·½·¨ÓĞÒ»¸öÎ¨Ò»µÄ²ÎÊıÇ©Ãû£¨ÏàÍ¬·½·¨Ãû²»Í¬²ÎÊıÁĞ±í£©¡£µ«ÊÇ£¬ÕâÀïÄãĞèÒªÁ½¸ö ``Delete`` ·½·¨ -- Ò»¸öGET·½·¨ºÍÒ»¸öPOST·½·¨--ËûÃÇ¶¼¾ßÓĞÏàÍ¬µÄ²ÎÊıÇ©Ãû¡£
-
-
-There are two approaches to this problem, one is to give the methods different names. That's what the scaffolding mechanism did in the preceding example. However, this introduces a small problem: ASP.NET maps segments of a URL to action methods by name, and if you rename a method, routing normally wouldn't be able to find that method. The solution is what you see in the example, which is to add the ``ActionName("Delete")`` attribute to the ``DeleteConfirmed`` method. That attribute performs mapping for the routing system so that a URL that includes /Delete/ for a POST request will find the ``DeleteConfirmed`` method.
-
-ÕâÀïÓĞÁ½¸ö°ì·¨½â¾öÕâÒ»ÎÊÌâ¡£Ò»¸öÊÇ¸ø·½·¨²»Í¬µÄÃû³Æ¡£ÕâÊÇ¿ò¼Ü´úÂëÔÚÇ°ÃæÊ¾ÀıÖĞÊ¹ÓÃµÄ·½·¨¡£È»ºó£¬Õâ¸ö´øÀ´ÁËÒ»¸öĞ¡ÎÊÌâ£ºASP.NET½«URLµÄ²¿·Ö°´ÕÕÃû³ÆÓ³Éäµ½²Ù×÷·½·¨£¬Â·ÓÉroutingÍ¨³£²»ÄÜ¹»ÕÒµ½ÄÇ¸ö·½·¨¡£½â¾ö·½·¨ÔÚÄãµÄÊ¾ÀıÖĞ¿ÉÒÔ¿´µ½£¬½« ``ActionName("Delete")`` ÊôĞÔÌí¼Óµ½ ``DeleteConfirmed``  ·½·¨ÖĞ¡£ÊôĞÔÖ´ĞĞrouting(Â·ÓÉ)ÏµÍ³µÄÓ³Éä£¬ÒÔÖÁÓÚÒ»¸öURL°üº¬ /Delete/ µÄPOSTÇëÇó½«ÕÒµ½ ``DeleteConfirmed`` ·½·¨¡£
-
-Another common work around for methods that have identical names and signatures is to artificially change the signature of the POST method to include an extra (unused) parameter. That's what we did in a previous post when we added the ``notUsed`` parameter. You could do the same thing here for the ``[HttpPost] Delete`` method:
-
-ÁíÒ»¸ö³£¼ûµÄ·½·¨À´±ÜÃâÏàÍ¬Ãû³ÆºÍÇ©Ãû£¬ÊÇÈËÎªµÄ¸ü¸ÄPOST·½·¨µÄÇ©Ãû°üÀ¨Ò»¸ö¶îÍâ£¨Ã»ÓĞÓÃµÄ£©²ÎÊı¡£ÔÚÖ®Ç°ÎÄÕÂÖĞµ±ÎÒÃÇÌí¼Ó ``notUsed`` µÄ²ÎÊıÊ±×öµÄÊÂÇé¡£Äã¿ÉÒÔÔÚÕâ¸ö ``[HttpPost] Delete`` ·½·¨ÖĞ×öÏàÍ¬µÄÊÂÇé£º
+å¦å¤–ä¸€ä¸ªè§£å†³æ–¹æ¡ˆæ˜¯äººä¸ºåœ°æ”¹å˜ Post æ–¹æ³•çš„ç­¾åï¼Œä½¿å…¶åŒ…å« ``æœªä½¿ç”¨`` çš„å‚æ•°ã€‚ä¹Ÿå¯ä»¥å¯¹ ``[HttpPost] Delete`` æ–¹æ³•åšåŒæ ·çš„äº‹:
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
@@ -76,6 +52,3 @@ Another common work around for methods that have identical names and signatures 
  :dedent: 8
 
 .. ToDo - Next steps, but it really needs to start with Tom's EF/MVC Core
-
-.. ToDo - ÏÂÒ»½Ú£¬¿ªÊ¼Tom's EF/MVC Core
-
