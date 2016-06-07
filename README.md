@@ -17,6 +17,7 @@
 （以下排序按照贡献者本名的汉语拼音排列）
 
 + [高会军(布莱恩特)](https://github.com/iyacontrol)
++ [郭远博(tkb)](https://github.com/Farb)
 + [何镇汐](https://github.com/UtilCore)
 + [凌军州(喵喵)](https://github.com/XCoderLing)
 + [刘浩杨(L)](https://github.com/liuhaoyang)
