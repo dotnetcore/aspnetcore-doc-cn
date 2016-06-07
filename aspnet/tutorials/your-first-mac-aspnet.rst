@@ -26,7 +26,7 @@ Setting Up Your Development Environment
 
 To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__.
 
-在开发机器上下载并且安装 `.NET Core`_ 和带有 `C# 扩展 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__ 的 `Visual Studio Code` 。
+在开发机中下载并安装 `.NET Core`_ 、和 `Visual Studio Code` 及 `C# 扩展 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__ （在 VS Code 中通过命令 ``ext install csharp`` 安装，译者注）。
 
 Scaffolding Applications Using Yeoman
 -------------------------------------
@@ -41,7 +41,7 @@ Follow the instruction in :doc:`/client-side/yeoman` to create an ASP.NET Core p
 Developing ASP.NET Applications on a Mac With Visual Studio Code
 ----------------------------------------------------------------
 
-在 Mac 平台上用 Visual Studio Code 开发 ASP.NET 应用程序
+在 macOS 上使用 Visual Studio Code 开发 ASP.NET 应用程序
 ----------------------------------------------------------------
 
 - Start **Visual Studio Code**
@@ -52,19 +52,19 @@ Developing ASP.NET Applications on a Mac With Visual Studio Code
 
 - Tap **File > Open** and navigate to your Empty ASP.NET Core app
 
-- 打开 **File > Open** ，然后选中之前创建的空 ASP.NET Core 应用程序
+- 打开 **File > Open** ，导航到先前所创建的空 ASP.NET Core 应用程序
 
 .. image:: your-first-mac-aspnet/_static/file-open.png
 
 From a Terminal / bash prompt, run ``dotnet restore`` to restore the project's dependencies. Alternately, you can enter ``command shift p`` in Visual Studio Code and then type ``dot`` as shown:
 
-通过终端或 Bash，利用 ``doenet restore`` 还原项目依赖。或者在 Visual Studio Code 中键入 ``command shift p`` ，然后输入 ``dot``，如下图所示：
+通过终端 / Bash 提示符，执行 ``dotnet restore`` 还原项目依赖（在终端命令行中切换至项目所在目录，而后运行 ``dotnet restore`` ，译者注）。或者在 Visual Studio Code 中键入 ``command shift p`` （也可用 ``F1`` 代替），然后输入 ``dot``，如下图所示：
 
 .. image:: your-first-mac-aspnet/_static/dotnet-restore.png
 
 You can run commands directly from within Visual Studio Code, including ``dotnet restore`` and any tools referenced in the *project.json* file, as well as custom tasks defined in *.vscode/tasks.json*.
 
-你可在 Visual Studio Code 中直接运行指令，这些指令包括 ``dotnet restore`` 、所有在 *project.json* 文件中所引用的工具以及定义于 *.vscode/tasks.json* 中的自定义任务。
+你可以在 Visual Studio Code 中直接运行指令，这些指令包括 ``dotnet restore`` 、*project.json* 文件中所引用的所有工具以及定义于 *.vscode/tasks.json* 中的自定义任务。
 
 This empty project template simply displays "Hello World!". Open *Startup.cs* in Visual Studio Code to see how this is configured:
 
@@ -83,7 +83,7 @@ In the left navigation bar, there are four icons, representing four viewlets:
 - Git
 - Debug
 
-在左边的导航栏有四个图标，代表四种视图
+左侧导航栏中的四个图标分别代表四种功能
 
 - 资源管理器
 - 搜索
@@ -92,15 +92,15 @@ In the left navigation bar, there are four icons, representing four viewlets:
 
 The Explore viewlet allows you to quickly navigate within the folder system, as well as easily see the files you are currently working with. It displays a badge to indicate whether any files have unsaved changes, and new folders and files can easily be created (without having to open a separate dialog window). You can easily Save All from a menu option that appears on mouse over, as well.
 
-在资源管理器视图下你可以快速浏览文件系统，并且能很容易看到当前正在使用的文件。它会显示一个标记来表明哪些文件尚未保存变更，新文件夹和文件也能轻松（通过资源管理器视图）创建（而不用单独打开一个窗体对话框）。当然，如果鼠标经过菜单选项曲，“全部保存”按钮就会出现，点击即可保存全部变更。
+在资源管理器视图下你可以快速浏览文件系统，并且能很容易看到当前正在使用的文件。它会显示一个标记来表明哪些文件尚未保存变更，创建新文件夹和文件也很轻松（通过资源管理器视图）创建。当然，如果鼠标经过菜单项，“全部保存”按钮就会出现，点击即可保存全部变更。
 
 The Search viewlet allows you to quickly search within the folder structure, searching filenames as well as contents.
 
-在搜索视图中可以在文档结构中对文件名和内容快速查找。
+搜索视图允许你在目录结构中快速搜索文件名及内容。
 
 *Code* will integrate with Git if it is installed on your system. You can easily initialize a new repository, make commits, and push changes from the Git viewlet.
 
-如果你已安装 GIT，*Code* 将与之关联。在 Git 视图中你很容易初始化一个新 repository，进行提交和推送变更.
+如果你已安装 GIT，VSCode 将集成它。在 Git 视图中，你可以轻松初始化一个新的版本库，进行提交和推送变更。
 
 .. image:: your-first-mac-aspnet/_static/vscode-git.png
 
@@ -110,7 +110,7 @@ The Debug viewlet supports interactive debugging of applications.
 
 Finally, Code's editor has a ton of great features. You'll notice unused using statements are underlined and can be removed automatically by using ``command .`` when the lightbulb icon appears. Classes and methods also display how many references there are in the project to them. If you're coming from Visual Studio, Code includes many of the same keyboard shortcuts, such as ``command k c`` to comment a block of code, and ``command k u`` to uncomment.
 
-最后，VSCode 的编辑器还提供了一堆非常棒的特性，比如你会注意到未使用的 using 语句会带有下划线，当出现电灯图标时可使用 ``command .`` 自动移除之。类和方法同样可显示本项目中的引用次数。如果你曾使用过 Visual Studio，那么你会发现 VSCode 中包含了许多一样的快捷键，比如注释代码用 ``command k c`` 用来注释代码，去除注释用 ``command k u`` 。
+最后，VSCode 的编辑器还提供了一些非常棒的特性，比如你会注意到未使用的 using 语句会带有下划线，当出现电灯图标时可使用 ``command .`` 自动移除之。类和方法同样可显示本项目中的引用次数。如果你曾使用过 Visual Studio，那么你会发现 VSCode 中包含了许多一样的快捷键，比如用 ``command k c`` 注释代码，用 ``command k u`` 去除注释。
 
 Running Locally Using Kestrel
 -----------------------------
@@ -120,7 +120,7 @@ Running Locally Using Kestrel
 
 The sample is configured to use :ref:`Kestrel <kestrel>` for the web server. You can see it configured in the *project.json* file, where it is specified as a dependency.
 
-下例 Web 服务器被配置为使用 :ref:`Kestrel <kestrel>` ，可在 *project.json* 文件中查看配置，它使用了依赖倒置。
+本示例配置使用 :ref:`Kestrel <kestrel>` Web 服务器，可在 *project.json* 文件中查看配置，它被指定为依赖项。
 
 .. code-block:: json
   :emphasize-lines: 11-12
@@ -190,7 +190,7 @@ Add a commit message and tap enter or tap the checkmark icon to commit the stage
 
 Git is tracking changes, so if you make an update to a file, the Git viewlet will display the files that have changed since your last commit.
 
-GIT 会跟踪变更，如果更新了文件，GIT 视图能比较并显示出最后一题提交本次是变更后的文件的差异。
+GIT 会跟踪变更，所以如果你更新了文件，Git视图将显示上次提交之后修改过的文件。
 
 Initialize Azure Website
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -208,7 +208,7 @@ You can deploy to Azure Web Apps directly using Git.
 
 - Configure the Web App in Azure to support `continuous deployment using Git <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__.
 
-- 在 Azure 将 Web 应用程序设置为 `通过 Git 持续部署 <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__ 。
+- 配置 Azure Web 应用程序支持使用 `Git 持续部署 <http://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/>`__ 。
 
 Record the Git URL for the Web App from the Azure portal:
 
@@ -218,7 +218,7 @@ Record the Git URL for the Web App from the Azure portal:
 
 - In a Terminal window, add a remote named ``azure`` with the Git URL you noted previously.
 
-- 在终端窗口中，用之前记下的 Git URL 远程新建一个名为 ``azure`` 的仓库。
+- 在终端窗口中，用之前记下的 Git URL 新建一个名为 ``azure`` 的远程主机。
 
   - ``git remote add azure https://ardalis-git@firstaspnetcoremac.scm.azurewebsites.net:443/firstaspnetcoremac.git``
 
@@ -228,13 +228,13 @@ Record the Git URL for the Web App from the Azure portal:
 
   - ``git push azure master`` to deploy. 
   
-  - 使用``git push azure master`` 部署。
+  - 部署： ``git push azure master`` 。
 
   .. image:: your-first-mac-aspnet/_static/git-push-azure-master.png
 
 - Browse to the newly deployed web app. You should see ``Hello world!``
 
-- 浏览刚部署的 Web 应用程序，你应该看到浏览器输出 ``Hello world!``
+- 浏览刚才部署的 Web 应用程序，你应该看到输出结果： ``Hello world!`` 。
 
 .. .. image:: your-first-mac-aspnet/_static/azure.png 
 
