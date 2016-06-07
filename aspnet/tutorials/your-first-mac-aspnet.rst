@@ -58,7 +58,7 @@ Developing ASP.NET Applications on a Mac With Visual Studio Code
 
 From a Terminal / bash prompt, run ``dotnet restore`` to restore the project's dependencies. Alternately, you can enter ``command shift p`` in Visual Studio Code and then type ``dot`` as shown:
 
-通过终端 / Bash 提示符，执行 ``dotnet restore`` 还原项目依赖（在终端命令行中切换至项目所在目录，而后运行 ``dotnet restore`` ，译者注）。或者在 Visual Studio Code 中键入 ``command shift p`` （也可用 ``F1`` 代替），然后输入 ``dot``，如下图所示：
+通过终端 / Bash 提示符，执行 ``dotnet restore`` 还原项目依赖（在终端命令行中切换至项目所在目录，而后运行 ``dotnet restore`` ，译者注）。或者在 Visual Studio Code 中键入 ``command shift p`` （也可用 ``F1`` 代替，译者注），然后输入 ``dot``，如下图所示：
 
 .. image:: your-first-mac-aspnet/_static/dotnet-restore.png
 
