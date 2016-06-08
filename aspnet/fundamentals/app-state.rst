@@ -35,11 +35,11 @@ Application State Options
 `Application state` refers to any data that is used to represent the current representation of the application. This includes both global and user-specific data. Previous versions of ASP.NET (and even ASP) have had built-in support for global ``Application`` and ``Session`` state stores, as well as a variety of other options.
 
 
-`应用程序状态`指的是用于描述应用程序当前状况的任意数据。包括全局的和用户特有的数据。之前版本的ASP.NET（甚至ASP）都内建了对全局的``Application``和``State``以及其他很多选项状态储存的支持。
+`应用程序状态` 指的是用于描述应用程序当前状况的任意数据。包括全局的和用户特有的数据。之前版本的ASP.NET（甚至ASP）都内建了对全局的 ``Application`` 和 ``State`` 以及其他很多种状态储存的支持。
 
 .. note:: The ``Application`` store had the same characteristics as the ASP.NET ``Cache``, with fewer capabilities. In ASP.NET Core, ``Application`` no longer exists; applications written for previous versions of ASP.NET that are migrating to ASP.NET Core replace ``Application`` with a :doc:`/performance/caching/index` implementation. 
 
-.. note:: 注意：``Application`` 储存和ASP.NET的 ``Cache`` 缓存的特性几乎一样，只是少了一些功能。在 ASP.NET Core 中，``Application`` 已经没有了；可以用 :doc:`/performance/caching/index` 的实现来代替 ``Application`` 的功能，从而把之前 ASP.NET 版本的应用程序升级到 ASP.NET Core 。
+.. note:: 注意：``Application`` 储存和ASP.NET的 ``Cache`` 缓存的特性几乎一样，只是少了一些功能。在 ASP.NET Core 中，``Application`` 已经没有了；可以用 :doc:`/performance/caching/index` 的实现来代替 ``Application`` 的功能，从而把之前版本的 ASP.NET 应用程序升级到 ASP.NET Core 。
 
 Application developers are free to use different state storage providers depending on a variety of factors:
 
@@ -70,7 +70,7 @@ HttpContext.Items
 
 The ``Items`` collection is the best location to store data that is only needed while processing a given request. Its contents are discarded after each request. It is best used as a means of communicating between components or middleware that operate at different points in time during a request, and have no direct relationship with one another through which to pass parameters or return values. See `Working with HttpContext.Items`_, below.
 
-当数据仅用于一个请求之中时，用 ``Items`` 集合储存是最好的方式。数据将在每个请求结束之后被丢弃。可以作为组件和中间件在一个请求期间内的不同时间点进行互相通讯的最佳手段。
+当数据仅用于一个请求之中时，用 ``Items`` 集合储存是最好的方式。数据将在每个请求结束之后被丢弃。可以作为组件和中间件在一个请求期间的不同时间点进行互相通讯的最佳手段。
 
 
 Querystring and Post
@@ -82,7 +82,7 @@ Querystring 和 Post
 
 State from one request can be provided to another request by adding values to the new request's querystring or by POSTing the data. These techniques should not be used with sensitive data, because these techniques require that the data be sent to the client and then sent back to the server. It is also best used with small amounts of data. Querystrings are especially useful for capturing state in a persistent manner, allowing links with embedded state to be created and sent via email or social networks, for use potentially far into the future. However, no assumption can be made about the user making the request, since URLs with querystrings can easily be shared, and care must also be taken to avoid `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ attacks (for instance, even assuming only authenticated users are able to perform actions using querystring-based URLs, an attacker could trick a user into visiting such a URL while already authenticated).
 
-在查询字符串（ ``Querystring`` ）中添加数值、或利用 POST 发送数据，可以将一个请求的状态数据提供给另一个请求。这种技术不应该用于敏感数据，因为这需要将数据发送到客户端，然后再发送回服务器。这种方法也最好用于少量的数据。查询字符串对于持久地保留状态特别有用，可以将状态嵌入链接通过电子邮件或社交网络发出去，以备日后使用。然而，用户提交的请求是无法预期的，由于带有查询字符串的网址很容易被分享出去，所以必须小心以避免 `跨站请求伪装（CSRF）`<https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>攻击。(例如，即时声明了只有通过验证的用户才可以访问基于查询字符串的网址执行请求，攻击者还是可能会诱骗已经验证过的用户去访问这样的网址)。
+在查询字符串（ ``Querystring`` ）中添加数值、或利用 POST 发送数据，可以将一个请求的状态数据提供给另一个请求。这种技术不应该用于敏感数据，因为这需要将数据发送到客户端，然后再发送回服务器。这种方法也最好用于少量的数据。查询字符串对于持久地保留状态特别有用，可以将状态嵌入链接通过电子邮件或社交网络发出去，以备日后使用。然而，用户提交的请求是无法预期的，由于带有查询字符串的网址很容易被分享出去，所以必须小心以避免 `跨站请求伪装（CSRF）`<https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>攻击。(例如，即便设定了只有通过验证的用户才可以访问带有查询字符串的网址执行请求，攻击者还是可能会诱骗已经验证过的用户去访问这样的网址)。
 
 
 Cookies
@@ -143,7 +143,7 @@ Working with HttpContext.Items
 
 The ``HttpContext`` abstraction provides support for a simple dictionary collection of type ``IDictionary<object, object>``, called ``Items``. This collection is available from the start of an ``HttpRequest`` and is discarded at the end of each request. You can access it by simply assigning a value to a keyed entry, or by requesting the value for a given key.
 
-``HttpContext`` 抽象提供了一个简单的 ``IDictionary<object, object>`` 类型的字典集合，叫作 ``Items``。在每个请求中，这个集合从 ``HttpRequest`` 开始起就可以使用，直到请求结束后被丢弃。要存取集合，你可以简单地给键控项赋值，或根据给定键查询值。
+``HttpContext`` 抽象提供了一个简单的 ``IDictionary<object, object>`` 类型的字典集合，叫作 ``Items``。在每个请求中，这个集合从 ``HttpRequest`` 开始起就可以使用，直到请求结束后被丢弃。要存取集合，你可以直接给键控项赋值，或根据给定键查询值。
 
 For example, some simple :doc:``middleware`` could add something to the ``Items`` collection:
 
@@ -160,7 +160,7 @@ For example, some simple :doc:``middleware`` could add something to the ``Items`
 
 and later in the pipeline, another piece of middleware could access it:
 
-而后在管道中，其他的中间件可以访问到这些内容：
+而在之后的管道中，其他的中间件就可以访问到这些内容了：
 
 .. code-block:: c#
 
@@ -172,7 +172,7 @@ and later in the pipeline, another piece of middleware could access it:
 
 .. note:: Since keys into ``Items`` are simple strings, if you are developing middleware that needs to work across many applications, you may wish to prefix your keys with a unique identifier to avoid key collisions (e.g. "MyComponent.isVerified" instead of just "isVerified").
 
-.. note::  ``Items`` 的键是简单的字符串，所以如果你在开发需要跨越多个应用程序工作的中间件，你可能要用一个唯一标识符作为键名的前缀以避免键名冲突。（如：采用"MyComponent.isVerified"，而非简单的"isVerified"）。
+.. note::  ``Items`` 的键名是简单的字符串，所以如果你是在开发跨越多个应用程序工作的中间件，你可能要用一个唯一标识符作为前缀以避免键名冲突。（如：采用"MyComponent.isVerified"，而非简单的"isVerified"）。
 
 .. _session: 
 
@@ -185,7 +185,7 @@ Installing and Configuring Session
 
 ASP.NET Core ships a session package that provides middleware for managing session state. You can install it by including a reference to the package in your project.json file:
 
-ASP.NET Core 发布了一个会话程序包，里面提供了用于管理会话状态的中间件。你可以在 project.json 文件中加入包引用来安装这个程序包：
+ASP.NET Core 发布了一个关于会话的程序包，里面提供了用于管理会话状态的中间件。你可以在 project.json 中加入引用来安装这个程序包：
 
 .. literalinclude:: app-state/sample/src/AppState/project.json
   :language: javascript
@@ -195,15 +195,15 @@ ASP.NET Core 发布了一个会话程序包，里面提供了用于管理会话�
 
 Once the package is installed, Session must be configured in your application's ``Startup`` class. Session is built on top of ``IDistributedCache``, so you must configure this as well, otherwise you will receive an error.
 
-当安装好程序包后，必须在你的应用程序的 ``Startup`` 类中对 Session 进行配置。Session 是建立在 ``IDistributedCache`` 之上的，因此你也必须把它配置好，否则会得到一个错误。
+当安装好程序包后，必须在你的应用程序的 ``Startup`` 类中对 Session 进行配置。Session 是基于 ``IDistributedCache`` 构建的，因此你也必须把它配置好，否则会得到一个错误。
 
 .. note:: If you do not configure at least one ``IDistributedCache`` implementation, you will get an exception stating "Unable to resolve service for type 'Microsoft.Framework.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNet.Session.DistributedSessionStore'."
 
-.. note:: 如果你一个 ``IDistributedCache`` 的实现都没有配置，你会得到一个异常，说“在尝试激活 'Microsoft.AspNet.Session.DistributedSessionStore' 的时候，无法为类型 'Microsoft.Framework.Caching.Distributed.IDistributedCache' 找到服务。”
+.. note:: 如果你一个 ``IDistributedCache`` 的实现都没有配置，则会得到一个异常，说“在尝试激活 'Microsoft.AspNet.Session.DistributedSessionStore' 的时候，无法找到类型为 'Microsoft.Framework.Caching.Distributed.IDistributedCache' 的服务。”
 
 ASP.NET ships with several implementations of ``IDistributedCache``, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option, add the following to ``ConfigureServices``:
 
-ASP.NET 提供了 ``IDistributedCache`` 的多种实现，包括一个 in-memory 可用（仅用于开发期间和测试）。要将会话配置为选用 in-memory ，需将以下代码添加到 ``ConfigureServices``：
+ASP.NET 提供了 ``IDistributedCache`` 的多种实现， in-memory 是其中之一（仅用于开发期间和测试）。要配置会话采用 in-memory ，需将以下代码添加到 ``ConfigureServices``：
 .. code-block:: c#
 
   services.AddCaching();
