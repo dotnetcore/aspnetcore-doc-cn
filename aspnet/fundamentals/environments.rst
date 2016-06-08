@@ -176,7 +176,7 @@ When the application is run with ``Hosting:Environment`` set to ``Staging``, the
 
 In addition to using an entirely separate ``Startup`` class based on the current environment, you can also make adjustments to how the application is configured within a ``Startup`` class. The ``Configure()`` and ``ConfigureServices()`` methods support environment-specific versions similar to the ``Startup`` class itself, of the form ``Configure[Environment]()`` and ``Configure[Environment]Services()``. If you define a method ``ConfigureDevelopment()`` it will be called instead of ``Configure()`` when the environment is set to development. Likewise, ``ConfigureDevelopmentServices()`` would be called instead of ``ConfigureServices()`` in the same environment.
 
-除了使用一个基于当前环境的完全独立的启动类，你也可以在 ``Startup`` 类中对应用程序如何配置做出调整。``Configure()`` 和 ``ConfigureServices()`` 方法类似 ``Startup`` 类本身支持特定环境的版本，
+除了使用一个基于当前环境的完全独立的启动类，你也可以在 ``Startup`` 类中对应用程序如何配置做出调整。``Configure()`` 和 ``ConfigureServices()`` 方法类似 ``Startup`` 类，以 ``Configure[Environment]()`` 和 ``Configure[Environment]Services()`` 的形式支持特定环境的版本。当设置为开发环境时，如果你定义一个 ``ConfigureDevelopment()`` 方法，将调用这个方法而不是 ``Configure()``。同样，在相同的环境里将调用 ``ConfigureDevelopmentServices()`` 而不是 ``ConfigureServices()``。
 
 Summary
 -------
@@ -184,6 +184,8 @@ Summary
 ------
 
 ASP.NET Core provides a number of features and conventions that allow developers to easily control how their applications behave in different environments. When publishing an application from development to staging to production, environment variables set appropriately for the environment allow for optimization of the application for debugging, testing, or production use, as appropriate.
+
+ASP.NET Core 提供了许多功能和约定来允许开发者更容易的控制在不同的环境中他们的应用程序的行为。当发布一个应用程序从开发到预演再到生产，为环境设置适当的环境变量允许对应用程序的调试，测试或生产使用进行适当的优化。
 
 Additional Resources
 --------------------
