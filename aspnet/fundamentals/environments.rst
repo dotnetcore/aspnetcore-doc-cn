@@ -176,6 +176,7 @@ When the application is run with ``Hosting:Environment`` set to ``Staging``, the
 
 In addition to using an entirely separate ``Startup`` class based on the current environment, you can also make adjustments to how the application is configured within a ``Startup`` class. The ``Configure()`` and ``ConfigureServices()`` methods support environment-specific versions similar to the ``Startup`` class itself, of the form ``Configure[Environment]()`` and ``Configure[Environment]Services()``. If you define a method ``ConfigureDevelopment()`` it will be called instead of ``Configure()`` when the environment is set to development. Likewise, ``ConfigureDevelopmentServices()`` would be called instead of ``ConfigureServices()`` in the same environment.
 
+除了使用一个基于当前环境的完全独立的启动类，你也可以在 ``Startup`` 类中对应用程序如何配置做出调整。``Configure()`` 和 ``ConfigureServices()`` 方法类似 ``Startup`` 类本身支持特定环境的版本，
 
 Summary
 -------
