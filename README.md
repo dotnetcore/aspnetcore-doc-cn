@@ -31,10 +31,12 @@
 + [魏美娟(初见)](https://github.com/ChujianA)
 + [夏申斌](https://github.com/xiashenbin)
 + [谢炀(Kiler)](https://github.com/kiler398)
++ [张剑](https://github.com/garfieldzf8)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
 + [张善友](https://github.com/geffzhang)
 + [赵亮(悲梦)](https://github.com/BeiMeng)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
++ [后知后觉](https://github.com/HouZhiHouJue)
 
 ### 其它类型贡献者
 
