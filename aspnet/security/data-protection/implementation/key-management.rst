@@ -12,17 +12,27 @@ Key Management
 
 The data protection system automatically manages the lifetime of master keys used to protect and unprotect payloads. Each key can exist in one of four stages.
 
-数据保护系统会自动管理主密钥的生命周期。每一个密钥都存在四种阶段。
-
 * Created - the key exists in the key ring but has not yet been activated. The key shouldn't be used for new Protect operations until sufficient time has elapsed that the key has had a chance to propagate to all machines that are consuming this key ring.
 * Active - the key exists in the key ring and should be used for all new Protect operations.
 * Expired - the key has run its natural lifetime and should no longer be used for new Protect operations.
 * Revoked - the key is compromised and must not be used for new Protect operations.
 
+数据保护系统会自动管理主密钥的生命周期。每一个密钥都存在四种阶段。
+
+*创建 - 密钥存在于密钥环但尚未被激活。在密钥传播到所有正在消费该密钥环的设备（的充足时间）之前，密钥不会被用于新的 Protect 操作，
+*活动 - 密钥存在于密钥环，并将用于所有新 Protect 操作。
+*过期 - 密钥已超过其寿命，应该不会再被用于新的 Protect 操作。
+*吊销 - 密钥被泄露，肯定不会再被用于新的 Protect 操作。
+
 Created, active, and expired keys may all be used to unprotect incoming payloads. Revoked keys by default may not be used to unprotect payloads, but the application developer can :ref:`override this behavior <data-protection-consumer-apis-dangerous-unprotect>` if necessary.
+
+刚创建的密钥、处于活动状态的密钥记忆过期的密钥都可被用来取消保护有效载荷。被吊销的密钥一般来讲不会再被使用，但如有必要应用程序开发者可以 :ref:`覆盖该行为 <data-protection-consumer-apis-dangerous-unprotect>`
 
 .. WARNING::
   The developer might be tempted to delete a key from the key ring (e.g., by deleting the corresponding file from the file system). At that point, all data protected by the key is permanently undecipherable, and there is no emergency override like there is with revoked keys. Deleting a key is truly destructive behavior, and consequently the data protection system exposes no first-class API for performing this operation.
+
+.. WARNING::
+  开发人员或许会试图从密钥环中删除密钥（比方说通过从文件系统中删除相应的文件）。这样一来，所有受此密钥保护的数据将永不可被识别，且没有像被吊销的密钥那样的应急覆盖方法。删除密钥实际上是非常具有破坏性的行为，因此数据保护系统所暴露的第一梯队 API 接口中没有响应的接口来执行该操作。 
 
 Default key selection
 ---------------------
