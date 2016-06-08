@@ -1,45 +1,47 @@
 OWIN
 ====
 
-By `Steve Smith`_
+作者 `Steve Smith`_
+翻译：  谢炀(kiler)   
 
-ASP.NET Core supports OWIN, the Open Web Interface for .NET, which allows web applications to be decoupled from web servers. In addition, OWIN defines a standard way for middleware to be used in a pipeline to handle individual requests and associated responses. ASP.NET Core applications and middleware can interoperate with OWIN-based applications, servers, and middleware.
+ASP.NET Core 支持 OWIN（即 Open Web Server Interface for .NET 的首字母缩写）, OWIN的目标是用于解耦Web Server和Web Application. 此外, OWIN为中间件定义了一个标准方法用处理单个请求以及相关联的响应. ASP.NET Core 的程序和中间件可以和 基于 OWIN 应用程序, 服务器,以及中间件相互交互。
 
-.. contents:: Sections:
+.. contents:: 章节:
   :local:
   :depth: 1
 
-`View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owin/sample>`__
+`查看下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owin/sample>`__
 
-Running OWIN middleware in the ASP.NET pipeline
+在 ASP.NET 管道中运行 OWIN 中间件
 -----------------------------------------------
 
-ASP.NET Core's OWIN support is deployed as part of the ``Microsoft.AspNet.Owin`` package. You can import OWIN support into your project by adding this package as a dependency in your *project.json* file, as shown here:
+ASP.NET Core 对于 OWIN 的支持基于 ``Microsoft.AspNet.Owin`` 包. 你可以在你的应用程序把这个包作为一个依赖导入到你的 *project.json* 文件里来实现对 OWIN 支持, 如下所示 :
 
 .. literalinclude:: owin/sample/src/OwinSample/project.json
   :language: javascript
   :lines: 7-11
   :emphasize-lines: 4
 
-OWIN middleware conform to the `OWIN specification <http://owin.org/spec/spec/owin-1.0.0.html>`_, which defines a Properties ``IDictionary<string, object>`` interface that must be used, and also requires certain keys be set (such as ``owin.ResponseBody``). We can construct a very simple example of middleware that follows the OWIN specification to display "Hello World", as shown here:
+OWIN 中间件遵循 `OWIN 标准 <http://owin.org/spec/spec/owin-1.0.0.html>`_, OWIN 标准定义了一系列 ``IDictionary<string, object>`` 需要用到的属性接口, 并且规定了某些键值必须被设置 (例如 ``owin.ResponseBody``). 我们可以基于 OWIN 标准构建一个简单的中间件的例子来显示 "Hello World", 如下所示:
 
 .. literalinclude:: owin/sample/src/OwinSample/Startup.cs
   :language: c#
   :lines: 27-40
   :dedent: 8
 
-In the above example, notice that the method returns a ``Task`` and accepts an ``IDictionary<string, object>`` as required by OWIN. Within the method, this parameter is used to retrieve the ``owin.ResponseBody`` and ``owin.ResponseHeaders`` objects from the environment dictionary. Once the headers are set appropriately for the content being returned, a task representing the asynchronous write to the response stream is returned.
+在上面的例子中, 注意该方法在返回一个 ``Task`` 和接受了一个 OWIN 所必需的 ``IDictionary<string, object>`` 数据. 方法里面, 该参数用于从从环境字典对象检索 ``owin.ResponseBody`` 以及 ``owin.ResponseHeaders`` 对象. 一旦头信息被适当设定为内容被返回时, 返回展示响应流被异步写入的任务。
 
-Adding OWIN middleware to the ASP.NET pipeline is most easily done using the ``UseOwin`` extension method. Given the ``OwinHello`` method shown above, adding it to the pipeline is a simple matter:
+添加 OWIN 中间到 ASP.NET 管道是最简单的办法是使用 ``UseOwin`` 扩展方法完成。参考上面所示的 ``OwinHello`` 方法，将它添加到管道是一个简单的事情：
 
 .. literalinclude:: owin/sample/src/OwinSample/Startup.cs
   :language: c#
   :lines: 19-25
   :dedent: 8
 
-You can of course configure other actions to take place within the OWIN pipeline. Remember that response headers should only be modified prior to the first write to the response stream, so configure your pipeline accordingly.
 
-.. note:: Multiple calls to ``UseOwin`` is discouraged for performance reasons. OWIN components will operate best if grouped together.
+当然你也可以在 OWIN 管道中配置其他 actions 来替代。请记住，响应头信息只能在第一次写入响应流的时机之前修改，所以正确的配置您的管道。
+
+.. note:: 因为性能原因同时调用多个 ``UseOwin`` 是不被鼓励的。 OWIN 组件如果能组合在一起将运作是最好的。
 
 .. code-block:: c#
 
@@ -53,25 +55,25 @@ You can of course configure other actions to take place within the OWIN pipeline
     });
   });
 
-.. note:: The OWIN support in ASP.NET Core is an evolution of the work that was done for the `Katana project <http://katanaproject.codeplex.com/>`_. Katana's ``IAppBuilder`` component has been replaced by ``IApplicationBuilder``, but if you have existing Katana-based middleware, you can use it within your ASP.NET Core application through the use of a bridge, as shown in the `Owin.IAppBuilderBridge example on GitHub <https://github.com/aspnet/Entropy/tree/master/samples/Owin.IAppBuilderBridge>`_. 
+.. note:: ASP.NET Core 中的对 OWIN 支持是 `Katana 项目 <http://katanaproject.codeplex.com/>`_ 的进化. Katana项目的 ``IAppBuilder`` 组件被 ``IApplicationBuilder`` 替换了, 但是你使用了现有的基于 Katana 的中间件, 你会在你的 ASP.NET Core 应用程序作中为桥梁用到它, 更多参考 `Owin.IAppBuilderBridge GitHub 案例 <https://github.com/aspnet/Entropy/tree/master/samples/Owin.IAppBuilderBridge>`_. 
 
-Using ASP.NET Hosting on an OWIN-based server
+在基于 OWIN 的服务器上宿主 ASP.NET
 ---------------------------------------------
 
-OWIN-based servers can host ASP.NET applications, since ASP.NET conforms to the OWIN specification. One such server is `Nowin <https://github.com/Bobris/Nowin>`_, a .NET OWIN web server. In the sample for this article, I've included a very simple project that references Nowin and uses it to create a simple server capable of self-hosting ASP.NET Core.
+基于 OWIN 的服务器可以宿主 ASP.NET 应用程序, 因为 ASP.NET 符合 OWIN 规范.  `Nowin <https://github.com/Bobris/Nowin>`_ 就是其中之一, 一个.NET 的 OWIN Web 服务器。在本文的例子中，我已经包含一个非常简单的项目并引用 Nowin 并用它来创建一个能够自托管 ASP.NET 核心的一个简单的服务器。
 
 .. literalinclude:: owin/sample/src/NowinSample/NowinServerFactory.cs
   :emphasize-lines: 13,19,22,27,41
   :linenos:
   :language: c#
 
-IServerFactory_ is an interface that requires an Initialize and a Start method. Initialize must return an instance of IFeatureCollection_, which we populate with a ``INowinServerInformation`` that includes the server's name (the specific implementation may provide additional functionality). In this example, the ``NowinServerInformation`` class is defined as a private class within the factory, and is returned by ``Initialize`` as required.
+IServerFactory_ 是一个需要Initialize 和 Start 方法的接口. Initialize 方法必须返回 IFeatureCollection_ 实例, 我们会弹出一个 ``INowinServerInformation`` 对象包含服务器名称 (具体实施方式可能会提供其他功能).在本例中,  ``NowinServerInformation`` 类被定义为工厂类的内部类，, 作为必须项被 ``Initialize`` 返回.
 
-``Initialize`` is responsible for configuring the server, which in this case is done through a series of fluent API calls that hard code the server to listen for requests (to any IP address) on port 5000. Note that the final line of the fluent configuration of the ``builder`` variable specifies that requests will be handled by the private method ``HandleRequest``.
+``Initialize`` 的职责是配置服务器, 在本示例中是通过一系列 fluent API 调用硬编码服务器监听端口5000的请求（对任何外部IP）。注意 fluent 配置最后一行的 ``builder`` 变量指定了请求会被私有方法 ``HandleRequest`` 所处理。
 
-``Start`` is called after ``Initialize`` and accepts the the IFeatureCollection_ created by ``Initialize``, and a callback of type ``Func<IFeatureCollection, Task>``. This callback is assigned to a local field and is ultimately called on each request from within the private ``HandleRequest`` method (which was wired up in ``Initialize``).
+``Start`` 方法在 ``Initialize`` 方法之后调用接受 ``Initialize`` 方法创建的 IFeatureCollection_ 对象, 以及 ``Func<IFeatureCollection, Task>`` 回调。这个回调最终被分配到了一个本地字段并且会在每个请求的私有方法  ``HandleRequest``  中调用（这个是在 ``Initialize`` 方法中绑定的）。
 
-With this in place, all that's required to run an ASP.NET application using this custom server is the following command in *project.json*:
+上述操作就绪以后，所有的需要使用自定义服务器运行 ASP.NET 应用程序的设置都在下面的 *project.json* 文件的命令中：
 
 .. literalinclude:: owin/sample/src/NowinSample/project.json
   :emphasize-lines: 14
@@ -79,12 +81,15 @@ With this in place, all that's required to run an ASP.NET application using this
   :language: json
   :lines: 1-16
 
-When run, this command will search for a package called "NowinSample" that contains an implementation of ``IServerFactory``. If it finds one, it will initialize and start the server as detailed above. Learn more about the built-in ASP.NET :doc:`/fundamentals/servers`.
+当应用程序运行起来以后， 这个命令将会搜索其中包含的 ``IServerFactory`` 实现的名为 "NowinSample" 包，。如果找到了，它将初始化以及按照上述方式启动服务器。了解更多关于内置 ASP.NET :doc:`/fundamentals/servers`。
 
-Run ASP.NET Core on an OWIN-based server and use its WebSockets support
+在基于OWIN服务器上运行 ASP.NET Core ，并且使用 WebSockets 支持
 -----------------------------------------------------------------------
 
-Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets. The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application. The example below shows a simple web application that supports Web Sockets and simply echos back anything sent to the server via WebSockets.
+如何基于OWIN的服务器“功能，可以通过ASP.NET核心加以利用另一个例子是获得像WebSockets的功能。在前面的例子中使用的.NET OWIN Web服务器具有内置的网络插座，可通过一个ASP.NET的核心应用加以利用的支持。下面的例子显示了支持网络套接字和简单的回显然后通过WebSockets发送到服务器的任何一个简单的Web应用程序。
+基于OWIN的服务器的 features 如何被 ASP.NET Core 提升的另一个例子是附加新的功能（如 WebSockets），在前面的例子中使用的 .NET OWIN Web 服务器具备内置的 Web Sockets 支持，可以被 ASP.NET Core 应用程序所调用。
+
+下面的例子显示了支持 Web Sockets 以及任何通过 WebSockets 发送到服务器内容的一个回显功能。
 
 .. literalinclude:: owin/sample/src/NowinWebSockets/Startup.cs
   :lines: 11-
@@ -92,25 +97,25 @@ Another example of how OWIN-based servers' features can be leveraged by ASP.NET 
   :linenos:
   :emphasize-lines: 7, 9-10
 
-This `sample  <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owin/sample>`__ is configured using the same ``NowinServerFactory`` as the previous one - the only difference is in how the application is configured in its ``Configure`` method. A simple test using `a simple websocket client <https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en>`_ demonstrates that the application works as expected:
+这个 `例子  <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/owin/sample>`__ 和前一个配置一样使用相同 ``NowinServerFactory`` - 唯一的区别是在该应用程序是如何在其 ``Configure`` 方法是如何配置的。用 `一个简单的 websocket 客户端 <https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en>`_ 的简单测试表明，应用程序按预期工作：
 
 .. image:: owin/_static/websocket-test.png
 
 
-OWIN keys
+OWIN 键值
 ---------
+ 
+OWIN 重度依赖一个 ``IDictionary<string,object>`` 对象用来在一个完整的 HTTP 请求/响应交互中通讯信息。ASP.NET Core 实现所有的 OWIN 规范中列出的要求的必需和可选的以及自身实现的键。在OWIN规范不要求任何键是可选的，并且可以仅在某些情况下可以使用。 在使用 OWIN 键的时候, 参阅 `OWIN Key Guidelines and Common Keys <http://owin.org/spec/spec/CommonKeys.html>`_ 是一个好习惯。
 
-OWIN depends heavily on an ``IDictionary<string,object>`` used to communicate information throughout an HTTP Request/Response exchange. ASP.NET Core implements all of the required and optional keys outlined in the OWIN specification, as well as some of its own. Note that any keys not required in the OWIN specification are optional and may only be used in some scenarios. When working with OWIN keys, it's a good idea to review the list of `OWIN Key Guidelines and Common Keys <http://owin.org/spec/spec/CommonKeys.html>`_
-
-Request Data (OWIN v1.0.0)
+请求数据 (OWIN v1.0.0)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :header-rows: 1
 
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - owin.RequestScheme
     - ``String``
     -
@@ -136,28 +141,28 @@ Request Data (OWIN v1.0.0)
     - ``Stream``
     - 
  
-Request Data (OWIN v1.1.0)
+请求数据 (OWIN v1.1.0)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :header-rows: 1
 
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - owin.RequestId
     - ``String``
     - Optional
 
-Response Data (OWIN v1.0.0)
+响应数据 (OWIN v1.0.0)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :header-rows: 1
 
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - owin.ResponseStatusCode
     - ``int``
     - Optional
@@ -171,15 +176,15 @@ Response Data (OWIN v1.0.0)
     - ``Stream``
     -
 
-Other Data (OWIN v1.0.0)
+其他数据 (OWIN v1.0.0)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
   :header-rows: 1
   
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - owin.CallCancelled
     - ``CancellationToken``
     -
@@ -187,15 +192,15 @@ Other Data (OWIN v1.0.0)
     - ``String``
     -
 
-Common Keys
+通用键值
 ^^^^^^^^^^^
 
 .. list-table::
   :header-rows: 1
   
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - ssl.ClientCertificate
     - ``X509Certificate``
     -
@@ -221,18 +226,18 @@ Common Keys
     - ``Action<Action<object>,object>``
     -
 
-SendFiles v0.3.0
+发送文件 v0.3.0
 ^^^^^^^^^^^^^^^^
 
 .. list-table::
   :header-rows: 1
 
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - sendfile.SendAsync
-    - See `delegate signature <http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm>`_
-    - Per Request
+    - 参考 `delegate signature <http://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm>`_
+    - 每请求
 
 Opaque v0.3.0
 ^^^^^^^^^^^^^
@@ -241,15 +246,15 @@ Opaque v0.3.0
 .. list-table::
   :header-rows: 1
 
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - opaque.Version
     - ``String``
     -
   * - opaque.Upgrade
     - ``OpaqueUpgrade``
-    - See `delegate signature <http://owin.org/spec/extensions/owin-OpaqueStream-Extension-v0.3.0.htm>`__
+    - 参考 `delegate signature <http://owin.org/spec/extensions/owin-OpaqueStream-Extension-v0.3.0.htm>`__
   * - opaque.Stream
     - ``Stream``
     -
@@ -263,46 +268,46 @@ WebSocket v0.3.0
 .. list-table::
   :header-rows: 1
   
-  * - Key
-    - Value (type)
-    - Description
+  * - 键
+    - 值 (类型)
+    - 描述
   * - websocket.Version
     - ``String``
     -
   * - websocket.Accept
     - ``WebSocketAccept``
-    - See `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
+    - 参考 `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
   * - websocket.AcceptAlt
     -
     - Non-spec
   * - websocket.SubProtocol
     - ``String``
-    - See `RFC6455 Section 4.2.2 <https://tools.ietf.org/html/rfc6455#section-4.2.2>`_ Step 5.5
+    - 参考 `RFC6455 Section 4.2.2 <https://tools.ietf.org/html/rfc6455#section-4.2.2>`_ 章节 5.5
   * - websocket.SendAsync
     - ``WebSocketSendAsync``
-    - See `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
+    - 参考 `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
   * - websocket.ReceiveAsync
     - ``WebSocketReceiveAsync``
-    - See `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
+    - 参考 `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
   * - websocket.CloseAsync
     - ``WebSocketCloseAsync``
-    - See `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
+    - 参考 `delegate signature <http://owin.org/spec/extensions/owin-WebSocket-Extension-v0.4.0.htm>`__.
   * - websocket.CallCancelled
     - ``CancellationToken``
     -
   * - websocket.ClientCloseStatus
     - ``int``
-    - Optional
+    - 可选
   * - websocket.ClientCloseDescription
     - ``String``
-    - Optional
+    - 可选
 
-Summary
+汇总
 -------
 
-ASP.NET Core has built-in support for the OWIN specification, providing compatibility to run ASP.NET Core applications within OWIN-based servers as well as supporting OWIN-based middleware within ASP.NET Core servers.
+ASP.NET Core 内置支持 OWIN 标准, 在基于 OWIN的服务器或者支持基于 OWIN 中间件的 ASP.NET Core 服务器提供兼容性来运行ASP.NET Core 应用程序。
 
-Additional Resources
+附录资源
 --------------------
 
 - :doc:`middleware`
