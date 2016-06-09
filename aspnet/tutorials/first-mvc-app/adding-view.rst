@@ -4,9 +4,11 @@
 ===================
 
 By `Rick Anderson`_
+
 作者： `Rick Anderson`_ 
 
 翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
+
 校对：   
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
