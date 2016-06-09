@@ -62,7 +62,7 @@ Complete the **New Project** dialog:
 - Name the project "MvcMovie" (It's important to name the project "MvcMovie" so when you copy code, the namespace will match. )
 - Tap **OK**
 
-完成 **新建项目(New Project)** 对话框：
+按以下步骤完成 **新建项目(New Project)** 对话框的设置：
 
 - 在左边的窗格, 点击 **Web**
 - 在中间的窗格, 点击 **ASP.NET Core Web Application**
