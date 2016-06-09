@@ -108,7 +108,7 @@ Visual Studio 给刚才创建的 MVC 项目提供了默认模板，输入项目�
 
 The default template gives you working **Home, Contact, About, Register** and **Log in** links. The browser image above doesn't show theses links. Depending on the size of your browser, you might need to click the navigation icon to show them. 
 
-默认的模板提供 **Home、Contact、About、Register** 和 **Log in** 链接。上面的浏览器图片没有显示这些链接。根据您的浏览器的尺寸，您可能需要点击导航图标来显示他们。
+默认的模板提供 **Home、Contact、About、Register** 和 **Log in** 链接。下面的浏览器图片没有显示这些链接。根据您的浏览器的尺寸，您可能需要点击导航图标来显示他们。
 
 .. image:: start-mvc/_static/2.png
 
