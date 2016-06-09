@@ -1,29 +1,31 @@
-Unit Testing
+单元测试
 ============
 
-By `Steve Smith`_
+作者 `Steve Smith`_ 翻译：王健
 
-ASP.NET Core has been designed with testability in mind, so that creating unit tests for your applications is easier than ever before. This article briefly introduces unit tests (and how they differ from other kinds of tests) and demonstrates how to add a test project to your solution and then run unit tests using either the command line or Visual Studio.
+ASP.NET Core在设计时考虑到可测试性，让你的应用程序创建单元测试比以往任何时候都更容易。本文简要介绍了单元测试（以及他们从其他类型的测试的区别），并演示了如何添加测试项目到您的解决方案，然后使用命令行或Visual Studio运行单元测试。
 
 .. contents:: Sections:
   :local:
   :depth: 1
 
-`View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/testing/unit-testing/sample>`__
+`查看或下载代码 <https://github.com/aspnet/Docs/tree/master/aspnet/testing/unit-testing/sample>`__
 
-Getting Started with Testing
+测试入门
 ----------------------------
 
-Having a suite of automated tests is one of the best ways to ensure a software application does what its authors intended it to do. There are many different kinds of tests for software applications, including :doc:`integration tests <integration-testing>`, web tests, load tests, and many others. At the lowest level are unit tests, which test individual software components or methods. Unit tests should only test code within the developer's control, and should not test infrastructure concerns, like databases, file systems, or network resources. Unit tests may be written using `Test Driven Development (TDD) <http://deviq.com/test-driven-development/>`_, or they can be added to existing code to confirm its correctness. In either case, they should be small, well-named, and fast, since ideally you will want to be able to run hundreds of them before pushing your changes into the project's shared code repository.
+拥有一套自动化测试是保证软件应用程序做它的作者想要它做的最好的方法之一。软件应用程序有很多中测试的种类，  如集成测试doc:`integration tests <integration-testing>`、web 测试，压力测试等等。级别最低的单元测试，它是测试独立的软件组件或者方法。单元测试应该只测试开发者控制范围内的代码，而不应该测试基础设施问题，如数据库，文件系统或网络资源。单元测试可以用测试驱动开发`Test Driven Development (TDD) <http://deviq.com/test-driven-development/>`_来编写，或者可以将单元测试加入到已经存在的代码中来增加它的正确性。在这两种情况下，单元测试应该短小，命名规范，运行迅速，因为理想情况下在提交更改到项目的共享代码库之前您会希望能运行数百个单元测试。
 
-.. note:: Developers often struggle with coming up with good names for their test classes and methods. As a starting point, the ASP.NET product team follows `these conventions <https://github.com/aspnet/Home/wiki/Engineering-guidelines#unit-tests-and-functional-tests>`__
+.. 注意:: 开发者总是为给测试类和方法起一个好名字而绞尽脑汁。作为一个引子，ASP.NET 产品团队遵循如下`约定<https://github.com/aspnet/Home/wiki/Engineering-guidelines#unit-tests-and-functional-tests>`__
 
-When writing unit tests, be careful you don't accidentally introduce dependencies on infrastructure. These tend to make tests slower and more brittle, and thus should be reserved for integration tests. You can avoid these hidden dependencies in your application code by following the `Explicit Dependencies Principle <http://deviq.com/explicit-dependencies-principle/>`_ and using :doc:`/fundamentals/dependency-injection` to request your dependencies from the framework. You can also keep your unit tests in a separate project from your integration tests, and ensure your unit test project doesn't have references to or dependencies on infrastructure packages.
 
-Creating Test Projects
+当编写单元测试时，要小心你会不经意引进对基础设施的依赖。这些往往使测试更慢和更脆弱，因而应预留给集成测试。您可以通过以下的`显式依赖原则<http://deviq.com/explicit-dependencies-principle/>`和依赖注入:doc:`/fundamentals/dependency-injection`在您的应用程序中避免这些隐藏的依赖。您还可以在集成测试的一个独立的项目中进行单元测试，并确保您的单位测试项目没有对基础设施包的引用或依赖关系。
+
+
+创建测试项目
 ----------------------
 
-A test project is just a class library with references to a test runner and the project being tested (also referred to as the System Under Test or SUT). It's a good idea to organize your test projects in a separate folder from your SUT projects, and the recommended convention for ASP.NET Core projects is something like this::
+测试项目仅仅是引用了一个类库的测试运行器和被测试的项目（也被称为System Under Test 或 SUT 系统）。在您的SUT项目中组织您的测试项目到一个独立的文件夹，是一个不错的选择，和ASP.NET Core项目推荐的惯例是这样的::
 
   global.json
   PrimeWeb.sln
@@ -39,12 +41,12 @@ A test project is just a class library with references to a test runner and the 
       Services/
         PrimeService_IsPrimeShould.cs
 
-It is important that there be a folder/directory with the name of the project you are testing (PrimeWeb above), since the file system is used to find your project.
+有一个与所测试的项目名称的文件夹/目录是很重要的（在上面项目中是primeweb），因为文件系统是用来找到你的项目的。
 
-Configuring the Test project.json
+配置Test project.json文件
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The test project's *project.json* file should add dependencies on the test framework being used and the SUT project. For example, to work with the `xUnit test framework <http://xunit.github.io/>`_, you would configure the dependencies as follows:
+测试项目的*project.json* 文件中应该添加使用过的测试框架依赖项和SUT项目。例如，想要使用`xUnit test framework <http://xunit.github.io/>`,您应该像以下方式来配置依赖项。
 
 .. literalinclude:: unit-testing/sample/test/PrimeWeb.UnitTests/project.json
   :language: json
@@ -52,9 +54,10 @@ The test project's *project.json* file should add dependencies on the test frame
   :linenos:
   :dedent: 2
 
-As other test frameworks release support for .NET Core, we will link to them here. We are simply using xUnit as one example of the many different testing frameworks that are available for .NET development.
 
-In addition to adding dependencies, we also want to be able to run the tests using the ``dotnet test``. To do so, add the following commands section to *project.json*:
+至于其他的测试框架对.NET Core 的支持，我们将在这里提供链接。我们仅简单使用xUnit作为众多不同的可用于.NET开发的测试框架的一个例子。
+
+除添加依赖项之外，我们希望能使用``dotnet test``来运行测试。为了实现这个，需要在*project.json*中添加以下命令节：
 
 .. literalinclude:: unit-testing/sample/test/PrimeWeb.UnitTests/project.json
   :language: json
@@ -62,10 +65,10 @@ In addition to adding dependencies, we also want to be able to run the tests usi
   :linenos:
   :dedent: 2
 
-Running Tests
+运行测试
 -------------
 
-Before you can run your tests, you'll need to write some. For this demo, I've created a simple service that checks whether numbers are prime. One of the tests is shown here:
+在运行您运行测试之前，你需要写一些测试。在这个demo中，我已经创建了一个检查是否是素数的简单服务。下面是其中一个测试：
 
 .. literalinclude:: unit-testing/sample/test/PrimeWeb.UnitTests/Services/PrimeService_IsPrimeShould.cs
   :language: c#
@@ -73,48 +76,45 @@ Before you can run your tests, you'll need to write some. For this demo, I've cr
   :linenos:
   :dedent: 8
 
-This test will check the values -1, 0, and 1 using the ``IsPrime`` method in each of three separate tests. Each test will pass if ``IsPrime`` returns false, and will otherwise fail.
-
-You can run tests from the command line or using Visual Studio, whichever you prefer.
+您可以根据您的使用偏好在命令行或使用Visual Studio运行测试。
 
 Visual Studio
 ^^^^^^^^^^^^^
 
-To run tests in Visual Studio, first open the Test Explorer tab, then build the solution to have it discover all available tests. Once you have done so, you should see all of your tests in the Test Explorer window. Click Run All to run the tests and see the results.
+要在Visual Studio运行测试，首先打开测试资源管理器选项卡，然后生成解决方案，发现所有可用的测试。一旦你这样做的话，你应该可以看到所有的测试资源管理器窗口的测试。点击运行所有运行测试并查看结果。
 
 .. image:: unit-testing/_static/test-explorer.png
 
-If you click the icon in the top-left, Visual Studio will run tests after every build, providing immediate feedback as you work on your application.
+如果您单击左上角的图标，Visual Studio会为您在申请工作的每一个生成后运行的测试，提供即时反馈。
 
-Command Line
+命令行
 ^^^^^^^^^^^^
 
-To run tests from the command line, navigate to your unit test project folder. Next, run::
+运行命令行测试，进入到你的单元测试项目文件夹。然后运行：
 
   dotnet test
 
-You should see output similar to the following:
+您应该可以看到类似以下的内容：
 
 .. image:: unit-testing/_static/dnx-test.png
 
 dotnet watch
 ^^^^^^^^^^^^
 
-You can use the ``dotnet watch`` tool to automatically execute a command whenever the contents of the folder change. This can be used to automatically run tests whenever files are saved in the project. Note that it will detect changes to both the SUT project and the test project, even when run from the test project folder.
+你可以使用``DOTNET watch``工具自动执行命令,只要该文件夹的内容更改。这可以用来当文件被保存在项目中自动运行测试。注意，即使从测试项目文件夹中运行时，它也会检测到SUT项目和测试项目变化中的变化。
 
-To use ``dotnet watch``, simply run it and pass it the command argument you would otherwise have passed to ``dotnet``. In this case::
+要使用``DOTNET watch``，只需运行它，并传递给``dotnet``命令参数。在这个例子中：
 
   dotnet watch test
 
-With ``dotnet watch`` running, you can make updates to your tests and/or your application, and upon saving your changes you should see the tests run again, as shown here:
-
+当``DOTNET watch``运行，您可以更新您的测试和（或）应用程序，在保存后您可以看到测试重新运行，如下图所示。
 .. image:: unit-testing/_static/dnx-watch.png
 
-One of the major benefits of automated testing is the rapid feedback tests provide, reducing the time between the introduction of a bug and its discovery. With continuously running tests, whether using ``dotnet watch`` or Visual Studio, developers can almost immediately discover when they've introduced behavior that breaks existing expectations about how the application should behave.
+自动化测试的一个主要好处是提供快速反馈测试，降低了引入bug和发现bug之间的时间。随着连续运行测试，无论是使用``DOTNET watch``或Visual Studio，当引入了打破了有关程序应该如何运行的现有预期的行为,开发人员几乎可以立即发现.
 
-.. tip:: View the sample_ to see the complete set of tests and service behavior. You can run the web application and navigate to ``/checkprime?5`` to test whether numbers are prime. You can learn more about testing and refactoring this checkprime web behavior in :doc:`integration-testing`.
+. tip:: 查看sample_看到完整的测试集和服务行为。你可以运行Web应用程序和浏览``/checkprime?5``测试数据是否是素数。你可以通过:doc:`integration-testing`来了解更多关于测试和重构这个检验素数的web程序。
 
-Additional Resources
+额外的资源
 --------------------
 
 - :doc:`integration-testing`
