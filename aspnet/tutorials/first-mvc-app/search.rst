@@ -4,6 +4,10 @@
 添加搜索
 =========
 
+By `Rick Anderson`_ 
+
+作者 `Rick Anderson`_ 
+
 翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
 校对： 
