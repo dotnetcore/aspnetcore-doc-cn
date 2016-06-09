@@ -1,21 +1,20 @@
 ﻿using System;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using AppState.Model;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
 
 namespace AppState
 {
     public class Startup
     {
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+        // 关于如何配置应用程序的更多信息，请访问 http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCaching();
-
+            services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
@@ -26,37 +25,42 @@ namespace AppState
             IHostingEnvironment env, 
             ILoggerFactory loggerFactory)
         {
-            loggerFactory.MinimumLevel = LogLevel.Debug;
+            
             loggerFactory.AddConsole(LogLevel.Debug);
-            app.UseIISPlatformHandler();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            // don't count favicon requests
+            app.Use(async(context,next) => 
+            {                
+                context.Response.ContentType = "text/html;charset=utf-8";
+                await next.Invoke();
+            });
+
+            // 不计入获取网站图标的请求
             app.Map("/favicon.ico", ignore => { });
 
-            // example middleware that does not reference session at all and is configured before app.UseSession()
+            // 一个配置于 app.UseSession() 之前，完全不使用 session 的中间件的例子
             app.Map("/untracked", subApp =>
             {
                 subApp.Run(async context =>
                 {
                     await context.Response.WriteAsync("<html><body>");
-                    await context.Response.WriteAsync("Requested at: " + DateTime.Now.ToString() + "<br>");
-                    await context.Response.WriteAsync("This part of the application isn't referencing Session...<br><a href=\"/\">Return</a>");
+                    await context.Response.WriteAsync("请求时间: " + DateTime.Now.ToString() + "<br>");
+                    await context.Response.WriteAsync("应用程序的这个目录没有使用 Session ...<br><a href=\"/\">返回</a>");
                     await context.Response.WriteAsync("</body></html>");
                 });
             });
 
             app.UseSession();
 
-            // establish session
+            // 建立会话
             app.Map("/session", subApp =>
             {
                 subApp.Run(async context =>
                 {
-                    // uncomment the following line and delete session coookie to generate an error due to session access after response has begun
+                    // 把下面这行取消注释，并且清除 cookie ，在响应开始之后再存取会话时，就会产生错误
                     // await context.Response.WriteAsync("some content");
                     RequestEntryCollection collection = GetOrCreateEntries(context);
                     collection.RecordRequest(context.Request.PathBase + context.Request.Path);
@@ -66,13 +70,13 @@ namespace AppState
                         context.Session.SetString("StartTime", DateTime.Now.ToString());
                     }
                     await context.Response.WriteAsync("<html><body>");
-                    await context.Response.WriteAsync($"Counting: You have made {collection.TotalCount()} requests to this application.<br><a href=\"/\">Return</a>");
+                    await context.Response.WriteAsync($"统计: 你已经对本程序发起了 {collection.TotalCount()} 次请求.<br><a href=\"/\">返回</a>");
                     await context.Response.WriteAsync("</body></html>");
 
                 });
             });
 
-            // main catchall middleware
+            // 主要功能中间件
             app.Run(async context =>
             {
                 RequestEntryCollection collection = GetOrCreateEntries(context);
@@ -80,26 +84,26 @@ namespace AppState
                 if (collection.TotalCount() == 0)
                 {
                     await context.Response.WriteAsync("<html><body>");
-                    await context.Response.WriteAsync("Your session has not been established.<br>");
+                    await context.Response.WriteAsync("你的会话尚未建立。<br>");
                     await context.Response.WriteAsync(DateTime.Now.ToString() + "<br>");
-                    await context.Response.WriteAsync("<a href=\"/session\">Establish session</a>.<br>");
+                    await context.Response.WriteAsync("<a href=\"/session\">建立会话</a>。<br>");
                 }
                 else
                 {
                     collection.RecordRequest(context.Request.PathBase + context.Request.Path);
                     SaveEntries(context, collection);
 
-                    // Note: it's best to consistently perform all session access before writing anything to response
+                    // 注意：最好始终如一地在往响应流中写入内容之前执行完所有对会话的存取。
                     await context.Response.WriteAsync("<html><body>");
-                    await context.Response.WriteAsync("Session Established At: " + context.Session.GetString("StartTime") + "<br>");
+                    await context.Response.WriteAsync("会话建立于： " + context.Session.GetString("StartTime") + "<br>");
                     foreach (var entry in collection.Entries)
                     {
-                        await context.Response.WriteAsync("Request: " + entry.Path + " was requested " + entry.Count + " times.<br />");
+                        await context.Response.WriteAsync("请求路径： " + entry.Path + " 被访问了 " + entry.Count + " 次。<br />");
                     }
 
-                    await context.Response.WriteAsync("Your session was located, you've visited the site this many times: " + collection.TotalCount() + "<br />");
+                    await context.Response.WriteAsync("你的会话已找到, 你访问本站的次数是：" + collection.TotalCount() + "<br />");
                 }
-                await context.Response.WriteAsync("<a href=\"/untracked\">Visit untracked part of application</a>.<br>");
+                await context.Response.WriteAsync("<a href=\"/untracked\">访问不计入统计的页面</a>.<br>");
                 await context.Response.WriteAsync("</body></html>");
             });
         }
@@ -129,7 +133,5 @@ namespace AppState
             context.Session.Set("RequestEntries", serializedResult);
         }
 
-        // Entry point for the application.
-        public static void Main(string[] args) => Microsoft.AspNet.Hosting.WebApplication.Run<Startup>(args);
     }
 }
