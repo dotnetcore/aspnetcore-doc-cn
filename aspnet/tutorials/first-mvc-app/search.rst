@@ -83,6 +83,7 @@
  :dedent: 8
 
 现在可以通过查询标题作为路由数据（一个URL部分），而不是查询字符串的值。
+
 .. image:: search/_static/g2.png
 
 
@@ -125,14 +126,14 @@ HTML中的 ``<form>`` 标签使用 :doc: `Form Tag Helper </mvc/views/working-wi
 .. image:: search/_static/fo.png
 
 
-然而，即使添加 ``Index`` 方法的这个 ``[HttpPost]`` 版本，这儿有个限制，在这是如何被实现的。想象一下，给特定查询添加标签或者给朋友发送一个链接，他们就能看到相同的过滤的movies列表。注意，HTTP POST请求的URL和GET请求的URL是相同的(localhost:xxxxx/Movies/Index)--URL中 没有搜索信息。搜索字符串信息被作为 `form field value <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 表单字段值发送到服务器。可以按 `F12 Developer tools <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>` （F12开发者工具）验证或者比较好的 `Fiddler tool <http://www.telerik.com/fiddler>`__ 。开始 `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ :
+然而，即使添加 ``Index`` 方法的这个 ``[HttpPost]`` 版本，这儿有个限制，在这是如何被实现的。想象一下，给特定查询添加标签或者给朋友发送一个链接，他们就能看到相同的过滤的movies列表。注意，HTTP POST请求的URL和GET请求的URL是相同的(localhost:xxxxx/Movies/Index)--URL中 没有搜索信息。搜索字符串信息被作为 `form field value <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 表单字段值发送到服务器。可以按 `F12 Developer tools <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`（F12开发者工具）验证或者比较好的 `Fiddler tool <http://www.telerik.com/fiddler>`__ 。开始 `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ :
 
 
 点击 **http://localhost:xxx/Movies  HTTP POST 200** 行，然后点击 **Body  > Request Body** 。
 
 .. image:: search/_static/f12_rb.png
 
-在请求体可以看到搜索字符串和 :doc: `XSRF </security/anti-request-forgery>` 令牌。注意，在前面的教程中提到 :doc: `Form Tag Helper </mvc/views/working-with-forms>` 生成 :doc: `XSRF </security/anti-request-forgery>` 防伪标记。没有修改数据，所以不需要在控制器方法中验证令牌。
+在请求体可以看到搜索字符串和 :doc: `XSRF </security/anti-request-forgery>` 令牌。注意，在前面的教程中提到:doc: `Form Tag Helper </mvc/views/working-with-forms>` 生成:doc: `XSRF </security/anti-request-forgery>` 防伪标记。没有修改数据，所以不需要在控制器方法中验证令牌。
 
 因为搜索参数是在请求主体里，而不是在URL中，所以不能捕捉到搜索信息给书签或者和其他人共享。通过指定请求应该是 ``HTTP GET`` 来解决这个。注意，智能提示怎样帮助我们更新标记。
 
@@ -140,7 +141,7 @@ HTML中的 ``<form>`` 标签使用 :doc: `Form Tag Helper </mvc/views/working-wi
 
 .. image:: search/_static/int_get.png
 
-注意 ``<form>`` 标签中的独特字体，那个独特字体标识的标签是被 :doc: `Tag Helpers </mvc/views/tag-helpers/intro>` 支持的。
+注意 ``<form>`` 标签中的独特字体，那个独特字体标识的标签是被:doc: `Tag Helpers </mvc/views/tag-helpers/intro>` 支持的。
 
 .. image:: search/_static/th_font.png
 
