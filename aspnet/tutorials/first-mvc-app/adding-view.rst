@@ -19,7 +19,7 @@ You'll create a view template file using the Razor view engine. Razor-based view
 
 Currently the ``Index`` method returns a string with a message that is hard-coded in the controller class. Change the ``Index`` method to return a View object, as shown in the following code:
 
-目前，在控制器类中， ``Index`` 通过硬编码返回字符串。下例演示如何通过 ``Index`` 返回视图对象：
+目前，在控制器类中， ``Index`` 通过硬编码返回字符串。下例演示如何通过改变 ``Index`` 方法返回视图对象：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -42,7 +42,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
 - In the **Add New Item - MvcMovie** dialog
 
-- 在 **Add New Item - MvcMovie** 对话框中：
+- 在 **Add New Item（添加新建项） - MvcMovie** 对话框中：
 
   - In the search box in the upper-right, enter *view*
 
@@ -71,7 +71,7 @@ Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with
 
 Navigate to ``http://localhost:xxxx/HelloWorld``. The ``Index`` method in the ``HelloWorldController`` didn't do much work; it simply ran the statement ``return View();``, which specified that the method should use a view template file to render a response to the browser. Because you didn't explicitly specify the name of the view template file to use, MVC defaulted to using the *Index.cshtml* view file in the */Views/HelloWorld* folder. The image below shows the string "Hello from our View Template!" hard-coded in the view.
 
-导航到 ``http://localhost:xxxx/HelloWorld``。 ``HelloWorldController`` 的 ``Index`` 方法作用并不大；它仅仅运行语句 ``return View();``来指定该方法应该用一个视图模板文件显示对浏览器的响应。因为没有明确指定所使用视图模板的文件名，MVC默认使用 */Views/HelloWorld* 文件夹中的 *Index.cshtml* 视图文件。下图显示了通过硬编码在视图中显示 "Hello from our View Template!" 字符串。
+导航到 ``http://localhost:xxxx/HelloWorld``。 ``HelloWorldController`` 的 ``Index`` 方法作用并不大；它仅仅运行 ``return View();`` 语句来指定该方法应该用一个视图模板文件显示对浏览器的响应。因为没有明确指定所使用视图模板的文件名，MVC默认使用 */Views/HelloWorld* 文件夹中的 *Index.cshtml* 视图文件。下图显示了通过硬编码在视图中显示 "Hello from our View Template!" 字符串。
 
 .. image:: adding-view/_static/hell_template.png
 
