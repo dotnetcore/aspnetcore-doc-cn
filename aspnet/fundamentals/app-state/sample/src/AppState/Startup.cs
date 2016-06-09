@@ -70,7 +70,7 @@ namespace AppState
                         context.Session.SetString("StartTime", DateTime.Now.ToString());
                     }
                     await context.Response.WriteAsync("<html><body>");
-                    await context.Response.WriteAsync($"统计: 你已经对本程序发起了 {collection.TotalCount()} 次请求.<br><a href=\"/\">返回</a>");
+                    await context.Response.WriteAsync("统计: 你已经对本程序发起了"+ collection.TotalCount() +"次请求.<br><a href=\"/\">返回</a>");
                     await context.Response.WriteAsync("</body></html>");
 
                 });
