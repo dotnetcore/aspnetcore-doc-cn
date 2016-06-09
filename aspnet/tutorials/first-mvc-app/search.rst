@@ -133,7 +133,7 @@ HTML中的 ``<form>`` 标签使用 :doc: `Form Tag Helper </mvc/views/working-wi
 
 .. image:: search/_static/f12_rb.png
 
-在请求体可以看到搜索字符串和 :doc: `XSRF </security/anti-request-forgery>` 令牌。注意，在前面的教程中提到:doc: `Form Tag Helper </mvc/views/working-with-forms>`__生成:doc: `XSRF </security/anti-request-forgery>`__ 防伪标记。没有修改数据，所以不需要在控制器方法中验证令牌。
+在请求体可以看到搜索字符串和 :doc: `XSRF </security/anti-request-forgery>` 令牌。注意，在前面的教程中提到:doc: `Form Tag Helper </mvc/views/working-with-forms>`__ 生成:doc: `XSRF </security/anti-request-forgery>`__ 防伪标记。没有修改数据，所以不需要在控制器方法中验证令牌。
 
 因为搜索参数是在请求主体里，而不是在URL中，所以不能捕捉到搜索信息给书签或者和其他人共享。通过指定请求应该是 ``HTTP GET`` 来解决这个。注意，智能提示怎样帮助我们更新标记。
 
@@ -189,8 +189,8 @@ genres（风格）为 ``SelectList`` 是通过投影不同的genres来创建的�
  :dedent: 12
 
 
- 在Index视图中添加搜索类型的模型
- --------------------------------
+通过生成Index视图添加搜索
+==========================
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml
   :language: HTML
