@@ -37,10 +37,10 @@
   :dedent: 12
   :emphasize-lines: 3
 
- ``s => s.Title.Contains()`` 这段代码是一个 `Lambda表达式 <http://msdn.microsoft.com/en-us/library/bb397687.aspx>`__。 Lambdas是基于 `LINQ <http://msdn.microsoft.com/en-us/library/bb397926.aspx>`__ 查询的方法，作为标准查询操作方法的参数，比如用在以上代码中的 `Where <http://msdn.microsoft.com/en-us/library/system.linq.enumerable.where.aspx>`__ 方法或者 ``Contains`` 。当LINQ 查询被定义或者通过调用比如 ``Where`` , ``Contains``  或者 ``OrderBy``方法被修改时，它并没有被执行。相反，查询执行被延迟。这就意味着表达式的赋值被延迟，直到调用遍历或者 ``ToListAsync`` 方法后，才是真实值。关于延迟查询执行的更多信息，请参考 `Query Execution <http://msdn.microsoft.com/en-us/library/bb738633.aspx>`__。
+``s => s.Title.Contains()`` 这段代码是一个 `Lambda表达式 <http://msdn.microsoft.com/en-us/library/bb397687.aspx>`__。 Lambdas是基于 `LINQ <http://msdn.microsoft.com/en-us/library/bb397926.aspx>`__ 查询的方法，作为标准查询操作方法的参数，比如用在以上代码中的 `Where <http://msdn.microsoft.com/en-us/library/system.linq.enumerable.where.aspx>`__ 方法或者 ``Contains`` 。当LINQ 查询被定义或者通过调用比如 ``Where`` , ``Contains``  或者 ``OrderBy``方法被修改时，它并没有被执行。相反，查询执行被延迟。这就意味着表达式的赋值被延迟，直到调用遍历或者 ``ToListAsync`` 方法后，才是真实值。关于延迟查询执行的更多信息，请参考 `Query Execution <http://msdn.microsoft.com/en-us/library/bb738633.aspx>`__。
 
 
-.. Note:: `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法是在数据库中运行，并不是在以上C#代码中。在数据库中，`Contains  <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 映射为 `SQL语句中的 LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__，这里不区分大小写。
+.. Note:: `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法是在数据库中运行，并不是在以上C#代码中。在数据库中，`Contains  <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 映射为 `SQL语句中的LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__，这里不区分大小写。
 
 导航到 ``/Movies/Index``。在URL中添加一个查询字符串比如 ``?searchString=ghost`` 。显示被过滤的movies。
 
