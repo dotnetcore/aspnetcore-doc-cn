@@ -126,7 +126,7 @@ HTML中的 ``<form>`` 标签使用 :doc: `Form Tag Helper </mvc/views/working-wi
 .. image:: search/_static/fo.png
 
 
-然而，即使添加 ``Index`` 方法的这个 ``[HttpPost]`` 版本，这儿有个限制，在这是如何被实现的。想象一下，给特定查询添加标签或者给朋友发送一个链接，他们就能看到相同的过滤的movies列表。注意，HTTP POST请求的URL和GET请求的URL是相同的(localhost:xxxxx/Movies/Index)--URL中 没有搜索信息。搜索字符串信息被作为 `form field value <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 表单字段值发送到服务器。可以按 `F12 Developer tools <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__（F12开发者工具）验证或者比较好的 `Fiddler tool <http://www.telerik.com/fiddler>`__ 。开始 `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ :
+然而，即使添加 ``Index`` 方法的这个 ``[HttpPost]`` 版本，这儿有个限制，在这是如何被实现的。想象一下，给特定查询添加标签或者给朋友发送一个链接，他们就能看到相同的过滤的movies列表。注意，HTTP POST请求的URL和GET请求的URL是相同的(localhost:xxxxx/Movies/Index)--URL中 没有搜索信息。搜索字符串信息被作为 `form field value <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 表单字段值发送到服务器。可以按 `F12 Developer tools <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ （F12开发者工具）验证或者比较好的 `Fiddler tool <http://www.telerik.com/fiddler>`__ 。开始 `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ :
 
 
 点击 **http://localhost:xxx/Movies  HTTP POST 200** 行，然后点击 **Body  > Request Body** 。
