@@ -98,10 +98,10 @@ namespace AppState
                     await context.Response.WriteAsync("会话建立于： " + context.Session.GetString("StartTime") + "<br>");
                     foreach (var entry in collection.Entries)
                     {
-                        await context.Response.WriteAsync("请求路径： " + entry.Path + " 被访问了 " + entry.Count + " 次。<br />");
+                        await context.Response.WriteAsync("路径： " + entry.Path + " 被访问了 " + entry.Count + " 次。<br />");
                     }
 
-                    await context.Response.WriteAsync("你的会话已找到, 你访问本站的次数是：" + collection.TotalCount() + "<br />");
+                    await context.Response.WriteAsync("你访问本站的次数是：" + collection.TotalCount() + "<br />");
                 }
                 await context.Response.WriteAsync("<a href=\"/untracked\">访问不计入统计的页面</a>.<br>");
                 await context.Response.WriteAsync("</body></html>");
@@ -111,7 +111,8 @@ namespace AppState
         private RequestEntryCollection GetOrCreateEntries(HttpContext context)
         {
             RequestEntryCollection collection = null;
-            byte[] requestEntriesBytes = context.Session.Get("RequestEntries");
+            byte[] requestEntriesBytes;
+            context.Session.TryGetValue("RequestEntries",out requestEntriesBytes);
 
             if (requestEntriesBytes != null && requestEntriesBytes.Length > 0)
             {
@@ -130,7 +131,7 @@ namespace AppState
             string json = JsonConvert.SerializeObject(collection);
             byte[] serializedResult = System.Text.Encoding.UTF8.GetBytes(json);
 
-            context.Session.Set("RequestEntries", serializedResult);
+            context.Session.Set("RequestEntries", serializedResult);            
         }
 
     }
