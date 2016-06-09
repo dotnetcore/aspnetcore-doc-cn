@@ -9,11 +9,11 @@ Getting started with ASP.NET Core MVC and Visual Studio
 
 翻译： `娄宇(Lyrics) <https://github.com/xbuilder>`_
 
-校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`夏申斌 <https://github.com/xiashenbin>`_ 
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`夏申斌 <https://github.com/xiashenbin>`_ 、`张硕(Apple) <#>`_ 
 
 This tutorial will teach you the basics of building an ASP.NET Core MVC  web app using `Visual Studio 2015 <https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx>`__. 
 
-这篇教程将告诉你如何使用 `Visual Studio 2015 <https://www.visualstudio.com/zh-cn/visual-studio-homepage-vs.aspx>`__ 构建一个 ASP.NET Core MVC Web 应用程序。
+这篇教程将告诉你如何使用 `Visual Studio 2015 <https://www.visualstudio.com/zh-cn/visual-studio-homepage-vs.aspx>`__ 构建一个 ASP.NET Core MVC Web 应用程序的基础知识。
 
 
 Install Visual Studio and .NET Core
@@ -77,7 +77,7 @@ In the **New ASP.NET Core Web Application - MvcMovie** dialog, tap **Web Applica
 
 .. Warning:: You must have the **Authentication** set to **Individual User Accounts** in this release for the scaffolding engine to work.
 
-.. Warning:: 你必须将 **身份验证(Authentication)** 设置为 **个人用户账户(Individual User Accounts)** ，以便基架引擎能正常工作。
+.. Warning:: 在本教程中，你必须将 **身份验证(Authentication)** 设置为 **个人用户账户(Individual User Accounts)** ，以便基架引擎能正常工作（译者注：不同的身份认证通过基架引擎生成的代码不一样，为了教程顺利进行，此处必须选用个人用户账户的认证方式)。
 
 .. image:: start-mvc/_static/p3.png
 
@@ -85,7 +85,7 @@ Visual Studio used a default template for the MVC project you just created, so y
 
 Tap **F5** to run the app in debug mode or **Ctl-F5** in non-debug mode.
 
-Visual Studio 使用刚才创建的 MVC 项目的默认模板，输入项目名并略作设置后便可得到一个应用程序。这就是一个简单的 "Hello World!" 项目，一个很好的开始。
+Visual Studio 给刚才创建的 MVC 项目提供了默认模板，输入项目名并选择一些选项后便可得到一个应用程序。这就是一个简单的 "Hello World!" 项目，一个很好的开始。
 
 按下 **F5** 以 Debug 模式运行这个应用程序，或者按下 **Ctrl+F5** 以非 Debug 模式运行。
 
@@ -95,7 +95,7 @@ Visual Studio 使用刚才创建的 MVC 项目的默认模板，输入项目名�
 - Launching the app with **Ctrl+F5** (non-debug mode) allows you to make code changes, save the file, refresh the browser, and see the code changes. Many developers prefer to use non-debug mode to quickly launch the app and view changes.
 - You can launch the app in debug or non-debug mode from the **Debug** menu item:
 
-- Visual Studio 启动 `IIS Express <http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview>`__ 并且运行你的应用程序。注意地址栏显示的 ``localhost:端口#`` 而不是像 ``example.com`` 。那是因为 ``localhost`` 永远指向本地计算机（在本例中是当前应用程序所在的计算机）。当 Visual Studio 创建一个 Web 项目，Web 服务使用随机的端口。如上图所示，端口号是 1234。当你运行这个应用程序，你可能会看到不同的端口号。
+- Visual Studio 启动 `IIS Express <http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview>`__ 并且运行你的应用程序。注意地址栏显示的 ``localhost:端口#`` 而不是像 ``example.com`` 。那是因为 ``localhost`` 总是指向本地计算机，在本例中也就是运行你这个应用程序的计算机。当 Visual Studio 创建一个 Web 项目，Web 服务使用随机的端口。如上图所示，端口号是 1234。当你运行这个应用程序，你可能会看到不同的端口号。
 - 通过 **Ctrl+F5** (非调试模式)启动这个应用程序允许你进行代码更改，保存文件，刷新浏览器，之后查看代码改变。许多开发者更倾向于使用非调试模式来快速启动应用程序和查看变化。
 - 你可以通过 **Debug** 菜单项选择以调试模式或者非调试模式启动应用程序
 
@@ -108,7 +108,7 @@ Visual Studio 使用刚才创建的 MVC 项目的默认模板，输入项目名�
 
 The default template gives you working **Home, Contact, About, Register** and **Log in** links. The browser image above doesn't show theses links. Depending on the size of your browser, you might need to click the navigation icon to show them. 
 
-默认的模板提供 **Home、Contact、About、Register** 和 **Log in** 链接。上面的浏览器图片没有显示这些链接。根据您的浏览器的大小，您可能需要点击导航图标来显示他们。
+默认的模板提供 **Home、Contact、About、Register** 和 **Log in** 链接。上面的浏览器图片没有显示这些链接。根据您的浏览器的尺寸，您可能需要点击导航图标来显示他们。
 
 .. image:: start-mvc/_static/2.png
 
