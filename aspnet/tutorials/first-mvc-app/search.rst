@@ -103,7 +103,7 @@
   :lines: 1-21
   :emphasize-lines: 13-18
 
-HTML中的``<form>``标签使用:doc:`Form Tag Helper </mvc/views/working-with-forms>`，当提交表单时，筛选字符串将被提交到movies控制器的``Index``方法中。保存更改并测试。
+HTML中的``<form>``标签使用:doc: `Form Tag Helper </mvc/views/working-with-forms>` ，当提交表单时，筛选字符串将被提交到movies控制器的``Index``方法中。保存更改并测试。
 
 .. image:: search/_static/filter.png
 
@@ -132,7 +132,7 @@ HTML中的``<form>``标签使用:doc:`Form Tag Helper </mvc/views/working-with-f
 
 .. image:: search/_static/f12_rb.png
 
-在请求体可以看到搜索字符串和 :doc:`XSRF </security/anti-request-forgery>` 令牌。注意，在前面的教程中提到 :doc:`Form Tag Helper </mvc/views/working-with-forms>` 生成 :doc:`XSRF </security/anti-request-forgery>` 防伪标记。没有修改数据，所以不需要在控制器方法中验证令牌。
+在请求体可以看到搜索字符串和 :doc: `XSRF </security/anti-request-forgery>` 令牌。注意，在前面的教程中提到 :doc: `Form Tag Helper </mvc/views/working-with-forms>` 生成 :doc: `XSRF </security/anti-request-forgery>` 防伪标记。没有修改数据，所以不需要在控制器方法中验证令牌。
 
 因为搜索参数是在请求主体里，而不是在URL中，所以不能捕捉到搜索信息给书签或者和其他人共享。通过指定请求应该是 ``HTTP GET`` 来解决这个。注意，智能提示怎样帮助我们更新标记。
 
@@ -140,7 +140,7 @@ HTML中的``<form>``标签使用:doc:`Form Tag Helper </mvc/views/working-with-f
 
 .. image:: search/_static/int_get.png
 
-注意 ``<form>`` 标签中的独特字体，那个独特字体标识的标签是被 :doc:`Tag Helpers </mvc/views/tag-helpers/intro>` 支持的。
+注意 ``<form>`` 标签中的独特字体，那个独特字体标识的标签是被 :doc: `Tag Helpers </mvc/views/tag-helpers/intro>` 支持的。
 
 .. image:: search/_static/th_font.png
 
