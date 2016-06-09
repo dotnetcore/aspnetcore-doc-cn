@@ -103,7 +103,7 @@
   :lines: 1-21
   :emphasize-lines: 13-18
 
-HTML中的``<form>``标签使用:doc: `Form Tag Helper </mvc/views/working-with-forms>` ，当提交表单时，筛选字符串将被提交到movies控制器的 ``Index`` 方法中。保存更改并测试。
+HTML中的 ``<form>`` 标签使用 :doc: `Form Tag Helper </mvc/views/working-with-forms>`，当提交表单时，筛选字符串将被提交到movies控制器的 ``Index`` 方法中。保存更改并测试。
 
 .. image:: search/_static/filter.png
 
