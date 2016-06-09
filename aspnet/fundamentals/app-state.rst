@@ -20,7 +20,7 @@ In ASP.NET Core, application state can be managed in a variety of ways, dependin
 
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/app-state/sample>`__
 
-`查看或下载示例代码<https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/app-state/sample>`__
+`查看或下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/app-state/sample>`__
 
 Application State Options
 -------------------------
@@ -46,6 +46,7 @@ Application developers are free to use different state storage providers dependi
 - What format is the data?
 - Can it be serialized?
 - How sensitive was the data? Could it be stored on the client?
+
 
 - 数据需要储存多久？
 - 数据有多大？
@@ -316,7 +317,7 @@ When you first navigate to the web server, it displays a screen indicating that 
 
 当你首次访问这个网页，它会在屏幕上显示说还没有会话被建立：
 
-.. image:: app-state/_static/no-session-established.png
+.. image:: app-state/_static/no-session-established-cn.png
 
 This default behavior is produced by the following middleware in *Startup.cs*, which runs when requests are made that do not already have an established session (note the highlighted sections):
 
@@ -368,13 +369,13 @@ In the browser, clicking the Establish session hyperlink makes a request to the 
 
 在浏览器中，点击"建立会话"链接发起一个对路径"/session"的访问请求，然后得到如下结果：
 
-.. image:: app-state/_static/session-established.png
+.. image:: app-state/_static/session-established-cn.png
 
 Refreshing the page results in the count incrementing; returning to the root of the site (after making a few more requests) results in this display, summarizing all of the requests that were made during the current session:
 
 刷新页面会使计数增加；再刷新几次之后，回到网站的根路径，如下显示，统计了当前会话期间所发起的所有请求：
 
-.. image:: app-state/_static/session-established-with-request-counts.png
+.. image:: app-state/_static/session-established-with-request-counts-cn.png
 
 Establishing the session is done in the middleware that handles requests to "/session":
 
