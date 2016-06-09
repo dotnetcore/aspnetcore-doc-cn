@@ -18,20 +18,20 @@
 
 - 安装 `.NET Core + Visual Studio tooling <http://go.microsoft.com/fwlink/?LinkID=798306>`__
 
-- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__. 你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益<https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__.
+- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__. 你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益 <https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__.
 
-传建一个 Web 应用程序
+创建一个 Web 应用程序
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 在 Visual Studio 的 **Start** 页面, 点击 **New Project**　。
 
 .. image:: first-mvc-app/start-mvc/_static/new_project.png
 
-另外, 你也可以通过菜单新建项目. 点击 **File > New > Project**.
+另外, 你也可以通过菜单新建项目. 点击 **File > New > Project** 。
 
 .. image:: first-mvc-app/start-mvc/_static/alt_new_project.png
 
-完成 **New Project** 对话框:
+完成 **New Project** 对话框：
 
 - 在右侧面板, 点击 **Web**
 - 在中部面板, 点击 **ASP.NET Core Web Application (.NET Core)**
@@ -39,7 +39,7 @@
 
 .. image:: publish-to-azure-webapp-using-vs/_static/new_prj.png
 
-在 **New ASP.NET Core Web Application (.NET Core)** 对话框中:
+在 **New ASP.NET Core Web Application (.NET Core)** 对话框中：
 
 - 点击 **Web Application**
 - 确认 **Authentication** 设置为 **Individual User Accounts**
@@ -56,14 +56,14 @@
 
 .. image:: publish-to-azure-webapp-using-vs/_static/show.png
 
-- 点击 **Register** 注册一个新用户. 您可以使用虚构的电子邮件。当你点击提交后，会收到以下错误:
+- 点击 **Register** 注册一个新用户 。您可以使用虚构的电子邮件。当你点击提交后，会收到以下错误:
 
 .. image:: publish-to-azure-webapp-using-vs/_static/mig.png
 
-可以通过两个方式来修复这个问题:
+可以通过两个方式来修复这个问题：
 
 - 点击 **Apply Migrations** 当页面发生更新的时候, 刷新屏幕
-- 在项目目录下运行该命令行 :
+- 在项目目录下运行该命令行 ：
 
     dotnet ef database update
 
@@ -78,18 +78,18 @@
 
 .. image:: publish-to-azure-webapp-using-vs/_static/pub.png
 
-在 **Publish** 弹出对话框里, 点击 **Microsoft Azure App Service**
+在 **Publish** 弹出对话框里，点击 **Microsoft Azure App Service**
 
 .. image:: publish-to-azure-webapp-using-vs/_static/maas1.png
 
-点击Tap **New** 输入一个新的资源组. 创建新的资源组目的是为了可以方便地删除所有您在本教程中创建在Azure资源。 
+点击 **New** 输入一个新的资源组 。创建新的资源组目的是为了可以方便地删除所有您在本教程中创建在 Azure 资源 。 
 
 .. image:: publish-to-azure-webapp-using-vs/_static/newrg1.png
 
-创建新的资源组以及应用服务计划:
+创建新的资源组以及应用服务计划：
 
 - 点击 **New** 创建资源组并且输入新资源组的名称
-- 点击 **New** 创建应用服务计划并且选择一个你附近的地址. 你可以保留默认生成的名字
+- 点击 **New** 创建应用服务计划并且选择一个你附近的地址 。 你可以保留默认生成的名字
 - 点击 **Explore additional Azure services** 创建新的数据库
 
 .. image:: publish-to-azure-webapp-using-vs/_static/cas.png
@@ -103,7 +103,7 @@
 .. image:: publish-to-azure-webapp-using-vs/_static/conf.png
 
 - 你可以保持默认 **Server Name**
-- 输入管理员用户密码, 点击 **OK**. 记住用户名密码。
+- 输入管理员用户密码, 点击 **OK** 。记住用户名密码。
 
 .. image:: publish-to-azure-webapp-using-vs/_static/dbrick.png
 
@@ -117,7 +117,7 @@
 
 .. image:: publish-to-azure-webapp-using-vs/_static/pubc.png
 
-- 在 **Publish** 弹出对话框的 **Settings** 环节:
+- 在 **Publish** 弹出对话框的 **Settings** 环节：
 
   - 选中 **Use this connection string at runtime**
   - 选中 **Apply this migration on publish**
@@ -139,7 +139,7 @@ Visual Studio 将会把你的应用程序部署到 Azure 云，并在浏览器�
 更新应用程序
 --------------------
 
-- 编辑 *Views/Home/About.cshtml* Razor 视图文件. 修改内容, 例如 :
+- 编辑 *Views/Home/About.cshtml* Razor 视图文件。修改内容，例如 :
 
 .. code-block:: html
   :emphasize-lines: 7
