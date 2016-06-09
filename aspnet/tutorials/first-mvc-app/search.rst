@@ -1,5 +1,8 @@
-﻿Adding Search    添加搜索
-==================================================
+﻿Adding Search    
+======================
+
+添加搜索
+=========
 
 翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
@@ -196,8 +199,11 @@ Now when you submit a search, the URL contains the search query string. Searchin
 .. image:: search/_static/search_get.png
 
 
-Adding Search by Genre             添加搜索类型
-------------------------           ------------
+Adding Search by Genre             
+------------------------        
+  
+添加搜索类型
+------------
 
 Add the following ``MovieGenreViewModel`` class to the *Models* folder:
 
@@ -251,8 +257,11 @@ genres（风格）为 ``SelectList`` 是通过投影不同的genres来创建的�
  :dedent: 12
 
 
-Adding search by genre to the Index view          在Index视图中添加搜索类型的模型
---------------------------------------------      --------------------------------
+Adding search by genre to the Index view         
+-------------------------------------------- 
+
+ 在Index视图中添加搜索类型的模型
+ --------------------------------
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/IndexFormGenre.cshtml
   :language: HTML
