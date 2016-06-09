@@ -9,7 +9,7 @@ Getting started with ASP.NET Core MVC and Visual Studio
 
 翻译： `娄宇(Lyrics) <https://github.com/xbuilder>`_
 
-校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`夏申斌 <https://github.com/xiashenbin>`_ 
 
 This tutorial will teach you the basics of building an ASP.NET Core MVC  web app using `Visual Studio 2015 <https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx>`__. 
 
