@@ -254,7 +254,7 @@ The ``IdleTimeout`` is used by the server to determine how long a session can be
 
 .. note:: ``Session`` is *non-locking*, so if two requests both attempt to modify the contents of session, the last one will win. Further, ``Session`` is implemented as a *coherent session*, which means that all of the contents are stored together. This means that if two requests are modifying different parts of the session (different keys), they may still impact each other.
 
-.. note:: ``Session`` 是*无锁*的，因此如果两个请求都尝试修改会话的内容，最后一个会成功。此外，``Session`` 被实现为一个*内容连贯的会话*，就是说所有的内容都是一起储存的。这就意味着，如果两个请求是在修改会话中不同的部分（不同的键），他们还是会互相造成影响。
+.. note:: ``Session`` 是 *无锁* 的，因此如果两个请求都尝试修改会话的内容，最后一个会成功。此外，``Session`` 被实现为一个*内容连贯的会话*，就是说所有的内容都是一起储存的。这就意味着，如果两个请求是在修改会话中不同的部分（不同的键），他们还是会互相造成影响。
 
 ISession
 ^^^^^^^^
