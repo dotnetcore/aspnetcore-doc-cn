@@ -48,7 +48,7 @@ The ``s => s.Title.Contains()`` code above is a `Lambda Expression <http://msdn.
 
 .. Note:: The `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ method is run on the database, not the c# code above. On the database, `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ maps to `SQL LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__, which is case insensitive.
 
-.. Note:: `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__方法是在数据库中运行，并不是在以上C#代码中。在数据库中，`Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__映射为 `SQL语句中的 LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__，这里不区分大小写。
+.. Note:: `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法是在数据库中运行，并不是在以上C#代码中。在数据库中，`Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__映射为 `SQL语句中的 LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__，这里不区分大小写。
 
 
 Navigate to ``/Movies/Index``. Append a query string such as ``?searchString=ghost`` to the URL. The filtered movies are displayed.
