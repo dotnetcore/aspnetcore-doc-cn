@@ -1,4 +1,4 @@
-Introduction to ASP.NET Core
+ASP.NET Core 介绍
 ============================
 
 作者： `Daniel Roth`_
