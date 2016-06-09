@@ -11,11 +11,11 @@ By `Rick Anderson`_
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
 
-本节将更新  ``HelloWorldController`` 类，用 Razor 视图模板干净利落地把生成 HTML 响应客户端的过程封装起来。
+本节将修改 ``HelloWorldController`` 类，用 Razor 视图模板将生成 HTML（作为客户端的请求响应）的过程进行封装，使得这个过程干净利落。
 
 You'll create a view template file using the Razor view engine. Razor-based view templates have a *.cshtml* file extension, and provide an elegant way to create HTML output using C#. Razor minimizes the number of characters and keystrokes required when writing a view template, and enables a fast, fluid coding workflow.
 
-您将用Razor视图引擎创建一个视图模板。基于Razor视图模板是扩展名为 *.cshtml* 的文件，并用 C# 方便输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
+您将用Razor视图引擎创建一个视图模板。基于Razor视图模板文件的扩展名为 *.cshtml*，并用 C# 方便输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
 
 Currently the ``Index`` method returns a string with a message that is hard-coded in the controller class. Change the ``Index`` method to return a View object, as shown in the following code:
 
@@ -32,7 +32,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
 - Right click on the *Views* folder, and then **Add > New Folder** and name the folder *HelloWorld*.
 
-- 右击 *Views* （视图）文件夹，选择 **Add > New Folder** （Add->新建文件夹），然后将文件夹命名为 *HelloWorld*.
+- 鼠标右击 *Views* （视图）文件夹，选择 **Add > New Folder** （Add->新建文件夹），然后将文件夹命名为 *HelloWorld*.
 
 .. image:: adding-view/_static/add_folder.png
 
@@ -54,7 +54,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
   - In the **Name** box, keep the default *Index.cshtml*
 
-  - 在**Name** 框中, 保持默认的命名 *Index.cshtml*
+  - 在 **Name** 框中, 保持默认的命名 *Index.cshtml*
 
   - Tap **Add**
 
@@ -90,9 +90,9 @@ Tap on the menu links (**MvcMovie**, **Home**, **About**). Each page shows the s
 
 点击菜单链接 (**MvcMovie**, **Home**, **About**)。每个页面都显示相同的菜单布局。菜单布局由 *Views/Shared/_Layout.cshtml* 文件夹实现，打开 *Views/Shared/_Layout.cshtml* 文件夹。
 
-:doc:`Layout </mvc/views/layout>` templates allow you to specify the HTML container layout of your site in one place and then apply it across multiple pages in your site. Find the ``@RenderBody()`` line. ``RenderBody`` is a placeholder where all the view-specific pages you create show up, "wrapped" in the layout page. For example, if you select the **About** link, the **Views/Home/About.cshtml** view is rendered inside the ``RenderBody`` method.
+:doc: `Layout </mvc/views/layout>` templates allow you to specify the HTML container layout of your site in one place and then apply it across multiple pages in your site. Find the ``@RenderBody()`` line. ``RenderBody`` is a placeholder where all the view-specific pages you create show up, "wrapped" in the layout page. For example, if you select the **About** link, the **Views/Home/About.cshtml** view is rendered inside the ``RenderBody`` method.
 
-:doc:`Layout </mvc/views/layout>` 模板允许在一个地方指定包含网站布局的HTML，并在网站的多个页面应用。找到 ``@RenderBody()`` 那行。 ``RenderBody`` 时你所显示的指定视图“包装在”布局页内的占位符。例如，比如点击 **About** 链接， **Views/Home/About.cshtml**  视图就会在 ``RenderBody`` 方法内渲染。
+:doc: `Layout </mvc/views/layout>` 模板允许在一个地方指定包含网站布局的HTML，并在网站的多个页面应用。找到 ``@RenderBody()`` 那行。 ``RenderBody`` 时你所显示的指定视图“包装在”布局页内的占位符。例如，比如点击 **About** 链接， **Views/Home/About.cshtml**  视图就会在 ``RenderBody`` 方法内渲染。
 
 Change the contents of the title element. Change the anchor text in the layout template to "MVC Movie" and the controller from ``Home`` to ``Movies`` as highlighted below:
 
@@ -158,15 +158,15 @@ Save your change and refresh the page. Notice that the browser title, the primar
 
 保存并刷新页面。注意浏览器标题，原标题，二级标题，他们都发生了改变（如果你没有看到变化，可能因为缓存的缘故，使用 Ctrl+F5 强制刷新浏览器）。浏览器标题由我们设置在 **Index.cshtml** 视图模型中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
 
-Also notice how the content in the *Index.cshtml* view template was merged with the *Views/Shared/_Layout.cshtml* view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application. To learn more see :doc:`/mvc/views/layout`.
+Also notice how the content in the *Index.cshtml* view template was merged with the *Views/Shared/_Layout.cshtml* view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application. To learn more see :doc: `/mvc/views/layout`.
 
-同时注意， *Index.cshtml* 视图模板的内容是怎样和 *Views/Shared/_Layout.cshtml* 视图模板合并的，和一个HTML响应式怎样被发送到浏览器的。布局模板很容易改变在应用程序中应用的所有页面。要学习更多看 :doc:`/mvc/views/layout`.
+同时注意， *Index.cshtml* 视图模板的内容是怎样和 *Views/Shared/_Layout.cshtml* 视图模板合并的，和一个HTML响应式怎样被发送到浏览器的。布局模板很容易改变在应用程序中应用的所有页面。要学习更多看 :doc: `/mvc/views/layout`.
 
 .. image:: adding-view/_static/hell3.png
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how create a database and retrieve model data from it.
 
-少量 "data" (像 "Hello from our View Template!" 这种情况)是硬编码的。MVC应用程序有一个 "V" (view) ，你有一个 "C" (controller),但是没有 "M" (模型)。不久，我们将介绍如何创建一个数据库和从中搜索模型数据
+少量 "data" (像 "Hello from our View Template!" 这种情况)是硬编码的。MVC应用程序有一个 "V" (view) ，你有一个 "C" (controller),但是没有 "M" (模型)。不久，我们将介绍如何如何创建一个数据库和从中搜索模型数据
 
 Passing Data from the Controller to the View
 -----------------------------------------------
@@ -243,7 +243,7 @@ Data is taken from the URL and passed to the controller using the `model binder 
 
 In the sample above, we used the ``ViewData`` dictionary to pass data from the controller to a view. Later in the tutorial, we will use a view model to pass data from a controller to a view. The view model approach to passing data is generally much preferred over the ``ViewData`` dictionary approach. See `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ for more information.
 
-在以上例子中，我们用 ``ViewData`` 字典中将数据从控制器中传递到视图中，在后面的教程中，我们将使用视图模型（view model）将数据从控制器中传递到视图中。用视图模型传递数据优先于 ``ViewData`` 字典。查看 `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ 了解更多信息。
+在以上例子中，我们用 ``ViewData`` 字典将数据从控制器中传递到视图中，在后面的教程中，我们将使用视图模型（view model）将数据从控制器中传递到视图中。用视图模型传递数据优先于 ``ViewData`` 字典。查看 `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ 了解更多信息。
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
 
