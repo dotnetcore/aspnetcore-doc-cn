@@ -18,6 +18,7 @@
 
 + [高会军(布莱恩特)](https://github.com/iyacontrol)
 + [郭远博(tkb至简)](https://github.com/Farb)
++ [耿晓亮(Blue)](https://github.com/heyixiaoran)
 + [何镇汐](https://github.com/UtilCore)
 + [江振宇(江大渔)](https://github.com/kerryjiang)
 + [凌军州(喵喵)](https://github.com/XCoderLing)
