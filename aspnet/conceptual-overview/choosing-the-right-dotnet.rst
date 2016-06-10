@@ -2,7 +2,6 @@
 =============================================
 
 作者：`Daniel Roth`_  
-
 翻译：`王健 <https://github.com/wjhgzx>`_
 
 ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能运行在Windows、Mac和 Linux上的跨平台应用程序。当您构建一个.Net Core项目，您也可以在.NET Framework (CLR)，.NET Core (CoreCLR) 或者 `Mono <http://mono-project.com>`_ 中来选择一种.NET版本来构建您的应用程序，.NET Framework (CLR), .NET Core (CoreCLR) 或者 Mono？您应该选择哪一种.NET版本，来看看每一种的优缺点吧。
