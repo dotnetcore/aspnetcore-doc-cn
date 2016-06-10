@@ -2,7 +2,7 @@ ASP.NET Core 介绍
 ============================
 
 作者： `Daniel Roth`_
-翻译：王健
+翻译：`王健 <https://github.com/wjhgzx>`_
 
 ASP.NET CORE 是ASP.NET的一个重要的重新设计。这个主题将介绍ASP.NET Core 的新概念，并讲述它如何帮助你开发现代化的web应用。
 
