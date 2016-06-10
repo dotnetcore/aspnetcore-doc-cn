@@ -85,19 +85,19 @@ The first comment states this is an `HTTP GET <http://www.w3schools.com/tags/ref
 
 Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, http://localhost:1234/HelloWorld is used, but you'll have to replace *1234* with the port number of your app.) The ``Index method`` returns a string. You told the system to return some HTML, and it did! 
 
-使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一个字符串。你告诉系统返回一些 HTML，然后它确实是这样做的！
+使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一段字符串，系统将这段字符串转换为 HTML 返回给浏览器。
 
 .. image:: adding-controller/_static/hell1.png
 
 MVC invokes controller classes (and the action methods within them) depending on the incoming URL. The default URL routing logic used by MVC uses a format like this to determine what code to invoke:
 
-MVC 调用控制器（Controller）类 (以及它们的 Action 方法) 依赖于传入的 URL 。默认的路由逻辑是， MVC 使用像下面这样的格式来确定用什么样的代码来调用：
+MVC 调用控制器（Controller）类 (以及它们的 Action 方法) 依赖于传入的 URL 。MVC默认采用类似下面的路由规则格式来决定代码的调用：
 
 ``/[Controller]/[ActionName]/[Parameters]``
 
 You set the format for routing in the *Startup.cs* file.
 
-你可以在 *Startup.cs* 文件中设置路由格式。
+你可以在 *Startup.cs* 文件中设置路由规则。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -107,7 +107,7 @@ You set the format for routing in the *Startup.cs* file.
 
 When you run the app and don't supply any URL segments, it defaults to the "Home" controller and the "Index" method specified in the template line highlighted above. 
 
-当你运行应用程序并且不提供任何 URL 片段的时候，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
+当你运行应用程序且不提供任何 URL 片段时，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
 
 The first URL segment determines the controller class to run. So ``localhost:xxxx/HelloWorld`` maps to the ``HelloWorldController`` class. The second part of the URL segment determines the action method on the class. So ``localhost:xxxx/HelloWorld/Index`` would cause the ``Index`` method of the ``HelloWorldController`` class to run. Notice that we only had to browse to ``localhost:xxxx/HelloWorld`` and the ``Index`` method was called by default. This is because ``Index`` is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( ``Parameters``) is for route data. We'll see route data later on in this tutorial.
 
@@ -146,7 +146,7 @@ Run your app and browse to:
 
   ``http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4``
 
-(用你的端口替换 xxxx) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC 模型绑定系统将自动从地址栏中的查询字符串映射指定的参数到你的方法参数。查看 :doc:`/mvc/models/model-binding` 获得更多的信息。
+(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC 模型绑定系统将自动从地址栏中的查询字符串映射指定的参数到你的方法参数。查看 :doc:`/mvc/models/model-binding` 获得更多的信息。
 
 .. image:: adding-controller/_static/rick4.png
 
@@ -181,4 +181,4 @@ This time the third URL segment  matched the route parameter ``id``. The ``Welco
   
 In these examples the controller has been doing the "VC" portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don't want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we'll typically use a separate Razor view template file to help generate the HTML response. We'll do that in the next tutorial.
 
-在这些例子中，控制器（Controller）一直在做 MVC 中 "VC" 部分，就是视图（View）和控制器（Controller）部分的工作。控制器（Controller）直接返回 HTML 。一般来说你不想让控制器（Controller） 直接返回 HTML ，因为这让编码和维护变得非常麻烦。所以，我们通常会使用一个单独的 Razor 视图模板文件来帮助生成 HTML 相应。 我们将在下一个教程中介绍这部分。
+在这些例子中，控制器（Controller）一直在做 MVC 中 "VC" 部分，就是视图（View）和控制器（Controller）部分的工作。控制器（Controller）直接返回 HTML 。一般来说你不想让控制器（Controller） 直接返回 HTML ，因为这让编码和维护变得非常麻烦。所以，我们通常会使用一个单独的 Razor 视图模板文件来帮助生成 HTML 响应。 我们将在下一个教程中介绍这部分。
