@@ -1,7 +1,7 @@
 Injecting Services Into Views
 =============================
 
-在视图中注入服务
+注入服务到视图中
 ================
 
 作者： `Steve Smith`_
