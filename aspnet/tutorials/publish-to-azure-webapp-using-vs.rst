@@ -170,7 +170,7 @@ Visual Studio 将会把你的应用程序部署到 Azure 云，并在浏览器�
 
 .. image:: publish-to-azure-webapp-using-vs/_static/portalrg.png
 
-- 在 **Resource group** 里点击 **Delete**
+- 在 **Resource group** 里点击 **Delete** 
 - 输入资源名并点击 **Delete**
 
 .. image:: publish-to-azure-webapp-using-vs/_static/rgd.png
