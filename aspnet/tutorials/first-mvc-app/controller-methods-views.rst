@@ -55,7 +55,7 @@ Visual studio 会自动导入 ``using System.ComponentModel.DataAnnotations;`` �
   :dedent: 12
   :emphasize-lines: 2-4
 
-:doc:`Tag Helpers </mvc/views/tag-helpers/intro>`允许服务器端代码在 Razor 文件中创建和生成 HTML 元素. 在上面的代码中, `AnchorTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/AnchorTagHelper/index.html>`__ 通过 controller 方法以及路由ID 动态生成 HTML ``href`` 属性值. 你可以在你熟悉的浏览器中使用 **View Source** 菜单或者使用 **F12** 工具来检查你生成的 HTML 标签.  **F12** 工具如下图。
+:doc:`Tag Helpers </mvc/views/tag-helpers/intro>` 允许服务器端代码在 Razor 文件中创建和生成 HTML 元素. 在上面的代码中, `AnchorTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/AnchorTagHelper/index.html>`__ 通过 controller 方法以及路由ID 动态生成 HTML ``href`` 属性值. 你可以在你熟悉的浏览器中使用 **View Source** 菜单或者使用 **F12** 工具来检查你生成的 HTML 标签.  **F12** 工具如下图。
 
 .. image:: controller-methods-views/_static/f12.png
 
