@@ -8,24 +8,24 @@ Adding a controller
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_ 、`夏申斌 <https://github.com/xiashenbin>`_
 
 The Model-View-Controller (MVC) architectural pattern separates an app into three main components: the **M**\odel, the **V**\iew, and the **C**\ontroller. The MVC pattern helps you create apps that are testable and easier to maintain and update than traditional monolithic apps. MVC-based apps contain:
 
-Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主要的组件： **M**\odel, **V**\iew, 以及 **C**\ontroller 。 MVC 模式帮助你创建可测试的应用程序，比传统的单块应用程序更加容易去维护和更新。基于 MVC 的应用程序包含：
+Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主要的组件： **M**\odel、**V**\iew 以及 **C**\ontroller 。 MVC 模式帮助你创建可测试的应用程序，比传统的单块应用程序更加容易去维护和更新。基于 MVC 的应用程序包含：
 
 - **M**\odels: Classes that represent the data of the app and that use validation logic to enforce business rules for that data. Typically, model objects retrieve and store model state in a database. In this tutorial, a ``Movie`` model retrieves movie data from a database, provides it to the view or updates it. Updated data is written to a SQL Server database.
 - **V**\iews: Views are the components that display the app's user interface (UI). Generally, this UI displays the model data. 
 - **C**\ontrollers: Classes that handle browser requests, retrieve model data, and then specify view templates that return a response to the browser. In an MVC app, the view only displays information; the controller handles and responds to user input and interaction. For example, the controller handles route data and query-string values, and passes these values to the model. The model might use these values to query the database.
 
-- **M**\odels: 应用程序中用来表示数据的类,并使用验证逻辑来执行该数据业务规则。通常，Model 对象从数据库查询和存储 Model 状态。在本教程， ``Movie`` Model 从数据库查询电影数据用来显示或更新。更新后的数据写入 SQL Server 数据库。
-- **V**\iews: 视图是显示应用程序的用户接口（UI）的组件。通常，UI 用于显示 Model 数据。
-- **C**\ontrollers: 一种类（Class），用于处理浏览器请求，查询 Model 数据，以及将指定视图模板作为响应返回给浏览器。在 MVC 应用程序中，View 仅仅显示信息； Controller 处理和响应用户的输入和交互。例如， Controller 处理路由数据和查询字符串值，然后将这些值传递给 Model ，Model 可以使用这些值去查询数据库。
+- **M**\odels：应用程序中用来表示数据的类,并使用验证逻辑来执行该数据业务规则。通常，模型（Model）对象从数据库查询和存储 Model 状态。在本教程	``Movie`` 模型（Model）从数据库查询电影数据用来显示或更新。更新后的数据写入 SQL Server 数据库。
+- **V**\iews：视图是显示用户界面（UI）的组件。通常，UI 用于显示模型（Model）数据。
+- **C**\ontrollers：一种类（Class），用于处理浏览器请求，查询模型（Model）数据，以及将指定视图模板作为响应返回给浏览器。在 MVC 应用程序中，视图（View）仅仅显示信息； 控制器（Controller）处理和响应用户的输入和交互。例如， 控制器（Controller）处理路由数据和查询字符串值，然后将这些值传递给模型（Model），模型（Model）可以使用这些值去查询数据库。
 
 
 The MVC pattern helps you create apps that separate the different aspects of the app (input logic, business logic, and UI logic), while providing a loose coupling between these elements. The pattern specifies where each kind of logic should be located in the app. The UI logic belongs in the view. Input logic belongs in the controller. Business logic belongs in the model. This separation helps you manage complexity when you build an app, because it enables you to work on one aspect of the implementation at a time without impacting the code of another. For example, you can work on the view code without depending on the business logic code. 
 
-MVC 模式帮助你创建一个分离不同方面的应用程序(输入逻辑，业务逻辑，以及 UI 逻辑)，同时这些元素之间是松耦合的。该模式指定在应用程序中的每一种逻辑应该位于何处。 UI 逻辑属于 View 。输入逻辑属于 Controller 。业务逻辑属于 Model 。当你构建一个应用程序时，这样的分离帮助你管理复杂性，因为它使你在同一时间工作在一个方面而不会影响其他(方面)的代码。比如，你可以编写 View 代码而不需要依赖于业务逻辑代码。
+MVC 模式帮助你创建一个分离不同方面的应用程序(输入逻辑，业务逻辑，以及 UI 逻辑)，同时这些元素之间是松耦合的。该模式指定在应用程序中的每一种逻辑应该位于何处。 UI 逻辑属于视图（View）。输入逻辑属于控制器（Controller）。业务逻辑属于模型（Model）。当你构建一个应用程序时，这样的分离帮助你管理应用程序的复杂性，因为它使你编写一个方面的代码时不会影响其他(方面)的代码。比如，你可以编写视图（View）代码而不需要依赖于业务逻辑代码。
 
 We'll be covering all these concepts in this tutorial series and show you how to use them to build a simple movie app. The following image shows the *Models*, *Views* and *Controllers* folders in the MVC project.
 
@@ -35,7 +35,7 @@ We'll be covering all these concepts in this tutorial series and show you how to
 
 - In **Solution Explorer**, right-click **Controllers > Add > New Item**
 
-- 在 **解决方案资源管理器** 中，鼠标右键点击 **Controllers > 添加 > 控制器**
+- 在 **解决方案资源管理器（Solution Explorer）** 中，鼠标右键点击 **Controllers > 添加（Add） > 控制器（Controller）**
 
 .. image:: adding-controller/_static/add_controller.png
 
@@ -46,18 +46,18 @@ We'll be covering all these concepts in this tutorial series and show you how to
   - Tap **MVC Controller - Empty**
   - Tap **Add**
   
-- 在 **添加基架** 对话框中
+- 在 **添加基架（Add Scaffold）** 对话框中
 
   - 点击 **MVC Controller - Empty**
-  - 点击 **添加**
+  - 点击 **添加（Add）**
   
 .. image:: adding-controller/_static/new_hell_ctl.png
 
 - Name the controller **HelloWorldController**
 - Tap **Add**
 
-- 命名 Controller 为 **HelloWorldController**
-- 点击 **添加**
+- 命名控制器（Controller）为 **HelloWorldController**
+- 点击 **添加（Add）**
   
 .. image:: adding-controller/_static/hwc.png
 
@@ -71,7 +71,7 @@ Replace the contents of *Controllers/HelloWorldController.cs* with the following
   
 Every ``public`` method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string.  Note the comments preceding each method:
 
-在 Controller 中的每个 ``public`` 方法都可作为一个 HTTP 端点。在上面的例子中，两个方法都返回 string ,注意它们的注释：
+在控制器（Controller）中的每个 ``public`` 方法都可作为一个 HTTP 端点。在上面的例子中，两个方法都返回 string ,注意它们的注释：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -91,7 +91,7 @@ Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the pat
 
 MVC invokes controller classes (and the action methods within them) depending on the incoming URL. The default URL routing logic used by MVC uses a format like this to determine what code to invoke:
 
-MVC 调用 Controller 类 (以及它们的 Action 方法) 依赖于传入的 URL 。默认的路由逻辑是， MVC 使用像下面这样的格式来确定用什么样的代码来调用:
+MVC 调用控制器（Controller）类 (以及它们的 Action 方法) 依赖于传入的 URL 。默认的路由逻辑是， MVC 使用像下面这样的格式来确定用什么样的代码来调用：
 
 ``/[Controller]/[ActionName]/[Parameters]``
 
@@ -111,17 +111,17 @@ When you run the app and don't supply any URL segments, it defaults to the "Home
 
 The first URL segment determines the controller class to run. So ``localhost:xxxx/HelloWorld`` maps to the ``HelloWorldController`` class. The second part of the URL segment determines the action method on the class. So ``localhost:xxxx/HelloWorld/Index`` would cause the ``Index`` method of the ``HelloWorldController`` class to run. Notice that we only had to browse to ``localhost:xxxx/HelloWorld`` and the ``Index`` method was called by default. This is because ``Index`` is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( ``Parameters``) is for route data. We'll see route data later on in this tutorial.
 
-第一个 URL 片段决定运行哪个 Controller 。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 片段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们仅仅浏览 ``localhost:xxxx/HelloWorld`` 时，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 片段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中遇到路由数据。
+第一个 URL 片段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 片段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们仅仅浏览 ``localhost:xxxx/HelloWorld`` 时，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 片段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中遇到路由数据。
 
 Browse to ``http://localhost:xxxx/HelloWorld/Welcome``. The ``Welcome`` method runs and returns the string "This is the Welcome action method...". The default MVC routing is ``/[Controller]/[ActionName]/[Parameters]``. For this URL, the controller is ``HelloWorld`` and ``Welcome`` is the action method. We haven't used the ``[Parameters]`` part of the URL yet.
 
-浏览 ``http://localhost:xxxx/HelloWorld/Welcome`` 。 ``Welcome`` 方法运行并返回 "This is the Welcome action method..." 。默认的 MVC 路由是 ``/[Controller]/[ActionName]/[Parameters]`` 。对于这个 URL ， Controller 是 ``HelloWorld`` ， Action 方法是 ``Welcome`` 。我们还没有使用 URL 中的 ``[Parameters]`` 部分。
+浏览 ``http://localhost:xxxx/HelloWorld/Welcome`` 。 ``Welcome`` 方法运行并返回 "This is the Welcome action method..." 。默认的 MVC 路由是 ``/[Controller]/[ActionName]/[Parameters]`` 。对于这个 URL ， 控制器（Controller）是 ``HelloWorld`` ， Action 方法是 ``Welcome`` 。我们还没有使用 URL 中的 ``[Parameters]`` 部分。
 
 .. image:: adding-controller/_static/welcome.png
 
 Let's modify the example slightly so that you can pass some parameter information  from the URL to the controller (for example, ``/HelloWorld/Welcome?name=Scott&numtimes=4``).  Change the ``Welcome`` method  to include two parameters as shown below. Note that the code uses the C# optional-parameter feature to indicate that the ``numTimes`` parameter defaults to 1 if no value is passed for that parameter.
 
-让我们稍微修改一下例子，使我们能够通过 URL 传递一些参数信息到 Controller (例如， ``/HelloWorld/Welcome?name=Scott&numtimes=4`` )。如下方一样修改 ``Welcome`` 方法使其包含两个参数。请注意，代码采用 C# 可选参数特征表明在没有传递参数的情况下， ``numTimes`` 参数默认为1。
+让我们稍微修改一下例子，使我们能够通过 URL 传递一些参数信息到控制器（Controller）(例如， ``/HelloWorld/Welcome?name=Scott&numtimes=4`` )。如下方一样修改 ``Welcome`` 方法使其包含两个参数。请注意，代码采用 C# 可选参数特征表明在没有传递参数的情况下， ``numTimes`` 参数默认为1。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -181,4 +181,4 @@ This time the third URL segment  matched the route parameter ``id``. The ``Welco
   
 In these examples the controller has been doing the "VC" portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don't want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we'll typically use a separate Razor view template file to help generate the HTML response. We'll do that in the next tutorial.
 
-在这些例子中， Controller 一直在做 MVC 中 "VC" 部分，就是 View 和 Controller 部分的工作。 Controller 直接返回 HTML 。一般来说你不想 Controller 直接返回 HTML ，因为这让编码和维护变得非常麻烦。所以，我们通常会使用一个单独的 Razor 视图模板文件来帮助生成 HTML 相应。 我们将在下一个教程中介绍这部分。
+在这些例子中，控制器（Controller）一直在做 MVC 中 "VC" 部分，就是视图（View）和控制器（Controller）部分的工作。控制器（Controller）直接返回 HTML 。一般来说你不想让控制器（Controller） 直接返回 HTML ，因为这让编码和维护变得非常麻烦。所以，我们通常会使用一个单独的 Razor 视图模板文件来帮助生成 HTML 相应。 我们将在下一个教程中介绍这部分。
