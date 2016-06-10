@@ -54,7 +54,7 @@
 ^^^^^^^^^^^^^^^^^^^^^
 
 - 使用 **Ctl-F5** 运行程序
-- 点击 **About** 和 **Contact** 链接. 根据您的设备显示尺寸的大小，可能需要单击导航图标以显示链接
+- 点击 **About** 和 **Contact** 链接。 根据您的设备显示尺寸的大小，可能需要单击导航图标以显示链接
 
 .. image:: publish-to-azure-webapp-using-vs/_static/show.png
 
@@ -64,7 +64,7 @@
 
 可以通过两个方式来修复这个问题：
 
-- 点击 **Apply Migrations** 当页面发生更新的时候, 刷新屏幕
+- 点击 **Apply Migrations** 当页面发生更新的时候，刷新屏幕
 - 在项目目录下运行该命令行 ：
 
     dotnet ef database update
@@ -105,7 +105,7 @@
 .. image:: publish-to-azure-webapp-using-vs/_static/conf.png
 
 - 你可以保持默认 **Server Name**
-- 输入管理员用户密码, 点击 **OK** 。记住用户名密码。
+- 输入管理员用户密码，点击 **OK** 。记住用户名密码。
 
 .. image:: publish-to-azure-webapp-using-vs/_static/dbrick.png
 
