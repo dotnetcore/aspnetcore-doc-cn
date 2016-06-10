@@ -1,7 +1,12 @@
 Working with Forms 
 ====================
 
-By `Rick Anderson`_, `Dave Paquette <https://twitter.com/Dave_Paquette>`_ and `Jerrie Pelser <https://twitter.com/jerriepelser>`__
+使用表单
+==========
+
+作者： `Rick Anderson`_, `Dave Paquette <https://twitter.com/Dave_Paquette>`_ 和 `Jerrie Pelser <https://twitter.com/jerriepelser>`__
+
+翻译： `姚勇（Dr.Yao） <https://github.com/yaoay>`_
 
 This document demonstrates working with Forms and the HTML elements commonly used on a Form. The HTML `Form <https://www.w3.org/TR/html401/interact/forms.html>`__ element provides the primary mechanism web apps use to post back data to the server. Most of this document describes :doc:`Tag Helpers <tag-helpers/intro>` and how they can help you productively create robust HTML forms. We recommend you read :doc:`tag-helpers/intro` before you read this document. 
 
