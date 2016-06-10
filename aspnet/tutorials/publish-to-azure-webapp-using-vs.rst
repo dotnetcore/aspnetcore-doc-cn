@@ -11,7 +11,7 @@
   :local:
   :depth: 1
 
-设置开发环境
+设置开发环境 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - `安装最新版本的 Azure SDK for Visual Studio 2015 <http://go.microsoft.com/fwlink/?linkid=518003>`__ 。如果你之前没有装过 Visual Studio 2015，SDK 会安装 Visual Studio 2015。
