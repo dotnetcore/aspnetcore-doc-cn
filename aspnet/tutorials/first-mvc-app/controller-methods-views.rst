@@ -3,7 +3,10 @@ Controller 方法与视图
 
 作者 `Rick Anderson`_
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
+翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_ 
+
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_
+
 
 我们已经初步的创建了一个 movie 应用程序，但是展示并不理想。我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词。
 
@@ -137,7 +140,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 处理 POST 请求
 --------------------------------------
 
-下面的列表显示了 ``[HttpPost]`` 不同版本的``Edit`` 方法。
+下面的列表显示了 ``[HttpPost]`` 不同版本的 ``Edit`` 方法。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
   :language: c#
