@@ -5,7 +5,7 @@
 
 翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_  
 
-校对 
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_
 
 .. contents:: 章节：
   :local:
@@ -20,7 +20,7 @@
 
 - 安装 `.NET Core + Visual Studio tooling <http://go.microsoft.com/fwlink/?LinkID=798306>`__
 
-- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__. 你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益 <https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__.
+- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__。你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益 <https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__ 。
 
 创建一个 Web 应用程序
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,7 +69,7 @@
 
     dotnet ef database update
 
-应用程序显示用于注册用户的 **邮件注册** 以及 **注销** 链接。
+应用程序显示用于注册用户的 **注册邮箱** 以及 **注销** 链接。
 
 .. image:: publish-to-azure-webapp-using-vs/_static/hello.png
 
