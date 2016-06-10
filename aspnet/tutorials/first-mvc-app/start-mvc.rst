@@ -95,7 +95,7 @@ Visual Studio 给刚才创建的 MVC 项目提供了默认模板，输入项目�
 - Launching the app with **Ctrl+F5** (non-debug mode) allows you to make code changes, save the file, refresh the browser, and see the code changes. Many developers prefer to use non-debug mode to quickly launch the app and view changes.
 - You can launch the app in debug or non-debug mode from the **Debug** menu item:
 
-- Visual Studio 启动 `IIS Express <http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview>`__ 并且运行你的应用程序。注意地址栏显示的 ``localhost:端口#`` 而不是像 ``example.com`` 。那是因为 ``localhost`` 总是指向本地计算机，在本例中也就是运行你这个应用程序的计算机。当 Visual Studio 创建一个 Web 项目，Web 服务使用随机的端口。如上图所示，端口号是 1234。当你运行这个应用程序，你可能会看到不同的端口号。
+- Visual Studio 启动 `IIS Express <http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview>`__ 并且运行你的应用程序。注意地址栏显示的 ``localhost:端口#`` 而不是像 ``example.com`` 。那是因为 ``localhost`` 总是指向本地计算机，在本例中也就是运行你这个应用程序的计算机。当 Visual Studio 创建一个 Web 项目，Web 服务器使用随机的端口。如上图所示，端口号是 1234。当你运行这个应用程序，你可能会看到不同的端口号。
 - 通过 **Ctrl+F5** (非调试模式)启动这个应用程序允许你进行代码更改，保存文件，刷新浏览器，之后查看代码改变。许多开发者更倾向于使用非调试模式来快速启动应用程序和查看变化。
 - 你可以通过 **Debug** 菜单项选择以调试模式或者非调试模式启动应用程序
 
