@@ -25,7 +25,7 @@
 创建一个 Web 应用程序
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-在 Visual Studio 的 **Start** 页面, 点击 **New Project**　。
+在 Visual Studio 的 **Start** 页面，点击 **New Project**　。
 
 .. image:: first-mvc-app/start-mvc/_static/new_project.png
 
