@@ -29,14 +29,14 @@
 
 .. image:: first-mvc-app/start-mvc/_static/new_project.png
 
-另外, 你也可以通过菜单新建项目. 点击 **File > New > Project** 。 
+另外，你也可以通过菜单新建项目。点击 **File > New > Project** 。 
 
 .. image:: first-mvc-app/start-mvc/_static/alt_new_project.png
 
 完成 **New Project** 对话框：
 
-- 在右侧面板, 点击 **Web**
-- 在中部面板, 点击 **ASP.NET Core Web Application (.NET Core)**
+- 在右侧面板，点击 **Web**
+- 在中部面板，点击 **ASP.NET Core Web Application (.NET Core)**
 - 点击 **OK**
 
 .. image:: publish-to-azure-webapp-using-vs/_static/new_prj.png
