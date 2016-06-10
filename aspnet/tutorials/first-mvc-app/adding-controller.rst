@@ -18,7 +18,7 @@ Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主�
 - **V**\iews: Views are the components that display the app's user interface (UI). Generally, this UI displays the model data. 
 - **C**\ontrollers: Classes that handle browser requests, retrieve model data, and then specify view templates that return a response to the browser. In an MVC app, the view only displays information; the controller handles and responds to user input and interaction. For example, the controller handles route data and query-string values, and passes these values to the model. The model might use these values to query the database.
 
-- **M**\odels：应用程序中用来表示数据的类,并使用验证逻辑来执行该数据业务规则。通常，模型（Model）对象从数据库查询和存储 Model 状态。在本教程	``Movie`` 模型（Model）从数据库查询电影数据用来显示或更新。更新后的数据写入 SQL Server 数据库。
+- **M**\odels：应用程序中用来表示数据的类，并使用验证逻辑来执行该数据业务规则。通常，模型（Model）对象从数据库查询和存储 Model 状态。在本教程	``Movie`` 模型（Model）从数据库查询电影数据用来显示或更新。更新后的数据写入 SQL Server 数据库。
 - **V**\iews：视图是显示用户界面（UI）的组件。通常，UI 用于显示模型（Model）数据。
 - **C**\ontrollers：一种类（Class），用于处理浏览器请求，查询模型（Model）数据，以及将指定视图模板作为响应返回给浏览器。在 MVC 应用程序中，视图（View）仅仅显示信息； 控制器（Controller）处理和响应用户的输入和交互。例如， 控制器（Controller）处理路由数据和查询字符串值，然后将这些值传递给模型（Model），模型（Model）可以使用这些值去查询数据库。
 
@@ -71,7 +71,7 @@ Replace the contents of *Controllers/HelloWorldController.cs* with the following
   
 Every ``public`` method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string.  Note the comments preceding each method:
 
-在控制器（Controller）中的每个 ``public`` 方法都可作为一个 HTTP 端点。在上面的例子中，两个方法都返回 string ,注意它们的注释：
+在控制器（Controller）中的每个 ``public`` 方法都可作为一个 HTTP 端点。在上面的例子中，两个方法都返回 string，注意它们的注释：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -85,7 +85,7 @@ The first comment states this is an `HTTP GET <http://www.w3schools.com/tags/ref
 
 Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, http://localhost:1234/HelloWorld is used, but you'll have to replace *1234* with the port number of your app.) The ``Index method`` returns a string. You told the system to return some HTML, and it did! 
 
-使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏中的路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一个字符串。你告诉系统返回一些 HTML ,然后它确实是这样做的！
+使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏中的路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一个字符串。你告诉系统返回一些 HTML，然后它确实是这样做的！
 
 .. image:: adding-controller/_static/hell1.png
 
