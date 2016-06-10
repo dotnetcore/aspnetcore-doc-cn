@@ -2,39 +2,41 @@
 ============================================================
  
 作者 `Rick Anderson`_
-翻译 `谢炀（kiler）`_
-校对 
 
-.. contents:: 章节:
+翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_  
+
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_
+
+.. contents:: 章节：
   :local:
   :depth: 1
 
 设置开发环境
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- `安装最新版本的 Azure SDK for Visual Studio 2015 <http://go.microsoft.com/fwlink/?linkid=518003>`__. 如果你之前没有装过 Visual Studio 2015，SDK 会安装 Visual Studio 2015。
+- `安装最新版本的 Azure SDK for Visual Studio 2015 <http://go.microsoft.com/fwlink/?linkid=518003>`__ 。如果你之前没有装过 Visual Studio 2015，SDK 会安装 Visual Studio 2015。
 
 .. note:: 如果你的机器之前任何依赖都没有安装过，SDK 的安装时间将会超过30分钟。
 
 - 安装 `.NET Core + Visual Studio tooling <http://go.microsoft.com/fwlink/?LinkID=798306>`__
 
-- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__. 你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益 <https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__.
+- 确认你的 `Azure 帐号 <https://portal.azure.com/>`__。你可以 `注册免费　azure　帐号 <https://azure.microsoft.com/pricing/free-trial/>`__ 或者 `激活你的 Visual Studio 订阅用户权益 <https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/>`__ 。
 
 创建一个 Web 应用程序
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-在 Visual Studio 的 **Start** 页面, 点击 **New Project**　。
+在 Visual Studio 的 **Start** 页面，点击 **New Project**　。
 
 .. image:: first-mvc-app/start-mvc/_static/new_project.png
 
-另外, 你也可以通过菜单新建项目. 点击 **File > New > Project** 。
+另外，你也可以通过菜单新建项目。点击 **File > New > Project** 。 
 
 .. image:: first-mvc-app/start-mvc/_static/alt_new_project.png
 
 完成 **New Project** 对话框：
 
-- 在右侧面板, 点击 **Web**
-- 在中部面板, 点击 **ASP.NET Core Web Application (.NET Core)**
+- 在右侧面板，点击 **Web**
+- 在中部面板，点击 **ASP.NET Core Web Application (.NET Core)**
 - 点击 **OK**
 
 .. image:: publish-to-azure-webapp-using-vs/_static/new_prj.png
@@ -52,22 +54,22 @@
 ^^^^^^^^^^^^^^^^^^^^^
 
 - 使用 **Ctl-F5** 运行程序
-- 点击 **About** 和 **Contact** 链接. 根据您的设备显示尺寸的大小，可能需要单击导航图标以显示链接
+- 点击 **About** 和 **Contact** 链接。 根据您的设备显示尺寸的大小，可能需要单击导航图标以显示链接
 
 .. image:: publish-to-azure-webapp-using-vs/_static/show.png
 
-- 点击 **Register** 注册一个新用户 。您可以使用虚构的电子邮件。当你点击提交后，会收到以下错误:
+- 点击 **Register** 注册一个新用户 。您可以使用虚构的电子邮件。当你点击提交后，会收到以下错误：
 
 .. image:: publish-to-azure-webapp-using-vs/_static/mig.png
 
 可以通过两个方式来修复这个问题：
 
-- 点击 **Apply Migrations** 当页面发生更新的时候, 刷新屏幕
+- 点击 **Apply Migrations** 当页面发生更新的时候，刷新屏幕
 - 在项目目录下运行该命令行 ：
 
     dotnet ef database update
 
-应用程序显示用于注册用户的 **邮件注册** 以及 **注销** 链接。
+应用程序显示用于注册用户的 **注册邮箱** 以及 **注销** 链接。
 
 .. image:: publish-to-azure-webapp-using-vs/_static/hello.png
 
@@ -103,7 +105,7 @@
 .. image:: publish-to-azure-webapp-using-vs/_static/conf.png
 
 - 你可以保持默认 **Server Name**
-- 输入管理员用户密码, 点击 **OK** 。记住用户名密码。
+- 输入管理员用户密码，点击 **OK** 。记住用户名密码。
 
 .. image:: publish-to-azure-webapp-using-vs/_static/dbrick.png
 
@@ -139,7 +141,7 @@ Visual Studio 将会把你的应用程序部署到 Azure 云，并在浏览器�
 更新应用程序
 --------------------
 
-- 编辑 *Views/Home/About.cshtml* Razor 视图文件。修改内容，例如 :
+- 编辑 *Views/Home/About.cshtml* Razor 视图文件。修改内容，例如：
 
 .. code-block:: html
   :emphasize-lines: 7
@@ -161,7 +163,7 @@ Visual Studio 将会把你的应用程序部署到 Azure 云，并在浏览器�
 清理
 --------------
 
-如果你完成了应用程序的设置了, 登录 `Azure 面板 <https://portal.azure.com/>`__ 并删除应用。
+如果你完成了应用程序的设置了，登录 `Azure 面板 <https://portal.azure.com/>`__ 并删除应用。
 
 - 登录 `Azure 面板 <https://portal.azure.com/>`__
 - 在右侧双击 **Resource groups** 并点击你创建的资源组。
