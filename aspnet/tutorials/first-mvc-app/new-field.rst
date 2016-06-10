@@ -3,7 +3,7 @@
 
 作者 `Rick Anderson`_
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
+翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_  
 
 
 在这个章节你将使用 `Entity Framework <http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html>`__ Code First 迁移模型中新加的字段，从而将模型字段变更同步到数据库。
