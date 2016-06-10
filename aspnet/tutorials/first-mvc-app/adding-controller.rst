@@ -12,7 +12,7 @@ Adding a controller
 
 The Model-View-Controller (MVC) architectural pattern separates an app into three main components: the **M**\odel, the **V**\iew, and the **C**\ontroller. The MVC pattern helps you create apps that are testable and easier to maintain and update than traditional monolithic apps. MVC-based apps contain:
 
-Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主要的组件： **M**\odel、**V**\iew 以及 **C**\ontroller 。 MVC 模式帮助你创建可测试的应用程序，比传统的单块应用程序更加容易去维护和更新。基于 MVC 的应用程序包含：
+Model-View-Controller (MVC) 架构模式将一个应用程序分离成三个主要的组件： **M**\odel、**V**\iew 以及 **C**\ontroller 。 MVC 模式帮助你创建可测试的应用程序，比传统的单块应用程序更加容易维护和更新。基于 MVC 的应用程序包含：
 
 - **M**\odels: Classes that represent the data of the app and that use validation logic to enforce business rules for that data. Typically, model objects retrieve and store model state in a database. In this tutorial, a ``Movie`` model retrieves movie data from a database, provides it to the view or updates it. Updated data is written to a SQL Server database.
 - **V**\iews: Views are the components that display the app's user interface (UI). Generally, this UI displays the model data. 
@@ -29,7 +29,7 @@ MVC 模式帮助你创建一个分离不同方面的应用程序(输入逻辑，
 
 We'll be covering all these concepts in this tutorial series and show you how to use them to build a simple movie app. The following image shows the *Models*, *Views* and *Controllers* folders in the MVC project.
 
-我们会在本系列教程中涵盖所有这些概念，并告诉你如何去使用它们构建一个简单的电影应用程序。下面的图片展示了 MVC 项目中的 *Models* 、 *Views* 以及 *Controllers* 文件夹。
+我们会在本系列教程中涵盖所有这些概念，并告诉你如何使用它们构建一个简单的电影应用程序。下面的图片展示了 MVC 项目中的 *Models* 、 *Views* 以及 *Controllers* 文件夹。
 
 .. image:: adding-controller/_static/mvc1.png
 
@@ -71,7 +71,7 @@ Replace the contents of *Controllers/HelloWorldController.cs* with the following
   
 Every ``public`` method in a controller is callable as an HTTP endpoint. In the sample above, both methods return a string.  Note the comments preceding each method:
 
-在控制器（Controller）中的每个 ``public`` 方法都可作为一个 HTTP 端点。在上面的例子中，两个方法都返回 string，注意它们的注释：
+控制器（Controller）的每个 ``public`` 方法都可作为 HTTP 端点。在上面的例子中，两个方法都返回 string，注意它们的注释：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -85,7 +85,7 @@ The first comment states this is an `HTTP GET <http://www.w3schools.com/tags/ref
 
 Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, http://localhost:1234/HelloWorld is used, but you'll have to replace *1234* with the port number of your app.) The ``Index method`` returns a string. You told the system to return some HTML, and it did! 
 
-使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏中的路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一个字符串。你告诉系统返回一些 HTML，然后它确实是这样做的！
+使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一个字符串。你告诉系统返回一些 HTML，然后它确实是这样做的！
 
 .. image:: adding-controller/_static/hell1.png
 
