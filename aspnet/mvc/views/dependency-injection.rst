@@ -10,7 +10,7 @@ Injecting Services Into Views
 
 ASP.NET Core supports :doc:`dependency injection </fundamentals/dependency-injection>` into views. This can be useful for view-specific services, such as localization or data required only for populating view elements. You should try to maintain `separation of concerns <http://deviq.com/separation-of-concerns>`_ between your controllers and views. Most of the data your views display should be passed in from the controller.
 
-ASP.NET Core 支持在视图中使用 :doc:`依赖注入 </fundamentals/dependency-injection>` 。对于针对视图的服务非常有用，比如本地化或者仅用于填充视图元素的数据。你应该尝试保持控制器和视图间的关注点分离（ `separation of concerns <http://deviq.com/separation-of-concerns>`_ ）。你的视图所显示的大部分数据都应该从控制器传入。
+ASP.NET Core 支持在视图中使用 :doc:`依赖注入 </fundamentals/dependency-injection>` 。这将有助于提供视图专用的服务，比如本地化或者仅用于填充视图元素的数据。你应该尽量保持控制器和视图间的关注点分离（ `separation of concerns <http://deviq.com/separation-of-concerns>`_ ）。你的视图所显示的大部分数据应该从控制器传入。
 
 .. contents:: 章节：
   :local:
@@ -25,9 +25,10 @@ You can inject a service into a view using the ``@inject`` directive. You can th
 一个简单的示例
 ---------------
 
-你可以使用 ``@inject`` 直接将服务注入视图中。你可以把 ``@inject`` 看作是给你的视图增加一个属性，然后使用依赖注入填充属性。
+你可以使用 ``@inject`` 指令将服务注入到视图中。可以把 ``@inject`` 看作是给你的视图增加一个属性，然后利用依赖注入给属性赋值。
 
 ``@inject`` 的语法：
+
   ``@inject <type> <name>``
 
 An example of ``@inject`` in action:
@@ -41,7 +42,7 @@ An example of ``@inject`` in action:
 
 This view displays a list of ``ToDoItem`` instances, along with a summary showing overall statistics. The summary is populated from the injected ``StatisticsService``. This service is registered for dependency injection in ``ConfigureServices`` in *Startup.cs*:
 
-这个视图显示了一个 ``ToDoItem`` 实例的列表，加上一个总体统计概览。概览信息是由注入的 ``StatisticsService`` 填入的。这个服务是在 *Startup.cs* 中的 ``ConfigureServices`` 里被注册到依赖注入的。
+这个视图显示了一个 ``ToDoItem`` 实例的列表，和一个统计概览。概览信息是由注入的服务 ``StatisticsService`` 填入的。这个服务是在 *Startup.cs* 里的 ``ConfigureServices`` 方法中被注册到依赖注入项的。
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Startup.cs
   :linenos:
@@ -52,7 +53,7 @@ This view displays a list of ``ToDoItem`` instances, along with a summary showin
   
 The ``StatisticsService`` performs some calculations on the set of ``ToDoItem`` instances, which it accesses via a repository:
 
-``StatisticsService`` 通过仓库（ ``Repository`` ）对 ``ToDoItem`` 数据集执行一些计算。  
+``StatisticsService`` 对通过仓储访问的 ``ToDoItem`` 数据集执行一些计算。  
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs
   :linenos:
@@ -61,7 +62,7 @@ The ``StatisticsService`` performs some calculations on the set of ``ToDoItem`` 
 
 The sample repository uses an in-memory collection. The implementation shown above (which operates on all of the data in memory) is not recommended for large, remotely accessed data sets.
 
-示例仓库使用的是 in-memory 集合。上面的实现方法（所有对内存数据的操作）不推荐用于大型、远程存储的数据集。
+示例中的仓储使用的是 in-memory 集合。上面的实现方法（所有对内存数据的操作）不推荐用于大型、远程存储的数据集。
 
 The sample displays data from the model bound to the view and the service injected into the view:
 
@@ -73,14 +74,14 @@ Populating Lookup Data
 ----------------------
 View injection can be useful to populate options in UI elements, such as dropdown lists. Consider a user profile form that includes options for specifying gender, state, and other preferences. Rendering such a form using a standard MVC approach would require the controller to request data access services for each of these sets of options, and then populate a model or ``ViewBag`` with each set of options to be bound.
 
-填充查阅数据
+填充查找数据
 -------------
 
-视图注入有助于填充 UI 元素的可选项，例如下拉列表。设想一个包括性别、地区以及其他可选项的用户资料表格。如果通过标准的MVC方式渲染这个表格，则需要控制器为每一种选项请求数据访问服务，然后再为绑定的每一种选项填充一个模型或 ``ViewBag``。对于针对视图的服务非常有用，比如本地化或者仅用于填充视图元素的数据。 
+视图注入有助于填充 UI 元素的可选项数据，例如下拉列表。设想一个包括性别、地区以及其他可选项的用户资料表格。如果通过标准的 MVC 方式渲染这个表格，需要控制器为每一种选项请求数据访问服务，然后再为绑定的每一种选项填充一个模型或 ``ViewBag``。
 
 An alternative approach injects services directly into the view to obtain the options. This minimizes the amount of code required by the controller, moving this view element construction logic into the view itself. The controller action to display a profile editing form only needs to pass the form the profile instance:
 
-另一种方法则直接将服务注入到视图中从而获取这些可选项数据。这种方法将控制器需要的代码量减少到了最少，把构造视图元素的逻辑移到视图本身中去。用来显示资料编辑表格的控制器 ``action`` 只需要把资料实例传给表格就可以了（而不需要传各种选项数据，译注）：
+另一种方法则直接将服务注入到视图中以获取这些可选项数据。这种方法将控制器需要的代码量减到了最少，把构造视图元素的逻辑移到视图本身中去。用来显示资料编辑表格的控制器操作只需要把用户资料实例传给表格就可以了（而不需要传各种可选项数据，译注）：
 
 
 
@@ -91,13 +92,13 @@ An alternative approach injects services directly into the view to obtain the op
 
 The HTML form used to update these preferences includes dropdown lists for three of the properties:
 
-用来编辑这些选项的 HTML 表格包含了其中三个下拉列表：
+用来编辑这些选项的 HTML 表格包含的选项中有三个下拉列表：
 
 .. image:: dependency-injection/_static/updateprofile.png
 
 These lists are populated by a service that has been injected into the view:
 
-这些列表是由传入视图的一个服务填充的：
+这些列表是由注入到视图的一个服务填充的：
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Views/Profile/Index.cshtml
   :linenos:
@@ -106,7 +107,7 @@ These lists are populated by a service that has been injected into the view:
 
 The ``ProfileOptionsService`` is a UI-level service designed to provide just the data needed for this form:
 
-``ProfileOptionsService`` 是一个被设计用来仅为这个表格提供所需数据的 UI 层的服务：
+``ProfileOptionsService`` 是一个 UI 层的服务,旨在用于只为这个表格提供所需数据 ：
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs
   :linenos:
@@ -123,7 +124,7 @@ In addition to injecting new services, this technique can also be used to overri
 
 重写服务
 ---------
-除了注入新服务之外，这种技术也可以用来重写之前已经在页面上注入的服务。下图显示了第一个例子的页面上可用的所有字段：
+除了注入新服务之外，这种技术也可以用来重写之前已经在页面上注入的服务。下图显示了在第一个例子的页面上可用的所有字段：
 
 .. image:: dependency-injection/_static/razor-fields.png
 
