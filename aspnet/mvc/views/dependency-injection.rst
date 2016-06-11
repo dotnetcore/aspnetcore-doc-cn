@@ -6,7 +6,7 @@ Injecting Services Into Views
 
 作者： `Steve Smith`_
 
-翻译： `Dr.Yao <https://github.com/yaoay>`_
+翻译： `姚阿勇（Dr.Yao） <https://github.com/yaoay>`_
 
 ASP.NET Core supports :doc:`dependency injection </fundamentals/dependency-injection>` into views. This can be useful for view-specific services, such as localization or data required only for populating view elements. You should try to maintain `separation of concerns <http://deviq.com/separation-of-concerns>`_ between your controllers and views. Most of the data your views display should be passed in from the controller.
 
@@ -25,7 +25,7 @@ You can inject a service into a view using the ``@inject`` directive. You can th
 一个简单的示例
 ---------------
 
-你可以使用 ``@inject`` 指令将服务注入到视图中。可以把 ``@inject`` 看作是给你的视图增加一个属性，然后利用依赖注入给属性赋值。
+你可以使用 ``@inject`` 指令将服务注入到视图中。可以把 ``@inject`` 看作是给你的视图增加一个属性，然后利用依赖注入给这个属性赋值。
 
 ``@inject`` 的语法：
 
@@ -42,7 +42,7 @@ An example of ``@inject`` in action:
 
 This view displays a list of ``ToDoItem`` instances, along with a summary showing overall statistics. The summary is populated from the injected ``StatisticsService``. This service is registered for dependency injection in ``ConfigureServices`` in *Startup.cs*:
 
-这个视图显示了一个 ``ToDoItem`` 实例的列表，和一个统计概览。概览信息是由注入的服务 ``StatisticsService`` 填入的。这个服务是在 *Startup.cs* 里的 ``ConfigureServices`` 方法中被注册到依赖注入项的。
+这个视图显示了一个 ``ToDoItem`` 实例的列表，和统计概览。概览信息是由注入的服务 ``StatisticsService`` 填入的。这个服务是在 *Startup.cs* 里的 ``ConfigureServices`` 方法中被注册到依赖注入项的。
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Startup.cs
   :linenos:
@@ -53,7 +53,7 @@ This view displays a list of ``ToDoItem`` instances, along with a summary showin
   
 The ``StatisticsService`` performs some calculations on the set of ``ToDoItem`` instances, which it accesses via a repository:
 
-``StatisticsService`` 对通过仓储访问的 ``ToDoItem`` 数据集执行一些计算。  
+``StatisticsService`` 对通过仓储读取到的 ``ToDoItem`` 数据集执行一些计算。  
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Model/Services/StatisticsService.cs
   :linenos:
@@ -77,11 +77,11 @@ View injection can be useful to populate options in UI elements, such as dropdow
 填充查找数据
 -------------
 
-视图注入有助于填充 UI 元素的可选项数据，例如下拉列表。设想一个包括性别、地区以及其他可选项的用户资料表格。如果通过标准的 MVC 方式渲染这个表格，需要控制器为每一种选项请求数据访问服务，然后再为绑定的每一种选项填充一个模型或 ``ViewBag``。
+视图注入有助于填充 UI 元素中的选项数据，例如下拉列表。设想一个包括性别、州以及其他选项的用户资料表单。如果通过标准的 MVC 方式渲染这样一个表单，需要控制器为每一组选项都请求数据访问服务，然后将每一组待绑定的选项填充到模型或 ``ViewBag`` 中。
 
 An alternative approach injects services directly into the view to obtain the options. This minimizes the amount of code required by the controller, moving this view element construction logic into the view itself. The controller action to display a profile editing form only needs to pass the form the profile instance:
 
-另一种方法则直接将服务注入到视图中以获取这些可选项数据。这种方法将控制器需要的代码量减到了最少，把构造视图元素的逻辑移到视图本身中去。用来显示资料编辑表格的控制器操作只需要把用户资料实例传给表格就可以了（而不需要传各种可选项数据，译注）：
+另一种方法则直接将服务注入到视图中以获取这些选项数据。这种方法将控制器需要的代码量减到了最少，把构造视图元素的逻辑移到视图本身中去。用来显示资料编辑表单的控制器 Action 只需要把用户资料实例传给表格就可以了（而不需要传各种选项数据，译注）：
 
 
 
@@ -92,7 +92,7 @@ An alternative approach injects services directly into the view to obtain the op
 
 The HTML form used to update these preferences includes dropdown lists for three of the properties:
 
-用来编辑这些选项的 HTML 表格包含的选项中有三个下拉列表：
+用来编辑这些选项的 HTML 表单包含选项中的三个下拉列表：
 
 .. image:: dependency-injection/_static/updateprofile.png
 
@@ -107,7 +107,7 @@ These lists are populated by a service that has been injected into the view:
 
 The ``ProfileOptionsService`` is a UI-level service designed to provide just the data needed for this form:
 
-``ProfileOptionsService`` 是一个 UI 层的服务,旨在用于只为这个表格提供所需数据 ：
+``ProfileOptionsService`` 是一个 UI 层的服务,旨在为这个表单提供所需数据 ：
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Model/Services/ProfileOptionsService.cs
   :linenos:
@@ -116,7 +116,7 @@ The ``ProfileOptionsService`` is a UI-level service designed to provide just the
 
 .. tip:: Don't forget to register types you will request through dependency injection in the  ``ConfigureServices`` method in *Startup.cs*.
 
-.. tip:: 不要忘记在 *Startup.cs* 的 ``ConfigureServices`` 方法中把你想要通过依赖注入请求的服务注册一下。
+.. tip:: 不要忘记在 *Startup.cs* 的 ``ConfigureServices`` 方法中把你想要通过依赖注入请求的类型注册一下。
 
 Overriding Services
 -------------------
@@ -135,11 +135,11 @@ As you can see, the default fields include ``Html``, ``Component``, and ``Url`` 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml
   :linenos:
   :language: html
-  :emphasize-lines: 5,13
+  :emphasize-lines: 3,11
 
 If you want to extend existing services, you can simply use this technique while inheriting from or wrapping the existing implementation with your own.
 
-如果你想要扩展已有服务，你只需要在使用这种替换技术的同时，让你自己的服务继承或包装已有实现。
+如果你想要扩展已有服务，你只需要在使用这种替换技术的同时，让你自己的服务继承或封装已有实现。
 
 See Also
 --------
