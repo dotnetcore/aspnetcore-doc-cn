@@ -1,41 +1,61 @@
-Filters
+过滤器
 =======
 
-By `Steve Smith`_
+作者： `Steve Smith`_
+
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对：
 
 *Filters* in ASP.NET MVC allow you to run code before or after a particular stage in the execution pipeline. Filters can be configured globally, per-controller, or per-action.
+
+ASP.NET MVC *过滤器* 可使执行管道的前后特定阶段执行代码。过滤器可以配置全局有效、仅对控制器有效或是仅对 Action 有效。
 
 .. contents:: Sections
     :local:
     :depth: 1
 
-`View or download sample from GitHub <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/filters/sample>`_.
+`查看或下载演示代码 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/filters/sample>`_.
 
-How do filters work?
+过滤器如何工作？
 --------------------
 
 Each filter type is executed at a different stage in the pipeline, and thus has its own set of intended scenarios. Choose what type of filter to create based on the task you need it to perform, and where in the request pipeline it executes. Filters run within the MVC Action Invocation Pipeline, sometimes referred to as the *Filter Pipeline*, which runs after MVC selects the action to execute.
+
+不同的过滤器类型会在执行管道的不同阶段运行，因此它们各自有一套适用场景。根据你实际要解决的问题以及在请求管道中执行的位置来选择创建不同的过滤器。运行于 MVC Action 调用管道内的过滤器有时被称作为*过滤管道*，当 MVC 选择要执行哪个 Action 后就会先执行该 Action 上的过滤器。
 
 .. image:: filters/_static/filter-pipeline-1.png
 
 Different filter types run at different points within the pipeline. Some filters, like authorization filters, only run before the next stage in the pipeline, and take no action afterward. Other filters, like action filters, can execute both before and after other parts of the pipeline execute, as shown below.
 
+不同过滤器在管道的不同位置运行。像授权这样的过滤器只运行在管道的靠前位置，并且其后也不会跟随 action。其它过滤器（如 action 过滤器等）可以在管道的其它部分之前或之后执行，如下所示。
+
 .. image:: filters/_static/filter-pipeline-2.png
 
-Selecting a Filter
+选择过滤器
 ^^^^^^^^^^^^^^^^^^
 
-:ref:`Authorization filters <authorization-filters>` are used to determine whether the current user is authorized for the request being made.
+:ref:`Authorization  filters <authorization-filters>` are used to determine whether the current user is authorized for the request being made.
+
+:ref:`授权过滤器 <authorization-filters>` 用于确定当前用户的请求是否合法。
 
 :ref:`Resource filters <resource-filters>` are the first filter to handle a request after authorization, and the last one to touch the request as it is leaving the filter pipeline. They're especially useful to implement caching or otherwise short-circuit the filter pipeline for performance reasons.
 
+:ref:`资源过滤器 <resource-filters>` 是授权之后第一个用来处理请求的过滤器，也是最后一个接触到请求的过滤器（因为之后就会离开过滤器管道）。在性能方面，资源过滤器在实现缓存或短路过滤器管道尤其有用。
+
 :ref:`Action filters <action-filters>` wrap calls to individual action method calls, and can manipulate the arguments passed into an action as well as the action result returned from it.
+
+:ref:`Action 过滤器 <action-filters>` 包装了对单个 action 方法的调用，可以将参数传递给 action 并从中获得 action result。
 
 :ref:`Exception filters <exception-filters>` are used to apply global policies to unhandled exceptions in the MVC app.
 
+:ref:`异常过滤器 <exception-filters>` 用于为 MVC 应用程序的未处理异常应用全局策略。
+
 :ref:`Result filters <result-filters>` wrap the execution of individual action results, and only run when the action method has executed successfully. They are ideal for logic that must surround view execution or formatter execution.
 
-Implementation
+:ref:`结果过滤器 <result-filters>` 对单个 action result 作包装执行，当且仅当 action 方法成功执行完毕后才运行。它们是理想的围绕视图执行或格式化的逻辑（所在之处）。
+
+实现
 ^^^^^^^^^^^^^^
 
 All filters support both synchronous and asynchronous implementations through different interface definitions. Choose the sync or async variant depending on the kind of task you need to perform. They are interchangeable from the framework's perspective.
@@ -54,7 +74,7 @@ Asynchronous filters define a single On\ *Stage*\ ExecutionAsync method that wil
 
 .. note:: You should only implement *either* the synchronous or the async version of a filter interface, not both. If you need to perform async work in the filter, implement the async interface. Otherwise, implement the synchronous interface. The framework will check to see if the filter implements the async interface first, and if so, it will call it. If not, it will call the synchronous interface's method(s). If you were to implement both interfaces on one class, only the async method would be called by the framework. Also, it doesn't matter whether your action is async or not, your filters can be synchronous or async independent of the action.
 
-Filter Scopes
+过滤器作用域
 ^^^^^^^^^^^^^
 
 Filters can be *scoped* at three different levels. You can add a particular filter to a particular action as an attribute. You can add a filter to all actions within a controller by applying an attribute at the controller level. Or you can register a filter globally, to be run with every MVC action.
@@ -98,7 +118,7 @@ Filter attributes:
 - `ExceptionFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ExceptionFilterAttribute/index.html>`_
 - `ResultFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ResultFilterAttribute/index.html>`_
 
-Cancellation and Short Circuiting
+取消与短路
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can short-circuit the filter pipeline at any point by setting the ``Result`` property on the context parameter provided to the filter method. For instance, the following ``ShortCircuitingResourceFilter`` will prevent any other filters from running later in the pipeline, including any action filters.
@@ -117,12 +137,12 @@ In the following code, both the ``ShortCircuitingResourceFilter`` and the ``AddH
   :lines: 6-8, 14-19
   :dedent: 4 
 
-Configuring Filters
+配置过滤器
 -------------------
 
 Global filters are configured within ``Startup.cs``. Attribute-based filters that do not require any dependencies can simply inherit from an existing attribute of the appropriate type for the filter in question. To create a filter *without* global scope that requires dependencies from DI, apply the ``ServiceFilterAttribute`` or ``TypeFilterAttribute`` attribute to the controller or action.
 
-Dependency Injection
+依赖注入
 ^^^^^^^^^^^^^^^^^^^^
 
 Filters that are implemented as attributes and added directly to controller classes or action methods cannot have constructor dependencies provided by :doc:`dependency injection </fundamentals/dependency-injection>` (DI). This is because attributes must have their constructor parameters supplied where they are applied. This is a limitation of how attributes work.
@@ -190,7 +210,7 @@ You can implement ``IFilterFactory`` on your own attribute implementations as an
 
 .. _ordering:
 
-Ordering
+排序
 ^^^^^^^^
 
 Filters can be applied to action methods or controllers (via attribute) or added to the global filters collection. Scope also generally determines ordering. The filter closest to the action runs first; generally you get overriding behavior without having to explicitly set ordering. This is sometimes referred to as "Russian doll" nesting, as each increase in scope is wrapped around the previous scope, like a `nesting doll <https://en.wikipedia.org/wiki/Matryoshka_doll>`_.
@@ -233,8 +253,9 @@ The new order would be:
 
 .. _authorization-filters:
 
-Authorization Filters
+授权过滤
 ---------------------
+
 
 *Authorization Filters* control access to action methods, and are the first filters to be executed within the filter pipeline. They have only a before stage, unlike most filters that support before and after methods. You should only write a custom authorization filter if you are writing your own authorization framework. Note that you should not throw exceptions within authorization filters, since nothing will handle the exception (exception filters won't handle them). Instead, issue a challenge or find another way.
 
@@ -242,7 +263,7 @@ Learn more about :doc:`/security/authorization/index`.
 
 .. _resource-filters:
 
-Resource Filters
+资源过滤
 ----------------
 
 *Resource Filters* implement either the ``IResourceFilter`` or ``IAsyncResourceFilter`` interface, and their execution wraps most of the filter pipeline (only :ref:`authorization-filters` run before them - all other filters and action processing happens between their ``OnResourceExecuting`` and ``OnResourceExecuted`` methods). Resource filters are especially useful if you need to short-circuit most of the work a request is doing. Caching would be one example use case for a resource filter, since if the response is already in the cache, the filter can immediately set a result and avoid the rest of the processing for the action.
@@ -267,7 +288,7 @@ Adding this filter to a class or method is shown here:
   
 .. _action-filters:
 
-Action Filters
+Action 过滤器
 --------------
 
 *Action Filters* implement either the ``IActionFilter`` or ``IAsyncActionFilter`` interface and their execution surrounds the execution of action methods. Action filters are ideal for any logic that needs to see the results of model binding, or modify the controller or inputs to an action method. Additionally, action filters can view and directly modify the result of an action method.
@@ -280,7 +301,7 @@ For an ``IAsyncActionFilter`` the ``OnActionExecutionAsync`` combines all the po
 
 .. _exception-filters:
 
-Exception Filters
+异常过滤器
 -----------------
 
 *Exception Filters* implement either the ``IExceptionFilter`` or ``IAsyncExceptionFilter`` interface.
@@ -297,8 +318,8 @@ Exception filters do not have two events (for before and after) - they only impl
 
 .. _result-filters:
 
-Result Filters
---------------
+结果过滤器
+-------------
 
 *Result Filters* implement either the ``IResultFilter`` or ``IAsyncResultFilter`` interface and their execution surrounds the execution of action results. Result filters are only executed for successful results - when the action or action filters produce an action result. Result filters are not executed when exception filters handle an exception, unless the exception filter sets ``Exception = null``.
 
@@ -316,7 +337,7 @@ You can override the built-in ``ResultFilterAttribute`` to create result filters
 
 .. tip:: If you need to add headers to the response, do so before the action result executes. Otherwise, the response may have been sent to the client, and it will be too late to modify it. For a result filter, this means adding the header in ``OnResultExecuting`` rather than ``OnResultExecuted``.
 
-Filters vs. Middleware
+过滤器对比中间件
 ----------------------
 
 In general, filters are meant to handle cross-cutting business and application concerns. This is often the same use case for :doc:`middleware </fundamentals/middleware>`. Filters are very similar to middleware in capability, but let you scope that behavior and insert it into a location in your app where it makes sense, such as before a view, or after model binding. Filters are a part of MVC, and have access to its context and constructs. For instance, middleware can't easily detect whether model validation on a request has generated errors, and respond accordingly, but a filter can easily do so.
