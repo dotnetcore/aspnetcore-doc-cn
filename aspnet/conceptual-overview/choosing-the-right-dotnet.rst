@@ -5,7 +5,7 @@
 
 翻译：`王健 <https://github.com/wjhgzx>`_
 
-ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能运行在Windows、Mac和 Linux上的跨平台应用程序。当您构建一个.Net Core项目，您也可以在.NET Framework (CLR)、.NET Core (CoreCLR) 或者 `Mono <http://mono-project.com>`_ 中来选择一种.NET版本来构建您的应用程序，.NET Framework (CLR), .NET Core (CoreCLR) 或者 Mono？您应该选择哪一种.NET版本，来看看每一种的优缺点吧。
+ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能运行在Windows、Mac和 Linux上的跨平台应用程序。当您构建一个.Net Core项目，您也可以在.NET Framework (CLR)、.NET Core (CoreCLR) 或者 `Mono <http://mono-project.com>`_ 中来选择一种.NET版本来构建您的应用程序，.NET Framework (CLR)、 .NET Core (CoreCLR) 或者 Mono？您应该选择哪一种.NET版本，来看看每一种的优缺点吧。
 
 .NET Framework
 --------------
@@ -21,7 +21,7 @@ ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能运行在Window
 
 CoreCLR运行时(Microsoft.CoreCLR) 和CoreFX库通过 `NuGet`_ 进行分发。.NET Core被构建成组件化的库集合，因此，您可以在您的应用程序中根据需要，仅使用需要的API。您也可以在更受限的环境中运行基于.NET Core的应用（如 `Windows Server Nano <http://blogs.technet.com/b/windowsserver/archive/2015/04/08/microsoft-announces-nano-server-for-modern-apps-and-cloud.aspx>`_）。
 
-API进行了更新，使其更好地组件化。这意味着现有的在.NET Framework中创建的库通常需要重新编译来使其运行在.NET Core中。.NET Core的生态系统相对来说比较新，但是在流行的.Net组件包的支持下发展迅速，如JSON.NET, AutoFac, xUnit.net等等。
+API进行了更新，使其更好地组件化。这意味着现有的在.NET Framework中创建的库通常需要重新编译来使其运行在.NET Core中。.NET Core的生态系统相对来说比较新，但是在流行的.Net组件包的支持下发展迅速，如JSON.NET，AutoFac，xUnit.net等等。
 
 基于 .NET Core的开发，可以使你在单一平台上开发的程序运行在多个平台上。
 
