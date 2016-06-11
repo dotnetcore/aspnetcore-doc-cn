@@ -1,11 +1,23 @@
 Controllers, Actions, and Action Results
 ========================================
 
+Controllers, Actions, 和 Action Results
+========================================
+
 By `Steve Smith`_
+
+作者： `Steve Smith`_
+
+翻译： `姚阿勇（Dr.Yao） <https://github.com/yaoay>`_
+
+校对：
+
 
 Actions and action results are a fundamental part of how developers build apps using ASP.NET MVC.
 
-.. contents:: Sections:
+Action 和 action result 是开发者使用 ASP.NET MVC 构建应用程序的基础部分。
+
+.. contents:: 章节：
   :local:
   :depth: 1
 
@@ -14,7 +26,14 @@ What is a Controller
 
 In ASP.NET MVC, a `Controller` is used to define and group a set of actions. An `action` (or `action method`) is a method on a controller that handles incoming requests. Controllers provide a logical means of grouping similar actions together, allowing common sets of rules (e.g. routing, caching, authorization) to be applied collectively. Incoming requests are mapped to actions through :doc:`routing <routing>`.
 
+什么是 Controller
+-------------------
+
+在 ASP.NET MVC 中， 控制器（ `Controller` ）用于定义和归纳一组操作（`Action` ）。操作（ 或操作方法 ）是控制器中处理入站请求的一个方法。 控制器提供了一种逻辑方式将相似的操作组织起来，允许一些通用的规则（如：路由，缓存和验证）得到共同的应用。 入站请求通过路由（ :doc:`routing <routing>` ）被映射到操作上。
+
 In ASP.NET Core MVC, a controller can be any instantiable class that ends in "Controller" or inherits from a class that ends with "Controller". Controllers should follow the `Explicit Dependencies Principle <http://deviq.com/explicit-dependencies-principle>`_ and request any dependencies their actions require through their constructor using :doc:`dependency injection <dependency-injection>`.
+
+在 ASP.NET Core MVC 中，控制器可以是以 “Controller” 结尾或者继承自以 “Controller” 结尾的类的任何可实例化类。控制器应当遵循 `显式依赖选择 <http://deviq.com/explicit-dependencies-principle>`_ 并且通过使用依赖注入在构造函数中获取他们需要的任何依赖项。
 
 By convention, controller classes:
 
@@ -23,13 +42,29 @@ By convention, controller classes:
 
 These two conventions are not required.
 
+按照管理，控制器应当：
+
+* 放在根目录下的“Controllers”文件夹中
+* 继承自 Microsoft.AspNet.Mvc.Controller
+
+这两个惯例不是强制要求。
+
 Within the Model-View-Controller pattern, a Controller is responsible for the initial processing of the request and instantiation of the Model. Generally, business decisions should  be performed within the Model.
+
+在模型-视图-控制器模式中，控制器负责初始化请求以及实例化模型。通常来说，业务流程应当放在模型中执行。
 
 .. note:: The Model should be a `Plain Old CLR Object (POCO)`, not a ``DbContext`` or database-related type.
 
+.. note:: 模型应该是一个简单的传统 CLR 对象（ `Plain Old CLR Object (POCO)` ），而不是一个数据库上下文 ``DbContext`` 或者关系数据库类型。
+
 The controller takes the result of the model's processing (if any), returns the proper view along with the associated view data. Learn more: :doc:`/mvc/overview` and :doc:`/tutorials/first-mvc-app/start-mvc`.
 
+控制器取得模型的执行结果（如果有），返回正确的视图以及相关的视图数据。更多请参考： :doc:`/mvc/overview` and :doc:`/tutorials/first-mvc-app/start-mvc` 。
+
 .. tip:: The Controller is a `UI level` abstraction. Its responsibility is to ensure incoming request data is valid and to choose which view (or result for an API) should be returned. In well-factored apps it will not directly include data access or business logic, but instead will delegate to services handling these responsibilities.
+
+.. tip:: 控制器是一个 UI 层的抽象。它的责任在于确保入站请求的数据是有效的，然后选择应当返回哪一个视图（或者 API 的结果）。在有着良好分解的应用程序中，控制器不会直接包含数据访问或业务逻辑，而是委托给服务去处理这些任务。
+
  
 Defining Actions
 ----------------
