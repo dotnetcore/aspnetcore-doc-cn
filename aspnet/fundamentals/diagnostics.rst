@@ -1,6 +1,3 @@
-Diagnostics
-============
-
 诊断
 =======
 
@@ -14,12 +11,9 @@ ASP.NET Core includes a number of new features that can assist with diagnosing p
 
 ASP.NET Core 包含了许多有助于诊断问题的新特性。
 
-.. contents:: Sections
+.. contents:: 章节
   :local:
   :depth: 1
-
-The developer error page
-------------------------
 
 开发者的错误页面
 ------------------------
@@ -29,15 +23,12 @@ You can view the details of unhandled exceptions by specifying a developer error
 你可以通过指定一个开发者的错误页面来查看未处理异常的细节。关于这个话题可以参考 :doc:`error-handling` 。
 
 
-The welcome page
-----------------
-
 欢迎页面
 ----------------
 
 Another extension method you may find useful, especially when you're first spinning up a new ASP.NET Core application, is the ``UseWelcomePage()`` method. Add it to ``Configure()`` like so:
 
-``UseWelcomePage()`` 方法是另一个对你而言可能有用的扩展方法，尤其是当你第一次启动 ASp.NET Core 应用程序。就像这样把它加进 ``Configure()`` ：
+``UseWelcomePage()`` 方法是另一个对你而言可能有用的扩展方法，尤其是当你第一次启动 ASP.NET Core 应用程序。就像这样把它加进 ``Configure()`` ：
 
 .. code-block:: c#
 
@@ -76,9 +67,6 @@ Run your app on localhost, and you should see Glimpse information bar at the bot
 
 在本地主机（localhost）运行应用程序，你可以在浏览器窗口的底部看到 Glimpse 信息栏。`查看在 ASP.NET Core 中配置 Glimpse 的演示 <http://blog.getglimpse.com/2015/11/19/installing-glimpse-v2-beta1/>`_ 。
 
-
-Logging
--------
 
 日志
 -------
