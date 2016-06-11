@@ -10,6 +10,7 @@
 
 （以下排序按照贡献者本名的汉语拼音排列）
 
+	+ `付星(后知后觉) <https://github.com/HouZhiHouJue>`_
 	+ `高会军(布莱恩特) <https://github.com/iyacontrol>`_
 	+ `郭远博(tkb至简) <https://github.com/Farb>`_
 	+ `耿晓亮(Blue) <https://github.com/heyixiaoran>`_

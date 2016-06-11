@@ -6,7 +6,7 @@ Managing Application State
 
 作者：`Steve Smith`_
 
-翻译：`Dr.Yao <http://github.com/yaoay>`_
+翻译：`姚阿勇（Dr.Yao） <http://github.com/yaoay>`_
 
 校对： 
 

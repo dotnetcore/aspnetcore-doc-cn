@@ -18,6 +18,7 @@
 
 （以下排序按照贡献者本名的汉语拼音排列）
 
++ [付星(后知后觉)](https://github.com/HouZhiHouJue)
 + [高会军(布莱恩特)](https://github.com/iyacontrol)
 + [郭远博(tkb至简)](https://github.com/Farb)
 + [耿晓亮(Blue)](https://github.com/heyixiaoran)
@@ -40,7 +41,6 @@
 + [张硕(Apple)]()
 + [赵亮(悲梦)](https://github.com/BeiMeng)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
-+ [后知后觉](https://github.com/HouZhiHouJue)
 
 ### 其它类型贡献者
 
