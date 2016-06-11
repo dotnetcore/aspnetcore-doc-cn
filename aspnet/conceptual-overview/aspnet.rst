@@ -26,7 +26,7 @@ ASP.NET Core为我们带来了一系列的变化，使核心网络架构更为�
 通过ASP.NET Core您将获得以下基本改进：
 
  - 创建Web UI和Web api有统一的
- - 集成了现代化的客户端类库 :doc:`客户端类库 </client-side/index>` 和开发工作流
+ - 集成了现代化的 :doc:`客户端类库 </client-side/index>` 和开发工作流
  - 基于环境的cloud-ready的 :doc:`配置系统 </fundamentals/configuration>`
  - 内置支持依赖注入
  - 新的轻量级，模块化的HTTP请求管道
