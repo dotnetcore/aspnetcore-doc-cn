@@ -130,11 +130,11 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 
 一个选择是，可以考虑在应用程序中添加 :doc:`MVC </mvc/index>`，并创建一个控制器来处理素数检测。然而，假设我们目前不需要任何其它MVC的功能，这是一个有点矫枉过正。
 
-然而，我们可以利用ASP.NET Core 中间件 :doc:`middleware </fundamentals/middleware>`的优势，可以帮助我们在它自己的类中封装素数检测的逻辑，并且在 ``Configure`` 方法中实现更好的 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ 。
+然而，我们可以利用ASP.NET Core  :doc:`中间件 </fundamentals/middleware>`的优势，可以帮助我们在它自己的类中封装素数检测的逻辑，并且在 ``Configure`` 方法中实现更好的 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ 。
 
 我们想让中间件使用的路径被指定为一个参数，所以中间件类在他的构造方法中预留了一个 ``RequestDelegate`` 和一个 ``PrimeCheckerOptions`` 实例。如果请求的路径与中间件期望的配置不匹配，我们只需要调用链表中的下一个中间件，并不做进一步处理。其余的在 ``Configure`` 中的实现代码，现在在 ``Invoke`` 方法中了。
 
-.. tip:: 由于我们的中间件取决于``PrimeService``服务，我们也通过构造函数请求该服务的实例。该框架通过依赖注入来提供这项服务 :doc:`/fundamentals/dependency-injection` ，假设已经进行了配置(例如在 ``ConfigureServices`` 中)。
+.. tip:: 由于我们的中间件取决于 ``PrimeService`` 服务，我们也通过构造函数请求该服务的实例。该框架通过依赖注入来提供这项服务，查看 :doc:`/fundamentals/dependency-injection` ，假设已经进行了配置(例如在 ``ConfigureServices`` 中)。
 
 .. literalinclude:: integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs
   :linenos:
@@ -154,7 +154,7 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 
 在这重构之后，我们有信心Web应用程序仍然像之前一样工作，因为我们的集成测试都是通过的。
 
-.. tip:: 当您完成重构并且所有测试都通过后，提交您的变更到源代码管理中，是一个好的主意。如果您正尝试测试驱动开发，` 考虑提交代码到你的Red-Green-Refacotr循环中 <http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_。
+.. tip:: 当您完成重构并且所有测试都通过后，提交您的变更到源代码管理中，是一个好的主意。如果您正尝试测试驱动开发，`考虑提交代码到你的Red-Green-Refacotr循环中 <http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_。
 
 总结
 -------
