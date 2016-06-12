@@ -169,7 +169,7 @@ If you have code you need to run before every view, this should be placed in the
 
 A sample ``_ViewStart.cshtml`` file:
 
-如果你有代码需要在任何视图之前运行，这些代码应该放在 ``_ViewStart.cshtml`` 文件中。按照约定， ``_ViewStart.cshtml`` 文件位于 ``Views`` 文件夹的根目录。 ``_ViewStart.cshtml`` 中列出的语句会在所有完整的视图（不包含布局视图和部分视图）之前运行。比如 :ref:`ViewImports.cshtml <viewimports>`，``_ViewStart.cshtml`` 也有优先级分层。如果一个 ``_ViewStart.cshtml`` 文件定义在 Controller 相关的视图文件夹内，它将比 ``Views`` 文件夹根目录下的 ``_ViewStart.cshtml`` 文件更晚运行（如果根目录下有这个文件的话）。
+如果你有代码需要在每个视图之前运行，这些代码应该放在 ``_ViewStart.cshtml`` 文件中。按照约定， ``_ViewStart.cshtml`` 文件位于 ``Views`` 文件夹的根目录。 ``_ViewStart.cshtml`` 中列出的语句会在所有完整的视图（不包含布局视图和部分视图）之前运行。就像 :ref:`ViewImports.cshtml <viewimports>`，``_ViewStart.cshtml`` 也有优先级。如果一个 ``_ViewStart.cshtml`` 文件定义在 Controller 相关的视图文件夹内，它将比 ``Views`` 文件夹根目录下的 ``_ViewStart.cshtml`` 文件更晚运行（如果根目录下有这个文件的话）。
 
 一个 ``_ViewStart.cshtml`` 文件例子：
 
@@ -182,4 +182,4 @@ The file above specifies that all views will use the ``_Layout.cshtml`` layout.
 
 .. note:: Neither ``_ViewStart.cshtml`` nor ``_ViewImports.cshtml`` are placed in the ``/Views/Shared`` folder. The app-level versions of these files should be placed directly in the ``/Views`` folder.
 
-.. note:: 无论 ``_ViewStart.cshtml`` 还是 ``_ViewImports.cshtml`` 都不能放在 ``/Views/Shared`` 文件夹下。这些文件是应用程序级别的，应该直接放在 ``/Views`` 文件夹下。
+.. note:: 无论 ``_ViewStart.cshtml`` 还是 ``_ViewImports.cshtml`` 都不能放在 ``/Views/Shared`` 文件夹下。应用程序级别的这些文件，应该直接放在 ``/Views`` 文件夹下。
