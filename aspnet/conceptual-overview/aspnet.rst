@@ -134,9 +134,9 @@ ASP.NET Core 使用了一种新的处理简单键值对的配置模型，它并�
 使用 ASP.NET Core MVC 来构建 web UI 和 web API
 ------------------------------------------------
 
-- 您可以使用模型-视图-控制器（MVC）模式来创建分解良好和可测试的web应用程序。See :doc:`/mvc/index` and :doc:`/testing/index`.
+- 您可以使用模型-视图-控制器（MVC）模式来创建分解良好和可测试的web应用程序。查看 :doc:`/mvc/index` 和 :doc:`/testing/index`.
 
-- 您可以创建HTTP服务，支持多种格式，并且对内容协商提供完整支持。See :doc:`/mvc/models/formatting`
+- 您可以创建HTTP服务，支持多种格式，并且对内容协商提供完整支持。查看 :doc:`/mvc/models/formatting`
 
 - `Razor <http://www.asp.net/web-pages/overview/getting-started/introducing-razor-syntax-c>`__ 提供一种 多产的语言来创建 :doc:`视图 </mvc/views/index>`
 
