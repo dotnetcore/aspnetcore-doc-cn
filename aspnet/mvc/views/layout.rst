@@ -110,7 +110,7 @@ Importing Shared Directives
 
 Views can use Razor directives to do many things, such as specifying namespaces or performing :doc:`dependency injection <dependency-injection>`. Directives used by many views may be specified in a ``_ViewImports.cshtml`` file.  The ``_ViewImports`` file supports the following directives:
 
-视图可以使用 Razor 指令做许多事，比如指定命名空间或者进行 :doc:`依赖注入 <dependency-injection>` 。指令可以指定在一个 ``_ViewImports.cshtml`` 文件中并被多个视图使用。 ``_ViewImports`` 文件支持以下指令：
+视图可以使用 Razor 指令做许多事，比如指定命名空间或者进行 :doc:`依赖注入 <dependency-injection>` 。由多个视图使用的指令可以在 ``_ViewImports.cshtml`` 文件中指定。 ``_ViewImports`` 文件支持以下指令：
 
 - addTagHelper
 - removeTagHelper
@@ -133,7 +133,7 @@ A sample ``_ViewImports.cshtml`` file:
 
 The ``_ViewImports.cshtml`` file for an ASP.NET Core MVC app is typically placed in the ``Views`` folder root. A ``_ViewImports.cshtml`` file can be placed within a controller-associated view folder, in which case it will only be applied to views within that folder. ``_ViewImports`` files are run first at the root level, and then for a ``_ViewImports`` file specified in the controller-associated folder, so settings specified at the root level may be overridden at the folder level.
 
-在ASP.NET Core MVC 应用程序中， ``_ViewImports.cshtml`` 通常被放置在 ``Views`` 文件夹根目录下。在运行顺序上，首先运行在根目录下的 ``_ViewImports`` 文件，然后运行 Controller 相关文件夹下的 ``_ViewImports``文件，所以在根目录中 ``_ViewImports`` 文件里指定的设定可能会被覆盖掉。
+在ASP.NET Core MVC 应用程序中， ``_ViewImports.cshtml`` 通常被放置在 ``Views`` 文件夹根目录下。``_ViewImports.cshtml`` 文件也可以放在 Controller 相关的视图文件夹下面，在这种情况下，它将只作用于该文件夹下的视图。在运行顺序上，首先运行在根目录下的 ``_ViewImports`` 文件，然后运行 Controller 相关文件夹下的 ``_ViewImports``文件，所以在根目录中 ``_ViewImports`` 文件里指定的设定可能会被覆盖掉。
 
 For example, if a root level ``_ViewImports.cshtml`` file specifies ``@model`` and ``@addTagHelper``, and another ``_ViewImports.cshtml`` file in the controller-associated folder of the view specifies a different ``@model`` and adds another ``@addTagHelper``, the view will have access to both tag helpers and will use the latter ``@model``.
 
