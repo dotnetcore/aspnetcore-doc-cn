@@ -14,14 +14,14 @@ ASP.NET Core 是ASP.NET的一个重要的重新设计。这个主题将介绍ASP
 什么是ASP.NET Core?
 ---------------------
 
-ASP.NET Core是一个新的开源、跨平台的框架被用来构建现代基于云的网络连接的应用程序，比如web应用、物联网应用和移动后端。ASP.NET Core应用程序可以运行在.NET Core或完整的.NET Framework框架上。这个框架被新优化过可以支持开发的程序部署在云上或本地运行。它由最小开销的模块化组件组成，让您构建解决方案的同时保持灵活性。您可以开发ASP.NET Core 应用程序它可以跨平台运行在Windows、Mac 和 Linux 上。ASP.NET Core 的开源代码在 `GitHub <https://github.com/aspnet/home>`_.
+ASP.NET Core是一个新的开源、跨平台的框架被用来构建现代基于云的网络连接的应用程序，比如web应用、物联网应用和移动后端。ASP.NET Core应用程序可以运行在.NET Core或完整的.NET Framework框架上。这个框架被优化过可以支持开发的程序部署在云上或本地运行。它由最小开销的模块化组件组成，让您构建解决方案的同时保持灵活性。您可以开发ASP.NET Core 应用程序，并可以跨平台运行在Windows、Mac 和 Linux 上。ASP.NET Core 的开源代码在 `GitHub <https://github.com/aspnet/home>`_.
 
 为什么开发 ASP.NET Core?
 -----------------------
 
 ASP.NET 的第一个预览版作为.NET Framework 的一部分，出来了差不多15年。从那时起，数以百万计的开发人员使用它来构建和运行伟大的Web应用程序，多年来我们已经为它加入并发展了很多很多的功能。
 
-ASP.NET Core为我们带来了一系列的变化，使核心网络架构更为精简和更具模块化。ASP.NET Core 不再基于*System.Web.dll* ，而是基于一组细化和良好分解的 `NuGet <http://www.nuget.org/>`__包，让您可以优化您的应用程序并且只取您所需要的部分。您可以减少应用程序的外部区域，以提高安全性，降低您的维护负担，也在真正的为您所付费使用的部分提高了性能。
+ASP.NET Core为我们带来了一系列的变化，使核心网络架构更为精简和更具模块化。ASP.NET Core 不再基于 *System.Web.dll* ，而是基于一组细化和良好分解的 `NuGet <http://www.nuget.org/>`__ 包，让您可以优化您的应用程序并且只取您所需要的部分。您可以减少应用程序的外部区域，以提高安全性，降低您的维护负担，也在真正的为您所付费使用的部分提高了性能。
 
 通过ASP.NET Core您将获得以下基本改进：
 
@@ -106,7 +106,7 @@ ASP.NET Core 配备了丰富的预先构建的中间件：
 服务器
 -------
 
-ASP.NET的核心托管模型不直接侦听请求，而是依赖于HTTP :doc:`服务器 </fundamentals/servers>`实现，将请求转发给应用程序。转发的请求被包装为一组特征的接口，应用程序将其组装进 ``HttpContext`` 。 ASP.NET Core 包括托管的跨平台Web服务器，叫做 :ref:`Kestrel <kestrel>`，你通常会在生产web服务器如`IIS<https://iis.net>`__或 `nginx <http://nginx.org>`__.
+ASP.NET的核心托管模型不直接侦听请求，而是依赖于HTTP :doc: `服务器 </fundamentals/servers>` 实现，将请求转发给应用程序。转发的请求被包装为一组特征的接口，应用程序将其组装进 ``HttpContext`` 。 ASP.NET Core 包括托管的跨平台Web服务器，叫做 :ref: `Kestrel <kestrel>`，你通常会在生产web服务器如 `IIS<https://iis.net>`__或 `nginx <http://nginx.org>`__.
 
 内容根节点
 ------------
