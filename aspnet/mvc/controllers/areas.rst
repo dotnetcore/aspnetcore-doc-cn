@@ -3,9 +3,9 @@ Areas
 
 By `Tom Archer`
 
-Areas provide a way to separate a large MVC application into semantically-related groups of models, views, and controllers. Let's take a look at an example to illustrate how Areas are created and used. Let's say you have a store app that has two distinct groupings of controllers and views: Products and Services.
+Areas提供了一种分离大型MVC应用程序语义相关分组的模型（Models），视图（Views）和控制器（Controllers）的方式，让我们看一个示例来说明Areas如何创建和使用。假设你有一个存储应用程序包含了两个不同分组的控制器和视图：Products和Services。
 
-Instead of having all of the controllers located under the Controllers parent directory, and all the views located under the Views parent directory, you could use Areas to group your views and controllers according to the area (or logical grouping) with which they're associated.
+替换控制器（Controllers）文件夹下所有的控制器和视图（Views）文件夹下所有的视图，你可以根据相关的area来分组（或者用逻辑分组）使用Areas来分组你的视图和控制器。
 
 - Project name
 
@@ -35,21 +35,21 @@ Instead of having all of the controllers located under the Controllers parent di
 
           - Index.cshtml
 
-Looking at the preceding directory hierarchy example, there are a few guidelines to keep in mind when defining areas:
+查看上边的目录层次结构的示例，在定义areas时要坚持几条准则：
 
-- A directory called *Areas* must exist as a child directory of the project.
-- The *Areas* directory contains a subdirectory for each of your project's areas (*Products* and *Services*, in this example).
-- Your controllers should be located as follows:
+- Areas目录必须作为项目的子目录存在。
+- 项目的每一个Areas都包含Areas子目录(示例中的Products和Services)。
+- 控制器（controllers）应该在像下面的位置：
   ``/Areas/[area]/Controllers/[controller].cs``
-- Your views should be located as follows:
+- 视图（views）应该在像下面的位置：
   ``/Areas/[area]/Views/[controller]/[action].cshtml``
 
-Note that if you have a view that is shared across controllers, it can be located in either of the following locations:
+注意，如果你有一个跨控制器（controllers）分享的视图（view ），它可以在下边任何一个位置：
 
 - ``/Areas/[area]/Views/Shared/[action].cshtml``
 - ``/Views/Shared/[action].cshtml``
 
-Once you've defined the folder hierarchy, you need to tell MVC that each controller is associated with an area. You do that by decorating the controller name with the ``[Area]`` attribute.
+一旦你定义了文件夹的层次结构，你需要告诉MVC每一个控制器相关的areas。用 ``[Area]`` 特性修饰控制器名称。
 
 .. code-block:: c#
   :emphasize-lines: 4
@@ -68,7 +68,7 @@ Once you've defined the folder hierarchy, you need to tell MVC that each control
       }
   }
 
-The final step is to set up a route definition that works with your newly created areas. The :doc:`routing` article goes into detail about how to create route definitions, including using conventional routes versus attribute routes. In this example, we'll use a conventional route. To do so, simply open the *Startup.cs* file and modify it by adding the highlighted route definition below.
+最后一步是建立一个新创建的areas的路由定义。:文档:`路由` 详细介绍了如何创建路由定义, 包括使用传统路由与特性路由。在本例中，我们会用传统路由。想这样做, 只需打开 *Startup.cs* 文件并修改添加下边高亮的路由定义。
 
 .. code-block:: c#
   :emphasize-lines: 4-6
@@ -84,25 +84,25 @@ The final step is to set up a route definition that works with your newly create
         template: "{controller=Home}/{action=Index}");
   });
 
-Now, when the user browses to *http://<yourApp>/products*, the ``Index`` action method of the ``HomeController`` in the ``Products`` area will be invoked.
+现在，当用浏览器转到 *http://<yourApp>/products*, ``Products`` area中 ``HomeController`` 文件的 ``Index`` 操作方法就会被调用。
 
-Linking between areas
+Areas之间的关联
 ---------------------
 
-To link between areas, you simply specify the area in which the controller is defined. If the controller is not a part of an area, use an empty string.
+想要areas之间关联, 只需要指定通过 :文档:`Tag Helpers</mvc/views/tag-helpers/index>` 定义的控制器（controller）的area。
 
-The following snippet shows how to link to a controller action that is defined within an area named *Products*.
+下面的代码段演示了在叫做 *Products* area中如何连接到一个控制器操作。
 
 .. code-block:: c#
 
   @Html.ActionLink("See Products Home Page", "Index", "Home", new { area = "Products" }, null)
 
-To link to a controller action that is not part of an area, simply specify an empty string for the area.
+关联到一个不是area部分的控制器操作，只需要移除 ``asp-route-area`` 
 
 .. code-block:: c#
 
   @Html.ActionLink("Go to Home Page", "Index", "Home", new { area = "" }, null)
 
-Summary
+总结
 -------
-Areas are a very useful tool for grouping semantically-related controllers and actions under a common parent folder. In this article, you learned how to set up your folder hierarchy to support ``Areas``, how to specify the ``[Area]`` attribute to denote a controller as belonging to a specified area, and how to define your routes with areas.
+Areas是一个非常有用的用于分组语义相关的控制器(controllers)和共同父文件夹下的操作（actions）的工具。通过本文, 你学习了如何设置用于 ``Areas`` 文件夹层次结构, 如何指定 ``[Area]`` 特性表示归属指定的area的控制器(controller)，和如何用areas定义路由。
