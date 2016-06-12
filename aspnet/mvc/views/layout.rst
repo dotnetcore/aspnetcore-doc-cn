@@ -45,7 +45,7 @@ This layout defines a top level template for views in the app. Apps do not requi
 
 An example ``_Layout.cshtml``:
 
-这个布局为应用程序定义了一个高级视图模板。布局对应用程序来说不是必须的，应用程序也可以定义多个模板供不同的视图使用。
+这个布局为应用程序中的视图定义了一个顶层模版。布局对应用程序来说不是必须的，应用程序也可以定义多个模板供不同的视图使用。
 
 一个例子 ``_Layout.cshtml`` ：
 
@@ -98,7 +98,7 @@ In the code above, validation scripts are added to the ``scripts`` section on a 
 
 Sections only flow from views. They cannot be referenced from partials, view components, or other parts of the view system.
 
-Section 只能在视图之间相互调用，而不能在局部视图，视图组件，或视图系统的其他部分中引用。
+Section 只能来自于视图中的定义，而不能在局部视图，视图组件，或视图系统的其他部分中引用。（译者注：Section 只能在视图中定义，同时只能在布局视图中调用 RenderSection。）
 
 .. _viewimports:
 
