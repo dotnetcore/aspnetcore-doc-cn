@@ -1,10 +1,6 @@
-Controllers, Actions, and Action Results
-========================================
 
 Controllers, Actions, 和 Action Results
 ========================================
-
-By `Steve Smith`_
 
 作者： `Steve Smith`_
 
@@ -33,7 +29,7 @@ In ASP.NET MVC, a `Controller` is used to define and group a set of actions. An 
 
 In ASP.NET Core MVC, a controller can be any instantiable class that ends in "Controller" or inherits from a class that ends with "Controller". Controllers should follow the `Explicit Dependencies Principle <http://deviq.com/explicit-dependencies-principle>`_ and request any dependencies their actions require through their constructor using :doc:`dependency injection <dependency-injection>`.
 
-在 ASP.NET Core MVC 中，控制器可以是以 “Controller” 结尾或者继承自以 “Controller” 结尾的类的任何可实例化类。控制器应当遵循 `显式依赖选择 <http://deviq.com/explicit-dependencies-principle>`_ 并且通过使用依赖注入在构造函数中获取他们需要的任何依赖项。
+在 ASP.NET Core MVC 中，控制器可以是以 “Controller” 结尾或者继承自以 “Controller” 结尾的类的任何可实例化类。控制器应当遵循 `显式依赖原则 <http://deviq.com/explicit-dependencies-principle>`_ 并且通过使用依赖注入在构造函数中获取他们需要的任何依赖项。
 
 By convention, controller classes:
 
