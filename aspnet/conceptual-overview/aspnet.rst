@@ -106,7 +106,7 @@ ASP.NET Core 配备了丰富的预先构建的中间件：
 服务器
 -------
 
-ASP.NET的核心托管模型不直接侦听请求，而是依赖于HTTP :doc: `服务器 </fundamentals/servers>` 实现，将请求转发给应用程序。转发的请求被包装为一组特征的接口，应用程序将其组装进 ``HttpContext`` 。 ASP.NET Core 包括托管的跨平台Web服务器，叫做 :ref: `Kestrel <kestrel>`，你通常会在生产web服务器如 `IIS<https://iis.net>`__ 或 `nginx <http://nginx.org>`__ 。
+ASP.NET的核心托管模型不直接侦听请求，而是依赖于HTTP :doc: `服务器 </fundamentals/servers>` 实现，将请求转发给应用程序。转发的请求被包装为一组特征的接口，应用程序将其组装进 ``HttpContext`` 。 ASP.NET Core 包括托管的跨平台Web服务器，叫做 :ref: `Kestrel <kestrel>`，你通常会在生产web服务器如 `IIS <https://iis.net>`__ 或 `nginx <http://nginx.org>`__ 。
 
 内容根节点
 ------------
