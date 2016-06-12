@@ -116,7 +116,7 @@ Content negotiated response
   Instead of returning an object directly, an action can return a content negotiated response (using ``Ok``, ``Created``, ``CreatedAtRoute`` or ``CreatedAtAction``). Examples: ``return Ok();`` or ``return CreatedAtRoute("routename",values,newobject");``
 
 内容协商的响应
-  除了直接返回一个对象，Action 还可以返回一个内容协商的响应（使用  ``Ok``, ``Created``, ``CreatedAtRoute`` 或 ``CreatedAtAction`` ）。例：  ``return Ok();`` 或 ``return CreatedAtRoute("routename",values,newobject");``
+  除了直接返回一个对象，Action 还可以返回一个内容协商的响应（使用  ``Ok``, ``Created``, ``CreatedAtRoute`` 或 ``CreatedAtAction`` ）。例：  ``return Ok(); `` 或 ``return CreatedAtRoute("routename",values,newobject");``
 
 
 Redirect
