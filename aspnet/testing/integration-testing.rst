@@ -130,7 +130,7 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 
 一个选择是，可以考虑在应用程序中添加 :doc:`MVC </mvc/index>`，并创建一个控制器来处理素数检测。然而，假设我们目前不需要任何其它MVC的功能，这是一个有点矫枉过正。
 
-然而，我们可以利用ASP.NET Core  :doc:`中间件 </fundamentals/middleware>`的优势，可以帮助我们在它自己的类中封装素数检测的逻辑，并且在 ``Configure`` 方法中实现更好的 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ 。
+然而，我们可以利用ASP.NET Core  :doc:`中间件 </fundamentals/middleware>` 的优势，可以帮助我们在它自己的类中封装素数检测的逻辑，并且在 ``Configure`` 方法中实现更好的 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ 。
 
 我们想让中间件使用的路径被指定为一个参数，所以中间件类在他的构造方法中预留了一个 ``RequestDelegate`` 和一个 ``PrimeCheckerOptions`` 实例。如果请求的路径与中间件期望的配置不匹配，我们只需要调用链表中的下一个中间件，并不做进一步处理。其余的在 ``Configure`` 中的实现代码，现在在 ``Invoke`` 方法中了。
 
