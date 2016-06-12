@@ -67,7 +67,7 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
   :dedent: 4
   :emphasize-lines: 8-9
 
-需要注意的是，我们并不是真的想测试我们使用这些测试质数检查的正确性，而是确认Web应用程序在我们期待的事情。我们已经有单元测试覆盖率，让我们对 ``PrimeService`` 有信心，您可以在这里看到：
+需要注意的是，我们并不是想使用这些测试用例来测试质数检查程序的正确性，而是确认Web应用程序在我们期待的事情。我们已经有对 ``PrimeService`` 充满信心的单元测试覆盖率，您可以在这里看到：
 
 .. image:: integration-testing/_static/test-explorer.png
 
