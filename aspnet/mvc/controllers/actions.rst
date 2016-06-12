@@ -73,7 +73,7 @@ Action 的定义
 
 .. warning:: Action methods that accept parameters should verify the ``ModelState.IsValid`` property is true.
 
-.. warning:: 接受参数的 Action 方法应该检查 ``ModelState.IsValid`` 属性是否为 True 。
+.. warning:: 接受参数的 Action 方法应该检查 ``ModelState.IsValid`` 属性的值是否为 True 。
 
 Action methods should contain logic for mapping an incoming request to a business concern. Business concerns should typically be represented as services that your controller accesses through :doc:`dependency injection <dependency-injection>`. Actions then map the result of the business action to an application state.
 
