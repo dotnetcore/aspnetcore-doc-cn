@@ -169,7 +169,7 @@ Also notice how the content in the *Index.cshtml* view template was merged with 
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how create a database and retrieve model data from it.
 
-不过，我们的小小“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将联系如何创建一个数据库并从中搜索模型数据。
+不过，我们的小小“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
 
 Passing Data from the Controller to the View
 -----------------------------------------------
@@ -182,7 +182,7 @@ Before we go to a database and talk about models, though, let's first talk about
 
 Controllers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A best practice: A view template should never perform business logic or interact with a database directly. Instead, a view template should work only with the data that's provided to it by the controller. Maintaining this "separation of concerns" helps keep your code clean, testable and more maintainable.
 
-控制器负责提供所需要的任何数据或者对象，以便视图模板渲染响应给浏览器。最佳实践：视图模板不应该执行业务逻辑或者直接与数据库进行交互，而应该只使用控制器提供给它的数据。保持这种 “关注点分离” 有助于保持你的代码整洁，可测试以及更易于维护。
+控制器负责提供所需要的任何数据或者对象，以便视图模板向浏览器呈现响应。最佳实践：视图模板不应该执行业务逻辑或者直接与数据库进行交互，而应该只使用控制器提供给它的数据。保持这种 “关注点分离” 有助于保持你的代码整洁，可测试以及更易于维护。
 
 Currently, the ``Welcome`` method in the ``HelloWorldController`` class takes a ``name`` and a ``ID`` parameter and then outputs the values directly to the browser. Rather than have the controller render this response as a string, let’s change the controller to use a view template instead. The view template will generate a dynamic response, which means that you need to pass appropriate bits of data from the controller to the view in order to generate the response. You can do this by having the controller put the dynamic data (parameters) that the view template needs in a ``ViewData`` dictionary that the view template can then access.
 
