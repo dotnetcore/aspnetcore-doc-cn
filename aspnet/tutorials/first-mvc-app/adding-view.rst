@@ -9,7 +9,12 @@ By `Rick Anderson`_
 
 翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
 
-校对：   
+审核： `赵亮(悲梦)   <https://github.com/BeiMeng>`_ 
+
+       `高嵩(Jack)   <https://github.com/jack2gs>`_ 
+
+       `娄宇(Lyrics) <https://github.com/xbuilder>`_ 
+  
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
 
