@@ -1,13 +1,13 @@
-﻿Adding a view             
+﻿Adding a view
 ================================================
 添加视图
 ===================
 
 By `Rick Anderson`_
 
-作者： `Rick Anderson`_ 
+作者： `Rick Anderson`_
 
-翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
+翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
 校对： `赵亮(悲梦) <http://github.com/BeiMeng>`_、`高嵩(Jack) <http://github.com/jack2gs>`_、`何镇汐 <https://github.com/UtilCore>`_
 
@@ -190,7 +190,7 @@ Currently, the ``Welcome`` method in the ``HelloWorldController`` class takes a 
 
 Return to the *HelloWorldController.cs* file and change the ``Welcome`` method to add a ``Message`` and ``NumTimes`` value to the ``ViewData`` dictionary. The ``ViewData`` dictionary is a dynamic object, which means you can put whatever you want in to it; the ``ViewData`` object has no defined properties until you put something inside it. The `MVC model binding system <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ automatically maps the named parameters (``name`` and ``numTimes``) from the query string in the address bar to parameters in your method. The complete *HelloWorldController.cs* file looks like this:
 
-回到 *HelloWorldController.cs* 文件，在 ``Welcome`` 方法中添加一个 ``Message`` 和 ``NumTimes`` 的值到 ``ViewData`` 字典中。 ``ViewData`` 字典是个动态对象，这就意味着可以把任何自己想要的数据添加进去。 ``ViewData`` 对象并没有定义属性，直到放一些值到该对象里。 `MVC model binding system <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 自动映射地址栏中查询字符串的命名参数 (``name`` and ``numTimes``) 到你的方法参数中。完整的 *HelloWorldController.cs* 文件看起来是这样的： 
+回到 *HelloWorldController.cs* 文件，在 ``Welcome`` 方法中添加一个 ``Message`` 和 ``NumTimes`` 的值到 ``ViewData`` 字典中。 ``ViewData`` 字典是个动态对象，这就意味着可以把任何自己想要的数据添加进去。 ``ViewData`` 对象并没有定义属性，直到放一些值到该对象里。 `MVC model binding system <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 自动映射地址栏中查询字符串的命名参数 (``name`` and ``numTimes``) 到你的方法参数中。完整的 *HelloWorldController.cs* 文件看起来是这样的：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -208,21 +208,21 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
 - 在 **Add New Item - MvcMovie** 对话框中
 
-  - In the search box in the upper-right, enter *view* 
+  - In the search box in the upper-right, enter *view*
 
-  - 在右上角的搜索框中，输入 *view* 
+  - 在右上角的搜索框中，输入 *view*
 
-  - Tap **MVC View Page** 
+  - Tap **MVC View Page**
 
-  - 点击 **MVC View Page** 
+  - 点击 **MVC View Page**
 
   - In the **Name** box, enter *Welcome.cshtml*
 
-  - 在 **Name** 框中，输入 *Welcome.cshtml* 
+  - 在 **Name** 框中，输入 *Welcome.cshtml*
 
   - Tap **Add**
 
-  - 点击 **Add** 
+  - 点击 **Add**
 
 You'll create a loop in the *Welcome.cshtml* view template that displays "Hello" ``NumTimes``. Replace the contents of *Views/HelloWorld/Welcome.cshtml* with the following:
 
