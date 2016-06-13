@@ -81,7 +81,7 @@ Every ``public`` method in a controller is callable as an HTTP endpoint. In the 
 
 The first comment states this is an `HTTP GET <http://www.w3schools.com/tags/ref_httpmethods.asp>`__ method that is invoked by appending "/HelloWorld/" to the URL. The second comment specifies an `HTTP GET <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`__ method that is invoked by appending "/HelloWorld/Welcome/" to the URL. Later on in the tutorial we'll use the scaffolding engine to generate ``HTTP POST`` methods.
 
-第一个注释指出这是一个 `HTTP GET <http://www.w3schools.com/tags/ref_httpmethods.asp>`__ 方法，通过在 URL 后添加 "/HelloWorld/" 。第二个指出这是一个 `HTTP GET <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`__ 方法，通过在 URL 后添加 "/HelloWorld/Welcome/" 。之后的教程我们将使用基架引擎来生成 ``HTTP POST`` 方法。
+第一条注释指出这是一个通过在 URL 后添加 "/HelloWorld/" 调用的 `HTTP GET <http://www.w3schools.com/tags/ref_httpmethods.asp>`__ 方法，。第二条指出这是一个通过在 URL 后添加 "/HelloWorld/Welcome/" 调用的 `HTTP GET <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`__ 方法 。之后的教程我们将使用基架引擎来生成 ``HTTP POST`` 方法。
 
 Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, http://localhost:1234/HelloWorld is used, but you'll have to replace *1234* with the port number of your app.) The ``Index method`` returns a string. You told the system to return some HTML, and it did! 
 
@@ -91,7 +91,7 @@ Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the pat
 
 MVC invokes controller classes (and the action methods within them) depending on the incoming URL. The default URL routing logic used by MVC uses a format like this to determine what code to invoke:
 
-MVC 调用控制器（Controller）类 (以及它们的 Action 方法) 依赖于传入的 URL 。MVC默认采用类似下面的路由规则格式来决定代码的调用：
+MVC 调用的控制器（Controller）类 (以及它们的 Action 方法) 取决于传入的 URL 。MVC 的默认路由逻辑采用类似下面规则格式来决定代码的调用：
 
 ``/[Controller]/[ActionName]/[Parameters]``
 
@@ -107,11 +107,11 @@ You set the format for routing in the *Startup.cs* file.
 
 When you run the app and don't supply any URL segments, it defaults to the "Home" controller and the "Index" method specified in the template line highlighted above. 
 
-当你运行应用程序且不提供任何 URL 片段时，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
+当你运行应用程序且不提供任何 URL 段时，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
 
 The first URL segment determines the controller class to run. So ``localhost:xxxx/HelloWorld`` maps to the ``HelloWorldController`` class. The second part of the URL segment determines the action method on the class. So ``localhost:xxxx/HelloWorld/Index`` would cause the ``Index`` method of the ``HelloWorldController`` class to run. Notice that we only had to browse to ``localhost:xxxx/HelloWorld`` and the ``Index`` method was called by default. This is because ``Index`` is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( ``Parameters``) is for route data. We'll see route data later on in this tutorial.
 
-第一个 URL 片段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 片段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们仅仅浏览 ``localhost:xxxx/HelloWorld`` 时，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 片段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中遇到路由数据。
+第一个 URL 段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们只需要浏览 ``localhost:xxxx/HelloWorld`` ，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中了解路由数据。
 
 Browse to ``http://localhost:xxxx/HelloWorld/Welcome``. The ``Welcome`` method runs and returns the string "This is the Welcome action method...". The default MVC routing is ``/[Controller]/[ActionName]/[Parameters]``. For this URL, the controller is ``HelloWorld`` and ``Welcome`` is the action method. We haven't used the ``[Parameters]`` part of the URL yet.
 
@@ -121,7 +121,7 @@ Browse to ``http://localhost:xxxx/HelloWorld/Welcome``. The ``Welcome`` method r
 
 Let's modify the example slightly so that you can pass some parameter information  from the URL to the controller (for example, ``/HelloWorld/Welcome?name=Scott&numtimes=4``).  Change the ``Welcome`` method  to include two parameters as shown below. Note that the code uses the C# optional-parameter feature to indicate that the ``numTimes`` parameter defaults to 1 if no value is passed for that parameter.
 
-让我们稍微修改一下例子，使我们能够通过 URL 传递一些参数信息到控制器（Controller）(例如， ``/HelloWorld/Welcome?name=Scott&numtimes=4`` )。如下方一样修改 ``Welcome`` 方法使其包含两个参数。请注意，代码采用 C# 可选参数特征表明在没有传递参数的情况下， ``numTimes`` 参数默认为1。
+让我们稍微修改一下例子，使我们能够通过 URL 传递一些参数信息到控制器（Controller）(例如， ``/HelloWorld/Welcome?name=Scott&numtimes=4`` )。如下所示修改 ``Welcome`` 方法使其包含两个参数。请注意，代码利用 C# 的可选参数特性指明在没有传递参数的情况下， ``numTimes`` 参数默认为1。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -146,13 +146,13 @@ Run your app and browse to:
 
   ``http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4``
 
-(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC 模型绑定系统将自动从地址栏中的查询字符串映射指定的参数到你的方法参数。查看 :doc:`/mvc/models/model-binding` 获得更多的信息。
+(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC 模型绑定系统自动将地址栏里查询字符串中有名字的参数映射到你方法中的参数。查看 :doc:`/mvc/models/model-binding` 获得更多的信息。
 
 .. image:: adding-controller/_static/rick4.png
 
 In the sample above, the URL segment (``Parameters``) is not used, the ``name`` and ``numTimes`` parameters are passed as `query strings <http://en.wikipedia.org/wiki/Query_string>`__. The ``?`` (question mark) in the above URL is a separator, and the query strings follow. The ``&`` character separates query strings.
 
-在上面的示例中， URL 片段 (``Parameters``) 没有被使用， ``name`` 和 ``numTimes`` 参数作为 `查询字符串 <http://en.wikipedia.org/wiki/Query_string>`__ 被传递。 上面 URL 中的  ``?`` (问号) 是一个分隔符，后面跟查询字符串。 ``&`` 字符分割查询字符串。
+在上面的示例中， URL 段 (``Parameters``) 没有被使用， ``name`` 和 ``numTimes`` 参数作为 `查询字符串 <http://en.wikipedia.org/wiki/Query_string>`__ 被传递。 上面 URL 中的  ``?`` (问号) 是一个分隔符，后面跟查询字符串。 ``&`` 字符分割查询字符串。
 
 Replace the ``Welcome`` method with the following code:
 
@@ -171,7 +171,7 @@ Run the app and enter the following URL:  ``http://localhost:xxx/HelloWorld/Welc
 
 This time the third URL segment  matched the route parameter ``id``. The ``Welcome``  method contains a parameter  ``id`` that matched the URL template in the ``MapRoute`` method. The trailing ``?``  (in ``id?``) indicates the ``id`` parameter is optional.
 
-此时第三个 URL 片段匹配上路由参数 ``id`` 。 ``Welcome`` 方法包含一个与 ``MapRoute`` 内的 URL 模板相匹配的 ``id`` 参数。跟随的 ``?`` (``id?``) 表示 ``id`` 参数是可选的。
+这次第三个 URL 段匹配上了路由参数 ``id`` 。 ``Welcome`` 方法包含一个与 ``MapRoute`` 内的 URL 模板相匹配的 ``id`` 参数。跟随的 ``?`` (``id?``) 表示 ``id`` 参数是可选的。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -181,4 +181,4 @@ This time the third URL segment  matched the route parameter ``id``. The ``Welco
   
 In these examples the controller has been doing the "VC" portion  of MVC - that is, the view and controller work. The controller is returning HTML  directly. Generally you don't want controllers returning HTML directly, since  that becomes very cumbersome to code and maintain. Instead we'll typically use a separate Razor view template file to help generate the HTML response. We'll do that in the next tutorial.
 
-在这些例子中，控制器（Controller）一直在做 MVC 中 "VC" 部分，就是视图（View）和控制器（Controller）部分的工作。控制器（Controller）直接返回 HTML 。一般来说你不想让控制器（Controller） 直接返回 HTML ，因为这让编码和维护变得非常麻烦。所以，我们通常会使用一个单独的 Razor 视图模板文件来帮助生成 HTML 响应。 我们将在下一个教程中介绍这部分。
+在这些例子中，控制器（Controller）一直在做 MVC 中的 "VC" 部分，就是视图（View）和控制器（Controller）部分的工作。这个控制器（Controller）直接返回 HTML 。一般来说你不想让控制器（Controller） 直接返回 HTML ，因为这让编码和维护变得非常麻烦。所以，我们通常会使用一个单独的 Razor 视图模板文件来帮助生成 HTML 响应。 我们将在下一个教程中介绍这部分。
