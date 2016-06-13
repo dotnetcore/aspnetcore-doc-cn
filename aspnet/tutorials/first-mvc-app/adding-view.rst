@@ -37,7 +37,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
 - 右键点击 *Views* （视图）文件夹，选择 **添加 > 新建文件夹** ，然后将文件夹命名为 *HelloWorld* 。
 
-.. image:: adding-view/_static/add_folder.png
+.. image:: adding-view/_static/add_folder_cn.png
 
 - Right click on the *Views/HelloWorld* folder, and then **Add > New Item**.
 
@@ -63,7 +63,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
   - 点击 **添加**
 
-.. image:: adding-view/_static/add_view.png
+.. image:: adding-view/_static/add_view_cn.png
 
 Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:
 
