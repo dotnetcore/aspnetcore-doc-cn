@@ -1,13 +1,13 @@
-﻿Adding a view             
+﻿Adding a view
 ================================================
 添加视图
 ===================
 
 By `Rick Anderson`_
 
-作者： `Rick Anderson`_ 
+作者： `Rick Anderson`_
 
-翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
+翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
 校对： `赵亮(悲梦) <http://github.com/BeiMeng>`_、`高嵩(Jack) <http://github.com/jack2gs>`_、`何镇汐 <https://github.com/UtilCore>`_
 
@@ -190,7 +190,7 @@ Currently, the ``Welcome`` method in the ``HelloWorldController`` class takes a 
 
 Return to the *HelloWorldController.cs* file and change the ``Welcome`` method to add a ``Message`` and ``NumTimes`` value to the ``ViewData`` dictionary. The ``ViewData`` dictionary is a dynamic object, which means you can put whatever you want in to it; the ``ViewData`` object has no defined properties until you put something inside it. The `MVC model binding system <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ automatically maps the named parameters (``name`` and ``numTimes``) from the query string in the address bar to parameters in your method. The complete *HelloWorldController.cs* file looks like this:
 
-回到 *HelloWorldController.cs* 文件，在 ``Welcome`` 方法中添加一个 ``Message`` 和 ``NumTimes`` 的值到 ``ViewData`` 字典中。 ``ViewData`` 字典是个动态对象，这就意味着可以把任何自己想要的数据添加进去。 ``ViewData`` 对象并没有定义属性，直到放一些值到该对象里。 `MVC model binding system <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 自动映射地址栏中查询字符串的命名参数 (``name`` and ``numTimes``) 到你的方法参数中。完整的 *HelloWorldController.cs* 文件看起来是这样的： 
+回到 *HelloWorldController.cs* 文件，在 ``Welcome`` 方法中添加一个 ``Message`` 和 ``NumTimes`` 的值到 ``ViewData`` 字典中。 ``ViewData`` 字典是个动态对象，这就意味着可以把任何自己想要的数据添加进去。 ``ViewData`` 对象并没有定义属性，直到放一些值到该对象里。 `MVC model binding system <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 自动映射地址栏中查询字符串的命名参数 (``name`` and ``numTimes``) 到你的方法参数中。完整的 *HelloWorldController.cs* 文件看起来是这样的：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
   :language: c#
@@ -208,21 +208,21 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
 - 在 **Add New Item - MvcMovie** 对话框中
 
-  - In the search box in the upper-right, enter *view* 
+  - In the search box in the upper-right, enter *view*
 
-  - 在右上角的搜索框中，输入 *view* 
+  - 在右上角的搜索框中，输入 *view*
 
-  - Tap **MVC View Page** 
+  - Tap **MVC View Page**
 
-  - 点击 **MVC View Page** 
+  - 点击 **MVC View Page**
 
   - In the **Name** box, enter *Welcome.cshtml*
 
-  - 在 **Name** 框中，输入 *Welcome.cshtml* 
+  - 在 **Name** 框中，输入 *Welcome.cshtml*
 
   - Tap **Add**
 
-  - 点击 **Add** 
+  - 点击 **Add**
 
 You'll create a loop in the *Welcome.cshtml* view template that displays "Hello" ``NumTimes``. Replace the contents of *Views/HelloWorld/Welcome.cshtml* with the following:
 
@@ -239,13 +239,13 @@ Save your changes and browse to the following URL:
 
 Data is taken from the URL and passed to the controller using the `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__. The controller packages the data into a ``ViewData`` dictionary and passes that object to the view. The view then renders the data as HTML to the browser.
 
-从URL中获取数据并用 `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图中的数据作为 HTML 显示在浏览器中。
+数据是从URL获取并用 `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 将数据传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图渲染那些数据作为 HTML 到浏览器中。
 
 .. image:: adding-view/_static/rick.png
 
 In the sample above, we used the ``ViewData`` dictionary to pass data from the controller to a view. Later in the tutorial, we will use a view model to pass data from a controller to a view. The view model approach to passing data is generally much preferred over the ``ViewData`` dictionary approach. See `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ for more information.
 
-在以上例子中，我们用 ``ViewData`` 字典中将数据从控制器中传递到视图中，在后面的教程中，我们将使用视图模型（view model）将数据从控制器中传递到视图中。用视图模型传递数据优先于 ``ViewData`` 字典。查看 `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ 了解更多信息。
+在以上例子中，我们用 ``ViewData`` 字典传递数据从控制器到视图。在后面的教程中，我们将使用视图模型（view model）传递数据从控制器到视图。通常用视图模型方法传递数据优先于 ``ViewData`` 字典方法。查看 `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ 了解更多信息。
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
 
