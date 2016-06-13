@@ -250,4 +250,4 @@ In the sample above, we used the ``ViewData`` dictionary to pass data from the c
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
 
-好吧，这也算是一种 Model 的 "M" ，但不是数据库那种。让我们用学到的东西创建一个电影数据库。
+好吧，这也算是一种 Model 的 "M" ，但不是数据库那种。让我们用学到的东西创建一个电影数据库吧。
