@@ -1,4 +1,4 @@
-添加一个模型
+添加模型
 ================
 
 Adding a model
@@ -8,7 +8,7 @@ Adding a model
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对：
+校对： `何镇汐 <https://github.com/UtilCore>`_
 
 In this section you'll add some classes for managing movies in a database. These classes will be the "**M**\odel" part of the **M**\VC app.
 

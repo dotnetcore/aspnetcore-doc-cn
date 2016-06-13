@@ -3,6 +3,13 @@
 Configuring Data Protection
 ===========================
 
+配置数据保护
+===========================
+
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
+
 When the data protection system is initialized it applies some :ref:`default settings <data-protection-default-settings>` based on the operational environment. These settings are generally good for applications running on a single machine. There are some cases where a developer may want to change these (perhaps because his application is spread across multiple machines or for compliance reasons), and for these scenarios the data protection system offers a rich configuration API.
 
 .. _data-protection-configuration-callback:
@@ -89,6 +96,9 @@ Finally, you may have a scenario where you do not want an application to automat
 Per-application isolation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+逐个应用程序隔离
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 When the data protection system is provided by an ASP.NET host, it will automatically isolate applications from one another, even if those applications are running under the same worker process account and are using the same master keying material. This is somewhat similar to the IsolateApps modifier from System.Web's <machineKey> element.
 
 The isolation mechanism works by considering each application on the local machine as a unique tenant, thus the IDataProtector rooted for any given application automatically includes the application ID as a discriminator. The application's unique ID comes from one of two places.
@@ -106,6 +116,10 @@ If the data protection system is not provided by an ASP.NET host (e.g., if the d
 
 Changing algorithms
 ^^^^^^^^^^^^^^^^^^^
+
+改变算法
+^^^^^^^^^^^^^^^^^^^
+
 The data protection stack allows changing the default algorithm used by newly-generated keys. The simplest way to do this is to call UseCryptographicAlgorithms from the configuration callback, as in the below example.
 
 .. code-block:: c#
@@ -131,6 +145,9 @@ The developer can manually specify an implementation if desired via a call to Us
 .. _data-protection-changing-algorithms-custom-managed:
 
 Specifying custom managed algorithms
+------------------------------------
+
+指定定制的托管算法
 ------------------------------------
 
 To specify custom managed algorithms, create a ManagedAuthenticatedEncryptionOptions instance that points to the implementation types.
@@ -161,6 +178,9 @@ Generally the \*Type properties must point to concrete, instantiable (via a publ
 .. _data-protection-changing-algorithms-cng:
 
 Specifying custom Windows CNG algorithms
+----------------------------------------
+
+指定定制的 Windows CNG 算法
 ----------------------------------------
 
 To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptionOptions instance that contains the algorithmic information.
@@ -210,10 +230,17 @@ To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption +
 Specifying other custom algorithms
 ----------------------------------
 
+指定其它定制算法
+----------------------------------
+
 Though not exposed as a first-class API, the data protection system is extensible enough to allow specifying almost any kind of algorithm. For example, it is possible to keep all keys contained within an HSM and to provide a custom implementation of the core encryption and decryption routines. See IAuthenticatedEncryptorConfiguration in the core cryptography extensibility section for more information.
 
 See also
 --------
+
+参考
+--------
+
 :doc:`non-di-scenarios`
 
 :doc:`machine-wide-policy`
