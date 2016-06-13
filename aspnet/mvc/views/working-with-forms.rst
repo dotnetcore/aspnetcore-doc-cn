@@ -1,17 +1,20 @@
 Working with Forms 
 ====================
 
-使用表单
-==========
+如何使用表单
+=============
 
 作者： `Rick Anderson`_, `Dave Paquette <https://twitter.com/Dave_Paquette>`_ 和 `Jerrie Pelser <https://twitter.com/jerriepelser>`__
 
-翻译： `姚勇（Dr.Yao） <https://github.com/yaoay>`_
+翻译：`姚阿勇（Dr.Yao） <https://github.com/YaoaY>`_
 
 This document demonstrates working with Forms and the HTML elements commonly used on a Form. The HTML `Form <https://www.w3.org/TR/html401/interact/forms.html>`__ element provides the primary mechanism web apps use to post back data to the server. Most of this document describes :doc:`Tag Helpers <tag-helpers/intro>` and how they can help you productively create robust HTML forms. We recommend you read :doc:`tag-helpers/intro` before you read this document. 
 
+这篇文章演示了如何使用表单以及表单中常用的 HTML 元素。HTML 的 `Form <https://www.w3.org/TR/html401/interact/forms.html>`__ 元素提供了 Web 应用向服务器回发数据的主要机制。本文的大部分在描述 :doc:`Tag Helpers <tag-helpers/intro>` 以及它们如何能帮你有效地构建健壮的表单。在阅读本文之前，我们建议你阅读一下 :doc:`tag-helpers/intro` 。
+
 In many cases, :doc:`HTML Helpers </mvc/views/html-helpers>` provide an alternative approach to a specific Tag Helper, but it's important to recognize that Tag Helpers do not replace HTML Helpers and there is not a Tag Helper for each HTML Helper. When an HTML Helper alternative exists, it is mentioned.
 
+在很多情况下， :doc:`HTML Helpers </mvc/views/html-helpers>` 都提供了对某个 Tag Helper 的替代方法，但重要的是必须意识到 Tag Helper 不是要取代 HTML Helper，而且也并不是每个 HTML Helper 都有对应的 Tag Helper。当一个 HTML Helper 作为替代方案存在时，是有意为之的。 
 
 .. contents:: Sections:
   :local:
