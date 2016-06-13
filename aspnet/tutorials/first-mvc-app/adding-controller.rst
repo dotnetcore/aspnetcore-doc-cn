@@ -107,11 +107,11 @@ You set the format for routing in the *Startup.cs* file.
 
 When you run the app and don't supply any URL segments, it defaults to the "Home" controller and the "Index" method specified in the template line highlighted above. 
 
-当你运行应用程序且不提供任何 URL 片段时，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
+当你运行应用程序且不提供任何 URL 段时，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
 
 The first URL segment determines the controller class to run. So ``localhost:xxxx/HelloWorld`` maps to the ``HelloWorldController`` class. The second part of the URL segment determines the action method on the class. So ``localhost:xxxx/HelloWorld/Index`` would cause the ``Index`` method of the ``HelloWorldController`` class to run. Notice that we only had to browse to ``localhost:xxxx/HelloWorld`` and the ``Index`` method was called by default. This is because ``Index`` is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( ``Parameters``) is for route data. We'll see route data later on in this tutorial.
 
-第一个 URL 片段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 片段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们只需要浏览 ``localhost:xxxx/HelloWorld`` 时，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 片段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中了解路由数据。
+第一个 URL 段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们只需要浏览 ``localhost:xxxx/HelloWorld`` 时，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中了解路由数据。
 
 Browse to ``http://localhost:xxxx/HelloWorld/Welcome``. The ``Welcome`` method runs and returns the string "This is the Welcome action method...". The default MVC routing is ``/[Controller]/[ActionName]/[Parameters]``. For this URL, the controller is ``HelloWorld`` and ``Welcome`` is the action method. We haven't used the ``[Parameters]`` part of the URL yet.
 
@@ -152,7 +152,7 @@ Run your app and browse to:
 
 In the sample above, the URL segment (``Parameters``) is not used, the ``name`` and ``numTimes`` parameters are passed as `query strings <http://en.wikipedia.org/wiki/Query_string>`__. The ``?`` (question mark) in the above URL is a separator, and the query strings follow. The ``&`` character separates query strings.
 
-在上面的示例中， URL 片段 (``Parameters``) 没有被使用， ``name`` 和 ``numTimes`` 参数作为 `查询字符串 <http://en.wikipedia.org/wiki/Query_string>`__ 被传递。 上面 URL 中的  ``?`` (问号) 是一个分隔符，后面跟查询字符串。 ``&`` 字符分割查询字符串。
+在上面的示例中， URL 段 (``Parameters``) 没有被使用， ``name`` 和 ``numTimes`` 参数作为 `查询字符串 <http://en.wikipedia.org/wiki/Query_string>`__ 被传递。 上面 URL 中的  ``?`` (问号) 是一个分隔符，后面跟查询字符串。 ``&`` 字符分割查询字符串。
 
 Replace the ``Welcome`` method with the following code:
 
