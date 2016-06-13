@@ -244,13 +244,13 @@ Save your changes and browse to the following URL:
 
 Data is taken from the URL and passed to the controller using the `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__. The controller packages the data into a ``ViewData`` dictionary and passes that object to the view. The view then renders the data as HTML to the browser.
 
-从URL中获取数据并用 `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图中的数据作为 HTML 显示在浏览器中。
+数据从URL中获取并用 `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 将数据传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图渲染那些数据作为 HTML 到浏览器中。
 
 .. image:: adding-view/_static/rick.png
 
 In the sample above, we used the ``ViewData`` dictionary to pass data from the controller to a view. Later in the tutorial, we will use a view model to pass data from a controller to a view. The view model approach to passing data is generally much preferred over the ``ViewData`` dictionary approach. See `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ for more information.
 
-在以上例子中，我们用 ``ViewData`` 字典将数据从控制器中传递到视图中，在后面的教程中，我们将使用视图模型（view model）将数据从控制器中传递到视图中。用视图模型传递数据优先于 ``ViewData`` 字典。查看 `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ 了解更多信息。
+在以上例子中，我们用 ``ViewData`` 字典传递数据从控制器中到视图中，在后面的教程中，我们将使用视图模型（view model）将数据从控制器中传递到视图中。用视图模型传递数据优先于 ``ViewData`` 字典。查看 `Dynamic V Strongly Typed Views <http://blogs.msdn.com/b/rickandy/archive/2011/01/28/dynamic-v-strongly-typed-views.aspx>`__ 了解更多信息。
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
 
