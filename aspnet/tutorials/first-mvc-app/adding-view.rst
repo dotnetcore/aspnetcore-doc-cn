@@ -37,15 +37,15 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
 - 右键点击 *Views* （视图）文件夹，选择 **添加 > 新建文件夹** ，然后将文件夹命名为 *HelloWorld* 。
 
-.. image:: adding-view/_static/add_folder_cn.png
+.. image:: adding-view/_static/add_folder.png
 
 - Right click on the *Views/HelloWorld* folder, and then **Add > New Item**.
 
-- 右键点击 *Views/HelloWorld* 文件夹，选择 **添加 > 新建项** 。
+- 右键点击 *Views/HelloWorld* 文件夹，选择 **Add > New Item** （添加 > 新建项）。
 
 - In the **Add New Item - MvcMovie** dialog
 
-- 在 **添加新建项 - MvcMovie** 对话框中：
+- 在 **Add New Item - MvcMovie** （添加新建项 - MvcMovie）对话框中：
 
   - In the search box in the upper-right, enter *view*
 
@@ -53,17 +53,17 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
   - Tap **MVC View Page**
 
-  - 点击 **MVC 视图页**
+  - 点击 **MVC View Page** （MVC 视图页）
 
   - In the **Name** box, keep the default *Index.cshtml*
 
-  - 在 **名称** 框中, 保持默认的 *Index.cshtml*
+  - 在 **Name** （名称）框中, 保持默认的 *Index.cshtml*
 
   - Tap **Add**
 
-  - 点击 **添加**
+  - 点击 **Add** （添加）
 
-.. image:: adding-view/_static/add_view_cn.png
+.. image:: adding-view/_static/add_view.png
 
 Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with the following:
 
@@ -203,11 +203,11 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
 - Right click on the *Views/HelloWorld* folder, and then **Add > New Item**.
 
-- 右键点击 *Views/HelloWorld* 文件夹，点击 **添加 > 新建项** 。
+- 右键点击 *Views/HelloWorld* 文件夹，点击 **Add > New Item** （添加 > 新建项）。
 
 - In the **Add New Item - MvcMovie** dialog
 
-- 在 **添加新项 - MvcMovie** 对话框中
+- 在 **Add New Item - MvcMovie** （添加新项 - MvcMovie）对话框中
 
   - In the search box in the upper-right, enter *view* 
 
@@ -215,15 +215,15 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
   - Tap **MVC View Page** 
 
-  - 点击 **MVC 视图页** 
+  - 点击 **MVC View Page** （MVC 视图页）
 
   - In the **Name** box, enter *Welcome.cshtml*
 
-  - 在 **名称** 框中，输入 *Welcome.cshtml* 
+  - 在 **Name** （名称）框中，输入 *Welcome.cshtml* 
 
   - Tap **Add**
 
-  - 点击 **添加** 
+  - 点击 **Add** （添加）
 
 You'll create a loop in the *Welcome.cshtml* view template that displays "Hello" ``NumTimes``. Replace the contents of *Views/HelloWorld/Welcome.cshtml* with the following:
 
