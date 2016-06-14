@@ -1,9 +1,8 @@
 ﻿Adding a view             
 ================================================
+
 添加视图
 ===================
-
-By `Rick Anderson`_
 
 作者： `Rick Anderson`_ 
 
@@ -86,6 +85,7 @@ If your browser window is small (for example on a mobile device), you might need
 
 Changing views and layout pages
 --------------------------------------
+
 改变视图和布局页
 --------------------------------------
 
@@ -173,12 +173,13 @@ Our little bit of "data" (in this case the "Hello from our View Template!" messa
 
 Passing Data from the Controller to the View
 -----------------------------------------------
+
 从控制器传递数据到视图
 -----------------------
 
 Before we go to a database and talk about models, though, let's first talk about passing information from the controller to a view. Controller classes are invoked in response to an incoming URL request. A controller class is where you write the code that handles the incoming browser requests, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a controller to generate and format an HTML response to the browser.
 
-不过在谈到数据库和模型之前，让我们先讨论从控制器传递信息到视图。控制器类在响应传入的URL请求时被调用。控制器类是编写代码处理传入的浏览器请求，从数据库中检索数据，并最终决定发送什么类型的响应返回给浏览器的地方。然后可以在控制器中使用视图模板生成和格式化 HTML 来响应给浏览器。
+不过在谈到数据库和模型之前，让我们先讨论从控制器传递信息到视图。控制器类在响应传入的 URL 请求时被调用。控制器类是编写代码处理传入的浏览器请求，从数据库中检索数据，并最终决定发送什么类型的响应返回给浏览器的地方。然后可以在控制器中使用视图模板生成和格式化 HTML 来响应给浏览器。
 
 Controllers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A best practice: A view template should never perform business logic or interact with a database directly. Instead, a view template should work only with the data that's provided to it by the controller. Maintaining this "separation of concerns" helps keep your code clean, testable and more maintainable.
 
