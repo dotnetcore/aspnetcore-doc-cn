@@ -26,7 +26,7 @@ Adding data model classes
 
 In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Name the class **Movie** and add the following properties:
 
-在解决方案资源管理器中，右击 *Models* 文件夹 > **添加** > **类** 。名命类名为 **Movie** 并且添加以下属性：
+在解决方案资源管理器中，右击 *Models* 文件夹 > **添加** > **类** 。类命名为 **Movie** 并且添加以下属性：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/MovieNoEF.cs
   :language: c#
