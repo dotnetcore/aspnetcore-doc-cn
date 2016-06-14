@@ -159,7 +159,7 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 Save your change and refresh the page. Notice that the browser title, the primary heading, and the secondary headings have changed. (If you don't see changes in the browser, you might be viewing cached content. Press Ctrl+F5 in your browser to force the response from the server to be loaded.) The browser title is created with ``ViewData["Title"]`` we set in the **Index.cshtml** view template and the additional "- Movie App" added in the layout file.
 
-保存并刷新页面。注意浏览器标题，主标题，副标题都发生了改变（如果你没有看到变化，可能因为缓存的缘故，在浏览器中按下 Ctrl+F5 强制刷新）。浏览器标题由我们设置在 **Index.cshtml** 视图模板中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
+保存并刷新页面。注意浏览器标题、主标题和副标题都变化了（如果你没看到变化，可能因为缓存的缘故，在浏览器中按下 Ctrl+F5 强制刷新）。浏览器标题由我们设置在 **Index.cshtml** 视图模板中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
 
 Also notice how the content in the *Index.cshtml* view template was merged with the *Views/Shared/_Layout.cshtml* view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application. To learn more see :doc: `/mvc/views/layout`.
 
@@ -169,7 +169,7 @@ Also notice how the content in the *Index.cshtml* view template was merged with 
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how create a database and retrieve model data from it.
 
-不过，我们的这点“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
+不过，我们的这点“数据”（本例中的消息 "Hello from our View Template!"）还是硬编码的。MVC 应用程序里已经有了个“V”（View），我们也已经创建了一个“C”（Controller），但现在还没有“M”（Model）。接下来我们将快速展示如何创建数据库并从中搜索模型数据。
 
 Passing Data from the Controller to the View
 -----------------------------------------------
