@@ -14,11 +14,11 @@ By `Rick Anderson`_
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
 
-本节将修改 ``HelloWorldController`` 类，把生成响应给客户端的 HTML 的过程用 Razor 视图模板干净地封装起来。
+本节将修改 ``HelloWorldController`` 类，把为客户端生成 HTML 响应的过程干净利落地封装起来。
 
 You'll create a view template file using the Razor view engine. Razor-based view templates have a *.cshtml* file extension, and provide an elegant way to create HTML output using C#. Razor minimizes the number of characters and keystrokes required when writing a view template, and enables a fast, fluid coding workflow.
 
-您将用 Razor 视图引擎创建一个视图模板。基于 Razor 的视图模板文件的扩展名为 *.cshtml*，并提供了一种优雅的方式使用 C# 输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
+欲要使用 Razor 视图引擎须先创建视图模板文件，基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
 
 Currently the ``Index`` method returns a string with a message that is hard-coded in the controller class. Change the ``Index`` method to return a View object, as shown in the following code:
 
@@ -31,7 +31,7 @@ Currently the ``Index`` method returns a string with a message that is hard-code
 
 The ``Index`` method above uses a view template to generate an HTML response to the browser. Controller methods (also known as `action methods <http://rachelappel.com/asp.net-mvc-actionresults-explained>`__), such as the ``Index`` method above, generally return an ``IActionResult`` (or a class derived from ``ActionResult``), not primitive types like string.
 
-上例中 ``Index`` 方法用一个视图模板生成 HTML 响应给浏览器。控制器方法 （也称为 `Action 方法 <http://rachelappel.com/asp.net-mvc-actionresults-explained>`__），比如上面的 ``Index`` 方法，通常返回 ``IActionResult`` （或者派生自 ``ActionResult`` 的类)，而不是字符串那样的基元类型。
+上例中 ``Index`` 方法用一个视图模板生成 HTML 响应给浏览器。控制器方法 （也称为 `Action 方法 <http://rachelappel.com/asp.net-mvc-actionresults-explained>`__），比如上面的 ``Index`` 方法，通常返回 ``IActionResult`` （或者派生自 ``ActionResult`` 的类），而不是字符串那样的基元类型。
 
 - Right click on the *Views* folder, and then **Add > New Folder** and name the folder *HelloWorld*.
 
@@ -74,13 +74,13 @@ Replace the contents of the *Views/HelloWorld/Index.cshtml* Razor view file with
 
 Navigate to ``http://localhost:xxxx/HelloWorld``. The ``Index`` method in the ``HelloWorldController`` didn't do much work; it simply ran the statement ``return View();``, which specified that the method should use a view template file to render a response to the browser. Because you didn't explicitly specify the name of the view template file to use, MVC defaulted to using the *Index.cshtml* view file in the */Views/HelloWorld* folder. The image below shows the string "Hello from our View Template!" hard-coded in the view.
 
-导航到 ``http://localhost:xxxx/HelloWorld`` 。 ``HelloWorldController`` 的 ``Index`` 方法没做多少事；它仅仅运行 ``return View();`` 语句来指定该方法应该用视图模板文件渲染对浏览器的响应。因为没有明确指定所使用视图模板的文件名，MVC 默认使用 */Views/HelloWorld* 文件夹中的 *Index.cshtml* 视图文件。下图显示了在视图中硬编码的字符串 "Hello from our View Template!" 。
+导航到 ``http://localhost:xxxx/HelloWorld``。 ``HelloWorldController``  的  ``Index``  方法只干一件事——运行 ``return View();`` 语句来引导控制器方法使用指定的视图模板文件，为浏览器渲染最终的响应结果。 因为没有明确指定所使用视图模板的文件名，MVC 默认使用 */Views/HelloWorld* 文件夹中的 *Index.cshtml* 视图文件。下图显示了在视图中硬编码的字符串 "Hello from our View Template!" 。
 
 .. image:: adding-view/_static/hell_template.png
 
 If your browser window is small (for example on a mobile device), you might need to toggle (tap) the `Bootstrap navigation button <http://getbootstrap.com/components/#navbar>`__ in the upper right to see the to the **Home**, **About**, **Contact**, **Register** and **Log in** links.
 
-如果浏览器窗体比较小（比如在手机设备上），可能需要切换（点击）右上方的 `Bootstrap navigation button <http://getbootstrap.com/components/#navbar>`__ 才能看到 **Home**, **About**, **Contact**, **Register** 和 **Log in** 这些链接。
+如果浏览器窗体比较小（比如在手机设备上），可能需要切换（点击）右上方的 `Bootstrap navigation button <http://getbootstrap.com/components/#navbar>`__ 才能看到 **Home**、 **About**、 **Contact**、 **Register** 和 **Log in** 这些链接。
 
 .. image:: adding-view/_static/1.png
 
@@ -99,7 +99,7 @@ Tap on the menu links (**MvcMovie**, **Home**, **About**). Each page shows the s
 
 Change the contents of the title element. Change the anchor text in the layout template to "MVC Movie" and the controller from ``Home`` to ``Movies`` as highlighted below:
 
-改变标题元素的内容。在布局模板中将锚文本改成 "MVC Movie" ，控制器将 ``Home`` 改成 ``Movies`` ，如下列高亮显示的：
+改变标题元素的内容。在布局模板中将锚(*即 A 标签,译者注*)文本改成 "MVC Movie" ，控制器将 ``Home`` 改成 ``Movies`` ，如下列高亮显示的：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Shared/_Layout.cshtml
   :language: HTML
@@ -159,17 +159,17 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 Save your change and refresh the page. Notice that the browser title, the primary heading, and the secondary headings have changed. (If you don't see changes in the browser, you might be viewing cached content. Press Ctrl+F5 in your browser to force the response from the server to be loaded.) The browser title is created with ``ViewData["Title"]`` we set in the **Index.cshtml** view template and the additional "- Movie App" added in the layout file.
 
-保存并刷新页面。注意浏览器标题，主标题，副标题都发生了改变（如果你没有看到变化，可能因为缓存的缘故，在浏览器中按下 Ctrl+F5 强制刷新）。浏览器标题由我们设置在 **Index.cshtml** 视图模型中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
+保存并刷新页面。注意浏览器标题，主标题，副标题都发生了改变（如果你没有看到变化，可能因为缓存的缘故，在浏览器中按下 Ctrl+F5 强制刷新）。浏览器标题由我们设置在 **Index.cshtml** 视图模板中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
 
 Also notice how the content in the *Index.cshtml* view template was merged with the *Views/Shared/_Layout.cshtml* view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application. To learn more see :doc: `/mvc/views/layout`.
 
-同时注意， *Index.cshtml* 视图模板的内容是怎样和 *Views/Shared/_Layout.cshtml* 视图模板合并的，和一个HTML响应式怎样被发送到浏览器的。布局模板非常易于进行作用于应用程序中所有页面的修改。了解更多请参考 :doc: `/mvc/views/layout` 。
+同时注意， *Index.cshtml* 视图模板的内容是怎样和 *Views/Shared/_Layout.cshtml* 视图模板合并的，和一个HTML响应是怎样被发送到浏览器的。布局模板非常易于进行作用于应用程序中所有页面的修改。了解更多请参考 :doc: `/mvc/views/layout` 。
 
 .. image:: adding-view/_static/hell3.png
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how create a database and retrieve model data from it.
 
-不过，我们的小小“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
+不过，我们的这点“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
 
 Passing Data from the Controller to the View
 -----------------------------------------------
@@ -227,7 +227,7 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
 You'll create a loop in the *Welcome.cshtml* view template that displays "Hello" ``NumTimes``. Replace the contents of *Views/HelloWorld/Welcome.cshtml* with the following:
 
-在 *Welcome.cshtml* 视图模板中创建一个循环来显示 "Hello" ``NumTimes`` 。用以下代码来代替 *Views/HelloWorld/Welcome.cshtml* 视图中的内容。
+在 *Welcome.cshtml* 视图模板中创建一个循环来显示 "Hello" ``NumTimes`` 。用以下代码完全替换 *Views/HelloWorld/Welcome.cshtml* 中的内容：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/HelloWorld/Welcome.cshtml
   :language: HTML
