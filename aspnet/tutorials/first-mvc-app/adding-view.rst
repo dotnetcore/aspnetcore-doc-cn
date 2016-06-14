@@ -35,7 +35,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
 - Right click on the *Views* folder, and then **Add > New Folder** and name the folder *HelloWorld*.
 
-- 右键点击 *Views* （视图）文件夹，选择 **添加 > 新建文件夹** ，然后将文件夹命名为 *HelloWorld* 。
+- 右键点击 *Views* （视图）文件夹，选择 **Add > New Folder** （添加 > 新建文件夹），然后将文件夹命名为 *HelloWorld* 。
 
 .. image:: adding-view/_static/add_folder.png
 
