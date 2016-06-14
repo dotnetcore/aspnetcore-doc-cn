@@ -17,7 +17,7 @@ In this section you're going to modify the ``HelloWorldController`` class to use
 
 You'll create a view template file using the Razor view engine. Razor-based view templates have a *.cshtml* file extension, and provide an elegant way to create HTML output using C#. Razor minimizes the number of characters and keystrokes required when writing a view template, and enables a fast, fluid coding workflow.
 
-您可以使用用Razor视图引擎创建一个视图模板。基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
+您可以使用 Razor 视图引擎创建一个视图模板。基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
 
 Currently the ``Index`` method returns a string with a message that is hard-coded in the controller class. Change the ``Index`` method to return a View object, as shown in the following code:
 
@@ -48,7 +48,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
   - In the search box in the upper-right, enter *view*
 
-  - 在右上方的搜索框中输入 *视图*
+  - 在右上方的搜索框中输入 *view*
 
   - Tap **MVC View Page**
 
