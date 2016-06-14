@@ -235,13 +235,13 @@ You'll create a loop in the *Welcome.cshtml* view template that displays "Hello"
 
 Save your changes and browse to the following URL:
 
-更改后保存，浏览以下网址：
+保存修改并打开浏览器，反问这个地址：
 
 \http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4
 
 Data is taken from the URL and passed to the controller using the `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__. The controller packages the data into a ``ViewData`` dictionary and passes that object to the view. The view then renders the data as HTML to the browser.
 
-数据从URL中获取并用 `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 将数据传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图将数据以 HTML 呈现给浏览器。
+数据从 URL 中获取并用 `模型绑定器 <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 将数据传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图将数据以 HTML 的形式渲染到浏览器中。
 
 .. image:: adding-view/_static/rick.png
 
@@ -251,4 +251,4 @@ In the sample above, we used the ``ViewData`` dictionary to pass data from the c
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
 
-好吧，这也算是一种 Model 的 "M" ，但不是数据库那种。让我们用学到的东西创建一个电影数据库吧。
+好吧，这也算是一种 Model 中的“M”吧，但无论如何都不是数据库模型。让我们用学到的东西创建一个电影数据库吧。
