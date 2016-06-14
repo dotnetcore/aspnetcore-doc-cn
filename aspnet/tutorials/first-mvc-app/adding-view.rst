@@ -13,11 +13,11 @@
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
 
-本节将修改 ``HelloWorldController`` 类，把为客户端生成 HTML 响应的过程干净利落地封装起来。
+本节将修改 ``HelloWorldController`` 类，把使用 Razor 视图模板文件为客户端生成 HTML 响应的过程干净利落地封装起来。
 
 You'll create a view template file using the Razor view engine. Razor-based view templates have a *.cshtml* file extension, and provide an elegant way to create HTML output using C#. Razor minimizes the number of characters and keystrokes required when writing a view template, and enables a fast, fluid coding workflow.
 
-欲要使用 Razor 视图引擎须先创建视图模板文件，基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
+您可以使用用Razor视图引擎创建一个视图模板。基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
 
 Currently the ``Index`` method returns a string with a message that is hard-coded in the controller class. Change the ``Index`` method to return a View object, as shown in the following code:
 
@@ -179,7 +179,7 @@ Passing Data from the Controller to the View
 
 Before we go to a database and talk about models, though, let's first talk about passing information from the controller to a view. Controller classes are invoked in response to an incoming URL request. A controller class is where you write the code that handles the incoming browser requests, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a controller to generate and format an HTML response to the browser.
 
-不过在谈到数据库和模型之前，让我们先讨论从控制器传递信息到视图。控制器类在响应传入的 URL 请求时被调用。控制器类是编写代码处理传入的浏览器请求，从数据库中检索数据，并最终决定发送什么类型的响应返回给浏览器的地方。然后可以在控制器中使用视图模板生成和格式化 HTML 来响应给浏览器。
+在谈到数据库和模型之前，让我们先讨论从控制器传递信息到视图。控制器类在响应传入的 URL 请求时被调用。控制器类是编写代码处理传入的浏览器请求，从数据库中检索数据，并最终决定发送什么类型的响应返回给浏览器的地方。然后可以在控制器中使用视图模板生成和格式化 HTML 来响应给浏览器。
 
 Controllers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A best practice: A view template should never perform business logic or interact with a database directly. Instead, a view template should work only with the data that's provided to it by the controller. Maintaining this "separation of concerns" helps keep your code clean, testable and more maintainable.
 
@@ -212,7 +212,7 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
   - In the search box in the upper-right, enter *view* 
 
-  - 在右上角的搜索框中，输入 *视图* 
+  - 在右上角的搜索框中，输入 *view* 
 
   - Tap **MVC View Page** 
 
@@ -235,7 +235,7 @@ You'll create a loop in the *Welcome.cshtml* view template that displays "Hello"
 
 Save your changes and browse to the following URL:
 
-保存修改并打开浏览器，反问这个地址：
+保存修改并打开浏览器，访问这个地址：
 
 \http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4
 
