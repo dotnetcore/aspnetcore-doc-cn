@@ -163,13 +163,13 @@ Save your change and refresh the page. Notice that the browser title, the primar
 
 Also notice how the content in the *Index.cshtml* view template was merged with the *Views/Shared/_Layout.cshtml* view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application. To learn more see :doc: `/mvc/views/layout`.
 
-同时注意， *Index.cshtml* 视图模板的内容是怎样和 *Views/Shared/_Layout.cshtml* 视图模板合并的，和一个HTML响应式怎样被发送到浏览器的。布局模板非常易于进行作用于应用程序中所有页面的修改。了解更多请参考 :doc: `/mvc/views/layout` 。
+同时注意， *Index.cshtml* 视图模板的内容是怎样和 *Views/Shared/_Layout.cshtml* 视图模板合并的，和一个HTML响应是怎样被发送到浏览器的。布局模板非常易于进行作用于应用程序中所有页面的修改。了解更多请参考 :doc: `/mvc/views/layout` 。
 
 .. image:: adding-view/_static/hell3.png
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how create a database and retrieve model data from it.
 
-不过，我们的小小“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
+不过，我们的这点“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
 
 Passing Data from the Controller to the View
 -----------------------------------------------
