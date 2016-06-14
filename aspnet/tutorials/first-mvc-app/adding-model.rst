@@ -296,7 +296,7 @@ The ``@model`` directive allows you to access the list of movies that the contro
 
 Because the ``Model`` object is strongly typed (as an ``IEnumerable<Movie>`` object), each item in the loop is typed as ``Movie``. Among other benefits, this means that you get compile-time checking of the code and full `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ support in the code editor:
 
-因为 ``模型（Model） `` 对象是强类型的(作为 ``IEnumerable<Movie>`` 对象)，在循环中的每一个 item 的类型为 ``Movie`` 。除了其他好处外，这意味着你可以在编译时检查代码并且在代码编辑器里得到完整的 `智能感知 <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ 支持：
+因为 ``模型（Model）`` 对象是强类型的(作为 ``IEnumerable<Movie>`` 对象)，在循环中的每一个 item 的类型为 ``Movie`` 。除了其他好处外，这意味着你可以在编译时检查代码并且在代码编辑器里得到完整的 `智能感知 <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ 支持：
 
 .. image:: adding-model/_static/ints.png
 
