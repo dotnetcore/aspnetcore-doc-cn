@@ -22,7 +22,7 @@
   :dedent: 8
   :emphasize-lines: 5
 
-代码先行（Code First）模式易于使用 ``SingleOrDefaultAsync`` 方法数据搜索。这个方法包含的一个重要安全功能，就是在代码尝试用电影做任何事之前确保查找方法已经找到了一条电影记录。例如，黑客可以把链接产生的 URL 从 *http://localhost:xxxx/Movies/Details/1*  改成类似于 *http://localhost:xxxx/Movies/Details/12345* （或者其他不代表实际电影记录的值），从而给网站带来错误。如果您不检查影片是否为空，应用程序将会抛出异常。
+代码先行（Code First）模式使用 SingleOrDefaultAsync 方法更易于数据搜索。这个方法包含的一个重要安全功能，就是在代码尝试用电影记录在做任何操作之前确保查找方法已经找到了一条电影记录。例如，黑客可以把链接产生的 URL 从 *http://localhost:xxxx/Movies/Details/1*  改成类似于 *http://localhost:xxxx/Movies/Details/12345* （或者其他非实际电影记录的值），从而给网站带来错误。如果您不检查影片是否为空，应用程序将会抛出异常。
 
 查看 Delete 方法和 DeleteConfirmed 的方法
 
