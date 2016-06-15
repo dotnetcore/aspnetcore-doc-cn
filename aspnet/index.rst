@@ -5,7 +5,7 @@
 
 .. _index:
 
-ASP.NET Core Documentation 
+ASP.NET Core Documentation
 ==========================
 
 .. attention:: ASP.NET 5 已更名为 ASP.NET Core 1.0。更多信息请点击 `此处 <https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/>`_ 。
