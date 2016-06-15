@@ -22,22 +22,29 @@ In many cases, :doc:`HTML Helpers </mvc/views/html-helpers>` provide an alternat
 
 .. _my-asp-route-param-ref-label:
 
-The Form Tag Helper
+表单 Form 的 Tag Helper
 ---------------------
   
-The `Form <https://www.w3.org/TR/html401/interact/forms.html>`__ Tag Helper:
+表单 `Form <https://www.w3.org/TR/html401/interact/forms.html>`__ 的 Tag Helper:
 
 - Generates the HTML `<FORM> <https://www.w3.org/TR/html401/interact/forms.html>`__ ``action`` attribute value for a MVC controller action or named route
 - Generates a hidden `Request Verification Token <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ to prevent cross-site request forgery (when used with the ``[ValidateAntiForgeryToken]`` attribute in the HTTP Post action method)
 - Provides the ``asp-route-<Parameter Name>`` attribute, where ``<Parameter Name>`` is added to the route values. The  ``routeValues`` parameters to ``Html.BeginForm`` and ``Html.BeginRouteForm`` provide similar functionality.  
 - Has an HTML Helper alternative ``Html.BeginForm`` and ``Html.BeginRouteForm``
 
-Sample:
+- 为 MVC 控制器 Action 或已命名的路由生成 HTML `<FORM> <https://www.w3.org/TR/html401/interact/forms.html>`__ 的 ``action`` 属性值。
+- 生成一个隐藏的 `请求验证标记 <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ 来防止跨站请求伪装（当在 HTTP Post 操作方法上应用了 ``[ValidateAntiForgeryToken]`` 特性时）。
+- 提供 ``asp-route-<参数名>`` 属性， ``<参数名>`` 是路由里面添加过的值。 ``Html.BeginForm`` 和 ``Html.BeginRouteForm`` 的 ``routeValues`` 参数提供了类似的功能。 
+- 有 HTML Helper 替代方法  ``Html.BeginForm`` 和 ``Html.BeginRouteForm``
+
+示例：
 
 .. literalinclude::   forms/sample/final/Views/Demo/RegisterFormOnly.cshtml
   :language: HTML
 
 The Form Tag Helper above generates the following HTML:
+
+上面的 Form Tag Helper 生成如下的 HTML :
  
 .. code-block:: HTML
 
@@ -47,6 +54,9 @@ The Form Tag Helper above generates the following HTML:
    </form>
   
 The MVC runtime generates the ``action`` attribute value from the Form Tag Helper attributes ``asp-controller`` and ``asp-action``. The Form Tag Helper also generates a hidden `Request Verification Token <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ to prevent cross-site request forgery (when used with the ``[ValidateAntiForgeryToken]`` attribute in the HTTP Post action method). Protecting a pure HTML Form from cross-site request forgery is very difficult, the Form Tag Helper provides this service for you.
+
+
+
 
 Using a named route
 ^^^^^^^^^^^^^^^^^^^
