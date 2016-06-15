@@ -38,7 +38,7 @@ SQL Server Express LocalDB
 
 LocalDB is a lightweight version of the SQL Server Express Database Engine that is targeted for program development. LocalDB starts on demand and runs in user mode, so there is no complex configuration. By default, LocalDB database creates "\*.mdf" files in the *C:/Users/<user>* directory.
 
-LocalDB是一个针对程序开发的轻量级版本的SQL Server Express数据库引擎，这是针对程序开发。LocalDB按需启动并且在用户模式下运行，所以它没有复杂的配置。默认情况下，LocalDB数据库在 *C:/Users/<user>* 目录下创建 "\*.mdf" 文件。
+LocalDB是一个针对程序开发的轻量级版本的SQL Server Express数据库引擎。LocalDB按需启动并且在用户模式下运行，所以它没有复杂的配置。默认情况下，LocalDB数据库在 *C:/Users/<user>* 目录下创建 "\*.mdf" 文件。
 
 - From the **View** menu, open **SQL Server Object Explorer** (SSOX).
 
@@ -63,7 +63,7 @@ Note the key icon next to ``ID``. By default, EF will make a property named ``ID
 
 - Right click on the ``Movie`` table **> View Data**
 
--右击 ``Movie`` 表  **> 查看数据（View Data）**
+- 右击 ``Movie`` 表  **> 查看数据（View Data）**
 
 .. image:: working-with-sql/_static/ssox2.png
 
