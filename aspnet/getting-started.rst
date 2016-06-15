@@ -21,7 +21,7 @@ Getting Started 入门
 
 3. Update the *project.json* file to add the Kestrel HTTP server package as a dependency:
 
-3. 编辑 *project.json* 文件，添加 Kestrel HTTP server 包引用:
+3. 编辑 *project.json* 文件，添加 Kestrel HTTP server 包引用：
 
   .. literalinclude:: getting-started/sample/aspnetcoreapp/project.json
     :language: c#
@@ -29,7 +29,7 @@ Getting Started 入门
 
 4. Restore the packages:
 
-4. 还原包:
+4. 还原包：
 
   .. code-block:: console
     
@@ -37,14 +37,14 @@ Getting Started 入门
 
 5. Add a *Startup.cs* file that defines the request handling logic:
 
-5. 添加一个 *Startup.cs* 文件并定义请求处理逻辑:
+5. 添加一个 *Startup.cs* 文件并定义请求处理逻辑：
 
   .. literalinclude:: getting-started/sample/aspnetcoreapp/Startup.cs
     :language: c#
 
 6. Update the code in *Program.cs* to setup and start the Web host:
 
-6. 编辑 *Program.cs* 中的代码来设置和启动 Web 宿主:
+6. 编辑 *Program.cs* 中的代码来设置和启动 Web 宿主：
 
   .. literalinclude:: getting-started/sample/aspnetcoreapp/Program.cs
     :language: c#
@@ -52,7 +52,7 @@ Getting Started 入门
 
 7. Run the app  (the ``dotnet run`` command will build the app when it's out of date):
 
-7. 运行应用程序  (``dotnet run`` 命令会在应用程序过期时构建它):
+7. 运行应用程序  (``dotnet run`` 命令会在应用程序过期时构建它)：
 
   .. code-block:: console
   
@@ -60,7 +60,7 @@ Getting Started 入门
 
 8. Browse to \http://localhost:5000:
 
-8. 浏览 \http://localhost:5000:
+8. 浏览 \http://localhost:5000：
 
   .. image:: getting-started/_static/running-output.png
 

@@ -1,38 +1,40 @@
-Integration Testing
-===================
+集成测试
+========
 
-By `Steve Smith`_
+作者： `Steve Smith`_ 翻译：王健
 
-Integration testing ensures that an application's components function correctly when assembled together. ASP.NET Core supports integration testing using unit test frameworks and a built-in test web host that can be used to handle requests without network overhead.
+
+集成测试确保应用程序的组件组装在一起时正常工作。 ASP.NET Core支持使用单元测试框架和可用于处理没有网络开销请求的内置测试的网络主机集成测试。
 
 .. contents:: Sections:
   :local:
   :depth: 1
 
-`View or download sample code <https://github.com/aspnet/docs/tree/master/aspnet/testing/integration-testing/sample>`__
+`查看或下载代码 <https://github.com/aspnet/docs/tree/master/aspnet/testing/integration-testing/sample>`__
 
-Introduction to Integration Testing
------------------------------------
+集成测试介绍
+------------
+ 
+集成测试验证应用程序不同的部位是否正确地组装在一起。不像单元测试 :doc:`unit-testing`，集成测试经常涉及到应用基础设施，如数据库，文件系统，网络资源或网页的请求和响应。单元测试用赝品或模拟对象代替这些问题，但集成测试的目的是为了确认该系统与这些系统的预期运行一致。
 
-Integration tests verify that different parts of an application work correctly together. Unlike :doc:`unit-testing`, integration tests frequently involve application infrastructure concerns, such as a database, file system, network resources, or web requests and responses. Unit tests use fakes or mock objects in place of these concerns, but the purpose of integration tests is to confirm that the system works as expected with these systems.
+集成测试，因为它们执行较大的代码段，并且它们依赖于基础结构组件，往往要比单元测试慢几个数量级。因此，限制你写多少集成测试，特别是如果你可以测试与单元测试相同的行为，是一个不错的选择。
 
-Integration tests, because they exercise larger segments of code and because they rely on infrastructure elements, tend to be orders of magnitude slower than unit tests. Thus, it's a good idea to limit how many integration tests you write, especially if you can test the same behavior with a unit test.
+.. tip:: 如果某些行为可以使用一个单元测试或集成测试进行测试，优先单元测试，因为这几乎总是会更快的。你可能有几十或几百个单元测试有许多不同的输入，而只是一个集成测试覆盖了最重要的屈指可数的场景。
 
-.. tip:: If some behavior can be tested using either a unit test or an integration test, prefer the unit test, since it will be almost always be faster. You might have dozens or hundreds of unit tests with many different inputs, but just a handful of integration tests covering the most important scenarios.
+在您自己的方法中测试逻辑通常是单元测试的范畴。测试您的应用程序在它的框架内（例如ASP.NET），或是与一个数据库是否正常运行，是集成测试的工作。它并不需要太多的集成测试，以确认你能写一行，然后从数据库中读取一行。你并不需要测试的数据访问代码每一个可能的排列——您仅需要充足的测试来给您信心认为您的应用程序能够运行良好。
 
-Testing the logic within your own methods is usually the domain of unit tests. Testing how your application works within its framework (e.g. ASP.NET) or with a database is where integration tests come into play. It doesn't take too many integration tests to confirm that you're able to write a row to and then read a row from the database. You don't need to test every possible permutation of your data access code - you only need to test enough to give you confidence that your application is working properly.
+ASP.NET 集成测试
+----------------
 
-Integration Testing ASP.NET
----------------------------
+要建立运行集成测试，你需要创建一个测试项目，请参考ASP.NET的Web项目，并安装测试器。此过程在：:doc:`unit-testing`中有更详细的说明，为您命名您的测试和测试类提供了建议。 
 
-To get set up to run integration tests, you'll need to create a test project, refer to your ASP.NET web project, and install a test runner. This process is described in the :doc:`unit-testing` documentation, along with more detailed instructions on running tests and recommendations for naming your tests and test classes.
+.. tip:: 单独的单元测试和集成测试使用不同的项目。这有助于确保您不小心将基础设施问题引入到您的单元测试中，让您轻松选择运行所有的测试，或是一组或其他。
 
-.. tip:: Separate your unit tests and your integration tests using different projects. This helps ensure you don't accidentally introduce infrastructure concerns into your unit tests, and lets you easily choose to run all tests, or just one set or the other.
+测试宿主
+--------
 
-The Test Host
-^^^^^^^^^^^^^
+ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET应用程序，用于处理测试请求，而不需要一个真实的虚拟宿主。所提供的示例包括被配置为使用 `xUnit`_ 的集成测试项目和测试主机，您可以从*project.json* 文件中进行查看。
 
-ASP.NET includes a test host that can be added to integration test projects and used to host ASP.NET applications, serving test requests without the need for a real web host. The provided sample includes an integration test project which has been configured to use `xUnit`_ and the Test Host, as you can see from this excerpt from its *project.json* file:
 
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/project.json
   :linenos:
@@ -41,7 +43,7 @@ ASP.NET includes a test host that can be added to integration test projects and 
   :dedent: 2
   :emphasize-lines: 5
 
-Once the Microsoft.AspNet.TestHost package is included in the project, you will be able to create and configure a TestServer in your tests. The following test shows how to verify that a request made to the root of a site returns "Hello World!" and should run successfully against the default ASP.NET Empty Web template created by Visual Studio.
+当Microsoft.AspNet.TestHost包被包含在项目中，您将能够在您的测试中创建和配置TESTSERVER。下面的测试演示了如何验证一个对网站的根节点提出了请求并返回的“Hello World！”，并且应该利用Visual Studio中创建的默认ASP.NET空Web模板中成功运行。
 
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs
   :linenos:
@@ -50,11 +52,12 @@ Once the Microsoft.AspNet.TestHost package is included in the project, you will 
   :dedent: 8
   :emphasize-lines: 6-7
 
-These tests are using the Arrange-Act-Assert pattern, but in this case all of the Arrange step is done in the constructor, which creates an instance of ``TestServer``. There are several different ways to configure a ``TestServer`` when you create it; in this example we are passing in the ``Configure`` method from our system under test (SUT)'s ``Startup`` class. This method will be used to configure the request pipeline of the ``TestServer`` identically to how the SUT server would be configured.
 
-In the Act portion of the test, a request is made to the ``TestServer`` instance for the "/" path, and the response is read back into a string. This string is then compared with the expected string of "Hello World!". If they match, the test passes, otherwise it fails.
+这些测试使用安排-执行-断言的模型，但是在这种情况下，所有的安排步骤都在构造器中完成了，它创建了一个``TestServer``的实例。当您创建``TestServer``时，有好几种不同的方式来配置它；在这个示例中，我们从被测试的系统（SUT）的 ``Startup``类中的``Configure`` 方法进行设置。这种方法可用于配置TestServer请求管道，与如何配置SUT服务器相同。
 
-Now we can add a few additional integration tests to confirm that the prime checking functionality works via the web application:
+在测试的行动部分，发起一个对``TestServer``实例的“/”路径的请求，并且响应读回字符串。这个字符串将与预期的字符串"Hello World!"进行对比。如果匹配，测试通过，否则测试失败。
+
+现在我们可以添加一些附加的集成测试，来确认通过web应用程序的素数检测功能性工作：
 
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs
   :linenos:
@@ -63,18 +66,19 @@ Now we can add a few additional integration tests to confirm that the prime chec
   :dedent: 4
   :emphasize-lines: 8-9
 
-Note that we're not really trying to test the correctness of our prime number checker with these tests, but rather that the web application is doing what we expect. We already have unit test coverage that gives us confidence in ``PrimeService``, as you can see here:
+需要注意的是，我们并不是真的想测试我们使用这些测试质数检查的正确性，而是确认Web应用程序在我们期待的事情。我们已经有单元测试覆盖率，让我们对``PrimeService``有信心，您可以在这里看到：
 
 .. image:: integration-testing/_static/test-explorer.png
 
-.. note:: You can learn more about the unit tests in the :doc:`unit-testing` article.
+.. note:: 您可以从 :doc:`unit-testing`的文章中了解更多关于单元测试的内容。
 
-Now that we have a set of passing tests, it's a good time to think about whether we're happy with the current way in which we've designed our application. If we see any `code smells <http://deviq.com/code-smells/>`_, now may be a good time to refactor the application to improve its design.
+现在，我们有一组通过的测试，是一个好的机会来考虑我们是否对设计应用程序的方案感到满意了。如果我们发现任何
+代码异味`<http://deviq.com/code-smells/>`_，这将是一个重构应用程序来改善设计的好时机。
 
-Refactoring to use Middleware
------------------------------
+使用中间件重构
+-------------
 
-Refactoring is the process of changing an application's code to improve its design without changing its behavior. It should ideally be done when there is a suite of passing tests, since these help ensure the system's behavior remains the same before and after the changes. Looking at the way in which the prime checking logic is implemented in our web application, we see:
+重构是改变一个应用程序的代码，以提高其设计而不改变其行为的过程。当有一套通过的测试，重构将理想的进行，因为这些有助于确保系统的行为在重构之前和之后保持不变。看看素数检测逻辑在我们的web应用程序中的实现方式，我们发现：
 
 .. code-block:: c#
   :linenos:
@@ -120,24 +124,26 @@ Refactoring is the process of changing an application's code to improve its desi
         });
     }
 
-This code works, but it's far from how we would like to implement this kind of functionality in an ASP.NET application, even as simple a one as this is. Imagine what the ``Configure`` method would look like if we needed to add this much code to it every time we added another URL endpoint! 
 
-One option we can consider is adding :doc:`MVC </mvc/index>` to the application, and creating a controller to handle the prime checking. However, assuming we don't currently need any other MVC functionality, that's a bit overkill. 
+这段代码能正确运行，但远远不是我们想在ASP.NET应用中实现这种功能的方式，即使和这段代码一样简单。想象一下，如果我们在每次添加另一个URL终结点时，我们需要在它的代码中添加那么多代码，``Configure``方法会是什么样子呢！
 
-We can, however, take advantage of ASP.NET Core :doc:`middleware </fundamentals/middleware>`, which will help us encapsulate the prime checking logic in its own class and achieve better `separation of concerns <http://deviq.com/separation-of-concerns/>`_ within the ``Configure`` method.
 
-We want to allow the path the middleware uses to be specified as a parameter, so the middleware class expects a ``RequestDelegate`` and a ``PrimeCheckerOptions`` instance in its constructor. If the path of the request doesn't match what this middleware is configured to expect, we simply call the next middleware in the chain and do nothing further. The rest of the implementation code that was in ``Configure`` is now in the ``Invoke`` method.
+一个选择是，可以考虑在应用程序中添加 :doc:`MVC </mvc/index>`，并创建一个控制器来处理素数检测。然而，假设我们目前不需要任何其它MVC的功能，这是一个有点矫枉过正。
 
-.. note:: Since our middleware depends on the ``PrimeService`` service, we are also requesting an instance of this service via the constructor. The framework will provide this service via :doc:`/fundamentals/dependency-injection`, assuming it has been configured (e.g. in ``ConfigureServices``).
+然而，我们可以利用ASP.NET Core 中间件:doc:`middleware </fundamentals/middleware>`的优势，可以帮助我们在它自己的类中封装素数检测的逻辑，并且在``Configure``方法中实现更好的分离关注点` <http://deviq.com/separation-of-concerns/>`。
+
+我们想让中间件使用的路径被指定为一个参数，所以中间件类在他的构造方法中预留了一个``RequestDelegate``和一个 ``PrimeCheckerOptions`实例。如果请求的路径与中间件期望的配置不匹配，我们只需要调用链表中的下一个中间件，并不做进一步处理。其余的在``Configure``中的实现代码，现在在 ``Invoke``方法中了。
+
+.. note:: 由于我们的中间件取决于``PrimeService``服务，我们也通过构造函数请求该服务的实例。该框架通过依赖注入来提供这项服务:doc:`/fundamentals/dependency-injection`，假设已经进行了配置(例如在``ConfigureServices``中)。
 
 .. literalinclude:: integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs
   :linenos:
   :language: c#
   :emphasize-lines: 39-62
 
-.. note:: Since this middleware acts as an endpoint in the request delegate chain when its path matches, there is no call to ``_next.Invoke`` in the case where this middleware handles the request.
+.. note:: 由于这个中间件作为请求委托链的一个endpoint,当它的路径匹配时，在这种情况下这个中间件处理请求时并没有调用``_next.Invoke``
 
-With this middleware in place and some helpful extension methods created to make configuring it easier, the refactored ``Configure`` method looks like this:
+有了合适的中间件和一写有用的扩展方法，使配置更加容易。重构过的``Configure``方法看起来像这样：
 
 .. literalinclude:: integration-testing/sample/src/PrimeWeb/Startup.cs
   :linenos:
@@ -146,17 +152,18 @@ With this middleware in place and some helpful extension methods created to make
   :dedent: 8
   :emphasize-lines: 11
 
-Following this refactoring, we are confident that the web application still works as before, since our integration tests are all passing.
+在这重构之后，我们有信心Web应用程序仍然像之前一样工作，因为我们的集成测试都是通过的。
 
-.. tip:: It's a good idea to commit your changes to source control after you complete a refactoring and your tests all pass. If you're practicing Test Driven Development, `consider adding Commit to your Red-Green-Refactor cycle <http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_.
+.. tip:: 当您完成重构并且所有测试都通过后，提交您的变更到源代码管理中，是一个好的主意。如果您正尝试测试驱动开发，考虑提交代码到你的 Red-Green-Refacotr 循环中
+'<http://ardalis.com/rgrc-is-the-new-red-green-refactor-for-test-first-development>`_.
 
-Summary
+总结
 -------
 
-Integration testing provides a higher level of verification than unit testing. It tests application infrastructure and how different parts of an application work together. ASP.NET Core is very testable, and ships with a ``TestServer`` that makes wiring up integration tests for web server endpoints very easy.
+集成测试提供了比单元测试更高层次的验证。它测试应用程序的基础设施和应用程序的不同部分如何一起工作。 ASP.NET Core 有很大可测试性，并附带了``TestServer``这使得为Web服务器endpoint连布置集成测试变得非常简单。
 
-Additional Resources
---------------------
+附加的资源
+---------
 
 - :doc:`unit-testing`
 - :doc:`/fundamentals/middleware`
