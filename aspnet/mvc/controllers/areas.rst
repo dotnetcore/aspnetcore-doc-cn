@@ -1,7 +1,10 @@
 Areas
 =====
 
-By `Tom Archer`
+作者：'Daniel Roth','Travis Boatman'
+
+翻译：'耿晓亮(Blue)'
+
 
 Areas 提供了一种分离大型 MVC 应用程序的模型 (models)，视图 (views) 和控制器 (controllers) 语义相关分组的方式，让我们看一个示例来说明 Areas 如何创建和使用。假设你有一个存储程序包含了两个不同分组的控制器 (controllers) 和视图 (views) ：Products 和 Services。
 
