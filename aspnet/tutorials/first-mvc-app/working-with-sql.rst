@@ -9,7 +9,7 @@ Working with SQL Server LocalDB
 
  The ``ApplicationDbContext`` class handles the task of connecting to the database and mapping ``Movie`` objects to database records. The database context is registered with the :doc:`Dependency Injection  </fundamentals/dependency-injection>` container in the ``ConfigureServices`` method in the *Startup.cs* file:
 
- ``ApplicationDbContext`` Àà¸ºÔğÁ´½ÓÊı¾İ¿â²¢½« ``Movie`` ¶ÔÏóºÍÊı¾İ¼ÇÂ¼½øĞĞÓ³Éä¡£ *Startup.cs* ÎÄ¼şÖĞ£¬Êı¾İ¿âÉÏÏÂÎÄÊÇÔÚ ``ConfigureServices`` ·½·¨ÖĞÓÃ :doc:`Dependency Injection  </fundamentals/dependency-injection>` ÈİÆ÷½øĞĞ×¢ÈëµÄ¡£
+``ApplicationDbContext`` Àà¸ºÔğÁ´½ÓÊı¾İ¿â²¢½« ``Movie`` ¶ÔÏóºÍÊı¾İ¼ÇÂ¼½øĞĞÓ³Éä¡£ *Startup.cs* ÎÄ¼şÖĞ£¬Êı¾İ¿âÉÏÏÂÎÄÊÇÔÚ ``ConfigureServices`` ·½·¨ÖĞÓÃ :doc:`Dependency Injection  </fundamentals/dependency-injection>`_ ÈİÆ÷½øĞĞ×¢ÈëµÄ¡£
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -17,20 +17,22 @@ Working with SQL Server LocalDB
   :dedent: 8
   :emphasize-lines: 5,6
 
-The ASP.NET Core :doc:`Configuration </fundamentals/configuration>` system reads the ``ConnectionString``. For local development, it gets the connection string from the *appsettings.json* file:
+The ASP.NET Core :doc:`Configuration </fundamentals/configuration>`_ system reads the ``ConnectionString``. For local development, it gets the connection string from the *appsettings.json* file:
 
-ASP.NET Core  :doc:`Configuration </fundamentals/configuration>` ÏµÍ³¶ÁÈ¡ ``ConnectionString`` ¡£ÎªÁË±¾µØ¿ª·¢£¬´Ó *appsettings.json* ÎÄ¼şÖĞ»ñÈ¡Á¬½Ó×Ö·û´®¡£
+ASP.NET Core  :doc:`Configuration </fundamentals/configuration>`_ ÏµÍ³¶ÁÈ¡ ``ConnectionString`` ¡£ÎªÁË±¾µØ¿ª·¢£¬´Ó *appsettings.json* ÎÄ¼şÖĞ»ñÈ¡Á¬½Ó×Ö·û´®¡£
+
 .. literalinclude:: start-mvc/sample/src/MvcMovie/appsettings.json
   :language: javascript
   :lines: 1-6
   :emphasize-lines: 3
 
-When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server. See :doc:`Configuration </fundamentals/configuration>` .
+When you deploy the app to a test or production server, you can use an environment variable or another approach to set the connection string to a real SQL Server. See :doc:`Configuration </fundamentals/configuration>`_ .
 
- µ±Äã²¿ÊğÓ¦ÓÃ³ÌĞòµ½²âÊÔ·şÎñÆ÷»òÕßÉú²ú·şÎñÆ÷Ê±£¬Äã¿ÉÒÔÊ¹ÓÃ»·¾³±äÁ¿»òÕßÁíÒ»ÖÖ·½·¨À´ÉèÖÃÊµ¼ÊÊı¾İ¿âµÄÁ¬½Ó×Ö·û´®¡£¿´ :doc:`Configuration </fundamentals/configuration>` ¡£
+µ±Äã²¿ÊğÓ¦ÓÃ³ÌĞòµ½²âÊÔ·şÎñÆ÷»òÕßÉú²ú·şÎñÆ÷Ê±£¬Äã¿ÉÒÔÊ¹ÓÃ»·¾³±äÁ¿»òÕßÁíÒ»ÖÖ·½·¨À´ÉèÖÃÊµ¼ÊÊı¾İ¿âµÄÁ¬½Ó×Ö·û´®¡£¿´ :doc:`Configuration </fundamentals/configuration>`_¡£
 
 SQL Server Express LocalDB
 --------------------------------
+
 SQL Server Express LocalDB
 --------------------------
 
@@ -47,6 +49,7 @@ LocalDBÊÇÒ»¸öÕë¶Ô³ÌĞò¿ª·¢µÄÇáÁ¿¼¶°æ±¾µÄSQL Server ExpressÊı¾İ¿âÒıÇæ£¬ÕâÊÇÕë¶Ô³ÌĞ
 - Right click on the ``Movie`` table **> View Designer**
 
 ÓÒ»÷ ``Movie`` ±í **> ÊÓÍ¼Éè¼ÆÆ÷£¨View Designer£©**
+
 
 .. image:: working-with-sql/_static/design.png
 
@@ -68,12 +71,14 @@ Note the key icon next to ``ID``. By default, EF will make a property named ``ID
 
 Seed the database
 --------------------------
+
 Ìî³äÊı¾İ¿â
 -------------
 
 Create a new class named ``SeedData`` in the *Models* folder. Replace the generated code with the following:
 
 ÔÚ *Models* ÎÄ¼ş¼ĞÖĞ´´½¨Ò»¸öÃû½Ğ ``SeedData`` µÄĞÂÀà¡£ÓÃÒÔÏÂ´úÂëÌæ»»Éú³ÉµÄ´úÂë¡£
+
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/SeedData.cs
   :language: c#
   :lines: 3-62
@@ -81,6 +86,7 @@ Create a new class named ``SeedData`` in the *Models* folder. Replace the genera
 Notice if there are any movies in the DB, the seed initializer returns.
 
 ×¢ÒâÈç¹ûÊı¾İ¿âÉÏÏÂÎÄÖĞ´æÔÚmovies£¬Ìî³ä³õÊ¼»¯Æ÷·µ»Ø¡£
+
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/SeedData.cs
   :language: c#
   :lines: 18-21
@@ -89,7 +95,8 @@ Notice if there are any movies in the DB, the seed initializer returns.
 
 Add the seed initializer to the end of the ``Configure`` method in the *Startup.cs* file: 
 
- *Startup.cs* ÎÄ¼şÖĞ£¬ÔÚ ``Configure`` ·½·¨µÄ×îºóÌí¼ÓÌî³ä³õÊ¼»¯Æ÷¡£
+*Startup.cs* ÎÄ¼şÖĞ£¬ÔÚ ``Configure`` ·½·¨µÄ×îºóÌí¼ÓÌî³ä³õÊ¼»¯Æ÷¡£
+
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
   :lines: 80-88
@@ -103,9 +110,11 @@ Test the app
 - Delete all the records in the DB. You can do this with the delete links in the browser or from SSOX.
 
 - ÔÚÊı¾İ¿âÖĞÉ¾³ıËùÓĞµÄ¼ÇÂ¼¡£Äã¿ÉÒÔÔÚä¯ÀÀÆ÷ÖĞÊ¹ÓÃÉ¾³ıÁ´½Ó»òÕßÔÚ SQL Server¶ÔÏó×ÊÔ´¹ÜÀíÆ÷£¨SSOX£©ÖĞ×öÕâ¼şÊÂ¡£
+
 - Force the app to initialize (call the methods in the ``Startup`` class) so the seed method runs. To force initialization, IIS Express must be stopped and restarted. You can do this with any of the following approaches:
 
 - Ç¿ÖÆÓ¦ÓÃ³ÌĞò³õÊ¼»¯£¨ÔÚ ``Startup`` ÀàÖĞµ÷ÓÃ·½·¨£©£¬ÈÃÌî³ä·½·¨ÔËĞĞ¡£ÎªÁË³õÊ¼»¯£¬IIS Express±ØĞëÍ£Ö¹£¬È»ºóÖØĞÂÆô¶¯¡£¿ÉÒÔÓÃÏÂÁĞµÄÈÎºÎÒ»¸ö·½·¨À´ÊµÏÖ£º
+
 .. comment this no longer works  - ^<Shift>F5 (Hold down the control and Shift keys and tap F5)
   - Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop* Site*
   - .. image:: working-with-sql/_static/iisExIcon.png
