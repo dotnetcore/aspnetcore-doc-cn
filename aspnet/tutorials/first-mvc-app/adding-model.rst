@@ -8,7 +8,7 @@ Adding a model
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： `许登洋(Seay) <https://github.com/SeayXu>`_、`孟帅洋(书缘) <https://github.com/mengshuaiyang>`_、`姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_
+校对： `许登洋(Seay) <https://github.com/SeayXu>`_、`孟帅洋(书缘) <https://github.com/mengshuaiyang>`_、`姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_、`夏申斌 <https://github.com/xiashenbin>`_
 
 In this section you'll add some classes for managing movies in a database. These classes will be the "**M**\odel" part of the **M**\VC app.
 
