@@ -36,7 +36,7 @@ In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Nam
 
 In addition to the properties you'd expect to model a movie, the ``ID`` field is required by the DB for the primary key. Build the project. If you don't build the app, you'll get an error in the next section. We've finally added a **M**\odel to our **M**\VC app.
 
-除了你用来构造电影的属性，还需要一个 ID 字段来作为数据库主键。生成项目。如果你没有生成这个应用程序，你将在下一节中遇到错误。我们终于为这个 MVC 应用程序添加了一个 Model 。
+除了你期望用来构造电影的属性，还需要一个 ID 字段来作为数据库主键。生成项目。如果没有生成这个应用程序，将在下一节中遇到错误。我们终于为这个 MVC 应用程序添加了一个 Model 。
 
 Scaffolding a controller
 -------------------------
