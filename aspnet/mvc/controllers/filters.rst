@@ -101,7 +101,11 @@ Global filters are added in the ``ConfigureServices`` method in ``Startup``, whe
 
 Filters can be added by type, or an instance can be added. If you add an instance, that instance will be used for every request. If you add a type, it will be type-activated, meaning an instance will be created for each request and any constructor dependencies will be populated by DI. Adding a filter by type is equivalent to ``filters.Add(new TypeFilterAttribute(typeof(MyFilter)))``.
 
+过滤器可通过类型添加，也可以通过实例添加。如果通过实例添加，则该实例会被用于每一个请求。如果通过类型添加，则将会 type-activated（意思是说每次请求都会创建一个实例，其所有构造函数依赖项都将通过 DI 来填充）。通过类型添加过滤器相当于 ``filters.Add(new TypeFilterAttribute(typeof(MyFilter)))`` 。
+
 It's often convenient to implement filter interfaces as *Attributes*. Filter attributes are applied to controllers and action methods. The framework includes built-in attribute-based filters that you can subclass and customize. For example, the following filter inherits from `ResultFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ResultFilterAttribute/index.html>`_, and overrides its ``OnResultExecuting`` method to add a header to the response.
+
+把过滤器接口的实现当做\ *特性（Attributes）*\ 使用是极为方便的。过滤器特性（filter attributes）可应用于控制器（Controllers）和 Action 方法。框架包含了内置的基于特性的过滤器，你可继承它们或另外定制。比方说，下例过滤器继承了 `ResultFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ResultFilterAttribute/index.html>`_\ ，并重写（override）了 ``OnResultExecuting`` 方法（在响应中增加了一个头信息）。
 
 .. _add-header-attribute:
 
@@ -111,6 +115,8 @@ It's often convenient to implement filter interfaces as *Attributes*. Filter att
 
 Attributes allow filters to accept arguments, as shown in the example above. You would add this attribute to a controller or action method and specify the name and value of the HTTP header you wished to add to the response:
 
+特性允许过滤器接收参数，如下例所示。可将此特性加诸控制器（Controller）或 Action 方法，并为其指定所需 HTTP 头的名称和值，并将该 HTTP 头加入响应中：
+
 .. literalinclude:: filters/sample/src/FiltersSample/Controllers/SampleController.cs
   :language: c#
   :emphasize-lines: 1
@@ -119,11 +125,17 @@ Attributes allow filters to accept arguments, as shown in the example above. You
 
 The result of the ``Index`` action is shown below - the response headers are displayed on the bottom right.
 
+``Index`` Action 的结果如下所示：响应的头信息显示在右下角。
+
 .. image:: filters/_static/add-header.png
 
 Several of the filter interfaces have corresponding attributes that can be used as base classes for custom implementations.
 
+以下几种过滤器接口可以自定义为相应特性的实现。
+
 Filter attributes:
+
+过滤器特性：
 
 - `ActionFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ActionFilterAttribute/index.html>`_
 - `AuthorizationFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/AuthorizationFilterAttribute/index.html>`_
@@ -271,7 +283,7 @@ The new order would be:
 
 .. _authorization-filters:
 
-授权过滤
+授权过滤器
 ---------------------
 
 *Authorization Filters* control access to action methods, and are the first filters to be executed within the filter pipeline. They have only a before stage, unlike most filters that support before and after methods. You should only write a custom authorization filter if you are writing your own authorization framework. Note that you should not throw exceptions within authorization filters, since nothing will handle the exception (exception filters won't handle them). Instead, issue a challenge or find another way.
@@ -284,12 +296,16 @@ Learn more about :doc:`/security/authorization/index`.
 
 .. _resource-filters:
 
-资源过滤
+资源过滤器
 ----------------
 
 *Resource Filters* implement either the ``IResourceFilter`` or ``IAsyncResourceFilter`` interface, and their execution wraps most of the filter pipeline (only :ref:`authorization-filters` run before them - all other filters and action processing happens between their ``OnResourceExecuting`` and ``OnResourceExecuted`` methods). Resource filters are especially useful if you need to short-circuit most of the work a request is doing. Caching would be one example use case for a resource filter, since if the response is already in the cache, the filter can immediately set a result and avoid the rest of the processing for the action.
 
+*资源过滤器* 要么实现 ``IResourceFilter`` 接口，要么实现 ``IAsyncResourceFilter`` 接口，它们执行于大多数过滤器管道（只有 :ref:`authorization-filters` 在其之前运行，其余所有过滤器以及 Action 处理均出现在其 ``OnResourceExecuting`` 和 ``OnResourceExecuted`` 方法之间）。当你需要短路绝大多数正在进行的请求时，资源过滤器特别有用。资源过滤器有一个例子是使用到了缓存，如果响应已经被缓存，过滤器会立即将之置为结果以避免后续 Action 的多余操作过程。
+
 The :ref:`short circuiting resource filter <short-circuiting-resource-filter>` shown above is one example of a resource filter. A very naive cache implementation (do not use this in production) that only works with ``ContentResult`` action results is shown below:
+
+上面所说的是一个 :ref:`短路资源过滤器 <short-circuiting-resource-filter>` 的例子。下例是一个非常简单的缓存实现（请勿将之用于生产环境），只能与 ``ContentResult`` 配合使用，如下所示：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Filters/NaiveCacheResourceFilterAttribute.cs
   :language: c#
@@ -299,7 +315,11 @@ The :ref:`short circuiting resource filter <short-circuiting-resource-filter>` s
 
 In ``OnResourceExecuting``, if the result is already in the static dictionary cache, the ``Result`` property is set on ``context``, and the action short-circuits and returns with the cached result. In the ``OnResourceExecuted`` method, if the current request's key isn't already in use, the current ``Result`` is stored in the cache, to be used by future requests.
 
+在 ``OnResourceExecuting`` 中，如果结果已经在静态字段缓存中，``Result`` 属性将被设置到 ``context`` 上，同时 Action 被短路并返回缓存的结果。在 ``OnResourceExecuted`` 方法中，如果当前其请求的键未被使用过，那么 ``Result`` 就会被保存到缓存中，用于之后的请求。
+
 Adding this filter to a class or method is shown here:
+
+如下所示，把这个过滤器用于类或方法之上：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Controllers/CachedController.cs
   :language: c#
@@ -336,11 +356,19 @@ For an ``IAsyncActionFilter`` the ``OnActionExecutionAsync`` combines all the po
 
 *Exception Filters* implement either the ``IExceptionFilter`` or ``IAsyncExceptionFilter`` interface.
 
+*异常过滤器*\ 实现了 ``IExceptionFilter`` 接口或 ``IAsyncExceptionFilter`` 接口。
+
 Exception filters handle unhandled exceptions, including those that occur during controller creation and :doc:`model binding </mvc/models/model-binding>`. They are only called when an exception occurs in the pipeline. They can provide a single location to implement common error handling policies within an app. The framework provides an abstract `ExceptionFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ExceptionFilterAttribute/index.html>`_ that you should be able to subclass for your needs. Exception filters are good for trapping exceptions that occur within MVC actions, but they're not as flexible as error handling middleware. Prefer middleware for the general case, and use filters only where you need to do error handling *differently* based on which MVC action was chosen.
+
+异常过滤器用于处理「未处理异常」，包括发生在 Controller 创建及 :doc:`模型绑定 </mvc/models/model-binding>` 期间出现的异常。它们只在管道内发生异常是才会被调用。它们提供了一个单一的位置实现应用程序内的公共异常处理策略。框架提供了抽象的 `ExceptionFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/ExceptionFilterAttribute/index.html>`_ ，你根据自己的需要继承这个类。异常过滤器适用于捕获 MVC Action 内出现的异常，但它们不及错误处理中间件（error handling middleware）灵活。一般来讲优先使用中间件，只有在需要做一些基于所选 MVC Action 的、有别于错误处理的工作时才选择使用过滤器。
 
 .. tip:: One example where you might need a different form of error handling for different actions would be in an app that exposes both API endpoints and actions that return views/HTML. The API endpoints could return error information as JSON, while the view-based actions could return an error page as HTML.
 
+.. tip:: 对于应用程序中不同 action 需要使用不同的错误处理方式，并向 Views/HTML 暴露 API 端点或 action 的错误处理的结果。API 端点用 JSON 返回错误信息，而基于视图的 action 则返回错误页面（HTML 页面）。
+
 Exception filters do not have two events (for before and after) - they only implement ``OnException`` (or ``OnExceptionAsync``). The ``ExceptionContext`` provided in the ``OnException`` parameter includes the ``Exception`` that occurred. If you set ``context.Exception`` to null, the effect is that you've handled the exception, so the request will proceed as if it hadn't occurred (generally returning a 200 OK status). The following filter uses a custom developer error view to display details about exceptions that occur when the application is in development:
+
+异常过滤器不应有两个事件（对于前置或后置而言）它们只实现 ``OnException``（或 ``OnExceptionAsync``）。以参数形式传入 ``OnException`` 的 ``ExceptionContext`` 包含了所发生的 ``Exception``。如果把 ``context.Exception`` 设置为 null，其效果相当于你已处理该异常，所以该次请求会像没发生过异常那样继续处理（一般会返回 HTTP 200 OK 状态）。下例过滤器中使用定制的开发者错误视图来显示开发环境中应用程序所出现异常的详细信息：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Filters/CustomExceptionFilterAttribute.cs
   :language: c#
