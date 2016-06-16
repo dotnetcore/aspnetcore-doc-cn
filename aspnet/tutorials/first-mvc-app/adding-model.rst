@@ -16,7 +16,7 @@ In this section you'll add some classes for managing movies in a database. These
 
 You’ll use a .NET Framework data-access technology known as the `Entity Framework Core <http://ef.readthedocs.org/>`__ to define and work with these data model classes. Entity Framework Core (often referred to as **EF** Core) features a development paradigm called *Code First*. You write the code first, and the database tables are created from this code. Code First allows you to create data model objects by writing simple classes. (These are also known as POCO classes, from "plain-old CLR objects.") The database is created from your classes. If you are required to create the database first, you can still follow this tutorial to learn about MVC and EF app development.
 
-你将使用 .NET Framework 中名为 `Entity Framework Core <http://ef.readthedocs.org/>`__ 的数据库访问技术来定义和使用这些数据模型类。Entity Framework Core (通常被称为 **EF** Core) 有一个被称为 *Code First* 开发模式的特点。你先编写代码，然后通过这些代码创建数据库表。 Code First 允许你通过编写一些简单的类(也被称为 POCO 类， "plain-old CLR objects." )来创建数据模型对象，然后根据你的类创建数据库。如果你需要先创建数据库，你仍然可以按照本教程来学习 MVC 和 EF 应用程序开发。
+你将使用 .NET Framework 中名为 `Entity Framework Core <http://ef.readthedocs.org/>`__ 的数据库访问技术来定义和使用这些数据模型类。Entity Framework Core (通常被称为 **EF** Core) 有一种具有特色的被称为 *Code First* 开发模式。你先编写代码，然后通过这些代码创建数据库表。 Code First 允许你通过编写一些简单的类(也被称为 POCO 类， "plain-old CLR objects." )来创建数据模型对象，然后根据你的类创建数据库。如果你需要先创建数据库，你仍然可以按照本教程来学习 MVC 和 EF 应用程序开发。
 
 Adding data model classes
 --------------------------
@@ -36,7 +36,7 @@ In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Nam
 
 In addition to the properties you'd expect to model a movie, the ``ID`` field is required by the DB for the primary key. Build the project. If you don't build the app, you'll get an error in the next section. We've finally added a **M**\odel to our **M**\VC app.
 
-除了你用来构造电影的属性，还需要一个 ID 字段来作为数据库主键。生成项目。如果你没有生成这个应用程序，你将在下一节中遇到错误。我们终于为这个 MVC 应用程序添加了一个 Model 。
+除了你期望用来构造电影的属性，还需要一个 ID 字段来作为数据库主键。生成项目。如果没有生成这个应用程序，将在下一节中遇到错误。我们终于为这个 MVC 应用程序添加了一个 Model 。
 
 Scaffolding a controller
 -------------------------
@@ -204,7 +204,7 @@ Strongly typed models and the @model keyword
 
 Earlier in this tutorial, you saw how a controller can pass data or objects to a view template using the ``ViewData`` dictionary. The ``ViewData`` dictionary is a dynamic object that provides a convenient late-bound way to pass information to a view.
 
-在之前的教程中，你看到了控制器（Controller）如何通过 ViewData 字典传递数据到一个视图模板 (View Template)。 ViewData 字典是一个动态类型对象，它提供了一种便捷的后期绑定方式将信息传递给视图。
+在之前的教程中，你看到了控制器（Controller）如何通过 ``ViewData`` 字典传递数据到一个视图模板 (View Template)。 ``ViewData`` 字典是一个动态类型对象，它提供了一种便捷的后期绑定方式将信息传递给视图。
 
 MVC also provides the ability to pass strongly typed objects to a view template. This strongly typed approach enables better compile-time checking of your code and richer `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ in Visual Studio (VS). The scaffolding mechanism in VS used this approach (that is, passing a strongly typed model) with the ``MoviesController`` class and view templates when it created the methods and views.
 
@@ -265,8 +265,7 @@ By including a ``@model`` statement at the top of the view template file, you ca
 
 This ``@model`` directive allows you to access the movie that the controller passed to the view by using a ``Model`` object that's strongly typed. For example, in the *Details.cshtml* template, the code passes each movie field to the ``DisplayNameFor`` and ``DisplayFor`` HTML Helpers with the strongly typed ``Model`` object. The ``Create`` and ``Edit`` methods and view templates also pass a ``Movie`` model object.
 
-``@model`` 指令允许你访问从控制器（Controller）传递给视图（View）的这个强类型电影 ``Model`` 对象。例如，在 *Details.cshtml* 模板中，代码用强类型 ``Model`` 对象传递所有的电影字段到 ``DisplayNameFor`` 和 ``DisplayFor`` HTML 帮助类（HTML Helper）里。 ``Create`` 和 ``Edit`` 方法和视图模板 (View Template)
-也传递一个 ``Movie`` 模型（Model）对象。
+``@model`` 指令允许你访问从控制器（Controller）传递给视图（View）的这个强类型电影 ``Model`` 对象。例如，在 *Details.cshtml* 模板中，代码用强类型 ``Model`` 对象传递所有的电影字段到 ``DisplayNameFor`` 和 ``DisplayFor`` HTML 帮助类（HTML Helper）里。 ``Create`` 和 ``Edit`` 方法和视图模板 （View Template）也传递一个 ``Movie`` 模型（Model）对象。
 
 Examine the *Index.cshtml* view template and the ``Index`` method in the Movies controller. Notice how the code creates a ``List`` object when it calls the View method. The code passes this ``Movies`` list from the ``Index`` action method to the view:
 
