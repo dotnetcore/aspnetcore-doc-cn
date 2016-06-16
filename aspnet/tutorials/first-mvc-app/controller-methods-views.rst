@@ -158,7 +158,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 movie controller 的所有 HttpGet 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``)， 把对象 (模型) 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。所有的如 创建、编辑、删除、或者其他的修改数据的方法 在不同的  ``[HttpPost]`` 方法重载中执行。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
 
-附录资源
+附录资源 
 -----------------------
 
 - :doc:`/fundamentals/localization`
