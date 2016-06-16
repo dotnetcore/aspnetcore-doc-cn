@@ -95,7 +95,7 @@ Notice if there are any movies in the DB, the seed initializer returns.
 
 Add the seed initializer to the end of the ``Configure`` method in the *Startup.cs* file: 
 
-*Startup.cs* 文件中，在 ``Configure`` 方法的最后添加填充初始化器。
+在*Startup.cs* 文件中的 ``Configure`` 方法最后添加填充初始化器。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -113,7 +113,7 @@ Test the app
 
 - Force the app to initialize (call the methods in the ``Startup`` class) so the seed method runs. To force initialization, IIS Express must be stopped and restarted. You can do this with any of the following approaches:
 
-- 强制应用程序初始化（在 ``Startup`` 类中调用方法），让填充方法运行。为了初始化，IIS Express必须停止，然后重新启动。可以用下列的任何一个方法来实现：
+- 强制初始化应用程序（在 ``Startup`` 类中调用方法），让填充方法运行。为了初始化，IIS Express必须停止，然后重新启动。可以用下列的任何一个方法来实现：
 
 .. comment this no longer works  - ^<Shift>F5 (Hold down the control and Shift keys and tap F5)
   - Right click the IIS Express system tray icon in the notification area and tap **Exit** or **Stop* Site*
