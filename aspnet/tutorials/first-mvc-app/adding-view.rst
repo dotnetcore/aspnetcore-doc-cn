@@ -1,9 +1,8 @@
 ﻿Adding a view             
 ================================================
+
 添加视图
 ===================
-
-By `Rick Anderson`_
 
 作者： `Rick Anderson`_ 
 
@@ -14,11 +13,11 @@ By `Rick Anderson`_
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
 
-本节将修改 ``HelloWorldController`` 类，把为客户端生成 HTML 响应的过程干净利落地封装起来。
+本节将修改 ``HelloWorldController`` 类，把使用 Razor 视图模板文件为客户端生成 HTML 响应的过程干净利落地封装起来。
 
 You'll create a view template file using the Razor view engine. Razor-based view templates have a *.cshtml* file extension, and provide an elegant way to create HTML output using C#. Razor minimizes the number of characters and keystrokes required when writing a view template, and enables a fast, fluid coding workflow.
 
-欲要使用 Razor 视图引擎须先创建视图模板文件，基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
+您可以使用 Razor 视图引擎创建一个视图模板。基于 Razor 的视图模板的文件使用 *.cshtml* 作为其扩展名，并用 C# 优雅地输出 HTML。用 Razor 编写视图模板能减少字符的个数和敲击键盘的次数，并使工作流程快速灵活。
 
 Currently the ``Index`` method returns a string with a message that is hard-coded in the controller class. Change the ``Index`` method to return a View object, as shown in the following code:
 
@@ -49,7 +48,7 @@ The ``Index`` method above uses a view template to generate an HTML response to 
 
   - In the search box in the upper-right, enter *view*
 
-  - 在右上方的搜索框中输入 *视图*
+  - 在右上方的搜索框中输入 *view*
 
   - Tap **MVC View Page**
 
@@ -86,6 +85,7 @@ If your browser window is small (for example on a mobile device), you might need
 
 Changing views and layout pages
 --------------------------------------
+
 改变视图和布局页
 --------------------------------------
 
@@ -159,7 +159,7 @@ You'll make them slightly different so you can see which bit of code changes whi
 
 Save your change and refresh the page. Notice that the browser title, the primary heading, and the secondary headings have changed. (If you don't see changes in the browser, you might be viewing cached content. Press Ctrl+F5 in your browser to force the response from the server to be loaded.) The browser title is created with ``ViewData["Title"]`` we set in the **Index.cshtml** view template and the additional "- Movie App" added in the layout file.
 
-保存并刷新页面。注意浏览器标题，主标题，副标题都发生了改变（如果你没有看到变化，可能因为缓存的缘故，在浏览器中按下 Ctrl+F5 强制刷新）。浏览器标题由我们设置在 **Index.cshtml** 视图模板中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
+保存并刷新页面。注意浏览器标题、主标题和副标题都变化了（如果你没看到变化，可能因为缓存的缘故，在浏览器中按下 Ctrl+F5 强制刷新）。浏览器标题由我们设置在 **Index.cshtml** 视图模板中的 ``ViewData["Title"]`` 以及位于布局页的 "- Movie App" 组合构成。
 
 Also notice how the content in the *Index.cshtml* view template was merged with the *Views/Shared/_Layout.cshtml* view template and a single HTML response was sent to the browser. Layout templates make it really easy to make changes that apply across all of the pages in your application. To learn more see :doc: `/mvc/views/layout`.
 
@@ -169,16 +169,17 @@ Also notice how the content in the *Index.cshtml* view template was merged with 
 
 Our little bit of "data" (in this case the "Hello from our View Template!" message) is hard-coded, though. The MVC application has a "V" (view) and you've got a "C" (controller), but no "M" (model) yet. Shortly, we'll walk through how create a database and retrieve model data from it.
 
-不过，我们的这点“数据” （本例中的消息 "Hello from our View Template!" ）是硬编码的。MVC 应用程序有一个 "V" （ View ） ，你有一个 "C" （ Controller ），但是还没有 "M" （ Model ）。接下来，我们将练习如何创建一个数据库并从中搜索模型数据。
+不过，我们的这点“数据”（本例中的消息 "Hello from our View Template!"）还是硬编码的。MVC 应用程序里已经有了个“V”（View），我们也已经创建了一个“C”（Controller），但现在还没有“M”（Model）。接下来我们将快速展示如何创建数据库并从中搜索模型数据。
 
 Passing Data from the Controller to the View
 -----------------------------------------------
+
 从控制器传递数据到视图
 -----------------------
 
 Before we go to a database and talk about models, though, let's first talk about passing information from the controller to a view. Controller classes are invoked in response to an incoming URL request. A controller class is where you write the code that handles the incoming browser requests, retrieves data from a database, and ultimately decides what type of response to send back to the browser. View templates can then be used from a controller to generate and format an HTML response to the browser.
 
-不过在谈到数据库和模型之前，让我们先讨论从控制器传递信息到视图。控制器类在响应传入的URL请求时被调用。控制器类是编写代码处理传入的浏览器请求，从数据库中检索数据，并最终决定发送什么类型的响应返回给浏览器的地方。然后可以在控制器中使用视图模板生成和格式化 HTML 来响应给浏览器。
+在谈到数据库和模型之前，让我们先讨论从控制器传递信息到视图。控制器类在响应传入的 URL 请求时被调用。控制器类是编写代码处理传入的浏览器请求，从数据库中检索数据，并最终决定发送什么类型的响应返回给浏览器的地方。然后可以在控制器中使用视图模板生成和格式化 HTML 来响应给浏览器。
 
 Controllers are responsible for providing whatever data or objects are required in order for a view template to render a response to the browser. A best practice: A view template should never perform business logic or interact with a database directly. Instead, a view template should work only with the data that's provided to it by the controller. Maintaining this "separation of concerns" helps keep your code clean, testable and more maintainable.
 
@@ -211,7 +212,7 @@ The ``ViewData`` dictionary object contains data that will be passed to the view
 
   - In the search box in the upper-right, enter *view* 
 
-  - 在右上角的搜索框中，输入 *视图* 
+  - 在右上角的搜索框中，输入 *view* 
 
   - Tap **MVC View Page** 
 
@@ -234,13 +235,13 @@ You'll create a loop in the *Welcome.cshtml* view template that displays "Hello"
 
 Save your changes and browse to the following URL:
 
-更改后保存，浏览以下网址：
+保存修改并打开浏览器，访问这个地址：
 
 \http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4
 
 Data is taken from the URL and passed to the controller using the `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__. The controller packages the data into a ``ViewData`` dictionary and passes that object to the view. The view then renders the data as HTML to the browser.
 
-数据从URL中获取并用 `model binder <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 将数据传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图将数据以 HTML 呈现给浏览器。
+数据从 URL 中获取并用 `模型绑定器 <http://docs.asp.net/projects/mvc/en/latest/models/index.html>`__ 将数据传递给控制器。控制器将数据封装到 ``ViewData`` 字典中，并将对象传递到视图里。然后，视图将数据以 HTML 的形式渲染到浏览器中。
 
 .. image:: adding-view/_static/rick.png
 
@@ -250,4 +251,4 @@ In the sample above, we used the ``ViewData`` dictionary to pass data from the c
 
 Well, that was a kind of an "M" for model, but not the database kind. Let's take what we've learned and create a database of movies.
 
-好吧，这也算是一种 Model 的 "M" ，但不是数据库那种。让我们用学到的东西创建一个电影数据库吧。
+好吧，这也算是一种 Model 中的“M”吧，但无论如何都不是数据库模型。让我们用学到的东西创建一个电影数据库吧。

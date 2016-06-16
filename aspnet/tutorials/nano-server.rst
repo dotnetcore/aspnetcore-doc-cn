@@ -68,7 +68,7 @@ Open an elevated PowerShell window to add your remote Nano Server instance to yo
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # replace with the correct IP address
+  $ip = "10.83.181.14" # 替换成正确的 IP 地址
   Set-Item WSMan:\localhost\Client\TrustedHosts "$ip" -Concatenate -Force
 
 Once you have added your Nano Server instance to your ``TrustedHosts``, you can connect to it using PowerShell remoting
@@ -77,7 +77,7 @@ Once you have added your Nano Server instance to your ``TrustedHosts``, you can 
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # replace with the correct IP address
+  $ip = "10.83.181.14" # 替换成正确的 IP 地址
   $s = New-PSSession -ComputerName $ip -Credential ~\Administrator
   Enter-PSSession $s
 
@@ -190,7 +190,7 @@ Copy over the published output of your existing application to the Nano server.
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # replace with the correct IP address
+  $ip = "10.83.181.14" # 替换成正确的 IP 地址
   $s = New-PSSession -ComputerName $ip -Credential ~\Administrator
   Copy-Item -ToSession $s -Path <path-to-src>\bin\output\ -Destination C:\HelloAspNet5 -Recurse
 
