@@ -1,4 +1,4 @@
-通过使用 Visual Studio 连接服务添加 Azure 存储空间
+通过使用 Visual Studio 连接服务添加 Azure storage
 =====
 
 作者：`Patrick Sheahan`、`Tom Archer`、`Kemp Brown`
@@ -8,12 +8,12 @@
 概述
 ---------------------
 
-用 Visual Studio 2015， 通过添加连接服务对话框，你可以连接任何 C# 的云服务，.NET 后端移动服务，ASP.NET 网站或服务，ASP.NET 5 服务或者 Azure WebJob 服务。连接服务功能添加了所有需要引用和连接代码，并适当的修改了你的配置文件。对话框也附带了告诉你后续步骤开始 blob 存储，队列和表的文档。
+用 Visual Studio 2015， 通过添加连接服务对话框，你可以连接任何 C# 云服务，.NET 后端移动服务，ASP.NET 网站或服务，ASP.NET 5 服务或者 Azure WebJob 服务到 Azure Storage。连接服务功能添加了所有需要引用和连接代码，并适当的修改了你的配置文件。对话框也附带了告诉你后续步骤开始 blob 存储，队列和表的文档。
 
 支持的项目类型
 ---------------------
 
-你可以用连接服务对话框来连接下面项目类型的 Azure 存储。
+你可以用连接服务对话框来连接下面项目类型的 Azure Storage。
 
  - ASP.NET 网站项目
 
@@ -25,7 +25,7 @@
 
  - Azure WebJob 项目
 
-通过连接服务对话框连接到 Azure 存储
+通过连接服务对话框连接到 Azure Storage
 ---------------------
 
 1. 确认你有一个 Azure 账号。如果你没有 Azure 账号，你可以注册一个 `免费试用 <https://azure.microsoft.com/zh-cn/pricing/free-trial/>`_。一旦你有了 Azure 账号，你就可以创建存储账号，移动服务和配置 Azure 有效的目录。
@@ -34,23 +34,23 @@
 
    .. image :: https://github.com/Azure/azure-content/blob/master/articles/media/vs-azure-tools-connected-services-storage/IC796702.png
 
-3. 在 **添加连接服务** 对话框中，选择 **Azure 存储**，然后选择 **配置** 按钮。如果你没有登录会提示让你登录。
+3. 在 **添加连接服务** 对话框中，选择 **Azure Storage**，然后选择 **配置** 按钮。如果你没有登录会提示让你登录。
 
    .. image :: https://github.com/Azure/azure-content/blob/master/articles/media/vs-azure-tools-connected-services-storage/IC796703.png
 
-4. 在 **Azure** 存储对话框中，选择一个存在的存储账号并选择 **添加**。如果你需要创建一个新的存储账号，转到下一步，否则跳过步骤6. 
+4. 在 **Azure Storage** 对话框中，选择一个存在的存储账号并选择 **添加**。如果你需要创建一个新的存储账号，转到下一步，否则跳过步骤6. 
 
    .. image :: https://github.com/Azure/azure-content/blob/master/articles/media/vs-azure-tools-connected-services-storage/IC796704.png
 
 5. 创建一个新的存储账号：
 
-    i. 在 Azure 存储对话框中选择 **创建新存储账号** 按钮。
+    i. 在 Azure Storage 对话框中选择 **创建新存储账号** 按钮。
 
    ii. 填写 **创建存储账号** 对话框然后选择 **创建** 按钮。
 
        .. image :: https://github.com/Azure/azure-content/blob/master/articles/media/vs-azure-tools-connected-services-storage/create-storage-account.png
 
-       当你返回 **Azure存储** 对话框是。列表中会出现新的存储账号。
+       当你返回 **Azure Storage** 对话框是。列表中会出现新的存储账号。
     
   iii. 在列表中选择新的存储账号并选择 **添加**。
 
@@ -80,9 +80,9 @@
 
 2. 提问和获取帮助
 
-    - `MSDN 论坛: Azure 存储 <https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata>`_
+    - `MSDN 论坛: Azure Storage <https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata>`_
 
-    - `Azure 存储团队博客 <http://blogs.msdn.com/b/windowsazurestorage/>`_
+    - `Azure Storage 团队博客 <http://blogs.msdn.com/b/windowsazurestorage/>`_
 
     - `azure.microsoft.com 上的存储板块 <https://azure.microsoft.com/services/storage/>`_
 
