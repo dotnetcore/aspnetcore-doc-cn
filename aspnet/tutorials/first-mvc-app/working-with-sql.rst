@@ -42,7 +42,7 @@ LocalDB是一个针对程序开发的轻量级版本的SQL Server Express数据库引擎。LocalDB按需
 
 - From the **View** menu, open **SQL Server Object Explorer** (SSOX).
 
-从 **View** 菜单中，打开 **SQL Server对象资源管理器**（**SQL Server Object Explorer** ，(SSOX)）.
+从 **View** 菜单中，打开 **SQL Server对象资源管理器** （**SQL Server Object Explorer** (SSOX)）.
 
 .. image:: working-with-sql/_static/ssox.png
 
