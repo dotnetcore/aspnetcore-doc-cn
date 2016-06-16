@@ -28,9 +28,9 @@ Controller 方法与视图
 
  .. image:: controller-methods-views/_static/da.png
 
-Visual studio 会自动导入 ``using System.ComponentModel.DataAnnotations;`` 代码。
+Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引用代码。
 
-让我们移除多余的 ``using`` 引用代码。他们默认会标注为灰色字体。右键点击 *Movie.cs* 文件 点击 **> Organize Usings > Remove Unnecessary Usings** 菜单。
+让我们移除多余的 ``using`` 引用代码。它们默认以灰色字体出现。右键点击 *Movie.cs* 文件 点击 **> Organize Usings > Remove Unnecessary Usings** 菜单。
 
 .. image:: controller-methods-views/_static/rm.png
 
@@ -92,10 +92,10 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
  :lines: 328-361
 
 
- ``[Bind]`` 标签是防止`over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你只需要在你想要改变的中的属性上使用 ``[Bind]``。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供另一个方法来防止over-posting。
+ ``[Bind]`` 特性是防止`over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你只需要在你想要改变的中的属性上使用 ``[Bind]``。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供另一个方法来防止over-posting。
 
 
-请注意带第二个 ``Edit`` 方法被 ``[HttpPost]`` 标签所修饰。
+请注意带第二个 ``Edit`` 方法被 ``[HttpPost]`` 特性所修饰。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
@@ -127,7 +127,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 你会注意到为什么视图模版文件的顶部会有一行 ``@model MvcMovie.Models.Movie`` 声明呢？ — 因为这个声明指定这个视图模版的模型期待的类型是 ``Movie`` 。
 
-搭建的代码使用几个 Tag Helper 方法来简化 HTML 标记。 - :doc:`Label Tag Helper </mvc/views/working-with-forms>` 用来显示字段名 ("Title"、"ReleaseDate"、"Genre" 或者 "Price")。:doc:`Input Tag Helper </mvc/views/working-with-forms>` 用来呈现 HTML ``<input>`` 元素。 :doc:`Validation Tag Helper </mvc/views/working-with-forms>` 显示关联到属性的的错误信息。
+基架生成的代码使用几个 Tag Helper 方法来简化 HTML 标记。 - :doc:`Label Tag Helper </mvc/views/working-with-forms>` 用来显示字段名 ("Title"、"ReleaseDate"、"Genre" 或者 "Price")。:doc:`Input Tag Helper </mvc/views/working-with-forms>` 用来呈现 HTML ``<input>`` 元素。 :doc:`Validation Tag Helper </mvc/views/working-with-forms>` 显示关联到属性的的错误信息。
 
 运行应用程序并导航到 ``/ Movies`` URL。单击 **编辑** 链接。在浏览器中查看该页面的源代码。为 ``<form>`` 元素生成的 HTML 如下所示。
 
@@ -135,7 +135,8 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
   :language: HTML
   :emphasize-lines: 1,6,10,17,24, 28
 
- ``HTML <form>`` 中的 ``<input>`` 的元素的 ``action`` 属性用于设置请求发送到 ``/Movies/Edit/id``  URL. 当点击 ``Save`` 按钮时表单数据会被发送到服务器 . 在 ``</form>``  元素关闭前最后一行 ``</form>`` 展示了 `XSRF <:doc:/security/anti-request-forgery>`__ 生成的隐藏域标识。
+ 
+``HTML <form>`` 中的 ``<input>`` 的元素的 ``action`` 属性用于设置请求发送到 ``/Movies/Edit/id``  URL. 当点击 ``Save`` 按钮时表单数据会被发送到服务器 . 在 ``</form>``  元素关闭前最后一行 ``</form>`` 展示了 `XSRF <:doc:/security/anti-request-forgery>`__ 生成的隐藏域标识。
 
 处理 POST 请求
 --------------------------------------
@@ -150,7 +151,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 ``[ValidateAntiForgeryToken]`` 标签验证 :doc:`Form Tag Helper </mvc/views/working-with-forms>` 生成的存放在隐藏域中的 `XSRF <:doc:/security/anti-request-forgery>`__ 反伪造标记。
 
 
-:doc:`模型绑定 </mvc/models/model-binding>` 机制以发送表单数据并创建 ``Movie`` 对象作为 ``movie`` 参数。``ModelState.IsValid`` 方法验证表单提交的数据可以用来修改（编辑或更新）一个 ``Movie`` 对象。  如果数据有效，就可以保存。 更新(编辑) movie 数据会被存到数据库通过 database context 的 ``SaveChangesAsync`` 方法。 数据保存完毕以后，代码把用户重新引导到 ``MoviesController`` 类的 ``Index`` 方法，显示 Moive 集合的页面，包含了最新的数据改动。
+:doc:`模型绑定 </mvc/models/model-binding>` 机制以发送表单数据创建 ``Movie`` 对象并作为 ``movie`` 参数。``ModelState.IsValid`` 方法验证表单提交的数据可以用来修改（编辑或更新）一个 ``Movie`` 对象。  如果数据有效，就可以保存。 更新(编辑) movie 数据会被存到数据库通过 database context 的 ``SaveChangesAsync`` 方法。 数据保存完毕以后，这段代码将用户重定向到 ``MoviesController`` 类的 ``Index`` 方法，这个页面显示了改动后最新的Movie集合。 
 
 表单数据被发布到服务器之前，客户端校验会检查所有字段上的验证规则。如果有任何验证错误，则显示错误消息，并且表单数据不会被发送。如果禁用了 JavaScript，将不会有客户端验证，但服务器端将检测出发送数据是无效的，表单依旧会显示出错误信息。在稍后的教程中，我们会探讨 :doc:`/mvc/models/validation` 更多关于验证的细节。 *Views/Book/Edit.cshtml* 视图模版中的 :doc:`Validation Tag Helper </mvc/views/working-with-forms>`  负责显示错误信息。
 
