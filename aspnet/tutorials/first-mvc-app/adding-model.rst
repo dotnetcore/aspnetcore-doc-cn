@@ -204,7 +204,7 @@ Strongly typed models and the @model keyword
 
 Earlier in this tutorial, you saw how a controller can pass data or objects to a view template using the ``ViewData`` dictionary. The ``ViewData`` dictionary is a dynamic object that provides a convenient late-bound way to pass information to a view.
 
-在之前的教程中，你看到了控制器（Controller）如何通过 ViewData 字典传递数据到一个视图模板 (View Template)。 ViewData 字典是一个动态类型对象，它提供了一种便捷的后期绑定方式将信息传递给视图。
+在之前的教程中，你看到了控制器（Controller）如何通过 ``ViewData`` 字典传递数据到一个视图模板 (View Template)。 ``ViewData`` 字典是一个动态类型对象，它提供了一种便捷的后期绑定方式将信息传递给视图。
 
 MVC also provides the ability to pass strongly typed objects to a view template. This strongly typed approach enables better compile-time checking of your code and richer `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ in Visual Studio (VS). The scaffolding mechanism in VS used this approach (that is, passing a strongly typed model) with the ``MoviesController`` class and view templates when it created the methods and views.
 
@@ -265,8 +265,7 @@ By including a ``@model`` statement at the top of the view template file, you ca
 
 This ``@model`` directive allows you to access the movie that the controller passed to the view by using a ``Model`` object that's strongly typed. For example, in the *Details.cshtml* template, the code passes each movie field to the ``DisplayNameFor`` and ``DisplayFor`` HTML Helpers with the strongly typed ``Model`` object. The ``Create`` and ``Edit`` methods and view templates also pass a ``Movie`` model object.
 
-``@model`` 指令允许你访问从控制器（Controller）传递给视图（View）的这个强类型电影 ``Model`` 对象。例如，在 *Details.cshtml* 模板中，代码用强类型 ``Model`` 对象传递所有的电影字段到 ``DisplayNameFor`` 和 ``DisplayFor`` HTML 帮助类（HTML Helper）里。 ``Create`` 和 ``Edit`` 方法和视图模板 (View Template)
-也传递一个 ``Movie`` 模型（Model）对象。
+``@model`` 指令允许你访问从控制器（Controller）传递给视图（View）的这个强类型电影 ``Model`` 对象。例如，在 *Details.cshtml* 模板中，代码用强类型 ``Model`` 对象传递所有的电影字段到 ``DisplayNameFor`` 和 ``DisplayFor`` HTML 帮助类（HTML Helper）里。 ``Create`` 和 ``Edit`` 方法和视图模板 （View Template）也传递一个 ``Movie`` 模型（Model）对象。
 
 Examine the *Index.cshtml* view template and the ``Index`` method in the Movies controller. Notice how the code creates a ``List`` object when it calls the View method. The code passes this ``Movies`` list from the ``Index`` action method to the view:
 
