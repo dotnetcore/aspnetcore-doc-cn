@@ -75,7 +75,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
 
 ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 ``Movies`` controller 的 ``Edit`` 方法的请求并带上值为4 的 ``ID`` 参数。 (Controller 方法其实就是指代 action 方法。)
 
-:doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的功能之一。 参考 `附录资源`_ 获取更多信息。
+:doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的新功能之一。 参考 `附录资源`_ 获取更多信息。
 
 打开 ``Movies`` controller 并查看两个 ``Edit`` 方法：
 
