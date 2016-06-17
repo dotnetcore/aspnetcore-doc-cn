@@ -5,8 +5,11 @@ Controller 方法与视图
 
 翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_ 
 
-校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`何镇汐 <https://github.com/UtilCore>`_
-
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、`许登洋(Seay) <https://github.com/SeayXu>`_ 、`姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_ 、 `娄宇(Lyrics) <https://github.com/xbuilder>`_
+ 
+ 
+ 
+ 
 
 我们已经初步的创建了一个 movie 应用程序，但是展示并不理想。我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词。
 
@@ -72,7 +75,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
 
 ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 ``Movies`` controller 的 ``Edit`` 方法的请求并带上值为4 的 ``ID`` 参数。 (Controller 方法其实就是指代 action 方法。)
 
-:doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的功能之一。 参考 `附录资源`_ 获取更多信息。
+:doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的新功能之一。 参考 `附录资源`_ 获取更多信息。
 
 打开 ``Movies`` controller 并查看两个 ``Edit`` 方法：
 
@@ -92,7 +95,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
  :lines: 328-361
 
 
-``[Bind]`` 特性是防止 `over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你只需要在你想要改变的中的属性上使用 ``[Bind]``。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供另一个方法来防止over-posting。
+``[Bind]`` 特性是防止 `over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你应该只把需要改变的属性包含到 ``[Bind]``  特性中。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供了另一种防止 over-posting 的方法。
 
 
 请注意带第二个 ``Edit`` 方法被 ``[HttpPost]`` 特性所修饰。
