@@ -119,7 +119,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
  :lines: 68-82
  :dedent: 8
 
-当搭建的系统创建 Edit 视图的时候，他会检查 ``Movie`` 类并创建代码使用 ``<label>`` 以及 ``<input>`` 元素来来呈现类的每一个属性。下面的代码展示了 visual studio 脚手架工具生成的 Edit 视图：
+在基架系统创建 Edit 视图的时候，会检查 Movie 类并为它的每个属性生成代码以呈现 ``<label>`` 和 ``<input>`` 元素。下面的例子展示了 Visual Studio 基架系统生成的 Edit 视图：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/EditCopy.cshtml
   :language: HTML
