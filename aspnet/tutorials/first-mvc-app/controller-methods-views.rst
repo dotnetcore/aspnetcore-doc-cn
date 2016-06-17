@@ -5,7 +5,7 @@ Controller 方法与视图
 
 翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_
 
-校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、`许登洋(Seay) <https://github.com/SeayXu>`_ 、`姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_ 、 `娄宇(Lyrics) <https://github.com/xbuilder>`_
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、`许登洋(Seay) <https://github.com/SeayXu>`_ 、`姚阿勇(Dr.Yao) <https://github.com/YaoaY>`_ 、 `娄宇(Lyrics) <https://github.com/xbuilder>`_
  
 我们已经初步的创建了一个 movie 应用程序，但是展示并不理想。我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词。
 
