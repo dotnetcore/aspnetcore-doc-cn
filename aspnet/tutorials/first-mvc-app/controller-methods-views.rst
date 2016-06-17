@@ -45,7 +45,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
 
 .. TODO next version replace DataAnnotations links below with ASP.NET 5 version
 
-我们会在下一篇文章中继续发掘 `DataAnnotations <http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 的内容。 `Display <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx>`__ 标签用来指定字段的显示名 (在本示例中 "Release Date" 会替代 "ReleaseDate")。  `DataType <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx>`__ 属性制定数据类型，在本示例是日期类型，所以字段中存储的时间信息不会被显示。
+我们会在下一篇文章中继续发掘 `DataAnnotations <http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 的内容。 `Display <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx>`__ 标签用来指定字段的显示名 （在本示例中 "Release Date" 会替代 "ReleaseDate"）。  `DataType <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx>`__ 属性指定数据类型，在本示例是日期类型，所以字段中存储的时间信息不会被显示。
 
 浏览 ``Movies`` 控制器并把鼠标悬停于 **Edit** 链接上可以看到目标 URL。
 
@@ -53,7 +53,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
 
 .. TODO move dave's A TH article to docs.asp.net - DP has agreed
 
-**Edit**、**Details** 以及 **Delete** 会由 *Views/Movies/Index.cshtml* 文件中的 MVC Core Anchor Tag Helper 自动生成。
+**Edit**、**Details** 以及 **Delete** 链接是由 *Views/Movies/Index.cshtml* 文件中的 MVC Core Anchor Tag Helper 自动生成的。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/IndexOriginal.cshtml
   :language: HTML
@@ -65,7 +65,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
 
 .. image:: controller-methods-views/_static/f12.png
 
-在 *Startup.cs* 文件中回调路由设置。
+在 *Startup.cs* 文件中设置回调路由格式。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -160,7 +160,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 .. image:: controller-methods-views/_static/val.png
 
-movie controller 的所有 HttpGet 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``)， 把对象 (模型) 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。所有的如：创建、编辑、删除或者其他的修改数据的方法，在不同的 ``[HttpPost]`` 方法重载中执行。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
+movie controller 的所有 HttpGet 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``)， 把对象 (模型) 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。诸如 Create、Edit、Delete 等之类的会修改数据的方法都会在 ``[HttpPost]`` 版本的重载方法中这样做（*译者注* 执行类似于前文所述的这些操作）。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
 
 附录资源 
 -----------------------
