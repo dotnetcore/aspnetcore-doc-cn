@@ -95,7 +95,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
  :lines: 328-361
 
 
-``[Bind]`` 特性是防止 `over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你只需要在你想要改变的中的属性上使用 ``[Bind]``。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供另一个方法来防止over-posting。
+``[Bind]`` 特性是防止 `over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你应该只把需要改变的属性包含到 ``[Bind]``  特性中。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供了另一种防止 over-posting 的方法。
 
 
 请注意带第二个 ``Edit`` 方法被 ``[HttpPost]`` 特性所修饰。
