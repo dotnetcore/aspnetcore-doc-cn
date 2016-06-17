@@ -3,14 +3,10 @@ Controller 方法与视图
 
 作者 `Rick Anderson`_
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_ 
+翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_
 
-校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、`许登洋(Seay) <https://github.com/SeayXu>`_ 、`姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_ 、 `娄宇(Lyrics) <https://github.com/xbuilder>`_
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_ 、`张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、`许登洋(Seay) <https://github.com/SeayXu>`_ 、`姚阿勇(Dr.Yao) <https://github.com/YaoaY>`_ 、 `娄宇(Lyrics) <https://github.com/xbuilder>`_
  
- 
- 
- 
-
 我们已经初步的创建了一个 movie 应用程序，但是展示并不理想。我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词。
 
 .. image:: working-with-sql/_static/m55.png
@@ -73,7 +69,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
   :dedent: 12
   :emphasize-lines: 5
 
-ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 ``Movies`` controller 的 ``Edit`` 方法的请求并带上值为4 的 ``ID`` 参数。 (Controller 方法其实就是指代 action 方法。)
+ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 ``Movies`` controller 的 ``Edit`` 方法的请求并带上值为4 的 ``ID`` 参数。（Controller 方法其实就是指代 action 方法。）
 
 :doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的新功能之一。 参考 `附录资源`_ 获取更多信息。
 
@@ -139,7 +135,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
   :emphasize-lines: 1,6,10,17,24, 28
 
  
-``HTML <form>`` 中的 ``<input>`` 的元素的 ``action`` 属性用于设置请求发送到 ``/Movies/Edit/id``  URL. 当点击 ``Save`` 按钮时表单数据会被发送到服务器 . 在 ``</form>``  元素关闭前最后一行 ``</form>`` 展示了 `XSRF <:doc:/security/anti-request-forgery>`__ 生成的隐藏域标识。
+``HTML <form>`` 中的 ``<input>`` 的元素的 ``action`` 属性用于设置请求发送到 ``/Movies/Edit/id``  URL。当点击 ``Save`` 按钮时表单数据会被发送到服务器。 在 ``</form>``  元素关闭前最后一行 ``</form>`` 展示了 `XSRF <:doc:/security/anti-request-forgery>`__ 生成的隐藏域标识。
 
 处理 POST 请求
 --------------------------------------
@@ -160,7 +156,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 .. image:: controller-methods-views/_static/val.png
 
-movie controller 的所有 HttpGet 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``)， 把对象 (模型) 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。诸如 Create、Edit、Delete 等之类的会修改数据的方法都会在 ``[HttpPost]`` 版本的重载方法中这样做（*译者注* 执行类似于前文所述的这些操作）。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
+movie controller 的所有 ``HttpGet`` 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``）， 把对象(模型） 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。诸如 Create、Edit、Delete 等之类的会修改数据的方法都会在 ``[HttpPost]`` 版本的重载方法中这样做(*译者注* 执行类似于前文所述的这些操作）。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
 
 附录资源 
 -----------------------
