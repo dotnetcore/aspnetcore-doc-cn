@@ -70,7 +70,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
   :dedent: 12
   :emphasize-lines: 5
 
-ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 ``Movies`` controller 的 ``Edit`` 方法的请求并带上值为4 的 ``ID`` 参数。 (Controller 方法其实就是指带 action 方法。)
+ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 ``Movies`` controller 的 ``Edit`` 方法的请求并带上值为4 的 ``ID`` 参数。 (Controller 方法其实就是指代 action 方法。)
 
 :doc:`/mvc/views/tag-helpers/index` 是 ASP.NET Core 中最受欢迎的功能之一。 参考 `附录资源`_ 获取更多信息。
 
@@ -92,7 +92,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
  :lines: 328-361
 
 
- ``[Bind]`` 特性是防止`over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你只需要在你想要改变的中的属性上使用 ``[Bind]``。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供另一个方法来防止over-posting。
+``[Bind]`` 特性是防止 `over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ (过度提交，客户端可能发送比期望还多的数据，比如只需要2个属性但是发送了3个属性)的一种方法。你只需要在你想要改变的中的属性上使用 ``[Bind]``。请参阅 `Protect your controller from over-posting <http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost>`__ 获取更多信息， `ViewModels <http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/>`__  提供另一个方法来防止over-posting。
 
 
 请注意带第二个 ``Edit`` 方法被 ``[HttpPost]`` 特性所修饰。
@@ -127,9 +127,9 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 你会注意到为什么视图模版文件的顶部会有一行 ``@model MvcMovie.Models.Movie`` 声明呢？ — 因为这个声明指定这个视图模版的模型期待的类型是 ``Movie`` 。
 
-基架生成的代码使用几个 Tag Helper 方法来简化 HTML 标记。 - :doc:`Label Tag Helper </mvc/views/working-with-forms>` 用来显示字段名 ("Title"、"ReleaseDate"、"Genre" 或者 "Price")。:doc:`Input Tag Helper </mvc/views/working-with-forms>` 用来呈现 HTML ``<input>`` 元素。 :doc:`Validation Tag Helper </mvc/views/working-with-forms>` 显示关联到属性的的错误信息。
+基架生成的代码使用几个 Tag Helper 方法来简化 HTML 标记。 :doc:`Label Tag Helper </mvc/views/working-with-forms>` 用来显示字段名 ("Title"、"ReleaseDate"、"Genre" 或者 "Price")。:doc:`Input Tag Helper </mvc/views/working-with-forms>` 用来呈现 HTML ``<input>`` 元素。 :doc:`Validation Tag Helper </mvc/views/working-with-forms>` 显示关联到属性的的错误信息。
 
-运行应用程序并导航到 ``/ Movies`` URL。单击 **编辑** 链接。在浏览器中查看该页面的源代码。为 ``<form>`` 元素生成的 HTML 如下所示。
+运行应用程序并导航到 ``/Movies`` URL。单击 **编辑** 链接。在浏览器中查看该页面的源代码。为 ``<form>`` 元素生成的 HTML 如下所示。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Shared/edit_view_source.html
   :language: HTML
@@ -157,7 +157,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 .. image:: controller-methods-views/_static/val.png
 
-movie controller 的所有 HttpGet 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``)， 把对象 (模型) 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。所有的如 创建、编辑、删除、或者其他的修改数据的方法 在不同的  ``[HttpPost]`` 方法重载中执行。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
+movie controller 的所有 HttpGet 方法都遵循类似的模式。 它们获取一个对象(或者对象列表，比如 ``Index``)， 把对象 (模型) 传递到视图。 ``Create`` 方法创建一个空的对象到 ``Create`` 视图。所有的如：创建、编辑、删除或者其他的修改数据的方法，在不同的 ``[HttpPost]`` 方法重载中执行。在 HTTP GET 方法中修改数据有安全风险，参考 `ASP.NET MVC 提示 #46 – 不要使用删除链接，因为他们制造安全漏洞 <http://stephenwalther.com/blog/archive/2009/01/21/asp.net-mvc-tip-46-ndash-donrsquot-use-delete-links-because.aspx>`__ 。在 ``HTTP GET`` 方法中修改数据同样也违反 HTTP 最佳实践以及 `REST <http://rest.elkstein.org/>`__ 架构模式, 其中规定 GET 请求不应该更改应用程序的状态。换句话说，执行 GET 操作应该是没有任何副作用，不会修改您的持久化的数据。
 
 附录资源 
 -----------------------
