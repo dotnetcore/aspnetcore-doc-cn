@@ -154,7 +154,7 @@ WebListener
 
 WebListener是ASP.NET Core的Windows专用HTTP服务器。它直接运行在`Http.Sys kernel driver <http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture>`_ 之上，并且具有非常小的开销。
 
-您可以通过在*project.json*里面添加"Microsoft.AspNet.Server.WebListener"依赖以及下面的命令让你的ASP.NET应用程序支持WebListener：
+您可以通过在 *project.json* 里面添加 "Microsoft.AspNet.Server.WebListener" 依赖以及下面的命令让你的 ASP.NET 应用程序支持 WebListener：
 
 .. code-block:: javascript
 
