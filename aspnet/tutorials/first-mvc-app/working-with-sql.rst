@@ -9,7 +9,7 @@ Working with SQL Server LocalDB
 
  The ``ApplicationDbContext`` class handles the task of connecting to the database and mapping ``Movie`` objects to database records. The database context is registered with the :doc:`Dependency Injection  </fundamentals/dependency-injection>` container in the ``ConfigureServices`` method in the *Startup.cs* file:
 
-``ApplicationDbContext`` 类负责连接数据库并将 ``Movie`` 对象和数据记录进行映射。 *Startup.cs* 文件中，数据库上下文是在 ``ConfigureServices`` 方法中用 :doc:`Dependency Injection  </fundamentals/dependency-injection>` 容器进行注入的。
+``ApplicationDbContext`` 类负责连接数据库并将 ``Movie`` 对象和数据记录进行映射。 *Startup.cs* 文件中，数据库上下文是在 ``ConfigureServices`` 方法中用 :doc:`Dependency Injection  </fundamentals/dependency-injection>` 容器进行注册的。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
