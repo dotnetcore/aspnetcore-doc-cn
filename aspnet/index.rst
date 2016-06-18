@@ -8,11 +8,11 @@
 ASP.NET Core Documentation 
 ==========================
 
-.. attention:: ASP.NET 5 has been renamed to ASP.NET Core 1.0. Read `more <https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/>`_.
+.. attention:: ASP.NET 5 已更名为 ASP.NET Core 1.0。更多信息请点击 `此处 <https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/>`_ 。
 
 .. include:: ../common/stub-overview.txt
 
-Topics
+目录
 ------
 
 .. toctree::
@@ -36,7 +36,7 @@ Topics
     contribute/index
     
 
-Related Resources
+相关资源
 -----------------
 
 * `.NET Core`_
