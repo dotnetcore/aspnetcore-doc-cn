@@ -3,7 +3,7 @@
 
 作者 `Rick Anderson`_
 
-翻译 `谢炀(Kiler)<https://github.com/kiler398>`_
+翻译 `谢炀(Kiler) <https://github.com/kiler398>`_
 
 校对 `许登洋(Seay) <https://github.com/SeayXu>`_、`高嵩(Jack) <https://github.com/jack2gs>`_
 
