@@ -4,6 +4,8 @@
 Adding a controller
 ==================================================
 
+原文 `Adding a controller <https://docs.asp.net/en/latest/tutorials/first-mvc-app/adding-controller.html>`_
+
 作者： `Rick Anderson`_
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_

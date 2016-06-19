@@ -3,9 +3,11 @@ Adding Search
 添加搜索
 ==================================================
 
-作者 `Rick Anderson`_ 
+原文 `Adding Search <https://docs.asp.net/en/latest/tutorials/first-mvc-app/search.html>`_
 
-翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
+作者 `Rick Anderson`_
+
+翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
 校对：  `谢炀（Kiler） <https://github.com/kiler398/>`_ 、 `张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、  `孟帅洋(书缘)  <https://github.com/mengshuaiyang>`_ 、`高嵩 <https://github.com/jack2gs>`_
 
