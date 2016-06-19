@@ -52,7 +52,7 @@ The ``s => s.Title.Contains()`` code above is a `Lambda Expression <http://msdn.
 
 .. Note:: The `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ method is run on the database, not the c# code above. On the database, `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ maps to `SQL LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__, which is case insensitive.
 
-..Note:: `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法是在数据库中运行的，并非在上面的 C# 代码中。在数据库中， `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法被翻译为不区分大小写的 `SQL LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__ 脚本。
+.. Note:: `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法是在数据库中运行的，并非在上面的 C# 代码中。在数据库中， `Contains <http://msdn.microsoft.com/en-us/library/bb155125.aspx>`__ 方法被翻译为不区分大小写的 `SQL LIKE <http://msdn.microsoft.com/en-us/library/ms179859.aspx>`__ 脚本。
 
 
 运行应用程序，并导航到 ``/Movies/Index``，在 URL 后面添加一个查询字符串，例如 ``?searchString=ghost``，被过滤后的电影列表如下：
@@ -164,12 +164,12 @@ If you add this method, the action invoker would match the ``[HttpPost] Index`` 
 
 .. image:: search/_static/fo.png
 
-然而，尽管添加了 ``[HttpPost]`` 版的 ``Index`` 方法，在实现的时候仍然存在一些局限性。设想你想将一个比较详细的查询添加书签，或者你想将查询结果以链接形式发送给朋友以便于你的朋友可以看到同样的过滤结果的电影，注意观察 HTTP POST 请求的时候，URL 是没有改变的（仍然是 localhost:xxxxx/Movies/Index），这个地址本身不包含查询信息。现在，查询信息是作为  `表单数据 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 发送到服务器的，你可以通过 `F12 开发者工具 <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ 或者优秀的抓包工具 `Fiddler tool <http://www.telerik.com/fiddler>`__。  `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ 来验证。
+然而，尽管添加了 ``[HttpPost]`` 版的 ``Index`` 方法，在实现的时候仍然存在一些局限性。设想你想将一个比较详细的查询添加书签，或者你想将查询结果以链接形式发送给朋友以便于你的朋友可以看到同样的过滤结果的电影，注意观察 HTTP POST 请求的时候，URL 是没有改变的（仍然是 localhost:xxxxx/Movies/Index），这个地址本身不包含查询信息。现在，查询信息是作为  `表单数据 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 发送到服务器的，你可以通过 `F12 开发者工具 <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ 或者优秀的抓包工具 `Fiddler tool <http://www.telerik.com/fiddler>`__。  `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ ：
 
 However, even if you add this ``[HttpPost]`` version of the ``Index`` method, there's a limitation in how this has all been implemented. Imagine that you want to bookmark a particular search or you want to send a link to friends that they can click in order to see the same filtered list of movies. Notice that the URL for the HTTP POST request is the same as the URL for the GET request (localhost:xxxxx/Movies/Index) -- there's no search information in the URL. The search string information is sent to the server as a `form field value <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__. You can verify that with the `F12 Developer tools <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ or the excellent `Fiddler tool <http://www.telerik.com/fiddler>`__. Start the `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__:
 
 
-选择 **http://localhost:xxx/Movies  HTTP POST 200** 行点击 **Body  > Request Body**.
+选择 **http://localhost:xxx/Movies  HTTP POST 200** 行点击 **Body  > Request Body**。
 
 .. image:: search/_static/f12_rb.png
 
