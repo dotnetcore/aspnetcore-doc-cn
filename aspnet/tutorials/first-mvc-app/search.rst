@@ -7,7 +7,7 @@ Adding Search
 
 翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
 
-校对：  `谢炀（Kiler） <https://github.com/kiler398/>`_  `张仁建(第二年.夏) <https://github.com/stoneniqiu>`_  `孟帅洋(书缘)  <https://github.com/mengshuaiyang>`_ 
+校对：  `谢炀（Kiler） <https://github.com/kiler398/>`_  `张仁建(第二年.夏) <https://github.com/stoneniqiu>`_   `孟帅洋(书缘)  <https://github.com/mengshuaiyang>`_ 
 
 
 在本节中，你可以为 ``Index`` 方法添加查询功能，使其能够根据电影的 *genre* 或 *name* 进行查找。
