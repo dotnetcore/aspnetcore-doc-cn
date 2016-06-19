@@ -1,15 +1,16 @@
-﻿Adding a view             
+﻿Adding a view
 ================================================
 
 添加视图
 ===================
 
-作者： `Rick Anderson`_ 
+原文 `Adding a view <https://docs.asp.net/en/latest/tutorials/first-mvc-app/adding-view.html>`_
 
-翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
+作者： `Rick Anderson`_
+
+翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
 校对： `赵亮(悲梦)   <https://github.com/BeiMeng>`_ 、 `高嵩(Jack)   <https://github.com/jack2gs>`_ 、 `娄宇(Lyrics) <https://github.com/xbuilder>`_ 、 `许登洋(Seay) <https://github.com/SeayXu>`_ 、 `姚阿勇（Dr.Yao） <https://github.com/YaoaY>`_
-  
 
 In this section you're going to modify the ``HelloWorldController`` class to use Razor view template files to cleanly encapsulate the process of generating HTML responses to a client.
 

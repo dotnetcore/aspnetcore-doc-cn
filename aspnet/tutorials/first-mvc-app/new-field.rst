@@ -1,6 +1,8 @@
 添加新的字段
 ================================================
 
+原文 `Adding a New Field <https://docs.asp.net/en/latest/tutorials/first-mvc-app/new-field.html>`_
+
 作者 `Rick Anderson`_
 
 翻译 `谢炀(Kiler) <https://github.com/kiler398>`_
@@ -14,7 +16,7 @@
 添加一个 Rating 字段到 Movie 模型
 ---------------------------------------------
 
-打开 *Models/Movie.cs* 文件添加一个 ``Rating`` 属性：
+打开 *Models/Movie.cs* 文件，添加一个 ``Rating`` 属性：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/MovieDateRating.cs
   :language: c#

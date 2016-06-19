@@ -1,6 +1,8 @@
 Controller 方法与视图
 ==================================================
 
+原文 `Controller methods and views <https://docs.asp.net/en/latest/tutorials/first-mvc-app/controller-methods-views.html>`_
+
 作者 `Rick Anderson`_
 
 翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_
