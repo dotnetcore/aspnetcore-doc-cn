@@ -41,7 +41,6 @@
 + [张剑](https://github.com/garfieldzf8)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
 + [张善友](https://github.com/geffzhang)
-+ [张硕(Apple)](https://github.com/dotnetcore)
 + [赵亮(悲梦)](https://github.com/BeiMeng)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
 
