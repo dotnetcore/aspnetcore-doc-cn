@@ -3,12 +3,13 @@
 
 作者 `Rick Anderson`_
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_  
+翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_
 
+校对 `许登洋(Seay) <https://github.com/SeayXu>`_
 
 在这个章节你将使用 `Entity Framework <http://docs.efproject.net/en/latest/platforms/aspnetcore/new-db.html>`__ Code First 迁移模型中新加的字段，从而将模型字段变更同步到数据库。
 
-当你使用 EF Code First 模式自动创建一个数据库， Code First 模式添加到数据库的表将帮助你来跟踪数据库的数据结构是否和从它生成的模型类是同步的。 如果不同步， EF 会抛出异常。这将有助于你在开发阶段就发现错误，否则可能要到运行时才能发现这个错误了 (通过一个很隐蔽的错误信息)。
+当你使用 EF Code First 模式自动创建一个数据库，Code First 模式添加到数据库的表将帮助你来跟踪数据库的数据结构是否和从它生成的模型类是同步的。如果不同步，EF 会抛出异常。这将有助于你在开发阶段就发现错误，否则可能要到运行时才能发现这个错误了（通过一个很隐蔽的错误信息）。
 
 添加一个 Rating 字段到 Movie 模型
 ---------------------------------------------
@@ -21,9 +22,9 @@
   :dedent: 4
   :emphasize-lines: 11
 
-生成应用程序 (Ctrl+Shift+B) 。
+生成应用程序（Ctrl+Shift+B）。
 
-因为你已经在 ``Movie`` 类添加了一个新的字段，你还需要更新绑定的白名单，这样这个新的属性将包括在内。 为了 ``Create`` 和 ``Edit`` 行为方法包含 ``Rating`` 属性需要更新 ``[Bind]`` 属性：
+因为你已经在 ``Movie`` 类添加了一个新的字段，你还需要更新绑定的白名单，这样这个新的属性将包括在内。为了 ``Create`` 和 ``Edit`` 行为方法包含 ``Rating`` 属性需要更新 ``[Bind]`` 属性：
 
 .. code-block:: c#
 
@@ -46,7 +47,7 @@
 
 .. image:: new-field/_static/se.png
 
-你会看到这个错误是因为更新过 Movie 模型类与数据库中存在的 Movie 的结构是不同的。(数据库表中没有 Rating 列)
+你会看到这个错误是因为更新过 Movie 模型类与数据库中存在的 Movie 的结构是不同的。（数据库表中没有 Rating 列）
 
 有以下几种方法解决这个错误：
 
@@ -56,7 +57,7 @@
 
 #. 采用 Code First 迁移来更新数据库结构。
 
-对于本教程, 我们采用 Code First 迁移。
+对于本教程，我们采用 Code First 迁移。
 
 更新 ``SeedData`` 类以便于为新的的字段提供填充值。下面展示一个变更的例子，但是你想使每个 ``new Movie`` 都应用这个变更。
 
@@ -76,6 +77,6 @@
 ``migrations add`` 命令通知数据库迁移框架检查 ``Movie`` 模型是否当前 ``Movie`` 数据库表结构一致，如果不一致，就会创建新的必要的代码把数据库迁移到新的模型。"Rating" 名字可以是任意的，只是用于迁移文件。对于迁移操作采用有意义的名字是有帮助的。
 
 
-如果在数据库中删除所有记录，数据库将会被初始化并添加 ``Rating`` 字段。你可以在浏览器或者 SSOX （貌似微软的一个 VPN 移动应用，译者注）中点击删除链接。
- 
+如果在数据库中删除所有记录，数据库将会被初始化并添加 ``Rating`` 字段。你可以在浏览器或者 SSOX （ *译者注：* 貌似微软的一个 VPN 移动应用）中点击删除链接。
+
 运行应用程序并验证您可以用 ``Rating`` 创建/编辑/显示电影。你还应该将 ``Rating`` 字段添加到 ``Edit``、``Details`` 和 ``Delete`` 视图模板中。
