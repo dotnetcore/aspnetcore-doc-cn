@@ -5,7 +5,7 @@
 
 翻译 `谢炀(kiler398) <https://github.com/kiler398>`_
 
-校对：`孟帅洋(书缘) <https://github.com/mengshuaiyang>`_
+校对 `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_
 
 在本章节中你将为 ``Movie`` 模型类添加验证，以确保任何用户试图用该应用程序创建或编辑影片数据时执行验证规则。
  
