@@ -1,17 +1,18 @@
 ASP.NET Core MVC 和 Visual Studio 入门
 ======================================
 
-Getting started with ASP.NET Core MVC and Visual Studio 
+Getting started with ASP.NET Core MVC and Visual Studio
 =======================================================
 
+原文 `Getting started with ASP.NET Core MVC and Visual Studio <https://docs.asp.net/en/latest/tutorials/first-mvc-app/start-mvc.html>`_
 
 作者： `Rick Anderson`_
 
 翻译： `娄宇(Lyrics) <https://github.com/xbuilder>`_
 
-校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`夏申斌 <https://github.com/xiashenbin>`_ 、`张硕(Apple) <#>`_ 
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_ 、`夏申斌 <https://github.com/xiashenbin>`_ 、`张硕(Apple) <#>`_
 
-This tutorial will teach you the basics of building an ASP.NET Core MVC  web app using `Visual Studio 2015 <https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx>`__. 
+This tutorial will teach you the basics of building an ASP.NET Core MVC  web app using `Visual Studio 2015 <https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx>`__.
 
 这篇教程将告诉你如何使用 `Visual Studio 2015 <https://www.visualstudio.com/zh-cn/visual-studio-homepage-vs.aspx>`__ 构建一个 ASP.NET Core MVC Web 应用程序的基础知识。
 

@@ -1,5 +1,9 @@
 @font-face {
-    font-family: 'wf_segoe-ui_light';
+    font-family: 'wf_segoe-ui_light';src: url('//at.alicdn.com/t/pbdnwiur2ju4n29.eot'); 
+    src: url('//at.alicdn.com/t/pbdnwiur2ju4n29.eot?#iefix') format('embedded-opentype'), 
+    url('//at.alicdn.com/t/pbdnwiur2ju4n29.woff') format('woff'), 
+    url('//at.alicdn.com/t/pbdnwiur2ju4n29.ttf') format('truetype'), 
+    url('//at.alicdn.com/t/pbdnwiur2ju4n29.svg#NotoSansHans-DemiLight') format('svg'); 
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot");
     src: local("Segoe UI Light"), local("Segoe WP Light"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype");
     font-weight: normal;
@@ -8,6 +12,11 @@
 }
 @font-face {
     font-family: 'wf_segoe-ui_normal';
+    src: url('//at.alicdn.com/t/15yfexywgr0e8kt9.eot');
+    src: url('//at.alicdn.com/t/15yfexywgr0e8kt9.eot?#iefix') format('embedded-opentype'), 
+    url('//at.alicdn.com/t/15yfexywgr0e8kt9.woff') format('woff'),
+ 	url('//at.alicdn.com/t/15yfexywgr0e8kt9.ttf') format('truetype'), 
+    url('//at.alicdn.com/t/15yfexywgr0e8kt9.svg#思源黑体-粗') format('svg');
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot");
     src: local("Segoe UI"), local("Segoe"), local("Segoe WP"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.ttf") format("truetype");
     font-weight: normal;
@@ -15,6 +24,11 @@
 }
 @font-face {
     font-family: 'wf_segoe-ui_semibold';
+    src: url('//at.alicdn.com/t/8kv5ambdubvmfgvi.eot');
+    src: url('//at.alicdn.com/t/8kv5ambdubvmfgvi.eot?#iefix') format('embedded-opentype'), 
+    url('//at.alicdn.com/t/8kv5ambdubvmfgvi.woff') format('woff'), 
+    url('//at.alicdn.com/t/8kv5ambdubvmfgvi.ttf') format('truetype'),
+    url('//at.alicdn.com/t/8kv5ambdubvmfgvi.svg#NotoSansHans-Black') format('svg');
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/Semibold/latest.eot");
     src: local("Segoe UI Semibold"), local("Segoe Semibold"), local("Segoe WP Semibold"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/Semibold/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/Semibold/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/Semibold/latest.ttf") format("truetype");
     font-weight: normal;
@@ -22,6 +36,11 @@
 }
 @font-face {
     font-family: 'wf_segoe-ui_semilight';
+    src: url('//at.alicdn.com/t/9llcsoeie572pgb9.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/9llcsoeie572pgb9.eot?#iefix') format('embedded-opentype'), 
+    url('//at.alicdn.com/t/9llcsoeie572pgb9.woff') format('woff'),
+    url('//at.alicdn.com/t/9llcsoeie572pgb9.ttf') format('truetype'), 
+    url('//at.alicdn.com/t/9llcsoeie572pgb9.svg#思源黑体-极细') format('svg'); 
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/semilight/latest.eot");
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/semilight/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/semilight/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/semilight/latest.ttf") format("truetype");
     font-weight: normal;
@@ -29,6 +48,11 @@
 }
 @font-face {
     font-family: 'wf_segoe-ui_bold';
+    src: url('//at.alicdn.com/t/15yfexywgr0e8kt9.eot');
+    src: url('//at.alicdn.com/t/15yfexywgr0e8kt9.eot?#iefix') format('embedded-opentype'), 
+    url('//at.alicdn.com/t/15yfexywgr0e8kt9.woff') format('woff'),
+ 	url('//at.alicdn.com/t/15yfexywgr0e8kt9.ttf') format('truetype'), 
+    url('//at.alicdn.com/t/15yfexywgr0e8kt9.svg#思源黑体-粗') format('svg');
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/bold/latest.eot");
     src: url("https://i.s-microsoft.com/fonts/segoe-ui/west-european/bold/latest.eot?#iefix") format("embedded-opentype"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/bold/latest.woff") format("woff"), url("//i.s-microsoft.com/fonts/segoe-ui/west-european/bold/latest.ttf") format("truetype");
     font-weight: normal;
@@ -80,8 +104,12 @@ h1, h2, h3, h4, h5, h6, legend {
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 26px;
   color: #222222;
+}
+
+h2 {
+  font-size: 22px;
 }
 
 a {
@@ -89,7 +117,7 @@ a {
 }
 
 p {
-  font-size: 13px;
+  /*font-size: 16px;*/
   color: #505050;
 }
 
@@ -188,7 +216,7 @@ a, a:link, a:visited { color: #2b59a9; }
 .rst-content h1,
 .rst-content h1 .headerlink
 {
-    font-size: 28px;
+    font-size: 33px;
     color: #222222;
     font-weight: 400
 }
@@ -200,7 +228,7 @@ a, a:link, a:visited { color: #2b59a9; }
 }
 
 .rst-content {
-    font-size: 13px;
+    font-size: 16px;
     font-family: wf_segoe-ui_normal, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 

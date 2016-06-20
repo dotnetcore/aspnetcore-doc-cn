@@ -51,7 +51,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ASP.NET WebHooks'
-copyright = str(datetime.date.today().year) + ', Microsoft'
+copyright = str(datetime.date.today().year) + ', Microsoft. Translated by dotNET Core Studying Group'
 author = 'Microsoft'
 
 # The version info for the project you're documenting, acts as replacement for

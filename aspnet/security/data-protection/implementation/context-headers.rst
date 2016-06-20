@@ -3,7 +3,14 @@
 Context headers
 ===============
 
+翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对： 
+
 Background and theory
+---------------------
+
+背景与理论
 ---------------------
 
 In the data protection system, a "key" means an object that can provide authenticated encryption services. Each key is identified by a unique id (a GUID), and it carries with it algorithmic information and entropic material. It is intended that each key carry unique entropy, but the system cannot enforce that, and we also need to account for developers who might change the key ring manually by modifying the algorithmic information of an existing key in the key ring. To achieve our security requirements given these cases the data protection system has a concept of `cryptographic agility <http://research.microsoft.com/apps/pubs/default.aspx?id=121045>`_, which allows securely using a single entropic value across multiple cryptographic algorithms.
@@ -16,6 +23,9 @@ We use this concept of strong PRPs and PRFs to build up a context header. This c
 
 
 CBC-mode encryption + HMAC authentication
+-----------------------------------------
+
+CBC 模式加密 + HMAC 认证
 -----------------------------------------
 
 .. _data-protection-implementation-context-headers-cbc-components:
@@ -113,7 +123,12 @@ The components break down as follows:
 Galois/Counter Mode encryption + authentication
 -----------------------------------------------
 
+Galois/Counter 模式加密 + 认证
+-----------------------------------------------
+
 The context header consists of the following components:
+
+上下文 header 由以下组成：
 
 * [16 bits] The value 00 01, which is a marker meaning "GCM encryption + authentication".
 * [32 bits] The key length (in bytes, big-endian) of the symmetric block cipher algorithm.
@@ -131,9 +146,13 @@ Example: AES-256-GCM
 
 First, let K\ :sub:`E` = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = ""), where | K\ :sub:`E` | = 256 bits.
 
+首先，假设 K\ :sub:`E` = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "") ，其中 | K\ :sub:`E` | = 256 bits 。
+
 K\ :sub:`E` := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
 
 Next, compute the authentication tag of Enc\ :sub:`GCM` (K\ :sub:`E`, nonce, "") for AES-256-GCM given nonce = 096 and K\ :sub:`E` as above.
+
+接着为 AES-256-GCM 计算 Enc\ :sub:`GCM` (K\ :sub:`E`, nonce, "") 的身份验证标签，其中 nonce = 096， K\ :sub:`E`，如上所述。
 
 result := E7DCCE66DF855A323A6BB7BD7A59BE45
 
@@ -143,6 +162,12 @@ This produces the full context header below::
   00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
   BE 45
 
+这将产生完整的 context header，如下::
+
+  00 01 00 00 00 20 00 00 00 0C 00 00 00 10 00 00
+  00 10 E7 DC CE 66 DF 85 5A 32 3A 6B B7 BD 7A 59
+  BE 45
+  
 The components break down as follows:
 
  * the marker (00 01)
@@ -151,3 +176,12 @@ The components break down as follows:
  * the block cipher block size (00 00 00 10)
  * the authentication tag size (00 00 00 10) and 
  * the authentication tag from running the block cipher (E7 DC - end).
+
+分解说明：
+
+ * 特征标记 (00 01)；
+ * 块密钥长度 (00 00 00 20)；
+ * 随机数尺寸 (00 00 00 0C)；
+ * 块密码块尺寸 (00 00 00 10)；
+ * 身份验证标签尺寸 (00 00 00 10)；
+ * 来自运行的块密钥的身份验证标签 (E7 DC - end)。

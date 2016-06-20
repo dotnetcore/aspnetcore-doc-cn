@@ -4,6 +4,8 @@
 Adding a model
 ==================================================
 
+原文 `Adding a model <https://docs.asp.net/en/latest/tutorials/first-mvc-app/adding-model.html>`_
+
 作者： `Rick Anderson`_
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_

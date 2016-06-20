@@ -1,17 +1,20 @@
 
-Examining the Details and Delete methods
+检查自动生成的Detail方法和Delete方法
 ======================================================
 
-By `Rick Anderson`_
+作者 `Rick Anderson`_
 
-Open the Movie controller and examine the ``Details`` method:
+翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_
+
+打开 Movie 控制器并查看 ``Details`` 方法:
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
  :lines: 29-44
  :dedent: 8
 
-The MVC scaffolding engine that created this action method adds a comment showing a HTTP request that invokes the method. In this case it's a GET request with three URL segments, the ``Movies`` controller, the ``Details`` method and a ``id`` value. Recall these segments are defined in Startup.
+创建这个 action 方法的 MVC 基架引擎添加了一条注释给出了会调用这个方法的 HTTP 请求。在这个例子中是一个有三个URL段的GET请求， ``Movies`` 控制器， ``Details`` 方法和 ``id`` 参数值。回顾一下 Startup 里定义的这些段。
+
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -19,29 +22,29 @@ The MVC scaffolding engine that created this action method adds a comment showin
   :dedent: 8
   :emphasize-lines: 5
 
-Code First makes it easy to search for data using the ``SingleOrDefaultAsync`` method. An important security feature built into the method is that the code verifies that the search method has found a movie before the code tries to do anything with it. For example, a hacker could introduce errors into the site by changing the URL created by the links from  *http://localhost:xxxx/Movies/Details/1* to something like  *http://localhost:xxxx/Movies/Details/12345* (or some other value that doesn't represent an actual movie). If you did not check for a null movie, the app would throw an exception.
+代码先行（Code First）模式使用 SingleOrDefaultAsync 方法更易于数据搜索。这个方法包含的一个重要安全功能，就是在代码尝试用电影记录在做任何操作之前确保查找方法已经找到了一条电影记录。例如，黑客可以把链接产生的 URL 从 *http://localhost:xxxx/Movies/Details/1*  改成类似于 *http://localhost:xxxx/Movies/Details/12345* （或者其他非实际电影记录的值），从而给网站带来错误。如果您不检查影片是否为空，应用程序将会抛出异常。
 
-Examine the Delete and DeleteConfirmed methods.
+查看 Delete 方法和 DeleteConfirmed 的方法
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
  :lines: 119-145
  :dedent: 8
 
-Note that the ``HTTP GET Delete`` method doesn't delete the specified movie, it returns a view of the movie where you can submit (HttpPost) the deletion. Performing a delete operation in response to a GET request (or for that matter, performing an edit operation, create operation, or any other operation that changes data) opens up a security hole.
+需要注意的是 ``HTTP GET Delete`` 方法不删除指定的影片，它返回一个你可以提交 (HttpPost) 删除操作的  Movie 的视图。如果在对 GET 请求的响应中执行删除操作（或者编辑，创建，或任何其他更改数据的操作）将会引入一个安全漏洞。
 
-The ``[HttpPost]`` method that deletes the data is named ``DeleteConfirmed`` to give the HTTP POST method a unique signature or name. The two method signatures are shown below:
+真正删除数据的 ``[HttpPost]`` 方法被命名为 ``DeleteConfirmed`` ，使这个 HTTP POST 方法有了唯一的签名或名称。这两个方法的签名如下：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
  :lines: 119-120,135-136,139
  :dedent: 8
 
-The common language runtime (CLR) requires overloaded methods to have a unique parameter signature (same method name but different list of parameters). However, here you need two ``Delete`` methods -- one for GET and one for POST -- that both have the same parameter signature. (They both need to accept a single integer as a parameter.)
+公共语言运行时（CLR）需要重载方法有一个唯一的参数签名（相同的方法名，但不同的参数列表）。然而，在这里你需要两个 ``Delete`` 方法 —— 一个 GET 请求一个 POST 请求 —— 并且它们都具有相同的参数签名。（它们都接受一个整数作为参数）。
 
-There are two approaches to this problem, one is to give the methods different names. That's what the scaffolding mechanism did in the preceding example. However, this introduces a small problem: ASP.NET maps segments of a URL to action methods by name, and if you rename a method, routing normally wouldn't be able to find that method. The solution is what you see in the example, which is to add the ``ActionName("Delete")`` attribute to the ``DeleteConfirmed`` method. That attribute performs mapping for the routing system so that a URL that includes /Delete/ for a POST request will find the ``DeleteConfirmed`` method.
+有两种方案可以解决该问题，其中一种方法是，赋予方法不同的名称。这就是基架机制在前面的例子所做的事情。然而，这引入了一个小问题： ASP.NET 利用名字将 URL 段映射到 action 方法，如果你重命名一个方法，路由通常将无法找到该方法。解决的办法就是你在例子中看到的，就是为 ``DeleteConfirmed`` 方法添加 ``ActionName（"Delete"）`` 特性。该特性为路由系统执行映射，所以一个 POST 请求的包含 /Delete/ 的 URL 会找到 ``DeleteConfirmed`` 的方法。
 
-Another common work around for methods that have identical names and signatures is to artificially change the signature of the POST method to include an extra (unused) parameter. That's what we did in a previous post when we added the ``notUsed`` parameter. You could do the same thing here for the ``[HttpPost] Delete`` method:
+对于具有相同名称和参数签名的方法，另一种常见的的解决办法，是通过人为的改变 POST 方法的签名，即包含一个附加的（未使用）参数。这就是我们在前面文章中已经添加的 ``unused`` 的参数。在这里你可以对 ``[HttpPost] Delete`` 方法采用同样的解决办法：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
