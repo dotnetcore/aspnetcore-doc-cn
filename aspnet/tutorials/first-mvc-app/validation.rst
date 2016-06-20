@@ -12,7 +12,7 @@
 保持DRY原则
 ---------------------
 
-ASP.NET MVC 的核心原则之一是 `DRY <http://en.wikipedia.org/wiki/Don't_repeat_yourself>`__  ("不要重复自己")。ASP.NET MVC 鼓励你只指定一次行为或者功能，然后可以在应用程序里面到处使用，这样大大的减少了需要编写的代码量，从而使你的代码编写不容易出现错误，而且更容易维护。
+ASP.NET MVC 的核心原则之一是 `DRY <http://en.wikipedia.org/wiki/Don't_repeat_yourself>`__  ("不要重复自己")。ASP.NET MVC 鼓励你只指定一次行为或者功能，然后可以在应用程序里面到处使用，这样大大的减少了需要编写的代码量，并且使你编写不容易出错，更容易测试，以及更容易维护的代码。
 
 ASP.NET MVC 和 Entity Framework Core Code First 中的验证功能，是 DRY 原则实际应用的一个很好的实例。你可以在某个位置（模型类）声明指定方式的验证规则，验证规则可以在整个应用程序中生效。
 
