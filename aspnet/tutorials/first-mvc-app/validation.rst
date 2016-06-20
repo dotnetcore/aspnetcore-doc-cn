@@ -21,7 +21,7 @@ ASP.NET MVC 和 Entity Framework Core Code First 中的验证功能，是 DRY �
 向 Movie 模型中添加验证规则
 -------------------------------------------------
 
-打开 *Movie.cs* 文件。DataAnnotations提供了内置的验证属性，你可以对任何类或属性应用。(它也同时提供了一些格式属性比如 ``DataType`` 用来帮你格式化而非验证功能。)
+打开 *Movie.cs* 文件。DataAnnotations 提供了内置的验证属性，你可以对任何类或属性应用。(它也同时提供了一些格式属性比如 ``DataType`` 用来帮你格式化而非验证功能。)
 
 现在修改 ``Movie`` 类，利用内置的 ``Required`` 、 ``StringLength`` 、``RegularExpression`` 以及 ``Range`` 验证属性。
 
