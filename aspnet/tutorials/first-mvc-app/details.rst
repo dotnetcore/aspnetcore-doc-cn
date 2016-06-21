@@ -2,9 +2,13 @@
 检查自动生成的Detail方法和Delete方法
 ======================================================
 
+原文 `Examining the Details and Delete methods <https://docs.asp.net/en/latest/tutorials/first-mvc-app/details.html>`_
+
 作者 `Rick Anderson`_
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_
+翻译 `谢炀(Kiler) <https://github.com/kiler398/>`_
+
+校对 `许登洋(Seay) <https://github.com/SeayXu>`_、`姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_
 
 打开 Movie 控制器并查看 ``Details`` 方法:
 
@@ -14,7 +18,6 @@
  :dedent: 8
 
 创建这个 action 方法的 MVC 基架引擎添加了一条注释给出了会调用这个方法的 HTTP 请求。在这个例子中是一个有三个URL段的GET请求， ``Movies`` 控制器， ``Details`` 方法和 ``id`` 参数值。回顾一下 Startup 里定义的这些段。
-
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Startup.cs
   :language: c#
@@ -40,7 +43,7 @@
  :lines: 119-120,135-136,139
  :dedent: 8
 
-公共语言运行时（CLR）需要重载方法有一个唯一的参数签名（相同的方法名，但不同的参数列表）。然而，在这里你需要两个 ``Delete`` 方法 —— 一个 GET 请求一个 POST 请求 —— 并且它们都具有相同的参数签名。（它们都接受一个整数作为参数）。
+公共语言运行时（CLR）需要重载方法有一个唯一的参数签名（相同的方法名，但不同的参数列表）。然而，在这里你需要两个 ``Delete`` 方法 – 一个 GET 请求一个 POST 请求 – 并且它们都具有相同的参数签名。（它们都接受一个整数作为参数）。
 
 有两种方案可以解决该问题，其中一种方法是，赋予方法不同的名称。这就是基架机制在前面的例子所做的事情。然而，这引入了一个小问题： ASP.NET 利用名字将 URL 段映射到 action 方法，如果你重命名一个方法，路由通常将无法找到该方法。解决的办法就是你在例子中看到的，就是为 ``DeleteConfirmed`` 方法添加 ``ActionName（"Delete"）`` 特性。该特性为路由系统执行映射，所以一个 POST 请求的包含 /Delete/ 的 URL 会找到 ``DeleteConfirmed`` 的方法。
 
