@@ -36,7 +36,7 @@
 
 需要注意的是 ``HTTP GET Delete`` 方法不删除指定的影片，它返回一个你可以提交 (HttpPost) 删除操作的  Movie 的视图。如果在对 GET 请求的响应中执行删除操作（或者编辑，创建，或任何其他更改数据的操作）将会引入一个安全漏洞。
 
-真正删除数据的 ``[HttpPost]`` 方法被命名为 ``DeleteConfirmed`` ，给这个 HTTP POST 方法有了唯一的签名或名称。这两个方法的签名如下：
+真正删除数据的 ``[HttpPost]`` 方法被命名为 ``DeleteConfirmed`` ，给这个 HTTP POST 方法一个唯一的签名或名称。这两个方法的签名如下：
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/MoviesController.cs
  :language: c#
