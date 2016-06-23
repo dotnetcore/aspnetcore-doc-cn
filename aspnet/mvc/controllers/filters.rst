@@ -177,13 +177,23 @@ Global filters are configured within ``Startup.cs``. Attribute-based filters tha
 
 Filters that are implemented as attributes and added directly to controller classes or action methods cannot have constructor dependencies provided by :doc:`dependency injection </fundamentals/dependency-injection>` (DI). This is because attributes must have their constructor parameters supplied where they are applied. This is a limitation of how attributes work.
 
+以特性形式实现的、直接添加到控制器（Controller）类或 Action 方法的过滤器，其构造函数不得由 :doc:`dependency injection </fundamentals/dependency-injection>` （DI）提供依赖项。其原因在于特性所需的构造函数参数必由使用处直接提供。这就是特性原型机理的限制。
+
 However, if your filters have dependencies you need to access from DI, there are several supported approaches. You can apply your filter to a class or action method using
+
+不过，如果过滤器需要从 DI 中获得依赖项，那么有几种办法可以来实现，可在类（class）或 Action 方法使用：
 
 - The `ServiceFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/ServiceFilterAttribute/index.html>`_ 
 - The `TypeFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TypeFilterAttribute/index.html>`_ attribute
 - `IFilterFactory <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/IFilterFactory/index.html>`__ implemented on your attribute
 
+- `ServiceFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/ServiceFilterAttribute/index.html>`_ 
+- `TypeFilterAttribute <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TypeFilterAttribute/index.html>`_ 特性
+- `IFilterFactory <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/IFilterFactory/index.html>`__ 在特性上的实现
+
 A ``TypeFilter`` will instantiate an instance, using services from DI for its dependencies. A ``ServiceFilter`` retrieves an instance of the filter from DI. The following example demonstrates using a ``ServiceFilter``:
+
+``TypeFilter`` 将为其依赖项从 DI 中使用服务（services）来实例化一个实例。``ServiceFilter`` 则从 DI 中取回一个过滤器实例。下例中将演示如何使用 ``ServiceFilter``：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Controllers/HomeController.cs
   :language: c#
@@ -193,12 +203,16 @@ A ``TypeFilter`` will instantiate an instance, using services from DI for its de
 
 Using ``ServiceFilter`` without registering the filter type in ``ConfigureServices``, throws the following exception:
 
+如果在 ``ConfigureServices`` 中直接使用未经注册的 ``ServiceFilter`` 过滤器，则会抛出以下异常：
+
 .. code-block:: c#
 
 	System.InvalidOperationException: No service for type 
 	'FiltersSample.Filters.AddHeaderFilterWithDI' has been registered.
 
 To avoid this exception, you must register the ``AddHeaderFilterWithDI`` type in ``ConfigureServices``:
+
+为避免此异常，你必须在 ``ConfigureServices`` 中为 ``AddHeaderFilterWithDI`` 类型注册：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Startup.cs
   :language: c#
@@ -208,7 +222,15 @@ To avoid this exception, you must register the ``AddHeaderFilterWithDI`` type in
 
 ``ServiceFilterAttribute`` implements ``IFilterFactory``, which exposes a single method for creating an ``IFilter`` instance. In the case of ``ServiceFilterAttribute``, the ``IFilterFactory`` interface's ``CreateInstance`` method is implemented to load the specified type from the services container (DI).
 
+``ServiceFilterAttribute`` 实现了 ``IFilterFactory`` 接口，后者暴露了创建 ``IFilter`` 实例的单一方法。在 ``ServiceFilterAttribute`` 中，接口 ``IFilterFactory`` 中定义的 ``CreateInstance`` 方法被实现为用于从服务容器（DI）加载指定类型。
+
 ``TypeFilterAttribute`` is very similar to ``ServiceFilterAttribute`` (and also implements ``IFilterFactory``), but its type is not resolved directly from the DI container. Instead, it instantiates the type using an `ObjectFactory delegate <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/ObjectFactory/index.html>`_. Because of this difference, types that are referenced using the ``TypeFilterAttribute`` do not need to be registered with the container first (but they will still have their dependencies fulfilled by the container). Also, ``TypeFilterAttribute`` can optionally accept constructor arguments for the type in question. The following example demonstrates how to pass arguments to a type using ``TypeFilterAttribute``:
+
+``TypeFilterAttribute`` 很像 ``ServiceFilterAttribute``（它同样是 ``IFilterFactory`` 的实现），但此类型并非直接解析自 DI 容器。
+相反，它通过使用 `ObjectFactory 委托 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/DependencyInjection/ObjectFactory/index.html>`_ 来实例化类型。
+由于这种不同，使用 ``TypeFilterAttribute`` 引用的类型不需要在使用之前向容器注册（但它们依旧将由容器来填充其依赖项）。
+同样地，``TypeFilterAttribute`` 能可选地接受该类型的构造函数参数。
+下例演示如何向使用 ``TypeFilterAttribute`` 修饰的类型传递参数：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Controllers/HomeController.cs
   :language: c#
@@ -218,6 +240,8 @@ To avoid this exception, you must register the ``AddHeaderFilterWithDI`` type in
 
 If you have a simple filter that doesn't require any arguments, but which has constructor dependencies that need to be filled by DI, you can inherit from ``TypeFilterAttribute``, allowing you to use your own named attribute on classes and methods (instead of ``[TypeFilter(typeof(FilterType))]``). The following filter shows how this can be implemented:
 
+若是你有一个简单的不需要任何参数的、但其构造函数需要通过 DI 填充依赖项的过滤器的话，你可以通过继承 ``TypeFilterAttribute``，在类（class）或方法（method）上使用自己命名的特性（来取代 ``[TypeFilter(typeof(FilterType))]``）。下例过滤器向你展示这是如何实现的：
+
 .. literalinclude:: filters/sample/src/FiltersSample/Filters/SampleActionFilterAttribute.cs
   :language: c#
   :emphasize-lines: 1, 3, 7
@@ -226,11 +250,19 @@ If you have a simple filter that doesn't require any arguments, but which has co
 
 This filter can be applied to classes or methods using the ``[SampleActionFilter]`` syntax, instead of having to use ``[TypeFilter]`` or ``[ServiceFilter]``.
 
+该过滤器可通过使用 ``[SampleActionFilter]`` 这样的语法应用于类或方法，而不必使用 ``[TypeFilter]`` 或 ``[ServiceFilter]``\。
+
 .. note:: Avoid creating and using filters purely for logging purposes, since the :doc:`built-in framework logging features </fundamentals/logging>` should already provide what you need for logging. If you're going to add logging to your filters, it should focus on business domain concerns or behavior specific to your filter, rather than MVC actions or other framework events.  
+
+.. note:: 应避免纯粹为记录日志而创建和使用过滤器，这是因为 :doc:`内建的框架日志功能 </fundamentals/logging>` 应该已经提供了你所需的功能。如果你要把日志记录功能放入过滤器中，它应专注于业务领域或过滤器的具体行为，而不是 MVC Action 或框架事件。
 
 ``IFilterFactory`` implements ``IFilter``. Therefore, an ``IFilterFactory`` instance can be used as an ``IFilter`` instance anywhere in the filter pipeline. When the framework prepares to invoke the filter, attempts to cast it to an ``IFilterFactory``. If that cast succeeds, the ``CreateInstance`` method is called to create the ``IFilter`` instance that will be invoked. This provides a very flexible design, since the precise filter pipeline does not need to be set explicitly when the application starts.
 
+``IFilterFactory`` 实现了 ``IFilter``。因此，在过滤器管道的任何地方 ``IFilterFactory`` 实例都可当做 ``IFilter`` 实例来使用。当框架准备调用过滤器，将试图把其强制转换为 ``IFilterFactory``。如果转换成功，将通过调用 ``CreateInstance`` 方法创建即将被调用的 ``IFilter`` 实例。因为过滤器管道不需要在应用程序启动时显式设置了，所以这是一种非常灵活的设计。
+
 You can implement ``IFilterFactory`` on your own attribute implementations as another approach to creating filters:
+
+你可以在自己的特性实现中实现 ``IFilterFactory`` 接口，以此来实现另一种创建过滤器的方法：
 
 .. literalinclude:: filters/sample/src/FiltersSample/Filters/AddHeaderWithFactoryAttribute.cs
   :language: c#
@@ -245,9 +277,15 @@ You can implement ``IFilterFactory`` on your own attribute implementations as an
 
 Filters can be applied to action methods or controllers (via attribute) or added to the global filters collection. Scope also generally determines ordering. The filter closest to the action runs first; generally you get overriding behavior without having to explicitly set ordering. This is sometimes referred to as "Russian doll" nesting, as each increase in scope is wrapped around the previous scope, like a `nesting doll <https://en.wikipedia.org/wiki/Matryoshka_doll>`_.
 
+过滤器可应用于 Action 方法、控制器（Controller，通过特性（attribute）的形式）或添加到全局过滤器集合中。其作用域通常还决定了其执行顺序。最靠近 Action 的过滤器首选运行；通常来讲通过重写行为而不是显式设置顺序来改变顺序。这有时被称为“俄罗斯套娃”，因为每一个作用范围都包裹了前一个作用范围，就像是 `套娃 <https://en.wikipedia.org/wiki/Matryoshka_doll>`_ 那般。
+
 In addition to scope, filters can override their sequence of execution by implementing `IOrderedFilter <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/IOrderedFilter/index.html>`_. This interface simply exposes an ``int`` ``Order`` property, and filters execute in ascending numeric order based on this property. All of the built-in filters, including ``TypeFilterAttribute`` and ``ServiceFilterAttribute``, implement ``IOrderedFilter``, so you can specify the order of filters when you apply the attribute to a class or method. By default, the ``Order`` property is 0 for all of the built-in filters, so scope is used as a tie-breaker and (unless ``Order`` is set to a non-zero value) is the determining factor.
 
+除了作用范围，过滤器还可以通过实现 `IOrderedFilter <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Filters/IOrderedFilter/index.html>`_ 来重写它们的执行顺序。该接口只是简单地暴露了 ``int`` ``Order`` 属性，然后执行时根据该数字正排序（数字越小，越先执行）后依次执行过滤器。所有内建过滤器（包括 ``TypeFilterAttribute`` 和 ``ServiceFilterAttribute``）都实现了 ``IOrderedFilter`` 接口，因此当你将过滤器以特性的方式用于类（class）或方法（method）时你可以指定每一个过滤器的执行顺序。默认情况下所有内建过滤器的 ``Order`` 属性值都为 0，因此作用范围就当做决定性的因素（除非存在不为 0 的 ``Order`` 值）。
+
 Every controller that inherits from the ``Controller`` base class includes ``OnActionExecuting`` and ``OnActionExecuted`` methods. These methods wrap the filters that run for a given action, running first and last. The scope-based order, assuming no ``Order`` has been set for any filter, is:
+
+每个继承自 ``Controller`` 基类的控制器（Controller）都包含 ``OnActionExecuting`` 和 ``OnActionExecuted`` 方法。这些方法为给定的 Action 包装了过滤器，它们分别在最先和最后运行。基于作用范围的顺序（假设没有为过滤器的 ``Order`` 设置任何值）：
 
 #. The Controller ``OnActionExecuting``
 #. The Global filter ``OnActionExecuting``
@@ -260,7 +298,11 @@ Every controller that inherits from the ``Controller`` base class includes ``OnA
 
 .. note:: ``IOrderedFilter`` trumps scope when determining the order in which filters will run. Filters are sorted first by order, then scope is used to break ties. Order defaults to 0 if not set.
 
+.. note:: 当过滤器将启动运行、需要决定过滤器执行顺序时，``IOrderedFilter`` 会向外宣布自己的作用范围。过滤器首先通过 order 来排序，然后通过作用范围来决定。如果不设置，则 Order 默认为 0。
+
 To modify the default, scope-based order, you could explicitly set the ``Order`` property of a class-level or method-level filter. For example, adding ``Order=-1`` to a method level attribute:
+
+为在基于作用范围的排序中修改默认值，你须在类一级（class-level）或方法一级（method-level）的过滤器上显式设置 ``Order`` 属性。比如为方法一级的特性增加 ``Order=-1``：
 
 .. code-block:: c#
 
@@ -268,7 +310,11 @@ To modify the default, scope-based order, you could explicitly set the ``Order``
 
 In this case, a value of less than zero would ensure this filter ran before both the Global and Class level filters (assuming their ``Order`` property was not set).
 
+这种情况下，小于 0 的值将确保该过滤器在全局过滤器和类一级过滤器之前运行（假设它们的 ``Order`` 属性均未设置）。
+
 The new order would be:
+
+新的排序可能是这样的：
 
 #. The Controller ``OnActionExecuting``
 #. The Method filter ``OnActionExecuting``
@@ -280,6 +326,9 @@ The new order would be:
 #. The Controller ``OnActionExecuted``
 
 .. note:: The ``Controller`` class's methods always run before and after all filters. These methods are not implemented as ``IFilter`` instances and do not participate in the ``IFilter`` ordering algorithm.
+
+.. note:: ``Controller`` 类的方法总是在所有过滤器之前和之后运行。这些方法并未实现为 ``IFilter`` 实现，同时它们不参与 ``IFilter`` 的排序算法。
+
 
 .. _authorization-filters:
 
