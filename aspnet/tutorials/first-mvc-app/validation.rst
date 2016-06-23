@@ -1,14 +1,16 @@
 添加验证
 ==================================================
 
+原文 `Adding Validation <https://docs.asp.net/en/latest/tutorials/first-mvc-app/validation.html>`_
+
 作者 `Rick Anderson`_
 
-翻译 `谢炀（kiler398） <https://github.com/kiler398>`_
+翻译 `谢炀（kiler） <https://github.com/kiler398>`_
 
-校对 `孟帅洋（书缘） <https://github.com/mengshuaiyang>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
+校对 `孟帅洋（书缘） <https://github.com/mengshuaiyang>`_、`娄宇(Lyrics) <https://github.com/xbuilder>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
 
 在本章节中你将为 ``Movie`` 模型类添加验证逻辑，以确保用户在试图创建或编辑影片数据时强制执行验证规则。
- 
+
 保持DRY原则
 ---------------------
 
@@ -127,8 +129,7 @@ MVC 中的验证错误 UI
 - 默认情况下，浏览器将基于你的 `本地环境 <http://msdn.microsoft.com/en-us/library/vstudio/wyzd2bce.aspx>`__ 使用正确的格式渲染数据。
 - ``DataType`` 特性可以使 MVC 选择正确的字段模板来呈现数据（比如 ``DisplayFormat`` 如果单独使用使用 string 模板）。更多信息，请参考 Brad Wilson 的 `ASP.NET MVC 2 模版 <http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html>`_。 （尽管是为 MVC 2编写的， 文章依然适用于当前的 ASP.NET MVC 版本。）
 
-.. note::jQuery验证当 ``Range`` 属性和 ``DateTime`` 属性同时使用的时候无法生效。例如，下面的代码将始终显示客户端验证错误，即使日期在指定范围内：
-
+.. note:: 当 ``Range`` 特性同时使用 ``DateTime`` 类型的时候 jQuery 验证无法生效。例如，下面的代码将始终显示客户端验证错误，即使日期在指定范围内：
 .. code-block:: c#
 
   [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
