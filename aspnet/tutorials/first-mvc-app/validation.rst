@@ -33,7 +33,7 @@ ASP.NET MVC 和 Entity Framework Core Code First 中的验证功能，是 DRY �
   :dedent: 4
   :emphasize-lines: 5, 12-14, 17-18, 21,22
 
-验证特性指定了你想要应用到模型属性上的验证行为。``Required`` 以及 ``MinimumLength`` 特性表示属性不能为空，但无法阻止用户用填写空格的方式来满足此验证条件。``RegularExpression`` 特性用来限制用户输入的文字类型。 在上面的例子中，``Genre`` 以及 ``Rating`` 只能输入字母（不允许输入空格、数字以及特殊字符）。``Range`` 特性限制值在指定的范围内。``StringLength`` 特性可以设置字符串最大长度，以及最小长度（可选）。值类型（如decimal， int， float， DateTime）本身是必填的，并不需要 ``[Required]`` 特性。
+验证特性指定了你想要应用到模型属性上的验证行为。``Required`` 以及 ``MinimumLength`` 特性表示属性不能为空，但无法阻止用户用填写空格的方式来满足此验证条件。``RegularExpression`` 特性用来限制用户输入的文字类型。 在上面的例子中，``Genre`` 以及 ``Rating`` 只能输入字母（不允许输入空格、数字以及特殊字符）。``Range`` 特性限制值在指定的范围内。``StringLength`` 特性可以设置字符串最大长度，以及最小长度（可选）。值类型（如decimal， int， float， DateTime）本身是必须的，并不需要 ``[Required]`` 特性。
 
 
 ASP.NET 自动执行的验证规则将有助于使你的应用程序更加健壮。它还确保提醒你不要忘记验证数据，让非法数据进入到数据库中。
@@ -65,9 +65,9 @@ MVC 中的验证错误 UI
  :lines: 46-66
  :dedent: 8
 
-第一个（HTTP GET） ``Create`` 的操作方法显示初始创建表单。第二个（``[HttpPost]``）版本的操作方法负责处理 post 请求。第二个 ``Create`` 的方法（HttpPost 版本）调用 ``ModelState.IsValid`` 检查是否有任何验证错误。调用该方法将检查任何已应用到对象属性上的验证。如果对象的 ``Create`` 方法验证错误，重新显示表单。如果没有错误，该方法在数据库中保存新的 movie。在我们的 movie 例子中，在客户端验证检测到的错误的时候，表单将不会发送到服务器，第二个  ``Create`` 方法不会被调用。如果你在你的浏览器禁用了JavaScript，客户端验证被禁用，HTTP POST 版本的 ``Create`` 方法调用 ``ModelState.IsValid``，以检查是否存在任何验证错误。
+第一个（HTTP GET） ``Create`` 的操作方法显示初始创建表单。第二个（``[HttpPost]``）版本的操作方法负责处理 post 请求。第二个 ``Create`` 的方法（HttpPost 版本）调用 ``ModelState.IsValid`` 检查是否有任何验证错误。调用该方法将检查任何已应用到对象属性上的验证。如果对象的 ``Create`` 方法验证错误，重新显示表单。如果没有错误，该方法在数据库中保存新的 movie。在我们的 movie 例子中，在客户端验证检测到错误时，表单将不会发送到服务器，第二个  ``Create`` 方法不会被调用。如果你的浏览器禁用了JavaScript，客户端验证被禁用，HTTP POST 版本的 ``Create`` 方法调用 ``ModelState.IsValid``，以检查是否存在任何验证错误。
 
-你可以在 ``[HttpPost] Create`` 方法中设置一个断点，用来验证该方法不会被调用，客户端验证发现错误时将不提交表单数据。如果你在你的浏览器禁用了 JavaScript ，然后提交有错误的表单，断点会被命中。不支持 JavaScript 的情况下，你仍然可以得到充分验证。下面的图片展示了如何在 IE 浏览器中禁用 JavaScript 脚本。
+你可以在 ``[HttpPost] Create`` 方法中设置一个断点，用来验证该方法不会被调用，客户端验证发现错误时将不提交表单数据。如果你的浏览器禁用了 JavaScript ，然后提交有错误的表单，断点会被命中。不支持 JavaScript 的情况下，你仍然可以得到充分验证。下面的图片展示了如何在 IE 浏览器中禁用 JavaScript 脚本。
 
 .. image:: validation/_static/p8_IE9_disableJavaScript.png
 
@@ -85,7 +85,7 @@ MVC 中的验证错误 UI
 .. image:: validation/_static/ms.png
 
 
-下面是你在本教程前面用基架生成的 *Create.cshtml* 视图模板的一部分。它被上面两种显示的两种 action 方法用来显示初始化表单并且在错误事件中重新显示。
+下面是你在本教程前面用基架生成的 *Create.cshtml* 视图模板的一部分。它使用上面展示的两种 action 方法来显示初始表单并且在发生错误时重新显示。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml
   :language: HTML
@@ -102,7 +102,7 @@ MVC 中的验证错误 UI
 使用 DataType 特性
 ---------------------------
 
-打开 *Movie.cs* 文件，并查看 ``Movie`` 类。``System.ComponentModel.DataAnnotations`` 命名空间提供了除了内置的验证特性以外的一套格式化特性。我们已经应用了 ``DataType`` 枚举值的到发布日期和价格字段。下面的代码显示了 ``ReleaseDate`` 和 ``Price`` 字段如何使用 ``DataType`` 特性。
+打开 *Movie.cs* 文件，并查看 ``Movie`` 类。``System.ComponentModel.DataAnnotations`` 命名空间提供了除了内置的验证特性以外的一套格式化特性。我们已经应用了 ``DataType`` 枚举值到发布日期和价格字段。下面的代码显示了 ``ReleaseDate`` 和 ``Price`` 字段如何使用 ``DataType`` 特性。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Models/MovieDateRatingDA.cs
   :language: c#
@@ -110,9 +110,9 @@ MVC 中的验证错误 UI
   :dedent: 8
   :emphasize-lines: 2,6
 
-``DataType`` 特性只用于视图引擎对数据进行格式化（或者提供给诸如 ``<A>`` 标签 的Url或者 ``<a href="mailto:EmailAddress.com">`` 提供的电子邮件），你可以使用 ``RegularExpression`` 特性来验证数据的格式，``DataType`` 特性用于指定比数据库的自带类型更为具体的数据类型，它们不是验证特性，在本示例中我们只想跟踪日期，而不需要具体时间。在 ``DataType`` 枚举提供了许多数据类型，如日期、时间、手机号码、货币、电子邮件地址等。``DataType`` 特性一样可以让应用程序具备自动提供特定数据类型的功能。例如，一个 ``mailto：`` 链接可以使用 ``DataType.EmailAddress`` 数据类型创建，在支持 Html5 的浏览器中并且日期选择器可以提供  ``DataType.Date`` 的值。``DataType`` 特性回向浏览器发送 HTML 5 标签 ``data-`` （pronounced data dash）。``DataType`` 特性 **无法**  提供任何验证提供任何验证。
+``DataType`` 特性只用于视图引擎对数据进行格式化（或者提供给诸如 ``<A>`` 标签 的Url或者 ``<a href="mailto:EmailAddress.com">`` 提供的电子邮件），你可以使用 ``RegularExpression`` 特性来验证数据的格式，``DataType`` 特性用于指定比数据库的自带类型更为具体的数据类型，它们不是验证特性，在本示例中我们只想跟踪日期，而不需要具体时间。在 ``DataType`` 枚举提供了许多数据类型，如日期、时间、手机号码、货币、电子邮件地址等。``DataType`` 特性一样可以让应用程序具备自动提供特定数据类型的功能。例如，一个 ``mailto：`` 链接可以使用 ``DataType.EmailAddress`` 数据类型创建，在支持 Html5 的浏览器中并且日期选择器可以提供  ``DataType.Date`` 的值。``DataType`` 特性向浏览器发送 HTML 5 标签 ``data-`` （pronounced data dash）。``DataType`` 特性 **无法**  提供任何验证。
 
-``DataType.Date`` 不指定日期的显示格式。默认情况下，数据字段的默认的显示格式基于服务器的 ``CultureInfo`` 设置来决定的。
+``DataType.Date`` 不指定日期的显示格式。默认情况下，数据字段默认的显示格式基于服务器的 ``CultureInfo`` 设置来决定的。
 
 ``DisplayFormat`` 特性被用来格式化日期：
 
@@ -127,14 +127,14 @@ MVC 中的验证错误 UI
 
 - 浏览器可以启用 HTML5 功能（例如显示日历控件，设置本地化的货币符号，电子邮件中的链接，等等）。
 - 默认情况下，浏览器将基于你的 `本地环境 <http://msdn.microsoft.com/en-us/library/vstudio/wyzd2bce.aspx>`__ 使用正确的格式渲染数据。
-- ``DataType`` 特性可以使 MVC 选择正确的字段模板来呈现数据（比如 ``DisplayFormat`` 如果单独使用使用 string 模板）。更多信息，请参考 Brad Wilson 的 `ASP.NET MVC 2 模版 <http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html>`_。 （尽管是为 MVC 2编写的， 文章依然适用于当前的 ASP.NET MVC 版本。）
+- ``DataType`` 特性可以使 MVC 选择正确的字段模板来呈现数据（比如 ``DisplayFormat`` 如果单独使用 string 模板）。更多信息，请参考 Brad Wilson 的 `ASP.NET MVC 2 模版 <http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html>`_。 （尽管是为 MVC 2编写的， 文章依然适用于当前的 ASP.NET MVC 版本。）
 
 .. note:: 当 ``Range`` 特性同时使用 ``DateTime`` 类型的时候 jQuery 验证无法生效。例如，下面的代码将始终显示客户端验证错误，即使日期在指定范围内：
 .. code-block:: c#
 
   [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
 
-你需要禁用jQuery日期验证在 ``Range`` 特性中使用 ``DateTime``。在你的模型中编译具体日期通常不是一个好的做法，所以不建议在 ``Range`` 特性中使用 ``DateTime`` 。
+你需要禁止在 ``DateTime`` 上使用 ``Range`` 特性来进行 JQuery 日期验证。在你的模型中编译具体日期通常不是一个好的做法，所以不建议在 ``Range`` 特性中使用 ``DateTime`` 。
 
 下面的代码展示了如何将各种验证特性合并在一行显示：
 
