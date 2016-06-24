@@ -19,7 +19,6 @@
 （以下排序按照贡献者本名的汉语拼音排列）
 
 + [陈计节](https://github.com/jijiechen/)
-+ [付星(后知后觉)](https://github.com/HouZhiHouJue)
 + [高会军(布莱恩特)](https://github.com/iyacontrol)
 + [高嵩(Jack)](https://github.com/jack2gs)
 + [郭远博(tkb至简)](https://github.com/Farb)
