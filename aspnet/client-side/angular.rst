@@ -13,7 +13,7 @@
   
 `查看或者下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`__
 
-什么事 AngularJS？
+什么事 AngularJS ？
 ------------------
 
 `AngularJS <http://angularjs.org/>`_ 是 Google 通常用来处理单页面应用程序（SPAs）的一个现代化 JavaScript 框架。AngularJS 是遵从 MIT 协议的开源项目，AngularJS 的开发进度可以跟踪 `它的 GitHub repository <https://github.com/angular/angular.js>`_。因为 HTML 使用尖角号所以命名 Angular。
