@@ -3,11 +3,13 @@ Adding Search
 添加搜索
 ==================================================
 
-作者 `Rick Anderson`_ 
+原文 `Adding Search <https://docs.asp.net/en/latest/tutorials/first-mvc-app/search.html>`_
 
-翻译： `魏美娟(初见) <http://github.com/ChujianA>`_ 
+作者 `Rick Anderson`_
 
-校对：  `谢炀（Kiler） <https://github.com/kiler398/>`_  `张仁建(第二年.夏) <https://github.com/stoneniqiu>`_   `孟帅洋(书缘)  <https://github.com/mengshuaiyang>`_ 
+翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
+
+校对：  `谢炀（Kiler） <https://github.com/kiler398/>`_ 、 `张仁建(第二年.夏) <https://github.com/stoneniqiu>`_ 、  `孟帅洋(书缘)  <https://github.com/mengshuaiyang>`_ 、`高嵩 <https://github.com/jack2gs>`_
 
 
 在本节中，你可以为 ``Index`` 方法添加查询功能，使其能够根据电影的 *genre* 或 *name* 进行查找。
@@ -164,7 +166,7 @@ If you add this method, the action invoker would match the ``[HttpPost] Index`` 
 
 .. image:: search/_static/fo.png
 
-然而，尽管添加了 ``[HttpPost]`` 版的 ``Index`` 方法，在实现的时候仍然存在一些局限性。设想你想将一个比较详细的查询添加书签，或者你想将查询结果以链接形式发送给朋友以便于你的朋友可以看到同样的过滤结果的电影，注意观察 HTTP POST 请求的时候，URL 是没有改变的（仍然是 localhost:xxxxx/Movies/Index），这个地址本身不包含查询信息。现在，查询信息是作为  `表单数据 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 发送到服务器的，你可以通过 `F12 开发者工具 <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ 或者优秀的抓包工具 `Fiddler tool <http://www.telerik.com/fiddler>`__。  `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ ：
+然而，尽管添加了 ``[HttpPost]`` 版的 ``Index`` 方法，在实现的时候仍然存在一些局限性。设想你想将一个比较详细的查询添加书签，或者你想将查询结果以链接形式发送给朋友以便于你的朋友可以看到同样的过滤结果的电影，注意观察 HTTP POST 请求的时候，URL 是没有改变的（仍然是 localhost:xxxxx/Movies/Index），这个地址本身不包含查询信息。现在，查询信息是作为  `表单数据 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__ 发送到服务器的，你可以通过 `F12 开发者工具 <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ 或者优秀的抓包工具 `Fiddler tool <http://www.telerik.com/fiddler>`__。启动  `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ ：
 
 However, even if you add this ``[HttpPost]`` version of the ``Index`` method, there's a limitation in how this has all been implemented. Imagine that you want to bookmark a particular search or you want to send a link to friends that they can click in order to see the same filtered list of movies. Notice that the URL for the HTTP POST request is the same as the URL for the GET request (localhost:xxxxx/Movies/Index) -- there's no search information in the URL. The search string information is sent to the server as a `form field value <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Sending_and_retrieving_form_data>`__. You can verify that with the `F12 Developer tools <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__ or the excellent `Fiddler tool <http://www.telerik.com/fiddler>`__. Start the `F12 tool <https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/>`__:
 
@@ -173,7 +175,7 @@ However, even if you add this ``[HttpPost]`` version of the ``Index`` method, th
 
 .. image:: search/_static/f12_rb.png
 
-你可以在请求正文中看到查询参数和上一个教程中提到的 :doc:`XSRF </security/anti-request-forgery>` 令牌。 :doc:`Form Tag Helper </mvc/views/working-with-forms>`  生成  :doc:`XSRF </security/anti-request-forgery>`  反伪造令牌。我们没有修改数据，所以无需再控制器方法中验证令牌。
+你可以在请求正文中看到查询参数和上一个教程中提到的 :doc:`XSRF </security/anti-request-forgery>` 令牌。 :doc:`Form Tag Helper </mvc/views/working-with-forms>`  生成  :doc:`XSRF </security/anti-request-forgery>`  反伪造令牌。我们没有修改数据，所以无需在控制器方法中验证令牌。
 
 You can see the search parameter and :doc:`XSRF </security/anti-request-forgery>` token in the request body. Note, as mentioned in the previous tutorial, the :doc:`Form Tag Helper </mvc/views/working-with-forms>` generates an :doc:`XSRF </security/anti-request-forgery>` anti-forgery token. We're not modifying data, so we don't need to validate the token in the controller method.
 
@@ -260,7 +262,7 @@ Adding search by genre to the Index view
   :lines: 1-64
   :emphasize-lines: 1, 15-17,27,41
 
-测试程序并分别通过 genre 或者 电影标题以及两个条件同时进行检索
+测试程序并分别通过 genre 或者电影标题以及两个条件同时进行检索
 
 Test the app by searching by genre, by movie title, and by both.Adding Search
  

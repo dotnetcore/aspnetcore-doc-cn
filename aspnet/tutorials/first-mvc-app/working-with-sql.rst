@@ -3,6 +3,8 @@ Working with SQL Server LocalDB
 使用 SQL Server LocalDB
 ================
 
+原文 `Working with SQL Server LocalDB <https://docs.asp.net/en/latest/tutorials/first-mvc-app/working-with-sql.html>`_
+
 翻译： `魏美娟(初见) <http://github.com/ChujianA>`_
 
 校对： `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_、`张硕(Apple) <https://github.com/RockFishChina>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
