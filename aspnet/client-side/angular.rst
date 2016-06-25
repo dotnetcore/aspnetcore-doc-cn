@@ -3,7 +3,7 @@
 
 作者： `Venkata Koppaka`_ 和 `Scott Addie`_
 
-翻译： `耿晓亮(Blue)`_
+翻译： `耿晓亮（Blue）`_
 
 在本文中你会学到如何通过 AngularJS 构建一个 SPA-style ASP.NET 应用程序。
 
