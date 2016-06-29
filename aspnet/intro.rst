@@ -12,7 +12,7 @@ Introduction to ASP.NET Core
 
 ASP.NET Core 是对 ASP.NET 的一次意义非常重大的重构。本文介绍了 ASP.NET Core 中的一些新概念，还解释了它如何帮助你开发现代的 Web 应用程序。
 
-.. contents:: Sections:
+.. contents:: 章节:
   :local:
   :depth: 1
 
