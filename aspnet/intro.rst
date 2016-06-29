@@ -19,7 +19,7 @@ ASP.NET Core 是对 ASP.NET 的一次意义非常重大的重构。本文介绍�
 什么是 ASP.NET Core？
 ---------------------
 
-ASP.NET Core 是一个可用来构建如Web应用程序、IoT应用和移动应用后端等等现代的、基于云的互联网的可连接程序的全新开源跨平台的框架。ASP.NET Core 应用可运行于 `.NET Core <https://www.microsoft.com/net/core/platform>`__ 或者完整的 .NET Framework 之上。 构建它的目的是为那些部署在云端或者预制运行（on-premises）的应用提供一个优化的开发框架。它由多个模块化最小化开销的组件构成，因此在构建你的解决方案的同时可以获得更多的灵活性。你可以在 Windows、Mac 和 Linux 上跨平台的开发和运行你的 ASP.NET Core 应用。 ASP.NET Core 开源于 `GitHub <https://github.com/aspnet/home>`_.
+ASP.NET Core 是一个可用来构建如Web应用程序、IoT应用和移动应用后端等等现代的、基于云的互联网的可连接程序的全新开源跨平台的框架。ASP.NET Core 应用可运行于 `.NET Core <https://www.microsoft.com/net/core/platform>`__ 或者完整的 .NET Framework 之上。 构建它的目的是为那些部署在云端或者预制运行（on-premises）的应用提供一个优化的开发框架。它由具有最小化开销的模块化组件构成，因此在构建你的解决方案的同时可以获得更多的灵活性。你可以在 Windows、Mac 和 Linux 上跨平台的开发和运行你的 ASP.NET Core 应用。 ASP.NET Core 开源于 `GitHub <https://github.com/aspnet/home>`_.
 
 
 为什么构建 ASP.NET Core？
@@ -27,7 +27,7 @@ ASP.NET Core 是一个可用来构建如Web应用程序、IoT应用和移动应�
 
 ASP.NET 的首个预览版作为 .NET Framework 的一部分发布于15年前。自那以后数百万的开发者用它开发和运行着众多非常棒的 Web 应用，而且在这么多年之间我们也为它增加和改进了很多的功能。
 
-ASP.NET Core 有一些架构上的改变，这些改变会是它成为一个更为精简并且模块化的框架。 ASP.NET Core 不再基于 *System.Web.dll*。 当前它基于一系列颗粒化的，并且良好构建的 `NuGet <http://www.nuget.org/>`__ 包. 这一特点能够让你通过仅仅只包含你所需要的 NuGet 包的方法来优化你的应用。一个更小的应用程序接口通过“只为你需要的功能付出”（ pay-for-what-you-use）的模型获得的好处包括更可靠的安全性、简化服务、改进性能和减少成本。
+ASP.NET Core 有一些架构上的改变，这些改变会是它成为一个更为精简并且模块化的框架。 ASP.NET Core 不再基于 *System.Web.dll*。 当前它基于一系列颗粒化的，并且良好构建的 `NuGet <http://www.nuget.org/>`__ 包. 这一特点能够让你通过仅仅包含需要的 NuGet 包的方法来优化你的应用。一个更小的应用程序接口通过“只为你需要的功能付出”（ pay-for-what-you-use）的模型获得的好处包括更可靠的安全性、简化服务、改进性能和减少成本。
 
 通过 ASP.NET Core，你可以获得的改进：
 
@@ -52,12 +52,12 @@ ASP.NET Core 有一些架构上的改变，这些改变会是它成为一个更�
 .. literalinclude:: /getting-started/sample/aspnetcoreapp/Program.cs
     :language: c#
 
-``Main`` 调用遵循 builder 模式的 :dn:cls:`~Microsoft.AspNetCore.Hosting.WebHostBuilder`，用于创建一个 web 应用程序宿主。这个 builder 有些用于定义 web 服务器 (如 ``UseKestrel``) 和 startup 类型 (``UseStartup``) 的方法。在上面的示例中，web 服务器 Kestrel 被启用，但是你也可以指定其它 web 服务器。 我们将会在下一节展示更多关于 ``UseStartup`` 的内容。``WebHostBuilder`` 提供了一些可选方法，其中包括用于在 IIS 和 IIS Express 中宿主的 ``UseIISIntegration`` 和用于指定 根内容目录的 ``UseContentRoot``。 ``Build`` 和 ``Run`` 方法构建了用于宿主应用程序的 ``IWebHost`` 然后启动它来监听传入的 HTTP 请求。
+``Main`` 调用遵循 builder 模式的 :dn:cls:`~Microsoft.AspNetCore.Hosting.WebHostBuilder`，用于创建一个 web 应用程序宿主。这个 builder 有些用于定义 web 服务器 (如 ``UseKestrel``) 和 startup 类型 (``UseStartup``) 的方法。在上面的示例中，web 服务器 Kestrel 被启用，但是你也可以指定其它 web 服务器。 我们将会在下一节展示更多关于 ``UseStartup`` 的内容。``WebHostBuilder`` 提供了一些可选方法，其中包括用于寄宿在 IIS 和 IIS Express 中的 ``UseIISIntegration`` 和用于指定 根内容目录的 ``UseContentRoot``。 ``Build`` 和 ``Run`` 方法构建了用于宿主应用程序的 ``IWebHost`` 然后启动它来监听传入的 HTTP 请求。
 
 
 Startup
 ---------------------------
-``WebHostBuilder`` 的 ``UseStartup`` 方法为你的应用指定了 ``Startup`` 类型。
+``WebHostBuilder`` 的 ``UseStartup`` 方法为你的应用指定了 ``Startup`` 类。
 
 .. literalinclude:: /getting-started/sample/aspnetcoreapp/Program.cs
     :language: c#
@@ -121,13 +121,13 @@ ASP.NET Core 并不直接监听请求；而是依赖于一个 HTTP :doc:`server 
 Web根目录 (Web root)
 --------
 
-你的应用的Web根目录 (Web root) 是你项目中所有公共的静态的资源如 css、js 和 图片文件的目录。静态文件中间件将默认只发布Web根目录 (Web root)和其子目录中的文件。Web根目录 (Web root) 默认为 `<content root>/wwwroot`，但是你也可以通过 `WebHostBuilder` 来指定另外一个地址。
+你的应用的Web根目录 (Web root) 是你项目中所有公开的、静态的资源如 css、js 和 图片文件的目录。静态文件中间件将默认只发布Web根目录 (Web root)和其子目录中的文件。Web根目录 (Web root) 默认为 `<content root>/wwwroot`，但是你也可以通过 `WebHostBuilder` 来指定另外一个地址。
 
 
 配置 (Configuration)
 -------------
 
-ASP.NET Core 使用了一个新的配置模型用于处理简单的键值对。新的配置模型并非基于 ``System.Configuration`` 或者 *web.config*； 而是从一个有序的配置提供者集合拉取数据。 内置的配置提供者支持多种不同的文件格式如 (XML, JSON, INI) 和用于支持基于环境的配置环境变量。 你也可以实现你自己的配置提供者。
+ASP.NET Core 使用了一个新的配置模型用于处理简单的键值对。新的配置模型并非基于 ``System.Configuration`` 或者 *web.config*； 而是从一个有序的配置提供者集合拉取数据。 内置的配置提供者支持多种不同的文件格式如 (XML, JSON, INI) 和用于支持基于环境的配置环境变量。 你也可以实现你自己自定义的配置提供者。
 
 阅读 :doc:`/fundamentals/configuration` 获取更多信息。
 
@@ -143,7 +143,7 @@ ASP.NET Core 使用了一个新的配置模型用于处理简单的键值对。�
 - 你可以使用 Model-View-Controller (MVC) 模式创建优秀的并且可测试的 web 应用程序。 阅读 :doc:`/mvc/index` 和 :doc:`/testing/index`。
 - 你可以构建支持多种格式并且完全支持内容协商的 HTTP 服务。 阅读 :doc:`/mvc/models/formatting`
 - `Razor <http://www.asp.net/web-pages/overview/getting-started/introducing-razor-syntax-c>`__ 提供了一种高效的语言用于创建 :doc:`Views </mvc/views/index>`
-- :doc:`Tag Helpers </mvc/views/tag-helpers/intro>` 让你的服务器端的代码参与到 Razor 文件中的 HTML 元素的创建于展现中去
+- :doc:`Tag Helpers </mvc/views/tag-helpers/intro>` 让你的服务器端的代码参与到在 Razor 文件中创建和展现 HTML 元素中
 - 你可以使用自定义或者内置的 formatters(JSON, XML) 来构建完整支持内容协商的 HTTP 服务
 - :doc:`/mvc/models/model-binding` 自动的映射 HTTP 请求中的数据到 action 方法参数
 - :doc:`/mvc/models/validation` 自动的执行客户端和服务器端验证
