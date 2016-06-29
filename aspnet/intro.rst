@@ -127,7 +127,7 @@ Web根目录 (Web root)
 配置 (Configuration)
 -------------
 
-ASP.NET Core 使用了一个新的配置模型用于处理简单的键值对. 新的配置模型并非基于 ``System.Configuration`` 或者 *web.config*； 而是从一个有序的配置提供者集合拉取数据。 内置的配置提供者支持多种不同的文件格式如 (XML, JSON, INI) 和用于支持基于环境的配置环境变量。 你也可以实现你自己的配置提供者。
+ASP.NET Core 使用了一个新的配置模型用于处理简单的键值对。新的配置模型并非基于 ``System.Configuration`` 或者 *web.config*； 而是从一个有序的配置提供者集合拉取数据。 内置的配置提供者支持多种不同的文件格式如 (XML, JSON, INI) 和用于支持基于环境的配置环境变量。 你也可以实现你自己的配置提供者。
 
 阅读 :doc:`/fundamentals/configuration` 获取更多信息。
 
