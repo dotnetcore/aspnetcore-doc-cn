@@ -135,7 +135,7 @@ ASP.NET Core 使用了一个新的配置模型用于处理简单的键值对. �
 环境 (Environments)
 ---------------------
 
-环境, 如 "Development" 和 "Production"，是 ASP.NET Core 中的第一级概念而且它可以设置成使用环境变量. 阅读 :doc:`/fundamentals/environments` 获取更多信息。
+环境, 如 "Development" 和 "Production"，是 ASP.NET Core 中的第一级概念而且它可以设置成使用环境变量。 阅读 :doc:`/fundamentals/environments` 获取更多信息。
 
 使用 ASP.NET Core MVC 构建 web UI 和 web APIs
 ------------------------------------------------
