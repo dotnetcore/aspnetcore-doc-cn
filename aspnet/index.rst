@@ -5,7 +5,7 @@
 
 .. _index:
 
-ASP.NET Core Documentation 
+ASP.NET Core Documentation
 ==========================
 
 .. attention:: ASP.NET 5 已更名为 ASP.NET Core 1.0。更多信息请点击 `此处 <https://blogs.msdn.microsoft.com/webdev/2016/02/01/an-update-on-asp-net-core-and-net-core/>`_ 。
@@ -18,6 +18,7 @@ ASP.NET Core Documentation
 .. toctree::
     :titlesonly:
 
+    Introduction <intro>
     getting-started
     API <https://docs.asp.net/projects/api>
     tutorials/index
@@ -34,7 +35,6 @@ ASP.NET Core Documentation
     performance/index
     migration/index
     contribute/index
-    
 
 相关资源
 -----------------
