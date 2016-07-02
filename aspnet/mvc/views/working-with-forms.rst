@@ -22,7 +22,7 @@ In many cases, :doc:`HTML Helpers </mvc/views/html-helpers>` provide an alternat
 
 .. _my-asp-route-param-ref-label:
 
-表单 Form 的 Tag Helper
+The Form Tag Helper
 ---------------------
   
 表单 `Form <https://www.w3.org/TR/html401/interact/forms.html>`__ 的 Tag Helper:
@@ -55,19 +55,27 @@ The Form Tag Helper above generates the following HTML:
   
 The MVC runtime generates the ``action`` attribute value from the Form Tag Helper attributes ``asp-controller`` and ``asp-action``. The Form Tag Helper also generates a hidden `Request Verification Token <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ to prevent cross-site request forgery (when used with the ``[ValidateAntiForgeryToken]`` attribute in the HTTP Post action method). Protecting a pure HTML Form from cross-site request forgery is very difficult, the Form Tag Helper provides this service for you.
 
-
+MVC 运行时（runtime）根据 Form Tag Helper 的属性 ``asp-controller`` 和 ``asp-action`` 生成 ``action`` 属性值。Form Tag Helper 也会生成一个隐藏的 `请求验证标记 <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ 来防止跨站请求伪装（当在HTTP Post 方法上应用了 ``[ValidateAntiForgeryToken]`` 特性时）。要保护纯 HTML 避免跨站请求伪装是非常困难的，Form Tag Helper 为你提供了这个服务。
 
 
 Using a named route
 ^^^^^^^^^^^^^^^^^^^
 
+使用命名路由
+^^^^^^^^^^^^^^^
+
 The ``asp-route`` Tag Helper attribute can also generate markup for the HTML ``action`` attribute. An app with a :doc:`route </fundamentals/routing>`  named ``register`` could use the following markup for the registration page:
- 
+
+Tag Helper 属性 ``asp-route`` 也能为 HTML ``action`` 属性生成标记。一个应用含有名为 ``register`` 的 :doc:`路由 </fundamentals/routing>`  可以在注册页面使用如下标记： 
+
+
 .. literalinclude::  forms/sample/final/Views/Demo/RegisterRoute.cshtml 
   :language: HTML
   :emphasize-lines: 4
 
 Many of the views in the *Views/Account* folder (generated when you create a new web app with *Individual User Accounts*) contain the `asp-route-returnurl <http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper>`__ attribute: 
+
+ *Views/Account* 文件夹下的很多视图（在你创建一个带有 *个人用户账户* 的新 Web 应用时生成的）都含有 `asp-route-returnurl <http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper>`__ 属性: 
 
 .. code-block:: HTML
   :emphasize-lines: 2
@@ -78,18 +86,22 @@ Many of the views in the *Views/Account* folder (generated when you create a new
 
 :Note: With the built in templates, ``returnUrl`` is only populated automatically when you try to access an authorized resource but are not authenticated or authorized. When you attempt an unauthorized access, the security middleware redirects you to the login page with the ``returnUrl`` set.
 
+:Note: 采用内建的模版，只有在你尚未经过验证或授权的情况下去尝试访问需授权的资源时，``returnUrl`` 才会被自动填入。当你尝试一个未授权的访问，安全中间件会根据 ``returnUrl`` 的设置将你重定向到登录页面。 
+
 The Input Tag Helper
 ---------------------
  
 The Input Tag Helper binds an HTML `<input> <https://www.w3.org/wiki/HTML/Elements/input>`__ element to a model expression in your razor view.
 
-Syntax:
+Input 标签助手将 HTML  `<input> <https://www.w3.org/wiki/HTML/Elements/input>`__ 元素绑定到 Razor 视图中的模型表达式上。
+
+语法：
 
 .. code-block:: HTML
 
   <input asp-for="<Expression Name>" /> 
 
-The Input Tag Helper:
+Input 标签助手:
 
 - Generates the ``id`` and ``name`` HTML attributes for the expression name specified in the ``asp-for`` attribute.  ``asp-for="Property1.Property2"`` is equivalent to ``m => m.Property1.Property2``, that is the attribute value literally is part of an expression. The name of the expression is what's used for the ``asp-for`` attribute value.
 - Sets the HTML ``type`` attribute value based on the model type and  `data annotation <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ attributes applied to the model property
@@ -97,6 +109,13 @@ The Input Tag Helper:
 - Generates `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__  validation attributes from `data annotation <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ attributes applied to model properties
 - Has an HTML Helper feature overlap with ``Html.TextBoxFor`` and ``Html.EditorFor``. See the **HTML Helper alternatives to Input Tag Helper** section for details.
 - Provides strong typing. If the name of the property changes and you don't update the Tag Helper you'll get an error similar to the following:
+
+- 为 ``asp-for`` 属性中指定的表达式名称生成 ``id`` 和 ``name`` HTML 属性。  ``asp-for="Property1.Property2"`` 等价于 ``m => m.Property1.Property2`` ，就是说属性值实际上是表达式的一部分。 ``asp-for`` 属性值所使用的就是表达式的名称。
+- 基于模型类型和应用在模型属性上的 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性来设置 HTML ``type`` 的属性值。
+- 如果 HTML ``type`` 属性已被指定，则不会覆盖它。
+- 根据应用在模型属性上的 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性生成 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ 验证属性。
+- 与 HTML Helper  ``Html.TextBoxFor`` and ``Html.EditorFor`` 功能重叠。详情可参见 **Input 标签助手的 HTML Helper 替代方法** 一节。 
+
 
 .. code-block:: HTML
 
@@ -111,8 +130,10 @@ The Input Tag Helper:
 
 The ``Input`` Tag Helper sets the HTML ``type`` attribute based on the .NET type. The following table lists some common .NET types and generated HTML type (not every .NET type is listed). 
 
+``Input`` 标签助手基于 .NET 类型来设置 HTML ``type``属性。下表列出了一些常见的 .NET 类型和生成出的 HTML 类型（并非所有 .NET 类型都在列）。 
+
 +---------------------+--------------------+
-|.NET type            |  Input Type        |  
+|.NET 类型            |  Input 类型         |  
 +=====================+====================+
 |Bool                 |  type="checkbox"   |
 +---------------------+--------------------+  
@@ -128,6 +149,8 @@ The ``Input`` Tag Helper sets the HTML ``type`` attribute based on the .NET type
 +---------------------+--------------------+  
 
 The following table shows some common `data annotations <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ attributes that the input tag helper will map to specific input types (not every validation attribute is listed):
+
+下表列出了 Input 标签助手会将其映射到指定 Input 类型的一些常见 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性（并非所有特性都在列）。
 
 +-------------------------------+--------------------+
 |Attribute                      |  Input Type        |  
@@ -147,7 +170,7 @@ The following table shows some common `data annotations <https://msdn.microsoft.
 |[DataType(DataType.Time)]      |  type="time"       |
 +-------------------------------+--------------------+  
  
-Sample: 
+示例： 
  
 .. literalinclude::  forms/sample/final/ViewModels/RegisterViewModel.cs
   :language: c#
@@ -156,6 +179,8 @@ Sample:
   :language: HTML
 
 The code above generates the following HTML:
+
+上述代码生成如下的 HTML ：
 
 .. code-block:: HTML
 
@@ -174,6 +199,8 @@ The code above generates the following HTML:
   </form>
 
 The data annotations applied to the ``Email`` and ``Password`` properties generate metadata on the model. The Input Tag Helper consumes the model metadata and produces `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ ``data-val-*`` attributes (see :doc:`/mvc/models/validation`). These attributes describe the validators to attach to the input fields. This provides unobtrusive HTML5 and `jQuery <https://jquery.com/>`__ validation. The unobtrusive attributes have the format ``data-val-rule="Error Message"``, where rule is the name of the validation rule (such as ``data-val-required``, ``data-val-email``, ``data-val-maxlength``, etc.) If an error message is provided in the attribute, it is displayed as the value for the ``data-val-rule`` attribute. There are also attributes of the form ``data-val-ruleName-argumentName="argumentValue"`` that provide additional details about the rule, for example, ``data-val-maxlength-max="1024"`` .  
+
+``Email`` 和 ``Password`` 属性上应用的数据注释在该模型上生成元数据。Input 标签助手读取模型元数据并生成 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ ``data-val-*`` 属性（详见 :doc:`/mvc/models/validation` ）。这些属性对验证器进行描述使其附加到 Input 字段上。这提供了 unobtrusive 的 HTML5 和 `jQuery <https://jquery.com/>`__ 验证。
 
 HTML Helper alternatives to Input Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
