@@ -205,12 +205,22 @@ The data annotations applied to the ``Email`` and ``Password`` properties genera
 HTML Helper alternatives to Input Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+替代 Input Tag Helper 的 Html Helper
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 ``Html.TextBox``, ``Html.TextBoxFor``, ``Html.Editor`` and ``Html.EditorFor`` have overlapping features with the Input Tag Helper. The Input Tag Helper will automatically set the ``type`` attribute; ``Html.TextBox`` and ``Html.TextBoxFor`` will not. ``Html.Editor`` and ``Html.EditorFor`` handle collections, complex objects and templates; the Input Tag Helper does not. The Input Tag Helper, ``Html.EditorFor``  and  ``Html.TextBoxFor`` are strongly typed (they use lambda expressions); ``Html.TextBox`` and ``Html.Editor`` are not (they use expression names).
+
+``Html.TextBox``, ``Html.TextBoxFor``, ``Html.Editor`` 和 ``Html.EditorFor`` 有着与 Input Tag Helper 重复的功能。Input Tag Helper 会自动设置 ``type`` 属性；``Html.TextBox`` 和 ``Html.TextBoxFor`` 则不会。``Html.Editor`` 和 ``Html.EditorFor`` 会处理集合、复杂对象以及模版；Input Tag Helper 则不会。Input Tag Helper 、``Html.EditorFor`` 和 ``Html.TextBoxFor`` 是强类型的（它们使用 lambda 表达式）；``Html.TextBox`` 和 ``Html.Editor`` 则不是（它们使用表达式名称）。
 
 Expression names 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``asp-for`` attribute value is a `ModelExpression <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/ModelExpression/index.html>`__ and the right hand side of a lambda expression. Therefore, ``asp-for="Property1"`` becomes ``m => m.Property1`` in the generated code which is why you don't need to prefix with ``Model``. You can use the "@" character to start an inline expression and move before the ``m.``:
+表达式名称
+^^^^^^^^^^^^^^^
+
+The ``asp-for`` attribute value is a `ModelExpression <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/ModelExpression/index.html>`__ and the right hand side of a lambda expression. Therefore, ``asp-for="Property1"`` becomes ``m => m.Property1`` in the generated code which is why you don't need to prefix with ``Model``. You can use the "@" character to start an inline expression and move before the ``m.``:   
+
+``asp-for`` 属性值是一个 `ModelExpression` <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/ModelExpression/index.html>`__ 同时也是 lambda 表达式右边的部分。因此，你不需要使用 ``Model`` 前缀，因为 ``asp-for="Property1"`` 在生成的代码中会变成 ``m => m.Property1`` 。
 
 .. code-block:: HTML
 
@@ -221,6 +231,8 @@ The ``asp-for`` attribute value is a `ModelExpression <https://docs.asp.net/proj
 
 Generates the following:
 
+生成以下代码：
+
 .. code-block:: HTML
   
     <input type="text" id="joe" name="joe" value="Joe" />
@@ -229,7 +241,12 @@ Generates the following:
 Navigating child properties 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+定位子属性
+^^^^^^^^^^^^^
+
 You can also navigate to child properties using the property path of the view model. Consider a more complex model class that contains a child ``Address`` property.
+
+你还可以通过视图模型的属性路径定位到子属性。考虑这个更复杂的模型，它包含了一个 ``Address`` 子属性。
 
 .. literalinclude::  forms/sample/final/ViewModels/AddressViewModel.cs
   :language: c#
@@ -245,11 +262,15 @@ You can also navigate to child properties using the property path of the view mo
 
 In the view, we bind to ``Address.AddressLine1``: 
 
+在视图中，我们绑定了 ``Address.AddressLine1`` ：
+
 .. literalinclude::  forms/sample/final/Views/Demo/RegisterAddress.cshtml 
   :language: HTML
   :emphasize-lines: 6
 
 The following HTML is generated for ``Address.AddressLine1``:
+
+以下 HTML 是根据 ``Address.AddressLine1`` 生成的：
 
 .. code-block:: HTML
 
@@ -258,7 +279,12 @@ The following HTML is generated for ``Address.AddressLine1``:
 Expression names and Collections
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+表达式名称与集合
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 Sample, a model containing an array of ``Colors``:
+
+示例，包含一个 ``Colors`` 数组的模型：
 
 .. literalinclude::  forms/sample/final/ViewModels/Person.cs
   :language: c#
@@ -267,6 +293,8 @@ Sample, a model containing an array of ``Colors``:
   :emphasize-lines: 3
 
 The action method:
+
+Action 方法：
 
 .. code-block:: c#
 
@@ -278,15 +306,21 @@ The action method:
 
 The following Razor shows how you access a specific ``Color`` element:
 
+下面的 Razor 代码展示了如何访问指定的 ``Color`` 元素：
+
 .. literalinclude::   forms/sample/final/Views/Demo/EditColor.cshtml 
   :language: HTML
 
 The *Views/Shared/EditorTemplates/String.cshtml* template:
 
+*Views/Shared/EditorTemplates/String.cshtml* 模版：
+
 .. literalinclude::   forms/sample/final/Views/Shared/EditorTemplates/String.cshtml 
   :language: HTML
   
 Sample using ``List<T>``:
+
+使用 ``List<T>`` 的例子：
 
 .. literalinclude::  forms/sample/final/ViewModels/ToDoItem.cs
   :language: c#
@@ -295,10 +329,14 @@ Sample using ``List<T>``:
 
 The following Razor shows how to iterate over a collection:
 
+下面的 Razor 代码展示了如何遍历一个集合：
+
 .. literalinclude::   forms/sample/final/Views/Demo/Edit.cshtml 
   :language: HTML
 
 The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
+
+*Views/Shared/EditorTemplates/ToDoItem.cshtml* 模版：
 
 .. literalinclude::   forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml 
   :language: HTML
@@ -306,18 +344,32 @@ The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 :Note: Always use ``for`` (and *not* ``foreach``) to iterate over a list. Evaluating an indexer in a LINQ expression can be expensive and should be minimized.
 :Note: The commented sample code above shows how you would replace the lambda expression with the ``@`` operator to access each ``ToDoItem`` in the list.
 
+:Note: 应始终使用 ``for`` （而 *不是* ``foreach`` ）遍历列表。在 LINQ 表达式中执行索引器会产生开销应当尽量减少。
+
+:Note: 上面示例中被注释的代码演示了应当如何使用 ``@`` 操作符代替 lambda 表达式去访问列表中的每一个 ``ToDoItem`` 。
 
   
 The Textarea Tag Helper
 -------------------------
 
-The `Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ tag helper is  similar to the Input Tag Helper.  
+Textarea 标签助手
+----------------------------
+
+The `Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ tag helper is  similar to the Input Tag Helper. 
+
+`Textarea 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ 与 Input 标签助手类似。
 
 - Generates the ``id`` and ``name`` attributes, and the data validation attributes from the model for a `<textarea> <http://www.w3.org/wiki/HTML/Elements/textarea>`__ element. 
 - Provides strong typing. 
 - HTML Helper alternative: ``Html.TextAreaFor``
 
+- 为 `<textarea><http://www.w3.org/wiki/HTML/Elements/textarea>`__ 元素生成 ``id`` 和 ``name`` 属性，以及数据验证属性。
+- 提供强类型。
+- HTML Helper 替代选项： ``Html.TextAreaFor``
+
 Sample:
+
+示例：
 
 .. literalinclude::  forms/sample/final/ViewModels/DescriptionViewModel.cs
   :language: c#
@@ -327,6 +379,8 @@ Sample:
   :emphasize-lines: 4
   
 The following HTML is generated:
+
+生成以下代码：
 
 .. code-block:: HTML  
   :emphasize-lines: 2-8
@@ -346,16 +400,28 @@ The following HTML is generated:
 The Label Tag Helper
 --------------------
 
+Label 标签助手
+----------------------
+
 - Generates the label caption and ``for`` attribute on a `<label> <https://www.w3.org/wiki/HTML/Elements/label>`__ element for an expression name
 - HTML Helper alternative: ``Html.LabelFor``.
 
+- 根据表达式名称在 `<label> <https://www.w3.org/wiki/HTML/Elements/label>`__ 元素上生成标签文字和 ``for`` 属性。
+- HTML Helper 替代选项： ``Html.LabelFor`` 。
+
 The `Label Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__  provides the following benefits over a pure HTML label element:
+
+`Label 标签助手<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 相对于纯 HTML label 元素具有以下优势： 
 
 - You automatically get the descriptive label value from the ``Display`` attribute. The intended display name might change over time, and the combination of ``Display`` attribute and Label Tag Helper will apply the ``Display`` everywhere it's used.
 - Less markup in source code
 - Strong typing with the model property.
 
+- 可从 ``Display`` 特性自动获得描述性的 Label 值。随着时间推移，预期的显示名称可能会变化，而结合使用 ``Display`` 特性与 Label 标签助手将会在所有使用它的地方应用 ``Display`` 。
+
 Sample:
+
+示例：
 
 .. literalinclude::  forms/sample/final/ViewModels/SimpleViewModel.cs
   :language: c#
@@ -366,11 +432,15 @@ Sample:
 
 The following HTML is generated for the ``<label>`` element:
 
+以下是为 ``<label>`` 元素生成的 HTML ：
+
 .. code-block:: HTML
 
  <label for="Email">Email Address</label>  
  
 The Label Tag Helper generated the ``for`` attribute value of "Email", which is the ID associated with the ``<input>`` element. The Tag Helpers generate consistent ``id`` and ``for`` elements so they can be correctly associated. The caption in this sample comes from the ``Display`` attribute. If the model didn't contain a ``Display`` attribute, the caption would be the property name of the expression.
+
+Label 标签助手生成了 "Email" 的 ``for`` 属性值，也就是与 ``<input>`` 元素关联的 ID 。标签助手生成一致的 ``id`` 和 ``for`` 元素，因此它们可以正确地关联起来。本例中的标签文本来自于 ``Display`` 特性。如果模型没有 ``Display`` 特性，标签文本则会是表达式的属性名称。
  
 The Validation Tag Helpers
 ---------------------------
