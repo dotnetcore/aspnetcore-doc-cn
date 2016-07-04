@@ -445,22 +445,38 @@ Label 标签助手生成了 "Email" 的 ``for`` 属性值，也就是与 ``<inpu
 The Validation Tag Helpers
 ---------------------------
 
+验证标签助手
+----------------------
+
 There are two Validation Tag Helpers. The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ (which displays a validation message for a single property on your model), and the `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ (which displays a summary of validation errors). The `Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ adds HTML5 client side validation attributes to input elements based on data annotation attributes on your model classes. Validation is also performed on the server. The Validation Tag Helper displays these error messages when a validation error occurs. 
+
+有两种验证标签助手。`Validation Message 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ （用来显示模型上单个属性的验证信息），和 `Validation Summary 标签助手<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ （用来显示验证错误汇总）。`Input 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ 根据模型类的数据注释给 input 元素添加 HTML5 客户端验证属性。验证也在服务端执行。Validation 标签助手会在验证发生错误的时候显示这些错误信息。
 
 The Validation Message Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Validaton Message 标签助手
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Adds the `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__  ``data-valmsg-for="property"`` attribute to the `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ element, which attaches the validation error messages on the input field of the specified model property. When a client side validation error occurs, `jQuery <https://jquery.com/>`__ displays the error message in the ``<span>`` element. 
 - Validation also takes place on the server. Clients may have JavaScript disabled and some validation can only be done on the server side.
 - HTML Helper alternative: ``Html.ValidationMessageFor``
 
+- 添加 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__  ``data-valmsg-for="property"`` 属性到 `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素，使验证错误信息附加到指定模型属性的 input 字段上。当客户端验证发生错误，`jQuery <https://jquery.com/>`__ 会在 ``<span>`` 元素里显示错误信息。
+- 验证也发生在服务端。客户端可能会禁用 JavaScript 那么验证就只能在服务端完成。
+- HTML Helper  替代选项： ``Html.ValidationMessageFor`` 
+
 The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  is used with the ``asp-validation-for`` attribute on a HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ element.
+
+`Validaton Message 标签助手<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 与 HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素上的 ``asp-validation-for`` 属性一起使用。
 
 .. code-block:: HTML
   
   <span asp-validation-for="Email">
   
 The Validation Message Tag Helper will generate the following HTML:
+
+Validation Message 标签助手将生成以下 HTML ：
 
 .. code-block:: HTML
 
@@ -470,10 +486,16 @@ The Validation Message Tag Helper will generate the following HTML:
 
 You generally use the `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  after an ``Input`` Tag Helper for the same property. Doing so displays any validation error messages near the input that caused the error.
 
+通常在模型属性相同的 ``Input`` 标签助手后面使用 `Validation Message 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 。这样可以在发生验证错误的 input 旁边显示错误信息。
+
 :Note: You must have a view with the correct JavaScript and `jQuery <https://jquery.com/>`__ 
  script references in place for client side validation. See :doc:`/mvc/models/validation` for more information.
- 
+
+:Note: 必须有一个正确引用了 JavaScript 和 `jQuery <https://jquery.com/>`__ 脚本的视图进行客户端验证。详见： :doc:`/mvc/models/validation` 。
+
 When a server side validation error occurs (for example when you have custom server side validation or client-side validation is disabled), MVC places that error message as the body of the ``<span>`` element.
+
+当服务端验证发生了错误（比如你有自定义的服务端验证或者客户端验证被禁用），MVC 会把错误信息放在 ``<span>`` 元素的正文中。
 
 .. code-block:: HTML
 
@@ -485,10 +507,18 @@ When a server side validation error occurs (for example when you have custom ser
 The Validation Summary Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+验证摘要标签助手
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 - Targets ``<div>`` elements with the ``asp-validation-summary`` attribute 
 - HTML Helper alternative: ``@Html.ValidationSummary``
 
+- 选取带有 ``asp-validation-summary`` 属性的 ``<div>`` 元素。
+- HTML Helper 替代选项：``@Html.ValidationSummary`` 。
+
 The `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__  is used to display a summary of validation messages. The ``asp-validation-summary`` attribute value can be any of the following:
+
+`Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ 用来显示验证信息的摘要。 ``asp-validation-summary`` 属性值可以是下面任意一种：
 
 +-------------------------------+--------------------------------+
 |asp-validation-summary         |  Validation messages displayed |  
@@ -500,10 +530,12 @@ The `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/
 |ValidationSummary.None         | None                           |
 +-------------------------------+--------------------------------+  
 
-Sample
+示例
 ^^^^^^^^^
 
 In the following example, the data model is decorated with ``DataAnnotation`` attributes, which generates validation error messages on the ``<input>`` element.  When a validation error occurs, the Validation Tag Helper displays the error message:
+
+在以下示例中，数据模型装饰了 ``DataAnnotation`` 特性，用以在 ``<input>`` 元素上生成验证错误信息。当发生验证错误的时候， Validation 标签助手显示错误信息：
 
 .. literalinclude::  forms/sample/final/ViewModels/RegisterViewModel.cs
   :language: c#
@@ -514,6 +546,8 @@ In the following example, the data model is decorated with ``DataAnnotation`` at
   :lines: 1-10
 
 The generated HTML (when the model is valid):
+
+生成的 HTML （当模型有效时）：
 
 .. code-block:: HTML
   :emphasize-lines: 2,3,8,9,12,13
