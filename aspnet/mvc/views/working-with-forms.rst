@@ -572,22 +572,31 @@ The generated HTML (when the model is valid):
 The Select Tag Helper
 -------------------------
 
+Select Tag Helper
+-------------------------
+
 - Generates `select <https://www.w3.org/wiki/HTML/Elements/select>`__ and associated `option <https://www.w3.org/wiki/HTML/Elements/option>`__ elements for properties of your model. 
 - Has an HTML Helper alternative ``Html.DropDownListFor`` and ``Html.ListBoxFor``
 
+- 生成 `select <https://www.w3.org/wiki/HTML/Elements/select>`__ 和关联到你的模型属性的 `option  <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素。
+
 The `Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/SelectTagHelper/index.html>`__ ``asp-for`` specifies the model property  name for the `select <https://www.w3.org/wiki/HTML/Elements/select>`__ element  and ``asp-items`` specifies the `option <https://www.w3.org/wiki/HTML/Elements/option>`__ elements.  For example:
+
+`Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/SelectTagHelper/index.html>`__ 的 ``asp-for`` 为 `select <https://www.w3.org/wiki/HTML/Elements/select>`__ 元素指定模型的属性名称，而 ``asp-items`` 则指定 `option <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素。例如：
 
 .. literalinclude::   forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
   :lines: 4
   :dedent: 3
   
-Sample:
+示例：
 
 .. literalinclude::  forms/sample/final/ViewModels/CountryViewModel.cs
   :language: c#
   
 The ``Index`` method initializes the ``CountryViewModel``, sets the selected country and passes it to the ``Index`` view.
+
+``Index`` 方法初始化 ``CountryViewModel`` ，设置已选国家然后把它传给 ``Index`` 视图。
 
 .. literalinclude:: forms/sample/final/Controllers/HomeController.cs
   :language: c#
@@ -596,6 +605,8 @@ The ``Index`` method initializes the ``CountryViewModel``, sets the selected cou
 
 The HTTP POST ``Index`` method displays the selection:
 
+HTTP POST ``Index`` 方法显示选择的项：
+
 .. literalinclude::  forms/sample/final/Controllers/HomeController.cs
   :language: c#
   :lines: 15-27
@@ -603,11 +614,15 @@ The HTTP POST ``Index`` method displays the selection:
   
 The ``Index`` view:
 
+``Index`` 视图：
+
 .. literalinclude:: forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
   :emphasize-lines: 4
   
 Which generates the following HTML (with "CA" selected):
+
+生成以下 HTML （选择了 "CA" ）:
 
 .. code-block:: HTML  
   :emphasize-lines: 2-6 
@@ -624,7 +639,11 @@ Which generates the following HTML (with "CA" selected):
 
 :Note: We do not recommend using ``ViewBag`` or ``ViewData`` with the Select Tag Helper. A view model is more robust at providing MVC metadata and generally less problematic. 
 
+:Note: 我们不推荐将 ``ViewBag`` 或 ``ViewData`` 用于 Select Tag Helper 。视图模型在提供 MVC 元数据方面更加健壮并且通常来说问题更少。
+
 The ``asp-for`` attribute value is a special case and doesn't require a ``Model`` prefix, the other Tag Helper attributes do (such as ``asp-items``)
+
+``asp-for`` 属性值是一个特例，不需要 ``Model`` 前缀，而其他的 Tag Helper 属性则需要（比如 ``asp-items`` ）。
 
 .. literalinclude::   forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
@@ -634,9 +653,15 @@ The ``asp-for`` attribute value is a special case and doesn't require a ``Model`
 Enum binding
 ^^^^^^^^^^^^^^
 
+枚举绑定
+^^^^^^^^^^^^^^
+
 It's often convenient to use ``<select>`` with an ``enum`` property and generate the `SelectListItem <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListItem/index.html?highlight=selectlistitem>`__ elements from the ``enum`` values. 
 
-Sample:
+将 ``enum`` 属性用于 ``<select>`` 并根据 ``enum`` 的值生成 `SelectListItem <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListItem/index.html?highlight=selectlistitem>`__ 元素通常是很方便的。
+
+
+示例：
 
 .. literalinclude::  forms/sample/final/ViewModels/CountryEnumViewModel.cs
   :language: c#
@@ -649,17 +674,23 @@ Sample:
 
 The `GetEnumSelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/IHtmlHelper/index.html>`__ method generates a `SelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectList/index.html>`__ object for an enum.
 
+`GetEnumSelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/IHtmlHelper/index.html>`__ 方法为枚举生成一个 `SelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectList/index.html>`__ 对象。
+
 .. literalinclude::   forms/sample/final/Views/Home/IndexEnum.cshtml
   :language: HTML
   :emphasize-lines: 5
 
 You can decorate your enumerator list with the ``Display`` attribute to get a richer UI:
 
+你可以使用 ``Display`` 特性装饰你的枚举数从而获得更丰富的 UI ：
+
 .. literalinclude::  forms/sample/final/ViewModels/CountryEnum.cs
   :language: c#
   :emphasize-lines: 5,7
 
 The following HTML is generated:
+
+生成以下的 HTML ：
 
 .. code-block:: HTML  
   :emphasize-lines: 4,5
@@ -681,9 +712,16 @@ The following HTML is generated:
 Option Group
 ^^^^^^^^^^^^^^^^^^^^^
 
+选项分组
+^^^^^^^^^^^^^^^^^^^^^
+
 The HTML  `<optgroup> <https://www.w3.org/wiki/HTML/Elements/optgroup>`__ element is generated when the view model contains one or more `SelectListGroup  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListGroup/index.html>`__ objects.
 
+当视图模型包含一个或多个 `SelectListGroup <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListGroup/index.html>`__ 对象时，会生成 HTML `<optgroup> <https://www.w3.org/wiki/HTML/Elements/optgroup>`__ 元素。
+
 The ``CountryViewModelGroup`` groups the ``SelectListItem`` elements into the "North America" and "Europe" groups:
+
+``CountryViewModelGroup`` 把 ``SelectListItem`` 元素分到 "North America" 和 "Europe" 分组中：
 
 .. literalinclude::  forms/sample/final/ViewModels/CountryViewModelGroup.cs
   :language: c#
@@ -693,9 +731,14 @@ The ``CountryViewModelGroup`` groups the ``SelectListItem`` elements into the "N
 
 The two groups are shown below:
 
+下面展示了这两个分组：
+
+
 .. image:: forms/_static/grp.png
 
 The generated HTML:
+
+生成的 HTML ：
 
 .. code-block:: HTML 
   :emphasize-lines: 3-12
@@ -720,7 +763,12 @@ The generated HTML:
 Multiple select
 ^^^^^^^^^^^^^^^^^^^^^
 
+多选
+^^^^^^^^^^^^^^^^
+
 The Select Tag Helper  will automatically generate the `multiple = "multiple" <https://www.w3.org/TR/html-markup/select.html#select.attrs.multiple>`__  attribute if the property specified in the ``asp-for`` attribute is an ``IEnumerable``. For example, given the following model:
+
+如果 ``asp-for`` 属性中指定的模型属性是一个 ``IEnumerable`` 类型， Select Tag Helper 将会自动生成 `multiple = "multiple" <https://www.w3.org/TR/html-markup/select.html#select.attrs.multiple>`__ 。例如，已知以下模型：
 
 .. literalinclude::  forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs
   :language: c#
@@ -728,11 +776,15 @@ The Select Tag Helper  will automatically generate the `multiple = "multiple" <h
 
 With the following view:
 
+使用以下视图：
+
 .. literalinclude::   forms/sample/final/Views/Home/IndexMultiSelect.cshtml
   :language: HTML
   :emphasize-lines: 4
   
 Generates the following HTML:
+
+生成如下 HTML ：
 
 .. code-block:: HTML  
   :emphasize-lines: 3
@@ -754,7 +806,12 @@ Generates the following HTML:
 No selection
 ^^^^^^^^^^^^^^
 
+无选择
+^^^^^^^^^^^
+
 To allow for no selection, add a "not specified" option to the select list. If the property is a `value type <https://msdn.microsoft.com/en-us/library/s1ax56ch.aspx>`__, you'll have to make it `nullable <https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx>`__. 
+
+想要允许无选择，可添加一个 “未选择” 项到选择列表。如果该模型属性是一个 `值类型 <https://msdn.microsoft.com/en-us/library/s1ax56ch.aspx>`__ ，则需要使其为可空值 `nullable<https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx>`__ 。
 
 .. literalinclude::   forms/sample/final/Views/Home/IndexEmpty.cshtml
   :language: HTML
@@ -762,16 +819,23 @@ To allow for no selection, add a "not specified" option to the select list. If t
 
 If you find yourself using the "not specified" option in multiple pages, you can create a template to eliminate repeating the HTML:
 
+如果你在多个页面里使用“未选择”项，可以创建一个模版避免重复的 HTML：
+
 .. literalinclude::   forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml
   :language: HTML
+
   :emphasize-lines: 5
 
 The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
+
+*Views/Shared/EditorTemplates/CountryViewModel.cshtml* 模版：
 
 .. literalinclude::   forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml
   :language: HTML
 
 Adding HTML `<option> <https://www.w3.org/wiki/HTML/Elements/option>`__ elements is not limited to the *No selection* case. For example, the following view and action method will generate HTML similar to the code above:
+
+添加 HTML `<option> <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素并不局限于 *无选择* 的情况。比如，下面的视图和 Action 方法会生成和上面类似的 HTML ：
 
 .. literalinclude:: forms/sample/final/Controllers/HomeController.cs
   :language: c#
@@ -782,6 +846,8 @@ Adding HTML `<option> <https://www.w3.org/wiki/HTML/Elements/option>`__ elements
   :language: HTML
  
 The correct ``<option>`` element will be selected ( contain the ``selected="selected"`` attribute) depending on the current ``Country`` value. 
+
+``<option>`` 元素将会根据当前的 ``Country`` 值被正确选中（加上 ``selected="selected"`` 属性）。
 
 .. code-block:: HTML 
   :emphasize-lines: 5
@@ -800,6 +866,9 @@ The correct ``<option>`` element will be selected ( contain the ``selected="sele
 Additional Resources
 ---------------------
 
+其他资源
+-------------------
+
 - :doc:`Tag Helpers <tag-helpers/intro>`
 - `HTML Form element <https://www.w3.org/TR/html401/interact/forms.html>`__
 - `Request Verification Token <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ 
@@ -807,3 +876,11 @@ Additional Resources
 - :doc:`/mvc/models/validation` 
 - `data annotations <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 
 - `Code snippets for this document <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/forms/sample>`_.
+
+- :doc:`Tag Helpers <tag-helpers/intro>`
+- `HTML Form 元素 <https://www.w3.org/TR/html401/interact/forms.html>`__
+- `请求验证标记 <http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages>`__ 
+- :doc:`/mvc/models/model-binding` 
+- :doc:`/mvc/models/validation` 
+- `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 
+- `本文的示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/forms/sample>`_.
