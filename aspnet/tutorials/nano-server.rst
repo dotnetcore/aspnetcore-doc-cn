@@ -10,7 +10,7 @@ ASP.NET Core on Nano Server
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对：
+校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_
 
 .. attention:: This tutorial uses a pre-release version of the Nano Server installation option of Windows Server Technical Preview 4. You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment. Please see https://go.microsoft.com/fwlink/?LinkId=624232 for specific information about the end date for the preview.
 
@@ -40,7 +40,7 @@ In this tutorial, we will be using the pre-built `Virtual Hard Disk (VHD) for Na
 
 Before proceeding with this tutorial, you will need the :doc:`published </publishing/index>` output of an existing ASP.NET Core application. Ensure your application is built to run in a **64-bit** process.
 
-在进行本教程之前，你需要 :doc:`发布 </publishing/index>` 一个存在的 ASP.NET Core 应用程序。确保你的程序是构建在 **64位** 进程中运行的。
+在进行本教程之前，你需要 :doc:`发布 </publishing/index>` 一个存在的 ASP.NET Core 应用程序。确保你的程序是构建在 **64 位** 进程中运行的。
 
 Setting up the Nano Server Instance
 -----------------------------------
@@ -68,7 +68,7 @@ Open an elevated PowerShell window to add your remote Nano Server instance to yo
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # replace with the correct IP address
+  $ip = "10.83.181.14" # 替换成正确的 IP 地址
   Set-Item WSMan:\localhost\Client\TrustedHosts "$ip" -Concatenate -Force
 
 Once you have added your Nano Server instance to your ``TrustedHosts``, you can connect to it using PowerShell remoting
@@ -77,7 +77,7 @@ Once you have added your Nano Server instance to your ``TrustedHosts``, you can 
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # replace with the correct IP address
+  $ip = "10.83.181.14" # 替换成正确的 IP 地址
   $s = New-PSSession -ComputerName $ip -Credential ~\Administrator
   Enter-PSSession $s
 
@@ -91,9 +91,9 @@ Installing the HttpPlatformHandler Module
 安装 HttpPlatformHandler 组件
 -----------------------------------------
 
-The :ref:`HttpPlatformHandler <http-platformhandler>` is an IIS 7.5+ module which is responsible for process management of HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the HttpPlatformHandler Module for IIS is manual. You will need to install the latest 64-bit version of the `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ on a regular (not Nano) machine. After installing you will need to copy the following files:
+The HttpPlatformHandler is an IIS 7.5+ module which is responsible for process management of HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the HttpPlatformHandler Module for IIS is manual. You will need to install the latest 64-bit version of the `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ on a regular (not Nano) machine. After installing you will need to copy the following files:
 
-:ref:`HttpPlatformHandler <http-platformhandler>` 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 HttpPlatformHandler 组件。你需要在你的常规机(不是 Nano Server) 上安装最新的64位版本的 `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ 。安装之后你需要复制以下文件：
+HttpPlatformHandler 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 HttpPlatformHandler 组件。你需要在你的常规机(不是 Nano Server) 上安装最新的 64 位版本的 `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ 。安装之后你需要复制以下文件：
 
 * *%windir%\\System32\\inetsrv\\HttpPlatformHandler.dll*
 * *%windir%\\System32\\inetsrv\\config\\schema\\httpplatform_schema.xml*
@@ -190,7 +190,7 @@ Copy over the published output of your existing application to the Nano server.
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # replace with the correct IP address
+  $ip = "10.83.181.14" # 替换成正确的 IP 地址
   $s = New-PSSession -ComputerName $ip -Credential ~\Administrator
   Copy-Item -ToSession $s -Path <path-to-src>\bin\output\ -Destination C:\HelloAspNet5 -Recurse
 

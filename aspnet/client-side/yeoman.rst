@@ -9,7 +9,7 @@ By `Steve Smith`_, `Scott Addie`_, `Rick Anderson`_ and `Noel Rice`_
   :local:
   :depth: 1
 
-Install Node.js, npm, and Yeoman
+安装 Node.js, npm, 以及 Yeoman
 --------------------------------
 
 To get started with Yeoman install `Node.js <https://nodejs.org/en/>`__. The installer includes `Node.js <https://nodejs.org/en/>`__ and `npm <https://www.npmjs.com/>`__.
