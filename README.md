@@ -36,7 +36,7 @@
 + [夏申斌](https://github.com/xiashenbin)
 + [谢炀(Kiler)](https://github.com/kiler398)
 + [许登洋(Seay)](https://github.com/SeayXu)
-+ [姚阿勇(Mr.Yao)](https://github.com/YaoaY)
++ [姚阿勇(Dr.Yao)](https://github.com/YaoaY)
 + [张剑](https://github.com/garfieldzf8)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
 + [张善友](https://github.com/geffzhang)
