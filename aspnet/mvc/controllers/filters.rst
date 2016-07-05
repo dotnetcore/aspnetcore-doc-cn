@@ -430,19 +430,35 @@ Exception filters do not have two events (for before and after) - they only impl
 
 *Result Filters* implement either the ``IResultFilter`` or ``IAsyncResultFilter`` interface and their execution surrounds the execution of action results. Result filters are only executed for successful results - when the action or action filters produce an action result. Result filters are not executed when exception filters handle an exception, unless the exception filter sets ``Exception = null``.
 
+实现了 ``IResultFilter`` 或 ``IAsyncResultFilter`` 接口的 *结果过滤器* 在 Action Result 执行体的周围执行。当 Action 或 Action 过滤器产生 Action Result 时，结果过滤器只为其中的成功结果运行。如果异常过滤器处理到异常，那么结果过滤器就不会运行——除非异常过滤器将异常只为空（``Exception = null``）。
+
 .. note:: The kind of result being executed depends on the action in question. An MVC action returning a view would include all razor processing as part of the ``ViewResult`` being executed. An API method might perform some serialization as part of the execution of the result. Learn more about :doc:`action results </mvc/controllers/actions>`
+
+.. note:: 正在执行的结果的种类取决于相关 Action。MVC Action 所返回的 View 将包含 Razor（其将作为正在处理的 ``ViewResult`` 的一部分）。API 方法则将执行一些序列化工作作为其执行结果的一部分。了解更多请移步 :doc:`action results </mvc/controllers/actions>` 。
 
 Result filters are ideal for any logic that needs to directly surround view execution or formatter execution. Result filters can replace or modify the action result that's responsible for producing the response.
 
+结果过滤器适用于任何需要直接环绕 View 或格式化处理的逻辑。结果过滤器可以替换或更改 Action 结果（而后者负责产生响应）。
+
 The ``OnResultExecuting`` method runs before the action result is executed, so it can manipulate the action result through ``ResultExecutingContext.Result``. An ``OnResultExecuting`` method can short-circuit execution of the action result and subsequent result filters by setting ``ResultExecutingContext.Cancel`` to true. If short-circuited, MVC will not modify the response; you should generally write to the response object directly when short-circuiting to avoid generating an empty response. Throwing an exception in an ``OnResultExecuting`` method will also prevent execution of the action result and subsequent filters, but will be treated as a failure instead of a successful result.
+
+``OnResultExecuting`` 方法运行于 Action 结果执行之前，故其可通过 ``ResultExecutingContext.Result`` 操作 Action 结果。如果将 ``ResultExecutingContext.Cancel`` 设置为 true，则 ``OnResultExecuting`` 方法可短路 Action 结果以及后续结果过滤器的执行。如果发生了短路，MVC 将不会修改响应，所以当发生短路时，为避免生成空响应，你一般应该直接去修改响应对象。如果在 ``OnResultExecuting`` 方法内抛出异常，那么也将阻止 Action 结果以及后续过滤器的执行，但会被当做失败结果（而非成功结果）。
 
 The ``OnResultExecuted`` method runs after the action result has executed. At this point if no exception was thrown, the response has likely been sent to the client and cannot be changed further. ``ResultExecutedContext.Canceled`` will be set to true if the action result execution was short-circuited by another filter. ``ResultExecutedContext.Exception`` will be set to a non-null value if the action result or a subsequent result filter threw an exception. Setting ``ResultExecutedContext.Exception`` to null effectively 'handles' an exception and will prevent the exeception from being rethrown by MVC later in the pipeline. If handling an exception in a result filter, consider whether or not it's appropriate to write any data to the response. If the action result throws partway through its execution, and the headers have already been flushed to the client, there's no reliable mechanism to send a failure code.
 
+``OnResultExecuted`` 方法运行于 Action 结果执行之后。也就是说，如果没有抛出异常，响应可能就会被发送到客户端且不可再修改。如果 Action 结果在执行中被其它过滤器短路，则 ``ResultExecutedContext.Canceled`` 将被置为 true。如果 Action 结果或后续结果过滤器抛出异常，则 ``ResultExecutedContext.Exception`` 将被置为非空值（non-null value）。把 ``ResultExecutedContext.Exception`` 设置为 null 后会影响到异常的“处理”，这将阻止异常在之后的管道内被 MVC 重新抛出。如果在结果过滤器内处理异常，需要确定此处是否适合将某些数据写入响应中。如果 Action 结果在执行中途抛出异常，而 header 也已被更新到客户端，那么将没有任何可靠的机制来发送失败代码。
+
 For an ``IAsyncResultFilter`` the ``OnResultExecutionAsync`` combines all the possibilities of ``OnResultExecuting`` and ``OnResultExecuted``. A call to ``await next()`` on the ``ResultExecutionDelegate`` will execute any subsequent result filters and the action result, returning a ``ResultExecutedContext``. To short-circuit inside of an ``OnResultExecutionAsync``, set ``ResultExecutingContext.Cancel`` to true and do not call the ``ResultExectionDelegate``.
+
+对于 ``IAsyncResultFilter`` 的 ``OnResultExecutionAsync`` 方法来讲，它具有 ``OnResultExecuting`` 和 ``OnResultExecuted`` 的功能。在 ``ResultExecutionDelegate`` 上调用 ``await next()`` 将执行后续的结果过滤器和 Action 结果，并返回 ``ResultExecutedContext``。如果将 ``ResultExecutingContext.Cancel`` 值为 true 并不调用 ``ResultExectionDelegate``，则将在内部短路 ``OnResultExecutionAsync``。
 
 You can override the built-in ``ResultFilterAttribute`` to create result filters. The :ref:`AddHeaderAttribute <add-header-attribute>` class shown above is an example of a result filter.
 
+你可以覆盖内建的 ``ResultFilterAttribute`` 特性，创建定制的结果过滤器， :ref:`AddHeaderAttribute <add-header-attribute>` 类便是一例结果过滤器。
+
 .. tip:: If you need to add headers to the response, do so before the action result executes. Otherwise, the response may have been sent to the client, and it will be too late to modify it. For a result filter, this means adding the header in ``OnResultExecuting`` rather than ``OnResultExecuted``.
+
+.. tip:: 若你需为相应增加 header，在 Action 结果执行前如是做。否则响应就会被发送到客户端，届时改之晚矣。故对于结果过滤器而言，为响应增加 header 需要在 ``OnResultExecuting`` 中处理（而不是在 ``OnResultExecuted`` 中）。
 
 过滤器对比中间件
 ----------------------
