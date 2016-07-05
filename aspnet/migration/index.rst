@@ -1,13 +1,13 @@
-迁移
+Migration
 -----------
 
 .. toctree::
    :titlesonly:
-   
+
    mvc
    configuration
    identity
    webapi
    http-modules
-   rc1-to-rc2
-
+   rc1-to-rtm
+   rc2-to-rtm

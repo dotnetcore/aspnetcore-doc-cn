@@ -3,7 +3,9 @@
 Claims-Based Authorization
 ==========================
 
-When an identity is created it may be assigned one or more claims issued by a trusted party. A claim is key value pair, the key being the claim name and the value being the claim value. A claim is what the subject is, not what the subject can do. For example you may have a Drivers License, issued by a local driving license authority. Your driver's license has your date of birth on it. In this case the claim name would be DateOfBirth, the claim value would be your date of birth, for example 8th June 1970 and the issuer would be the driving license authority. Claims based authorization, at its simplest, checks the value of a claim and allows access to a resource based upon that value, for example if you want access to a night club the authorization process, the door man, would evaluate the value of your DateOfBirth claim and whether they trust the issuer, the Driving License Authority before granting you access.
+When an identity is created it may be assigned one or more claims issued by a trusted party. A claim is name value pair that represents what the subject is, not what the subject can do. For example you may have a Drivers License, issued by a local driving license authority. Your driver's license has your date of birth on it. In this case the claim name would be ``DateOfBirth``, the claim value would be your date of birth, for example ``8th June 1970`` and the issuer would be the driving license authority. Claims based authorization, at its simplest, checks the value of a claim and allows access to a resource based upon that value. For example if you want access to a night club the authorization process might be:
+
+The door security officer would evaluate the value of your date of birth claim and whether they trust the issuer (the driving license authority) before granting you access.
 
 An identity can contain multiple claims with multiple values and can contain multiple claims of the same type.
 
@@ -28,9 +30,9 @@ First you need to build and register the policy. This takes place as part of the
      });
  }
 
-In this case the EmployeeOnly policy checks for the presence of an EmployeeNumber claim on the current identity.
+In this case the ``EmployeeOnly`` policy checks for the presence of an ``EmployeeNumber`` claim on the current identity.
 
-You then apply the policy using the ``Policy`` parameter on the ``Authorize`` attribute to specify the policy name;
+You then apply the policy using the :dn:prop:`~Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Policy` property on the :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizeAttribute` attribute to specify the policy name;
 
 .. code-block:: c#
 
@@ -40,19 +42,19 @@ You then apply the policy using the ``Policy`` parameter on the ``Authorize`` at
      return View();
  }
 
-The ``Authorize`` attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.
+The :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizeAttribute` attribute can be applied to an entire controller, in this instance only identities matching the policy will be allowed access to any Action on the controller.
 
 .. code-block:: c#
 
   [Authorize(Policy = "EmployeeOnly")]
-  public class VactionController : Controller
+  public class VacationController : Controller
   {  
       public ActionResult VacationBalance()
       {      
       }
   }
 
-If you have a controller that is protected by the ``Authorize`` attribute, but want to allow anonymous access to particular actions you apply the ``AllowAnonymous`` attribute;
+If you have a controller that is protected by the :dn:class:`~Microsoft.AspNetCore.Authorization.AuthorizeAttribute` attribute, but want to allow anonymous access to particular actions you apply the :dn:class:`~Microsoft.AspNetCore.Authorization.AllowAnonymousAttribute` attribute;
 
 .. code-block:: c#
 
@@ -69,7 +71,7 @@ If you have a controller that is protected by the ``Authorize`` attribute, but w
       }
   }
 
-Remember that most claims come with a value. You can specify a list of allowed values when creating the policy. The following example would only succeed for employees whose employee number was 1, 2, 3, 4 or 5.
+Most claims come with a value. You can specify a list of allowed values when creating the policy. The following example would only succeed for employees whose employee number was 1, 2, 3, 4 or 5.
 
 .. code-block:: c#
 
@@ -104,6 +106,6 @@ If you apply multiple policies to a controller or action then all policies must 
       }
   }
 
-In the above example any identity which fulfills the EmployeeOnly policy can access the Payslip action as that policy is enforced on the controller. However in order to call the UpdateSalary action the identity must fulfill *both* the EmployeeOnly policy and the HumanResources policy.
+In the above example any identity which fulfills the ``EmployeeOnly`` policy can access the ``Payslip`` action as that policy is enforced on the controller. However in order to call the ``UpdateSalary`` action the identity must fulfill *both* the ``EmployeeOnly`` policy and the ``HumanResources`` policy.
 
 If you want more complicated policies, such as taking a date of birth claim, calculating an age from it then checking the age is 21 or older then you need to write :ref:`custom policy handlers <security-authorization-policies-based>`.
