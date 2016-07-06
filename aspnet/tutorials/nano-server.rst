@@ -201,24 +201,6 @@ If you published a portable app, .NET Core must be installed on the target machi
   :language: powershell
  
 
-
-Enabling the HttpPlatformHandler
---------------------------------
-
-启用 HttpPlatformHandler
---------------------------------
-
-You can execute the following PowerShell script in a remote PowerShell session to enable the HttpPlatformHandler module on the Nano server.
-
-你可以在 PowerShell 远程会话中执行以下 PowerShell 脚本来在 Nano Server 上启用 HttpPlatformHandler 组件。
-
-.. note:: This script runs on a clean system, but is not meant to be idempotent. If you run this multiple times it will add multiple entries. If you end up in a bad state, you can find backups of the *applicationHost.config* file at *%systemdrive%\inetpub\history*.
-
-.. note:: 这份脚本可以运行在纯净的系统里，但是不能运行多次。如果你运行这份脚本多次，它将会添加多个条目。如果你最终处于糟糕的状态，你可以在 *%systemdrive%\inetpub\history* 中找到 *applicationHost.config* 文件的备份。
-
-.. literalinclude:: nano-server/enable-platformhandler.ps1
-  :language: ps1
-
 Publishing the application
 --------------------------
 Copy over the published output of your existing application to the file share. 
