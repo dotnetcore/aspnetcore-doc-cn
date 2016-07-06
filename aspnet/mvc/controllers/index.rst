@@ -1,4 +1,4 @@
-控制器
+Controllers
 -----------
 
 .. toctree::

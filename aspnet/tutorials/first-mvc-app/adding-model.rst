@@ -4,6 +4,8 @@
 Adding a model
 ==================================================
 
+原文 `Adding a model <https://docs.asp.net/en/latest/tutorials/first-mvc-app/adding-model.html>`_
+
 作者： `Rick Anderson`_
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
@@ -208,7 +210,7 @@ Earlier in this tutorial, you saw how a controller can pass data or objects to a
 
 MVC also provides the ability to pass strongly typed objects to a view template. This strongly typed approach enables better compile-time checking of your code and richer `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ in Visual Studio (VS). The scaffolding mechanism in VS used this approach (that is, passing a strongly typed model) with the ``MoviesController`` class and view templates when it created the methods and views.
 
-MVC 也提供了传递强类型数据给视图模版的能力。这种强类型的方式可以提供给你更好的代码编译时检查，并在 Visual Studio（VS） 中具有更丰富的 `智能感知 <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ 。VS 中的基架机制在为 ``MoviesController`` 类创建方法（Action）和视图（View）的时候就对采用了这种方式（即，传递强类型模型）。
+MVC 也提供了传递强类型数据给视图模版的能力。这种强类型的方式可以提供给你更好的代码编译时检查，并在 Visual Studio（VS） 中具有更丰富的 `智能感知 <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`__ 。VS 中的基架机制在为 ``MoviesController`` 类创建方法（Action）和视图（View）的时候就采用了这种方式（即，传递强类型模型）。
 
 Examine the generated ``Details`` method in the *Controllers/MoviesController.cs* file:
 

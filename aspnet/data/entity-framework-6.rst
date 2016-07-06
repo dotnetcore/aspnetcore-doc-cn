@@ -16,7 +16,7 @@ Before you start, make sure that you compile against full .NET Framework in your
 
 In your project.json file specify a single target for the full .NET Framework:
 
-.. code-block:: json
+.. code-block:: none
     
     "frameworks": {
         "net46": {}
@@ -46,7 +46,7 @@ In the ``Startup`` class within ``ConfigureServices`` add factory method of your
     
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddScoped((_) => new ApplicationDbContext(Configuration["Data:DefaultConnection:ConnectionString"]));
+        services.AddScoped(() => new ApplicationDbContext(Configuration["Data:DefaultConnection:ConnectionString"]));
         
         // Configure remaining services
     }

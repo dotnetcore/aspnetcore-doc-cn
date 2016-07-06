@@ -1,6 +1,8 @@
 Controller 方法与视图
 ==================================================
 
+原文 `Controller methods and views <https://docs.asp.net/en/latest/tutorials/first-mvc-app/controller-methods-views.html>`_
+
 作者 `Rick Anderson`_
 
 翻译 `谢炀（Kiler） <https://github.com/kiler398/>`_
@@ -27,7 +29,7 @@ Controller 方法与视图
 
  .. image:: controller-methods-views/_static/da.png
 
-Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引用代码。
+Visual studio 会自动添加 ``using System.ComponentModel.DataAnnotations;`` 引用代码。
 
 让我们移除多余的 ``using`` 引用代码。它们默认以灰色字体出现。右键点击 *Movie.cs* 文件 点击 **> Organize Usings > Remove Unnecessary Usings** 菜单。
 
@@ -41,7 +43,7 @@ Visual studio 会自添加 ``using System.ComponentModel.DataAnnotations;`` 引�
 
 .. TODO next version replace DataAnnotations links below with ASP.NET 5 version
 
-我们会在下一篇文章中继续发掘 `DataAnnotations <http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 的内容。 `Display <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx>`__ 标签用来指定字段的显示名（在本示例中 "Release Date" 会替代 "ReleaseDate"）。 `DataType <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx>`__ 属性指定数据类型，在本示例是日期类型，所以字段中存储的时间信息不会被显示。
+我们会在下一篇文章中继续发掘 `DataAnnotations <http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 的内容。 `Display <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute.aspx>`__ 标签用来指定字段的显示名（在本示例中 "Release Date" 会替代 "ReleaseDate"）。 `DataType <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.datatypeattribute.aspx>`__ 特性指定数据类型，在本示例是日期类型，所以字段中存储的时间信息不会被显示。
 
 浏览 ``Movies`` 控制器并把鼠标悬停于 **Edit** 链接上可以看到目标 URL。
 
@@ -101,7 +103,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
  :lines: 331-361
  :emphasize-lines: 1
 
-`[HttpPost] <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/HttpPostAttribute/index.html>`__ 标签指定这个 ``Edit`` 方法 *只能* 被 ``POST`` 请求调用。你可以把 ``[HttpGet]`` 标签应用到到第一个 edit方法，但是不是必须的因为 ``[HttpGet]`` 是被默认使用的。
+`[HttpPost] <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/HttpPostAttribute/index.html>`__ 标签指定这个 ``Edit`` 方法 *只能* 被 ``POST`` 请求调用。你可以把 ``[HttpGet]`` 标签应用到第一个 edit方法，但是，不是必须的，因为 ``[HttpGet]`` 是被默认使用的。
 
 `[ValidateAntiForgeryToken] <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/ValidateAntiForgeryTokenAttribute/index.html>`__ 标签是用来防止伪造请求的，会在（*Views/Movies/Edit.cshtml*）视图最终呈现文件中加入反伪造标记和服务器进行配对。edit 视图生成反伪造标记请参考 :doc:`Form Tag Helper </mvc/views/working-with-forms>`。
 
@@ -126,7 +128,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
 
 你会注意到为什么视图模版文件的顶部会有一行 ``@model MvcMovie.Models.Movie`` 声明呢？— 因为这个声明指定这个视图模版的模型期待的类型是 ``Movie`` 。
 
-基架生成的代码使用几个 Tag Helper 方法来简化 HTML 标记。 :doc:`Label Tag Helper </mvc/views/working-with-forms>` 用来显示字段名（"Title"、"ReleaseDate"、"Genre" 或者 "Price"）。:doc:`Input Tag Helper </mvc/views/working-with-forms>` 用来呈现 HTML ``<input>`` 元素。 :doc:`Validation Tag Helper </mvc/views/working-with-forms>` 显示关联到属性的的错误信息。
+基架生成的代码使用几个 Tag Helper 方法来简化 HTML 标记。 :doc:`Label Tag Helper </mvc/views/working-with-forms>` 用来显示字段名（"Title"、"ReleaseDate"、"Genre" 或者 "Price"）。:doc:`Input Tag Helper </mvc/views/working-with-forms>` 用来呈现 HTML ``<input>`` 元素。 :doc:`Validation Tag Helper </mvc/views/working-with-forms>` 显示关联到属性的错误信息。
 
 运行应用程序并导航到 ``/Movies`` URL。单击 **编辑** 链接。在浏览器中查看该页面的源代码。为 ``<form>`` 元素生成的 HTML 如下所示。
 
@@ -134,7 +136,7 @@ ASP.NET Core 会把 ``http://localhost:1234/Movies/Edit/4`` 转化成发送到 `
   :language: HTML
   :emphasize-lines: 1,6,10,17,24, 28
 
-``HTML <form>`` 中的 ``<input>`` 的元素的 ``action`` 属性用于设置请求发送到 ``/Movies/Edit/id`` URL。当点击 ``Save`` 按钮时表单数据会被发送到服务器。在 ``</form>`` 元素关闭前最后一行 ``</form>`` 展示了 `XSRF <:doc:/security/anti-request-forgery>`__ 生成的隐藏域标识。
+``HTML <form>`` 中的 ``<input>`` 元素的 ``action`` 属性用于设置请求发送到 ``/Movies/Edit/id`` URL。当点击 ``Save`` 按钮时表单数据会被发送到服务器。在 ``</form>`` 元素关闭前最后一行 ``</form>`` 展示了 `XSRF <:doc:/security/anti-request-forgery>`__ 生成的隐藏域标识。
 
 处理 POST 请求
 --------------------------------------

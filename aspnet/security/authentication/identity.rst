@@ -18,7 +18,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
   .. image:: identity/_static/01-mvc.png
 
-  The created project contains the ``Microsoft.AspNet.Identity.EntityFramework`` package, which will persist the identity data and schema to SQL Server using `Entity Framework Core`_.
+  The created project contains the ``Microsoft.AspNetCore.Identity.EntityFrameworkCore`` package, which will persist the identity data and schema to SQL Server using `Entity Framework Core`_.
 
   .. note:: In Visual Studio, you can view NuGet packages details by selecting **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**. You also see a list of packages in the dependencies section of the *project.json* file within your project.
 
@@ -59,8 +59,8 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
   .. literalinclude:: identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs
     :language: c#
-    :lines: 105-132
-    :emphasize-lines: 10
+    :lines: 101-128
+    :emphasize-lines: 9
     :dedent: 8
 
 3. Log in.
@@ -69,8 +69,8 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
   .. literalinclude:: identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs
     :language: c#
-    :lines: 105-132
-    :emphasize-lines: 19
+    :lines: 101-128
+    :emphasize-lines: 18
     :dedent: 8
 
   The above ``SignInAsync`` method calls the below ``SignInAsync`` task, which is contained in the ``SignInManager`` class. 
@@ -81,8 +81,8 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
   .. literalinclude:: identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs
     :language: c#
-    :lines: 57-92
-    :emphasize-lines: 12
+    :lines: 54-89
+    :emphasize-lines: 11
     :dedent: 8
 
 4. Log off.
@@ -91,8 +91,8 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
  
   .. literalinclude:: identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs
     :language: c#
-    :lines: 138-143
-    :emphasize-lines: 3
+    :lines: 131-138
+    :emphasize-lines: 5
     :dedent: 8 
  
   The code above shows the ``SignInManager.SignOutAsync`` method. The ``SignOutAsync`` method clears the users claims stored in a cookie. 
@@ -113,16 +113,16 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 Identity Components
 -------------------
 
-The primary reference assembly for the identity system is ``Microsoft.AspNet.Identity``. This package contains the core set of interfaces for ASP.NET Core Identity.
+The primary reference assembly for the identity system is ``Microsoft.AspNetCore.Identity``. This package contains the core set of interfaces for ASP.NET Core Identity.
 
 .. image:: identity/_static/05-dependencies.png
 
 These dependencies are needed to use the identity system in ASP.NET Core applications:
  
 - ``EntityFramework.SqlServer`` - Entity Framework is Microsoft's recommended data access technology for relational databases.
-- ``Microsoft.AspNet.Authentication.Cookies`` - Middleware that enables an application to use cookie based authentication, similar to ASP.NET's Forms Authentication. 
-- ``Microsoft.AspNet.Cryptography.KeyDerivation`` - Utilities for key derivation.
-- ``Microsoft.AspNet.Hosting.Abstractions`` - Hosting abstractions. 
+- ``Microsoft.AspNetCore.Authentication.Cookies`` - Middleware that enables an application to use cookie based authentication, similar to ASP.NET's Forms Authentication. 
+- ``Microsoft.AspNetCore.Cryptography.KeyDerivation`` - Utilities for key derivation.
+- ``Microsoft.AspNetCore.Hosting.Abstractions`` - Hosting abstractions. 
 
 Migrating to ASP.NET Core Identity
 ----------------------------------
