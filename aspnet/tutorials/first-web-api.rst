@@ -1,4 +1,4 @@
-用 ASP.NET Core MVC 创建你的第一个 Web API
+用 ASP.NET Core MVC 和 Visual Studio 创建你的第一个 Web API
 =================================================
 
 作者 `Mike Wasson`_ 和 `Rick Anderson`_
@@ -12,7 +12,7 @@ HTTP协议 不仅仅提供网页服务. 它也是一个构建公开服务和数�
 
 ASP.NET Core 已经内置了用 MVC 架构 构建 Web API 的支持。统一了两个框架使得它易于构建应用程序，包括用户界面（HTML）和 API，因为现在它们共享相同的代码库和管道。
 
-.. note:: 如果你想把一个老的 Web API 应用程序迁移到 ASP.NET Core, 参考 :doc:`/migration/webapi`
+.. note:: 如果你想把一个现有的 Web API 应用程序迁移到 ASP.NET Core, 参考 :doc:`/migration/webapi`
 
 .. contents:: 章节:
   :local:
@@ -36,7 +36,7 @@ DELETE /api/todo/{id}  删除指定的item。           无            无
 
 .. image:: first-web-api/_static/architecture.png
 
-- 不管是哪个调用 API 的客户端（浏览器，移动应用，等等）。我们不会在本教程编写客户端。
+- 不管是哪个调用 API 的客户端（浏览器，移动应用，等等）。我们不会在本教程中编写客户端。
 -  *model* 是一个代表你应用程序数据的类. 在本案例中, 只有一个模型 to-do 项. 模型表现为简单 C# 类型 (POCOs).
 -  *controller* 是一个处理 HTTP 请求并返回 HTTP 响应的对象. 这个示例程序将只会有一个 controller.
 - 为了保证教程简单我们不使用数据库. 作为替代, 我们会把 to-do 项存入内存. 但是我们依然包含了一个数据访问层（不重要的）, 用来隔离 Web API和数据层. 如果想使用数据库, 参考 :doc:`first-mvc-app/index` 。
@@ -117,8 +117,8 @@ DELETE /api/todo/{id}  删除指定的item。           无            无
 
 .. literalinclude:: first-web-api/sample/src/TodoApi/Startup.cs
   :language: c#
-  :lines: 25-31
-  :emphasize-lines: 6
+  :lines: 13-23
+  :emphasize-lines: 9-10
   :dedent: 8
 
 添加控制器
@@ -298,6 +298,5 @@ Delete
 - 关于如何为原生移动 App 创建后端, 请参考 :doc:`/mobile/native-mobile-backend` 。
 - 更多关于 API 部署的问题, 请参考 :doc:`发布与部署 </publishing/index>` 。
 - `查看或者下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/tutorials/first-web-api/sample>`__
-
 
 
