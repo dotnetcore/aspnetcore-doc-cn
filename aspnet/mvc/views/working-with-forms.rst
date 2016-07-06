@@ -93,7 +93,7 @@ The Input Tag Helper
  
 The Input Tag Helper binds an HTML `<input> <https://www.w3.org/wiki/HTML/Elements/input>`__ element to a model expression in your razor view.
 
-Input 标签助手将 HTML  `<input> <https://www.w3.org/wiki/HTML/Elements/input>`__ 元素绑定到 Razor 视图中的模型表达式上。
+Input Tag Helper将 HTML  `<input> <https://www.w3.org/wiki/HTML/Elements/input>`__ 元素绑定到 Razor 视图中的模型表达式上。
 
 语法：
 
@@ -101,7 +101,7 @@ Input 标签助手将 HTML  `<input> <https://www.w3.org/wiki/HTML/Elements/inpu
 
   <input asp-for="<Expression Name>" /> 
 
-Input 标签助手:
+Input Tag Helper:
 
 - Generates the ``id`` and ``name`` HTML attributes for the expression name specified in the ``asp-for`` attribute.  ``asp-for="Property1.Property2"`` is equivalent to ``m => m.Property1.Property2``, that is the attribute value literally is part of an expression. The name of the expression is what's used for the ``asp-for`` attribute value.
 - Sets the HTML ``type`` attribute value based on the model type and  `data annotation <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ attributes applied to the model property
@@ -114,7 +114,7 @@ Input 标签助手:
 - 基于模型类型和应用在模型属性上的 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性来设置 HTML ``type`` 的属性值。
 - 如果 HTML ``type`` 属性已被指定，则不会覆盖它。
 - 根据应用在模型属性上的 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性生成 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ 验证属性。
-- 与 HTML Helper  ``Html.TextBoxFor`` and ``Html.EditorFor`` 功能重叠。详情可参见 **Input 标签助手的 HTML Helper 替代方法** 一节。 
+- 与 HTML Helper  ``Html.TextBoxFor`` and ``Html.EditorFor`` 功能重叠。详情可参见 **Input Tag Helper 的 HTML Helper 替代方法** 一节。 
 
 
 .. code-block:: HTML
@@ -130,7 +130,7 @@ Input 标签助手:
 
 The ``Input`` Tag Helper sets the HTML ``type`` attribute based on the .NET type. The following table lists some common .NET types and generated HTML type (not every .NET type is listed). 
 
-``Input`` 标签助手基于 .NET 类型来设置 HTML ``type``属性。下表列出了一些常见的 .NET 类型和生成出的 HTML 类型（并非所有 .NET 类型都在列）。 
+``Input`` Tag Helper基于 .NET 类型来设置 HTML ``type``属性。下表列出了一些常见的 .NET 类型和生成出的 HTML 类型（并非所有 .NET 类型都在列）。 
 
 +---------------------+--------------------+
 |.NET 类型            |  Input 类型         |  
@@ -150,7 +150,7 @@ The ``Input`` Tag Helper sets the HTML ``type`` attribute based on the .NET type
 
 The following table shows some common `data annotations <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ attributes that the input tag helper will map to specific input types (not every validation attribute is listed):
 
-下表列出了 Input 标签助手会将其映射到指定 Input 类型的一些常见 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性（并非所有特性都在列）。
+下表列出了 Input Tag Helper会将其映射到指定 Input 类型的一些常见 `数据注释 <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ 特性（并非所有特性都在列）。
 
 +-------------------------------+--------------------+
 |Attribute                      |  Input Type        |  
@@ -200,7 +200,7 @@ The code above generates the following HTML:
 
 The data annotations applied to the ``Email`` and ``Password`` properties generate metadata on the model. The Input Tag Helper consumes the model metadata and produces `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ ``data-val-*`` attributes (see :doc:`/mvc/models/validation`). These attributes describe the validators to attach to the input fields. This provides unobtrusive HTML5 and `jQuery <https://jquery.com/>`__ validation. The unobtrusive attributes have the format ``data-val-rule="Error Message"``, where rule is the name of the validation rule (such as ``data-val-required``, ``data-val-email``, ``data-val-maxlength``, etc.) If an error message is provided in the attribute, it is displayed as the value for the ``data-val-rule`` attribute. There are also attributes of the form ``data-val-ruleName-argumentName="argumentValue"`` that provide additional details about the rule, for example, ``data-val-maxlength-max="1024"`` .  
 
-``Email`` 和 ``Password`` 属性上应用的数据注释在该模型上生成元数据。Input 标签助手读取模型元数据并生成 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ ``data-val-*`` 属性（详见 :doc:`/mvc/models/validation` ）。这些属性对验证器进行描述使其附加到 Input 字段上。这提供了 unobtrusive 的 HTML5 和 `jQuery <https://jquery.com/>`__ 验证。
+``Email`` 和 ``Password`` 属性上应用的数据注释在该模型上生成元数据。Input Tag Helper读取模型元数据并生成 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__ ``data-val-*`` 属性（详见 :doc:`/mvc/models/validation` ）。这些属性对验证器进行描述使其附加到 Input 字段上。这提供了 unobtrusive 的 HTML5 和 `jQuery <https://jquery.com/>`__ 验证。
 
 HTML Helper alternatives to Input Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -352,12 +352,12 @@ The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 The Textarea Tag Helper
 -------------------------
 
-Textarea 标签助手
+Textarea Tag Helper
 ----------------------------
 
 The `Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ tag helper is  similar to the Input Tag Helper. 
 
-`Textarea 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ 与 Input 标签助手类似。
+`Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ 与 Input Tag Helper类似。
 
 - Generates the ``id`` and ``name`` attributes, and the data validation attributes from the model for a `<textarea> <http://www.w3.org/wiki/HTML/Elements/textarea>`__ element. 
 - Provides strong typing. 
@@ -400,7 +400,7 @@ The following HTML is generated:
 The Label Tag Helper
 --------------------
 
-Label 标签助手
+Label Tag Helper
 ----------------------
 
 - Generates the label caption and ``for`` attribute on a `<label> <https://www.w3.org/wiki/HTML/Elements/label>`__ element for an expression name
@@ -411,13 +411,13 @@ Label 标签助手
 
 The `Label Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__  provides the following benefits over a pure HTML label element:
 
-`Label 标签助手<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 相对于纯 HTML label 元素具有以下优势： 
+`Label Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 相对于纯 HTML label 元素具有以下优势： 
 
 - You automatically get the descriptive label value from the ``Display`` attribute. The intended display name might change over time, and the combination of ``Display`` attribute and Label Tag Helper will apply the ``Display`` everywhere it's used.
 - Less markup in source code
 - Strong typing with the model property.
 
-- 可从 ``Display`` 特性自动获得描述性的 Label 值。随着时间推移，预期的显示名称可能会变化，而结合使用 ``Display`` 特性与 Label 标签助手将会在所有使用它的地方应用 ``Display`` 。
+- 可从 ``Display`` 特性自动获得描述性的 Label 值。随着时间推移，预期的显示名称可能会变化，而结合使用 ``Display`` 特性与 Label Tag Helper将会在所有使用它的地方应用 ``Display`` 。
 
 Sample:
 
@@ -440,22 +440,22 @@ The following HTML is generated for the ``<label>`` element:
  
 The Label Tag Helper generated the ``for`` attribute value of "Email", which is the ID associated with the ``<input>`` element. The Tag Helpers generate consistent ``id`` and ``for`` elements so they can be correctly associated. The caption in this sample comes from the ``Display`` attribute. If the model didn't contain a ``Display`` attribute, the caption would be the property name of the expression.
 
-Label 标签助手生成了 "Email" 的 ``for`` 属性值，也就是与 ``<input>`` 元素关联的 ID 。标签助手生成一致的 ``id`` 和 ``for`` 元素，因此它们可以正确地关联起来。本例中的标签文本来自于 ``Display`` 特性。如果模型没有 ``Display`` 特性，标签文本则会是表达式的属性名称。
+Label Tag Helper生成了 "Email" 的 ``for`` 属性值，也就是与 ``<input>`` 元素关联的 ID 。Tag Helper生成一致的 ``id`` 和 ``for`` 元素，因此它们可以正确地关联起来。本例中的标签文本来自于 ``Display`` 特性。如果模型没有 ``Display`` 特性，标签文本则会是表达式的属性名称。
  
 The Validation Tag Helpers
 ---------------------------
 
-验证标签助手
+验证Tag Helper
 ----------------------
 
 There are two Validation Tag Helpers. The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ (which displays a validation message for a single property on your model), and the `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ (which displays a summary of validation errors). The `Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ adds HTML5 client side validation attributes to input elements based on data annotation attributes on your model classes. Validation is also performed on the server. The Validation Tag Helper displays these error messages when a validation error occurs. 
 
-有两种验证标签助手。`Validation Message 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ （用来显示模型上单个属性的验证信息），和 `Validation Summary 标签助手<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ （用来显示验证错误汇总）。`Input 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ 根据模型类的数据注释给 input 元素添加 HTML5 客户端验证属性。验证也在服务端执行。Validation 标签助手会在验证发生错误的时候显示这些错误信息。
+有两种验证Tag Helper。`Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ （用来显示模型上单个属性的验证信息），和 `Validation Summary Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ （用来显示验证错误汇总）。`Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ 根据模型类的数据注释给 input 元素添加 HTML5 客户端验证属性。验证也在服务端执行。Validation Tag Helper会在验证发生错误的时候显示这些错误信息。
 
 The Validation Message Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Validaton Message 标签助手
+Validaton Message Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Adds the `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__  ``data-valmsg-for="property"`` attribute to the `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ element, which attaches the validation error messages on the input field of the specified model property. When a client side validation error occurs, `jQuery <https://jquery.com/>`__ displays the error message in the ``<span>`` element. 
@@ -468,7 +468,7 @@ Validaton Message 标签助手
 
 The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  is used with the ``asp-validation-for`` attribute on a HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ element.
 
-`Validaton Message 标签助手<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 与 HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素上的 ``asp-validation-for`` 属性一起使用。
+`Validaton Message Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 与 HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素上的 ``asp-validation-for`` 属性一起使用。
 
 .. code-block:: HTML
   
@@ -476,7 +476,7 @@ The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/
   
 The Validation Message Tag Helper will generate the following HTML:
 
-Validation Message 标签助手将生成以下 HTML ：
+Validation Message Tag Helper将生成以下 HTML ：
 
 .. code-block:: HTML
 
@@ -486,7 +486,7 @@ Validation Message 标签助手将生成以下 HTML ：
 
 You generally use the `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  after an ``Input`` Tag Helper for the same property. Doing so displays any validation error messages near the input that caused the error.
 
-通常在模型属性相同的 ``Input`` 标签助手后面使用 `Validation Message 标签助手 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 。这样可以在发生验证错误的 input 旁边显示错误信息。
+通常在模型属性相同的 ``Input`` Tag Helper后面使用 `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 。这样可以在发生验证错误的 input 旁边显示错误信息。
 
 :Note: You must have a view with the correct JavaScript and `jQuery <https://jquery.com/>`__ 
  script references in place for client side validation. See :doc:`/mvc/models/validation` for more information.
@@ -507,7 +507,7 @@ When a server side validation error occurs (for example when you have custom ser
 The Validation Summary Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-验证摘要标签助手
+验证摘要Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Targets ``<div>`` elements with the ``asp-validation-summary`` attribute 
@@ -535,7 +535,7 @@ The `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/
 
 In the following example, the data model is decorated with ``DataAnnotation`` attributes, which generates validation error messages on the ``<input>`` element.  When a validation error occurs, the Validation Tag Helper displays the error message:
 
-在以下示例中，数据模型装饰了 ``DataAnnotation`` 特性，用以在 ``<input>`` 元素上生成验证错误信息。当发生验证错误的时候， Validation 标签助手显示错误信息：
+在以下示例中，数据模型装饰了 ``DataAnnotation`` 特性，用以在 ``<input>`` 元素上生成验证错误信息。当发生验证错误的时候， Validation Tag Helper显示错误信息：
 
 .. literalinclude::  forms/sample/final/ViewModels/RegisterViewModel.cs
   :language: c#
