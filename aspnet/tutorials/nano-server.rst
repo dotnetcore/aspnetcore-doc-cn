@@ -12,11 +12,11 @@ ASP.NET Core on Nano Server
 
 翻译 `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对 `刘怡(AlexLEWIS) <https://github.com/alexinea>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
+校对 `刘怡(AlexLEWIS) <https://github.com/alexinea>`_、`许登洋(Seay) <https://github.com/SeayXu>`_、`谢炀(kiler) <https://github.com/kiler398>`_
 
-.. attention:: This tutorial uses a pre-release version of the Nano Server installation option of Windows Server Technical Preview 4. You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment. Please see https://go.microsoft.com/fwlink/?LinkId=624232 for specific information about the end date for the preview.
+.. attention:: This tutorial uses a pre-release version of the Nano Server installation option of Windows Server Technical Preview 5. You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment. Please see https://go.microsoft.com/fwlink/?LinkId=624232 for specific information about the end date for the preview.
 
-.. attention:: 本教程使用 Windows Server Technical Preview 4 中的预发行版本的 Nano Server 安装选项。 你可以使用虚拟硬盘镜只用来内部演示和评估它。不能将该软件在生产环境中使用。请看 https://go.microsoft.com/fwlink/?LinkId=624232 查看具体的预览截止日期信息。
+.. attention:: 本教程使用 Windows Server Technical Preview 5 中的预发行版本的 Nano Server 安装选项。 你可以使用虚拟硬盘镜只用来内部演示和评估它。不能将该软件在生产环境中使用。请看 https://go.microsoft.com/fwlink/?LinkId=624232 查看具体的预览截止日期信息。
 
 In this tutorial, you'll take an existing ASP.NET Core app and deploy it to a Nano Server instance running IIS.
 
@@ -30,15 +30,21 @@ Introduction
 ------------
 
 介绍
-------
+------------
 
-Windows Server 2016 Technical Preview offers a new installation option: Nano Server. Nano Server is a remotely administered server operating system optimized for private clouds and datacenters. It takes up far less disk space, sets up significantly faster, and requires far fewer updates and restarts than Windows Server. You can learn more about Nano Server from the `official docs <https://msdn.microsoft.com/en-us/library/mt126167.aspx>`_.
+Nano Server is an installation option in Windows Server 2016, offering a tiny footprint, better security and better servicing than Server Core or full Server. Please consult the official `Nano Server documentation <https://technet.microsoft.com/en-us/library/mt126167.aspx>`__ for more details.  There are 3 ways for you try out Nano Server for yourself:
+1.	You can download the Windows Server 2016 Technical Preview 5 ISO file, and build a Nano Server image
+2.	Download the Nano Server developer VHD
+3.	Create a VM in Azure using the Nano Server image in the Azure Gallery. If you don’t have an Azure account, you can get a free 30-day trial
 
-Windows Server 2016 Technical Preview 提供了一个新的安装选项： Nano Server 。 Nano Server 是一个针对私有云和数据中心进行优化的远程管理服务器操作系统。它比 Windows Server 占用更少的磁盘空间，更快的安装速度，更少的更新并重启。你可以通过 `官方文档 <https://msdn.microsoft.com/en-us/library/mt126167.aspx>`_ 了解更多关于 Nano Server 的内容。
+Nano Server 是 Windows Server 2016 附属的一个安装选项，比 Server Core 或者 full Server 提供更小的安装体积，更好的安全性以及更好的服务性能。 请参考官方 `Nano Server 文档 <https://technet.microsoft.com/en-us/library/mt126167.aspx>`__ 获取更多内容。  有以下三种方法来试用 Nano Server：
+1.	你可以下载 Windows Server 2016 Technical Preview 5 ISO 文件，并且生成 Nano Server 镜像。
+2.	下载 Nano Server 开发者 VHD （虚拟磁盘文件）
+3.	在 Azure 中从 Azure Gallery 使用 Nano Server 镜像创建虚拟机。如果没有 Azure 账户，你可以申请一个 30天免费试用账户。
 
-In this tutorial, we will be using the pre-built `Virtual Hard Disk (VHD) for Nano Server <https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula>`_  from Windows Server Technical Preview 4. This pre-built VHD already includes the Reverse Forwarders and IIS packages which are required for this tutorial.
+In this tutorial, we will be using the pre-built `Nano Server Developer VHD <https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula>`_  from Windows Server Technical Preview 5.
 
-在本教程中，我们将使用在 Windows Server Technical Preview 4 中预创建的 `Virtual Hard Disk （VHD） for Nano Server <https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula>`_ 。这个预创建的 VHD 已经包含了在本教程中我们需要的反向代理和 IIS 包。
+在本教程中，我们将使用在 Windows Server Technical Preview 5 中预创建的 `Nano Server Developer VHD <https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula>`_ 。
 
 Before proceeding with this tutorial, you will need the :doc:`published </publishing/index>` output of an existing ASP.NET Core application. Ensure your application is built to run in a **64-bit** process.
 
@@ -70,8 +76,12 @@ Open an elevated PowerShell window to add your remote Nano Server instance to yo
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # 替换成正确的 IP 地址
-  Set-Item WSMan:\localhost\Client\TrustedHosts "$ip" -Concatenate -Force
+  $nanoServerIpAddress = "10.83.181.14"
+  Set-Item WSMan:\localhost\Client\TrustedHosts "$nanoServerIpAddress" -Concatenate -Force
+
+``NOTE:`` Replace the variable ``$nanoServerIpAddress`` with the correct IP address.
+
+``NOTE:`` 把 ``$nanoServerIpAddress`` 替换为对应的 IP 地址。
 
 Once you have added your Nano Server instance to your ``TrustedHosts``, you can connect to it using PowerShell remoting
 
@@ -79,161 +89,158 @@ Once you have added your Nano Server instance to your ``TrustedHosts``, you can 
 
 .. code:: ps1
 
-  $ip = "10.83.181.14" # 替换成正确的 IP 地址
-  $s = New-PSSession -ComputerName $ip -Credential ~\Administrator
-  Enter-PSSession $s
+  $nanoServerSession = New-PSSession -ComputerName $nanoServerIpAddress -Credential ~\Administrator
+  Enter-PSSession $nanoServerSession
 
-If you have successfully connected then your prompt will look like this ``[10.83.181.14]: PS C:\Users\Administrator\Documents>``
+A successful connection results in a prompt with a format looking like: ``[10.83.181.14]: PS C:\Users\Administrator\Documents>``
 
-如果你成功连接，你的命令提示符将看起来像这样 ``[10.83.181.14]: PS C:\Users\Administrator\Documents>``
+成功连接的命令提示符将看起来像这样 ``[10.83.181.14]: PS C:\Users\Administrator\Documents>``
 
-Installing the HttpPlatformHandler Module
------------------------------------------
+Creating a file share
 
-安装 HttpPlatformHandler 组件
------------------------------------------
+创建文件共享
+---------------------
+Create a file share on the Nano server so that the published application can be copied to it. Run the following commands in the remote session:
 
-The HttpPlatformHandler is an IIS 7.5+ module which is responsible for process management of HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the HttpPlatformHandler Module for IIS is manual. You will need to install the latest 64-bit version of the `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ on a regular (not Nano) machine. After installing you will need to copy the following files:
-
-HttpPlatformHandler 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 HttpPlatformHandler 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `HttpPlatformHandler <http://www.iis.net/downloads/microsoft/HttpPlatformHandler>`_ 。安装之后你需要复制以下文件：
-
-* *%windir%\\System32\\inetsrv\\HttpPlatformHandler.dll*
-* *%windir%\\System32\\inetsrv\\config\\schema\\httpplatform_schema.xml*
-
-On the Nano machine you’ll need to copy those two files to their respective locations.
-
-在 Nano 主机中你需要复制这两个文件到他们各自的位置。
+在 Nano server 上创建文件共享这样可以直接拷贝发布的程序，在远程服务器上运行下述命令：
 
 .. code:: ps1
 
-  Copy-Item .\HttpPlatformHandler.dll c:\Windows\System32\inetsrv
-  Copy-Item .\httpplatform_schema.xml c:\Windows\System32\inetsrv\config\schema
+  mkdir C:\PublishedApps\AspNetCoreSampleForNano
+  netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=yes
+  net share AspNetCoreSampleForNano=c:\PublishedApps\AspNetCoreSampleForNano /GRANT:EVERYONE`,FULL
 
-Enabling the HttpPlatformHandler
---------------------------------
+After running the above commands you should be able to access this share by visiting ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano`` in the host machine's Windows Explorer.
 
-启用 HttpPlatformHandler
---------------------------------
+上述命令运行完以后，你就可以在你本机使用 Windows 文件浏览器通过  ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano`` 地址访问共享文件了。
 
-You can execute the following PowerShell script in a remote PowerShell session to enable the HttpPlatformHandler module on the Nano server.
+Open port in the Firewall
+--------------------------
+Run the following commands in the remote session to open up a port in the firewall to listen for TCP traffic.
 
-你可以在 PowerShell 远程会话中执行以下 PowerShell 脚本来在 Nano Server 上启用 HttpPlatformHandler 组件。
+打开防火墙端口
+--------------------------
+在远程会话中运行下面的命令在防火墙中打开一个端口来监听TCP流量。
 
-.. note:: This script runs on a clean system, but is not meant to be idempotent. If you run this multiple times it will add multiple entries. If you end up in a bad state, you can find backups of the *applicationHost.config* file at *%systemdrive%\inetpub\history*.
+.. code:: ps1
 
-.. note:: 这份脚本可以运行在纯净的系统里，但是不能运行多次。如果你运行这份脚本多次，它将会添加多个条目。如果你最终处于糟糕的状态，你可以在 *%systemdrive%\inetpub\history* 中找到 *applicationHost.config* 文件的备份。
+  New-NetFirewallRule -Name "AspNet5 IIS" -DisplayName "Allow HTTP on TCP/8000" -Protocol TCP -LocalPort 8000 -Action Allow -Enabled True
 
-.. literalinclude:: nano-server/enable-platformhandler.ps1
-  :language: ps1
+Installing IIS
+--------------
 
-Manually Editing *applicationHost.config*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+安装 IIS
+--------------
 
-手动编辑 *applicationHost.config*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Add the ``NanoServerPackage`` provider from the PowerShell gallery. Once the provider is installed and imported, you can install Windows packages.
 
-You can skip this section if you already ran the PowerShell script above. Though is not recommended, you can alternatively enable the HttpPlatformHandler by manually editing the *applicationHost.config* file.
+从 PowerShell 库平台（PowerShell gallery）中添加 ``NanoServerPackage`` provider，一旦 provider 被安装或者导入，你就可以安装 Window 包了。
 
-如果你已经运行过上面的 PowerShell脚本，可以跳过这一节。你可以选择通过手动编辑 *applicationHost.config* 文件的方式来启用 HttpPlatformHandler ，尽管不推荐这样做。
 
-Open up *C:\\Windows\\System32\\inetsrv\\config\\applicationHost.config*
+Run the following commands in the PowerShell session that was created earlier:
 
-打开 *C:\\Windows\\System32\\inetsrv\\config\\applicationHost.config*
+在前面创建的 PowerShell 会话中运行以下代码：
 
-Under ``<configSections>`` add
+.. code:: ps1
 
-在 ``<configSections>`` 节点下加入
+  Install-PackageProvider NanoServerPackage
+  Import-PackageProvider NanoServerPackage
+  Install-NanoServerPackage -Name Microsoft-NanoServer-IIS-Package
 
-.. literalinclude:: nano-server/applicationHost.config
-  :language: xml
-  :lines: 42-43
-  :dedent: 4
-  :emphasize-lines: 2
+To quickly verify if IIS is setup correctly, you can visit the url ``http://<nanoserver-ip-address>/`` and should see a welcome page. When IIS is installed, by default a web site called ``Default Web Site`` listening on port 80 is created.
 
-In the ``system.webServer`` section group, update the handlers section to allow the configured handlers to be overridden.
+为了快速验证ISS是否正确安装，你可以访问 ``http://<nanoserver-ip-address>/`` 链接看看是否可以显示欢迎页面。当IIS被安装好以后，默认会创建一个名为 ``Default Web Site`` 的网站在80端口上侦听。
 
-在 ``system.webServer`` 节点组（sectionGroup），更新处理程序节点（handlers section）来允许配置处理程序被重写。
+Installing the ASP.NET Core Module (ANCM)
+-----------------------------------------
 
-.. literalinclude:: nano-server/applicationHost.config
-  :language: xml
-  :lines: 55,63
-  :dedent: 8
-  :emphasize-lines: 2
+The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process management of ASP.NET Core HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the ASP.NET Core Module for IIS is manual. You will need to install the version of the `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ on a regular (not Nano) machine. After installing the bundle on a regular machine, you will need to copy the following files to the file share that we created earlier.
 
-Add ``httpPlatformHandler`` to the ``globalModules`` section
+The ASP.NET Core Module 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后你需要复制以下文件：
 
-添加 ``httpPlatformHandler`` 到 ``globalModules`` 节点下
+On a regular (not Nano) machine run the following copy commands:
 
-.. literalinclude:: nano-server/applicationHost.config
-  :language: xml
-  :lines: 210,224
-  :dedent: 8
-  :emphasize-lines: 2
+在常规机（不是 Nano Server）上运行下述拷贝命令：
 
-Additionally, add ``httpPlatformHandler`` to the ``modules`` section
+.. code:: ps1
 
-除此之外，添加 ``httpPlatformHandler`` 到 ``modules`` 节点下
+  copy C:\windows\system32\inetsrv\aspnetcore.dll ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano``
+  copy C:\windows\system32\inetsrv\config\schema\aspnetcore_schema.xml ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano``
 
-.. literalinclude:: nano-server/applicationHost.config
-  :language: xml
-  :lines: 275,286
-  :dedent: 8
-  :emphasize-lines: 2
+On a Nano machine, you will need to copy the following files from the file share that we created earlier to the valid locations.
+So, run the following copy commands:
+
+在 Nano 主机中你需要从前面创建的文件共享中复制这下面的文件到对应的位置。
+运行下面拷贝脚本：
+
+.. code:: ps1
+
+  copy C:\PublishedApps\AspNetCoreSampleForNano\aspnetcore.dll C:\windows\system32\inetsrv\
+  copy C:\PublishedApps\AspNetCoreSampleForNano\aspnetcore_schema.xml C:\windows\system32\inetsrv\config\schema\
+
+Run the following script in the remote session:
+
+在远程会话中运行下面的脚本：
+
+.. literalinclude:: nano-server/enable-ancm.ps1
+
+``NOTE:`` Delete the files ``aspnetcore.dll`` and ``aspnetcore_schema.xml`` from the share after the above step.
+
+``NOTE:`` 从共享中删除 ``aspnetcore.dll`` 和 ``aspnetcore_schema.xml`` 文件在上述步骤之后。
+ 
+ 
+ Installing .NET Core Framework
+------------------------------
+If you published a portable app, .NET Core must be installed on the target machine. Execute the following Powershell script in a remote Powershell session to install the .NET Framework on your Nano Server.
+
+ 安装 .NET Core Framework
+------------------------------
+如果你发布移动应用， .NET Core 必须安装在目标机器。 在远程 Powershell 会话中执行下述 Powershell 脚本来在你的 Nano Server 安装 .NET Framework。
+ 
+.. literalinclude:: nano-server/Download-Dotnet.ps1
+  :language: powershell
+ 
 
 Publishing the application
------------------------------------
+--------------------------
+Copy over the published output of your existing application to the file share. 
 
 发布应用程序
 -----------------------------------
+将你发布好的现有应用程序复制到文件共享。
 
-Copy over the published output of your existing application to the Nano server.
+You may need to make changes to your *web.config* to point to where you extracted ``dotnet.exe``. Alternatively, you can add ``dotnet.exe`` to your path.
 
-将你发布好的现有应用程序复制到 Nano Server 。
+您可能需要修改你的  *web.config*  文件指向你解压缩 ``dotnet.exe`` 文件的路径。或者，你也可以把 ``dotnet.exe`` 添加到你的路径。
 
-.. code:: ps1
+Example of how a web.config might look like if ``dotnet.exe`` was **not** on the path:
 
-  $ip = "10.83.181.14" # 替换成正确的 IP 地址
-  $s = New-PSSession -ComputerName $ip -Credential ~\Administrator
-  Copy-Item -ToSession $s -Path <path-to-src>\bin\output\ -Destination C:\HelloAspNet5 -Recurse
+下面是一个修改 web.config 的例子，当 ``dotnet.exe`` **不在** 当前路径中：
 
-Use the following PowerShell snippet to create a new site in IIS for our published app. This script uses the ``DefaultAppPool`` for simplicity. For more considerations on running under an application pool, see :ref:`apppool`.
+.. code:: xml
 
-使用以下 PowerShell 片段来创建一个用于我们发布应用程序的 IIS 站点。为了简单，这段脚本使用 ``默认应用程序池（DefaultAppPool）``。关于在应用程序池中运行的更多注意事项，查看 :ref:`apppool` 。
+  <?xml version="1.0" encoding="utf-8"?>
+  <configuration>
+    <system.webServer>
+      <handlers>
+        <add name="aspNetCore" path="*" verb="*" modules="AspNetCoreModule" resourceType="Unspecified" />
+      </handlers>
+      <aspNetCore processPath="C:\dotnet\dotnet.exe" arguments=".\AspNetCoreSampleForNano.dll" stdoutLogEnabled="false" stdoutLogFile=".\logs\stdout" forwardWindowsAuthToken="true" />
+    </system.webServer>
+  </configuration>
+
+
+Run the following commands in the remote session to create a new site in IIS for the published app. This script uses the ``DefaultAppPool`` for simplicity. For more considerations on running under an application pool, see :ref:`apppool`.
+
+在远程会话中运行以下命令在IIS中为已发布的应用创建一个新的站点。此脚本只是简单的使用了 ``DefaultAppPool`` 。更多关于应用程序池的信息，请参阅 :ref:`apppool` 。
+
 
 .. code:: powershell
 
   Import-module IISAdministration
-  New-IISSite -Name "AspNet5" -PhysicalPath c:\HelloAspNet5\wwwroot -BindingInformation "*:8000:"
+  New-IISSite -Name "AspNetCore" -PhysicalPath c:\PublishedApps\AspNetCoreSampleForNano -BindingInformation "*:8000:"
 
-Manually Editing *applicationHost.config*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-手动编辑 *applicationHost.config*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can also create the site by manually editing the *applicationHost.config* file.
-
-你也可以通过手动编辑 *applicationHost.config* 文件来创建站点。
-
-.. literalinclude:: nano-server/applicationHost.config
-  :language: xml
-  :lines: 152,161-168,175
-  :dedent: 8
-  :emphasize-lines: 2-9
-
-Open a Port in the Firewall
----------------------------
-
-在防火墙中打开端口
----------------------------
-
-Since we have IIS listening on port **8000** and forwarding request to our application, we will need open up the port to TCP traffic.
-
-因为我们使用 IIS 在 **8000** 端口监听和转发请求到我们的应用程序，我们需要开放这个端口的 TCP 通信。
-
-.. code:: ps1
-
-  New-NetFirewallRule -Name "AspNet5" -DisplayName "HTTP on TCP/8000" -Protocol TCP -LocalPort 8000 -Action Allow -Enabled True
 
 Running the Application
 -----------------------
@@ -241,7 +248,10 @@ Running the Application
 运行应用程序
 -----------------------
 
-At this point your published web application, should be accessible in browser by visiting ``http://<ip-address>:8000``.
-If you have set up logging as described in :ref:`log-redirection`, you should be able to view your logs at *C:\\HelloAspNet5\\logs*.
 
-此时你已经发布了你的 Web 应用程序，通过浏览器访问 ``http://<ip-address>:8000`` 应该能访问到（你的应用程序）。如果你设置了 :ref:`log-redirection` 中介绍的日志，你应该能够在 *C:\\HelloAspNet5\\logs* 查看你的日志。
+The published web app should be accessible in browser at ``http://<nanoserver-ip-address>:8000``.
+If you have set up logging as described in :ref:`log-redirection`, you should be able to view your logs at *C:\\PublishedApps\\AspNetCoreSampleForNano\\logs*.
+
+发布好的 Web 应用程序可以通过浏览器打开 ``http://<nanoserver-ip-address>:8000`` 链接访问到。
+如果你按照 :ref:`log-redirection` 介绍的方式设置好了日志。你应该能够在  *C:\\PublishedApps\\AspNetCoreSampleForNano\\logs* 目录中查看你的日志。
+ 
