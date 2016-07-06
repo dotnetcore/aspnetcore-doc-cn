@@ -18,7 +18,9 @@
 
 （以下排序按照贡献者本名的汉语拼音排列）
 
++ [陈计节](https://github.com/jijiechen/)
 + [高会军(布莱恩特)](https://github.com/iyacontrol)
++ [高嵩(Jack)](https://github.com/jack2gs)
 + [郭远博(tkb至简)](https://github.com/Farb)
 + [耿晓亮(Blue)](https://github.com/heyixiaoran)
 + [何镇汐](https://github.com/UtilCore)
@@ -33,14 +35,13 @@
 + [魏美娟(初见)](https://github.com/ChujianA)
 + [夏申斌](https://github.com/xiashenbin)
 + [谢炀(Kiler)](https://github.com/kiler398)
-+ [姚阿勇(Mr.Yao)](https://github.com/YaoaY)
++ [许登洋(Seay)](https://github.com/SeayXu)
++ [姚阿勇(Dr.Yao)](https://github.com/YaoaY)
 + [张剑](https://github.com/garfieldzf8)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
 + [张善友](https://github.com/geffzhang)
-+ [张硕(Apple)]()
 + [赵亮(悲梦)](https://github.com/BeiMeng)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
-+ [后知后觉](https://github.com/HouZhiHouJue)
 
 ### 其它类型贡献者
 
