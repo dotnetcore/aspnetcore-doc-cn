@@ -30,9 +30,12 @@ import datetime
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+sys.path.append(os.path.abspath('ext'))
+
 extensions = [
     'sphinx.ext.intersphinx',
-    'sphinxcontrib.dotnetdomain']
+    'sphinxcontrib.dotnetdomain',
+    'versionwarning']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates', '../common/_templates']
@@ -56,7 +59,7 @@ author = 'Microsoft'
 # built documents.
 #
 # The short X.Y version.
-# version = '0.0.1'
+version = '1.0.0'
 # The full version, including alpha/beta/rc tags.
 # release = '0.0.1'
 
@@ -134,11 +137,11 @@ else:
     feed_author = 'Microsoft'
 
 def setup(app):
-    app.add_stylesheet('custom.css?v=4')
-    app.add_javascript('helpfulness.js?v=4')
-    app.add_javascript('disqus.js')
+    app.add_stylesheet('custom.css?v=6')
+    app.add_javascript('helpfulness.js?v=6')
+    app.add_javascript('disqus.js?v=6')
     if on_rtd:
-        app.add_javascript('wedc.js?v=4')
+        app.add_javascript('wedc.js?v=6')
 
 #html_theme = 'default'
 
@@ -238,7 +241,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'aspnet.tex', 'ASP.NET 5 Documentation',
+  ('index', 'aspnet.tex', 'ASP.NET Core 1.0 Documentation',
    'Microsoft', 'manual'),
 ]
 
@@ -268,7 +271,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'aspnet', 'ASP.NET 5 Documentation',
+    ('index', 'aspnet', 'ASP.NET Core 1.0 Documentation',
      ['Microsoft'], 1)
 ]
 
@@ -282,8 +285,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'aspnet', 'ASP.NET 5 Documentation',
-   'Microsoft', 'aspnet', 'ASP.NET 5 Documentation',
+  ('index', 'aspnet', 'ASP.NET Core 1.0 Documentation',
+   'Microsoft', 'aspnet', 'ASP.NET Core 1.0 Documentation',
    '.NET Development'),
 ]
 
@@ -374,3 +377,4 @@ intersphinx_mapping = {
     'api': ('http://docs.asp.net/projects/api/en/latest', '../common/api.inv')
 }
 
+versionwarning_console = False
