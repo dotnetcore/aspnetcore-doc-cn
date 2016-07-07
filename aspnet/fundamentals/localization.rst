@@ -33,10 +33,10 @@
   :language: c#
 
 
-在上面的代码中， ``IStringLocalizer<T>`` 实现了 :doc:`/fundamentals/dependency-injection` 。我将展示 ``IStringLocalizer`` 服务如何被添加 **Configuring localization** 章节。
-如果没有发现 "About Title" 的本地化值，则索引的键值被返回，即是字符串 "About Title" 。您可以在应用程序中保留默认语言文字字符串，并在使用 localizer 包装他们，这样你可以专注于开发应用程序。使用默认语言开发应用并为进行本地化的步骤做准备，同时无需事先创建一个默认的资源文件。另外，您也可以使用传统的方法，一键恢复默认语言的字符串。对于大部分开发者来说新的工作流程无需一个默认语言的 *.resx*  文件，并且简单地包装字符串可以减少本地化的应用程序的工作量。其他开发者会选择传统的工作流程，因为它可以更容易地与长字符串文字工作，并使其更易于更新本地化字符串。
+在上面的代码中， ``IStringLocalizer<T>`` 实现了 :doc:`/fundamentals/dependency-injection` 。在 **Configuring localization** 章节，我将展示如何添加 ``IStringLocalizer`` 服务 。
+如果没有发现 "About Title" 的本地化值，则索引的键值被返回，即是字符串 "About Title" 。您可以在应用程序中保留默认语言文字字符串，然后再使用 localizer 包装他们，这样你就可以专注于开发应用程序。使用默认语言开发应用并为进行本地化的步骤做准备，同时无需事先创建一个默认的资源文件。另外，您也可以使用传统的方法，一键恢复默认语言的字符串。对于大部分开发者来说新的工作流程无需一个默认语言的 *.resx*  文件，并且简单地包装字符串可以减少本地化的应用程序的工作量。其他开发者会选择传统的工作流程，因为它可以更容易地与长字符串文字工作，并使其更易于更新本地化字符串。
 
-使用 `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__  来处理包含 HTML 的资源文件， ``IHtmlLocalizer`` HTML encodes 参数是格式化过的资源字符串，而不是原始字符串。 下面例子中的高亮代码一般你仅仅只希望本地化文本而非 HTML，只有 ``name`` 参数的值被 HTML 编码。
+使用 `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__  来处理包含 HTML 的资源文件， ``IHtmlLocalizer`` 对格式化过的资源字符串参数进行编码，而不是对原始资源字符串。 下面例子中的高亮代码一般你仅仅只希望本地化文本而非 HTML，只有 ``name`` 参数的值被 HTML 编码。
 
 .. literalinclude:: localization/sample/Controllers/BookController.cs
   :language: c#
@@ -45,7 +45,7 @@
 
 :Note: 一般你仅仅只希望本地化文本而非 HTML。
 
-在最低级别, 你可以在 :doc:`/fundamentals/dependency-injection` 之外获取 ``IStringLocalizerFactory``：
+在最低层次, 你可以通过 :doc:`/fundamentals/dependency-injection` 获取 ``IStringLocalizerFactory``：
 
 .. literalinclude:: localization/sample/Controllers/TestController.cs
   :language: c#
@@ -93,9 +93,9 @@
 
 渲染视图将包含资源文件中的 HTML 标签。
 
-:Note: You generally want to only localize text and not HTML.
+:Note: 你仅仅只想本地化文本而非HTML。
 
-在视图中试用共享资源文件，注入 `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__:
+为了在视图中试用共享资源文件，需要注入  `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__:
 
 .. literalinclude:: localization/sample/Views/Test/About.cshtml
   :language: HTML
@@ -137,7 +137,7 @@ ASP.NET Core 允许你指定两个文化值， ``SupportedCultures`` 以及 ``Su
 使用资源文件
 -----------------------------
 
-资源文件是一种从代码中分离本地化字符串的有效机制。对于非默认语言翻译字符串被隔离到 *.resx* 资源文件中。例如，您可能希望创建一个名为 *Welcome.es.resx* 的资源文件西班牙语翻译字符串。 "es" 是西班牙语的语言编码。要创建在Visual Studio这样的资源文件：
+资源文件是一种从代码中分离本地化字符串的有效机制。非默认语言翻译字符串被隔离到 *.resx* 资源文件中。例如，您可能希望创建一个名为 *Welcome.es.resx* 的西班牙语资源文件来包含翻译字符串。 "es" 是西班牙语的语言编码。在Visual Studio中，这样创建资源文件：
 
 #. 在 **Solution Explorer** 中， 右击包含资源文件的目录 > **Add** > **New Item** 。
 
@@ -151,7 +151,7 @@ ASP.NET Core 允许你指定两个文化值， ``SupportedCultures`` 以及 ``Su
 
 .. image:: localization/_static/hola.png
 
-Visual Studio 展示 *Welcome.es.resx* 文件 。
+ Visual Studio 展示出 *Welcome.es.resx* 文件。
 
 .. image:: localization/_static/se.png
 
@@ -212,7 +212,7 @@ QueryStringRequestCultureProvider
 
   \http://localhost:5000/?culture=es-MX&ui-culture=es-MX
 
-如果你仅仅使用（``culture`` 或者 ``ui-culture``）中的一个参数进行传递，查询字符串 provider 将使用你传递一个值来设置这两个参数。例如，同样的区域性信息都惠子设置在 ``Culture`` and the ``UICulture`` 之上：
+如果你仅仅使用（``culture`` 或者 ``ui-culture``）中的一个参数进行传递，查询字符串 provider 将使用你传递一个值来设置这两个参数。例如，仅设置culture，将会同样设置 ``Culture`` 和 ``UICulture``：
 
   \http://localhost:5000/?culture=es-MX
 
@@ -331,7 +331,7 @@ HTTP Accept-Language HTTP 头信息
   
 `Localizability <https://msdn.microsoft.com/en-us/library/aa292135(v=vs.71).aspx>`__ 是用于验证一个全球化的应用程序已经准备好本地化的一个即时流程。
 
-区域性名称的 `RFC 4646 <https://www.ietf.org/rfc/rfc4646.txt>`__ 格式为 "<languagecode2>-<country/regioncode2>" ，其中 <languagecode2> 是语言代码， <country/regioncode2> 是子文化代码。例如， ``es-CL`` 西班牙语（智利）， ``en-US`` 是指 英语（美国）， ``en-AU`` 则是英语（澳大利亚）。 `RFC 4646 <https://www.ietf.org/rfc/rfc4646.txt>`__ 是用语言和一个国家或地区相关的ISO3166双字母大写子代码关联的ISO 639双字母小写区域性代码的组合。详见 `Language Culture Name <https://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>`__。
+区域性名称的 `RFC 4646 <https://www.ietf.org/rfc/rfc4646.txt>`__ 格式为 "<languagecode2>-<country/regioncode2>" ，其中 <languagecode2> 是语言代码， <country/regioncode2> 是子文化代码。例如， ``es-CL`` 西班牙语（智利）， ``en-US`` 是指 英语（美国）， ``en-AU`` 则是英语（澳大利亚）。 `RFC 4646 <https://www.ietf.org/rfc/rfc4646.txt>`__ 是用与语言相关的ISO 639双字母小写区域性代码和一个与国家或地区相关的ISO3166双字母大写子代码组合。详见 `Language Culture Name <https://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx>`__。
  
 国际化通常缩写为 "I18N"。缩写采取首字母和尾字母以及它们之间的字母数，所以 18 代表首字母 "I" 和尾字母 "N" 之间的字母数。这同样适用于全球化（G11N）和本地化（L10N）。
 
