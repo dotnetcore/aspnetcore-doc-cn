@@ -14,38 +14,39 @@
 
 ## 贡献者 ##
 
-### 参与翻译、校对与审稿的贡献者
-
 （以下排序按照贡献者本名的汉语拼音排列）
 
-+ [陈计节](https://github.com/jijiechen/)
-+ [高会军(布莱恩特)](https://github.com/iyacontrol)
-+ [高嵩(Jack)](https://github.com/jack2gs)
-+ [郭远博(tkb至简)](https://github.com/Farb)
-+ [耿晓亮(Blue)](https://github.com/heyixiaoran)
+### 主要贡献者
+
 + [何镇汐](https://github.com/UtilCore)
-+ [江振宇(江大渔)](https://github.com/kerryjiang)
-+ [凌军州(喵喵)](https://github.com/XCoderLing)
 + [刘浩杨(L)](https://github.com/liuhaoyang)
 + [刘怡(AlexLEWIS/Forerunner)](https://github.com/alexinea)
 + [娄宇(Lyrics)](https://github.com/xbuilder)
 + [孟帅洋(书缘)](https://github.com/mengshuaiyang)
-+ [王健(冷酒少)](https://github.com/wjhgzx)
-+ [王绍明(Shaoming)](https://github.com/ShaomingCode)
-+ [魏美娟(初见)](https://github.com/ChujianA)
-+ [夏申斌](https://github.com/xiashenbin)
 + [谢炀(Kiler)](https://github.com/kiler398)
 + [许登洋(Seay)](https://github.com/SeayXu)
 + [姚阿勇(Dr.Yao)](https://github.com/YaoaY)
+
+### 支持与顾问
+
++ [陈计节](https://github.com/jijiechen/)
++ [江振宇(江大渔)](https://github.com/kerryjiang)
++ [张善友](https://github.com/geffzhang)
+
+### 贡献者
+
++ [高会军(布莱恩特)](https://github.com/iyacontrol)
++ [高嵩(Jack)](https://github.com/jack2gs)
++ [郭远博(tkb至简)](https://github.com/Farb)
++ [耿晓亮(Blue)](https://github.com/heyixiaoran)
++ [王健(冷酒少)](https://github.com/wjhgzx)
++ [王绍明(Shaoming)](https://github.com/ShaomingCode)
++ [魏美娟(初见)](https://github.com/ChujianA)
++ [吴亦双(莫名)](https://github.com/yesan)
++ [夏申斌](https://github.com/xiashenbin)
 + [张剑](https://github.com/garfieldzf8)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
-+ [张善友](https://github.com/geffzhang)
-+ [赵亮(悲梦)](https://github.com/BeiMeng)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
-
-### 其它类型贡献者
-
-+ [吴亦双(莫名)](https://github.com/yesan)
 
 ## 关于 ##
 
