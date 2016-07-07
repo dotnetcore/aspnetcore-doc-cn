@@ -5,12 +5,17 @@ CacheControlHeaderValue Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Net.Http.Headers`
+Assemblies
+    * Microsoft.Net.Http.Headers
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +38,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class CacheControlHeaderValue
+    public class CacheControlHeaderValue
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/httpabstractions/blob/master/src/Microsoft.Net.Http.Headers/CacheControlHeaderValue.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Net.Http.Headers.CacheControlHeaderValue
+    :hidden:
 
 .. dn:class:: Microsoft.Net.Http.Headers.CacheControlHeaderValue
 
@@ -65,7 +67,7 @@ Constructors
         
         .. code-block:: csharp
     
-           public CacheControlHeaderValue()
+            public CacheControlHeaderValue()
     
 
 Methods
@@ -79,7 +81,7 @@ Methods
     .. dn:method:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.Equals(System.Object)
     
         
-        
+    
         
         :type obj: System.Object
         :rtype: System.Boolean
@@ -87,7 +89,7 @@ Methods
         
         .. code-block:: csharp
     
-           public override bool Equals(object obj)
+            public override bool Equals(object obj)
     
     .. dn:method:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.GetHashCode()
     
@@ -97,12 +99,12 @@ Methods
         
         .. code-block:: csharp
     
-           public override int GetHashCode()
+            public override int GetHashCode()
     
     .. dn:method:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.Parse(System.String)
     
         
-        
+    
         
         :type input: System.String
         :rtype: Microsoft.Net.Http.Headers.CacheControlHeaderValue
@@ -110,7 +112,7 @@ Methods
         
         .. code-block:: csharp
     
-           public static CacheControlHeaderValue Parse(string input)
+            public static CacheControlHeaderValue Parse(string input)
     
     .. dn:method:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.ToString()
     
@@ -120,15 +122,15 @@ Methods
         
         .. code-block:: csharp
     
-           public override string ToString()
+            public override string ToString()
     
     .. dn:method:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.TryParse(System.String, out Microsoft.Net.Http.Headers.CacheControlHeaderValue)
     
         
-        
+    
         
         :type input: System.String
-        
+    
         
         :type parsedValue: Microsoft.Net.Http.Headers.CacheControlHeaderValue
         :rtype: System.Boolean
@@ -136,7 +138,7 @@ Methods
         
         .. code-block:: csharp
     
-           public static bool TryParse(string input, out CacheControlHeaderValue parsedValue)
+            public static bool TryParse(string input, out CacheControlHeaderValue parsedValue)
     
 
 Properties
@@ -150,22 +152,22 @@ Properties
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.Extensions
     
         
-        :rtype: System.Collections.Generic.ICollection{Microsoft.Net.Http.Headers.NameValueHeaderValue}
+        :rtype: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{Microsoft.Net.Http.Headers.NameValueHeaderValue<Microsoft.Net.Http.Headers.NameValueHeaderValue>}
     
         
         .. code-block:: csharp
     
-           public ICollection<NameValueHeaderValue> Extensions { get; }
+            public IList<NameValueHeaderValue> Extensions { get; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.MaxAge
     
         
-        :rtype: System.Nullable{System.TimeSpan}
+        :rtype: System.Nullable<System.Nullable`1>{System.TimeSpan<System.TimeSpan>}
     
         
         .. code-block:: csharp
     
-           public TimeSpan? MaxAge { get; set; }
+            public TimeSpan? MaxAge { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.MaxStale
     
@@ -175,27 +177,27 @@ Properties
         
         .. code-block:: csharp
     
-           public bool MaxStale { get; set; }
+            public bool MaxStale { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.MaxStaleLimit
     
         
-        :rtype: System.Nullable{System.TimeSpan}
+        :rtype: System.Nullable<System.Nullable`1>{System.TimeSpan<System.TimeSpan>}
     
         
         .. code-block:: csharp
     
-           public TimeSpan? MaxStaleLimit { get; set; }
+            public TimeSpan? MaxStaleLimit { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.MinFresh
     
         
-        :rtype: System.Nullable{System.TimeSpan}
+        :rtype: System.Nullable<System.Nullable`1>{System.TimeSpan<System.TimeSpan>}
     
         
         .. code-block:: csharp
     
-           public TimeSpan? MinFresh { get; set; }
+            public TimeSpan? MinFresh { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.MustRevalidate
     
@@ -205,7 +207,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool MustRevalidate { get; set; }
+            public bool MustRevalidate { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.NoCache
     
@@ -215,17 +217,17 @@ Properties
         
         .. code-block:: csharp
     
-           public bool NoCache { get; set; }
+            public bool NoCache { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.NoCacheHeaders
     
         
-        :rtype: System.Collections.Generic.ICollection{System.String}
+        :rtype: System.Collections.Generic.ICollection<System.Collections.Generic.ICollection`1>{System.String<System.String>}
     
         
         .. code-block:: csharp
     
-           public ICollection<string> NoCacheHeaders { get; }
+            public ICollection<string> NoCacheHeaders { get; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.NoStore
     
@@ -235,7 +237,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool NoStore { get; set; }
+            public bool NoStore { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.NoTransform
     
@@ -245,7 +247,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool NoTransform { get; set; }
+            public bool NoTransform { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.OnlyIfCached
     
@@ -255,7 +257,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool OnlyIfCached { get; set; }
+            public bool OnlyIfCached { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.Private
     
@@ -265,17 +267,17 @@ Properties
         
         .. code-block:: csharp
     
-           public bool Private { get; set; }
+            public bool Private { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.PrivateHeaders
     
         
-        :rtype: System.Collections.Generic.ICollection{System.String}
+        :rtype: System.Collections.Generic.ICollection<System.Collections.Generic.ICollection`1>{System.String<System.String>}
     
         
         .. code-block:: csharp
     
-           public ICollection<string> PrivateHeaders { get; }
+            public ICollection<string> PrivateHeaders { get; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.ProxyRevalidate
     
@@ -285,7 +287,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool ProxyRevalidate { get; set; }
+            public bool ProxyRevalidate { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.Public
     
@@ -295,16 +297,16 @@ Properties
         
         .. code-block:: csharp
     
-           public bool Public { get; set; }
+            public bool Public { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.CacheControlHeaderValue.SharedMaxAge
     
         
-        :rtype: System.Nullable{System.TimeSpan}
+        :rtype: System.Nullable<System.Nullable`1>{System.TimeSpan<System.TimeSpan>}
     
         
         .. code-block:: csharp
     
-           public TimeSpan? SharedMaxAge { get; set; }
+            public TimeSpan? SharedMaxAge { get; set; }
     
 

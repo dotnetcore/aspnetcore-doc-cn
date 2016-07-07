@@ -5,12 +5,17 @@ PatternContextRagged Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts`
+Assemblies
+    * Microsoft.Extensions.FileSystemGlobbing
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -34,20 +39,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public abstract class PatternContextRagged : PatternContext<PatternContextRagged.FrameData>, IPatternContext
+    public abstract class PatternContextRagged : PatternContext<PatternContextRagged.FrameData>, IPatternContext
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/filesystem/blob/master/src/Microsoft.Extensions.FileSystemGlobbing/Internal/PatternContexts/PatternContextRagged.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged
 
@@ -62,14 +64,14 @@ Constructors
     .. dn:constructor:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.PatternContextRagged(Microsoft.Extensions.FileSystemGlobbing.Internal.IRaggedPattern)
     
         
-        
+    
         
         :type pattern: Microsoft.Extensions.FileSystemGlobbing.Internal.IRaggedPattern
     
         
         .. code-block:: csharp
     
-           public PatternContextRagged(IRaggedPattern pattern)
+            public PatternContextRagged(IRaggedPattern pattern)
     
 
 Methods
@@ -83,7 +85,7 @@ Methods
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.CalculateStem(Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase)
     
         
-        
+    
         
         :type matchedFile: Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase
         :rtype: System.String
@@ -91,7 +93,7 @@ Methods
         
         .. code-block:: csharp
     
-           protected string CalculateStem(FileInfoBase matchedFile)
+            protected string CalculateStem(FileInfoBase matchedFile)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.IsEndingGroup()
     
@@ -101,7 +103,7 @@ Methods
         
         .. code-block:: csharp
     
-           protected bool IsEndingGroup()
+            protected bool IsEndingGroup()
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.IsStartingGroup()
     
@@ -111,24 +113,33 @@ Methods
         
         .. code-block:: csharp
     
-           protected bool IsStartingGroup()
+            protected bool IsStartingGroup()
+    
+    .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.PopDirectory()
+    
+        
+    
+        
+        .. code-block:: csharp
+    
+            public override void PopDirectory()
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.PushDirectory(Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase)
     
         
-        
+    
         
         :type directory: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase
     
         
         .. code-block:: csharp
     
-           public override sealed void PushDirectory(DirectoryInfoBase directory)
+            public override sealed void PushDirectory(DirectoryInfoBase directory)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.Test(Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase)
     
         
-        
+    
         
         :type file: Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase
         :rtype: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternTestResult
@@ -136,12 +147,12 @@ Methods
         
         .. code-block:: csharp
     
-           public override PatternTestResult Test(FileInfoBase file)
+            public override PatternTestResult Test(FileInfoBase file)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.TestMatchingGroup(Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileSystemInfoBase)
     
         
-        
+    
         
         :type value: Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileSystemInfoBase
         :rtype: System.Boolean
@@ -149,12 +160,12 @@ Methods
         
         .. code-block:: csharp
     
-           protected bool TestMatchingGroup(FileSystemInfoBase value)
+            protected bool TestMatchingGroup(FileSystemInfoBase value)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.PatternContexts.PatternContextRagged.TestMatchingSegment(System.String)
     
         
-        
+    
         
         :type value: System.String
         :rtype: System.Boolean
@@ -162,7 +173,7 @@ Methods
         
         .. code-block:: csharp
     
-           protected bool TestMatchingSegment(string value)
+            protected bool TestMatchingSegment(string value)
     
 
 Properties
@@ -181,6 +192,6 @@ Properties
         
         .. code-block:: csharp
     
-           protected IRaggedPattern Pattern { get; }
+            protected IRaggedPattern Pattern { get; }
     
 

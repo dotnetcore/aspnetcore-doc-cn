@@ -123,11 +123,11 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 def setup(app):
-    app.add_stylesheet('custom.css?v=4')
-    app.add_javascript('helpfulness.js?v=4')
-    app.add_javascript('disqus.js')
+    app.add_stylesheet('custom.css?v=6')
+    app.add_javascript('helpfulness.js?v=6')
+    app.add_javascript('disqus.js?v=6')
     if on_rtd:
-        app.add_javascript('wedc.js?v=4')
+        app.add_javascript('wedc.js?v=6')
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -305,7 +305,6 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    'aspnet': ('http://docs.asp.net/en/latest', '../common/aspnet.inv'),
-    'mvc': ('http://docs.asp.net/projects/mvc/en/latest', '../common/mvc.inv'),
+    'aspnet': ('http://docs.asp.net/en/latest', '../common/aspnet.inv')
 }
 
