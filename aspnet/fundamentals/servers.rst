@@ -18,7 +18,7 @@ ASP.NET Core 已完全从承载应用程序的 Web 服务器环境中分离。AS
 服务器和命令
 --------------------
 
-ASP.NET Core 旨在将 Web 应用程序从底层 HTTP 服务器分离出来。过去，ASP.NET 应用一直只在 Windows 中承载于 IIS 上。在 Windows 上运行 ASP.NET Core 应用程序的推荐方法是将 IIS 作为一个反向代理服务器来使用。IIS 中的 HttpPlatformHandler 模块管理并分发请求给一个进程外的HTTP 服务器。ASP.NET Core 附带两个不同的 HTTP服务器：
+ASP.NET Core 旨在将 Web 应用程序从底层 HTTP 服务器分离出来。过去，ASP.NET 应用一直只在 Windows 中承载于 IIS 上。在 Windows 上运行 ASP.NET Core 应用程序的推荐方法是将 IIS 作为一个反向代理服务器来使用。IIS 中的 HttpPlatformHandler 模块管理并分发请求给一个进程外的HTTP 服务器。ASP.NET Core 附带两个不同的 HTTP服务器： 
 
 - Microsoft.AspNet.Server.WebListener (AKA WebListener, 仅 Windows)
 - Microsoft.AspNet.Server.Kestrel (AKA Kestrel, 跨平台)
