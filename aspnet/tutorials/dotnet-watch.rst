@@ -3,16 +3,31 @@
 Developing ASP.NET Core applications using dotnet watch
 =======================================================
 
+使用 dotnet watch 开发 ASP.NET Core 应用程序
+=======================================================
+
 By `Victor Hurdugaci`_
+
+作者 `Victor Hurdugaci`_ 
+
+翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
 
 Introduction
 ------------
+
+介绍
+------------
+
+``dotnet watch`` is a development time tool that runs a ``dotnet`` command when source files change. It can be used to compile, run tests, or publish when code changes.
 
 ``dotnet watch`` is a development time tool that runs a ``dotnet`` command when source files change. It can be used to compile, run tests, or publish when code changes.
 
 In this tutorial we'll use an existing WebApi application that calculates the sum and product of two numbers to demonstrate the use cases of ``dotnet watch``. The sample application contains an intentional bug that we'll fix as part of this tutorial.
 
 Getting started
+---------------
+
+开始入门
 ---------------
 
 Start by downloading `the sample application <https://github.com/aspnet/Docs/tree/dev/aspnet/tutorials/dotnet-watch/sample>`__. It contains two projects, ``WebApp`` (a web application) and ``WebAppTests`` (unit tests for the web application)
