@@ -53,6 +53,37 @@ b,
     font-family: wf_segoe-ui_bold, wf_segoe-ui_semibold, wf_segoe-ui_normal, Arial, sans-serif
 }*/
 
+body {
+    font-family: wf_segoe-ui_normal, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    color: #505050;
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+h1, h2, h3, h4, h5, h6, legend {
+    margin-top: 0;
+    font-family: wf_segoe-ui_light, wf_segoe-ui_semilight, wf_segoe-ui_normal, "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+	line-height: 1.4em;
+}
+
+h2 {
+  color: #222222;
+}
+
+a {
+  color: #2b59a9;
+}
+
+p {
+  color: #505050;
+}
+
+.hr {
+  border-top: 1px solid #dddddd;
+}
+
+a, a:link, a:visited { color: #2b59a9; }
+
 .wy-nav-top {
   background: #2b3990;
 }
@@ -66,38 +97,6 @@ b,
 .wy-nav-content-wrap, .wy-nav-content {
     background: #fff;
 }
-
-body {
-    font-family: wf_segoe-ui_normal, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
-    color: #505050;
-    font-size: 13px;
-    line-height: 1.4em;
-}
-
-h1, h2, h3, h4, h5, h6, legend {
-    margin-top: 0;
-    font-family: wf_segoe-ui_light, wf_segoe-ui_semilight, wf_segoe-ui_normal, "HelveticaNeue-Thin", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif
-}
-
-h2 {
-  font-size: 18px;
-  color: #222222;
-}
-
-a {
-  color: #2b59a9;
-}
-
-p {
-  font-size: 13px;
-  color: #505050;
-}
-
-.hr {
-  border-top: 1px solid #dddddd;
-}
-
-a, a:link, a:visited { color: #2b59a9; }
 
 .wy-nav-side {
     background: #2b3990;
@@ -188,19 +187,18 @@ a, a:link, a:visited { color: #2b59a9; }
 .rst-content h1,
 .rst-content h1 .headerlink
 {
-    font-size: 28px;
+    font-size: 36px;
     color: #222222;
-    font-weight: 400
+    font-weight: 400;
 }
 
 .rst-content h1 a.headerlink,
 .rst-content h2 a.headerlink
 {
-    display: inline;
+    display: inline-block;
 }
 
 .rst-content {
-    font-size: 13px;
     font-family: wf_segoe-ui_normal, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
@@ -274,7 +272,7 @@ a, a:link, a:visited { color: #2b59a9; }
 footer,
 footer p {
   color: #505050;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .wy-menu-vertical a span.toctree-expand,
@@ -291,7 +289,7 @@ footer p {
 }
 
 /* helpfulness.css - start */
-.helpfulness-container { background: #2b3990; color: ##bdc0d7; padding:15px 0; color:#fff; z-index:201; width:100%; bottom:0; position:relative; }
+.helpfulness-container { background: #2b3990; color: #bdc0d7; padding:15px 0; color:#fff; z-index:201; width:100%; bottom:0; position:relative; }
 .helpfulness-container.fixed { position:fixed; }
 .helpfulness { margin: 0 auto; max-width:1160px; padding:0 35px 0 20px; }
 .helpfulness:after { clear: both;content: '.';display: block;visibility: hidden;height: 0; }
@@ -317,9 +315,7 @@ a.helpfulness-close:hover { text-decoration:none; color:#3BABD0; }
 /* helpfulness.css - end */
 
 /* helpfulness.css overrides - start */
-.helpfulness-container { padding-left:300px; }
-@media screen and (max-width: 768px) { .helpfulness-container { padding-left:0; } }
-
+.helpfulness-container { margin:24px 0; }
 .helpfulness { max-width:none; }
 
 .common-btn, .btn-install {background:#6CB200;color:#fff;border:0;padding:10px 15px;font-size:14px;display:inline-block;text-transform:uppercase;}
