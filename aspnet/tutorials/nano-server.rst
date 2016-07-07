@@ -16,7 +16,7 @@ ASP.NET Core on Nano Server
 
 .. attention:: This tutorial uses a pre-release version of the Nano Server installation option of Windows Server Technical Preview 5. You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment. Please see https://go.microsoft.com/fwlink/?LinkId=624232 for specific information about the end date for the preview.
 
-.. attention:: 本教程使用 Windows Server Technical Preview 5 中的预发行版本的 Nano Server 安装选项。 你可以使用虚拟硬盘镜只用来内部演示和评估它。不能将该软件在生产环境中使用。请看 https://go.microsoft.com/fwlink/?LinkId=624232 查看具体的预览截止日期信息。
+.. attention:: 本教程使用 Windows Server Technical Preview 5 的预发行版本的 Nano Server 安装选项。 你可以在虚拟硬盘映像中用来内部演示和评估，但不能在生产环境中使用该软件。可通过 https://go.microsoft.com/fwlink/?LinkId=624232 查看预览版本的截止日期信息。
 
 In this tutorial, you'll take an existing ASP.NET Core app and deploy it to a Nano Server instance running IIS.
 
@@ -37,7 +37,7 @@ Nano Server is an installation option in Windows Server 2016, offering a tiny fo
 2.	Download the Nano Server developer VHD
 3.	Create a VM in Azure using the Nano Server image in the Azure Gallery. If you don’t have an Azure account, you can get a free 30-day trial
 
-Nano Server 是 Windows Server 2016 附属的一个安装选项，比 Server Core 或者 full Server 提供更小的安装体积，更好的安全性以及更好的服务性能。 请参考官方 `Nano Server 文档 <https://technet.microsoft.com/en-us/library/mt126167.aspx>`__ 获取更多内容。  有以下三种方法来试用 Nano Server：
+Nano Server 是 Windows Server 2016 附属的一个安装选项，比 Server Core 或者 full Server 提供更小的安装体积、更好的安全性以及更好的服务性能。 请参考官方 `Nano Server 文档 <https://technet.microsoft.com/en-us/library/mt126167.aspx>`__ 获取更多内容。  有以下三种方法来试用 Nano Server：
 1.	你可以下载 Windows Server 2016 Technical Preview 5 ISO 文件，并且生成 Nano Server 镜像。
 2.	下载 Nano Server 开发者 VHD （虚拟磁盘文件）
 3.	在 Azure 中从 Azure Gallery 使用 Nano Server 镜像创建虚拟机。如果没有 Azure 账户，你可以申请一个 30天免费试用账户。
@@ -48,7 +48,7 @@ In this tutorial, we will be using the pre-built `Nano Server Developer VHD <htt
 
 Before proceeding with this tutorial, you will need the :doc:`published </publishing/index>` output of an existing ASP.NET Core application. Ensure your application is built to run in a **64-bit** process.
 
-在进行本教程之前，你需要 :doc:`发布 </publishing/index>` 一个存在的 ASP.NET Core 应用程序。确保你的程序是构建在 **64 位** 进程中运行的。
+在进行本教程之前，你需要 :doc:`发布 </publishing/index>` 已有的 ASP.NET Core 应用程序。并确保你的程序是构建在 **64 位** 进程中运行的。  
 
 Setting up the Nano Server Instance
 -----------------------------------
@@ -134,7 +134,7 @@ Installing IIS
 
 Add the ``NanoServerPackage`` provider from the PowerShell gallery. Once the provider is installed and imported, you can install Windows packages.
 
-从 PowerShell 库平台（PowerShell gallery）中添加 ``NanoServerPackage`` provider，一旦 provider 被安装或者导入，你就可以安装 Window 包了。
+从 PowerShell 库平台（PowerShell gallery）中添加 ``NanoServerPackage`` 提供程序（provider），一旦提供程序（provider）被安装或者导入，你就可以安装 Window 包了。
 
 
 Run the following commands in the PowerShell session that was created earlier:
@@ -154,9 +154,12 @@ To quickly verify if IIS is setup correctly, you can visit the url ``http://<nan
 Installing the ASP.NET Core Module (ANCM)
 -----------------------------------------
 
+安装 ASP.NET Core Module (ANCM)
+-----------------------------------------
+
 The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process management of ASP.NET Core HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the ASP.NET Core Module for IIS is manual. You will need to install the version of the `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ on a regular (not Nano) machine. After installing the bundle on a regular machine, you will need to copy the following files to the file share that we created earlier.
 
-The ASP.NET Core Module 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后你需要复制以下文件：
+ASP.NET Core Module 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后您需要将以下文件复制到我们前面创建的共享文件：
 
 On a regular (not Nano) machine run the following copy commands:
 
@@ -252,6 +255,6 @@ Running the Application
 The published web app should be accessible in browser at ``http://<nanoserver-ip-address>:8000``.
 If you have set up logging as described in :ref:`log-redirection`, you should be able to view your logs at *C:\\PublishedApps\\AspNetCoreSampleForNano\\logs*.
 
-发布好的 Web 应用程序可以通过浏览器打开 ``http://<nanoserver-ip-address>:8000`` 链接访问到。
+发布好的 Web 应用程序可以通过浏览器打开 ``http://<nanoserver-ip-address>:8000`` 链接访问。
 如果你按照 :ref:`log-redirection` 介绍的方式设置好了日志。你应该能够在  *C:\\PublishedApps\\AspNetCoreSampleForNano\\logs* 目录中查看你的日志。
  
