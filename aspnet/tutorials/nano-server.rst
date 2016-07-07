@@ -134,7 +134,7 @@ Installing IIS
 
 Add the ``NanoServerPackage`` provider from the PowerShell gallery. Once the provider is installed and imported, you can install Windows packages.
 
-从 PowerShell 库平台（PowerShell gallery）中添加 ``NanoServerPackage`` provider，一旦 provider 被安装或者导入，你就可以安装 Window 包了。
+从 PowerShell 库平台（PowerShell gallery）中添加 ``NanoServerPackage`` 提供程序（provider），一旦提供程序（provider）被安装或者导入，你就可以安装 Window 包了。
 
 
 Run the following commands in the PowerShell session that was created earlier:
