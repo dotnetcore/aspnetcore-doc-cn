@@ -2,10 +2,12 @@
 =======
 
 作者： `Steve Smith`_  
-翻译：  谢炀(kiler)   
-校对：
 
-ASP.NET Core 完全从托管应用程序的Web服务器环境脱离。 ASP.NET Core支持宿主在IIS、IIS Express、使用Kestrel的自托管脚本或者WebListener HTTP服务器。此外，开发人员和第三方软件供应商可以创建自定义的服务器来承载ASP.NET Core应用程序。
+翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
+
+校对 `姚阿勇(Dr.Yao) <https://github.com/mengshuaiyang>`_  
+ 
+ASP.NET Core 已完全从承载应用程序的 Web 服务器环境中分离。ASP.NET Core 可以承载于 IIS 和 IIS Express ，以及使用 Kestrel 和 WebListener HTTP Server 的自承载环境中。此外，开发人员和第三方软件供应商可以创建自定义的服务器来承载 ASP.NET Core 应用程序。
 
 .. contents:: 章节:
   :local:
@@ -16,13 +18,13 @@ ASP.NET Core 完全从托管应用程序的Web服务器环境脱离。 ASP.NET C
 服务器和命令
 --------------------
 
-ASP.NET Core 的设计目标是从底层HTTP服务器分离出Web应用程序。传统的方式下，ASP.NET应用程序只能托管在基于window的IIS服务器上。ASP.NET Core应用程序在window上运行推荐使用IIS作为反向代理服务器。ASP.NET Core附带两个不同的HTTP服务器，在IIS中的HttpPlatformHandler模块管理和HTTP服务器托管进程外的代理请求:
+ASP.NET Core 旨在将 Web 应用程序从底层 HTTP 服务器分离出来。过去，ASP.NET 应用一直只在 Windows 中承载于 IIS 上。在 Windows 上运行 ASP.NET Core 应用程序的推荐方法是将 IIS 作为一个反向代理服务器来使用。IIS 中的 HttpPlatformHandler 模块管理并分发请求给一个进程外的HTTP 服务器。ASP.NET Core 附带两个不同的 HTTP服务器：
 
-- Microsoft.AspNet.Server.WebListener (AKA WebListener, Windows-专用)
+- Microsoft.AspNet.Server.WebListener (AKA WebListener, 仅 Windows)
 - Microsoft.AspNet.Server.Kestrel (AKA Kestrel, 跨平台)
 
-ASP.NET Core 不直接监听请求，而是依赖于 HTTP 服务器实现的一组集成在 HttpContext中的Feature接口来将请求暴露给应用程序 。
-尽管WebListener只是Window专用的，但Kestrel则是被设计为跨平台运行的。你可以通过指定配置*project.json*文件中的命令来配置让你的应用程序托管到一个或者多个应用服务器。你甚至可以为应用程序指定的应用程序入口点，作为一个可执行文件运行（使用``dotnet run``），而不是托管到独立的进程。
+ASP.NET Core 不直接监听请求，而是依靠 HTTP 服务器的实现将请求作为组成 HttpContext 的一组功能接口暴露给应用程序。
+尽管WebListener只是Window专用的，但Kestrel则是被设计为跨平台运行的。你可以通过在 *project.json* 文件中指定命令来配置你的应用程序承载于任何一个或全部的服务器。你甚至可以为应用程序指定程序入口点，作为一个可执行文件运行（使用 ``dotnet run``），而不是承载到不同的进程。  
 
 Visual Studio开发应用程序默认Web托管服务器为采用了Kestrel做反向代理服务器的IIS Express ，*project.json*文件默认包含“Microsoft.AspNet.Server.Kestrel”和“Microsoft.AspNet.IISPlatformHandler”依赖，即使采用空网站模板。Visual Studio也提供了多种方式来把网站关联到IIS或者其他*project.json*配置好的``commands``去。你可以在你的web应用程序项目的属性菜单的**Debug**选项卡中或者*launchSettings.json*文件中管理这些配置和参数，
 
