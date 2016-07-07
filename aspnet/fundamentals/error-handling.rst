@@ -1,3 +1,5 @@
+:version: 1.0.0-rc1
+
 Error Handling
 ==============
 
@@ -14,7 +16,7 @@ When errors occur in your ASP.NET app, you can handle them in a variety of ways,
 Configuring an Exception Handling Page
 --------------------------------------
 
-You configure the pipeline for each request in the ``Startup`` class's ``Configure()`` method (learn more about :doc:`startup`). You can add a simple exception page, meant only for use during development, very easily. All that's required is to add a dependency on ``Microsoft.AspNet.Diagnostics`` to the project and then add one line to ``Configure()`` in ``Startup.cs``:
+You configure the pipeline for each request in the ``Startup`` class's ``Configure()`` method (learn more about :doc:`startup`). You can add a simple exception page, meant only for use during development, very easily. All that's required is to add a dependency on ``Microsoft.AspNetCore.Diagnostics`` to the project and then add one line to ``Configure()`` in ``Startup.cs``:
 
 .. literalinclude:: error-handling/sample/src/ErrorHandlingSample/Startup.cs
 	:language: c#
@@ -28,9 +30,9 @@ The sample application includes a simple mechanism for creating an exception:
 
 .. literalinclude:: error-handling/sample/src/ErrorHandlingSample/Startup.cs
 	:language: c#
-	:lines: 58-63
-	:dedent: 12
-	:emphasize-lines: 3-6
+	:lines: 58-77
+	:dedent: 8
+	:emphasize-lines: 5-8
 
 If a request includes a non-empty querystring parameter for the variable ``throw`` (e.g. a path of ``/?throw=true``), an exception will be thrown. If the environment is set to ``Development``, the developer exception page is displayed:
 
@@ -134,7 +136,7 @@ In addition to the exception handling logic in your app, the server hosting your
 Startup Exception Handling
 --------------------------
 
-One of the trickiest places to handle exceptions in your app is during its startup. Only the hosting layer can handle exceptions that take place during app startup. Exceptions that occur in your app's startup can also impact server behavior. For example, to enable SSL in Kestrel, one must configure the server with ``app.UseKestrelHttps()``. If an exception happens before this line in ``Startup``, then by default hosting will catch the exception, start the server, and display an error page on the non-SSL port. If an exception happens after that line executes, then the error page will be served over HTTPS instead.
+One of the trickiest places to handle exceptions in your app is during its startup. Only the hosting layer can handle exceptions that take place during app startup. Exceptions that occur in your app's startup can also impact server behavior. For example, to enable SSL in Kestrel, one must configure the server with ``KestrelServerOptions.UseHttps()``. If an exception happens before this line in ``Startup``, then by default hosting will catch the exception, start the server, and display an error page on the non-SSL port. If an exception happens after that line executes, then the error page will be served over HTTPS instead.
 
 ASP.NET MVC Error Handling
 --------------------------

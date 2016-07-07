@@ -22,14 +22,14 @@ App localization involves the following:
 Make the app's content localizable
 --------------------------------------
 
-Introduced in ASP.NET Core, `IStringLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Localization/IStringLocalizer/index.html>`__ and `IStringLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/Extensions/Localization/IStringLocalizer-T/index.html>`__ were architected to improve productivity when developing localized apps. ``IStringLocalizer`` uses the `ResourceManager <https://msdn.microsoft.com/en-us/library/system.resources.resourcemanager(v=vs.110).aspx>`__ and `ResourceReader <https://msdn.microsoft.com/en-us/library/system.resources.resourcereader(v=vs.110).aspx>`__ to provide culture-specific resources at run time. The simple interface has an indexer and an ``IEnumerable`` for returning localized strings. ``IStringLocalizer`` doesn't require you to store the default language strings in a resource file. You can develop an app targeted for localization and not need to create resource files early in development. The code below shows how to wrap the string "About Title" for localization.
+Introduced in ASP.NET Core, :dn:iface:`~Microsoft.Extensions.Localization.IStringLocalizer` and :dn:iface:`~Microsoft.Extensions.Localization.IStringLocalizer\<T>` were architected to improve productivity when developing localized apps. ``IStringLocalizer`` uses the `ResourceManager <https://msdn.microsoft.com/en-us/library/system.resources.resourcemanager(v=vs.110).aspx>`__ and `ResourceReader <https://msdn.microsoft.com/en-us/library/system.resources.resourcereader(v=vs.110).aspx>`__ to provide culture-specific resources at run time. The simple interface has an indexer and an ``IEnumerable`` for returning localized strings. ``IStringLocalizer`` doesn't require you to store the default language strings in a resource file. You can develop an app targeted for localization and not need to create resource files early in development. The code below shows how to wrap the string "About Title" for localization.
 
 .. literalinclude:: localization/sample/Controllers/AboutController.cs
   :language: c#
 
-In the code above, the ``IStringLocalizer<T>`` implementation comes from :doc:`/fundamentals/dependency-injection`. I'll show how the ``IStringLocalizer`` service gets added in the **Configuring localization** section. If the localized value of "About Title" is not found, then the indexer key is returned, that is, the string "About Title". You can leave the default language literal strings in the app and wrap them in the localizer, so that you can focus on developing the app. You develop your app with your default language and prepare it for the localization step without first creating a default resource file. Alternatively, you can use the traditional approach and provide a key to retrieve the default language string. For many developers the new workflow of not having a default language *.resx* file and simply wrapping the string literals can reduce the overhead of localizing an app. Other developers will prefer the traditional work flow as it can make it easier to work with longer string literals and make it easier to update localized strings.
+In the code above, the ``IStringLocalizer<T>`` implementation comes from :doc:`/fundamentals/dependency-injection`. If the localized value of "About Title" is not found, then the indexer key is returned, that is, the string "About Title". You can leave the default language literal strings in the app and wrap them in the localizer, so that you can focus on developing the app. You develop your app with your default language and prepare it for the localization step without first creating a default resource file. Alternatively, you can use the traditional approach and provide a key to retrieve the default language string. For many developers the new workflow of not having a default language *.resx* file and simply wrapping the string literals can reduce the overhead of localizing an app. Other developers will prefer the traditional work flow as it can make it easier to work with longer string literals and make it easier to update localized strings.
 
-Use the `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__ implementation for resources that contain HTML. ``IHtmlLocalizer`` HTML encodes arguments that are formatted in the resource string, but not the resource string. In the sample highlighted below, only the value of ``name`` parameter is HTML encoded.
+Use the `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__ implementation for resources that contain HTML. ``IHtmlLocalizer`` HTML encodes arguments that are formatted in the resource string, but not the resource string. In the sample highlighted below, only the value of ``name`` parameter is HTML encoded.
 
 .. literalinclude:: localization/sample/Controllers/BookController.cs
   :language: c#
@@ -63,12 +63,12 @@ Some developers use the ``Startup`` class to contain global or shared strings.  
 View localization
 --------------------
 
-The `IViewLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IViewLocalizer/index.html>`__ service provides localized strings for a `view <http://docs.asp.net/projects/mvc/en/latest/views/index.html>`_. The `ViewLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/ViewLocalizer/index.html>`__ class implements this interface and finds the resource location from the view file path. The following code shows how to use the default implementation of ``IViewLocalizer``:
+The `IViewLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IViewLocalizer/index.html>`__ service provides localized strings for a `view <http://docs.asp.net/projects/mvc/en/latest/views/index.html>`_. The `ViewLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/ViewLocalizer/index.html>`__ class implements this interface and finds the resource location from the view file path. The following code shows how to use the default implementation of ``IViewLocalizer``:
 
 .. literalinclude:: localization/sample/Views/Home/About.cshtml
   :language: HTML
   
-The default implementation of ``IViewLocalizer`` finds the resource file based on the view's file name. There is no option to use a global shared resource file. ``ViewLocalizer`` implements the localizer using `IHtmlLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer/index.html>`__, so Razor doesn't HTML encode the localized string. You can parameterize resource strings and ``IViewLocalizer`` will HTML encode the parameters, but not the resource string. Consider the following Razor markup:
+The default implementation of ``IViewLocalizer`` finds the resource file based on the view's file name. There is no option to use a global shared resource file. ``ViewLocalizer`` implements the localizer using `IHtmlLocalizer <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer/index.html>`__, so Razor doesn't HTML encode the localized string. You can parameterize resource strings and ``IViewLocalizer`` will HTML encode the parameters, but not the resource string. Consider the following Razor markup:
 
 .. code-block:: HTML
 
@@ -86,7 +86,7 @@ The rendered view would contain the HTML markup from the resource file.
 
 :Note: You generally want to only localize text and not HTML.
 
-To use a shared resource file in a view, inject `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__:
+To use a shared resource file in a view, inject `IHtmlLocalizer<T> <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Localization/IHtmlLocalizer-TResource/index.html>`__:
 
 .. literalinclude:: localization/sample/Views/Test/About.cshtml
   :language: HTML
@@ -119,8 +119,6 @@ ASP.NET Core allows you to specify two culture values, ``SupportedCultures`` and
   :local:
   :depth: 1
   
-.. note:: Currently, resource files are not read when the project is run from Visual Studio. See `this issue <https://github.com/aspnet/dnx/issues/3047>`_ for more information. Until the issue with Visual Studio is addressed, you can test the project by running it from the command line.
-
 Working with resource files
 -----------------------------
 
@@ -148,7 +146,7 @@ Generating resource files with Visual Studio
 If you create a resource file in Visual Studio without a culture in the file name (for example, *Welcome.resx*), Visual Studio will create a C# class with a property for each string. That's usually not what you want with ASP.NET Core; you typically don't have a default *.resx* resource file (A *.resx* file without the culture name). We suggest you create the *.resx* file with a culture name (for example *Welcome.fr.resx*). When you create a *.resx* file with a culture name, Visual Studio will not generate the class file. We anticipate that many developers will **not** create a default language resource file. 
 
 Adding Other Cultures  
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
  
 Each language and culture combination (other than the default language) requires a unique resource file. You can create resource files for different cultures and locales by creating new resource files in which the ISO language codes are part of the file name (for example, **en-us**, **fr-ca**, and **en-gb**). These ISO codes are placed between the file name and the .resx file name extension, as in *Welcome.es-MX.resx* (Spanish/Mexico). To specify a culturally neutral language, you would eliminate the country code, such as *Welcome.fr.resx* for the French language. 
 
@@ -181,18 +179,18 @@ The current culture on a request is set in the localization :doc:`/fundamentals/
   :lines: 107, 136-159
   :dedent: 6
 
-`UseRequestLocalization <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Builder/ApplicationBuilderExtensions/index.html>`__ initializes a `RequestLocalizationMiddleware <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Localization/RequestLocalizationMiddleware/index.html>`__ object. On every request the list of `RequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Localization/RequestCultureProvider/index.html>`__ in the `RequestLocalizationOptions <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Localization/RequestLocalizationOptions/index.html>`__ is enumerated and the first non-null provider is used. The default providers come from the ``RequestLocalizationOptions`` class:
+:dn:method:`~Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.UseRequestLocalization` initializes a :dn:class:`~Microsoft.AspNetCore.Builder.RequestLocalizationOptions` object. On every request the list of `RequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Localization/RequestCultureProvider/index.html>`__ in the `RequestLocalizationOptions <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Localization/RequestLocalizationOptions/index.html>`__ is enumerated and the first provider that can successfully determine the request culture is used. The default providers come from the ``RequestLocalizationOptions`` class:
 
-#. `QueryStringRequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Localization/QueryStringRequestCultureProvider/index.html>`__
-#. `CookieRequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Localization/CookieRequestCultureProvider/index.html>`__
-#. `AcceptLanguageHeaderRequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Localization/AcceptLanguageHeaderRequestCultureProvider/index.html>`__
+#. `QueryStringRequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Localization/QueryStringRequestCultureProvider/index.html>`__
+#. `CookieRequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Localization/CookieRequestCultureProvider/index.html>`__
+#. `AcceptLanguageHeaderRequestCultureProvider <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Localization/AcceptLanguageHeaderRequestCultureProvider/index.html>`__
 
-The default list goes from most specific to least specific. Later in the article I'll show how you can change the order and even add a custom localization provider. If there are no non-null providers, the ``DefaultRequestCulture`` is used.
+The default list goes from most specific to least specific. Later in the article we'll see how you can change the order and even add a custom culture provider. If none of the providers can determine the request culture, the ``DefaultRequestCulture`` is used.
     
 QueryStringRequestCultureProvider
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Some apps will use a query string to set the `culture and UI culture <https://msdn.microsoft.com/en-us/library/system.globalization.cultureinfo.aspx#Current>`__. For apps that use the cookie or Accept-Language header approach, adding a query string to the URL is useful for debugging and testing code. Unless you change the ``RequestCultureProvider`` list, a query string will always win as the localization provider. You pass the query string parameters ``culture`` and ``ui-culture``. The following example sets the specific culture (language and region) to Spanish/Mexico:
+Some apps will use a query string to set the `culture and UI culture <https://msdn.microsoft.com/en-us/library/system.globalization.cultureinfo.aspx#Current>`__. For apps that use the cookie or Accept-Language header approach, adding a query string to the URL is useful for debugging and testing code. By default, the ``QueryStringRequestCultureProvider`` is registered as the first localization provider in the ``RequestCultureProvider`` list. You pass the query string parameters ``culture`` and ``ui-culture``. The following example sets the specific culture (language and region) to Spanish/Mexico:
 
   \http://localhost:5000/?culture=es-MX&ui-culture=es-MX
 
@@ -203,7 +201,16 @@ If you only pass in one of the two (``culture`` or ``ui-culture``), the query st
 CookieRequestCultureProvider
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Production apps will often provide a mechanism to set the culture with the ``ASPNET_CULTURE`` cookie. The sample app provides code to set the cookie for French and English cultures.
+Production apps will often provide a mechanism to set the culture with the ASP.NET Core culture cookie. Use the :dn:method:`~Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.MakeCookieValue`  method to create a cookie.
+
+The :dn:cls:`~Microsoft.AspNetCore.Localization.CookieRequestCultureProvider` :dn:field:`~Microsoft.AspNetCore.Localization.CookieRequestCultureProvider.DefaultCookieName`  returns the default cookie name used to track the user’s preferred culture information. The default cookie  name is ".AspNetCore.Culture".
+
+The cookie format is ``c=%LANGCODE%|uic=%LANGCODE%``, where ``c`` is ``Culture`` and ``uic`` is ``UICulture``, for example:
+
+c='en-UK'\|uic='en-US'
+
+If you only specify one of culture info and UI culture, the specified culture will be used for both culture info and UI culture.
+
 
 The Accept-Language HTTP header
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -281,7 +288,7 @@ Setting the culture programmatically
 This sample **Localization.StarterWeb** project on `GitHub <https://github.com/aspnet/entropy>`__ contains UI to set the ``Culture``. The *Views/Shared/_SelectLanguagePartial.cshtml* file allows you to select the culture from the list of supported cultures:
 
 .. literalinclude:: localization/sample/Views/Shared/_SelectLanguagePartial.cshtml
-  :language: HTML
+  :language: none
   
 The *Views/Shared/_SelectLanguagePartial.cshtml* file is added to the ``footer`` section of the layout file so it will be available to all views:
 

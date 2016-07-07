@@ -1,3 +1,5 @@
+:version: 1.0.0-rc1
+
 Managing Application State
 ==========================
 
@@ -73,11 +75,11 @@ For example, some simple :doc:`middleware` could add something to the ``Items`` 
 .. code-block:: c#
 
   app.Use(async (context, next) =>
-    {
+  {
       // perform some verification
       context.Items["isVerified"] = true;
       await next.Invoke();
-    });
+  });
 
 and later in the pipeline, another piece of middleware could access it:
 
@@ -85,8 +87,7 @@ and later in the pipeline, another piece of middleware could access it:
 
   app.Run(async (context) =>
   {
-    await context.Response.WriteAsync("Verified request? "
-      + context.Items["isVerified"]);
+      await context.Response.WriteAsync("Verified request? " + context.Items["isVerified"]);
   });
 
 .. note:: Since keys into ``Items`` are simple strings, if you are developing middleware that needs to work across many applications, you may wish to prefix your keys with a unique identifier to avoid key collisions (e.g. "MyComponent.isVerified" instead of just "isVerified").
@@ -96,23 +97,17 @@ and later in the pipeline, another piece of middleware could access it:
 Installing and Configuring Session
 ----------------------------------
 
-ASP.NET Core ships a session package that provides middleware for managing session state. You can install it by including a reference to the package in your project.json file:
-
-.. literalinclude:: app-state/sample/src/AppState/project.json
-  :language: javascript
-  :linenos:
-  :lines: 5-14
-  :emphasize-lines: 5-6
+ASP.NET Core ships a session package that provides middleware for managing session state. You can install it by including a reference to the ``Microsoft.AspNetCore.Session`` package in your project.json file.
 
 Once the package is installed, Session must be configured in your application's ``Startup`` class. Session is built on top of ``IDistributedCache``, so you must configure this as well, otherwise you will receive an error.
 
-.. note:: If you do not configure at least one ``IDistributedCache`` implementation, you will get an exception stating "Unable to resolve service for type 'Microsoft.Framework.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNet.Session.DistributedSessionStore'."
+.. note:: If you do not configure at least one ``IDistributedCache`` implementation, you will get an exception stating "Unable to resolve service for type 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNetCore.Session.DistributedSessionStore'."
 
-ASP.NET ships with several implementations of ``IDistributedCache``, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option, add the following to ``ConfigureServices``:
+ASP.NET ships with several implementations of ``IDistributedCache``, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option add the ``Microsoft.Extensions.Caching.Memory`` package in your project.json file and then add the following to ``ConfigureServices``:
 
 .. code-block:: c#
 
-  services.AddCaching();
+  services.AddDistributedMemoryCache();
   services.AddSession();
 
 Then, add the following to ``Configure`` and you're ready to use session in your application code:
@@ -148,21 +143,23 @@ The ``IdleTimeout`` is used by the server to determine how long a session can be
 .. note:: ``Session`` is *non-locking*, so if two requests both attempt to modify the contents of session, the last one will win. Further, ``Session`` is implemented as a *coherent session*, which means that all of the contents are stored together. This means that if two requests are modifying different parts of the session (different keys), they may still impact each other.
 
 ISession
-^^^^^^^^
+^^^^^^^^^
 
-Once session is installed and configured, you refer to it via HttpContext, which exposes a property called ``Session`` of type `ISession <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Http/Features/ISession/index.html>`__. You can use this interface to get and set values in ``Session``, as ``byte[]``.
+Once session is installed and configured, you refer to it via HttpContext, which exposes a property called ``Session`` of type :dn:iface:`~Microsoft.AspNetCore.Http.ISession`. You can use this interface to get and set values in ``Session``, such as ``byte[]``.
 
 .. code-block:: c#
 
   public interface ISession
   {
-    Task LoadAsync();
-    Task CommitAsync();
-    bool TryGetValue(string key, out byte[] value);
-    void Set(string key, byte[] value);
-    void Remove(string key);
-    void Clear();
-    IEnumerable<string> Keys { get; }
+      bool IsAvailable { get; }
+      string Id { get; }
+      IEnumerable<string> Keys { get; }
+      Task LoadAsync();
+      Task CommitAsync();
+      bool TryGetValue(string key, out byte[] value);
+      void Set(string key, byte[] value);
+      void Remove(string key);
+      void Clear();
   }
 
 Because``Session`` is built on top of ``IDistributedCache``, you must always serialize the object instances being stored. Thus, the interface works with ``byte[]`` not simply ``object``. However, there are extension methods that make working with simple types such as ``String`` and ``Int32`` easier, as well as making it easier to get a byte[] value from session.
@@ -188,7 +185,7 @@ The associated sample application demonstrates how to work with Session, includi
   :language: c#
   :lines: 15-23
   :dedent: 8
-  :emphasize-lines: 3,5-8
+  :emphasize-lines: 2,6
 
 When you first navigate to the web server, it displays a screen indicating that no session has yet been established:
 
@@ -199,7 +196,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 75-103
+  :lines: 77-107
   :dedent: 12
   :emphasize-lines: 4,6,8-11,28-29
 
@@ -208,23 +205,21 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 .. literalinclude:: app-state/sample/src/AppState/Model/RequestEntry.cs
   :linenos:
   :language: c#
-  :lines: 5-10
+  :lines: 3-
   :dedent: 4
 
 .. literalinclude:: app-state/sample/src/AppState/Model/RequestEntryCollection.cs
   :linenos:
   :language: c#
-  :lines: 7-
+  :lines: 6-
   :dedent: 4
-
-.. note:: The types that are to be stored in session must be marked with ``[Serializable]``.
 
 Fetching the current instance of ``RequestEntryCollection`` is done via the ``GetOrCreateEntries`` helper method:
 
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 107-122
+  :lines: 109-124
   :dedent: 8
   :emphasize-lines: 4,8-9
 
@@ -242,8 +237,8 @@ Establishing the session is done in the middleware that handles requests to "/se
 
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
-  :language: c#
-  :lines: 54-73
+  :language: none
+  :lines: 56-75
   :dedent: 12
   :emphasize-lines: 2,8-14
 
@@ -252,7 +247,7 @@ Requests to this path will get or create a ``RequestEntryCollection``, will add 
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 124-130
+  :lines: 126-132
   :dedent: 8
   :emphasize-lines: 6
 
@@ -263,7 +258,7 @@ The sample includes one more piece of middleware worth mentioning, which is mapp
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 40-53
+  :lines: 42-54
   :dedent: 12
   :emphasize-lines: 2,13
 

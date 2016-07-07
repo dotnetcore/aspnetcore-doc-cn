@@ -1,3 +1,5 @@
+:version: 1.0.0-rc2
+
 .. _fundamentals-dependency-injection:
 
 Dependency Injection
@@ -37,7 +39,7 @@ The ``ConfigureServices`` method in the ``Startup`` class is responsible for def
   :language: c#
   :lines: 39-56
   :dedent: 8
-  :emphasize-lines: 4,9,13
+  :emphasize-lines: 5,8,12
 
 The features and middleware provided by ASP.NET, such as MVC, follow a convention of using a single Add\ *Service*\  extension method to register all of the services required by that feature. 
 
@@ -52,7 +54,7 @@ You can register your own application services as follows. The first generic typ
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Startup.cs
   :language: c#
-  :lines: 54-55
+  :lines: 53-54
   :dedent: 12
 
 .. note:: Each ``services.Add<service>`` calls adds (and potentially configures) services. For example, ``services.AddMvc()`` adds the services MVC requires.
