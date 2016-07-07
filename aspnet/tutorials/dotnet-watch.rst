@@ -24,7 +24,7 @@ Introduction
 
 In this tutorial we'll use an existing WebApi application that calculates the sum and product of two numbers to demonstrate the use cases of ``dotnet watch``. The sample application contains an intentional bug that we'll fix as part of this tutorial.
 
-在本教程中，我们将使用一个现有的计算两个数字之和以及乘积的  WebAPI 应用程序来展示 ``dotnet watch`` 使用案例。示例应用程序故意包含一个错误，作为本教程的一部分我们会修复它。
+在本教程中，我们将使用一个现有的计算两个数字之和以及乘积的 WebAPI 应用程序来演示如何使用 ``dotnet watch`` 。示例应用程序故意包含一个错误，作为本教程的一部分我们会修复它。
 
 Getting started
 ---------------
@@ -34,7 +34,7 @@ Getting started
 
 Start by downloading `the sample application <https://github.com/aspnet/Docs/tree/dev/aspnet/tutorials/dotnet-watch/sample>`__. It contains two projects, ``WebApp`` (a web application) and ``WebAppTests`` (unit tests for the web application)
 
-开始下载 `示例程序 <https://github.com/aspnet/Docs/tree/dev/aspnet/tutorials/dotnet-watch/sample>`__。示例程序包含两个项目， ``WebApp`` （Web应用程序）以及 ``WebAppTests`` （Web应用程序配套的单元测试项目）
+开始下载 `示例程序 <https://github.com/aspnet/Docs/tree/dev/aspnet/tutorials/dotnet-watch/sample>`__。示例程序包含两个项目， ``WebApp`` （Web 应用程序）以及 ``WebAppTests`` （Web 应用程序配套的单元测试项目）
 
 In a console, open the folder where you downloaded the sample application and run:
 
@@ -67,7 +67,7 @@ The console output will show messages similar to the ones below, indicating that
 
 In a web browser, navigate to ``http://localhost:5000/api/math/sum?a=4&b=5`` and you should see the result ``9``.
 
-在Web浏览器中，导航到 ``http://localhost:5000/api/math/sum?a=4&b=5`` 页面你会看到结果 ``9``。
+在 Web 浏览器中，导航到 ``http://localhost:5000/api/math/sum?a=4&b=5`` 页面你会看到结果 ``9`` 。
 
 If you navigate to ``http://localhost:5000/api/math/product?a=4&b=5`` instead, you'd expect to get the result ``20``. Instead, you get ``9`` again.
 
