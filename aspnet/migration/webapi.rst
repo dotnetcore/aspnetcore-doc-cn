@@ -1,3 +1,5 @@
+:version: 1.0.0-rc1
+
 Migrating from ASP.NET Web API
 ==============================
 
@@ -50,11 +52,11 @@ Now that we have a simple project from which to start, we can demonstrate how to
 Create the Destination Project
 ------------------------------
 
-Using Visual Studio, create a new, empty solution, and add the existing *ProductsApp* project to it. Then, add a new Web Project to the solution. Name the new project 'ProductsCore'.
+Using Visual Studio, create a new, empty solution, and name it *WebAPIMigration*. Add the existing *ProductsApp* project to it, then, add a new ASP.NET Core Web Application Project to the solution. Name the new project *ProductsCore*.
 
 .. image:: webapi/_static/add-web-project.png
 
-Next, choose the ASP.NET Core Web API project template. We will migrate the *ProductsApp* contents to this new project.
+Next, choose the Web API project template. We will migrate the *ProductsApp* contents to this new project.
 
 .. image:: webapi/_static/aspnet-5-webapi.png
 
@@ -115,7 +117,7 @@ The last step in the migration process for this simple Web API project is to cop
 
 Fortunately, these are all very easy to correct:
 
-- Change `ApiController` to `Controller` (you may need to add `using Microsoft.AspNet.Mvc`)
+- Change `ApiController` to `Controller` (you may need to add `using Microsoft.AspNetCore.Mvc`)
 - Delete any using statement referring to `System.Web.Http`
 - Change any method returning `IHttpActionResult` to return a `IActionResult`
 - Change `NotFound` to `HttpNotFound`
