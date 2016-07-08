@@ -20,7 +20,7 @@ ASP.NET Core on Nano Server
 
 In this tutorial, you'll take an existing ASP.NET Core app and deploy it to a Nano Server instance running IIS.
 
-在本教程中，你将使用一个现有的 ASP.NET Core 应用程序并将其部署在一个 Nano Server 实例的 IIS 上。
+在本教程中， 你将使用一个现有的 ASP.NET Core 应用程序并将其部署在一个 Nano Server 实例的 IIS 上。
 
 .. contents:: Sections:
   :local:
@@ -72,7 +72,7 @@ Connecting to your Nano Server Instance using PowerShell Remoting
 
 Open an elevated PowerShell window to add your remote Nano Server instance to your ``TrustedHosts`` list.
 
-打开一个提升过权限的 PowerShell 窗口来添加你的远程 Nano Server 实例到你的 ``受信任的主机（TrustedHosts）`` 列表。
+打开一个授权的 PowerShell 窗口来添加你的远程 Nano Server 实例到你的 ``受信任的主机（TrustedHosts）`` 列表。
 
 .. code:: ps1
 
@@ -102,7 +102,7 @@ Creating a file share
 ---------------------
 Create a file share on the Nano server so that the published application can be copied to it. Run the following commands in the remote session:
 
-在 Nano server 上创建文件共享这样可以直接拷贝发布的程序，在远程服务器上运行下述命令：
+在 Nano server 上创建文件共享，这样可以直接拷贝发布的程序，在远程服务器上运行下面的命令：
 
 .. code:: ps1
 
@@ -112,7 +112,7 @@ Create a file share on the Nano server so that the published application can be 
 
 After running the above commands you should be able to access this share by visiting ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano`` in the host machine's Windows Explorer.
 
-上述命令运行完以后，你就可以在你本机使用 Windows 文件浏览器通过  ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano`` 地址访问共享文件了。
+上面命令运行完以后，你就可以在你本机使用 Windows 资源管理器通过  ``\\<nanoserver-ip-address>\AspNetCoreSampleForNano`` 地址访问共享文件了。
 
 Open port in the Firewall
 --------------------------
@@ -120,7 +120,7 @@ Run the following commands in the remote session to open up a port in the firewa
 
 打开防火墙端口
 --------------------------
-在远程会话中运行下面的命令在防火墙中打开一个端口来监听TCP流量。
+在远程会话中运行下面的命令，在防火墙中打开一个端口来监听 TCP 流量。
 
 .. code:: ps1
 
@@ -149,7 +149,7 @@ Run the following commands in the PowerShell session that was created earlier:
 
 To quickly verify if IIS is setup correctly, you can visit the url ``http://<nanoserver-ip-address>/`` and should see a welcome page. When IIS is installed, by default a web site called ``Default Web Site`` listening on port 80 is created.
 
-为了快速验证ISS是否正确安装，你可以访问 ``http://<nanoserver-ip-address>/`` 链接看看是否可以显示欢迎页面。当IIS被安装好以后，默认会创建一个名为 ``Default Web Site`` 的网站在80端口上侦听。
+为了快速验证 IIS 是否正确安装，你可以访问 ``http://<nanoserver-ip-address>/`` 链接看看是否可以显示欢迎页面。当IIS被安装好以后，默认会创建一个名为 ``Default Web Site`` 的网站在80端口上侦听。
 
 Installing the ASP.NET Core Module (ANCM)
 -----------------------------------------
@@ -158,12 +158,12 @@ Installing the ASP.NET Core Module (ANCM)
 -----------------------------------------
 
 The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process management of ASP.NET Core HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the ASP.NET Core Module for IIS is manual. You will need to install the version of the `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ on a regular (not Nano) machine. After installing the bundle on a regular machine, you will need to copy the following files to the file share that we created earlier.
-
-ASP.NET Core Module 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后您需要将以下文件复制到我们前面创建的共享文件：
+ 
+The ASP.NET Core Module 是一个适用于 IIS 7.5 及更高版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后你需要复制以下文件：
 
 On a regular (not Nano) machine run the following copy commands:
 
-在常规机（不是 Nano Server）上运行下述拷贝命令：
+在常规机（不是 Nano Server）上运行下面拷贝命令：
 
 .. code:: ps1
 
@@ -214,7 +214,7 @@ Copy over the published output of your existing application to the file share.
 
 You may need to make changes to your *web.config* to point to where you extracted ``dotnet.exe``. Alternatively, you can add ``dotnet.exe`` to your path.
 
-您可能需要修改你的  *web.config*  文件指向你解压缩 ``dotnet.exe`` 文件的路径。或者，你也可以把 ``dotnet.exe`` 添加到你的路径。
+你可能需要修改你的  *web.config*  文件指向你解压缩 ``dotnet.exe`` 文件的路径。或者，你也可以把 ``dotnet.exe`` 添加到你的路径。
 
 Example of how a web.config might look like if ``dotnet.exe`` was **not** on the path:
 
@@ -235,7 +235,7 @@ Example of how a web.config might look like if ``dotnet.exe`` was **not** on the
 
 Run the following commands in the remote session to create a new site in IIS for the published app. This script uses the ``DefaultAppPool`` for simplicity. For more considerations on running under an application pool, see :ref:`apppool`.
 
-在远程会话中运行以下命令在IIS中为已发布的应用创建一个新的站点。此脚本只是简单的使用了 ``DefaultAppPool`` 。更多关于应用程序池的信息，请参阅 :ref:`apppool` 。
+在远程会话中运行以下命令，在 IIS 中为已发布的应用创建一个新的站点。此脚本只是简单的使用了 ``DefaultAppPool`` 。更多关于应用程序池的信息，请参阅 :ref:`apppool` 。
 
 
 .. code:: powershell
