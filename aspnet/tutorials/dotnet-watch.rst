@@ -24,7 +24,7 @@ Introduction
 
 In this tutorial we'll use an existing WebApi application that calculates the sum and product of two numbers to demonstrate the use cases of ``dotnet watch``. The sample application contains an intentional bug that we'll fix as part of this tutorial.
 
-在本教程中，我们将使用一个现有的计算两个数字之和以及乘积的 WebAPI 应用程序来演示如何使用 ``dotnet watch`` 。示例应用程序故意包含一个错误，作为本教程的一部分我们会修复它。
+在本教程中，我们将使用一个现有的计算两个数字之和以及乘积的 WebAPI 应用程序来演示如何使用 ``dotnet watch`` 。示例应用程序故意包含一个错误，作为本教程的一部分我们会修复它。 
 
 Getting started
 ---------------
@@ -80,7 +80,7 @@ We'll fix that.
 Adding ``dotnet watch`` to a project
 ------------------------------------
 
-项目添加 ``dotnet watch``
+项目中添加 ``dotnet watch``
 ------------------------------------
 
 1. Add ``Microsoft.DotNet.Watcher.Tools`` to the ``tools`` section of the *WebApp/project.json* file as in the example below:
