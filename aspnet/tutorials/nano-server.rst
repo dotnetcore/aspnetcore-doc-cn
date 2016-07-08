@@ -20,7 +20,7 @@ ASP.NET Core on Nano Server
 
 In this tutorial, you'll take an existing ASP.NET Core app and deploy it to a Nano Server instance running IIS.
 
-在本教程中，你将使用一个现有的 ASP.NET Core 应用程序并将其部署在一个 Nano Server 实例的 IIS 上。
+在本教程中， 你将使用一个现有的 ASP.NET Core 应用程序并将其部署在一个 Nano Server 实例的 IIS 上。
 
 .. contents:: Sections:
   :local:
@@ -158,12 +158,8 @@ Installing the ASP.NET Core Module (ANCM)
 -----------------------------------------
 
 The ASP.NET Core Module is an IIS 7.5+ module which is responsible for process management of ASP.NET Core HTTP listeners and to proxy requests to processes that it manages. At the moment, the process to install the ASP.NET Core Module for IIS is manual. You will need to install the version of the `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ on a regular (not Nano) machine. After installing the bundle on a regular machine, you will need to copy the following files to the file share that we created earlier.
-
-<<<<<<< HEAD
+ 
 The ASP.NET Core Module 是一个适用于 IIS 7.5 及更高版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后你需要复制以下文件：
-=======
-ASP.NET Core Module 是一个适用于 IIS 7.5 及以上版本的组件，它用来负责 ASP.NET Core HTTP 监听器的过程管理和代理请求的过程管理。 目前需要手动在 IIS 上安装 ASP.NET Core 组件。你需要在你的常规机（不是 Nano Server）上安装最新的 64 位版本的 `.NET Core Windows Server Hosting bundle <https://dot.net/>`__ 。安装之后您需要将以下文件复制到我们前面创建的共享文件：
->>>>>>> 0d1ab5824b7079809070f30dfbb01e72e20e5d7f
 
 On a regular (not Nano) machine run the following copy commands:
 
