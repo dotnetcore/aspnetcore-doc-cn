@@ -24,7 +24,7 @@ Introduction
 
 In this tutorial we'll use an existing WebApi application that calculates the sum and product of two numbers to demonstrate the use cases of ``dotnet watch``. The sample application contains an intentional bug that we'll fix as part of this tutorial.
 
-在本教程中，我们将使用一个现有的计算两个数字之和以及乘积的 WebAPI 应用程序来演示如何使用 ``dotnet watch`` 。示例应用程序故意包含一个错误，作为本教程的一部分我们会修复它。 
+在本教程中，我们将使用一个现有的计算两个数字之和以及乘积的 WebApi 应用程序来演示如何使用 ``dotnet watch`` 。示例应用程序故意包含一个错误，作为本教程的一部分我们会修复它。 
 
 Getting started
 ---------------
@@ -46,7 +46,7 @@ In a console, open the folder where you downloaded the sample application and ru
 
 The console output will show messages similar to the ones below, indicating that the application is now running and waiting for requests:
 
-控制台输出将显示如下信息，指示该应用程序正在运行并等待请求：
+控制台输出将显示如下信息，表明该应用程序正在运行并等待请求：
 
 .. code-block:: bash
 
@@ -129,7 +129,7 @@ Any ``dotnet`` command can be run with  ``dotnet watch``:  For example:
 
 To run ``WebApp`` using the watcher, run ``dotnet watch run`` in the ``WebApp`` folder. The console output will show messages similar to the ones below, indicating that ``dotnet watch`` is now watching code files:
 
-为了让 ``WebApp`` 在 watcher 模式下运行，在 ``WebApp`` 目录里面运行 ``dotnet watch run`` 命令。 控制台输出将显示如下信息，限制 ``dotnet watch`` 现在正在监控代码文件：
+为了让 ``WebApp`` 在 watcher 模式下运行，在 ``WebApp`` 目录里面运行 ``dotnet watch run`` 命令。 控制台输出将显示如下信息，表明 ``dotnet watch`` 现在正在监控代码文件：
 
 .. code-block:: bash
 
@@ -176,7 +176,7 @@ Fix the code by replacing ``a + b`` with ``a * b``.
 
 Save the file. The console output will show messages similar to the ones below, indicating that ``dotnet watch`` detected a file change and restarted the application.
 
-保存文件。 控制台输出将显示如下信息，指示 ``dotnet watch`` 检测到文件的改变并重启了应用程序。
+保存文件。 控制台输出将显示如下信息，表明 ``dotnet watch`` 检测到文件的改变并重启了应用程序。
 
 .. code-block:: bash
 
