@@ -14,7 +14,7 @@ ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能够运行在 Wi
 .NET Framework
 --------------
 
-.NET Framework 是三个.NET框架中最知名和最成熟的一个。.NET Framework 是承载于Windows系统平台的全功能成熟框架。.NET Framework 的生态系统已经非常成熟，并且已经被使用超过了10年。.NET Framework 如今已经大量用于生产环境并为您创建的应用程序和类库提供最高级别的兼容性。
+.NET Framework 是三个.NET框架中最知名和最成熟的。.NET Framework 是承载于Windows系统平台的全功能成熟框架。.NET Framework 的生态系统已经非常成熟，并且已经被使用超过了10年。.NET Framework 如今已经大量用于生产环境并为您创建的应用程序和类库提供最高级别的兼容性。
 
 .NET Framework 只能运行在Windows系统上。它是一个拥有大量 API 并且发布周期漫长的框架。虽然 .NET Framework 的代码可供参考 ，但它不是一个活跃的开源项目。
 
