@@ -114,7 +114,7 @@ Let's modify the example slightly so that you can pass some parameter informatio
 
 .. note:: The code above uses ``HtmlEncoder.Default.Encode`` to protect the app from malicious input (namely JavaScript). It also uses `Interpolated Strings <https://msdn.microsoft.com/en-us/library/dn961160.aspx>`__.
 
-.. note:: 上面的代码使用 ``HtmlEncoder.Default.Encode`` 来保护应用程序免受恶意输入(即 JavaScript)。同时也使用了 `内插字符串 <https://msdn.microsoft.com/zh-cn/library/dn961160.aspx>`__.
+.. note:: 上面的代码使用 ``HtmlEncoder.Default.Encode`` 来保护应用程序免受恶意输入(即 JavaScript)。同时也使用了 `内插字符串 <https://msdn.microsoft.com/zh-cn/library/dn961160.aspx>`__。
 
 .. note:: In Visual Studio 2015, when you are running in IIS Express without debugging (Ctl+F5), you don't need to build the app after changing the code. Just save the file, refresh your browser and you can see the changes.
 
@@ -130,7 +130,7 @@ Run your app and browse to:
 
   ``http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4``
 
-(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC :doc:`模型绑定 </mvc/models/model-binding>` 系统自动将地址栏里查询字符串中有名字的参数映射到你方法中的参数。查看 :doc:`/mvc/models/model-binding` 获得更多的信息。
+(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC :doc:`模型绑定 </mvc/models/model-binding>` 系统自动将地址栏里查询字符串中有名字的参数映射到你方法中的参数。查看 :doc:模型绑定 `/mvc/models/model-binding` 获得更多的信息。
 
 .. image:: adding-controller/_static/rick4.png
 
