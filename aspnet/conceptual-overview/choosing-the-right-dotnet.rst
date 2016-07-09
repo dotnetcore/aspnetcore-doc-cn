@@ -1,11 +1,15 @@
-为您的服务器选择合适版本的.NET的框架
+为你的服务器选择合适版本的.NET的框架
 =============================================
+
+原文 `Choosing the Right .NET For You on the Server <https://docs.asp.net/en/latest/fundamentals/choosing-the-right-dotnet.html>`_
 
 作者：`Daniel Roth`_ 
 
 翻译：`王健 <https://github.com/wjhgzx>`_
 
-ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能够运行在 Windows、Mac和 Linux 上的跨平台应用程序。当您构建一个 .Net Core 项目的时候，您也可以 在.NET Framework (CLR)、.NET Core (CoreCLR) 或者 `Mono <http://mono-project.com>`_ 中来选择一种 .NET版本来构建您的应用程序，.NET Framework (CLR)、 .NET Core (CoreCLR) 或者 Mono ？应该选择哪一种 .NET 版本，我们来看下每一种的优缺点吧。
+校对：`谢炀(Kiler) <https://github.com/kiler398/>`_、`何镇汐 <https://github.com/UtilCore>`_、`许登洋(Seay) <https://github.com/SeayXu>`_、`孟帅洋(书缘) <https://github.com/mengshuaiyang>`_
+
+ASP.NET Core基于 `.NET Core`_ 项目模型，它支持构建能够运行在 Windows、Mac和 Linux 上的跨平台应用程序。当您构建一个 .Net Core 项目的时候，您可以选择一种 .NET框架来构建您的应用程序，.NET Framework (CLR)、 .NET Core (CoreCLR) 或者 `Mono <http://mono-project.com>`_ ？应该选择哪一种 .NET框架，我们来看下每一种的优缺点吧。
 
 .NET Framework
 --------------
@@ -33,4 +37,4 @@ Mono
 总结
 -------
 
-.NET Core 项目模型使 .NET 开发可用于比以往更多的场景。通过 .NET Core 您可以在已有的可用的 .NET 平台上针对性构建应用程序。选择哪一种风格的 .NET 将取决于您的使用场景、时间表、功能需求和兼容性需求。
+.NET Core 项目模型使 .NET 开发可用于比以往更多的场景。通过 .NET Core 您可以在已有的可用的 .NET 平台上针对性的构建应用程序。选择哪一种的 .NET框架 将取决于您的使用场景、时间表、功能需求和兼容性需求。
