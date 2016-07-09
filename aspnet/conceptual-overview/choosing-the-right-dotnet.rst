@@ -1,29 +1,36 @@
-为您的服务器选择合适版本的.NET的框架
+Ϊ���ķ�����ѡ����ʰ汾��.NET�Ŀ��
+=============================================
 
-作者：`Daniel Roth`  翻译：王健
+���ߣ�`Daniel Roth`_ 
 
-ASP.NET Core基于.Net Core项目模型，它支持构建能运行在Windows、Mac和 Linux上的跨平台应用程序。当您构建一个.Net Core项目，您也可以在.NET Framework (CLR), .NET Core (CoreCLR) 或者 Mono中来选择一种.NET风格来构建您的应用程序，.NET Framework (CLR), .NET Core (CoreCLR) 或者 Mono？您应该选择哪一种.NET风格，来看看每一种的优缺点吧。
+���룺`���� <https://github.com/wjhgzx>`_
+
+ASP.NET Core���� `.NET Core`_ ��Ŀģ�ͣ���֧�ֹ����ܹ������� Windows��Mac�� Linux �ϵĿ�ƽ̨Ӧ�ó��򡣵�������һ�� .Net Core ��Ŀ��ʱ����Ҳ���� ��.NET Framework (CLR)��.NET Core (CoreCLR) ���� `Mono <http://mono-project.com>`_ ����ѡ��һ�� .NET�汾����������Ӧ�ó���.NET Framework (CLR)�� .NET Core (CoreCLR) ���� Mono ��Ӧ��ѡ����һ�� .NET �汾������������ÿһ�ֵ���ȱ��ɡ�
 
 .NET Framework
+--------------
 
-.NET Framework 是三种.NET框架中最知名和最成熟的一种。.NET Framework是和Windows系统一起装载的成熟的全功能框架。.NET Framework的生态系统已经非常成熟，并且已经被使用超过10年。.NET Framework（生产就绪），并且为您的现有应用程序和库提供最高级别的兼容性。
+.NET Framework ������.NET�������֪����������һ����.NET Framework �ǳ�����Windowsϵͳƽ̨��ȫ���ܳ����ܡ�.NET Framework ����̬ϵͳ�Ѿ��ǳ����죬�����Ѿ���ʹ�ó�����10�ꡣ.NET Framework ����Ѿ�������������������Ϊ��������Ӧ�ó��������ṩ��߼���ļ����ԡ�
 
-.NET Framework 只能运行在Windows系统上。它是一个暴露了大量API并且发布周期缓慢的整体框架。虽然.NET Framework的代码可供参考，但它不是一个活跃开源的项目。
+.NET Framework ֻ��������Windowsϵͳ�ϡ�����һ��ӵ�д��� API ���ҷ������������Ŀ�ܡ���Ȼ .NET Framework �Ĵ���ɹ��ο� ����������һ����Ծ�Ŀ�Դ��Ŀ��
 
 .NET Core
+---------
 
-.NET Core是一个模块化的运行时和库实现，包括.NET Framework的一个子集。 .NET Core支持Windows，Mac和Linux。 .NET Core是由一组被称为“CoreFX”的库，和一个被称为“CoreCLR”的优化过的小的运行时。 .NET Core是开源的，所以你可以跟踪它的进展，并在GitHub上贡献代码。
+.NET Core��һ��ģ�黯������ʱ�����ʵ�֣�����.NET Framework��һ���Ӽ��� .NET Core֧��Windows��Mac�Լ�Linuxϵͳ��.NET Core����һ�鱻��Ϊ ��CoreFX�� �Ŀ⣬��һ������Ϊ ��CoreCLR�� ��С�Ĳ����Ż���������ʱ�� .NET Core�ǿ�Դ�ģ���������Ը���������Ŀ���ȣ����� `GitHub <https://github.com/dotnet>`_ �Ϲ��״��롣
 
-CoreCLR运行时(Microsoft.CoreCLR) 和CoreFX库通过`NuGet`进行分发。.NET Core被构建成组件化的库集合，因此，您可以在您的应用程序中限制API表面积，使其仅使用您需要的部分。您也可以在更受限的环境中运行基于.NET Core的应用（如 Windows Server Nano）。
+CoreCLR ����ʱ (Microsoft.CoreCLR) �� CoreFX ��ͨ�� `NuGet`_ ���зַ���.NET Core ��������������Ŀ⼯�ϣ���ˣ�������������Ӧ�ó����и�����Ҫ����ʹ����Ҫ�� API ����Ҳ�����ڸ����޵Ļ��������л���.NET Core ��Ӧ�ã��� `Windows Server Nano <http://blogs.technet.com/b/windowsserver/archive/2015/04/08/microsoft-announces-nano-server-for-modern-apps-and-cloud.aspx>`_����
 
-API进行了更新,使其更好地组件化。这意味着现有的在.NET Framework中创建的库通常需要重新编译来使其运行在.NET Core中。.NET Core的生态系统相对来说比较新，但是在流行的.Net组件包的支持下发展迅速，如JSON.NET, AutoFac, xUnit.net等等。
+API �����˸��£�ʹ����õ������������ζ�����е��� .NET Framework �д����Ŀ�ͨ����Ҫ���±�����ʹ�������� .NET Core �С�.NET Core ����̬ϵͳ�����˵�Ƚ��£����������е� .Net �������֧���·�չѸ�٣��� JSON.NET��AutoFac��xUnit.net �ȵȡ�
 
-在.NET Core上开发，您可以针对单一一致的平台，也可以运行在多个平台上。
+���� .NET Core �Ŀ���������ʹ���ڵ�һƽ̨�Ͽ����ĳ��������ڶ��ƽ̨�ϡ�
 
 Mono
+----
 
-Mono是主要用于建造非Windows平台的.NET Framework的一个端口。 Mono是开源的，跨平台的。它也具有类似.NET框架的API，所以如今很多现有的托管库在Mono上运行。 Mono是跨平台发展的良好试验场,.NET Core在跨平台支持上已经成熟。
+`Mono <http://mono-project.com>`_ ����Ҫ���ڹ���� Windows ƽ̨�� .NET Framework ��һ���˿ڡ� Mono �ǿ�Դ�ģ���ƽ̨�ġ���Ҳ�������� .NET Framework ��API���������ܶ����е��йܿ��� Mono �����С� ��.NET Core �ڿ�ƽ̨��չ����Ĺ����У�Mono �ǿ�ƽ̨�������������鳡��
 
-总结
+�ܽ�
+-------
 
-.NET Core项目模型使.NET开发可用于比以往更多的场景。通过.NET Core您可以在已有的可用的.NET平台上针对性构建应用程序。选择哪一种风格的.NET将取决于您的特定场景、时间限制、功能需求和兼容性需求。
+.NET Core ��Ŀģ��ʹ .NET ���������ڱ���������ĳ�����ͨ�� .NET Core �����������еĿ��õ� .NET ƽ̨������Թ���Ӧ�ó���ѡ����һ�ַ��� .NET ��ȡ��������ʹ�ó�����ʱ�������������ͼ���������
