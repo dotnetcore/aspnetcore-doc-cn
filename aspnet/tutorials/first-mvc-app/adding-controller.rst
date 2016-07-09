@@ -35,33 +35,15 @@ We'll be covering all these concepts in this tutorial series and show you how to
 
 .. image:: adding-controller/_static/mvc1.png
 
-- In **Solution Explorer**, right-click **Controllers > Add > New Item**
+- In **Solution Explorer**, right-click **Controllers > Add > New Item...**
 
-- 在 **解决方案资源管理器（Solution Explorer）** 中，鼠标右键点击 **Controllers > 添加（Add） > 控制器（Controller）**
+- 在 **解决方案资源管理器（Solution Explorer）** 中，鼠标右键点击 **Controllers > 添加（Add） > 新建项...（New Item...）**
 
 .. image:: adding-controller/_static/add_controller.png
 
-.. bold bug here forces empty bullet line
+- In the **Add New Item** dialog, enter **HelloWorldController**.
 
-- In the **Add Scaffold** dialog
-
-  - Tap **MVC Controller - Empty**
-  - Tap **Add**
-  
-- 在 **添加基架（Add Scaffold）** 对话框中
-
-  - 点击 **MVC Controller - Empty**
-  - 点击 **添加（Add）**
-  
-.. image:: adding-controller/_static/new_hell_ctl.png
-
-- Name the controller **HelloWorldController**
-- Tap **Add**
-
-- 命名控制器（Controller）为 **HelloWorldController**
-- 点击 **添加（Add）**
-  
-.. image:: adding-controller/_static/hwc.png
+- 在 **添加新项（Add New Item）** 对话框，输入 **HelloWorldController**。
 
 Replace the contents of *Controllers/HelloWorldController.cs* with the following: 
 
@@ -81,19 +63,19 @@ Every ``public`` method in a controller is callable as an HTTP endpoint. In the 
   :dedent: 4
   :emphasize-lines: 4,12
 
-The first comment states this is an `HTTP GET <http://www.w3schools.com/tags/ref_httpmethods.asp>`__ method that is invoked by appending "/HelloWorld/" to the URL. The second comment specifies an `HTTP GET <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`__ method that is invoked by appending "/HelloWorld/Welcome/" to the URL. Later on in the tutorial we'll use the scaffolding engine to generate ``HTTP POST`` methods.
+The first comment states this is an `HTTP GET <http://www.w3schools.com/tags/ref_httpmethods.asp>`__ method that is invoked by appending "/HelloWorld/" to the base URL. The second comment specifies an `HTTP GET <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`__ method that is invoked by appending "/HelloWorld/Welcome/" to the URL. Later on in the tutorial we'll use the scaffolding engine to generate ``HTTP POST`` methods.
 
 第一条注释指出这是一个通过在 URL 后添加 "/HelloWorld/" 调用的 `HTTP GET <http://www.w3schools.com/tags/ref_httpmethods.asp>`__ 方法，。第二条指出这是一个通过在 URL 后添加 "/HelloWorld/Welcome/" 调用的 `HTTP GET <http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html>`__ 方法 。之后的教程我们将使用基架引擎来生成 ``HTTP POST`` 方法。
 
-Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, http://localhost:1234/HelloWorld is used, but you'll have to replace *1234* with the port number of your app.) The ``Index method`` returns a string. You told the system to return some HTML, and it did! 
+Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, http://localhost:1234/HelloWorld is used, but you'll have to replace *1234* with the port number of your app.) The ``Index`` method returns a string. You told the system to return some HTML, and it did! 
 
-使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index 方法`` 返回一段字符串，系统将这段字符串转换为 HTML 返回给浏览器。
+使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 http://localhost:1234/HelloWorld ，但是你必须用你的应用程序端口替换 *1234* )。 ``Index`` 方法返回一段字符串，系统将这段字符串转换为 HTML 返回给浏览器。
 
 .. image:: adding-controller/_static/hell1.png
 
-MVC invokes controller classes (and the action methods within them) depending on the incoming URL. The default URL routing logic used by MVC uses a format like this to determine what code to invoke:
+MVC invokes controller classes (and the action methods within them) depending on the incoming URL. The default :doc:`URL routing logic </mvc/controllers/routing>` used by MVC uses a format like this to determine what code to invoke:
 
-MVC 调用的控制器（Controller）类 (以及它们的 Action 方法) 取决于传入的 URL 。MVC 的默认路由逻辑采用类似下面规则格式来决定代码的调用：
+MVC 调用的控制器（Controller）类 (以及它们的 Action 方法) 取决于传入的 URL 。MVC 的默认 :doc:`URL 路由逻辑 </mvc/controllers/routing>` 采用类似下面规则格式来决定代码的调用：
 
 ``/[Controller]/[ActionName]/[Parameters]``
 
@@ -111,13 +93,13 @@ When you run the app and don't supply any URL segments, it defaults to the "Home
 
 当你运行应用程序且不提供任何 URL 段时，它将默认访问在上面模板中高亮行指定的 "Home" Controller 中的 "Index" Action 方法。
 
-The first URL segment determines the controller class to run. So ``localhost:xxxx/HelloWorld`` maps to the ``HelloWorldController`` class. The second part of the URL segment determines the action method on the class. So ``localhost:xxxx/HelloWorld/Index`` would cause the ``Index`` method of the ``HelloWorldController`` class to run. Notice that we only had to browse to ``localhost:xxxx/HelloWorld`` and the ``Index`` method was called by default. This is because ``Index`` is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( ``Parameters``) is for route data. We'll see route data later on in this tutorial.
+The first URL segment determines the controller class to run. So ``localhost:xxxx/HelloWorld`` maps to the ``HelloWorldController`` class. The second part of the URL segment determines the action method on the class. So ``localhost:xxxx/HelloWorld/Index`` would cause the ``Index`` method of the ``HelloWorldController`` class to run. Notice that we only had to browse to ``localhost:xxxx/HelloWorld`` and the ``Index`` method was called by default. This is because ``Index`` is the default method that will be called on a controller if a method name is not explicitly specified. The third part of the URL segment ( ``id``) is for route data. We'll see route data later on in this tutorial.
 
-第一个 URL 段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们只需要浏览 ``localhost:xxxx/HelloWorld`` ，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 段的第三部分 ( ``Parameters``) 是路由数据。我们之后将在本教程中了解路由数据。
+第一个 URL 段决定运行哪个控制器（Controller）。所以 ``localhost:xxxx/HelloWorld`` 映射到 ``HelloWorldController``  类。URL 段的第二部分决定类里的 Action 方法。所以 ``localhost:xxxx/HelloWorld/Index``  将运行 ``HelloWorldController`` 中的 ``Index`` 方法。请注意，我们只需要浏览 ``localhost:xxxx/HelloWorld`` ，默认会调用 ``Index`` 方法。这是因为在没有指定方法名时， ``Index`` 是默认方法。URL 段的第三部分 ( ``id``) 是路由数据。我们之后将在本教程中了解路由数据。
 
-Browse to ``http://localhost:xxxx/HelloWorld/Welcome``. The ``Welcome`` method runs and returns the string "This is the Welcome action method...". The default MVC routing is ``/[Controller]/[ActionName]/[Parameters]``. For this URL, the controller is ``HelloWorld`` and ``Welcome`` is the action method. We haven't used the ``[Parameters]`` part of the URL yet.
+Browse to ``http://localhost:xxxx/HelloWorld/Welcome``. The ``Welcome`` method runs and returns the string "This is the Welcome action method...". For this URL, the controller is ``HelloWorld`` and ``Welcome`` is the action method. We haven't used the ``[Parameters]`` part of the URL yet.
 
-浏览 ``http://localhost:xxxx/HelloWorld/Welcome`` 。 ``Welcome`` 方法运行并返回 "This is the Welcome action method..." 。默认的 MVC 路由是 ``/[Controller]/[ActionName]/[Parameters]`` 。对于这个 URL ， 控制器（Controller）是 ``HelloWorld`` ， Action 方法是 ``Welcome`` 。我们还没有使用 URL 中的 ``[Parameters]`` 部分。
+浏览 ``http://localhost:xxxx/HelloWorld/Welcome`` 。 ``Welcome`` 方法运行并返回 "This is the Welcome action method..." 。对于这个 URL ， 控制器（Controller）是 ``HelloWorld`` ， Action 方法是 ``Welcome`` 。我们还没有使用 URL 中的 ``[Parameters]`` 部分。
 
 .. image:: adding-controller/_static/welcome.png
 
@@ -126,29 +108,29 @@ Let's modify the example slightly so that you can pass some parameter informatio
 让我们稍微修改一下例子，使我们能够通过 URL 传递一些参数信息到控制器（Controller）(例如， ``/HelloWorld/Welcome?name=Scott&numtimes=4`` )。如下所示修改 ``Welcome`` 方法使其包含两个参数。请注意，代码利用 C# 的可选参数特性指明在没有传递参数的情况下， ``numTimes`` 参数默认为1。
 
 .. literalinclude:: start-mvc/sample/src/MvcMovie/Controllers/HelloWorldController.cs
-  :language: c#
-  :lines: 51-55
+  :language: none
+  :lines: 51-54
   :dedent: 8
 
-.. note:: The code above uses ``HtmlEncoder.Default.Encode`` to protect the app from malicious input (namely JavaScript).
+.. note:: The code above uses ``HtmlEncoder.Default.Encode`` to protect the app from malicious input (namely JavaScript). It also uses `Interpolated Strings <https://msdn.microsoft.com/en-us/library/dn961160.aspx>`__.
 
-.. note:: 上面的代码使用 ``HtmlEncoder.Default.Encode`` 来保护应用程序免受恶意输入(即 JavaScript)。
+.. note:: 上面的代码使用 ``HtmlEncoder.Default.Encode`` 来保护应用程序免受恶意输入(即 JavaScript)。同时也使用了 `内插字符串 <https://msdn.microsoft.com/zh-cn/library/dn961160.aspx>`__。
 
-.. note:: In Visual Studio 2015, when you are running without debugging (Ctl+F5), you don't need to build the app after changing the code. Just save the file, refresh your browser and you can see the changes.
+.. note:: In Visual Studio 2015, when you are running in IIS Express without debugging (Ctl+F5), you don't need to build the app after changing the code. Just save the file, refresh your browser and you can see the changes.
 
-.. note:: 在 Visual Studio 2015 中，当你以非调试模式 (Ctl+F5) 运行，你不需要在修改代码后生成应用程序。只需要保存文件，刷新你的浏览器就可以看到改变。
+.. note:: 在 Visual Studio 2015 中，当你在 IIS Express 以非调试模式 (Ctl+F5) 运行，你不需要在修改代码后生成应用程序。只需要保存文件，刷新你的浏览器就可以看到改变。
 
 Run your app and browse to:
 
   ``http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4``
 
-(Replace xxxx with your port number.) You can try different values for ``name`` and ``numtimes`` in  the URL. The MVC model binding system automatically maps the named parameters from  the query string in the address bar to parameters in your method. See :doc:`/mvc/models/model-binding` for more information.
+(Replace xxxx with your port number.) You can try different values for ``name`` and ``numtimes`` in  the URL. The MVC :doc:`model binding </mvc/models/model-binding>` system automatically maps the named parameters from  the query string in the address bar to parameters in your method. See :doc:`/mvc/models/model-binding` for more information.
 
 运行你的应用程序并浏览：
 
   ``http://localhost:xxxx/HelloWorld/Welcome?name=Rick&numtimes=4``
 
-(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC 模型绑定系统自动将地址栏里查询字符串中有名字的参数映射到你方法中的参数。查看 :doc:`/mvc/models/model-binding` 获得更多的信息。
+(用你的端口替换 xxxx。) 你可以在 URL 中对 ``name`` 和 ``numtimes`` 尝试不同的值。 MVC :doc:`模型绑定 </mvc/models/model-binding>` 系统自动将地址栏里查询字符串中有名字的参数映射到你方法中的参数。查看 :doc:模型绑定 `/mvc/models/model-binding` 获得更多的信息。
 
 .. image:: adding-controller/_static/rick4.png
 
