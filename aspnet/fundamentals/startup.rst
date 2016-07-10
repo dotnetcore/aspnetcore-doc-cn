@@ -15,7 +15,7 @@ Application Startup
 
 ASP.NET Core provides complete control of how individual requests are handled by your application. The ``Startup`` class is the entry point to the application, setting up configuration and wiring up services the application will use. Developers configure a request pipeline in the ``Startup`` class that is used to handle all requests made to the application.
 
-ASP.NET Core 为你的应用程序提供了处理每个请求的完整控制。``Startup`` 类是应用程序的入口（entry point），这个类可以设置配置（configuration）并且将应用程序将要使用的服务连接起来。开发人员可以在 ``Startup`` 类中配置请求管道，该管道将应用程序用于处理所有的请求。
+ASP.NET Core 为你的应用程序提供了处理每个请求的完整控制。``Startup`` 类是应用程序的入口（entry point），这个类可以设置配置（configuration）并且将应用程序将要使用的服务连接起来。开发人员可以在 ``Startup`` 类中配置请求管道，该管道将用于处理应用程序的所有请求。
 
 .. contents:: Sections:
   :local:
