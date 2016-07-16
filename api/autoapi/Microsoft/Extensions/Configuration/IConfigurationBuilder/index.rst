@@ -5,17 +5,21 @@ IConfigurationBuilder Interface
 
 
 
-.. contents:: 
-   :local:
 
 
-
-Summary
--------
 
 Represents a type used to build application configuration.
 
 
+Namespace
+    :dn:ns:`Microsoft.Extensions.Configuration`
+Assemblies
+    * Microsoft.Extensions.Configuration.Abstractions
+
+----
+
+.. contents::
+   :local:
 
 
 
@@ -30,20 +34,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public interface IConfigurationBuilder
+    public interface IConfigurationBuilder
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/configuration/blob/master/src/Microsoft.Extensions.Configuration.Abstractions/IConfigurationBuilder.cs>`_
 
 
 
-
+.. dn:interface:: Microsoft.Extensions.Configuration.IConfigurationBuilder
+    :hidden:
 
 .. dn:interface:: Microsoft.Extensions.Configuration.IConfigurationBuilder
 
@@ -55,41 +56,43 @@ Methods
     :hidden:
 
     
-    .. dn:method:: Microsoft.Extensions.Configuration.IConfigurationBuilder.Add(Microsoft.Extensions.Configuration.IConfigurationProvider)
+    .. dn:method:: Microsoft.Extensions.Configuration.IConfigurationBuilder.Add(Microsoft.Extensions.Configuration.IConfigurationSource)
     
         
     
-        Adds a new configuration provider.
+        
+        Adds a new configuration source.
     
         
+    
         
+        :param source: The configuration source to add.
         
-        :param provider: The configuration provider to add.
-        
-        :type provider: Microsoft.Extensions.Configuration.IConfigurationProvider
+        :type source: Microsoft.Extensions.Configuration.IConfigurationSource
         :rtype: Microsoft.Extensions.Configuration.IConfigurationBuilder
-        :return: The same <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder" />.
+        :return: The same :any:`Microsoft.Extensions.Configuration.IConfigurationBuilder`\.
     
         
         .. code-block:: csharp
     
-           IConfigurationBuilder Add(IConfigurationProvider provider)
+            IConfigurationBuilder Add(IConfigurationSource source)
     
     .. dn:method:: Microsoft.Extensions.Configuration.IConfigurationBuilder.Build()
     
         
     
-        Builds an :any:`Microsoft.Extensions.Configuration.IConfiguration` with keys and values from the set of providers registered in 
-        :dn:prop:`Microsoft.Extensions.Configuration.IConfigurationBuilder.Providers`\.
+        
+        Builds an :any:`Microsoft.Extensions.Configuration.IConfiguration` with keys and values from the set of sources registered in 
+        :dn:prop:`Microsoft.Extensions.Configuration.IConfigurationBuilder.Sources`\.
     
         
         :rtype: Microsoft.Extensions.Configuration.IConfigurationRoot
-        :return: An <see cref="T:Microsoft.Extensions.Configuration.IConfigurationRoot" /> with keys and values from the registered providers.
+        :return: An :any:`Microsoft.Extensions.Configuration.IConfigurationRoot` with keys and values from the registered sources.
     
         
         .. code-block:: csharp
     
-           IConfigurationRoot Build()
+            IConfigurationRoot Build()
     
 
 Properties
@@ -104,29 +107,31 @@ Properties
     
         
     
+        
         Gets a key/value collection that can be used to share data between the :any:`Microsoft.Extensions.Configuration.IConfigurationBuilder`
-        and the registered :any:`Microsoft.Extensions.Configuration.IConfigurationProvider`\s.
+        and the registered :any:`Microsoft.Extensions.Configuration.IConfigurationSource`\s.
     
         
-        :rtype: System.Collections.Generic.Dictionary{System.String,System.Object}
-    
-        
-        .. code-block:: csharp
-    
-           Dictionary<string, object> Properties { get; }
-    
-    .. dn:property:: Microsoft.Extensions.Configuration.IConfigurationBuilder.Providers
-    
-        
-    
-        Gets the providers used to obtain configuation values
-    
-        
-        :rtype: System.Collections.Generic.IEnumerable{Microsoft.Extensions.Configuration.IConfigurationProvider}
+        :rtype: System.Collections.Generic.Dictionary<System.Collections.Generic.Dictionary`2>{System.String<System.String>, System.Object<System.Object>}
     
         
         .. code-block:: csharp
     
-           IEnumerable<IConfigurationProvider> Providers { get; }
+            Dictionary<string, object> Properties { get; }
+    
+    .. dn:property:: Microsoft.Extensions.Configuration.IConfigurationBuilder.Sources
+    
+        
+    
+        
+        Gets the sources used to obtain configuation values
+    
+        
+        :rtype: System.Collections.Generic.IEnumerable<System.Collections.Generic.IEnumerable`1>{Microsoft.Extensions.Configuration.IConfigurationSource<Microsoft.Extensions.Configuration.IConfigurationSource>}
+    
+        
+        .. code-block:: csharp
+    
+            IEnumerable<IConfigurationSource> Sources { get; }
     
 

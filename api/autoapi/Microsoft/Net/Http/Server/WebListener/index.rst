@@ -5,17 +5,21 @@ WebListener Class
 
 
 
-.. contents:: 
-   :local:
 
 
-
-Summary
--------
 
 An HTTP server wrapping the Http.Sys APIs that accepts requests.
 
 
+Namespace
+    :dn:ns:`Microsoft.Net.Http.Server`
+Assemblies
+    * Microsoft.Net.Http.Server
+
+----
+
+.. contents::
+   :local:
 
 
 
@@ -38,20 +42,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public sealed class WebListener : IDisposable
+    public sealed class WebListener : IDisposable
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/weblistener/blob/master/src/Microsoft.Net.Http.Server/WebListener.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Net.Http.Server.WebListener
+    :hidden:
 
 .. dn:class:: Microsoft.Net.Http.Server.WebListener
 
@@ -70,76 +71,19 @@ Constructors
         
         .. code-block:: csharp
     
-           public WebListener()
+            public WebListener()
     
     .. dn:constructor:: Microsoft.Net.Http.Server.WebListener.WebListener(Microsoft.Extensions.Logging.ILoggerFactory)
     
         
-        
+    
         
         :type factory: Microsoft.Extensions.Logging.ILoggerFactory
     
         
         .. code-block:: csharp
     
-           public WebListener(ILoggerFactory factory)
-    
-
-Methods
--------
-
-.. dn:class:: Microsoft.Net.Http.Server.WebListener
-    :noindex:
-    :hidden:
-
-    
-    .. dn:method:: Microsoft.Net.Http.Server.WebListener.Dispose()
-    
-        
-    
-        Stop the server and clean up.
-    
-        
-    
-        
-        .. code-block:: csharp
-    
-           public void Dispose()
-    
-    .. dn:method:: Microsoft.Net.Http.Server.WebListener.GetContextAsync()
-    
-        
-        :rtype: System.Threading.Tasks.Task{Microsoft.Net.Http.Server.RequestContext}
-    
-        
-        .. code-block:: csharp
-    
-           public Task<RequestContext> GetContextAsync()
-    
-    .. dn:method:: Microsoft.Net.Http.Server.WebListener.SetRequestQueueLimit(System.Int64)
-    
-        
-    
-        Sets the maximum number of requests that will be queued up in Http.Sys.
-    
-        
-        
-        
-        :type limit: System.Int64
-    
-        
-        .. code-block:: csharp
-    
-           public void SetRequestQueueLimit(long limit)
-    
-    .. dn:method:: Microsoft.Net.Http.Server.WebListener.Start()
-    
-        
-    
-        
-        .. code-block:: csharp
-    
-           public void Start()
+            public WebListener(ILoggerFactory factory)
     
 
 Properties
@@ -158,7 +102,7 @@ Properties
         
         .. code-block:: csharp
     
-           public AuthenticationManager AuthenticationManager { get; }
+            public AuthenticationManager AuthenticationManager { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.WebListener.BufferResponses
     
@@ -168,7 +112,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool BufferResponses { get; set; }
+            public bool BufferResponses { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Server.WebListener.IsListening
     
@@ -178,12 +122,13 @@ Properties
         
         .. code-block:: csharp
     
-           public bool IsListening { get; }
+            public bool IsListening { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.WebListener.TimeoutManager
     
         
     
+        
         Exposes the Http.Sys timeout configurations.  These may also be configured in the registry.
     
         
@@ -192,7 +137,7 @@ Properties
         
         .. code-block:: csharp
     
-           public TimeoutManager TimeoutManager { get; }
+            public TimeoutManager TimeoutManager { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.WebListener.UrlPrefixes
     
@@ -202,6 +147,66 @@ Properties
         
         .. code-block:: csharp
     
-           public UrlPrefixCollection UrlPrefixes { get; }
+            public UrlPrefixCollection UrlPrefixes { get; }
+    
+
+Methods
+-------
+
+.. dn:class:: Microsoft.Net.Http.Server.WebListener
+    :noindex:
+    :hidden:
+
+    
+    .. dn:method:: Microsoft.Net.Http.Server.WebListener.Dispose()
+    
+        
+    
+        
+        Stop the server and clean up.
+    
+        
+    
+        
+        .. code-block:: csharp
+    
+            public void Dispose()
+    
+    .. dn:method:: Microsoft.Net.Http.Server.WebListener.GetContextAsync()
+    
+        
+        :rtype: System.Threading.Tasks.Task<System.Threading.Tasks.Task`1>{Microsoft.Net.Http.Server.RequestContext<Microsoft.Net.Http.Server.RequestContext>}
+    
+        
+        .. code-block:: csharp
+    
+            [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Disposed by callback")]
+            public Task<RequestContext> GetContextAsync()
+    
+    .. dn:method:: Microsoft.Net.Http.Server.WebListener.SetRequestQueueLimit(System.Int64)
+    
+        
+    
+        
+        Sets the maximum number of requests that will be queued up in Http.Sys.
+    
+        
+    
+        
+        :type limit: System.Int64
+    
+        
+        .. code-block:: csharp
+    
+            public void SetRequestQueueLimit(long limit)
+    
+    .. dn:method:: Microsoft.Net.Http.Server.WebListener.Start()
+    
+        
+    
+        
+        .. code-block:: csharp
+    
+            public void Start()
     
 

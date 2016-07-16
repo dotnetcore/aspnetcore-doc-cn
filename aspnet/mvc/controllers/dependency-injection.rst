@@ -1,4 +1,4 @@
-:version: 1.0.0-rc1
+:version: 1.0.0
 
 .. _dependency-injection-controllers:
 
@@ -65,7 +65,7 @@ Once the service has been configured, running the application and navigating to 
 
 .. image:: dependency-injection/_static/server-greeting.png
 
-.. tip:: See :doc:`/testing/unit-testing` to learn how `explicitly requesting dependencies <http://deviq.com/explicit-dependencies-principle>`_ in controllers makes code easier to test.
+.. tip:: See :doc:`/mvc/controllers/testing` to learn how to explicitly request dependencies `<http://deviq.com/explicit-dependencies-principle>`_ in controllers makes code easier to test.
 
 ASP.NET Core's built-in dependency injection supports having only a single constructor for classes requesting services. If you have more than one constructor, you may get an exception stating::
 
@@ -118,4 +118,4 @@ Once you've specified a strongly-typed configuration object (in this case, ``Sam
   :emphasize-lines: 3,5,7
   :lines: 7-22
 
-Following the Options pattern allows settings and configuration to be decoupled from one another, and ensures the controller is following `separation of concerns <http://deviq.com/separation-of-concerns/>`_, since it doesn't need to know how or where to find the settings information. It also makes the controller easier to :doc:`unit test </testing/unit-testing>`, since there is no `static cling <http://deviq.com/static-cling/>`_ or direct instantiation of settings classes within the controller class.
+Following the Options pattern allows settings and configuration to be decoupled from one another, and ensures the controller is following `separation of concerns <http://deviq.com/separation-of-concerns/>`_, since it doesn't need to know how or where to find the settings information. It also makes the controller easier to unit test :doc:`/mvc/controllers/testing`, since there is no `static cling <http://deviq.com/static-cling/>`_ or direct instantiation of settings classes within the controller class.

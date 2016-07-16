@@ -5,12 +5,17 @@ ThreadPoolBoundHandle Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`System.Threading`
+Assemblies
+    * Microsoft.Net.Http.Server
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +38,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public sealed class ThreadPoolBoundHandle : IDisposable
+    public sealed class ThreadPoolBoundHandle : IDisposable
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/weblistener/blob/master/src/Microsoft.Net.Http.Server/Overlapped/ThreadPoolBoundHandle.cs>`_
 
 
 
-
+.. dn:class:: System.Threading.ThreadPoolBoundHandle
+    :hidden:
 
 .. dn:class:: System.Threading.ThreadPoolBoundHandle
 
@@ -61,39 +63,39 @@ Methods
     .. dn:method:: System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped(System.Threading.IOCompletionCallback, System.Object, System.Object)
     
         
-        
+    
         
         :type callback: System.Threading.IOCompletionCallback
-        
+    
         
         :type state: System.Object
-        
+    
         
         :type pinData: System.Object
-        :rtype: System.Threading.NativeOverlapped*
+        :rtype: System.Threading.NativeOverlapped<System.Threading.NativeOverlapped>*
     
         
         .. code-block:: csharp
     
-           public NativeOverlapped*AllocateNativeOverlapped(IOCompletionCallback callback, object state, object pinData)
+            public NativeOverlapped*AllocateNativeOverlapped(IOCompletionCallback callback, object state, object pinData)
     
     .. dn:method:: System.Threading.ThreadPoolBoundHandle.AllocateNativeOverlapped(System.Threading.PreAllocatedOverlapped)
     
         
-        
+    
         
         :type preAllocated: System.Threading.PreAllocatedOverlapped
-        :rtype: System.Threading.NativeOverlapped*
+        :rtype: System.Threading.NativeOverlapped<System.Threading.NativeOverlapped>*
     
         
         .. code-block:: csharp
     
-           public NativeOverlapped*AllocateNativeOverlapped(PreAllocatedOverlapped preAllocated)
+            public NativeOverlapped*AllocateNativeOverlapped(PreAllocatedOverlapped preAllocated)
     
     .. dn:method:: System.Threading.ThreadPoolBoundHandle.BindHandle(System.Runtime.InteropServices.SafeHandle)
     
         
-        
+    
         
         :type handle: System.Runtime.InteropServices.SafeHandle
         :rtype: System.Threading.ThreadPoolBoundHandle
@@ -101,7 +103,7 @@ Methods
         
         .. code-block:: csharp
     
-           public static ThreadPoolBoundHandle BindHandle(SafeHandle handle)
+            public static ThreadPoolBoundHandle BindHandle(SafeHandle handle)
     
     .. dn:method:: System.Threading.ThreadPoolBoundHandle.Dispose()
     
@@ -110,32 +112,32 @@ Methods
         
         .. code-block:: csharp
     
-           public void Dispose()
+            public void Dispose()
     
     .. dn:method:: System.Threading.ThreadPoolBoundHandle.FreeNativeOverlapped(System.Threading.NativeOverlapped*)
     
         
+    
         
-        
-        :type overlapped: System.Threading.NativeOverlapped*
+        :type overlapped: System.Threading.NativeOverlapped<System.Threading.NativeOverlapped>*
     
         
         .. code-block:: csharp
     
-           public void FreeNativeOverlapped(NativeOverlapped*overlapped)
+            public void FreeNativeOverlapped(NativeOverlapped*overlapped)
     
     .. dn:method:: System.Threading.ThreadPoolBoundHandle.GetNativeOverlappedState(System.Threading.NativeOverlapped*)
     
         
+    
         
-        
-        :type overlapped: System.Threading.NativeOverlapped*
+        :type overlapped: System.Threading.NativeOverlapped<System.Threading.NativeOverlapped>*
         :rtype: System.Object
     
         
         .. code-block:: csharp
     
-           public static object GetNativeOverlappedState(NativeOverlapped*overlapped)
+            public static object GetNativeOverlappedState(NativeOverlapped*overlapped)
     
 
 Properties
@@ -154,6 +156,6 @@ Properties
         
         .. code-block:: csharp
     
-           public SafeHandle Handle { get; }
+            public SafeHandle Handle { get; }
     
 

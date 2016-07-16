@@ -18,9 +18,33 @@ Microsoft.Extensions.Configuration.Memory Namespace
    /autoapi/Microsoft/Extensions/Configuration/Memory/MemoryConfigurationProvider/index
    
    
+   
+   /autoapi/Microsoft/Extensions/Configuration/Memory/MemoryConfigurationSource/index
+   
+   
 
 
 
+
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 
 
@@ -35,7 +59,17 @@ Microsoft.Extensions.Configuration.Memory Namespace
     .. rubric:: Classes
 
 
-    class :dn:cls:`Microsoft.Extensions.Configuration.Memory.MemoryConfigurationProvider`
+    class :dn:cls:`MemoryConfigurationProvider`
+        .. object: type=class name=Microsoft.Extensions.Configuration.Memory.MemoryConfigurationProvider
+
         
+        In-memory implementation of :any:`Microsoft.Extensions.Configuration.IConfigurationProvider`
+
+
+    class :dn:cls:`MemoryConfigurationSource`
+        .. object: type=class name=Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource
+
+        
+        Represents in-memory data as an :any:`Microsoft.Extensions.Configuration.IConfigurationSource`\.
 
 

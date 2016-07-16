@@ -5,13 +5,8 @@ IServiceScope Interface
 
 
 
-.. contents:: 
-   :local:
 
 
-
-Summary
--------
 
 The :dn:meth:`System.IDisposable.Dispose` method ends the scope lifetime. Once Dispose
 is called, any scoped services that have been resolved from 
@@ -19,6 +14,15 @@ is called, any scoped services that have been resolved from
 disposed.
 
 
+Namespace
+    :dn:ns:`Microsoft.Extensions.DependencyInjection`
+Assemblies
+    * Microsoft.Extensions.DependencyInjection.Abstractions
+
+----
+
+.. contents::
+   :local:
 
 
 
@@ -33,20 +37,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public interface IServiceScope : IDisposable
+    public interface IServiceScope : IDisposable
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/dependencyinjection/blob/master/src/Microsoft.Extensions.DependencyInjection.Abstractions/IServiceScope.cs>`_
 
 
 
-
+.. dn:interface:: Microsoft.Extensions.DependencyInjection.IServiceScope
+    :hidden:
 
 .. dn:interface:: Microsoft.Extensions.DependencyInjection.IServiceScope
 
@@ -62,6 +63,7 @@ Properties
     
         
     
+        
         The :any:`System.IServiceProvider` used to resolve dependencies from the scope.
     
         
@@ -70,6 +72,6 @@ Properties
         
         .. code-block:: csharp
     
-           IServiceProvider ServiceProvider { get; }
+            IServiceProvider ServiceProvider { get; }
     
 
