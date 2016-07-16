@@ -5,12 +5,22 @@ MemoryCache Class
 
 
 
-.. contents:: 
+
+
+
+An implementation of :any:`Microsoft.Extensions.Caching.Memory.IMemoryCache` using a dictionary to
+store its entries.
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.Caching.Memory`
+Assemblies
+    * Microsoft.Extensions.Caching.Memory
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +43,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class MemoryCache : IMemoryCache, IDisposable
+    public class MemoryCache : IMemoryCache, IDisposable
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/caching/blob/master/src/Microsoft.Extensions.Caching.Memory/MemoryCache.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.Caching.Memory.MemoryCache
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.Caching.Memory.MemoryCache
 
@@ -58,21 +65,24 @@ Constructors
     :hidden:
 
     
-    .. dn:constructor:: Microsoft.Extensions.Caching.Memory.MemoryCache.MemoryCache(Microsoft.Extensions.OptionsModel.IOptions<Microsoft.Extensions.Caching.Memory.MemoryCacheOptions>)
+    .. dn:constructor:: Microsoft.Extensions.Caching.Memory.MemoryCache.MemoryCache(Microsoft.Extensions.Options.IOptions<Microsoft.Extensions.Caching.Memory.MemoryCacheOptions>)
     
         
     
-        Creates a new MemoryCache instance.
+        
+        Creates a new :any:`Microsoft.Extensions.Caching.Memory.MemoryCache` instance.
     
         
+    
         
+        :param optionsAccessor: The options of the cache.
         
-        :type optionsAccessor: Microsoft.Extensions.OptionsModel.IOptions{Microsoft.Extensions.Caching.Memory.MemoryCacheOptions}
+        :type optionsAccessor: Microsoft.Extensions.Options.IOptions<Microsoft.Extensions.Options.IOptions`1>{Microsoft.Extensions.Caching.Memory.MemoryCacheOptions<Microsoft.Extensions.Caching.Memory.MemoryCacheOptions>}
     
         
         .. code-block:: csharp
     
-           public MemoryCache(IOptions<MemoryCacheOptions> optionsAccessor)
+            public MemoryCache(IOptions<MemoryCacheOptions> optionsAccessor)
     
 
 Methods
@@ -86,24 +96,27 @@ Methods
     .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.Compact(System.Double)
     
         
-        
+    
         
         :type percentage: System.Double
     
         
         .. code-block:: csharp
     
-           public void Compact(double percentage)
+            public void Compact(double percentage)
     
-    .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.CreateLinkingScope()
+    .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.CreateEntry(System.Object)
     
         
-        :rtype: Microsoft.Extensions.Caching.Memory.IEntryLink
+    
+        
+        :type key: System.Object
+        :rtype: Microsoft.Extensions.Caching.Memory.ICacheEntry
     
         
         .. code-block:: csharp
     
-           public IEntryLink CreateLinkingScope()
+            public ICacheEntry CreateEntry(object key)
     
     .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.Dispose()
     
@@ -112,24 +125,25 @@ Methods
         
         .. code-block:: csharp
     
-           public void Dispose()
+            public void Dispose()
     
     .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.Dispose(System.Boolean)
     
         
-        
+    
         
         :type disposing: System.Boolean
     
         
         .. code-block:: csharp
     
-           protected virtual void Dispose(bool disposing)
+            protected virtual void Dispose(bool disposing)
     
     .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.Finalize()
     
         
     
+        
         Cleans up the background collection events.
     
         
@@ -137,54 +151,35 @@ Methods
         
         .. code-block:: csharp
     
-           protected void Finalize()
+            protected void Finalize()
     
     .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.Remove(System.Object)
     
         
-        
+    
         
         :type key: System.Object
     
         
         .. code-block:: csharp
     
-           public void Remove(object key)
-    
-    .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.Set(System.Object, System.Object, Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions)
-    
-        
-        
-        
-        :type key: System.Object
-        
-        
-        :type value: System.Object
-        
-        
-        :type cacheEntryOptions: Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions
-        :rtype: System.Object
-    
-        
-        .. code-block:: csharp
-    
-           public object Set(object key, object value, MemoryCacheEntryOptions cacheEntryOptions)
+            public void Remove(object key)
     
     .. dn:method:: Microsoft.Extensions.Caching.Memory.MemoryCache.TryGetValue(System.Object, out System.Object)
     
         
-        
+    
         
         :type key: System.Object
+    
         
-        
-        :type value: System.Object
+        :type result: System.Object
         :rtype: System.Boolean
     
         
         .. code-block:: csharp
     
-           public bool TryGetValue(object key, out object value)
+            public bool TryGetValue(object key, out object result)
     
 
 Properties
@@ -199,6 +194,7 @@ Properties
     
         
     
+        
         Gets the count of the current entries for diagnostic purposes.
     
         
@@ -207,6 +203,6 @@ Properties
         
         .. code-block:: csharp
     
-           public int Count { get; }
+            public int Count { get; }
     
 

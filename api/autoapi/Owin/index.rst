@@ -15,12 +15,24 @@ Owin Namespace
 
    
    
-   /autoapi/Owin/CookieAuthenticationExtensions/index
+   /autoapi/Owin/CookieInterop/index
    
    
 
 
 
+
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   
+   
+   
+   
+   
 
 
 
@@ -35,7 +47,9 @@ Owin Namespace
     .. rubric:: Classes
 
 
-    class :dn:cls:`Owin.CookieAuthenticationExtensions`
+    class :dn:cls:`CookieInterop`
+        .. object: type=class name=Owin.CookieInterop
+
         
 
 

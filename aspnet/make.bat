@@ -6,7 +6,7 @@ if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
 set BUILDDIR=_build
-set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% .
+set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees -n %SPHINXOPTS% .
 set I18NSPHINXOPTS=%SPHINXOPTS% .
 if NOT "%PAPER%" == "" (
 	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%
@@ -19,7 +19,6 @@ if "%1" == "help" (
 	:help
 	echo.Please use `make ^<target^>` where ^<target^> is one of
 	echo.  html       to make standalone HTML files
-	echo.  pdf        to make PDF files
 	echo.  dirhtml    to make HTML files named index.html in directories
 	echo.  singlehtml to make a single large HTML file
 	echo.  livehtml   to rebuild the HTML files when a change is detected
@@ -68,14 +67,6 @@ if "%1" == "html" (
 	echo.
 	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
 	goto end
-)
-
-if "%1" == "pdf" (
-   %SPHINXBUILD% -b pdf %ALLSPHINXOPTS% %BUILDDIR%/pdf
-   if errorlevel 1 exit /b 1
-   echo.
-   echo.Build finished. The pdf files are in %BUILDDIR%/pdf.
-   goto end
 )
 
 if "%1" == "dirhtml" (

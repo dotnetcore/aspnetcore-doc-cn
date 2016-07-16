@@ -5,12 +5,17 @@ ConsoleLogger Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.Logging.Console`
+Assemblies
+    * Microsoft.Extensions.Logging.Console
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +38,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class ConsoleLogger : ILogger
+    public class ConsoleLogger : ILogger
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/logging/blob/master/src/Microsoft.Extensions.Logging.Console/ConsoleLogger.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.Logging.Console.ConsoleLogger
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.Logging.Console.ConsoleLogger
 
@@ -61,20 +63,20 @@ Constructors
     .. dn:constructor:: Microsoft.Extensions.Logging.Console.ConsoleLogger.ConsoleLogger(System.String, System.Func<System.String, Microsoft.Extensions.Logging.LogLevel, System.Boolean>, System.Boolean)
     
         
-        
+    
         
         :type name: System.String
+    
         
-        
-        :type filter: System.Func{System.String,Microsoft.Extensions.Logging.LogLevel,System.Boolean}
-        
+        :type filter: System.Func<System.Func`3>{System.String<System.String>, Microsoft.Extensions.Logging.LogLevel<Microsoft.Extensions.Logging.LogLevel>, System.Boolean<System.Boolean>}
+    
         
         :type includeScopes: System.Boolean
     
         
         .. code-block:: csharp
     
-           public ConsoleLogger(string name, Func<string, LogLevel, bool> filter, bool includeScopes)
+            public ConsoleLogger(string name, Func<string, LogLevel, bool> filter, bool includeScopes)
     
 
 Methods
@@ -85,23 +87,23 @@ Methods
     :hidden:
 
     
-    .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.BeginScopeImpl(System.Object)
+    .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.BeginScope<TState>(TState)
     
         
+    
         
-        
-        :type state: System.Object
+        :type state: TState
         :rtype: System.IDisposable
     
         
         .. code-block:: csharp
     
-           public IDisposable BeginScopeImpl(object state)
+            public IDisposable BeginScope<TState>(TState state)
     
     .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
     
         
-        
+    
         
         :type logLevel: Microsoft.Extensions.Logging.LogLevel
         :rtype: System.Boolean
@@ -109,52 +111,55 @@ Methods
         
         .. code-block:: csharp
     
-           public bool IsEnabled(LogLevel logLevel)
+            public bool IsEnabled(LogLevel logLevel)
     
-    .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.Log(Microsoft.Extensions.Logging.LogLevel, System.Int32, System.Object, System.Exception, System.Func<System.Object, System.Exception, System.String>)
+    .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.Log<TState>(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func<TState, System.Exception, System.String>)
     
         
-        
+    
         
         :type logLevel: Microsoft.Extensions.Logging.LogLevel
+    
         
+        :type eventId: Microsoft.Extensions.Logging.EventId
+    
         
-        :type eventId: System.Int32
-        
-        
-        :type state: System.Object
-        
+        :type state: TState
+    
         
         :type exception: System.Exception
+    
         
-        
-        :type formatter: System.Func{System.Object,System.Exception,System.String}
+        :type formatter: System.Func<System.Func`3>{TState, System.Exception<System.Exception>, System.String<System.String>}
     
         
         .. code-block:: csharp
     
-           public void Log(LogLevel logLevel, int eventId, object state, Exception exception, Func<object, Exception, string> formatter)
+            public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
     
-    .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.WriteMessage(Microsoft.Extensions.Logging.LogLevel, System.String, System.Int32, System.String)
+    .. dn:method:: Microsoft.Extensions.Logging.Console.ConsoleLogger.WriteMessage(Microsoft.Extensions.Logging.LogLevel, System.String, System.Int32, System.String, System.Exception)
     
         
-        
+    
         
         :type logLevel: Microsoft.Extensions.Logging.LogLevel
-        
+    
         
         :type logName: System.String
-        
+    
         
         :type eventId: System.Int32
-        
+    
         
         :type message: System.String
     
         
+        :type exception: System.Exception
+    
+        
         .. code-block:: csharp
     
-           public virtual void WriteMessage(LogLevel logLevel, string logName, int eventId, string message)
+            public virtual void WriteMessage(LogLevel logLevel, string logName, int eventId, string message, Exception exception)
     
 
 Properties
@@ -173,17 +178,17 @@ Properties
         
         .. code-block:: csharp
     
-           public IConsole Console { get; set; }
+            public IConsole Console { get; set; }
     
     .. dn:property:: Microsoft.Extensions.Logging.Console.ConsoleLogger.Filter
     
         
-        :rtype: System.Func{System.String,Microsoft.Extensions.Logging.LogLevel,System.Boolean}
+        :rtype: System.Func<System.Func`3>{System.String<System.String>, Microsoft.Extensions.Logging.LogLevel<Microsoft.Extensions.Logging.LogLevel>, System.Boolean<System.Boolean>}
     
         
         .. code-block:: csharp
     
-           public Func<string, LogLevel, bool> Filter { get; set; }
+            public Func<string, LogLevel, bool> Filter { get; set; }
     
     .. dn:property:: Microsoft.Extensions.Logging.Console.ConsoleLogger.IncludeScopes
     
@@ -193,7 +198,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool IncludeScopes { get; set; }
+            public bool IncludeScopes { get; set; }
     
     .. dn:property:: Microsoft.Extensions.Logging.Console.ConsoleLogger.Name
     
@@ -203,6 +208,6 @@ Properties
         
         .. code-block:: csharp
     
-           public string Name { get; }
+            public string Name { get; }
     
 

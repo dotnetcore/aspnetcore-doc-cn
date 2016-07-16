@@ -5,12 +5,17 @@ DiagnosticNameAttribute Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.DiagnosticAdapter`
+Assemblies
+    * Microsoft.Extensions.DiagnosticAdapter
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -34,20 +39,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class DiagnosticNameAttribute : Attribute, _Attribute
+    public class DiagnosticNameAttribute : Attribute
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/eventnotification/blob/master/src/Microsoft.Extensions.DiagnosticAdapter/DiagnosticNameAttribute.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.DiagnosticAdapter.DiagnosticNameAttribute
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.DiagnosticAdapter.DiagnosticNameAttribute
 
@@ -62,14 +64,14 @@ Constructors
     .. dn:constructor:: Microsoft.Extensions.DiagnosticAdapter.DiagnosticNameAttribute.DiagnosticNameAttribute(System.String)
     
         
-        
+    
         
         :type name: System.String
     
         
         .. code-block:: csharp
     
-           public DiagnosticNameAttribute(string name)
+            public DiagnosticNameAttribute(string name)
     
 
 Properties
@@ -88,6 +90,6 @@ Properties
         
         .. code-block:: csharp
     
-           public string Name { get; }
+            public string Name { get; }
     
 

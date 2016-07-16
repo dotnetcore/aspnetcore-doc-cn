@@ -20,9 +20,7 @@ ASP.NET Core Documentation
 
     Introduction <intro>
     getting-started
-    API <https://docs.asp.net/projects/api>
     tutorials/index
-    conceptual-overview/index
     fundamentals/index
     mvc/index
     testing/index
@@ -34,6 +32,7 @@ ASP.NET Core Documentation
     security/index
     performance/index
     migration/index
+    API <https://docs.asp.net/projects/api>
     contribute/index
 
 相关资源

@@ -5,12 +5,21 @@ ConfigurationKeyComparer Class
 
 
 
-.. contents:: 
+
+
+
+IComparer implementation used to order configuration keys.
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.Configuration`
+Assemblies
+    * Microsoft.Extensions.Configuration
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +42,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class ConfigurationKeyComparer : IComparer<string>
+    public class ConfigurationKeyComparer : IComparer<string>
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/configuration/blob/master/src/Microsoft.Extensions.Configuration/ConfigurationKeyComparer.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.Configuration.ConfigurationKeyComparer
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.Configuration.ConfigurationKeyComparer
 
@@ -61,10 +67,19 @@ Methods
     .. dn:method:: Microsoft.Extensions.Configuration.ConfigurationKeyComparer.Compare(System.String, System.String)
     
         
+    
         
+        Compares two strings.
+    
+        
+    
+        
+        :param x: First string.
         
         :type x: System.String
+    
         
+        :param y: Second string.
         
         :type y: System.String
         :rtype: System.Int32
@@ -72,7 +87,7 @@ Methods
         
         .. code-block:: csharp
     
-           public int Compare(string x, string y)
+            public int Compare(string x, string y)
     
 
 Properties
@@ -86,11 +101,16 @@ Properties
     .. dn:property:: Microsoft.Extensions.Configuration.ConfigurationKeyComparer.Instance
     
         
+    
+        
+        The default instance.
+    
+        
         :rtype: Microsoft.Extensions.Configuration.ConfigurationKeyComparer
     
         
         .. code-block:: csharp
     
-           public static ConfigurationKeyComparer Instance { get; }
+            public static ConfigurationKeyComparer Instance { get; }
     
 
