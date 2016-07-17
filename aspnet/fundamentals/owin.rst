@@ -1,8 +1,11 @@
-OWIN
-====
+Open Web Interface for .NET (OWIN)
+========================================
+
+.NET开放Web接口（OWIN）
+========================================
 
 作者 `Steve Smith`_
-翻译：  谢炀(kiler)   
+翻译：  谢炀(kiler)
 
 ASP.NET Core 支持 OWIN（即 Open Web Server Interface for .NET 的首字母缩写）, OWIN的目标是用于解耦Web Server和Web Application. 此外, OWIN为中间件定义了一个标准方法用处理单个请求以及相关联的响应. ASP.NET Core 的程序和中间件可以和 基于 OWIN 应用程序, 服务器,以及中间件相互交互。
 
@@ -55,7 +58,7 @@ OWIN 中间件遵循 `OWIN 标准 <http://owin.org/spec/spec/owin-1.0.0.html>`_,
     });
   });
 
-.. note:: ASP.NET Core 中的对 OWIN 支持是 `Katana 项目 <http://katanaproject.codeplex.com/>`_ 的进化. Katana项目的 ``IAppBuilder`` 组件被 ``IApplicationBuilder`` 替换了, 但是你使用了现有的基于 Katana 的中间件, 你会在你的 ASP.NET Core 应用程序作中为桥梁用到它, 更多参考 `Owin.IAppBuilderBridge GitHub 案例 <https://github.com/aspnet/Entropy/tree/master/samples/Owin.IAppBuilderBridge>`_. 
+.. note:: ASP.NET Core 中的对 OWIN 支持是 `Katana 项目 <http://katanaproject.codeplex.com/>`_ 的进化. Katana项目的 ``IAppBuilder`` 组件被 ``IApplicationBuilder`` 替换了, 但是你使用了现有的基于 Katana 的中间件, 你会在你的 ASP.NET Core 应用程序作中为桥梁用到它, 更多参考 `Owin.IAppBuilderBridge GitHub 案例 <https://github.com/aspnet/Entropy/tree/master/samples/Owin.IAppBuilderBridge>`_.
 
 在基于 OWIN 的服务器上宿主 ASP.NET
 ---------------------------------------------
