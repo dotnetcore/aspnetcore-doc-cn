@@ -6,12 +6,13 @@ Application Startup
 应用程序启动
 ===================
 
-作者： `Steve Smith`_
+原文：`Application Startup <https://docs.asp.net/en/latest/fundamentals/startup.html>`_
 
-翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+作者：`Steve Smith`_
 
-校对： `谢炀(kiler398) <http://github.com/kiler398>`_
+翻译：`刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
+校对：`谢炀(kiler398) <http://github.com/kiler398>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
 
 ASP.NET Core provides complete control of how individual requests are handled by your application. The ``Startup`` class is the entry point to the application, setting up configuration and wiring up services the application will use. Developers configure a request pipeline in the ``Startup`` class that is used to handle all requests made to the application.
 
@@ -33,11 +34,11 @@ Startup 类
 
 In ASP.NET Core, the ``Startup`` class provides the entry point for an application, and is required for all applications. It's possible to have environment-specific startup classes and methods (see :doc:`environments`), but regardless, one ``Startup`` class will serve as the entry point for the application. ASP.NET searches the primary assembly for a class named ``Startup`` (in any namespace). You can specify a different assembly to search using the `Hosting:Application` configuration key. It doesn't matter whether the class is defined as ``public``; ASP.NET will still load it if it conforms to the naming convention. If there are multiple ``Startup`` classes, this will not trigger an exception. ASP.NET will select one based on its namespace (matching the project's root namespace first, otherwise using the class in the alphabetically first namespace).
 
-在 ASP.NET Core 中，``Startup`` 类提供了应用程序的入口，而且在所有应用程序中都有 ``Startup`` 类。可能会存在特定环境的启动类和方法（参见 :doc:`environments` ），但无论如何， ``Startup`` 类都将被充当为应用程序的启动点。ASP.NET 会在主程序集中搜索名为 ``Startup`` 的类（在任何命名空间下）。你可以指定一个其它程序集用于检索，只需使用 `Hosting:Application` 配置键。ASP.NET 并不关心 ``Startup`` 类是不是定义为 ``public``，ASP.NET 将继续加载之（只要符合命名规范即可）。如果有多个 ``Startup`` 类，也不会触发异常，ASP.NET 将基于命名空间选择其中一个（匹配项目的根命名空间优先，否则基于命名空间首字母排序后的第一个）。
+在 ASP.NET Core 中，``Startup`` 类提供了应用程序的入口，而且在所有应用程序中都有 ``Startup`` 类。可能会存在特定环境的启动类和方法（参见 :doc:`environments` ），但无论如何， ``Startup`` 类都将被充当为应用程序的启动点。ASP.NET 会在主程序集中搜索名为 ``Startup`` 的类（在任何命名空间下）。你可以指定一个其它程序集用于检索，只需使用 `Hosting:Application` 配置键。ASP.NET 并不关心 ``Startup`` 类是不是定义为 ``public``，如果它符合命名规范，ASP.NET 将继续加载它。如果有多个 ``Startup`` 类，也不会触发异常，ASP.NET 将基于命名空间选择其中一个（匹配项目的根命名空间优先，否则使用第一个按字母排列的命名空间中的类）。
 
 The ``Startup`` class can optionally accept dependencies in its constructor that are provided through :doc:`dependency injection <dependency-injection>`.  Typically, the way an application will be configured is defined within its Startup class's constructor (see :doc:`configuration`). The Startup class must define a ``Configure`` method, and may optionally also define a ``ConfigureServices`` method, which will be called when the application is started.
 
-``Startup`` 类能可选地在构造函数中接受依赖项（通过 :doc:`依赖注入 <dependency-injection>` 提供）。通常而言，应用程序的配置都是定义于 Startup 类的构造函数之中（参见 :doc:`configuration` ）。Startup 类必须定义 ``Configure`` 方法，可选择定义一个 ``ConfigureServices`` 方法，这些方法将在应用程序启动时被调用。
+``Startup`` 类能选择性地在构造函数中接受通过 :doc:`依赖注入 <dependency-injection>` 提供的依赖项。通常而言，将要被配置的应用程序的方法定义于 Startup 类的构造函数之中（参见 :doc:`configuration` ）。Startup 类必须定义 ``Configure`` 方法，可选择定义一个 ``ConfigureServices`` 方法，这些方法将在应用程序启动时被调用。
 
 The Configure method
 --------------------
@@ -51,7 +52,7 @@ The ``Configure`` method is used to specify how the ASP.NET application will res
 
 Your ``Configure`` method must accept an IApplicationBuilder_ parameter. Additional services, like ``IHostingEnvironment`` and ``ILoggerFactory`` may also be specified, in which case these services will be :doc:`injected <dependency-injection>` by the server if they are available. In the following example from the default web site template, you can see several extension methods are used to configure the pipeline with support for `BrowserLink <http://www.asp.net/visual-studio/overview/2013/using-browser-link>`_, error pages, static files, ASP.NET MVC, and Identity.
 
-``Configure`` 方法必须接受一个 IApplicationBuilder_ 参数。一些额外服务（比如 ``IHostingEnvironment`` 或 ``ILoggerFactory``）也可以被指定，这些服务（如果它们可用）将会被服务器 :doc:`注入 <dependency-injection>` 进来。在下例（源于默认的 Web 站点模板）中可见多个扩展方法被用于配置管道以支持 `BrowserLink <http://www.asp.net/visual-studio/overview/2013/using-browser-link>`_ 、错误页、静态文件、ASP.NET MVC 以及 Identity。
+``Configure`` 方法必须接受一个 IApplicationBuilder_ 参数。一些额外服务，比如 ``IHostingEnvironment`` 或 ``ILoggerFactory``也可以被指定，如果在它们可用情况下，这些服务将会被服务器 :doc:`注入 <dependency-injection>` 进来。在下例（源于默认的 Web 站点模板）中可见多个扩展方法被用于配置管道以支持 `BrowserLink <http://www.asp.net/visual-studio/overview/2013/using-browser-link>`_ 、错误页、静态文件、ASP.NET MVC 以及 Identity。
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Startup.cs
   :language: c#
@@ -100,12 +101,12 @@ The ``ConfigureServices`` method is also where you should add configuration opti
 Services Available in Startup
 -----------------------------
 
-在启动时服务可用 
+在启动时服务可用
 -----------------------------
 
 ASP.NET Core provides certain application services and objects during your application's startup. You can request certain sets of these services by simply including the appropriate interface as a parameter on your ``Startup`` class's constructor or one of its ``Configure`` or ``ConfigureServices`` methods. The services available to each method in the ``Startup`` class are described below. The framework services and objects include:
 
-ASP.NET Core 在应用程序启动期间提供了一些应用服务和对象。你可以非常简单地使用这些服务，只需要在在 ``Startup`` 类的构造函数或是它的 ``Configure`` 与 ``ConfigureServices`` 方法（的其中一个）包含合适的接口即可。下面定义了在 ``Startup`` 类中对每个方法可用的服务。框架服务和对象包括：
+ASP.NET Core 在应用程序启动期间提供了一些应用服务和对象。你可以非常简单地使用这些服务，只需要在在 ``Startup`` 类的构造函数或是它的 ``Configure`` 与 ``ConfigureServices`` 方法中的一个包含合适的接口即可。下面定义了在 ``Startup`` 类中对每个方法可用的服务。框架服务和对象包括：
 
 IApplicationBuilder
   Used to build the application request pipeline. Available only to the ``Configure`` method in ``Startup``. Learn more about :doc:`request-features`.
@@ -121,7 +122,7 @@ IHostingEnvironment
 
 ILoggerFactory
   Provides a mechanism for creating loggers. Available to the ``Startup`` constructor and ``Configure`` method. Learn more about :doc:`logging`.
-  提供了创建日志器的机制。可以在 ``Startup``  的构造函数或 ``Configure``  方法中使用。更多请阅读 :doc:`logging` 。
+  提供了创建日志的机制。可以在 ``Startup`` 的构造函数或 ``Configure`` 方法中使用。更多请阅读 :doc:`logging` 。
 
 IServiceCollection
   The current set of services configured in the container. Available only to the ``ConfigureServices`` method, and used by that method to configure the services available to an application.
@@ -129,7 +130,7 @@ IServiceCollection
 
 Looking at each method in the ``Startup`` class in the order in which they are called, the following services may be requested as parameters:
 
-看看 ``Startup`` 类中的每一个方法，排序按照调用它们的顺序，下面的服务可被作为参数：
+看看 ``Startup`` 类中按它们被调用排序的每一个方法，下面的服务可被作为参数：
 
 Startup Constructor
 - ``IApplicationEnvironment``
