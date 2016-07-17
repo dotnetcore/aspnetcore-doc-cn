@@ -22,7 +22,7 @@ ASP.NET Core 为你的应用程序提供了处理每个请求的完整控制。`
   :local:
   :depth: 1
 
-.. contents:: 章节:
+.. contents:: 章节：
   :local:
   :depth: 1
 
@@ -52,7 +52,7 @@ The ``Configure`` method is used to specify how the ASP.NET application will res
 
 Your ``Configure`` method must accept an IApplicationBuilder_ parameter. Additional services, like ``IHostingEnvironment`` and ``ILoggerFactory`` may also be specified, in which case these services will be :doc:`injected <dependency-injection>` by the server if they are available. In the following example from the default web site template, you can see several extension methods are used to configure the pipeline with support for `BrowserLink <http://www.asp.net/visual-studio/overview/2013/using-browser-link>`_, error pages, static files, ASP.NET MVC, and Identity.
 
-``Configure`` 方法必须接受一个 IApplicationBuilder_ 参数。一些额外服务，比如 ``IHostingEnvironment`` 或 ``ILoggerFactory``也可以被指定，如果在它们可用情况下，这些服务将会被服务器 :doc:`注入 <dependency-injection>` 进来。在下例（源于默认的 Web 站点模板）中可见多个扩展方法被用于配置管道以支持 `BrowserLink <http://www.asp.net/visual-studio/overview/2013/using-browser-link>`_ 、错误页、静态文件、ASP.NET MVC 以及 Identity。
+``Configure`` 方法必须接受一个 IApplicationBuilder_ 参数。一些额外服务，比如 ``IHostingEnvironment`` 或 ``ILoggerFactory`` 也可以被指定，如果在它们可用情况下，这些服务将会被服务器 :doc:`注入 <dependency-injection>` 进来。在下例（源于默认的 Web 站点模板）中可见多个扩展方法被用于配置管道以支持 `BrowserLink <http://www.asp.net/visual-studio/overview/2013/using-browser-link>`_ 、错误页、静态文件、ASP.NET MVC 以及 Identity。
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Startup.cs
   :language: c#
