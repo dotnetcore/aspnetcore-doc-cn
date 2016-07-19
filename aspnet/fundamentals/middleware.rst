@@ -18,7 +18,7 @@ Middleware
   :local:
   :depth: 1
 
-.. contents:: 章节:
+.. contents:: 章节：
   :local:
   :depth: 1
 
