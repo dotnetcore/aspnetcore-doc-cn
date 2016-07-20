@@ -1,13 +1,17 @@
 .. _fundamentals-static-files:
 
-静态文件处理
+Working with Static Files <https://docs.asp.net/en/latest/fundamentals/static-files.html>_
 =============
 
-作者： `Rick Anderson`_
 
-翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+静态文件处理 <https://docs.asp.net/en/latest/fundamentals/static-files.html>_
+=============
 
-校对： `谢炀(kiler398) <http://github.com/kiler398>`_
+作者：`Rick Anderson`_
+
+翻译：`刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对：`谢炀(kiler398) <http://github.com/kiler398>`_
 
 Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.NET Core app can serve directly to clients.
 
@@ -56,7 +60,7 @@ In order for static files to be served, you must configure the :doc:`middleware`
 
 ``app.UseStaticFiles();`` makes the files in ``web root`` (*wwwroot* by default) servable. Later I'll show how to make other directory contents servable with ``UseStaticFiles``.
 
-``app.UseStaticFiles();`` 使得 ``web root`` (*wwwroot* by default) 下的文件可以被访问。随后我将展示如何通过使用 ``UseStaticFiles`` 将其他目录下的内容也向外提供服务。
+``app.UseStaticFiles();`` 使得 ``web root`` （*wwwroot* by default） 下的文件可以被访问。随后我将展示如何通过使用 ``UseStaticFiles`` 将其他目录下的内容也向外提供服务。
 
 You must include "Microsoft.AspNetCore.StaticFiles" in the *project.json* file.
 
@@ -101,7 +105,7 @@ A request to ``http://<app>/StaticFiles/test.png`` will serve the *test.png* fil
 
 The static file module provides **no** authorization checks. Any files served by it, including those under *wwwroot* are publicly available. To serve files based on authorization:
 
-静态文件模块并**不**提供授权检查。任何通过该模块提供访问的文件，包括位于 *wwwroot* 下的文件都是公开的。为了给文件提供授权：
+静态文件模块并 **不** 提供授权检查。任何通过该模块提供访问的文件，包括位于 *wwwroot* 下的文件都是公开的。为了给文件提供授权：
 
 - Store them outside of *wwwroot* and any directory accessible to the static file middleware **and**
 - Serve them through a controller action, returning a :dn:class:`~Microsoft.AspNetCore.Mvc.FileResult` where authorization is applied
@@ -141,7 +145,7 @@ The code above allows directory browsing of the *wwwroot/images* folder using th
 
 See Considerations_ on the security risks when enabling browsing.
 
-查看关于开放访问目录时的安全隐患 Considerations_ 一文。
+查看关于开放访问目录时的安全隐患 注意事项_ 一节。
 
 Note the two ``app.UseStaticFiles`` calls. The first one is required to serve the CSS, images and JavaScript in the *wwwroot* folder, and the second call for directory browsing of the *wwwroot/images* folder using the URL \http://<app>/MyImages:
 
@@ -221,7 +225,7 @@ The following code enables static files, default files and  directory browsing:
 
 See Considerations_ on the security risks when enabling browsing. As with ``UseStaticFiles``, ``UseDefaultFiles``, and ``UseDirectoryBrowser``, if you wish to serve files that exist outside the ``web root``, you instantiate and configure an :dn:class:`~Microsoft.AspNetCore.Builder.FileServerOptions` object that you pass as a parameter to ``UseFileServer``. For example, given the following directory hierarchy in your Web app:
 
-查看直接提供目录访问时的安全风险 Considerations_ 。作为一个集合了 ``UseStaticFiles``、``UseDefaultFiles`` 和 ``UseDirectoryBrowser`` 方法于一体的方法，如果你希望提供 ``web root`` 之外存在的文件，你要实例化并配置一个 :dn:class:`~Microsoft.AspNetCore.Builder.FileServerOptions` 对象传递给 ``UseFileServer`` 的参数。比方说在你的应用中有如下层次的目录：
+查看直接提供目录访问时的安全风险 注意事项_ 。作为一个集合了 ``UseStaticFiles``、``UseDefaultFiles`` 和 ``UseDirectoryBrowser`` 方法于一体的方法，如果你希望提供 ``web root`` 之外存在的文件，你要实例化并配置一个 :dn:class:`~Microsoft.AspNetCore.Builder.FileServerOptions` 对象传递给 ``UseFileServer`` 的参数。比方说在你的应用中有如下层次的目录：
 
 - wwwroot
 
@@ -343,11 +347,11 @@ Considerations
     - Select **StaticFileModule** in the list
     - 从列表中选中 **StaticFileModule**
     - Tap **Remove** in the **Actions** sidebar
-    - 在**操作**侧边栏中点击**删除**
+    - 在 **操作** 侧边栏中点击 **删除** 
     
 .. warning:: If the IIS static file handler is enabled **and** the ASP.NET Core Module (ANCM) is not correctly configured (for example if *web.config* was not deployed), static files will be served.
 
-.. warning:: 如果 IIS 静态文件处理程序开启**并且** ASP.NET Core 模块（ANCM）没有被正确配置（比方说 *web.config* 没有部署），（也能）将会提供静态文件。
+.. warning:: 如果 IIS 静态文件处理程序开启 **并且** ASP.NET Core 模块（ANCM）没有被正确配置（比方说 *web.config* 没有部署），（也能）将会提供静态文件。
 
 - Code files (including c# and Razor) should be placed outside of the app project's ``web root`` (*wwwroot* by default). This creates a clean separation between your app's client side content and server side source code, which prevents server side code from being leaked.
 
