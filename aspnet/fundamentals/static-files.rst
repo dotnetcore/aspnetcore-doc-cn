@@ -1,17 +1,21 @@
 .. _fundamentals-static-files:
 
-处理静态文件
+Working with Static Files <https://docs.asp.net/en/latest/fundamentals/static-files.html>_
 =============
 
-作者： `Rick Anderson`_
 
-翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+静态文件处理 <https://docs.asp.net/en/latest/fundamentals/static-files.html>_
+=============
 
-校对： 
+作者：`Rick Anderson`_
+
+翻译：`刘怡(AlexLEWIS) <http://github.com/alexinea>`_
+
+校对：`谢炀(kiler398) <http://github.com/kiler398>`_
 
 Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.NET Core app can serve directly to clients.
 
-诸如 HTML、CSS、图片和 JavaScript 之类的静态文件（static files）会被 ASP.NET Core 应用直接提供给客户端。
+静态文件（static files），诸如 HTML、CSS、图片和 JavaScript 之类的资源会被 ASP.NET Core 应用直接提供给客户端。
 
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/static-files/sample>`__
 
@@ -21,7 +25,7 @@ Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.N
   :local:
   :depth: 1
 
-提供静态文件
+静态文件服务
 --------------------
 
 Static files are typically located in the ``web root`` (*<content-root>/wwwroot*) folder. See Content root and Web root in  :doc:`/intro` for more information. You generally set the content root to be the current directory so that your project's ``web root`` will be found while in development.
@@ -45,7 +49,7 @@ Static files can be stored in any folder under the ``web root`` and accessed wit
 
 In order for static files to be served, you must configure the :doc:`middleware` to add static files to the pipeline. The static file middleware can be configured by adding a dependency on the *Microsoft.AspNetCore.StaticFiles* package to your project and then calling the :dn:method:`~Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles` extension method from ``Startup.Configure``:
 
-为了能够提供静态文件，你必须配置中间件（:doc:`middleware`），把静态文件加入到管道内。静态文件中间件能够通过下述方法来配置：在你的项目中增加 *Microsoft.AspNetCore.StaticFiles* 包依赖，然后从 ``Startup.Configure`` 调用 :dn:method:`~Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles` 扩展方法：
+为了能够启用静态文件服务，你必须配置中间件（:doc:`middleware`），把静态文件中间件加入到管道内。静态文件中间件能够通过下述方法来配置：在你的项目中增加 *Microsoft.AspNetCore.StaticFiles* 包依赖，然后从 ``Startup.Configure`` 调用 :dn:method:`~Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles` 扩展方法：
 
 .. literalinclude:: static-files/sample/StartupStaticFiles.cs
   :language: c#
@@ -56,11 +60,11 @@ In order for static files to be served, you must configure the :doc:`middleware`
 
 ``app.UseStaticFiles();`` makes the files in ``web root`` (*wwwroot* by default) servable. Later I'll show how to make other directory contents servable with ``UseStaticFiles``.
 
-``app.UseStaticFiles();`` 使 ``web root`` (*wwwroot* by default) 下的文件可被访问。随后我将展示如何通过使用 ``UseStaticFiles`` 将其他目录下的内容也向外提供服务。
+``app.UseStaticFiles();`` 使得 ``web root`` （*wwwroot* by default） 下的文件可以被访问。随后我将展示如何通过使用 ``UseStaticFiles`` 将其他目录下的内容也向外提供服务。
 
 You must include "Microsoft.AspNetCore.StaticFiles" in the *project.json* file.
 
-你必须在 *project.json* 文件中包含“Microsoft.AspNetCore.StaticFiles”。
+你必须在 *project.json* 文件中包含 “Microsoft.AspNetCore.StaticFiles”。
 
 .. note:: ``web root`` defaults to the *wwwroot* directory, but you can set the ``web root`` directory with :dn:method:`~Microsoft.AspNetCore.Hosting.HostingAbstractionsWebHostBuilderExtensions.UseWebRoot`. See :doc:`/intro` for more information.
 
@@ -68,7 +72,7 @@ You must include "Microsoft.AspNetCore.StaticFiles" in the *project.json* file.
 
 Suppose you have a project hierarchy where the static files you wish to serve are outside the ``web root``. For example:
 
-假设你具有一个有层次的项目，其中静态文件依你所希望的位于 ``web root`` 的外部，比如：
+假设你有一个有层次结构的项目，你希望其中静态文件的位于 ``web root`` 的外部，比如：
 
   - wwwroot
 
@@ -101,7 +105,7 @@ A request to ``http://<app>/StaticFiles/test.png`` will serve the *test.png* fil
 
 The static file module provides **no** authorization checks. Any files served by it, including those under *wwwroot* are publicly available. To serve files based on authorization:
 
-静态文件模块并**不**提供授权检查。任何通过该模块提供访问的文件，包括位于 *wwwroot* 下的文件都是公开的。为了给文件提供授权：
+静态文件模块并 **不** 提供授权检查。任何通过该模块提供访问的文件，包括位于 *wwwroot* 下的文件都是公开的。为了给文件提供授权：
 
 - Store them outside of *wwwroot* and any directory accessible to the static file middleware **and**
 - Serve them through a controller action, returning a :dn:class:`~Microsoft.AspNetCore.Mvc.FileResult` where authorization is applied
@@ -141,7 +145,7 @@ The code above allows directory browsing of the *wwwroot/images* folder using th
 
 See Considerations_ on the security risks when enabling browsing.
 
-查看关于当开放访问目录时的安全隐患 Considerations_ 一文。
+查看关于开放访问目录时的安全隐患 注意事项_ 一节。
 
 Note the two ``app.UseStaticFiles`` calls. The first one is required to serve the CSS, images and JavaScript in the *wwwroot* folder, and the second call for directory browsing of the *wwwroot/images* folder using the URL \http://<app>/MyImages:
 
@@ -155,12 +159,12 @@ Note the two ``app.UseStaticFiles`` calls. The first one is required to serve th
   :emphasize-lines: 3,5
 
 
-提供默认文档
+默认文档服务
 --------------------------
 
 Setting a default home page gives site visitors a place to start when visiting your site. In order for your Web app to serve a default page without the user having to fully qualify the URI, call the ``UseDefaultFiles`` extension method from ``Startup.Configure`` as follows.
 
-设置默认首页能给每个访问你站点的访问者一个起始页。为使站点能提供默认页，避免用户输入完整 URI，须在 ``Startup.Configure`` 中调用 ``UseDefaultFiles`` 扩展方法：
+设置默认首页能给你的站点的每个访问者提供一个起始页。为使站点能提供默认页，避免用户输入完整 URI，须在 ``Startup.Configure`` 中调用 ``UseDefaultFiles`` 扩展方法：
 
 .. literalinclude:: static-files/sample/StartupEmpty.cs
   :language: c#
@@ -168,14 +172,14 @@ Setting a default home page gives site visitors a place to start when visiting y
   :end-before: <Configure
   :emphasize-lines: 3
   :dedent: 8
-
+ 
 .. note:: :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` must be called before ``UseStaticFiles`` to serve the default file. ``UseDefaultFiles`` is a URL re-writer that doesn't actually serve the file. You must enable the static file middleware (``UseStaticFiles``) to serve the file.
 
-.. note:: :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` 必须在 ``UseStaticFiles`` 之前调用。``UseDefaultFiles`` 只是重写了 URL，而不是真正的提供了这么一个文件。你必须开启静态文件中间件（``UseStaticFiles``）来提供这个文件。
+.. note:: :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` 必须在 ``UseStaticFiles`` 之前调用。``UseDefaultFiles`` 只是重写了 URL，而不是真的提供了这样一个文件。你必须开启静态文件中间件（``UseStaticFiles``）来提供这个文件。
 
 With :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles`, requests to a folder will search for:
 
-通过 :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` ，到达文件夹的请求将检索以下文件：
+通过 :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` ，请求文件夹的时候将检索以下文件：
 
   - default.htm
   - default.html
@@ -221,7 +225,7 @@ The following code enables static files, default files and  directory browsing:
 
 See Considerations_ on the security risks when enabling browsing. As with ``UseStaticFiles``, ``UseDefaultFiles``, and ``UseDirectoryBrowser``, if you wish to serve files that exist outside the ``web root``, you instantiate and configure an :dn:class:`~Microsoft.AspNetCore.Builder.FileServerOptions` object that you pass as a parameter to ``UseFileServer``. For example, given the following directory hierarchy in your Web app:
 
-查看有关于直接提供目录访问时的安全风险 Considerations_ 。作为一个集合了 ``UseStaticFiles``、``UseDefaultFiles`` 和 ``UseDirectoryBrowser`` 方法于一体的方法，如果你希望提供 ``web root`` 之外存在的文件，你要实例化并配置一个 :dn:class:`~Microsoft.AspNetCore.Builder.FileServerOptions` 对象传递给 ``UseFileServer`` 的参数。比方说在你的应用中有如下层次的目录：
+查看直接提供目录访问时的安全风险 注意事项_ 。作为一个集合了 ``UseStaticFiles``、``UseDefaultFiles`` 和 ``UseDirectoryBrowser`` 方法于一体的方法，如果你希望提供 ``web root`` 之外存在的文件，你要实例化并配置一个 :dn:class:`~Microsoft.AspNetCore.Builder.FileServerOptions` 对象传递给 ``UseFileServer`` 的参数。比方说在你的应用中有如下层次的目录：
 
 - wwwroot
 
@@ -296,7 +300,7 @@ See   `MIME 内容类型 <http://www.iana.org/assignments/media-types/media-type
 
 The ASP.NET static file middleware understands almost 400 known file content types. If the user requests a file of an unknown file type, the static file middleware returns a HTTP 404 (Not found) response. If directory browsing is enabled, a link to the file will be displayed, but the URI will return an HTTP 404 error.
 
-ASP.NET 静态文件中间件能够理解超过 400 种已知文件内容类型。如果用户请求一个未知的文件类型，静态文件中间件将返回 HTTP 404（未找到）响应。如果启用目录浏览，该文件的链接将会被显式，但 URI 会返回一个 HTTP 404 错误。
+ASP.NET 静态文件中间件能够支持超过 400 种已知文件内容类型。如果用户请求一个未知的文件类型，静态文件中间件将返回 HTTP 404（未找到）响应。如果启用目录浏览，该文件的链接将会被显示，但 URI 会返回一个 HTTP 404 错误。
 
 The following code enables serving unknown types and will render the unknown file as an image.
 
@@ -314,7 +318,7 @@ With the code above, a request for a file with an unknown content type will be r
 
 .. warning:: Enabling :dn:property:`~Microsoft.AspNetCore.Builder.StaticFileOptions.ServeUnknownFileTypes` is a security risk and using it is discouraged.  :dn:class:`~Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider`  (explained below) provides a safer alternative to serving files with non-standard extensions.
 
-.. warning:: 开启 :dn:property:`~Microsoft.AspNetCore.Builder.StaticFileOptions.ServeUnknownFileTypes` 有安全风险，请打消这个念头。 :dn:class:`~Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider` （下文将解释）提供了更爱犬的非标准扩展替代。
+.. warning:: 开启 :dn:property:`~Microsoft.AspNetCore.Builder.StaticFileOptions.ServeUnknownFileTypes` 存在安全风险，请打消这个念头。 :dn:class:`~Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider` （下文将解释）提供了更安全的非标准扩展替代。
 
 Considerations
 ^^^^^^^^^^^^^^^^
@@ -324,7 +328,7 @@ Considerations
 
 .. warning:: ``UseDirectoryBrowser`` and ``UseStaticFiles`` can leak secrets. We recommend that you **not** enable directory browsing in production. Be careful about which directories you enable with ``UseStaticFiles`` or ``UseDirectoryBrowser`` as the entire directory and all sub-directories will be accessible. We recommend keeping public content in its own directory such as *<content root>/wwwroot*, away from application views, configuration files, etc.
 
-.. warning:: ``UseDirectoryBrowser``和``UseStaticFiles`` 可能会泄密。我们推荐你**不要**在生产环境开启目录浏览。要小心哪些目录你用 ``UseStaticFiles``或``UseDirectoryBrowser`` 开启作为入口目录（使得其子目录都可被访问）。我们建议将公开内容放在诸如 *<content root>/wwwroot* 这样的目录中，原理应用程序视图、配置文件等。
+.. warning:: ``UseDirectoryBrowser``和``UseStaticFiles`` 可能会泄密。我们推荐你**不要**在生产环境开启目录浏览。要小心哪些被你开启了 ``UseStaticFiles``或``UseDirectoryBrowser`` 的目录（使得其子目录都可被访问）。我们建议将公开内容放在诸如 *<content root>/wwwroot* 这样的目录中，原理应用程序视图、配置文件等。
 
 - The URLs for content exposed with ``UseDirectoryBrowser`` and ``UseStaticFiles`` are subject to the case sensitivity and character restrictions of their underlying file system. For example, Windows is case insensitive, but Mac and Linux are not.
 
@@ -343,11 +347,11 @@ Considerations
     - Select **StaticFileModule** in the list
     - 从列表中选中 **StaticFileModule**
     - Tap **Remove** in the **Actions** sidebar
-    - 在**操作**侧边栏中点击**删除**
+    - 在 **操作** 侧边栏中点击 **删除** 
     
 .. warning:: If the IIS static file handler is enabled **and** the ASP.NET Core Module (ANCM) is not correctly configured (for example if *web.config* was not deployed), static files will be served.
 
-.. warning:: 如果 IIS 静态文件处理程序开启**并且** ASP.NET Core 模块（ANCM）没有被正确配置（比方说 *web.config* 没有部署），（也能）将会提供静态文件。
+.. warning:: 如果 IIS 静态文件处理程序开启 **并且** ASP.NET Core 模块（ANCM）没有被正确配置（比方说 *web.config* 没有部署），（也能）将会提供静态文件。
 
 - Code files (including c# and Razor) should be placed outside of the app project's ``web root`` (*wwwroot* by default). This creates a clean separation between your app's client side content and server side source code, which prevents server side code from being leaked.
 
