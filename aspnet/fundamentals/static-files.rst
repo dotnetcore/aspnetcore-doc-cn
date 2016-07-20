@@ -1,17 +1,19 @@
 .. _fundamentals-static-files:
 
-Working with Static Files <https://docs.asp.net/en/latest/fundamentals/static-files.html>_
-=============
+Working with Static Files
+==========================
 
 
-静态文件处理 <https://docs.asp.net/en/latest/fundamentals/static-files.html>_
+静态文件处理
 =============
+
+原文：`Working with Static Files <https://docs.asp.net/en/latest/fundamentals/static-files.html>`_
 
 作者：`Rick Anderson`_
 
 翻译：`刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
-校对：`谢炀(kiler398) <http://github.com/kiler398>`_
+校对：`谢炀(kiler398) <http://github.com/kiler398>`_、`许登洋(Seay) <http://github.com/SeayXu>`_
 
 Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.NET Core app can serve directly to clients.
 
@@ -172,7 +174,7 @@ Setting a default home page gives site visitors a place to start when visiting y
   :end-before: <Configure
   :emphasize-lines: 3
   :dedent: 8
- 
+
 .. note:: :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` must be called before ``UseStaticFiles`` to serve the default file. ``UseDefaultFiles`` is a URL re-writer that doesn't actually serve the file. You must enable the static file middleware (``UseStaticFiles``) to serve the file.
 
 .. note:: :dn:method:`~Microsoft.AspNetCore.Builder.DefaultFilesExtensions.UseDefaultFiles` 必须在 ``UseStaticFiles`` 之前调用。``UseDefaultFiles`` 只是重写了 URL，而不是真的提供了这样一个文件。你必须开启静态文件中间件（``UseStaticFiles``）来提供这个文件。
@@ -293,7 +295,7 @@ The :dn:class:`~Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvide
   :dedent: 8
   :emphasize-lines: 3-12,19
 
-See   `MIME 内容类型 <http://www.iana.org/assignments/media-types/media-types.xhtml>`__ 。
+See `MIME 内容类型 <http://www.iana.org/assignments/media-types/media-types.xhtml>`__ 。
 
 非标准的内容类型
 --------------------------
@@ -347,8 +349,8 @@ Considerations
     - Select **StaticFileModule** in the list
     - 从列表中选中 **StaticFileModule**
     - Tap **Remove** in the **Actions** sidebar
-    - 在 **操作** 侧边栏中点击 **删除** 
-    
+    - 在 **操作** 侧边栏中点击 **删除**
+
 .. warning:: If the IIS static file handler is enabled **and** the ASP.NET Core Module (ANCM) is not correctly configured (for example if *web.config* was not deployed), static files will be served.
 
 .. warning:: 如果 IIS 静态文件处理程序开启 **并且** ASP.NET Core 模块（ANCM）没有被正确配置（比方说 *web.config* 没有部署），（也能）将会提供静态文件。
@@ -364,4 +366,4 @@ Additional Resources
 --------------------
 
 - :doc:`middleware`
-- :doc:`/intro` 
+- :doc:`/intro`
