@@ -32,9 +32,7 @@ Static files, such as HTML, CSS, image, and JavaScript, are assets that an ASP.N
 
 Static files are typically located in the ``web root`` (*<content-root>/wwwroot*) folder. See Content root and Web root in  :doc:`/intro` for more information. You generally set the content root to be the current directory so that your project's ``web root`` will be found while in development.
 
-静态文件通常位于 `web root`` (*<content-root>/wwwroot*)文件夹下。
-更多有关 Content root 或 Web root 的信息请访问 :doc:`/intro` 。
-你通常会把项目对当前目录设置为 Content root，这样项目的 ``web root`` 就可以在开发阶段被明确。
+静态文件通常位于 ``web root`` （*<content-root>/wwwroot*）文件夹下。更多有关 Content root 或 Web root 的信息请访问 :doc:`/intro` 。你通常会把项目的当前目录设置为 Content root，这样项目的 ``web root`` 就可以在开发阶段被明确。
 
 .. literalinclude:: ../../common/samples/WebApplication1/src/WebApplication1/Program.cs
   :language: c#
@@ -44,7 +42,7 @@ Static files are typically located in the ``web root`` (*<content-root>/wwwroot*
 
 Static files can be stored in any folder under the ``web root`` and accessed with a relative path to that root. For example, when you create a default Web application project using Visual Studio, there are several folders created within the *wwwroot*  folder - *css*, *images*, and *js*. The URI to access an image in the *images* subfolder:
 
-静态文件能够被保存在网站根目录下的任意文件夹内，并通过相对根的路径来访问。比方说，当你通过 Visual Studio 创建了个默认的 Web 应用程序项目，在 *wwwroot* 目录下会多出几个文件夹：*css*、*images* 以及 *js* 文件夹。形如下例的 URL 能够直接访问 ``images`` 目录下的图片：
+静态文件能够被保存在网站根目录下的任意文件夹内，并通过相对根的路径来访问。比方说，当你通过 Visual Studio 创建一个默认的 Web 应用程序项目，在 *wwwroot* 目录下会多出几个文件夹：*css*、*images* 以及 *js* 文件夹。形如下例的 URL 能够直接访问 ``images`` 目录下的图片：
 
 - \http://<app>/images/<imageFileName>
 - \http://localhost:9189/images/banner3.svg
@@ -62,7 +60,7 @@ In order for static files to be served, you must configure the :doc:`middleware`
 
 ``app.UseStaticFiles();`` makes the files in ``web root`` (*wwwroot* by default) servable. Later I'll show how to make other directory contents servable with ``UseStaticFiles``.
 
-``app.UseStaticFiles();`` 使得 ``web root`` （*wwwroot* by default） 下的文件可以被访问。随后我将展示如何通过使用 ``UseStaticFiles`` 将其他目录下的内容也向外提供服务。
+``app.UseStaticFiles();`` 使得 ``web root`` （默认为 *wwwroot*）下的文件可以被访问。随后我将展示如何通过使用 ``UseStaticFiles`` 将其他目录下的内容也向外提供服务。
 
 You must include "Microsoft.AspNetCore.StaticFiles" in the *project.json* file.
 
@@ -112,7 +110,7 @@ The static file module provides **no** authorization checks. Any files served by
 - Store them outside of *wwwroot* and any directory accessible to the static file middleware **and**
 - Serve them through a controller action, returning a :dn:class:`~Microsoft.AspNetCore.Mvc.FileResult` where authorization is applied
 
-- 将文件保存在 *wwwroot* 之外并将目录设置为可悲静态文件中间件访问到，**同时**
+- 将文件保存在 *wwwroot* 之外并将目录设置为可被静态文件中间件访问到，**同时——**
 - 通过一个控制器的 Action 来访问它们，通过授权后返回 :dn:class:`~Microsoft.AspNetCore.Mvc.FileResult`
 
 
@@ -121,7 +119,7 @@ The static file module provides **no** authorization checks. Any files served by
 
 Directory browsing allows the user of your web app to see a list of directories and files within a specified directory. Directory browsing is disabled by default for security reasons (see Considerations_). To enable directory browsing, call the :dn:method:`~Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser` extension method from  ``Startup.Configure``:
 
-目录浏览允许网站用户看到指定目录下的目录和文件列表。在 ``Startup.Configure`` 中调用 :dn:method:`~Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser` 扩展方法可以开启网络应用目录浏览：
+目录浏览允许网站用户看到指定目录下的目录和文件列表。基于安全考虑，默认情况下是禁用目录访问功能的（参考 注意事项_ ）。在 ``Startup.Configure`` 中调用 :dn:method:`~Microsoft.AspNetCore.Builder.DirectoryBrowserExtensions.UseDirectoryBrowser` 扩展方法可以开启网络应用目录浏览：
 
 .. literalinclude:: static-files/sample/StartupBrowse.cs
   :language: c#
@@ -295,7 +293,7 @@ The :dn:class:`~Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvide
   :dedent: 8
   :emphasize-lines: 3-12,19
 
-See `MIME 内容类型 <http://www.iana.org/assignments/media-types/media-types.xhtml>`__ 。
+查看 `MIME 内容类型 <http://www.iana.org/assignments/media-types/media-types.xhtml>`__ 。
 
 非标准的内容类型
 --------------------------
@@ -330,7 +328,7 @@ Considerations
 
 .. warning:: ``UseDirectoryBrowser`` and ``UseStaticFiles`` can leak secrets. We recommend that you **not** enable directory browsing in production. Be careful about which directories you enable with ``UseStaticFiles`` or ``UseDirectoryBrowser`` as the entire directory and all sub-directories will be accessible. We recommend keeping public content in its own directory such as *<content root>/wwwroot*, away from application views, configuration files, etc.
 
-.. warning:: ``UseDirectoryBrowser``和``UseStaticFiles`` 可能会泄密。我们推荐你**不要**在生产环境开启目录浏览。要小心哪些被你开启了 ``UseStaticFiles``或``UseDirectoryBrowser`` 的目录（使得其子目录都可被访问）。我们建议将公开内容放在诸如 *<content root>/wwwroot* 这样的目录中，原理应用程序视图、配置文件等。
+.. warning:: ``UseDirectoryBrowser`` 和 ``UseStaticFiles`` 可能会泄密。我们推荐你\ **不要**\ 在生产环境开启目录浏览。要小心哪些被你开启了 ``UseStaticFiles``或 ``UseDirectoryBrowser`` 的目录（使得其子目录都可被访问）。我们建议将公开内容放在诸如 *<content root>/wwwroot* 这样的目录中，远离应用程序视图、配置文件等。
 
 - The URLs for content exposed with ``UseDirectoryBrowser`` and ``UseStaticFiles`` are subject to the case sensitivity and character restrictions of their underlying file system. For example, Windows is case insensitive, but Mac and Linux are not.
 
@@ -342,7 +340,7 @@ Considerations
 
 - To remove the IIS static file handler (at the server or website level):
 
-- 以下步骤可移除 IIS 惊叹文件处理程序（在服务器层级或网站层级）：
+- 以下步骤可移除 IIS 静态文件处理程序（在服务器层级或网站层级上）：
 
     - Navigate to the **Modules** feature
     - 导航到 **模块** 功能
