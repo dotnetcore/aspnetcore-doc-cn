@@ -124,7 +124,7 @@ The most common way to define routes is using ``TemplateRoute`` and route templa
 
 This route template would be handled by the :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.MvcRouteHandler` ``IRouter`` instance. Tokens within curly braces (``{ }``) define `route value` parameters which will be bound if the route is matched. You can define more than one route value parameter in a route segment, but they must be separated by a literal value. For example ``{controller=Home}{action=Index}`` would not be a valid route, since there is no literal value between ``{controller}`` and ``{action}``. These route value parameters must have a name, and may have additional attributes specified.
 
-这个路由模板会被 MvcRouteHandler ``IRouter`` 的实例处理，其中的大括号(``{ }``)定义了 ``route value`` 参数的边界。你可以在一个路由段中定义多个路由值参数，但它们必须用文字值分开，例如 ``{controller=Home}{action=Index}`` 不是一个有效路由，因为在 ``{controller}`` 和 ``{action}`` 之间没有文字值。这些路由值参数必须有一个名称，并可以有附加指定的属性。
+这个路由模板会被 MvcRouteHandler ``IRouter`` 的实例处理，其中的大括号(``{ }``)定义了路由值 参数的边界。你可以在一个路由段中定义多个路由值参数，但它们必须用文字值分开，例如 ``{controller=Home}{action=Index}`` 不是一个有效路由，因为在 ``{controller}`` 和 ``{action}`` 之间没有文字值。这些路由值参数必须有一个名称，并可以有附加指定的属性。
 
 
 You can use the ``*`` character as a prefix to a route value name to bind to the rest of the URI. For example, ``blog/{*slug}`` would match any URI that started with ``/blog/`` and had any value following it (which would be assigned to the ``slug`` route value).
@@ -377,7 +377,7 @@ The example below shows how to generate a link to a route given a dictionary of 
 
 The ``VirtualPath`` generated at the end of the sample above is ``/package/create/123``.
 
-上面示例最终生成：``/package/create/123``。 
+上面示例最终生成的相对路径是``/package/create/123``。 
 
 The second parameter to the ``VirtualPathContext`` constructor is a collection of `ambient values`. Ambient values provide convenience by limiting the number of values a developer must specify within a certain request context. The current route values of the current request are considered ambient values for link generation. For example, in an MVC application if you are in the About action of the HomeController, you don't need to specify the controller route value to link to the Index action (the ambient value of Home will be used). 
 
