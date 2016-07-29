@@ -136,13 +136,26 @@ The :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft
 
 Creating routes
 ^^^^^^^^^^^^^^^
+创建路由
+^^^^^^^^^^^^^^^
+
 Routing provides the :dn:cls:`~Microsoft.AspNetCore.Routing.Route` class as the standard implementation of ``IRouter``. ``Route`` uses the *route template* syntax to define patterns that will match against the URL path when :dn:method:`~Microsoft.AspNetCore.Routing.IRouter.RouteAsync` is called. ``Route`` will use the same route template to generate a URL when :dn:method:`~Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath` is called.
+
+路由提供了 :dn:cls:`~Microsoft.AspNetCore.Routing.Route` 类作为``IRouter``的标准实现。当调用:dn:method:`~Microsoft.AspNetCore.Routing.IRouter.RouteAsync`方法时,``Route``使用 *路由模板*语法定义匹配URL路径的模式。当调用:dn:method:`~Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath`方法时，``Route``会使用相同的路由模板生成URL.
 
 Most applications will create routes by calling ``MapRoute`` or one of the similar extension methods defined on :dn:iface:`~Microsoft.AspNetCore.Routing.IRouteBuilder`. All of these methods will create an instance of ``Route`` and add it to the route collection.
 
+大多数的应用会通过调用``MapRoute``方法或者定义在:dn:iface:`~Microsoft.AspNetCore.Routing.IRouteBuilder`接口上的一个类似的扩展方法来创建路由。所有的这些方法会创建一个``Route`` 实例并添加到路由集合中。
+
 .. note:: :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` doesn't take a route handler parameter - it only adds routes that will be handled by the :dn:prop:`~Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler`. Since the default handler is an :dn:iface:`~Microsoft.AspNetCore.Routing.IRouter`, it may decide not to handle the request. For example, ASP.NET MVC is typically configured as a default handler that only handles requests that match an available controller and action. To learn more about routing to MVC, see :doc:`/mvc/controllers/routing`.
 
+.. 注意:: :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute`不需要路由处理参数--它只添加将被 :dn:prop:`~Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler`处理的路由。由于默认处理程序是一个:dn:iface:`~Microsoft.AspNetCore.Routing.IRouter`对象，可能决定不去处理请求。MVC通常配置了一个默认处理程序，它只处理能匹配到可用的控制器和操作的请求。了解更多关于MVC的路由,请点击:doc:`/mvc/controllers/routing`.
+
+
+
 This is an example of a ``MapRoute`` call used by a typical ASP.NET MVC route definition:
+
+这是一个典型的ASP.NET MVC路由调用``MapRoute``的例子
 
 .. code-block:: c#
 
@@ -152,11 +165,21 @@ This is an example of a ``MapRoute`` call used by a typical ASP.NET MVC route de
 
 This template will match a URL path like ``/Products/Details/17`` and extract the route values ``{ controller = Products, action = Details, id = 17 }``. The route values are determined by splitting the URL path into segments, and matching each segment with the *route parameter* name in the route template. Route parameters are named. They are defined by enclosing the parameter name in braces ``{ }``.
 
+这个模板会匹配像``/Products/Details/17``这样的URL路径，而且提取的路由值是``{ controller = Products, action = Details, id = 17 }``.这个路由值由几个URL段组成，通过路由参数名称匹配路由模板中的每一段.路由参数被命名，它们是由大括号``{ }``中的参数名定义的。
+
+
 The template above could also match the URL path ``/`` and would produce the values ``{ controller = Home, action = Index }``. This happens because the ``{controller}`` and ``{action}`` route parameters have default values, and the ``id`` route parameter is optional. An equals ``=`` sign followed by a value after the route parameter name defines a default value for the parameter. A question mark ``?`` after the route parameter name defines the parameter as optional. Route parameters with a default value *always* produce a route value when the route matches - optional parameters will not produce a route value if there was no corresponding URL path segment.
 
+上面的这个模板也能匹配URL路径 ``/``,而且还将产生值为``{ controller = Home, action = Index }``。这是因为``{controller}`` 和``{action}``都定义了默认值，而且 ``id``是可选的.路由参数名等号``=`` 后面的值是作为该参数的默认值。而参数名后面的问号 ``?``标记着这个参数是可选的。带有默认参数的路由值*always*是会在路由匹配的时候产生一个路由值--而如果没有相应的URL路径段，可选参数将不会产生一个路由值。
+
+
 See route-template-reference_ for a thorough description of route template features and syntax.
+查看路由模板特性和语法的完整描述请移步 route-template-reference_
+
 
 This example includes a *route constraint*:
+
+这个示例包含了一个 *路由约束*:
 
 .. code-block:: c#
 
