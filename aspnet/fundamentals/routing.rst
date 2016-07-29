@@ -1,10 +1,20 @@
 Routing
 =======
-By `Ryan Nowak <https://github.com/rynowak>`__, `Steve Smith`_, and `Rick Anderson`_
+路由
+=======
+
+作者 `Ryan Nowak <https://github.com/rynowak>`__, `Steve Smith`_, 和 `Rick Anderson`_
+
+翻译 `stoneniqiu <http://www.cnblogs.com/stoneniqiu/>`
 
 Routing is used to map requests to route handlers. Routes are configured when the application starts up, and can extract values from the URL that will be used for request processing. Routing functionality is also responsible for generating links using the defined routes in ASP.NET apps.
 
+路由是用来把请求映射到路由处理程序。应用程序一启动就配置了路由，并且可以从URL中提取值用于处理请求。它还负责使用ASP.NET应用程序中定义的路由来生成链接。
+
+
 This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC routing, see :doc:`/mvc/controllers/routing`
+
+这份文档涵盖了初级的ASP.NET核心路由. 对于 ASP.NET 核心 MVC 路由, 请查看 :doc:`/mvc/controllers/routing`
 
 .. contents:: Sections
   :local:
@@ -12,35 +22,66 @@ This document covers the low level ASP.NET Core routing. For ASP.NET Core MVC ro
 
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/routing/sample>`__
 
+`查看或下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/fundamentals/routing/sample>`__
+
 Routing basics
+----------------
+路由基础
 ----------------
 
 Routing uses *routes* (implementations of :dn:iface:`~Microsoft.AspNetCore.Routing.IRouter`) to:
 
+路由使用 *routes*类 (:dn:iface:`~Microsoft.AspNetCore.Routing.IRouter`的实现) 做到:
+
 - map incoming requests to *route handlers*
+- 映射传入的请求到*路由处理程序*
 - generate URLs used in responses
+- 生成响应中使用的URLs
 
 Generally an app has a single collection of routes. The route collection is processed in order. Requests look for a match in the route collection by :ref:`URL-Matching-ref`. Responses use routing to genenerate URLs.
 
+一般来说，一个应用会有单个路由集合. 这个集合会按顺序处理. 请求会在这个路由集合里按照:ref:`URL-Matching-ref`来查找匹配. 响应使用路由生成URLs.
+
+
 Routing is connected to the :doc:`middleware <middleware>` pipeline by the :dn:class:`~Microsoft.AspNetCore.Builder.RouterMiddleware` class. :doc:`ASP.NET MVC </mvc/overview>` adds routing to the middleware pipeline as part of its configuration. To learn about using routing as a standalone component, see using-routing-middleware_.
+
+ 路由通过 :dn:class:`~Microsoft.AspNetCore.Builder.RouterMiddleware` 类连接到 :doc:`middleware <middleware>`管道.  作为配置的一部分:doc:`ASP.NET MVC </mvc/overview>` 可以增加路由到中间件管道. 要了解如何使用路由作为独立组件, 请看 using-routing-middleware_.
+
 
 .. _URL-Matching-ref:
 
 URL matching
 ^^^^^^^^^^^^
+URL 匹配
+^^^^^^^^^^^^
+
 URL matching is the process by which routing dispatches an incoming request to a *handler*. This process is generally based on data in the URL path, but can be extended to consider any data in the request. The ability to dispatch requests to separate handlers is key to scaling the size and complexity of an application.
+
+路由匹配指的是路由调度请求到一个处理程序的过程。这个过程通常是基于URL路径中的数据，但可以扩展到请求中的任何数据.调度请求到不同处理程序的能力是应用调节自身大小和复杂度的关键。
 
 Incoming requests enter the :dn:cls:`~Microsoft.AspNetCore.Builder.RouterMiddleware` which calls the :dn:method:`~Microsoft.AspNetCore.Routing.IRouter.RouteAsync` method on each route in sequence. The :dn:iface:`~Microsoft.AspNetCore.Routing.IRouter` instance chooses whether to *handle* the request by setting the :dn:cls:`~Microsoft.AspNetCore.Routing.RouteContext` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteContext.Handler` to a non-null :dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate`. If a handler is set a route, it will be invoked to process the request and no further routes will be processed. If all routes are executed, and no handler is found for a request, the middleware calls *next* and the next middleware in the request pipeline is invoked.
 
+请求调用序列中每个路由的异步方法来进入路由中间件。:dn:iface:`~Microsoft.AspNetCore.Routing.IRouter`实例通过设置:dn:cls:`~Microsoft.AspNetCore.Routing.RouteContext` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteContext.Handler`为一个不为空的:dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate`来选择是否处理请求。如果一个处理程序已经设置了路由，那么它就将被调用来处理这个请求，并且不会有其他的路由再去处理。如果所有的路由都执行了，请求还没有找到处理程序，那么中间件就会调用next方法，从而下一个在请求管道中的中间件就被调用了。
+
 The primary input to ``RouteAsync`` is the :dn:cls:`~Microsoft.AspNetCore.Routing.RouteContext` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteContext.HttpContext` associated with the current request. The ``RouteContext.Handler`` and :dn:cls:`~Microsoft.AspNetCore.Routing.RouteContext` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteContext.RouteData` are outputs that will be set after a successful match.
+
+``RouteAsync``的主要输入是和当前请求关联的:dn:cls:`~Microsoft.AspNetCore.Routing.RouteContext` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteContext.HttpContext`。在一个成功匹配之后，``RouteContext.Handler``和:dn:cls:`~Microsoft.AspNetCore.Routing.RouteContext` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteContext.RouteData`会作为输出。
 
 A successful match during ``RouteAsync`` also will set the properties of the ``RouteContext.RouteData`` to appropriate values based on the request processing that was done. The ``RouteContext.RouteData`` contains important state information about the *result* of a route when it successfully matches a request.
 
+在``RouteAsync``执行期间，一个成功匹配会基于已经完成的请求处理设置 ``RouteContext.RouteData``的属性为合适的值。当一个路由成功匹配了一个请求时，``RouteContext.RouteData`包含了重要的关于匹配结果的状态信息
+
 :dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.Values` is a dictionary of *route values* produced from the route. These values are usually determined by tokenizing the URL, and can be used to accept user input, or to make further dispatching decisions inside the application.
+
+:dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.Values`是一个从路由产生的*路由值*字典.这些值通常由标记化的URL确定的，可以用来接收用户输入，或者用来在应用内部做更深层的调度决定。
 
 :dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.DataTokens`  is a property bag of additional data related to the matched route. ``DataTokens`` are provided to support associating state data with each route so the application can make decisions later based on which route matched. These values are developer-defined and do **not** affect the behavior of routing in any way. Additionally, values stashed in data tokens can be of any type, in contrast to route values which must be easily convertable to and from strings.
 
+:dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.DataTokens`是相关的匹配路由附加数据的属性包。
+
 :dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.Routers` is a list of the routes that took part in successfully matching the request. Routes can be nested inside one another, and the ``Routers`` property reflects the path through the logical tree of routes that resulted in a match. Generally the first item in ``Routers`` is the route collection, and should be used for URL generation. The last item in ``Routers`` is the route that matched.
+
+
 
 URL generation
 ^^^^^^^^^^^^^^
