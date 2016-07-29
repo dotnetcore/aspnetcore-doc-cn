@@ -77,19 +77,30 @@ A successful match during ``RouteAsync`` also will set the properties of the ``R
 
 :dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.DataTokens`  is a property bag of additional data related to the matched route. ``DataTokens`` are provided to support associating state data with each route so the application can make decisions later based on which route matched. These values are developer-defined and do **not** affect the behavior of routing in any way. Additionally, values stashed in data tokens can be of any type, in contrast to route values which must be easily convertable to and from strings.
 
-:dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.DataTokens`是相关的匹配路由附加数据的属性包。
+:dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.DataTokens`是相关的匹配路由附加数据的属性包。提供``数据令牌``支持与每个路由相关的状态数据，这样应用基于匹配的路由可以迟点做出决定。这些数据是开发人员定义的，不会式影响路由的行为。而且，数据令牌中的值可以是任何类型，对比路由值，它可以很容易的转成字符串。
 
 :dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.Routers` is a list of the routes that took part in successfully matching the request. Routes can be nested inside one another, and the ``Routers`` property reflects the path through the logical tree of routes that resulted in a match. Generally the first item in ``Routers`` is the route collection, and should be used for URL generation. The last item in ``Routers`` is the route that matched.
 
+:dn:cls:`~Microsoft.AspNetCore.Routing.RouteData` :dn:prop:`~Microsoft.AspNetCore.Routing.RouteData.Routers` 是一个成功匹配请求的路由列表.路由可以彼此嵌套，而且``Routers``属性反映了请求通过路由逻辑树导致匹配的路径。一般来说，``Routers``中的第一项就是一个路由集合,而且应该用来生成URL.``Routers``中的最后一项就是已匹配路由.
 
 
 URL generation
 ^^^^^^^^^^^^^^
+URL 生成
+^^^^^^^^^^^^^^
+
 URL generation is the process by which routing can create a URL path based on a set of route values. This allows for a logical separation between your handlers and the URLs that access them.
+
+URL 生成是指的路由基于一系列的路由值创建一个URL路径的过程. 这允许你的处理程序和能访问它们的URL直接有一个逻辑分离。
+
 
 URL generation follows a similar iterative process, but starts with user or framework code calling into the :dn:method:`~Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath` method of the route collection. Each *route* will then have its ``GetVirtualPath`` method called in sequence until until a non-null :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` is returned.
 
+路由生成遵循一个类似的迭代过程，但开始于用户或框架代码调用到路由集合的GetVirtualPath方法时。每个路由的``GetVirtualPath``方法都会被调用，直到返回一个不为空的 :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData`.
+
 The primary inputs to ``GetVirtualPath`` are:
+
+``GetVirtualPath``的主要输入是：
 
 - :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathContext` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathContext.HttpContext`
 - :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathContext` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathContext.Values`
@@ -97,16 +108,31 @@ The primary inputs to ``GetVirtualPath`` are:
 
 Routes primarily use the route values provided by the ``Values`` and ``AmbientValues`` to decide where it is possible to generate a URL and what values to include. The ``AmbientValues`` are the set of route values that were produced from matching the current request with the routing system. In contrast, ``Values`` are the route values that specify how to generate the desired URL for the current operation. The ``HttpContext`` is provided in case a route needs to get services or additional data associated with the current context.
 
+路由主要使用``Values`` 和 ``AmbientValues`` 提供的路由值来决定在哪儿生成一个URL以及包含什么值. ``AmbientValues``是随着路由系统匹配当前请求而产生的一系列路由值。 相反，``Values``是用于指定如何生成当前操作所需的URL的路由值。提供 ``HttpContext``是以防路由需要获取服务或当前上下文相关的数据。
+
 .. tip:: Think of ``Values`` as being a set of overrides for the ``AmbientValues``. URL generation tries to reuse route values from the current request to make it easy to generate URLs for links using the same route or route values.
 
+.. 建议:: ``Values`` 看做是对``AmbientValues``的重载.URL生成尝试重用来自当前请求的路由值，以便使用相同路由或路由值的链接更容易生成URL。
+
+
 The output of ``GetVirtualPath`` is a :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData`. ``VirtualPathData`` is a parallel of ``RouteData``; it contains the ``VirtualPath`` for the output URL as well as the some additional properties that should be set by the route.
+
+``GetVirtualPath``的输出是一个:dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData`.``VirtualPathData``是一个并行的 ``RouteData``;它包含了输出URL的虚拟路径以及应该由路由设置的一些额外的属性。
+
 
 The :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath`
 property contains the *virtual path* produced by the route. Depending on your needs you may need to process the path further. For instance, if you want to render the generated URL in HTML you need to prepend the base path of the application.
 
+:dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathData.VirtualPath`属性包含了路由生成的虚拟路径.根据你的需求，可能需要进一步处理的。例如，如果你想在HTML中呈现生成的URL，你需要预先设置好应用的基础路径。
+
 The :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathData.Router` is a reference to the route that successfully generated the URL.
 
+:dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathData.Router`是一个成功生成URL路由的参考。
+
 The :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathData.DataTokens` properties is a dictionary of additional data related to the route that generated the URL. This is the parallel of ``RouteData.DataTokens``.
+
+:dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` :dn:prop:`~Microsoft.AspNetCore.Routing.VirtualPathData.DataTokens` 属性是一个关联到生成URL的路由的附加数据的字典集合，这个和``RouteData.DataTokens``是并行的。
+
 
 Creating routes
 ^^^^^^^^^^^^^^^
