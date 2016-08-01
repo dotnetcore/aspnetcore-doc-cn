@@ -179,7 +179,7 @@ See route-template-reference_ for a thorough description of route template featu
 
 This example includes a *route constraint*:
 
-这个示例包含了一个 *路由约束*:
+这是一个*路由约束*的示例:
 
 .. code-block:: c#
 
@@ -189,9 +189,15 @@ This example includes a *route constraint*:
 
 This template will match a URL path like ``/Products/Details/17``, but not ``/Products/Details/Apples``. The route parameter definition ``{id:int}`` defines a *route constraint* for the ``id`` route parameter. Route constraints implement ``IRouteConstraint`` and inspect route values to verify them. In this example the route value ``id`` must be convertable to an integer. See route-constraint-reference_ for a more detailed explaination of route constraints that are provided by the framework.
 
+这个模板将只会匹配像``/Products/Details/17``这样的URL路径，而不会匹配``/Products/Details/Apples``这样的。``{id:int}``为``id``这个路由参数定义了一个 *路由约束*。路由约束实现自``IRouteConstraint`` 接口，它会检查并验证路由值。在这个例子中``id``必须可以转换为一个整形。更多详情请看：route-constraint-reference_ 
+
+
 Additional overloads of ``MapRoute`` accept values for ``constraints``, ``dataTokens``, and ``defaults``. These additional parameters of ``MapRoute`` are defined as type ``object``. The typical usage of these parameters is to pass an anonymously typed object, where the property names of the anonymous type match route parameter names.
 
+另外，``MapRoute``的重载接受 ``约束``, ``数据令牌``, 和 ``默认``值。这些额外的参数都被定义为 ``object``类型。这些参数的典型用法是传递一个匿名类型的对象，其中匿名类型的属性名必须匹配路由参数的名称。
+
 The following two examples create equivalent routes:
+下面这两个例子创建的路由是等效的：
 
 .. code-block:: c#
 
@@ -206,9 +212,12 @@ The following two examples create equivalent routes:
 
 .. tip:: The inline syntax for defining constraints and defaults can be more convenient for simple routes. However, there are features such as data tokens which are not supported by inline syntax.
 
+.. 建议:: 对应简单的路由使用内嵌语法定义约束和默认值可能更方便些.然而，有些特性比如数据令牌嵌入式语法是不支持的。
+
 .. review-required: changed template and add MVC controller sample
 
 This example demonstrates a few more features:
+这个例子展示了几个特点：
 
 .. code-block:: c#
 
@@ -218,6 +227,8 @@ This example demonstrates a few more features:
     defaults: new { controller = "Blog", action = "ReadArticle" });
 
 This template will match a URL path like ``/Blog/All-About-Routing/Introduction`` and will extract the values ``{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }``. The default route values for ``controller`` and ``action`` are produced by the route even though there are no corresponding route parameters in the template. Default values can be specified in the route template. The ``article`` route parameter is defined as a *catch-all* by the appearance of an asterix ``*`` before the route parameter name. Catch-all route parameters capture the remainder of the URL path, and can also match the empty string.
+
+这个模板会匹配``/Blog/All-About-Routing/Introduction``这样的URL路径而且会提出 ``{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }``值。
 
 This example adds route constraints and data tokens:
 
