@@ -355,33 +355,51 @@ The framework provides a set of extension methods for creating routes such as:
 
 Some of these methods such as ``MapGet`` require a :dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate` to be provided. The ``RequestDelegate`` will be used as the *route handler* when the route matches. Other methods in this family allow configuring a middleware pipeline which will be used as the route handler. If the *Map* method doesn't accept a handler, such as ``MapRoute``, then it will use the :dn:prop:`~Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler`.
 
-一些像 ``MapGet``这样的方法，需要提供一个`` require a :dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate` .``请求委托``在路由匹配的时候讲被用做*路由处理程序*.
+一些像 ``MapGet``这样的方法，需要提供一个`` require a :dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate` .``请求委托``在路由匹配的时候将被用做*路由处理程序*.这个系列的其他方法运行配置一个中间件管道来用做路由处理程序。如果*Map*方法没有接受到一个处理程序，例如``MapRoute``，那么它会调用 :dn:prop:`~Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler`.
 
 The ``Map[Verb]`` methods use constraints to limit the route to the HTTP Verb in the method name. For example, see `MapGet <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L85-L88>`__ and `MapVerb <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L156-L180>`__.
+
+ ``Map[Verb]``方法在方法名中使用约束限制路由的请求方式。例如`MapGet <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L85-L88>`__ 和 `MapVerb <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L156-L180>`__.
 
 .. _route-template-reference:
 
 Route Template Reference
 ------------------------
+路由模板参考
+------------------------
+
 Tokens within curly braces (``{ }``) define *route parameters* which will be bound if the route is matched. You can define more than one route parameter in a route segment, but they must be separated by a literal value. For example ``{controller=Home}{action=Index}`` would not be a valid route, since there is no literal value between ``{controller}`` and ``{action}``. These route parameters must have a name, and may have additional attributes specified.
+
+令牌内的大括号(``{ }``)定义了路由值 参数的边界。你可以在一个路由段中定义多个路由值参数，但它们必须用文字值分开，例如 ``{controller=Home}{action=Index}`` 不是一个有效路由，因为在 ``{controller}`` 和 ``{action}`` 之间没有文字值。这些路由值参数必须有一个名称，并可以有附加指定的属性。
+
 
 Literal text other than route parameters (for example, ``{id}``) and the path separator ``/`` must match the text in the URL. Text matching is case-insensitive and based on the decoded representation of the URLs path. To match the literal route parameter delimiter ``{`` or  ``}``, escape it by repeating the character (``{{`` or ``}}``).
 
+除了路由参数(例如，``{id}``)和路径符合``/``之外的文本必须匹配URL中的值。文本匹配是大小写敏感的且基于解码后的URLs路径。如果要匹配路由参数分隔符``{`` 或  ``}``，重复(``{{`` 或 ``}}``)即可。
+
 URL patterns that attempt to capture a filename with an optional file extension have additional considerations. For example, using the template ``files/{filename}.{ext?}`` -
 When both ``filename`` and ``ext`` exist, both values will be populated. If only ``filename`` exists in the URL, the route matches because the trailing period ``.`` is  optional. The following URLs would match this route:
+
+试图捕获一个带有可选扩展名的文件名的URL模式还需要有其他考虑。例如，使用模板``files/{filename}.{ext?}``- 当文件名和扩展名都存在的时候，这两个值会被填充。如果在URL中只存在文件名，因为点号``.``是可选的路由也会匹配。下面的URLs将会匹配这个路由。
 
 - ``/files/myFile.txt``
 - ``/files/myFile.``
 - ``/files/myFile``
 
 You can use the ``*`` character as a prefix to a route parameter to bind to the rest of the URI - this is called a *catch-all* parameter. For example, ``blog/{*slug}`` would match any URI that started with ``/blog`` and had any value following it (which would be assigned to the ``slug`` route value). Catch-all parameters can also match the empty string.
+你可以使用``*``号作为一个路由参数的前缀去绑定其余的URI - 这被叫做全捕获参数.例如，``blog/{*slug}``将会匹配任何以``/blog``开头且有任何值跟随(对应到``slug``路由值)的URI.全捕获型参数也能匹配空字符串。
 
 Route parameters may have *default values*, designated by specifying the default after the parameter name, separated by an ``=``. For example, ``{controller=Home}`` would define ``Home`` as the default value for ``controller``. The default value is used if no value is present in the URL for the parameter. In addition to default values, route parameters may be optional (specified by appending a ``?`` to the end of the parameter name, as in ``id?``). The difference between optional and "has default" is that a route parameter with a default value always produces a value; an optional parameter has a vaule only when one is provided.
 
+路由参数可以有默认值，定义的方式是在参数名称后定义默认值，用``=``号分开.例如，``{controller=Home}``将``Home`` 作为``controller``的默认值。如果在URL中这个参数没有值就将使用默认值。此外对于默认值，路由参数是可选的(通过在参数名称后定义加一个``?``，比如``id?``).在参数可选和拥有默认值之间的区别就是拥有默认值的路由参数总是会参数一个值；而可选的参数只有URL提供值了才会有值。
+
+
 Route parameters may also have constraints, which must match the route value bound from the URL. Adding a colon ``:`` and constraint name after the route parameter name specifies an *inline constraint* on a route parameter. If the constraint requires arguments those are provided enclosed in parentheses ``( )`` after the constraint name. Multiple inline constraints can be specified by appending another colon ``:`` and constraint name. The constraint name is passed to the :dn:iface:`~Microsoft.AspNetCore.Routing.IInlineConstraintResolver` service to create an instance of :dn:iface:`~Microsoft.AspNetCore.Routing.IRouteConstraint` to use in URL processing. For example, the route template ``blog/{article:minlength(10)}`` specifies the ``minlength`` constraint with the argument ``10``. For more description route constraints, and a listing of the constraints provided by the framework, see route-constraint-reference_.
 
-The following table demonstrates some route templates and their behavior.
+路由参数也可以有约束，必须匹配从URL绑定的路由值。通过在路由参数名后增加一个冒号``:``和约束名来定义一个内联约束。如果内联约束需要参数,需要在约束名称后用括号括起来提供.多个内联约束可以通过附加另一个冒号``:``和约束名来定义。为在URL处理中使用:dn:iface:`~Microsoft.AspNetCore.Routing.IRouteConstraint`实例，需要把约束名称传递到:dn:iface:`~Microsoft.AspNetCore.Routing.IInlineConstraintResolver`服务来创建一个。
 
+The following table demonstrates some route templates and their behavior.
+下面的列表展示了一些路由模板和他们的行为.
 
 +-----------------------------------+--------------------------------+------------------------------------------------+
 | Route Template                    | Example Matching URL           | Notes                                          |
@@ -402,19 +420,49 @@ The following table demonstrates some route templates and their behavior.
 |            {action=Index}/{id?}   | |                              | | method; ``id`` is ignored.                   |
 +-----------------------------------+--------------------------------+------------------------------------------------+
 
++-----------------------------------+--------------------------------+------------------------------------------------+
+|路由模板                   | 匹配URL示例         | 注释                                          |
++===================================+================================+================================================+
+| hello                             | | /hello                       | | 将只匹配'/hello' 路径       +
++-----------------------------------+--------------------------------+------------------------------------------------+
+|{Page=Home}                        | | /                            | | 将匹配且设置 ``Page`` 为 ``Home`` 。     |
++-----------------------------------+--------------------------------+------------------------------------------------+
+|{Page=Home}                        | | /Contact                     | |将匹配且设置 ``Page`` 为 ``Contact``。    |
++-----------------------------------+--------------------------------+------------------------------------------------+
+| {controller}/{action}/{id?}       | | /Products/List               | |会映射到 ``Products`` 控制器的 ``List`` 方法。 |
+|                                   | |                              | |                                               |
++-----------------------------------+--------------------------------+------------------------------------------------+
+| {controller}/{action}/{id?}       | | /Products/Details/123        | | 会映射到 ``Products``控制器的                |
+|                                   | |                              | | ``Details``方法，且 ``id`` 的值为 ``123``.   |
++-----------------------------------+--------------------------------+------------------------------------------------+
+| {controller=Home}/                | |   /                          | |会映射到 ``Home`` 控制器的 ``Index`` 方法，id  |
+|            {action=Index}/{id?}   | |                              | | 忽略掉.                                       |
++-----------------------------------+--------------------------------+------------------------------------------------+
+
 Using a template is generally the simplest approach to routing. Constraints and defaults can also be specified outside the route template.
 
+大体来说，设置路由的最简单的方法是使用模板。约束和默认值可以在路由模板之外定义。
+
 .. tip:: Enable :doc:`logging` to see how the built in routing implementations, such as ``Route``, match requests.
+.. tip:: 打开 :doc:`logging` 去查看内置路由的实现方式, 例如``Route``类, 如何匹配请求.
 
 .. _route-constraint-reference:
 
 Route Constraint Reference
 --------------------------
+路由约束参考
+--------------------------
+
 Route constraints execute when a ``Route`` has matched the syntax of the incoming URL and tokenized the URL path into route values. Route constraints generally inspect the route value associated via the route template and make a simple yes/no decision about whether or not the value is acceptable. Some route constraints use data outside the route value to consider whether the request can be routed. For example, the `HttpMethodRouteConstraint <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/Constraints/HttpMethodRouteConstraint/index.html#httpmethodrouteconstraint-class>`_ can accept or reject a request based on its HTTP verb.
+
+当一个路由已经匹配到了传入的URL并标记了URL中的路由值时路由约束就会执行。它一般会检查和路由模板相关的路由的值而且会做出一个关于这个值是否是可接受的简单决定。有些路由约束使用路由值之外的数据来决定该请求是否可以进行路由。例如，`HttpMethodRouteConstraint <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Routing/Constraints/HttpMethodRouteConstraint/index.html#httpmethodrouteconstraint-class>`_可以接受或拒绝一个基于其Hppt的请求。
 
 .. warning:: Avoid using constraints for **input validation**, because doing so means that invalid input will result in a 404 (Not Found) instead of a 400 with an appropriate error message. Route constraints should be used to **disambiguate** between similar routes, not to validate the inputs for a particular route.
 
+.. warning::  避免使用约束来做验证，这样做意味着非法输入会得到一个404(没有找到)的结果。而不是一个400的状态码加上合适的错误信息。路由约束应该用来在路由间做区分，而不是为了特定的路由做验证。
+
 The following table demonstrates some route constraints and their expected behavior.
+下表展示了一些路由约束和他们的预期行为.
 
 .. TODO to-do when we migrate to MD, make sure this table doesn't require a scroll bar
 
@@ -494,15 +542,98 @@ The following table demonstrates some route constraints and their expected behav
     - Steve
     - Used to enforce that a non-parameter value is present during during URL generation.
 
+  * - 约束
+    - 示例
+    - 匹配示例
+    - 注释
+  * - ``int``
+    - {id:int}
+    - 123
+    - 匹配所有整型
+  * - ``bool``
+    - {active:bool}
+    - true
+    - 匹配 ``true`` 或 ``false``
+  * - ``datetime``
+    - {dob:datetime}
+    - 2016-01-01
+    - 匹配一个合法的 ``DateTime`` 值 (固定区域性 - 请看 `options <http://msdn.microsoft.com/en-us/library/aszyst2c(v=vs.110).aspx>`_)
+  * - ``decimal``
+    - {price:decimal}
+    - 49.99
+    - 匹配一个合法的 ``decimal`` 值
+  * - ``double``
+    - {weight:double}
+    - 4.234
+    - 匹配一个合法的 ``double`` 值
+  * - ``float``
+    - {weight:float}
+    - 3.14
+    - 匹配一个合法的 ``float`` 值
+  * - ``guid``
+    - {id:guid}
+    - 7342570B-<snip>
+    - 匹配一个合法的 ``Guid`` 值
+  * - ``long``
+    - {ticks:long}
+    - 123456789
+    - 匹配一个合法的 ``long`` 值
+  * - ``minlength(value)``
+    - {username:minlength(5)}
+    - steve
+    - 至少5个字符串长.
+  * - ``maxlength(value)``
+    - {filename:maxlength(8)}
+    - somefile
+    - 字符串不能超过8个字符长.
+  * - ``length(min,max)``
+    - {filename:length(4,16)}
+    - Somefile.txt
+    - 字符串至少8个长度且不超过16个字符长度.
+  * - ``min(value)``
+    - {age:min(18)}
+    - 19
+    - 值至少是18.
+  * - ``max(value)``
+    - {age:max(120)}
+    - 91
+    - 值不能超过120.
+  * - ``range(min,max)``
+    - {age:range(18,120)}
+    - 91
+    - 值必须介于18和120之间.
+  * - ``alpha``
+    - {name:alpha}
+    - Steve
+    - 字符串必须是由字母字符组成.
+  * - ``regex(expression)``
+    - {ssn:regex(\d{3}-\d{2}-\d{4})}
+    - 123-45-6789
+    - 字符串必须匹配提供的正则表达式.
+  * - ``required``
+    - {name:required}
+    - Steve
+    - 用于在URL生成时强制必须存在值.
+
+
 .. warning:: Route constraints that verify the URL can be converted to a CLR type (such as ``int`` or ``DateTime``) always use the invariant culture - they assume the URL is non-localizable. The framework-provided route constraints do not modify the values stored in route values. All route values parsed from the URL will be stored as strings. For example, the `Float route constraint <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60>`__ will attempt to convert the route value to a float, but the converted value is used only to verify it can be converted to a float.
 
+.. 警告:: 验证URL可转换为CLR类型(例如int或DateTime)的路由约束总是使用固定区域性 - 它们认为URL是不可本地化的。框架提供的路由约束不会修改路由值。从URL解析过来的所有路由值都会存为字符串。例如，`浮点路由约束<https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/Constraints/FloatRouteConstraint.cs#L44-L60>`__ 会试图将路由值转换为一个浮点型,但转换后的值只用于验证它是否能够转换为浮点型。
+
 .. tip:: To constrain a parameter to a known set of possible values, you can use a regular expression ( for example ``{action:regex(list|get|create)}``. This would only match the ``action`` route value to ``list``, ``get``, or ``create``. If passed into the constraints dictionary, the string "list|get|create" would be equivalent. Constraints that are passed in the constraints dictionary (not inline within a template) that don't match one of the known constraints are also treated as regular expressions.
+
+.. tip::为约束一个参数是一组列可能的值，你可以使用正则表达式(例如``{action:regex(list|get|create)}``)。这将只匹配 ``action`` 的值是 ``list`` 、 ``get`` 或 ``create`` 。 如果将 "list|get|create" 传入约束字典，是等价的。传入约束字典的约束(没有内联模板)，没有匹配到已知的约束也会被视为正则表达式。
+
 
 .. _url-generation-reference:
 
 URL Generation Reference
 ------------------------
+URL生成参考
+------------------------
+
 The example below shows how to generate a link to a route given a dictionary of route values and a ``RouteCollection``.
+下面的例子展示了在给定一个路由值字典和一个路由集合的情况下如何生成一个链接。
 
 .. literalinclude:: routing/sample/RoutingSample/Startup.cs
   :start-after: // Show link generation when no routes match.
@@ -510,13 +641,18 @@ The example below shows how to generate a link to a route given a dictionary of 
   :dedent: 12
 
 The ``VirtualPath`` generated at the end of the sample above is ``/package/create/123``.
+上面示例最终生成的相对路径是``/package/create/123``。
+
 
 The second parameter to the :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathContext` constructor is a collection of `ambient values`. Ambient values provide convenience by limiting the number of values a developer must specify within a certain request context. The current route values of the current request are considered ambient values for link generation. For example, in an ASP.NET MVC app if you are in the ``About`` action of the ``HomeController``, you don't need to specify the controller route value to link to the ``Index`` action (the ambient value of ``Home`` will be used).
+``VirtualPathContext`` 构造函数的第二个参数是一个 `ambient值` 的集合。通过限制开发人员必须在特定请求上下文中定义值的数量，环境值提供了方便。当前请求的路由值被当做生成链接的环境值。例如，在MVC应用中，如果正在Home控制器的About方法中，链接到Index方法时你不需要定义控制器路由值（Home的环境值将会被使用）。
+
 
 Ambient values that don't match a parameter are ignored, and ambient values are also ignored when an explicitly-provided value overrides it, going from left to right in the URL.
+没有匹配到参数的环境值将被忽略，同样有明确保留的值覆盖它，按照URL中从做到右的顺序，环境值也会被忽略。
 
 Values that are explicitly provided but which don't match anything are added to the query string. The following table shows the result when using the route template ``{controller}/{action}/{id?}``.
-
+显示提供的但没有匹配的值将会被加到查询字符串中。下表展示了使用路由模板 ``{controller}/{action}/{id?}``的结果
 .. list-table:: Generating links with ``{controller}/{action}/{id?}`` template
   :header-rows: 1
 
@@ -524,6 +660,9 @@ Values that are explicitly provided but which don't match anything are added to 
   * - Ambient Values
     - Explicit Values
     - Result
+  * - 环境值
+    - 明确值
+    - 结果  
 
   * - controller="Home"
     - action="About"
@@ -541,9 +680,11 @@ Values that are explicitly provided but which don't match anything are added to 
 
 If a route has a default value that doesn't correspond to a parameter and that value is explicitly provided, it must match the default value. For example:
 
+如果一个路由有一个没有匹配到参数的默认值，而且这个值被提供了，那它必须匹配这个默认值。例如：
 .. code-block:: c#
 
   routes.MapRoute("blog_route", "blog/{*slug}",
     defaults: new { controller = "Blog", action = "ReadPost" });
 
 Link generation would only generate a link for this route when the matching values for controller and action are provided.
+当提供了controller和action的匹配值，才能生成这个路由的链接。
