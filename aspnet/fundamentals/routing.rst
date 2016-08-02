@@ -228,9 +228,10 @@ This example demonstrates a few more features:
 
 This template will match a URL path like ``/Blog/All-About-Routing/Introduction`` and will extract the values ``{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }``. The default route values for ``controller`` and ``action`` are produced by the route even though there are no corresponding route parameters in the template. Default values can be specified in the route template. The ``article`` route parameter is defined as a *catch-all* by the appearance of an asterix ``*`` before the route parameter name. Catch-all route parameters capture the remainder of the URL path, and can also match the empty string.
 
-这个模板会匹配``/Blog/All-About-Routing/Introduction``这样的URL路径而且会提出 ``{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }``值。
+这个模板会匹配``/Blog/All-About-Routing/Introduction``这样的URL路径而且会提取出 ``{ controller = Blog, action = ReadArticle, article = All-About-Routing/Introduction }``值。``controller`` 和 ``action``的默认值是由路由产生,即使模板没有相应的路由参数。默认值可以在路由模板中指定。通过在路由参数名称前面增加一个``*``号，``article``这个路由参数定义为一个*全部捕获*型 。 全部捕获型路由参数捕获剩下的URL路径，而且也能匹配空字符串。
 
 This example adds route constraints and data tokens:
+增加路由约束和数据令牌的示例:
 
 .. code-block:: c#
 
@@ -242,7 +243,7 @@ This example adds route constraints and data tokens:
       dataTokens: new { locale = "en-US" });
 
 This template will match a URL path like ``/en-US/Products/5`` and will extract the values ``{ controller = Products, action = Details, id = 5 }`` and the data tokens ``{ locale = en-US }``.
-
+这个模板会匹配像``/en-US/Products/5``这样的URL路径而且会提取出值为``{ controller = Products, action = Details, id = 5 }`` 和数据令牌``{ locale = en-US }``.
 
 .. image:: routing/_static/tokens.png
 
@@ -250,11 +251,19 @@ This template will match a URL path like ``/en-US/Products/5`` and will extract 
 
 URL generation
 ^^^^^^^^^^^^^^^
+URL 生成
+^^^^^^^^^^^^^^^
+
 The ``Route`` class can also perform URL generation by combining a set of route values with its route template. This is logically the reverse process of matching the URL path.
+
+``Route``类也可以通过结合一组路由值和路由模板来生成URL。这在逻辑上是匹配URL路径的逆过程。
 
 .. tip:: To better understand URL generation, imagine what URL you want to generate and then think about how a route template would match that URL. What values would be produced? This is the rough equivalent of how URL generation works in the ``Route`` class.
 
+.. tip::为了更好的理解URL生成，想象一下你要生成的URL然后考虑一下一个路由模板该如何去匹配那个URL。会产生什么值？这和 ``Route`` 类中URL是怎么样生成的是一个意思。
+
 This example uses a basic ASP.NET MVC style route:
+本例使用了一个基本的ASP.NET MVC风格的路由:
 
 .. code-block:: c#
 
@@ -263,22 +272,33 @@ This example uses a basic ASP.NET MVC style route:
         template: "{controller=Home}/{action=Index}/{id?}");
 
 With the route values ``{ controller = Products, action = List }``, this route will generate the URL ``/Products/List``. The route values are substituted for the corresponding route parameters to form the URL path. Since ``id`` is an optional route parameter, it's no problem that it doesn't have a value.
+根据路由值``{ controller = Products, action = List }``，这个路由会生成URL ``/Products/List``.路由值被相应的路由参数替换以形成URL路径。因为id是一个可选的路由参数，所以它没有值也没问题。
+
 
 With the route values ``{ controller = Home, action = Index }``, this route will generate the URL ``/``. The route values that were provided match the default values so the segments corresponding to those values can be safely omitted. Note that both URLs generated would round-trip with this route definition and produce the same route values that were used to generate the URL.
 
+根据路由值 ``{ controller = Home, action = Index }``，这个路由会生成URL``/``。因为提供的路由值匹配了默认值，因此可以安全地忽略相应的片段。注意到这两个URL生成在路由定义和产生用于生成URL的路由值之间是双向的。
+
 .. tip:: An app using ASP.NET MVC should use :dn:cls:`~Microsoft.AspNetCore.Mvc.Routing.UrlHelper` to generate URLs instead of calling into routing directly.
 
+.. tip::在ASP.NET MVC应用中应该使用:dn:cls:`~Microsoft.AspNetCore.Mvc.Routing.UrlHelper`类生成URL，而不是直接调用路由.
+
 For more details about the URL generation process, see url-generation-reference_.
+更多关于URL生成过程的细节可以点击url-generation-reference_.
 
 .. _using-routing-middleware:
 
 Using Routing Middleware
 -------------------------
+使用路由中间件
+-------------------------
+
 To use routing middleware, add it to the **dependencies** in *project.json*:
 
 ``"Microsoft.AspNetCore.Routing": <current version>``
 
 Add routing to the service container in *Startup.cs*:
+在使用路由前，需要将其添加到 *project.json* 的  **依赖性** 中
 
 .. literalinclude:: routing/sample/RoutingSample/Startup.cs
   :dedent: 8
@@ -287,10 +307,13 @@ Add routing to the service container in *Startup.cs*:
   :emphasize-lines: 3
 
 Routes must configured in the ``Configure`` method in the ``Startup`` class. The sample below uses these APIs:
+路由必须在``Startup``类的``Configure``方法中配置。上面的例子使用了这些APIs。
+
 
 - :dn:cls:`~Microsoft.AspNetCore.Routing.RouteBuilder`
 - :dn:method:`~Microsoft.AspNetCore.Routing.RouteBuilder.Build`
 - :dn:method:`~Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet`  Matches only HTTP GET requests
+- :dn:method:`~Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet`  只匹配GET请求
 - :dn:method:`~Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter`
 
 .. literalinclude:: routing/sample/RoutingSample/Startup.cs
@@ -299,6 +322,7 @@ Routes must configured in the ``Configure`` method in the ``Startup`` class. The
   :end-before: // Show link generation when no routes match.
 
 The table below shows the resposes with the given URIs.
+已给URLs的响应列表.
 
 ===================== ====================================================
 URI                    Response
@@ -307,14 +331,20 @@ URI                    Response
 /package/track/-3     Hello! Route values: [operation, track], [id, -3]
 /package/track/-3/    Hello! Route values: [operation, track], [id, -3]
 /package/track/       <Fall through, no match>
+/package/track/       <未通过,没有匹配>
 GET /hello/Joe        Hi, Joe!
 POST /hello/Joe       <Fall through, matches HTTP GET only>
+POST /hello/Joe       <未通过, 只匹配GET请求>
 GET /hello/Joe/Smith  <Fall through, no match>
+GET /hello/Joe/Smith  <未通过,没有匹配>
 ===================== ====================================================
 
 If you are configuring a single route, call ``app.UseRouter`` passing in an ``IRouter`` instance. You won't need to call ``RouteBuilder``.
 
+如果你只配置了一个路由，调用 ``app.UseRouter`` 方法，并传递一个IRouter实例。而不必调用 ``RouteBuilder`` 。
+
 The framework provides a set of extension methods for creating routes such as:
+框架提供了一系列的创建路由的扩展方法，比如：
 
 - :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute`
 - :dn:method:`~Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet`
@@ -324,6 +354,8 @@ The framework provides a set of extension methods for creating routes such as:
 - :dn:method:`~Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapVerb`
 
 Some of these methods such as ``MapGet`` require a :dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate` to be provided. The ``RequestDelegate`` will be used as the *route handler* when the route matches. Other methods in this family allow configuring a middleware pipeline which will be used as the route handler. If the *Map* method doesn't accept a handler, such as ``MapRoute``, then it will use the :dn:prop:`~Microsoft.AspNetCore.Routing.IRouteBuilder.DefaultHandler`.
+
+一些像 ``MapGet``这样的方法，需要提供一个`` require a :dn:delegate:`~Microsoft.AspNetCore.Http.RequestDelegate` .``请求委托``在路由匹配的时候讲被用做*路由处理程序*.
 
 The ``Map[Verb]`` methods use constraints to limit the route to the HTTP Verb in the method name. For example, see `MapGet <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L85-L88>`__ and `MapVerb <https://github.com/aspnet/Routing/blob/1.0.0/src/Microsoft.AspNetCore.Routing/RequestDelegateRouteBuilderExtensions.cs#L156-L180>`__.
 
