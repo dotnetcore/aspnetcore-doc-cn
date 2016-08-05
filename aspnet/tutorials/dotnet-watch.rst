@@ -12,6 +12,8 @@ By `Victor Hurdugaci`_
 
 翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
 
+校对 `刘怡(AlexLEWIS) <https://github.com/alexinea>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
+
 Introduction
 ------------
 
