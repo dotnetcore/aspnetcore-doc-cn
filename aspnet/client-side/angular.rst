@@ -1,34 +1,38 @@
-Using Angular for Single Page Applications (SPAs)
+:version: 1.0.0-rc1
+
+使用 Angular 构建单页应用程序(SPAs)
 =================================================
 
-By `Venkata Koppaka`_ and `Scott Addie`_
+作者： `Venkata Koppaka`_ 和 `Scott Addie`_
 
-In this article, you will learn how to build a SPA-style ASP.NET application using AngularJS.
+翻译： `耿晓亮(Blue)`_
+
+在本文中你会学到如何通过 AngularJS 构建一个 SPA-style ASP.NET 应用程序。
 
 .. contents:: Sections:
   :local:
   :depth: 1
   
-`View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`__
+`查看或者下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`__
 
-What is AngularJS?
+什么是 AngularJS？
 ------------------
 
-`AngularJS <http://angularjs.org/>`_ is a modern JavaScript framework from Google commonly used to work with Single Page Applications (SPAs). AngularJS is open sourced under MIT license, and the development progress of AngularJS can be followed on `its GitHub repository <https://github.com/angular/angular.js>`_. The library is called Angular because HTML uses angular-shaped brackets.
+`AngularJS <http://angularjs.org/>`_ 是 Google 通常用来处理单页面应用程序（SPAs）的一个现代化 JavaScript 框架。AngularJS 是遵从 MIT 协议的开源项目，并且 AngularJS 的开发进度可以跟踪 `GitHub 存储库 <https://github.com/angular/angular.js>`_。因为 HTML 使用尖角号所以命名 Angular。
 
-AngularJS is not a DOM manipulation library like jQuery, but it uses a subset of jQuery called jQLite. AngularJS is primarily based on declarative HTML attributes that you can add to your HTML tags. You can try AngularJS in your browser using the `Code School website <http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro>`_.
+AngularJS 不是像 jQuery 一样的 DOM 操作库，但是它用了 jQuery 的一个叫 jQLite 的子集。AngularJS 主要是基于 HTML 特性的声明所有你可以添加到 HTML 标签里。你可以通过 `Code School 网站 <http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro>`_在浏览器里尝试 AngularJS。
 
-Version 1.5.x is the current stable version and the Angular team is working towards a big rewrite of AngularJS for V2.0 which is currently still in development. This article focuses on Angular 1.X with some notes on where Angular is heading with 2.0.
+当前稳定版是 1.5.x 并且 Angular 团队正在致力于 AngularJS 的一个大改动的 V2.0 版目前仍然在开发中。中。本文专注在 Angular 1.X 附带一些 Angular 2.0 方向的注释。
 
-Getting Started
+入门
 ---------------
 
-To start using AngularJS in your ASP.NET application, you must either install it as part of your project, or reference it from a content delivery network (CDN).
+开始在 ASP.NET 应用程序里应用 AngularJS 前，首先你必须安装它来作为你项目的一部分，或者从内容分发网络（CDN）引用。
 
-Installation
+安装
 ^^^^^^^^^^^^
 
-There are several ways to add AngularJS to your application. If you’re starting a new ASP.NET Core web application in Visual Studio, you can add AngularJS using the built-in :ref:`Bower <bower-index>` support. Simply open ``bower.json``, and add an entry to the ``dependencies`` property:
+有几种方式添加 AngularJS 到你的应用程序。如果你正在 Visual Studio 里开始一个新的 ASP.NET Core web 应用程序，你可以通过内置的 :ref:`Bower <bower-index>` 添加 AngularJS 的支持。只需打开 ``bower.json``，并添加条目到 ``dependencies`` 属性：
 
 .. _angular-bower-json:
 
@@ -37,12 +41,12 @@ There are several ways to add AngularJS to your application. If you’re startin
   :linenos:
   :emphasize-lines: 9
   
-Upon saving the ``bower.json`` file, Angular will be installed in your project's ``wwwroot/lib`` folder. Additionally, it will be listed within the ``Dependencies/Bower`` folder. See the screenshot below.
+一旦保存 ``bower.json`` 文件，Angular 将会安装到项目的 ``wwwroot/lib`` 文件夹。另外，还会在 ``Dependencies/Bower`` 文件夹中列出来。见下边的截图。
 
 .. image:: angular/_static/angular-solution-explorer.png
   :width: 283px
 
-Next, add a ``<script>`` reference to the bottom of the ``<body>`` section of your HTML page or `_Layout.cshtml` file, as shown here:
+接下来，在 HTML 页或 `_Layout.cshtml` 文件的 ``<body>`` 段的下边添加一个 ``<script>``, 像这里展示的一样：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml
   :language: html
@@ -50,7 +54,7 @@ Next, add a ``<script>`` reference to the bottom of the ``<body>`` section of yo
   :lines: 48-52
   :emphasize-lines: 4
 
-It's recommended that production applications utilize CDNs for common libraries like Angular. You can reference Angular from one of several CDNs, such as this one:
+推荐生产应用程序利用 CDN 获取公共类库比如 Angular。你可以从一个或者几个 CDN 引用 Angular，比如这个示例：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Shared/_Layout.cshtml
   :language: html
@@ -58,141 +62,142 @@ It's recommended that production applications utilize CDNs for common libraries 
   :lines: 53-67
   :emphasize-lines: 10
 
-Once you have a reference to the angular.js script file, you're ready to begin using Angular in your web pages.
+一旦你有了 angular.js 脚本文件的引用，就可以开始在 web 页面使用 Angular。
 
-Key Components
+关键组件
 --------------
 
-AngularJS includes a number of major components, such as *directives*, *templates*, *repeaters*, *modules*, *controllers*, and more. Let's examine how these components work together to add behavior to your web pages.
+AngularJS 包含了大量的主要组件，例如 *directives*, *templates*, *repeaters*, *modules*, *controllers*, 和更多其他的组件。让我们来看看这些组件是如何协同工作以增加 web 页面的行为。
 
-Directives
+指令（Directives）
 ^^^^^^^^^^
 
-AngularJS uses `directives <https://docs.angularjs.org/guide/directive>`_ to extend HTML with custom attributes and elements. AngularJS directives are defined via ``data-ng-*`` or ``ng-*`` prefixes (``ng`` is short for angular). There are two types of AngularJS directives:
+AngularJS 通过 `指令 <https://docs.angularjs.org/guide/directive>`_ 自定义的特性和元素来扩展 HTML。AngularJS 指令通过 ``data-ng-*`` 或者 ``ng-*`` 前缀定义 (``ng`` 是 angular 的简写). 有两种类型的 AngularJS 指令:
 
-  #. **Primitive Directives**: These are predefined by the Angular team and are part of the AngularJS framework.
-  #. **Custom Directives**: These are custom directives that you can define.
+  #. **原始指令**: 这些是 Angular 团队预定义的并且是 AngularJS 框架的一部分。
+  #. **自定义指令**: 这些是由你定义的自定义指令。
 
-One of the primitive directives used in all AngularJS applications is the ``ng-app`` directive, which bootstraps the AngularJS application. This directive can be applied to the ``<body>`` tag or to a child element of the body. Let's see an example in action. Assuming you're in an ASP.NET project, you can either add an HTML file to the ``wwwroot`` folder, or add a new controller action and an associated view. In this case, I've added a new ``Directives`` action method to ``HomeController.cs``. The associated view is shown here:
+其中一个用于所有AngularJS 应用程序的原始指令是 ``ng-app`` 指令，用于启动 AngularJS 应用程序。这个指令可以应用到 ``<body>`` 标签或者 body 的子元素。让我们用行动来看一个示例。假设在一个 ASP.NET 项目里，你可以添加一个 HTML 文件到 ``wwwroot`` 文件夹, 或者添加一个新的 controller action 和一个相关的 view。在本例中，
+我已经添加了一个 ``Directives`` action 方法到 ``HomeController.cs``。相关视图如下所示：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Directives.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 5,7
 
-To keep these samples independent of one another, I'm not using the shared layout file. You can see that we decorated the body tag with the ``ng-app`` directive to indicate this page is an AngularJS application. The ``{{2+2}}`` is an Angular data binding expression that you will learn more about in a moment. Here is the result if you run this application: 
+保持这些示例相对独立，我没有使用共享布局文件。你可以看到我们用 ``ng-app`` 指令修饰 body 标签以表明本页是一个 AngularJS 应用程序。``{{2+2}}`` 是一个 Angular 数据绑定表达式，接下来你马上会学到更多。如果你运行这个应用程序就会出现下边的效果：
 
 .. image:: angular/_static/simple-directive.png
 
-Other primitive directives in AngularJS include:
+AngularJS 中的其他原始指令包括：
 
 ``ng-controller``
-  Determines which JavaScript controller is bound to which view.
+  确定哪一个 JavaScript controller 绑定到哪一个 view。
 
 ``ng-model``
-  Determines the model to which the values of an HTML element's properties are bound.
+  确定 model 绑定到 HTML 元素属性的值。
 
 ``ng-init``
-  Used to initialize the application data in the form of an expression for the current scope.
+  用来初始化当前作用域中表达式的应用程序数据。
 
 ``ng-if``
-  Removes or recreates the given HTML element in the DOM based on the truthiness of the expression provided.
+  用提供表达式的真实值移除或替换 DOM 中给定 HTML 元素。
 
 ``ng-repeat``
-  Repeats a given block of HTML over a set of data.
+  用一组数据重复替换一个给定的 HTML 块。
 
 ``ng-show``
-  Shows or hides the given HTML element based on the expression provided.
+  用提供的表达式示或隐藏给定的 HTML 元素。
 
-For a full list of all primitive directives supported in AngularJS, please refer to the `directive documentation section on the AngularJS documentation website <https://docs.angularjs.org/api/ng/directive>`_.
+AngularJS 支持的所有原始指令列表，请参见 `AngularJS 文档网站的指令文件章节 <https://docs.angularjs.org/api/ng/directive>`_。
 
-Data Binding
+数据绑定（Data Binding）
 ^^^^^^^^^^^^
 
-AngularJS provides `data binding <https://docs.angularjs.org/guide/databinding>`_ support out-of-the-box using either the ``ng-bind`` directive or a data binding expression syntax such as ``{{expression}}``. AngularJS supports two-way data binding where data from a model is kept in synchronization with a view template at all times. Any changes to the view are automatically reflected in the model. Likewise, any changes in the model are reflected in the view.
+AngularJS 提供了 `数据绑定 <https://docs.angularjs.org/guide/databinding>`_ 支持预置通过 ``ng-bind`` 指令或者像 ``{{expression}}``。AngularJS 支持双向数据绑定保持 model 的数据和 view 模板一直同步。View 的任何改变会自动反映到 model 里。同样的，Model 的任何改变也会反映到 view 里。
 
-Create either an HTML file or a controller action with an accompanying view named ``Databinding``. Include the following in the view:
+创建一个 HTML 文件或者一个 controller action 和一个 ``Databinding`` 伴随的view。View 里会包含以下内容：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Databinding.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 8-10
 
-Notice that you can display model values using either directives or data binding (``ng-bind``). The resulting page should look like this:
+注意你可以显示通过指令或者数据绑定(``ng-bind``)。结果页应该像这样：
 
 .. image:: angular/_static/simple-databinding.png
 
-Templates
+模板（Templates）
 ^^^^^^^^^
 
-`Templates <https://docs.angularjs.org/guide/templates>`_ in AngularJS are just plain HTML pages decorated with AngularJS directives and artifacts. A template in AngularJS is a mixture of directives, expressions, filters, and controls that combine with HTML to form the view.
+在 AngularJS 里 `模板 <https://docs.angularjs.org/guide/templates>`_ 只是用 AngularJS directives 和 artifacts 修饰的普通 HTML 页面。在 AngularJS里  template 混合了 directives，expressions，filters 和 controls 结合 view 中 HTML。
 
-Add another view to demonstrate templates, and add the following to it:
+添加另一个 view 到演示模板，并添加下面内容：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Templates.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 8-10
 
-The template has AngularJS directives like ``ng-app``, ``ng-init``, ``ng-model`` and data binding expression syntax to bind the ``personName`` property. Running in the browser, the view looks like the screenshot below: 
+模板有像 ``ng-app``, ``ng-init``, ``ng-model`` 的 AngularJS 指令和数据绑定表达式语法绑定到 ``personName`` 属性。运行浏览器，view 看起来像下面的截图：
 
 .. image:: angular/_static/simple-templates-1.png
 
-If you change the name by typing in the input field, you will see the text next to the input field dynamically update, showing Angular two-way data binding in action.
+如果你通过在输入框里输入的内容来改变名字，你就会看到输入框旁边的文本动态更新，在 action 中显示了 Angular 的双向数据绑定。
 
 .. image:: angular/_static/simple-templates-2.png
 
-Expressions
+表达式（Expressions）
 ^^^^^^^^^^^
 
-`Expressions <https://docs.angularjs.org/guide/expression>`_ in AngularJS are JavaScript-like code snippets that are written inside the ``{{ expression }}`` syntax. The data from these expressions is bound to HTML the same way as ``ng-bind`` directives. The main difference between AngularJS expressions and regular JavaScript expressions is that AngularJS expressions are evaluated against the ``$scope`` object in AngularJS. 
+AngularJS 中的 `表达式 <https://docs.angularjs.org/guide/expression>`_ 是写在 ``{{ expression }}`` 语法中类似 JavaScript 的代码片段。这些表达式的数据以 ``ng-bind`` 指令同样的方式绑定到 HTML。AngularJS 表达式和正规的 JavaScript 表达式的主要不同是 AngularJS 表达式针对评估 AngularJS 中的 ``$scope`` 对象。 
 
-The AngularJS expressions in the sample below bind ``personName`` and a simple JavaScript calculated expression:
+下边示例中的 AngularJS 表达式绑定了 ``personName`` 和一个简单的 JavaScript 计算表达式：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Expressions.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 8-10
 
-The example running in the browser displays the ``personName`` data and the results of the calculation:
+运行在浏览器中的示例显示了 ``personName`` 数据和计算结果：
 
 .. image:: angular/_static/simple-expressions.png
 
-Repeaters
+中继器（Repeaters）
 ^^^^^^^^^
 
-Repeating in AngularJS is done via a primitive directive called ``ng-repeat``. The ``ng-repeat`` directive repeats a given HTML element in a view over the length of a repeating data array. Repeaters in AngularJS can repeat over an array of strings or objects. Here is a sample usage of repeating over an array of strings: 
+AngularJS 中的 repeating 是通过叫 ``ng-repeat`` 的原始指令完成的。``ng-repeat`` 指令用重复数据数组的长度重复 view 中一个给定的 HTML 元素。AngularJS 中的 repeaters 可以重复一个 string 数组或者 object 数组。这是一个 string 数组的简单重复的用法。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 8,10-11
 
-The `repeat directive <https://docs.angularjs.org/api/ng/directive/ngRepeat>`_ outputs a series of list items in an unordered list, as you can see in the developer tools shown in this screenshot:
+`Repeat 指令 <https://docs.angularjs.org/api/ng/directive/ngRepeat>`_ 在一个没有排序列表输出一系列列表项，你会在开发者工具中看到如屏幕截图中显示的：
 
 .. image:: angular/_static/repeater.png
 
-Here is an example that repeats over an array of objects. The ``ng-init`` directive establishes a ``names`` array, where each element is an object containing first and last names. The ``ng-repeat`` assignment, ``name in names``, outputs a list item for every array element.
+这是一个 object 数组的简单重复的用法。``ng-init`` 指令建立了一个 ``names`` 的数组，每一个元素都是包含了 first 和 last names。``ng-repeat`` 赋值, ``name in names``, 把每一个数组元素输出到列表项。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters2.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 8-11,13-14
 
-The output in this case is the same as in the previous example.
+这个实例的输出和之前示例的一样。
 
-Angular provides some additional directives that can help provide behavior based on where the loop is in its execution.
+Angular 提供了一些附加指令可以帮助提供基于执行循环的行为。
 
 ``$index``
-  Use ``$index`` in the ``ng-repeat`` loop to determine which index position your loop currently is on.
+  用 ``ng-repeat`` 循环中 ``$index`` 定义你当前循环的 index 位置。
 
 ``$even`` and ``$odd``
-  Use ``$even`` in the ``ng-repeat`` loop to determine whether the current index in your loop is an even indexed row. Similarly, use ``$odd`` to determine if the current index is an odd indexed row.
+  用 ``ng-repeat`` 循环中的 ``$even`` 定义你的循环中当前 index 是否是一个偶数行的 index。同样的，用 ``$odd`` 定义如果当前 index 是一个奇数行的 index。
 
 ``$first`` and ``$last``
-  Use ``$first`` in the ``ng-repeat`` loop to determine whether the current index in your loop is the first row. Similarly, use ``$last`` to determine if the current index is the last row.
+  在 ``ng-repeat`` 循环中用 ``$first`` 定义是否当前循环中当前 index 是第一行的。同样的, 用 ``$last`` 定义如果当前 index 是最后一行的。
 
-Below is a sample that shows ``$index``, ``$even``, ``$odd``, ``$first``, and ``$last`` in action: 
+下面是在 action 中展示了 ``$index``, ``$even``, ``$odd``, ``$first``, 和 ``$last`` 的示例：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Repeaters3.cshtml
   :language: html
@@ -200,74 +205,76 @@ Below is a sample that shows ``$index``, ``$even``, ``$odd``, ``$first``, and ``
   :emphasize-lines: 14-18
 
 
-Here is the resulting output:
+这里是输出结果：
 
 .. image:: angular/_static/repeaters2.png
 
 $scope
 ^^^^^^
 
-``$scope`` is a JavaScript object that acts as glue between the view (template) and the controller (explained below). A view template in AngularJS only knows about the values attached to the ``$scope`` object in the controller. 
+``$scope`` 是一个充当 view (template) 和 controller 之间的桥梁（解释见下边）。在 AngularJS 中 view 模板只知道附加到 controller 中 ``$scope`` 对象的值。
 
-.. note:: In the MVVM world, the ``$scope`` object in AngularJS is often defined as the ViewModel. The AngularJS team refers to the ``$scope`` object as the Data-Model. `Learn more about Scopes in AngularJS <https://docs.angularjs.org/guide/scope>`_.
+注意
 
-Below is a simple example showing how to set properties on ``$scope`` within a separate JavaScript file, ``scope.js``:
+在 MVVM 世界中，AngularJS 中的 ``$scope`` 对象通常定义成 ViewModel。AngularJS 团队指定 ``$scope`` 对象作为 Data-Model。`学习更多关于 AngularJS 中的 Scopes <https://docs.angularjs.org/guide/scope>`_。
+
+下面是一个简单的示例展示了如何在单独的 JavaScript 文件的 ``$scope`` 上设置属性，``scope.js``：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/scope.js
   :language: html
   :linenos:
   :emphasize-lines: 2-3
 
-Observe the ``$scope`` parameter passed to the controller on line 2. This object is what the view knows about. On line 3, we are setting a property called "name" to "Mary Jane". 
+观察在第 2 行传递到 controller 的 ``$scope`` 参数。这个对象是 view 知道的。在第 3 行，设置 "name" 属性为 "Mary Jane"。 
 
-What happens when a particular property is not found by the view? The view defined below refers to "name" and "age" properties: 
+当 view 没有找到一个特定属性会发生什么？下面定义的 view 指向了 "name" 和 "age" 属性：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Scope.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 9-10,14
 
-Notice on line 9 that we are asking Angular to show the "name" property using expression syntax. Line 10 then refers to "age", a property that does not exist. The running example shows the name set to "Mary Jane" and nothing for age. Missing properties are ignored.
+注意第 9 行我们让 Angular 通过表达式语法显示 "name" 属性。第 10 行指向 "age"，一个不存在的属性。正在运行的示例显示了 name 设置成 "Mary Jane" 并且没设置 age。丢失的属性忽略。
 
 .. image:: angular/_static/scope.png
 
 Modules
 ^^^^^^^
 
-A `module <https://docs.angularjs.org/guide/module>`_ in AngularJS is a collection of controllers, services, directives, etc. The ``angular.module()`` function call is used to create, register, and retrieve modules in AngularJS. All modules, including those shipped by the AngularJS team and third party libraries, should be registered using the ``angular.module()`` function. 
+在 AngularJS 中 `module <https://docs.angularjs.org/guide/module>`_ 是 controllers，services，directives 等集合。在 AngularJS 中 ``angular.module()`` 函数调用用于 create，register 和 retrieve modules。所有的 modules，包括那些由 AngularJS 团队封装的和第三方类库，都应该通过 ``angular.module()`` 函数注册。 
 
-Below is a snippet of code that shows how to create a new module in AngularJS. The first parameter is the name of the module. The second parameter defines dependencies on other modules. Later in this article, we will be showing how to pass these dependencies to an ``angular.module()`` method call.
+下面的代码段显示了如何在 AngularJS 中创建一个新的 module。第一个参数是 module 的名字。第二个参数定义了其他 module 的依赖关系。在本文后面，我们会展示如何通过 ``angular.module()`` 方法调用传递这些依赖关系。
 
 .. code-block:: javascript
 
   var personApp = angular.module('personApp', []);
 
-Use the ``ng-app`` directive to represent an AngularJS module on the page. To use a module, assign the name of the module, ``personApp`` in this example, to the ``ng-app`` directive in our template.
+在页面上用 ``ng-app`` 指令表示一个 AngularJS module。要使用 module，先分配 module 的名字，本例中的 ``personApp``，再到模板中的 ``ng-app`` 指令。
 
 .. code-block:: html
 
   <body ng-app="personApp">
 
-Controllers
+控制器（Controllers）
 ^^^^^^^^^^^
 
-`Controllers <https://docs.angularjs.org/guide/controller>`_ in AngularJS are the first point of entry for your code. The ``<module name>.controller()`` function call is used to create and register controllers in AngularJS. The ``ng-controller`` directive is used to represent an AngularJS controller on the HTML page. The role of the controller in Angular is to set state and behavior of the data model (``$scope``). Controllers should not be used to manipulate the DOM directly.
+在 AngularJS 中 `Controllers <https://docs.angularjs.org/guide/controller>`_ 是代码入口的第一点。在 AngularJS 中调用 ``<module name>.controller()`` 函数 create 和 register controllers。``ng-controller`` 指令用来表示 HTML 页面上的一个 AngularJS controller。在 Angular 中 controller 的角色是设置状态和数据模型 （``$scope``）的行为。Controllers 不应该用于直接操作 DOM。
 
-Below is a snippet of code that registers a new controller. The ``personApp`` variable in the snippet references an Angular module, which is defined on line 2.
+下面是注册一个新 controller 的代码片段。片段中的 ``personApp`` 变量引用了第二行定义的 Angular module。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/controllers.js
   :language: javascript
   :linenos:
   :emphasize-lines: 2,5
 
-The view using the ``ng-controller`` directive assigns the controller name: 
+View 用 ``ng-controller`` 指令给 controller 名字赋值：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/Home/Controllers.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 8,14
 
-The page shows "Mary" and "Jane" that correspond to the ``firstName`` and ``lastName`` properties attached to the ``$scope`` object:
+页面显示了把符合 ``firstName`` 和 ``lastName`` 属性的 "Mary" 和 "Jane" 附加到 ``$scope`` 对象上：
 
 .. image:: angular/_static/controllers.png
 
@@ -275,16 +282,16 @@ The page shows "Mary" and "Jane" that correspond to the ``firstName`` and ``last
 Services
 ^^^^^^^^
 
-`Services <https://docs.angularjs.org/guide/services>`_ in AngularJS are commonly used for shared code that is abstracted away into a file which can be used throughout the lifetime of an Angular application. Services are lazily instantiated, meaning that there will not be an instance of a service unless a component that depends on the service gets used. Factories are an example of a service used in AngularJS applications. Factories are created using the ``myApp.factory()`` function call, where ``myApp`` is the module. 
+在 AngularJS 中 `services <https://docs.angularjs.org/guide/services>`_ 通常是抽象成一个文件用来在 Angular 应用程序整个生命周期共享代码。Services 是延迟加载的，意味着不会有一个服务的实例除非一个基于 service 的组件被调用。Factories 是一个在 AngularJS 应用程序中 service 示例的调用。Factories 是通过 ``myApp.factory()`` 函数调用创建的，``myApp`` 是 module。
 
-Below is an example that shows how to use factories in AngularJS: 
+下面的示例显示了如何在 AngularJS 中使用 factories： 
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/simpleFactory.js
   :language: javascript
   :linenos:
   :emphasize-lines: 1
 
-To call this factory from the controller, pass ``personFactory`` as a parameter to the ``controller`` function: 
+从 controller 中调用 factory，``personFactory`` 作为参数传递到 ``controller`` 函数：
 
 .. code-block:: javascript
 
@@ -292,117 +299,117 @@ To call this factory from the controller, pass ``personFactory`` as a parameter 
     $scope.name = personFactory.getName();
   });
 
-Using services to talk to a REST endpoint
+使用 services 和 REST endpoint 通信
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Below is an end-to-end example using services in AngularJS to interact with an ASP.NET Core Web API endpoint. The example gets data from the Web API and displays the data in a view template. Let's start with the view first: 
+下面是一个使用 AngularJS 中的 services 和 ASP.NET Core Web API endpoint 端到端交互的示例。示例从 Web API 获取数据并且在 view template 中显示数据。让我们先从 view 开始：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/People/Index.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 5,8,10,17-19
 
-In this view, we have an Angular module called ``PersonsApp`` and a controller called ``personController``. We are using ``ng-repeat`` to iterate over the list of persons. We are referencing three custom JavaScript files on lines 17-19.
+在这个 view 中，我们有一个叫做 ``PersonsApp`` 的 module 和一个叫做 ``personController`` 的 controller。我们用 ``ng-repeat`` 遍历 persons 列表。我们在 17-19 行引用了 3 个自定义 JavaScript 文件。
 
-The ``personApp.js`` file is used to register the ``PersonsApp`` module; and, the syntax is similar to previous examples. We are using the ``angular.module`` function to create a new instance of the module that we will be working with.
+``personApp.js`` 文件用来注册 ``PersonsApp`` module；并且，语法和之前的示例相似。我们用 ``angular.module`` 函数创建一个 module 的新实例接下来用。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/personApp.js
   :language: javascript
   :linenos:
   :emphasize-lines: 3
 
-Let's take a look at ``personFactory.js``, below. We are calling the module’s ``factory`` method to create a factory. Line 12 shows the built-in Angular ``$http`` service retrieving people information from a web service.
+让我们看看下面的 ``personFactory.js``。我们调用 module 的 ``factory`` 方法创建一个 factory。第 12 行展示了内置 Angular 的 ``$http`` 服务从 web 服务获取信息 。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/personFactory.js
   :language: javascript
   :linenos:
   :emphasize-lines: 6-7,12
 
-In ``personController.js``, we are calling the module’s ``controller`` method to create the controller. The ``$scope`` object's ``people`` property is assigned the data returned from the personFactory (line 13).
+在 ``personController.js`` 中，我们调用 module 的 ``controller`` 方法创建 controller。把 personFactory 返回的值赋值到 ``$scope`` 对象的 ``people`` 属性（第 13 行）。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/personController.js
   :language: javascript
   :linenos:
   :emphasize-lines: 6-7,13
 
-Let's take a quick look at the Web API and the model behind it. The ``Person`` model is a POCO (Plain Old CLR Object) with ``Id``, ``FirstName``, and ``LastName`` properties:
+让我们快速看一下 Web API 和它后面第 model。``Person`` model 是一个带有 ``Id``，``FirstName`` 和 ``LastName`` 属性的 POCO (Plain Old CLR Object)。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Models/Person.cs
   :language: csharp
   :linenos:
 
-The ``Person`` controller returns a JSON-formatted list of ``Person`` objects:
+``Person`` controller 返回一个 JSON 格式的 ``Person`` 对象列表：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Controllers/Api/PersonController.cs
   :language: csharp
   :linenos:
   :emphasize-lines: 9-10,19
 
-Let's see the application in action: 
+让我们运行起来看看应用程序：
 
 .. image:: angular/_static/rest-bound.png
 
-You can `view the application's structure on GitHub <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`_.
+你可以 `在 GitHub 上查看应用程序的实例 <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`_。
 
-.. note:: For more on structuring AngularJS applications, see `John Papa's Angular Style Guide <https://github.com/johnpapa/angular-styleguide>`_
+.. 注意:: 更多 AngularJS 应用程序架构，参见 `John Papa's Angular 样式指南 <https://github.com/johnpapa/angular-styleguide>`_
 
-.. note:: To create AngularJS module, controller, factory, directive and view files easily, be sure to check out Sayed Hashimi's `SideWaffle template pack for Visual Studio <http://sidewaffle.com/>`_. Sayed Hashimi is a Senior Program Manager on the Visual Studio Web Team at Microsoft and SideWaffle templates are considered the gold standard. At the time of this writing, SideWaffle is available for Visual Studio 2012, 2013, and 2015.
+.. 注意:: 为了更容易的创建 AngularJS module, controller, factory, directive 和 view 文件，请确认查阅 Sayed Hashimi 的 `SideWaffle template pack for Visual Studio <http://sidewaffle.com/>`_。Sayed Hashimi 微软 Visual Studio Web 团队的高级项目经理并且 SideWaffle templates 被认为是黄金标准。在写这篇文章的时候，SideWaffle 已经在 Visual Studio 2012, 2013, and 2015 可用。
 
-Routing and Multiple Views
+路由和多视图
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-AngularJS has a built-in route provider to handle SPA (Single Page Application) based navigation. To work with routing in AngularJS, you must add the ``angular-route`` library using Bower. You can see in the :ref:`bower.json <angular-bower-json>` file referenced at the start of this article that we are already referencing it in our project.
+AngularJS 有一个内置路由 提供程序来处理基于导航的 SPA (Single Page Application) 。在 AngularJS 里使用路由，你必须通过 Bower 添加 ``angular-route`` 类库。你会在本文的开始看见 :ref:`bower.json <angular-bower-json>` 文件引用 ，我们已经在项目中引用了它。
 
-After you install the package, add the script reference (``angular-route.js``) to your view.
+安装程序包后，添加脚本引用 (``angular-route.js``) 到 view 中。
 
-Now let's take the Person App we have been building and add navigation to it. First, we will make a copy of the app by creating a new ``PeopleController`` action called ``Spa`` and a corresponding ``Spa.cshtml`` view by copying the Index.cshtml view in the ``People`` folder. Add a script reference to ``angular-route`` (see line 11). Also add a ``div`` marked with the ``ng-view`` directive (see line 6) as a placeholder to place views in. We are going to be using several additional ``.js`` files which are referenced on lines 13-16.
+现在让我们看看已经建立并且添加导航的 Person 程序。首先，通过创建叫做 ``Spa`` 的 ``PeopleController`` action 复制应用的副本和复制 ``People`` 文件夹中的 Index.cshtml view 创建相应的 ``Spa.cshtml``。添加脚本引用到 ``angular-route`` （参见第 11 行）。再添加一个 ``div`` 标记作为占位符到 place views。我们打算使用几个在 第 13-16 行引用的附加 ``.js`` 文件。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/People/Spa.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 6,11-16
   
-Let's take a look at ``personModule.js`` file to see how we are instantiating the module with routing. We are passing ``ngRoute`` as a library into the module. This module handles routing in our application.
+让我们看一看 ``personModule.js`` 文件来看看如何用路由初始化 module。我们将 ``ngRoute`` 作为一个类库传递到 module。这个 module 在应用程序中处理路由。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/personModule.js
   :language: javascript
   :linenos:
 
-The ``personRoutes.js`` file, below, defines routes based on the route provider. Lines 4-7 define navigation by effectively saying, when a URL with ``/persons`` is requested, use a template called ``partials/personlist`` by working through ``personListController``. Lines 8-11 indicate a detail page with a route parameter of ``personId``. If the URL doesn't match one of the patterns, Angular defaults to the ``/persons`` view.
+``personRoutes.js`` 文件，下面，定义了基于路由提供器的路由。第 4-7 行用有效的话定义导航，当一个带 ``/persons`` 的 URL 被请求时，通过 ``personListController`` 调用 ``partials/personlist`` 模板。第 8-11 行表明一个 ``personId`` 路由参数第详细页。如果 URL 没有匹配到一个模式。Angular 默认转到 ``/persons`` view。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/personRoutes.js
   :language: javascript
   :linenos:
   :emphasize-lines: 4-7, 8-11, 13
 
-The ``personlist.html`` file is a partial view containing only the HTML needed to display person list. 
+``personlist.html`` 文件是一个只包含需要显示 person 列表 HTML 的 partial view。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/partials/personlist.html
   :language: html
   :linenos:
   :emphasize-lines: 3
 
-The controller is defined by using the module's ``controller`` function in ``personListController.js``.
+controller 是通过 ``personListController.js`` 中的 module 的 ``controller`` 函数定义的。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/personListController.js
   :language: javascript
   :linenos:
   :emphasize-lines: 1
 
-If we run this application and navigate to the ``people/spa#/persons`` URL, we will see:
+如果运行这个应用程序并且导航到 ``people/spa#/persons`` URL，就会看到：
 
 .. image:: angular/_static/spa-persons.png
 
-If we navigate to a detail page, for example ``people/spa#/persons/2``, we will see the detail partial view: 
+如果导航到详细页，例如 ``people/spa#/persons/2``，就会看到详细页的 partial view：
 
 .. image:: angular/_static/spa-persons-2.png
 
-You can view the full source and any files not shown in this article on `GitHub <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`_.
+你可以在 `GitHub <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`_ 上查看完整的源码和没有展示的任何文件。
 
 Event Handlers
 ^^^^^^^^^^^^^^
 
-There are a number of directives in AngularJS that add event-handling capabilities to the input elements in your HTML DOM. Below is a list of the events that are built into AngularJS.
+在 AngularJS 中大量的指令添加 event-handling 能力到 HTML DOM 中到输入元素。下面是内置到 AngularJS 事件的列表。
 
   - ``ng-click``
   - ``ng-dbl-click``
@@ -416,43 +423,42 @@ There are a number of directives in AngularJS that add event-handling capabiliti
   - ``ng-keypress``
   - ``ng-change``
 
-.. note:: You can add your own event handlers using the `custom directives feature in AngularJS <https://docs.angularjs.org/guide/directive>`_.
+.. 注意:: 你可以使用 `AngularJS 中的自定义指令功能 <https://docs.angularjs.org/guide/directive>`_ 添加自己的 event handlers。
 
-Let's look at how the ``ng-click`` event is wired up. Create a new JavaScript file named ``eventHandlerController.js``, and add the following to it:
+让我们看看 ``ng-click`` 事件是如果连接起来的。创建一个叫 ``eventHandlerController.js`` 的新 JavaScript 文件，并把下面的代码添加进去：
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/wwwroot/app/eventHandlerController.js
   :language: javascript
   :linenos:
   :emphasize-lines: 5-7
 
-Notice the new ``sayName`` function in ``eventHandlerController`` on line 5 above. All the method is doing for now is showing a JavaScript alert to the user with a welcome message.
+注意上面 ``eventHandlerController`` 中第 5 行新的 ``sayName`` 函数。所有的方法都会显示一个欢迎信息的 JavaScript 提示。
 
-The view below binds a controller function to an AngularJS event. Line 9 has a button on which the ``ng-click`` Angular directive has been applied. It calls our ``sayName`` function, which is attached to the ``$scope`` object passed to this view.
+下面的 view 绑定了一个 controller 函数到一个 AngularJS 事件。第 9 行有一个应用了 ``ng-click`` Angular 指令的按钮。它会调用 ``sayName`` 函数，通过这个 view 附加到 ``$scope`` 对象。
 
 .. literalinclude:: angular/sample/AngularSample/src/AngularSample/Views/People/Events.cshtml
   :language: html
   :linenos:
   :emphasize-lines: 9
 
-The running example demonstrates that the controller's ``sayName`` function is called automatically when the button is clicked.
+运行的示例证明了当按钮点击后会自动调用 controller 的 ``sayName`` 函数。
 
 .. image:: angular/_static/events.png
 
-For more detail on AngularJS built-in event handler directives, be sure to head to the `documentation website <https://docs.angularjs.org/api/ng/directive/ngClick>`_ of AngularJS.
+更多关于 AngularJS 内置 event handler 指令的详细信息，请参考 AngularJS 的 `文档网站 <https://docs.angularjs.org/api/ng/directive/ngClick>`_。
 
 Angular 2.0
 -----------
 
-Angular 2.0 is the next version of AngularJS, which is completely reimagined with ES6 and mobile in mind. It's built using Microsoft's TypeScript language. Angular 2.0 is currently a beta product and is expected to be released in early 2016. Several breaking changes will be introduced in the Angular 2.0 release, so the Angular team is working hard to provide guidance to developers. A migration path will become more clear as the release date approaches. If you wish to play with Angular 2.0 now, the Angular team has created `Angular.io <http://angular.io>`_ to show their progress, to provide early documentation, and to gather feedback. 
+Angular 2.0 是完全用 ES6 构建并考虑移动端的下一版 AngularJS。它用微软的 TypeScript 语言构建 。Angular 2.0 当前还是 RC 版并且预计 2016 年初发布。Angular 2.0 将会引入几个重大的改变，所以Angular团队正在努力向开发者提供一个指南。随着发布临近迁移路线会更清晰。如果你希望现在就开始 Angular 2.0，Angular 团队已经创建了 `Angular.io <http://angular.io>`_ 来展示他们的进展, 提供早期的文档，并收集反馈意见。
 
-Summary
+总结
 -------
 
-This article provides an overview of AngularJS for ASP.NET developers. It aims to help developers who are new to this SPA framework get up-to-speed quickly.
+本文为 ASP.NET 开发者提供了一个 AngularJS 的预览。旨在帮助新接触 SPA 框架的开发者快速开始 。
 
-Related Resources
+发布的资源
 -----------------
 
 - `Angular Docs <https://docs.angularjs.org>`_
 - `Angular 2 Info <http://angular.io>`_
-

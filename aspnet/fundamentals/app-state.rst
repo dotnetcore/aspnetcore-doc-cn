@@ -1,3 +1,5 @@
+:version: 1.0.0-rc1
+
 Managing Application State
 ==========================
 
@@ -68,12 +70,12 @@ HttpContext.Items
 
 当数据仅用于一个请求之中时，用 ``Items`` 集合储存是最好的方式。数据将在每个请求结束之后被丢弃。可以作为组件和中间件在一个请求期间的不同时间点进行互相通讯的最佳手段。
 
-Querystring 和 Post
+QueryString 和 Post
 ^^^^^^^^^^^^^^^^^^^^
 
-State from one request can be provided to another request by adding values to the new request's querystring or by POSTing the data. These techniques should not be used with sensitive data, because these techniques require that the data be sent to the client and then sent back to the server. It is also best used with small amounts of data. Querystrings are especially useful for capturing state in a persistent manner, allowing links with embedded state to be created and sent via email or social networks, for use potentially far into the future. However, no assumption can be made about the user making the request, since URLs with querystrings can easily be shared, and care must also be taken to avoid `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ attacks (for instance, even assuming only authenticated users are able to perform actions using querystring-based URLs, an attacker could trick a user into visiting such a URL while already authenticated).
+State from one request can be provided to another request by adding values to the new request's query string or by POSTing the data. These techniques should not be used with sensitive data, because these techniques require that the data be sent to the client and then sent back to the server. It is also best used with small amounts of data. Query strings are especially useful for capturing state in a persistent manner, allowing links with embedded state to be created and sent via email or social networks, for use potentially far into the future. However, no assumption can be made about the user making the request, since URLs with query strings can easily be shared, and care must also be taken to avoid `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ attacks (for instance, even assuming only authenticated users are able to perform actions using query string based URLs, an attacker could trick a user into visiting such a URL while already authenticated).
 
-Querystring and Post
+QueryString and Post
 ^^^^^^^^^^^^^^^^^^^^
 
 在查询字符串（ ``Querystring`` ）中添加数值、或利用 POST 发送数据，可以将一个请求的状态数据提供给另一个请求。这种技术不应该用于敏感数据，因为这需要将数据发送到客户端，然后再发送回服务器。这种方法也最好用于少量的数据。查询字符串对于持久地保留状态特别有用，可以将状态嵌入链接通过电子邮件或社交网络发出去，以备日后使用。然而，用户提交的请求是无法预期的，由于带有查询字符串的网址很容易被分享出去，所以必须小心以避免跨站请求伪装攻击（ `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ ）。(例如，即便设定了只有通过验证的用户才可以访问带有查询字符串的网址执行请求，攻击者还是可能会诱骗已经验证过的用户去访问这样的网址)。
@@ -162,8 +164,7 @@ and later in the pipeline, another piece of middleware could access it:
 
   app.Run(async (context) =>
   {
-    await context.Response.WriteAsync("Verified request? "
-      + context.Items["isVerified"]);
+    await context.Response.WriteAsync("Verified request? " + context.Items["isVerified"]);
   });
 
 .. note:: Since keys into ``Items`` are simple strings, if you are developing middleware that needs to work across many applications, you may wish to prefix your keys with a unique identifier to avoid key collisions (e.g. "MyComponent.isVerified" instead of just "isVerified").
@@ -175,30 +176,24 @@ and later in the pipeline, another piece of middleware could access it:
 Installing and Configuring Session
 ----------------------------------
 
-ASP.NET Core ships a session package that provides middleware for managing session state. You can install it by including a reference to the package in your project.json file:
+ASP.NET Core ships a session package that provides middleware for managing session state. You can install it by including a reference to the ``Microsoft.AspNetCore.Session`` package in your project.json file:
 
 安装和配置 Session
 -------------------
 
-ASP.NET Core 发布了一个关于会话的程序包，里面提供了用于管理会话状态的中间件。你可以在 project.json 中加入引用来安装这个程序包：
-
-.. literalinclude:: app-state/sample/src/AppState/project.json
-  :language: javascript
-  :linenos:
-  :lines: 7-16
-  :emphasize-lines: 4-5
+ASP.NET Core 发布了一个关于会话的程序包，里面提供了用于管理会话状态的中间件。你可以在 project.json 中加入对 ``Microsoft.AspNetCore.Session`` 的引用来安装这个程序包：
 
 Once the package is installed, Session must be configured in your application's ``Startup`` class. Session is built on top of ``IDistributedCache``, so you must configure this as well, otherwise you will receive an error.
 
 当安装好程序包后，必须在你的应用程序的 ``Startup`` 类中对 Session 进行配置。Session 是基于 ``IDistributedCache`` 构建的，因此你也必须把它配置好，否则会得到一个错误。
 
-.. note:: If you do not configure at least one ``IDistributedCache`` implementation, you will get an exception stating "Unable to resolve service for type 'Microsoft.Framework.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNet.Session.DistributedSessionStore'."
+.. note:: If you do not configure at least one ``IDistributedCache`` implementation, you will get an exception stating "Unable to resolve service for type 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' while attempting to activate 'Microsoft.AspNetCore.Session.DistributedSessionStore'."
 
-.. note:: 如果你一个 ``IDistributedCache`` 的实现都没有配置，则会得到一个异常，说“在尝试激活 'Microsoft.AspNet.Session.DistributedSessionStore' 的时候，无法找到类型为 'Microsoft.Framework.Caching.Distributed.IDistributedCache' 的服务。”
+.. note:: 如果你一个 ``IDistributedCache`` 的实现都没有配置，则会得到一个异常，说“在尝试激活 'Microsoft.AspNetCore.Session.DistributedSessionStore' 的时候，无法找到类型为 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' 的服务。”
 
-ASP.NET ships with several implementations of ``IDistributedCache``, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option, add the following to ``ConfigureServices``:
+ASP.NET ships with several implementations of ``IDistributedCache``, including an in-memory option (to be used during development and testing only). To configure session using this in-memory option, add the ``Microsoft.Extensions.Caching.Memory`` package in your project.json file and then add the following to ``ConfigureServices``:
 
-ASP.NET 提供了 ``IDistributedCache`` 的多种实现， in-memory 是其中之一（仅用于开发期间和测试）。要配置会话采用 in-memory ，需将以下代码添加到 ``ConfigureServices``：
+ASP.NET 提供了 ``IDistributedCache`` 的多种实现， in-memory 是其中之一（仅用于开发期间和测试）。要配置会话采用 in-memory ，需将 ``Microsoft.Extensions.Caching.Memory`` 依赖项加入你的 project.json 文件然后再把以下代码添加到 ``ConfigureServices``：
 
 .. code-block:: c#
 
@@ -257,19 +252,22 @@ The ``IdleTimeout`` is used by the server to determine how long a session can be
 .. note:: ``Session`` 是 *无锁* 的，因此如果两个请求都尝试修改会话的内容，最后一个会成功。此外，``Session`` 被实现为一个*内容连贯的会话*，就是说所有的内容都是一起储存的。这就意味着，如果两个请求是在修改会话中不同的部分（不同的键），他们还是会互相造成影响。
 
 ISession
-^^^^^^^^
+^^^^^^^^^
 
-Once session is installed and configured, you refer to it via HttpContext, which exposes a property called ``Session`` of type `ISession <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Http/Features/ISession/index.html>`__. You can use this interface to get and set values in ``Session``, as ``byte[]``.
+Once session is installed and configured, you refer to it via HttpContext, which exposes a property called ``Session`` of type :dn:iface:`~Microsoft.AspNetCore.Http.ISession`. You can use this interface to get and set values in ``Session``,such as ``byte[]``.
 
 ISession
-^^^^^^^^
+^^^^^^^^^
 
-一旦 Session 安装和配置完成，你就可以通过 ``HttpContext`` 的一个名为 ``Session``，类型为 `ISession <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Http/Features/ISession/index.html>`__ 的属性来引用会话了。
+一旦 Session 安装和配置完成，你就可以通过 ``HttpContext`` 的一个名为 ``Session``，类型为 :dn:iface:`~Microsoft.AspNetCore.Http.ISession` 的属性来引用会话了。
 
 .. code-block:: c#
 
   public interface ISession
   {
+    bool IsAvailable { get; }
+    string Id { get; }
+    IEnumerable<string> Keys { get; }
     Task LoadAsync();
     Task CommitAsync();
     bool TryGetValue(string key, out byte[] value);
@@ -279,7 +277,7 @@ ISession
     IEnumerable<string> Keys { get; }
   }
 
-Because``Session`` is built on top of ``IDistributedCache``, you must always serialize the object instances being stored. Thus, the interface works with ``byte[]`` not simply ``object``. However, there are extension methods that make working with simple types such as ``String`` and ``Int32`` easier, as well as making it easier to get a byte[] value from session.
+Because ``Session`` is built on top of ``IDistributedCache``, you must always serialize the object instances being stored. Thus, the interface works with ``byte[]`` not simply ``object``. However, there are extension methods that make working with simple types such as ``String`` and ``Int32`` easier, as well as making it easier to get a byte[] value from session.
 
 因为 ``Session`` 是建立在 ``IDistributedCache`` 之上的，所以总是需要序列化被储存的对象实例。因此，这个接口使用 ``byte[]`` 而不是直接使用 ``object``。不过，有扩展方法可以让我们在使用诸如 ``String`` 和 ``Int32`` 的简单类型时更加容易。
 
@@ -311,7 +309,7 @@ The associated sample application demonstrates how to work with Session, includi
   :language: c#
   :lines: 15-23
   :dedent: 8
-  :emphasize-lines: 3,5-7
+  :emphasize-lines: 2,6
 
 When you first navigate to the web server, it displays a screen indicating that no session has yet been established:
 
@@ -326,7 +324,7 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 78-106
+  :lines: 77-107
   :dedent: 12
   :emphasize-lines: 4,6,8-11,28-29
 
@@ -337,13 +335,13 @@ This default behavior is produced by the following middleware in *Startup.cs*, w
 .. literalinclude:: app-state/sample/src/AppState/Model/RequestEntry.cs
   :linenos:
   :language: c#
-  :lines: 5-10
+  :lines: 3-
   :dedent: 4
 
 .. literalinclude:: app-state/sample/src/AppState/Model/RequestEntryCollection.cs
   :linenos:
   :language: c#
-  :lines: 7-
+  :lines: 6-
   :dedent: 4
 
 .. note:: The types that are to be stored in session must be marked with ``[Serializable]``.
@@ -357,7 +355,7 @@ Fetching the current instance of ``RequestEntryCollection`` is done via the ``Ge
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 111-126
+  :lines: 109-124
   :dedent: 8
   :emphasize-lines: 4,8-9
 
@@ -383,8 +381,8 @@ Establishing the session is done in the middleware that handles requests to "/se
 
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
-  :language: c#
-  :lines: 58-77
+  :language: none
+  :lines: 56-75
   :dedent: 12
   :emphasize-lines: 2,8-14
 
@@ -395,7 +393,7 @@ Requests to this path will get or create a ``RequestEntryCollection``, will add 
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 128-134
+  :lines: 126-132
   :dedent: 8
   :emphasize-lines: 6
 
@@ -410,7 +408,7 @@ The sample includes one more piece of middleware worth mentioning, which is mapp
 .. literalinclude:: app-state/sample/src/AppState/Startup.cs
   :linenos:
   :language: c#
-  :lines: 44-57
+  :lines: 42-54
   :dedent: 12
   :emphasize-lines: 2,13
 

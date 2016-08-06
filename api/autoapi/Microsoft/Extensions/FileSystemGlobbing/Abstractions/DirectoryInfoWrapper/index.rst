@@ -5,12 +5,17 @@ DirectoryInfoWrapper Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.FileSystemGlobbing.Abstractions`
+Assemblies
+    * Microsoft.Extensions.FileSystemGlobbing
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -35,20 +40,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class DirectoryInfoWrapper : DirectoryInfoBase
+    public class DirectoryInfoWrapper : DirectoryInfoBase
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/filesystem/blob/master/src/Microsoft.Extensions.FileSystemGlobbing/Abstractions/DirectoryInfoWrapper.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper
 
@@ -63,17 +65,17 @@ Constructors
     .. dn:constructor:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper.DirectoryInfoWrapper(System.IO.DirectoryInfo, System.Boolean)
     
         
-        
+    
         
         :type directoryInfo: System.IO.DirectoryInfo
-        
+    
         
         :type isParentPath: System.Boolean
     
         
         .. code-block:: csharp
     
-           public DirectoryInfoWrapper(DirectoryInfo directoryInfo, bool isParentPath = false)
+            public DirectoryInfoWrapper(DirectoryInfo directoryInfo, bool isParentPath = false)
     
 
 Methods
@@ -87,17 +89,17 @@ Methods
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper.EnumerateFileSystemInfos()
     
         
-        :rtype: System.Collections.Generic.IEnumerable{Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileSystemInfoBase}
+        :rtype: System.Collections.Generic.IEnumerable<System.Collections.Generic.IEnumerable`1>{Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileSystemInfoBase<Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileSystemInfoBase>}
     
         
         .. code-block:: csharp
     
-           public override IEnumerable<FileSystemInfoBase> EnumerateFileSystemInfos()
+            public override IEnumerable<FileSystemInfoBase> EnumerateFileSystemInfos()
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper.GetDirectory(System.String)
     
         
-        
+    
         
         :type name: System.String
         :rtype: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoBase
@@ -105,12 +107,12 @@ Methods
         
         .. code-block:: csharp
     
-           public override DirectoryInfoBase GetDirectory(string name)
+            public override DirectoryInfoBase GetDirectory(string name)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper.GetFile(System.String)
     
         
-        
+    
         
         :type name: System.String
         :rtype: Microsoft.Extensions.FileSystemGlobbing.Abstractions.FileInfoBase
@@ -118,7 +120,7 @@ Methods
         
         .. code-block:: csharp
     
-           public override FileInfoBase GetFile(string name)
+            public override FileInfoBase GetFile(string name)
     
 
 Properties
@@ -137,7 +139,7 @@ Properties
         
         .. code-block:: csharp
     
-           public override string FullName { get; }
+            public override string FullName { get; }
     
     .. dn:property:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper.Name
     
@@ -147,7 +149,7 @@ Properties
         
         .. code-block:: csharp
     
-           public override string Name { get; }
+            public override string Name { get; }
     
     .. dn:property:: Microsoft.Extensions.FileSystemGlobbing.Abstractions.DirectoryInfoWrapper.ParentDirectory
     
@@ -157,6 +159,6 @@ Properties
         
         .. code-block:: csharp
     
-           public override DirectoryInfoBase ParentDirectory { get; }
+            public override DirectoryInfoBase ParentDirectory { get; }
     
 

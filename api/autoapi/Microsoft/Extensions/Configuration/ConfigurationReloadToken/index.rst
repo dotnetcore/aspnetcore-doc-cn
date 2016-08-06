@@ -5,12 +5,21 @@ ConfigurationReloadToken Class
 
 
 
-.. contents:: 
+
+
+
+Implements :any:`Microsoft.Extensions.Primitives.IChangeToken`
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.Configuration`
+Assemblies
+    * Microsoft.Extensions.Configuration
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,22 +42,58 @@ Syntax
 
 .. code-block:: csharp
 
-   public class ConfigurationReloadToken : IChangeToken
+    public class ConfigurationReloadToken : IChangeToken
 
 
 
-
-
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/configuration/blob/master/src/Microsoft.Extensions.Configuration/ConfigurationReloadToken.cs>`_
 
 
 
 
 
 .. dn:class:: Microsoft.Extensions.Configuration.ConfigurationReloadToken
+    :hidden:
+
+.. dn:class:: Microsoft.Extensions.Configuration.ConfigurationReloadToken
+
+Properties
+----------
+
+.. dn:class:: Microsoft.Extensions.Configuration.ConfigurationReloadToken
+    :noindex:
+    :hidden:
+
+    
+    .. dn:property:: Microsoft.Extensions.Configuration.ConfigurationReloadToken.ActiveChangeCallbacks
+    
+        
+    
+        
+        Indicates if this token will proactively raise callbacks. Callbacks are still guaranteed to be invoked, eventually.
+    
+        
+        :rtype: System.Boolean
+    
+        
+        .. code-block:: csharp
+    
+            public bool ActiveChangeCallbacks { get; }
+    
+    .. dn:property:: Microsoft.Extensions.Configuration.ConfigurationReloadToken.HasChanged
+    
+        
+    
+        
+        Gets a value that indicates if a change has occured.
+    
+        
+        :rtype: System.Boolean
+    
+        
+        .. code-block:: csharp
+    
+            public bool HasChanged { get; }
+    
 
 Methods
 -------
@@ -63,17 +108,32 @@ Methods
         
     
         
+        Used to trigger the change token when a reload occurs.
+    
+        
+    
+        
         .. code-block:: csharp
     
-           public void OnReload()
+            public void OnReload()
     
     .. dn:method:: Microsoft.Extensions.Configuration.ConfigurationReloadToken.RegisterChangeCallback(System.Action<System.Object>, System.Object)
     
         
+    
         
+        Registers for a callback that will be invoked when the entry has changed. Microsoft.Extensions.Primitives.IChangeToken.HasChanged
+        MUST be set before the callback is invoked.
+    
         
-        :type callback: System.Action{System.Object}
+    
         
+        :param callback: The callback to invoke.
+        
+        :type callback: System.Action<System.Action`1>{System.Object<System.Object>}
+    
+        
+        :param state: State to be passed into the callback.
         
         :type state: System.Object
         :rtype: System.IDisposable
@@ -81,35 +141,6 @@ Methods
         
         .. code-block:: csharp
     
-           public IDisposable RegisterChangeCallback(Action<object> callback, object state)
-    
-
-Properties
-----------
-
-.. dn:class:: Microsoft.Extensions.Configuration.ConfigurationReloadToken
-    :noindex:
-    :hidden:
-
-    
-    .. dn:property:: Microsoft.Extensions.Configuration.ConfigurationReloadToken.ActiveChangeCallbacks
-    
-        
-        :rtype: System.Boolean
-    
-        
-        .. code-block:: csharp
-    
-           public bool ActiveChangeCallbacks { get; }
-    
-    .. dn:property:: Microsoft.Extensions.Configuration.ConfigurationReloadToken.HasChanged
-    
-        
-        :rtype: System.Boolean
-    
-        
-        .. code-block:: csharp
-    
-           public bool HasChanged { get; }
+            public IDisposable RegisterChangeCallback(Action<object> callback, object state)
     
 

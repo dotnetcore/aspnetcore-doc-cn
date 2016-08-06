@@ -5,13 +5,8 @@ StringWithQualityHeaderValueComparer Class
 
 
 
-.. contents:: 
-   :local:
 
 
-
-Summary
--------
 
 Implementation of :any:`System.Collections.Generic.IComparer\`1` that can compare content negotiation header fields
 based on their quality values (a.k.a q-values). This applies to values used in accept-charset,
@@ -20,6 +15,15 @@ accept-encoding, accept-language and related header fields with similar syntax r
 q-values.
 
 
+Namespace
+    :dn:ns:`Microsoft.Net.Http.Headers`
+Assemblies
+    * Microsoft.Net.Http.Headers
+
+----
+
+.. contents::
+   :local:
 
 
 
@@ -42,20 +46,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class StringWithQualityHeaderValueComparer : IComparer<StringWithQualityHeaderValue>
+    public class StringWithQualityHeaderValueComparer : IComparer<StringWithQualityHeaderValue>
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/httpabstractions/blob/master/src/Microsoft.Net.Http.Headers/StringWithQualityHeaderValueComparer.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Net.Http.Headers.StringWithQualityHeaderValueComparer
+    :hidden:
 
 .. dn:class:: Microsoft.Net.Http.Headers.StringWithQualityHeaderValueComparer
 
@@ -71,6 +72,7 @@ Methods
     
         
     
+        
         Compares two :any:`Microsoft.Net.Http.Headers.StringWithQualityHeaderValue` based on their quality value
         (a.k.a their "q-value").
         Values with identical q-values are considered equal (i.e the result is 0) with the exception of wild-card
@@ -79,12 +81,12 @@ Methods
         wild-cards at the end.
     
         
-        
+    
         
         :param stringWithQuality1: The first value to compare.
         
         :type stringWithQuality1: Microsoft.Net.Http.Headers.StringWithQualityHeaderValue
-        
+    
         
         :param stringWithQuality2: The second value to compare
         
@@ -95,7 +97,7 @@ Methods
         
         .. code-block:: csharp
     
-           public int Compare(StringWithQualityHeaderValue stringWithQuality1, StringWithQualityHeaderValue stringWithQuality2)
+            public int Compare(StringWithQualityHeaderValue stringWithQuality1, StringWithQualityHeaderValue stringWithQuality2)
     
 
 Properties
@@ -114,6 +116,6 @@ Properties
         
         .. code-block:: csharp
     
-           public static StringWithQualityHeaderValueComparer QualityComparer { get; }
+            public static StringWithQualityHeaderValueComparer QualityComparer { get; }
     
 

@@ -5,17 +5,21 @@ XmlConfigurationProvider Class
 
 
 
-.. contents:: 
+
+
+
+Represents an XML file as an :any:`Microsoft.Extensions.Configuration.IConfigurationSource`\.
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.Configuration.Xml`
+Assemblies
+    * Microsoft.Extensions.Configuration.Xml
+
+----
+
+.. contents::
    :local:
-
-
-
-Summary
--------
-
-An XML file based :any:`Microsoft.Extensions.Configuration.ConfigurationProvider`\.
-
-
 
 
 
@@ -25,6 +29,7 @@ Inheritance Hierarchy
 
 * :dn:cls:`System.Object`
 * :dn:cls:`Microsoft.Extensions.Configuration.ConfigurationProvider`
+* :dn:cls:`Microsoft.Extensions.Configuration.FileConfigurationProvider`
 * :dn:cls:`Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider`
 
 
@@ -39,20 +44,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class XmlConfigurationProvider : ConfigurationProvider, IConfigurationProvider
+    public class XmlConfigurationProvider : FileConfigurationProvider, IConfigurationProvider
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/configuration/blob/master/src/Microsoft.Extensions.Configuration.Xml/XmlConfigurationProvider.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider
 
@@ -64,38 +66,24 @@ Constructors
     :hidden:
 
     
-    .. dn:constructor:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.XmlConfigurationProvider(System.String)
+    .. dn:constructor:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.XmlConfigurationProvider(Microsoft.Extensions.Configuration.Xml.XmlConfigurationSource)
     
         
     
-        Initializes a new instance of :any:`Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider`\.
+        
+        Initializes a new instance with the specified source.
     
         
-        
-        
-        :param path: Absolute path of the XML configuration file.
-        
-        :type path: System.String
     
         
-        .. code-block:: csharp
-    
-           public XmlConfigurationProvider(string path)
-    
-    .. dn:constructor:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.XmlConfigurationProvider(System.String, System.Boolean)
-    
+        :param source: The source settings.
         
-        
-        
-        :type path: System.String
-        
-        
-        :type optional: System.Boolean
+        :type source: Microsoft.Extensions.Configuration.Xml.XmlConfigurationSource
     
         
         .. code-block:: csharp
     
-           public XmlConfigurationProvider(string path, bool optional)
+            public XmlConfigurationProvider(XmlConfigurationSource source)
     
 
 Methods
@@ -106,54 +94,23 @@ Methods
     :hidden:
 
     
-    .. dn:method:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.Load()
-    
-        
-    
-        Loads the contents of the file at :dn:prop:`Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.Path`\.
+    .. dn:method:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.Load(System.IO.Stream)
     
         
     
         
-        .. code-block:: csharp
-    
-           public override void Load()
-    
-
-Properties
-----------
-
-.. dn:class:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider
-    :noindex:
-    :hidden:
-
-    
-    .. dn:property:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.Optional
+        Loads the XML data from a stream.
     
         
     
-        Gets a value that determines if this instance of :any:`Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider` is optional.
-    
         
-        :rtype: System.Boolean
+        :param stream: The stream to read.
+        
+        :type stream: System.IO.Stream
     
         
         .. code-block:: csharp
     
-           public bool Optional { get; }
-    
-    .. dn:property:: Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider.Path
-    
-        
-    
-        The absolute path of the file backing this instance of :any:`Microsoft.Extensions.Configuration.Xml.XmlConfigurationProvider`\.
-    
-        
-        :rtype: System.String
-    
-        
-        .. code-block:: csharp
-    
-           public string Path { get; }
+            public override void Load(Stream stream)
     
 

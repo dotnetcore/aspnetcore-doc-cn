@@ -5,12 +5,17 @@ FilePatternMatch Struct
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.FileSystemGlobbing`
+Assemblies
+    * Microsoft.Extensions.FileSystemGlobbing
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -25,20 +30,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public struct FilePatternMatch : IEquatable<FilePatternMatch>
+    public struct FilePatternMatch : IEquatable<FilePatternMatch>
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/filesystem/blob/master/src/Microsoft.Extensions.FileSystemGlobbing/FilePatternMatch.cs>`_
 
 
 
-
+.. dn:structure:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch
+    :hidden:
 
 .. dn:structure:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch
 
@@ -53,17 +55,17 @@ Constructors
     .. dn:constructor:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch.FilePatternMatch(System.String, System.String)
     
         
-        
+    
         
         :type path: System.String
-        
+    
         
         :type stem: System.String
     
         
         .. code-block:: csharp
     
-           public FilePatternMatch(string path, string stem)
+            public FilePatternMatch(string path, string stem)
     
 
 Methods
@@ -77,7 +79,7 @@ Methods
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch.Equals(Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch)
     
         
-        
+    
         
         :type other: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch
         :rtype: System.Boolean
@@ -85,12 +87,12 @@ Methods
         
         .. code-block:: csharp
     
-           public bool Equals(FilePatternMatch other)
+            public bool Equals(FilePatternMatch other)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch.Equals(System.Object)
     
         
-        
+    
         
         :type obj: System.Object
         :rtype: System.Boolean
@@ -98,7 +100,7 @@ Methods
         
         .. code-block:: csharp
     
-           public override bool Equals(object obj)
+            public override bool Equals(object obj)
     
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch.GetHashCode()
     
@@ -108,7 +110,7 @@ Methods
         
         .. code-block:: csharp
     
-           public override int GetHashCode()
+            public override int GetHashCode()
     
 
 Properties
@@ -127,7 +129,7 @@ Properties
         
         .. code-block:: csharp
     
-           public string Path { get; }
+            public string Path { get; }
     
     .. dn:property:: Microsoft.Extensions.FileSystemGlobbing.FilePatternMatch.Stem
     
@@ -137,6 +139,6 @@ Properties
         
         .. code-block:: csharp
     
-           public string Stem { get; }
+            public string Stem { get; }
     
 

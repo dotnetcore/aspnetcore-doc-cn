@@ -2,17 +2,18 @@ Knockout.js MVVM 框架
 ==========================
 
 作者 `Steve Smith`_
+翻译 `kiler(谢炀)`_
 
-Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application's client-side behavior. The two main concepts one must learn when working with Knockout's MVVM implementation are Observables and Bindings. 
+Knockout 是一个流行的用来简化创建基于复杂数据的用户交互界面的 JavaScript 类库. 可以单独使用和或者和其他库配合试用, 比如 jQuery. 它的首要目的是将 UI 元素绑定到前端代码定义好的 JavaScript 数据模型, 当 UI 发生变化的时候, 数据模型会自动更新 , 反之亦然. Knockout 在Web应用程序客户端行为中使用 Model-View-ViewModel (MVVM) 模式. 在使用 Knockout 的 MVVM 实现功能前必须掌握的两个概念是观察者模式和绑定。 
 
 .. contents:: Sections:
   :local:
   :depth: 1
 
-Getting Started with Knockout in ASP.NET Core
+在 ASP.NET Core 开始使用 Knockout 
 ---------------------------------------------
 
-Knockout is deployed as a single JavaScript file, so installing and using it is very straightforward using :doc:`bower <bower>`. Assuming you already have :doc:`bower <bower>` and :doc:`gulp <using-gulp>` configured, open bower.json in your ASP.NET Core project and add the knockout dependency as shown here:
+Knockout 部署文件仅仅是一个 Javascript 脚本, so installing and using it is very straightforward using :doc:`bower <bower>`. Assuming you already have :doc:`bower <bower>` and :doc:`gulp <using-gulp>` configured, open bower.json in your ASP.NET Core project and add the knockout dependency as shown here:
 
 .. code-block:: json
   :emphasize-lines: 5
