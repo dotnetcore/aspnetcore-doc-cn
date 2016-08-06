@@ -12,6 +12,8 @@ By `Sourabh Shirhatti`_
 
 作者： `Sourabh Shirhatti`_
 
+翻译：`张海龙(jiechen) <http://github.com/ijiechen>`_
+
 The ASP.NET Core data protection stack provides a simple and easy to use cryptographic API a developer can use to protect data, including key management and rotation. This document provides an overview of how to configure Data Protection on your server to enable developers to use data protection.
 
 ASP.NET Core 数据保护堆栈为开发人员提供了一种简单易用的密码API来保护数据，包括密钥管理与旋转。本文概述如何在你的服务器配置数据保护，以使开发人员使用数据保护。
