@@ -1,16 +1,16 @@
 ﻿Globalization and localization   
 ==============================
 
-`Rick Anderson`_, `Damien Bowden`_, `Bart Calixto`_, `Nadeem Afana`_ 
-
 全球化与本地化  
 ==============================
 
+原文：`Globalization and localization <https://docs.asp.net/en/latest/fundamentals/localization.html>`_
+
 作者：`Rick Anderson`_, `Damien Bowden`_, `Bart Calixto`_, `Nadeem Afana`_  
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
+翻译：`谢炀(Kiler) <https://github.com/kiler398/>`_
 
-校对：
+校对：`许登洋(Seay) <https://github.com/SeayXu>`_
 
 
 Creating a multilingual website with ASP.NET Core will allow your site to reach a wider audience. ASP.NET Core provides services and middleware for localizing into different languages and cultures.
