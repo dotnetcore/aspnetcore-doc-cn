@@ -201,4 +201,3 @@ project.lock.json
 **/sample/**/wwwroot/lib/
 **/samples/**/wwwroot/lib/
 __pycache__/
-.vscode/settings.json
