@@ -117,7 +117,7 @@ By default, this middleware adds very simple, text-only handlers for common stat
 
 The middleware supports several different extension methods. You can pass it a custom lamdba expression:
 
-中间件提供不同的扩展方法，你也可以使用自定义lamba表达式来配置参数:
+中间件提供不同的扩展方法，你也可以使用自定义lambda表达式来配置参数:
 
 .. code-block:: c#
 
