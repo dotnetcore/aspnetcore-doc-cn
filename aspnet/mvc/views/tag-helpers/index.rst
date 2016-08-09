@@ -7,7 +7,6 @@ Tag Helpers
     :titlesonly:
     
     intro
+    /mvc/views/working-with-forms
     authoring
-    advanced
-
     
