@@ -15,7 +15,7 @@ Configuration
 
 ASP.NET Core supports a variety of different configuration options. Application configuration data can come from files using built-in support for JSON, XML, and INI formats, as well as from environment variables, command line arguments or an in-memory collection. You can also write your own :ref:`custom configuration provider <custom-config-providers>`.
 
-ASP.NET Core 支持多种配置选项。应用程序配置数据内建支持读取 JSON、XML 和 INI 格式的配置文件和环境变量、命令行参数以及内存集合。你也编写自己的:ref:`自定义配置提供程序 <custom-config-providers>`。
+ASP.NET Core 支持多种配置选项。应用程序配置数据内建支持读取 JSON、XML 和 INI 格式的配置文件和环境变量、命令行参数以及内存集合。你也可以编写自己的 :ref:`自定义配置提供程序 <custom-config-providers>`。
 
 .. contents:: 章节:
   :local:
@@ -59,7 +59,7 @@ You must configure at least one source in order for ``Configuration`` to functio
 
 It's not unusual to store configuration values in a hierarchical structure, especially when using external files (e.g. JSON, XML, INI). In this case, configuration values can be retrieved using a ``:`` separated key, starting from the root of the hierarchy. For example, consider the following *appsettings.json* file:
 
-一般不会把配置值存储在一个有层次的结构中，尤其是使用外部文件（如 JSON、XML、INI）时。在此情况下，可以使用以“:”符号分隔（从层次结构的根开始）的键来取回配置值。以下面的 *appsettings.json* 文件为例：
+一般不会把配置值存储在一个有层次的结构中，尤其是使用外部文件（如 JSON、XML、INI）时。在此情况下，可以使用以 ``:`` 符号分隔（从层次结构的根开始）的键来取回配置值。以下面的 *appsettings.json* 文件为例：
 
 .. _config-json:
 
@@ -76,7 +76,7 @@ The settings required by your application and the mechanism used to specify thos
 
 .. note:: You could store your ``Configuration`` instance as a service, but this would unnecessarily couple your application to a single configuration system and specific configuration keys. Instead, you can use the :ref:`Options pattern <options-config-objects>` to avoid these issues.
 
-.. note:: 你可将 ``Configuration`` 实例设计为一个服务，但这会导致不必要地把应用程序和配置系统与指定配置键耦合在一起。相反可通过 :ref:`选项模式 <options-config-objects>` 来避免这一问题。
+.. note:: 你可将 ``Configuration`` 实例设计为一个服务，但这会导致不必要地把应用程序和配置系统与指定配置键耦合在一起。相反可通过 :ref:`选择模式 <options-config-objects>` 来避免这一问题。
 
 Using the built-in sources
 ----------------------------
@@ -217,7 +217,7 @@ When you bind options to configuration each property in your options type is bou
 
 Each call to :dn:method:`~Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure\<TOptions>` adds an :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` service to the service container that is used by the :dn:iface:`~Microsoft.Extensions.Options.IOptions\<TOptions>` service to provide the configured options to the application or framework. If you want to configure your options using objects that must be obtained from the service container (for example, to read settings from a database) you can use the ``AddSingleton<IConfigureOptions<TOptions>>`` extension method to register a custom :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` service.
 
-通过调用 :dn:method:`~Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure\<TOptions>` 将一个个 :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` 服务加入服务容器，是为了之后应用程序或框架能通过 :dn:iface:`~Microsoft.Extensions.Options.IOptions\<TOptions>` 服务来获取配置选项。若是想从服务容器（比如从数据库中读配置）获取配置，你可使用 ``AddSingleton<IConfigureOptions<TOptions>>`` 扩展方法注册定制的 :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` 服务。
+通过调用 :dn:method:`~Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure\<TOptions>` 将一个 :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` 服务加入服务容器，是为了之后应用程序或框架能通过 :dn:iface:`~Microsoft.Extensions.Options.IOptions\<TOptions>` 服务来获取配置选项。若是想从服务容器（比如从数据库中读配置）获取配置，你可使用 ``AddSingleton<IConfigureOptions<TOptions>>`` 扩展方法注册定制的 :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` 服务。
 
 You can have multiple :dn:iface:`~Microsoft.Extensions.Options.IConfigureOptions\<TOptions>` services for the same option type and they are all applied in order. In the :ref:`example <options-example>` above, the values of ``Option1`` and ``Option2`` are both specified in `appsettings.json`, but the value of ``Option1`` is overridden by the configured delegate with the value "value1_from_action".
 
