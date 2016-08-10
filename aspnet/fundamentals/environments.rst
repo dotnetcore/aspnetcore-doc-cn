@@ -88,7 +88,7 @@ Production
 
 The ``Production`` environment is the environment in which the application runs when it is live and being used by end users. This environment should be configured to maximize security, performance, and application robustness. Some common settings that a production environment might have that would differ from development include:
 
-``Production`` 环境是应用程序运行的环境，它是活动的并且被终端用户使用。这个环境应该被配置为最大限度提高安全性，性能和应用程序的鲁棒性。生产环境不同于开发环境的一些通用的设置包括：
+``Production`` 环境是应用程序运行的环境，它是活动的并且被终端用户使用。这个环境应该被配置为最大限度提高安全性，性能和应用程序的健壮性。生产环境不同于开发环境的一些通用的设置包括：
 
 - Turn on caching
 - Ensure all client-side resources are bundled, minified, and potentially served from a CDN
