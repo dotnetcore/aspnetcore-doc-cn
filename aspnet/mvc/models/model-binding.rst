@@ -17,9 +17,9 @@ Introduction to model binding
 模型绑定介绍
 ------------
 
-Model binding in MVC maps data from HTTP requests to action method parameters. The parameters may be simple types such as strings, integers, or floats, or they may be complex types. This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data. MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app. Writing your own text to type converter code is tedious, and error prone. 
+Model binding in ASP.NET Core MVC maps data from HTTP requests to action method parameters. The parameters may be simple types such as strings, integers, or floats, or they may be complex types. This is a great feature of MVC because mapping incoming data to a counterpart is an often repeated scenario, regardless of size or complexity of the data. MVC solves this problem by abstracting binding away so developers don't have to keep rewriting a slightly different version of that same code in every app. Writing your own text to type converter code is tedious, and error prone. 
 
-MVC 中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法里。这些参数可以是 string， interger， float 这样的简单类型，也可以是复杂类型。这是 MVC 的一个非常棒功能，因为无论传入数据的大小或复杂性如何，映射传入数据到对应项是一个经常重复的情况。 MVC 通过抽象绑定解决了这个问题，所以开发者们不必继续在每一个应用中反复编写同样的代码。自己编写文本到类型的转换代码是冗长并且容易出错的。
+ASP.NET Core MVC 中的模型绑定从 HTTP 请求参数中将数据映射到 Action 方法里。这些参数可以是 string， interger， float 这样的简单类型，也可以是复杂类型。这是 MVC 的一个非常棒功能，因为无论传入数据的大小或复杂性如何，映射传入数据到对应项是一个经常重复的情况。 MVC 通过抽象绑定解决了这个问题，所以开发者们不必继续在每一个应用中反复编写同样的代码。自己编写文本到类型的转换代码是冗长并且容易出错的。
 
 How model binding works
 -----------------------
@@ -55,7 +55,7 @@ MVC 尝试通过参数名将请求数据绑定到 Action 的参数上。 MVC 将
 #. ``Route values``: The set of route values provided by `routing <https://docs.asp.net/projects/mvc/en/latest/controllers/routing.html>`_. 
 #. ``Query strings``: The query string part of the URI.
 
-分割线----------
+中英文分割线----------
 
 #. ``Form values``: 这是通过 HTTP POST 请求发送的表单数据(包括 jQuery POST 请求)。
 #. ``Route values``: 路由数据集由 `路由 <https://docs.asp.net/projects/mvc/en/latest/controllers/routing.html>`_ 提供。
@@ -69,9 +69,9 @@ Since model binding asked for a key named ``id`` and there is nothing named ``id
 
 因为模型绑定要找一个命名为 ``id`` 的键，但是在表单数据里没有命名为 ``id`` 的键，所以接下来将在路由数据中找寻这个键。在我们的例子中，从路由数据中找到后并将值转换成 interger 类型的值 2 进行绑定。相同的请求定义为 Edit(string id) 将转换成 string 类型的值 "2" 。
 
-So far the example uses simple types. In MVC simple types are any .NET primitive type or type with a string type converter. If the action method's parameter were a class such as the ``Movie`` type, which contains both simple and complex types as properties, MVC's model binding will still handle it nicely. It uses reflection and recursion to traverse the properties of complex types looking for matches. Model binding looks for the pattern parameter_name.property_name to bind values to properties. If it doesn't find matching values of this form, it will attempt to bind using just the property name. For those types such as ``Collection`` types, model binding looks for matches to `parameter_name[index]` or just `[index]`. Model binding treats  ``Dictionary`` types similarly, asking for `parameter_name[key]` or just `[key]`, as long as they keys are simple types. Keys that are supported match the field names HTML and tag helpers generated for the same model type. This enables round-tripping values so that the form fields remain filled with the user's input for their convenience, for example, when bound data from a create or edit did not pass validation.
+So far the example uses simple types. In MVC simple types are any .NET primitive type or type with a string type converter. If the action method's parameter were a class such as the ``Movie`` type, which contains both simple and complex types as properties, MVC's model binding will still handle it nicely. It uses reflection and recursion to traverse the properties of complex types looking for matches. Model binding looks for the pattern parameter_name.property_name to bind values to properties. If it doesn't find matching values of this form, it will attempt to bind using just the property name. For those types such as ``Collection`` types, model binding looks for matches to `parameter_name[index]` or just `[index]`. Model binding treats  ``Dictionary`` types similarly, asking for `parameter_name[key]` or just `[key]`, as long as the keys are simple types. Keys that are supported match the field names HTML and tag helpers generated for the same model type. This enables round-tripping values so that the form fields remain filled with the user's input for their convenience, for example, when bound data from a create or edit did not pass validation.
 
-到目前为止的例子使用的都是简单类型。在 MVC 中简单类型是任何 .NET 原始类型或者带字符串的类型的转换器。如果 Action 方法的参数是一个类，比如说 ``Movie`` 类型，这个类包含简单类型和复杂类型的属性， MVC 的模型绑定仍然可以很好的处理它。它使用反射和递归遍历复杂类型寻找匹配的属性。模型绑定寻找 `parameter_name.parameter_name` 的规律去绑定值到属性上。如果没有从表单中找到匹配的值，将尝试只通过 `property_name` 进行绑定。对于那些 ``集合(Collection)`` 类型，模型绑定会去匹配 `parameter_name[index]` 或者只是 `[index]` 。模型绑定对待 ``字典(Dictionary)`` 类型也是一样，寻找 `parameter_name[key]` 或只是 `[key]` ，前提是他们的 Key 是简单类型。 Key 支持匹配 HTML 和 Tag Helpers 为相同的模型类型生成的字段名。当创建或者编辑的绑定数据未通过验证的时候，回传值使得用户输入的表单字段仍然保留，方便了用户(不必重新输入全部数据)。
+到目前为止的例子使用的都是简单类型。在 MVC 中简单类型是任何 .NET 原始类型或者带字符串的类型的转换器。如果 Action 方法的参数是一个类，比如说 ``Movie`` 类型，这个类包含简单类型和复杂类型的属性， MVC 的模型绑定仍然可以很好的处理它。它使用反射和递归遍历复杂类型寻找匹配的属性。模型绑定寻找 `parameter_name.parameter_name` 的规律去绑定值到属性上。如果没有从表单中找到匹配的值，将尝试只通过 `property_name` 进行绑定。对于那些 ``集合(Collection)`` 类型，模型绑定会去匹配 `parameter_name[index]` 或者只是 `[index]` 。模型绑定对待 ``字典(Dictionary)`` 类型也是一样，寻找 `parameter_name[key]` 或只是 `[key]` ，前提是 Key 是简单类型。 Key 支持匹配 HTML 和 Tag Helpers 为相同的模型类型生成的字段名。当创建或者编辑的绑定数据未通过验证的时候，回传值使得用户输入的表单字段仍然保留，方便了用户(不必重新输入全部数据)。
 
 In order for binding to happen the class must have a public default constructor and member to be bound must be public writable properties. When model binding happens the class will only be instantiated using the public default constructor, then the properties can be set.
 
@@ -128,6 +128,7 @@ MVC 包含几种让你可以指定与默认绑定源不同行为的 Attribute �
 - ``[ModelBinder]``: 用来替换默认的模型绑定器(Model Binder)，绑定源和名字。
 
 Attributes are very helpful tools when you need to override the default behavior of model binding.
+
 当你需要替换模型绑定的默认行为时， Attribute 是非常有用的工具。
 
 Binding formatted data from the request body
@@ -144,9 +145,9 @@ HTTP 请求数据能够支持各种各样的格式，包括 JSON 、 XML 以及�
 
 .. Note:: ``JsonInputFormatter`` 是默认的格式化器，它是基于 `Json.NET <http://www.newtonsoft.com/json>`_.
 
-ASP.NET selects input formatters based on the `Content-Type <https://www.w3.org/Protocols/rfc1341/4_Content-Type.html>`_ header and the type of the parameter, unless there is an attribute applied to it specifying otherwise. If you'd like to use XML or another format you must configure it in the `Startup.cs` file, but you may first have to obtain a reference to ``Microsoft.AspNet.Mvc.Formatters.Xml`` using NuGet. Your startup code should look something like this:
+ASP.NET selects input formatters based on the `Content-Type <https://www.w3.org/Protocols/rfc1341/4_Content-Type.html>`_ header and the type of the parameter, unless there is an attribute applied to it specifying otherwise. If you'd like to use XML or another format you must configure it in the `Startup.cs` file, but you may first have to obtain a reference to ``Microsoft.AspNetCore.Mvc.Formatters.Xml`` using NuGet. Your startup code should look something like this:
 
-ASP.NET 选择输入格式化器基于 `Content-Type <https://www.w3.org/Protocols/rfc1341/4_Content-Type.html>`_ Header 以及参数的类型，除非这里有一个 Attribute 去指定其它的。如果你更愿意去使用 XML 或者其他格式，你必须在 `Startup.cs` 文件中进行配置，但是也许你首先必须通过 NuGet 引用 ``Microsoft.AspNet.Mvc.Formatters.Xml`` 。你的启动代码看起来应该像这样：
+ASP.NET 选择输入格式化器基于 `Content-Type <https://www.w3.org/Protocols/rfc1341/4_Content-Type.html>`_ Header 以及参数的类型，除非这里有一个 Attribute 去指定其它的。如果你更愿意去使用 XML 或者其他格式，你必须在 `Startup.cs` 文件中进行配置，但是也许你首先必须通过 NuGet 引用 ``Microsoft.AspNetCore.Mvc.Formatters.Xml`` 。你的启动代码看起来应该像这样：
 
 
 .. code-block:: c#
