@@ -5,11 +5,13 @@ Dependency Injection
 依赖注入
 ========
 
-`Steve Smith`_
+原文：`Dependency Injection <https://docs.asp.net/en/latest/fundamentals/dependency-injection.html>`_
 
-作者： `Steve Smith`_
+作者：`Steve Smith`_
 
-翻译： `刘浩杨 <http://github.com/liuhaoyang>`_
+翻译：`刘浩杨 <http://github.com/liuhaoyang>`_
+
+校对：`许登洋(Seay) <https://github.com/SeayXu>`_
 
 ASP.NET Core is designed from the ground up to support and leverage dependency injection. ASP.NET Core applications can leverage built-in framework services by having them injected into methods in the Startup class, and application services can be configured for injection as well. The default services container provided by ASP.NET Core provides a minimal feature set and is not intended to replace other containers.
 
@@ -32,7 +34,7 @@ Dependency injection (DI) is a technique for achieving loose coupling between ob
 
 依赖注入（Dependency injection , DI）是一种实现对象及其合作者或依赖项之间松散耦合的技术。将类用来执行其操作（Action）的这些对象以某种方式提供给该类，而不是直接实例化合作者或使用静态引用。通常，类会通过它们的构造函数声明其依赖关系，允许它们遵循 `显示依赖原则 (Explicit Dependencies Principle) <http://deviq.com/explicit-dependencies-principle/>`_ 。这种方法被称为 “构造函数注入（constructor injection）”。
 
-When classes are designed with DI in mind, they are more loosely coupled because they do not have direct, hard-coded dependencies on their collaborators. This follows the `Dependency Inversion Principle <http://deviq.com/dependency-inversion-principle/>`_, which states that *"high level modules should not depend on low level modules; both should depend on abstractions."* Instead of referencing specific implementations, classes request abstractions (typically ``interfaces``) which are provided to them when they are constructed. Extracting dependencies into interfaces and providing implementations of these interfaces as parameters is also an example of the `Strategy design pattern <http://deviq.com/strategy-design-pattern/>`_.
+When classes are designed with DI in mind, they are more loosely coupled because they do not have direct, hard-coded dependencies on their collaborators. This follows the `Dependency Inversion Principle <http://deviq.com/dependency-inversion-principle/>`_, which states that *"high level modules should not depend on low level modules; both should depend on abstractions."* Instead of referencing specific implementations, classes, request abstractions (typically ``interfaces``) which are provided to them when they are constructed. Extracting dependencies into interfaces and providing implementations of these interfaces as parameters is also an example of the `Strategy design pattern <http://deviq.com/strategy-design-pattern/>`_.
 
 当类的设计使用 DI 思想，它们更加松散耦合，因为它们没有直接硬编码的依赖于它们的合作者。这遵循 `依赖倒置原则（Dependency Inversion Principle） <http://deviq.com/dependency-inversion-principle/>`_，其中指出 *"高层模块不应该依赖于低层模块；两者都应该依赖于抽象。"* 类要求在它们构造时向其提供抽象（通常是 ``interfaces`` ），而不是引用特定的实现。提取接口的依赖关系和提供这些接口的实现作为参数也是 `策略设计模式（Strategy design pattern） <http://deviq.com/strategy-design-pattern/>`_ 的一个示例。
 
@@ -65,7 +67,7 @@ The ``ConfigureServices`` method in the ``Startup`` class is responsible for def
   :language: c#
   :lines: 39-56
   :dedent: 8
-  :emphasize-lines: 4,9,13
+  :emphasize-lines: 5,8,12
 
 The features and middleware provided by ASP.NET, such as MVC, follow a convention of using a single Add\ *Service*\  extension method to register all of the services required by that feature. 
 
@@ -90,7 +92,7 @@ You can register your own application services as follows. The first generic typ
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Startup.cs
   :language: c#
-  :lines: 54-55
+  :lines: 53-54
   :dedent: 12
 
 .. note:: Each ``services.Add<service>`` calls adds (and potentially configures) services. For example, ``services.AddMvc()`` adds the services MVC requires.
