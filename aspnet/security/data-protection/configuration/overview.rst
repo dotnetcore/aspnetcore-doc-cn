@@ -3,28 +3,19 @@
 Configuring Data Protection
 ===========================
 
-配置数据保护
-===========================
-
-翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
-
-校对： 
-
 When the data protection system is initialized it applies some :ref:`default settings <data-protection-default-settings>` based on the operational environment. These settings are generally good for applications running on a single machine. There are some cases where a developer may want to change these (perhaps because his application is spread across multiple machines or for compliance reasons), and for these scenarios the data protection system offers a rich configuration API.
 
 .. _data-protection-configuration-callback:
 
-There is an extension method ConfigureDataProtection hanging off of IServiceCollection. This method takes a callback, and the parameter passed to the callback object allows configuration of the system. For instance, to store keys at a UNC share instead of %LOCALAPPDATA% (the default), configure the system as follows:
+There is an extension method AddDataProtection which returns an IDataProtectionBuilder which itself exposes extension methods that you can chain together to configure various data protection options. For instance, to store keys at a UNC share instead of %LOCALAPPDATA% (the default), configure the system as follows:
 
 .. code-block:: c#
 
   public void ConfigureServices(IServiceCollection services)
   {
-      services.AddDataProtection();
-      services.ConfigureDataProtection(configure =>
-      {
-          configure.PersistKeysToFileSystem(new DirectoryInfo(@"\\server\share\directory\"));
-      });
+      services.AddDataProtection()
+          .PersistKeysToFileSystem(new DirectoryInfo(@"\\server\share\directory\"));
+      
   }
 
 .. warning:: 
@@ -38,12 +29,9 @@ You can configure the system to protect keys at rest by calling any of the Prote
 
   public void ConfigureServices(IServiceCollection services)
     {
-        services.AddDataProtection();
-        services.ConfigureDataProtection(configure =>
-        {
-            configure.PersistKeysToFileSystem(new DirectoryInfo(@"\\server\share\directory\"));
-            configure.ProtectKeysWithCertificate("thumbprint");
-        });
+        services.AddDataProtection()
+            .PersistKeysToFileSystem(new DirectoryInfo(@"\\server\share\directory\"))
+            .ProtectKeysWithCertificate("thumbprint");
     }
 
 See :ref:`key encryption at rest <data-protection-implementation-key-encryption-at-rest>` for more examples and for discussion on the built-in key encryption mechanisms.
@@ -54,11 +42,8 @@ To configure the system to use a default key lifetime of 14 days instead of 90 d
 
   public void ConfigureServices(IServiceCollection services)
   {
-      services.AddDataProtection();
-      services.ConfigureDataProtection(configure =>
-      {
-          configure.SetDefaultKeyLifetime(TimeSpan.FromDays(14));
-      });
+      services.AddDataProtection()
+          .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
   }
 
 By default the data protection system isolates applications from one another, even if they're sharing the same physical key repository. This prevents the applications from understanding each other's protected payloads. To share protected payloads between two different applications, configure the system passing in the same application name for both applications as in the below example:
@@ -69,11 +54,8 @@ By default the data protection system isolates applications from one another, ev
 
   public void ConfigureServices(IServiceCollection services)
   {
-      services.AddDataProtection();
-      services.ConfigureDataProtection(configure =>
-      {
-          configure.SetApplicationName("my application");
-      });
+      services.AddDataProtection()
+          .SetApplicationName("my application");
   }
 
 .. _data-protection-configuring-disable-automatic-key-generation:
@@ -84,11 +66,8 @@ Finally, you may have a scenario where you do not want an application to automat
 
   public void ConfigureServices(IServiceCollection services)
   {
-    services.AddDataProtection();
-    services.ConfigureDataProtection(configure =>
-    {
-        configure.DisableAutomaticKeyGeneration();
-    });
+    services.AddDataProtection()
+        .DisableAutomaticKeyGeneration();
   }
 
 .. _data-protection-configuration-per-app-isolation:
@@ -96,10 +75,7 @@ Finally, you may have a scenario where you do not want an application to automat
 Per-application isolation
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-逐个应用程序隔离
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-When the data protection system is provided by an ASP.NET host, it will automatically isolate applications from one another, even if those applications are running under the same worker process account and are using the same master keying material. This is somewhat similar to the IsolateApps modifier from System.Web's <machineKey> element.
+When the data protection system is provided by an ASP.NET Core host, it will automatically isolate applications from one another, even if those applications are running under the same worker process account and are using the same master keying material. This is somewhat similar to the IsolateApps modifier from System.Web's <machineKey> element.
 
 The isolation mechanism works by considering each application on the local machine as a unique tenant, thus the IDataProtector rooted for any given application automatically includes the application ID as a discriminator. The application's unique ID comes from one of two places.
 
@@ -110,28 +86,22 @@ The unique identifier is designed to survive resets - both of the individual app
 
 This isolation mechanism assumes that the applications are not malicious. A malicious application can always impact any other application running under the same worker process account. In a shared hosting environment where applications are mutually untrusted, the hosting provider should take steps to ensure OS-level isolation between applications, including separating the applications' underlying key repositories.
 
-If the data protection system is not provided by an ASP.NET host (e.g., if the developer instantiates it himself via the DataProtectionProvider concrete type), application isolation is disabled by default, and all applications backed by the same keying material can share payloads as long as they provide the appropriate purposes. To provide application isolation in this environment, call the SetApplicationName method on the configuration object, see the :ref:`code sample <data-protection-code-sample-application-name>` above.
+If the data protection system is not provided by an ASP.NET Core host (e.g., if the developer instantiates it himself via the DataProtectionProvider concrete type), application isolation is disabled by default, and all applications backed by the same keying material can share payloads as long as they provide the appropriate purposes. To provide application isolation in this environment, call the SetApplicationName method on the configuration object, see the :ref:`code sample <data-protection-code-sample-application-name>` above.
 
 .. _data-protection-changing-algorithms:
 
 Changing algorithms
 ^^^^^^^^^^^^^^^^^^^
-
-改变算法
-^^^^^^^^^^^^^^^^^^^
-
 The data protection stack allows changing the default algorithm used by newly-generated keys. The simplest way to do this is to call UseCryptographicAlgorithms from the configuration callback, as in the below example.
 
 .. code-block:: c#
 
-  services.ConfigureDataProtection(configure =>
-  {
-      configure.UseCryptographicAlgorithms(new AuthenticatedEncryptionOptions()
+  services.AddDataProtection()
+      .UseCryptographicAlgorithms(new AuthenticatedEncryptionSettings()
       {
           EncryptionAlgorithm = EncryptionAlgorithm.AES_256_CBC,
           ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
       });
-  });
 
 The default EncryptionAlgorithm and ValidationAlgorithm are AES-256-CBC and HMACSHA256, respectively. The default policy can be set by a system administrator via :doc:`machine-wide-policy`, but an explicit call to UseCryptographicAlgorithms will override the default policy.
 
@@ -147,28 +117,23 @@ The developer can manually specify an implementation if desired via a call to Us
 Specifying custom managed algorithms
 ------------------------------------
 
-指定定制的托管算法
-------------------------------------
-
-To specify custom managed algorithms, create a ManagedAuthenticatedEncryptionOptions instance that points to the implementation types.
+To specify custom managed algorithms, create a ManagedAuthenticatedEncryptionSettings instance that points to the implementation types.
 
 
 .. code-block:: c#
 
-  services.ConfigureDataProtection(configure =>
-  {
-      configure.UseCustomCryptographicAlgorithms(new ManagedAuthenticatedEncryptionOptions()
+  serviceCollection.AddDataProtection()
+      .UseCustomCryptographicAlgorithms(new ManagedAuthenticatedEncryptionSettings()
       {
           // a type that subclasses SymmetricAlgorithm
           EncryptionAlgorithmType = typeof(Aes),
- 
+
           // specified in bits
           EncryptionAlgorithmKeySize = 256,
- 
+
           // a type that subclasses KeyedHashAlgorithm
           ValidationAlgorithmType = typeof(HMACSHA256)
       });
-  });
 
 Generally the \*Type properties must point to concrete, instantiable (via a public parameterless ctor) implementations of SymmetricAlgorithm and KeyedHashAlgorithm, though the system special-cases some values like typeof(Aes) for convenience.
 
@@ -180,45 +145,39 @@ Generally the \*Type properties must point to concrete, instantiable (via a publ
 Specifying custom Windows CNG algorithms
 ----------------------------------------
 
-指定定制的 Windows CNG 算法
-----------------------------------------
-
-To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptionOptions instance that contains the algorithmic information.
+To specify a custom Windows CNG algorithm using CBC-mode encryption + HMAC validation, create a CngCbcAuthenticatedEncryptionSettings instance that contains the algorithmic information.
 
 .. code-block:: c#
 
-  services.ConfigureDataProtection(configure =>
-  {
-      configure.UseCustomCryptographicAlgorithms(new CngCbcAuthenticatedEncryptionOptions()
+  services.AddDataProtection()
+      .UseCustomCryptographicAlgorithms(new CngCbcAuthenticatedEncryptionSettings()
       {
           // passed to BCryptOpenAlgorithmProvider
           EncryptionAlgorithm = "AES",
           EncryptionAlgorithmProvider = null,
- 
+
           // specified in bits
           EncryptionAlgorithmKeySize = 256,
- 
+
           // passed to BCryptOpenAlgorithmProvider
           HashAlgorithm = "SHA256",
           HashAlgorithmProvider = null
       });
-  });
 
 .. note:: 
   The symmetric block cipher algorithm must have a key length of ≥ 128 bits and a block size of ≥ 64 bits, and it must support CBC-mode encryption with PKCS #7 padding. The hash algorithm must have a digest size of >= 128 bits and must support being opened with the BCRYPT_ALG_HANDLE_HMAC_FLAG flag. The \*Provider properties can be set to null to use the default provider for the specified algorithm. See the `BCryptOpenAlgorithmProvider <https://msdn.microsoft.com/en-us/library/windows/desktop/aa375479(v=vs.85).aspx>`_ documentation for more information.
 
-To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption + validation, create a CngGcmAuthenticatedEncryptionOptions instance that contains the algorithmic information.
+To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption + validation, create a CngGcmAuthenticatedEncryptionSettings instance that contains the algorithmic information.
 
 .. code-block:: c#
 
-  services.ConfigureDataProtection(configure =>
-  {
-      configure.UseCustomCryptographicAlgorithms(new CngGcmAuthenticatedEncryptionOptions()
+  services.AddDataProtection()
+      .UseCustomCryptographicAlgorithms(new CngGcmAuthenticatedEncryptionSettings()
       {
           // passed to BCryptOpenAlgorithmProvider
           EncryptionAlgorithm = "AES",
           EncryptionAlgorithmProvider = null,
- 
+
           // specified in bits
           EncryptionAlgorithmKeySize = 256
       });
@@ -230,17 +189,10 @@ To specify a custom Windows CNG algorithm using Galois/Counter Mode encryption +
 Specifying other custom algorithms
 ----------------------------------
 
-指定其它定制算法
-----------------------------------
-
 Though not exposed as a first-class API, the data protection system is extensible enough to allow specifying almost any kind of algorithm. For example, it is possible to keep all keys contained within an HSM and to provide a custom implementation of the core encryption and decryption routines. See IAuthenticatedEncryptorConfiguration in the core cryptography extensibility section for more information.
 
 See also
 --------
-
-参考
---------
-
 :doc:`non-di-scenarios`
 
 :doc:`machine-wide-policy`

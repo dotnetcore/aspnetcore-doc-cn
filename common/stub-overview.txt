@@ -1,4 +1,4 @@
 .. include:: /../common/stub-topic.txt
 
 .. note::
-    本文档还在编写中，标题中带有 |stub-icon| 符号的表示这篇文章尚未完成，你可以通过 `issue tracker <https://github.com/aspnet/docs/issues>`_ 来跟踪这些文章的状态。你可以阅读 GitHub 上的  `贡献 <https://github.com/dotnetcore/aspnetcore-doc-cn/blob/master/CONTRIBUTING.md>`_ 一文来了解如何贡献。
+    This documentation is a work in progress. Topics marked with a |stub-icon| are placeholders that have not been written yet. You can track the status of these topics through our public documentation `issue tracker <https://github.com/aspnet/docs/issues>`_. Learn how you can `contribute <https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md>`_ on GitHub.

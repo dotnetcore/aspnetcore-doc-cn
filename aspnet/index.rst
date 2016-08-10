@@ -20,6 +20,7 @@ ASP.NET Core Documentation
 
     Introduction <intro>
     getting-started
+    Release notes <https://github.com/aspnet/home/releases>
     tutorials/index
     fundamentals/index
     mvc/index
