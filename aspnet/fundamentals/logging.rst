@@ -10,7 +10,7 @@ Logging
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
-校对： 
+校对： `何镇汐 <http://github.com/utilcore>`_
 
 ASP.NET Core has built-in support for logging, and allows developers to easily leverage their preferred logging framework's functionality as well. Implementing logging in your application requires a minimal amount of setup code. Once this is in place, logging can be added wherever it is desired.
 

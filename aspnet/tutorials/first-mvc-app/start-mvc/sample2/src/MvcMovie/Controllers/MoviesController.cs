@@ -26,14 +26,17 @@ namespace MvcMovie.Controllers
             _context = context;
         }
         /*
+         * #region snippet_index
         // GET: Movies
         public async Task<IActionResult> Index()
         {
             return View(await _context.Movie.ToListAsync());
         }
+        * #endregion
         // End of first Index
         */
-        // GET: Movies/Details/5
+        #region snippet_details
+        // GET: Movies/Details/5 
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +52,7 @@ namespace MvcMovie.Controllers
 
             return View(movie);
         }
-
+        #endregion
         // GET: Movies/Create
         public IActionResult Create()
         {
@@ -71,7 +74,7 @@ namespace MvcMovie.Controllers
             }
             return View(movie);
         }
-
+        #region snippet_edit_get
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -87,12 +90,14 @@ namespace MvcMovie.Controllers
             }
             return View(movie);
         }
+        #endregion
 
         // POST: Movies/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 #if BindNoRating
         // Edit Post 
+        //         #region snippet_edit_post1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Genre,Price,ReleaseDate,Title")] Movie movie)
@@ -124,6 +129,7 @@ namespace MvcMovie.Controllers
             }
             return View(movie);
         }
+        //  #endregion
         // End of Edit Post
 #else
         [HttpPost]
@@ -246,6 +252,7 @@ namespace MvcMovie.Controllers
 
 #if Search1
         // First Search
+        // #region snippet_1stSearch
         public async Task<IActionResult> Index(string searchString)
         {
             var movies = from m in _context.Movie
@@ -258,11 +265,13 @@ namespace MvcMovie.Controllers
 
             return View(await movies.ToListAsync());
         }
+        // #endregion
         // End first Search
 #endif
 
 #if SearchID
         // Search ID 
+        // #region snippet_SearchID
         public async Task<IActionResult> Index(string id)
         {
             var movies = from m in _context.Movie
@@ -275,24 +284,28 @@ namespace MvcMovie.Controllers
 
             return View(await movies.ToListAsync());
         }
+        // #endregion
         // End search ID
 #endif
 
 #if SearchPost
         // Search Post
+         // #region snippet_SearchPost
         [HttpPost]
         public string Index(string searchString, bool notUsed)
         {
             return "From [HttpPost]Index: filter on " + searchString;
         }
+        // #endregion
         // End SP
 #endif
 
 #if SearchGenre
         // Search by genre.
+        // #region snippet_SearchGenre
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-            // Use LINQ to get list of genre's.
+            // Use LINQ to get list of genres.
             IQueryable<string> genreQuery = from m in _context.Movie
                                             orderby m.Genre
                                             select m.Genre;
@@ -316,6 +329,7 @@ namespace MvcMovie.Controllers
 
             return View(movieGenreVM);
         }
+        // #endregion
         // End of genre search.
 #endif
 
