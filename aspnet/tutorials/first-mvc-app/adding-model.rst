@@ -341,6 +341,8 @@ A request to the Movies controller returns all the entries in the ``Movies`` tab
 
 一个到 MoviesController 的请求从 ``Movies`` 表返回所有的条目，然后传递数据到 ``Index`` 视图 (View) 。
 
+.. _strongly-typed-models-keyword-label:
+
 Strongly typed models and the @model keyword
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

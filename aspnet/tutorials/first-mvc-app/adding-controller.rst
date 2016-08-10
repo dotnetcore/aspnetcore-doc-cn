@@ -35,9 +35,9 @@ We'll be covering all these concepts in this tutorial series and show you how to
 
 .. image:: adding-controller/_static/mvc1.png
 
-- In **Solution Explorer**, right-click **Controllers > Add > New Item...**
+- In **Solution Explorer**, right-click **Controllers > Add > New Item... > MVC Controller Class**
 
-- 在 **解决方案资源管理器（Solution Explorer）** 中，鼠标右键点击 **Controllers > 添加（Add） > 新建项...（New Item...）**
+- 在 **解决方案资源管理器（Solution Explorer）** 中，鼠标右键点击 **Controllers > 添加（Add） > 新建项...（New Item...） > MVC 控制器类（MVC Controller Class）**
 
 .. image:: adding-controller/_static/add_controller.png
 
