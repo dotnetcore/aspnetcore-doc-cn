@@ -10,7 +10,7 @@ Logging
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
-校对： `何镇汐 <http://github.com/utilcore>`_
+校对： `何镇汐 <http://github.com/utilcore>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
 
 ASP.NET Core has built-in support for logging, and allows developers to easily leverage their preferred logging framework's functionality as well. Implementing logging in your application requires a minimal amount of setup code. Once this is in place, logging can be added wherever it is desired.
 
@@ -57,11 +57,11 @@ You may see more than one log statement per web request you make in your browser
 
 The call to the log method can utilize a format string with named placeholders (like `{path}`). These placeholders are populated in the order in which they appear by the args values passed into the method call. Some logging providers will store these names along with their mapped values in a dictionary that can later be queried. In the example below, the request path is passed in as a named placeholder:
 
-日志方法被调用时，可以利用命名占位符（如 `{path}` ）来实现格式化。按照方法调用时传入参数的顺序一一填充出现在其中的占位符。一些日志提供程序会用一个字典来保存名称和影射值以供以后使用。在下例中，请求路径通过命名占位符传入：
+日志方法被调用时，可以利用命名占位符（如 `{path}` ）来实现格式化。按照方法调用时传入参数的顺序一一填充出现在其中的占位符。一些日志提供程序会用一个字典来保存名称和映射值以供以后使用。在下例中，请求路径通过命名占位符传入：
 
 .. literalinclude:: logging/sample/src/TodoApi/Startup.cs
   :language: c#
-  :lines: 35
+  :lines: 54
   :dedent: 16
 
 In your real world applications, you will want to add logging based on application-level, not framework-level, events. For instance, if you have created a Web API application for managing To-Do Items (see :doc:`/tutorials/first-web-api`), you might add logging around the various operations that can be performed on these items.
@@ -90,7 +90,7 @@ Working with ILogger<T>
 
 As we have just seen, your application can request an instance of ``ILogger<T>`` as a dependency in a class's constructor, where ``T`` is the type performing logging. The ``TodoController`` shows an example of this approach. When this technique is used, the logger will automatically use the type's name as its category name. By requesting an instance of ``ILogger<T>``, your class doesn't need to create an instance of a logger via ``ILoggerFactory``. You can use this approach anywhere you don't need the additional functionality offered by ``ILoggerFactory``.
 
-如您所见，他、应用程序可通过构造函数请求到 ``ILogger<T>`` 实例，其中 ``T`` 是执行日志记录的类型。``TodoController`` 就是用了这种方法。当使用这种技术时，日志记录器会自动使用该类型的名称作为其日志类别的名称。通过请求 ``ILogger<T>`` 实例，类自己不必通过 ``ILoggerFactory`` 来实例化日志记录器。这种方法可以用在所有的地方——而不必使用 ``ILoggerFactory`` 。
+如您所见，应用程序可通过构造函数请求到 ``ILogger<T>`` 实例，其中 ``T`` 是执行日志记录的类型。``TodoController`` 就是用了这种方法。当使用这种技术时，日志记录器会自动使用该类型的名称作为其日志类别的名称。通过请求 ``ILogger<T>`` 实例，类自己不必通过 ``ILoggerFactory`` 来实例化日志记录器。这种方法可以用在所有的地方——而不必使用 ``ILoggerFactory`` 。
 
 Logging Verbosity Levels
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,13 +105,13 @@ When adding logging statements to your application, you must specify a `LogLevel
 
 ASP.NET Core defines six levels of logging verbosity:
 
-ASP.NET Core 冗余地定义了六个级别的日志：
+ASP.NET Core 详尽地定义了六个日志级别：
 
 Debug
   Used for the most detailed log messages, typically only valuable to a developer debugging an issue. These messages may contain sensitive application data and so should not be enabled in a production environment. *Disabled by default.* Example: ``Credentials: {"User":"someuser", "Password":"P@ssword"}``
 
 Debug
-  用于记录最详细的日志消息，通常值用于开发阶段调试问题。这些消息包含敏感的应用程序数据，因此不应该用于生产环境。*默认应该为禁用*。举例：``Credentials: {"User":"someuser", "Password":"P@ssword"}``
+  用于记录最详细的日志消息，通常仅用于开发阶段调试问题。这些消息可能包含敏感的应用程序数据，因此不应该用于生产环境。*默认应禁用*。举例：``Credentials: {"User":"someuser", "Password":"P@ssword"}``
 
 Verbose
   These messages have short-term usefulness during development. They contain information that may be useful for debugging, but have no long-term value. This is the default most verbose level of logging. Example: ``Entering method Configure with flag set to true``
@@ -197,9 +197,9 @@ In the ``TodoController`` example, event id constants are defined for each event
 
 To see more detailed logging at the framework level, you can adjust the `LogLevel` specified to your logging provider to something more verbose (like `Debug` or `Verbose`). For example, if modify the `AddConsole` call in the `Configure` method to use `LogLevel.Verbose` and run the application, the result shows much framework-level detail about the request:
 
-要查看框架级别的详细日志，可以为日志提供程序调整为指定的日志级别，这样就能得到更为详细的日知录（如 `Debug` 或 `Veerbose`）。比如，如果在 `Configure` 方法中修改 `AddConsole` 调用的日志级别，改为使用 `LogLevel.Verbose` 并运行应用程序的话，框架级别的详细日志就会像下图这般显示：
+要查看框架级别的详细日志，可以为日志提供程序调整为指定的日志级别，这样就能得到更为详细的日志记录（如 `Debug` 或 `Verbose`）。比如，如果在 `Configure` 方法中修改 `AddConsole` 调用的日志级别，改为使用 `LogLevel.Verbose` 并运行应用程序的话，框架级别的详细日志就会像下图这般显示：
 
-.. image:: logging/_static/console-logger-verbose-output.png
+.. image:: logging/_static/console-logger-trace-output.png
 
 The console logger prefixes verbose output with "verbose: " and uses a gray font to make it easier to distinguish it from other levels of log output.
 
@@ -213,7 +213,7 @@ Scopes
 
 In the course of logging information within your application, you can group a set of logical operations within a *scope*. A scope is an ``IDisposable`` type returned by calling the ``BeginScopeImpl`` method, which lasts from the moment it is created until it is disposed. The built-in ``TraceSource`` logger returns a scope instance that is responsible for starting and stopping tracing operations. Any logging state, such as a transaction id, is attached to the scope when it is created.
 
-在应用程序记录日志信息的过程中，你可以将一组逻辑操作用 *作用域* 打包为一组。作用也是一种 ``IDisposable`` 类型，通过调用 ``BeginScopeImpl`` 方法来返回，它自创建之刻起存在，直至释放为止。内建的 ``TranceSource`` 日志记录器会返回一个作用域实例用来响应启动与停止跟踪操作。任何诸如事务 ID 这样的日志状态始一创建便关联到作用域了。
+在应用程序记录日志信息的过程中，你可以将一组逻辑操作用 *作用域* 打包为一组。作用域也是一种 ``IDisposable`` 类型，通过调用 ``BeginScopeImpl`` 方法来返回，它自创建起持续到释放为止。内建的 ``TraceSource`` 日志记录器会返回一个作用域实例用来响应启动与停止跟踪操作。任何诸如事务 ID 这样的日志状态从刚创建便关联到作用域了。
 
 Scopes are not required, and should be used sparingly, if at all. They're best used for operations that have a distinct beginning and end, such as a transaction involving multiple resources.
 
@@ -227,7 +227,7 @@ Configuring Logging in your Application
 
 To configure logging in your ASP.NET application, you should resolve ``ILoggerFactory`` in the ``Configure`` method in your ``Startup`` class. ASP.NET will automatically provide an instance of ``ILoggerFactory`` using :doc:`dependency-injection` when you add a parameter of this type to the ``Configure`` method. Once you've added ``ILoggerFactory`` as a parameter, you configure loggers within the ``Configure`` method by calling methods (or extension methods) on the logger factory. We have already seen an example of this configuration at the beginning of this article, when we added console logging by simply calling ``loggerFactory.AddConsole``. In addition to adding loggers, you can also control the verbosity of the application's logging by setting the ``MinimumLevel`` property on the logger factory. The default verbosity is ``Verbose``.
 
-为在 ASP.NET 应用程序中配置日志，你须在 ``Startup`` 类 ``Configure`` 方法中解析 ``ILoggerFactory``。ASP.NET 会基于 :doc:`dependency-injection` 以参数的形式自动为 ``Configure`` 方法提供 ``ILoggerFactory`` 实例。当你把 ``ILoggerFactory`` 添作参数时，在 ``Configure`` 中，通过在日志记录器工厂上调用方法（或扩展方法）来配置日志记录器。我们已在本文开头处看到，通过简单地调用 ``loggerFactory.AddConsole`` 来加入控制台日志记录。除了添加日志记录器，你还可以通过设置日志记录器工厂的 ``MinimumLevel`` 属性来控制应用程序地址的详细程度。默认的详细程度是 ``Verbose`` 。
+为在 ASP.NET 应用程序中配置日志，你须在 ``Startup`` 类 ``Configure`` 方法中解析 ``ILoggerFactory``。ASP.NET 会基于 :doc:`dependency-injection` 以参数的形式自动为 ``Configure`` 方法提供 ``ILoggerFactory`` 实例。当你把 ``ILoggerFactory`` 添作参数时，在 ``Configure`` 中，通过在日志记录器工厂上调用方法（或扩展方法）来配置日志记录器。我们已在本文开头处看到，通过简单地调用 ``loggerFactory.AddConsole`` 来加入控制台日志记录。除了添加日志记录器，你还可以通过设置日志记录器工厂的 ``MinimumLevel`` 属性来控制应用程序日志的详细程度。默认的详细程度是 ``Verbose`` 。
 
 .. note:: You can specify the minimum logging level each logger provider will use as well. For example, the ``AddConsole`` extension method supports an optional parameter for setting its minimum ``LogLevel``.
 
