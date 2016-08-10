@@ -3,7 +3,7 @@ Working with Multiple Environments
 在多个环境中工作
 ================
 
-By `Steve Smith`_
+作者： `Steve Smith`_
 
 翻译： `刘浩杨 <http://github.com/liuhaoyang>`_
 
@@ -79,7 +79,7 @@ Staging
 
 By convention, a ``Staging`` environment is a pre-production environment used for final testing before deployment to production. Ideally, its physical characteristics should mirror that of production, so that any issues that may arise in production occur first in the staging environment, where they can be addressed without impact to users.
 
-按照惯例， ``Staging`` 环境是用于部署到生产环境前进行最后测试的预生产环境。理想的情况下，它的物理特征应该是生产环境的真实写照，因此生产环境中可能出现的任何问题都首先发生在预演环境中，在这里它们可以解决而不影响到用户。
+按照惯例， ``Staging`` 环境是用于部署到生产环境前进行最后测试的预生产环境。理想的情况下，它的物理特征应该是生产环境的真实写照，因此生产环境中可能出现的任何问题都首先发生在预演环境中，在这里可以解决它们而不影响到用户。
 
 Production
 ^^^^^^^^^^
@@ -88,7 +88,7 @@ Production
 
 The ``Production`` environment is the environment in which the application runs when it is live and being used by end users. This environment should be configured to maximize security, performance, and application robustness. Some common settings that a production environment might have that would differ from development include:
 
- ``Production`` 环境是应用程序运行的环境，它是活动的并且被终端用户使用。这个环境应该被配置为最大限度提高安全性，性能和应用程序的鲁棒性。生产环境不同于开发环境的一些通用的设置包括：
+``Production`` 环境是应用程序运行的环境，它是活动的并且被终端用户使用。这个环境应该被配置为最大限度提高安全性，性能和应用程序的鲁棒性。生产环境不同于开发环境的一些通用的设置包括：
 
 - Turn on caching
 - Ensure all client-side resources are bundled, minified, and potentially served from a CDN
@@ -100,7 +100,7 @@ The ``Production`` environment is the environment in which the application runs 
 - 确保所有的客户端资源被打包，压缩和尽可能从CDN提供
 - 关闭诊断错误页面
 - 启用友好的错误页面
-- 启用生产日志和监控 (for example, `Application Insights <https://azure.microsoft.com/en-us/documentation/articles/app-insights-asp-net-five/>`_)
+- 启用生产日志和监控 (例如, `Application Insights <https://azure.microsoft.com/en-us/documentation/articles/app-insights-asp-net-five/>`_)
 
 This is by no means meant to be a complete list. It's best to avoid scattering environment checks in many parts of your application. Instead, the recommended approach is to perform such checks within the application's ``Startup`` class(es) wherever possible
 
