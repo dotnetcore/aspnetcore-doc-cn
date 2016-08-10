@@ -259,11 +259,11 @@ Once you've added ``ILoggerFactory`` as a parameter, you configure loggers withi
 
 Each logger provides its own set of extension methods to ``ILoggerFactory``. The console, debug, and event log loggers allow you to specify the minimum logging level at which those loggers should write log messages. The console and debug loggers provide extension methods accepting a function to filter log messages according to their logging level and/or category (for example, ``logLevel => logLevel >= LogLevel.Warning`` or ``(category, loglevel) => category.Contains("MyController") && loglevel >= LogLevel.Trace``). The event log logger provides a similar overload that takes an ``EventLogSettings`` instance as argument, which may contain a filtering function in its ``Filter`` property. The TraceSource logger does not provide any of those overloads, since its logging level and other parameters are based on the  ``SourceSwitch`` and ``TraceListener`` it uses.
 
-每个记录器为 `ILoggerFactory`` 提供了自己的一套扩展的方法。控制台，调试和事件日志记录器允许你指定要那些应该写的日志消息的最低日志记录级别。控制台和调试记录器根据自己的日志记录级别和/或类别提供的扩展方法接受一个函数来过滤日志消息（例如： ``logLevel => logLevel >= LogLevel.Warning`` 或者 ``(category, loglevel) => category.Contains("MyController") && loglevel >= LogLevel.Trace`` ）。事件日志记录提供了类似重载接受一个 ``EventLogSettings`` 实例作为参数，其 ``Filter`` 属性可包含过滤方法。该 TraceSource 记录器不提供任何的重载，因为它的记录级别和其他参数基于他使用的 ``SourceSwitch`` 和 ``TraceListener`` 。
+每个记录器为 ``ILoggerFactory`` 提供了自己的一套扩展方法。控制台，调试和事件日志记录器允许你指定那些应该写的日志消息的最低日志记录级别。控制台和调试记录器根据自己的日志记录级别和/或类别提供的扩展方法接受一个函数来过滤日志消息（例如： ``logLevel => logLevel >= LogLevel.Warning`` 或者 ``(category, loglevel) => category.Contains("MyController") && loglevel >= LogLevel.Trace`` ）。事件日志记录器提供了类似重载接受一个 ``EventLogSettings`` 实例作为参数，其 ``Filter`` 属性可包含过滤方法。该 TraceSource 记录器不提供任何的重载，因为它的记录级别和其他参数基于他使用的 ``SourceSwitch`` 和 ``TraceListener`` 。
 
 A LoggerFactory instance can optionally be configured with custom ``FilterLoggerSettings``. The example below configures custom log levels for different scopes, limiting system and Microsoft built-in logging to warnings while allowing the app to log at debug level by default. The ``WithFilter`` method returns a new ``ILoggerFactory`` that will filter the log messages passed to all logger providers registered with it. It does not affect any other ``ILoggerFactory`` instances, including the original ``ILoggerFactory`` instance.
 
-一个 LoggerFactory 实例可以选择性地使用自定义 ``FilterLoggerSettings`` 配置。下面的示例配置自定义日志级别不同的范围，限制系统和微软内置的日志记录警告，同时允许应用程序在默认情况下记录调试级别的。 `WithFilter`` 方法返回一个新的 ``ILoggerFactory`` ，将过滤传递的所有注册的记录器日志信息。它不会影响其它的任何 ``ILoggerFactory`` 实例，包括原始的 ``ILoggerFactory`` 实例。
+一个 LoggerFactory 实例可以选择性地使用自定义 ``FilterLoggerSettings`` 配置。下面的示例配置自定义日志级别不同的范围，限制系统和微软内置的日志记录警告，同时允许应用程序在默认情况下记录调试级别的。 ``WithFilter`` 方法返回一个新的 ``ILoggerFactory`` ，将过滤传递的所有注册的记录器日志信息。它不会影响其它的任何 ``ILoggerFactory`` 实例，包括原始的 ``ILoggerFactory`` 实例。
 
 .. literalinclude:: logging/sample/src/TodoApi/Startup.cs
   :language: c#
@@ -328,7 +328,7 @@ Configuring Other Providers
 
 In addition to the built-in loggers, you can configure logging to use other providers. Add the appropriate package to your *project.json* file, and then configure it just like any other provider. Typically, these packages include extension methods on ``ILoggerFactory`` to make it easy to add them.
 
-除内置日志记录器外，你可以配置其它开放商提供的日志。将相应的包添加到 *project.json* 文件中，并以上文同样的方法配置它们。通常情况下，这些包应该会包含 ``ILoggerFactory`` 的扩展方法以便能方便地添加它们。
+除内置日志记录器外，你可以配置其它提供商提供的日志。将相应的包添加到 *project.json* 文件中，并以上文同样的方法配置它们。通常情况下，这些包应该会包含 ``ILoggerFactory`` 的扩展方法以便能方便地添加它们。
 
  * `elmah.io <https://github.com/elmahio/Elmah.Io.Framework.Logging>`_ - provider for the elmah.io service
  * `Loggr <https://github.com/imobile3/Loggr.Extensions.Logging>`_ - provider for the Loggr service
@@ -369,7 +369,7 @@ The following are some recommendations you may find helpful when implementing lo
 
 当你在 ASP.NET Core 应用程序中实现日志时可以参考以下有用建议：
 
-1. 使用正确的 ``LogLevel`` ，这将使不同重要级别的日志消息使用何路由到相关的输出目标。
+1. 使用正确的 ``LogLevel`` ，这将使不同重要级别的日志消息使用和路由到相关的输出目标。
 
 2. 记录的日志信息要能立即识别问题所在，剔除不必要的冗余信息。
 
