@@ -217,16 +217,12 @@ HTML Helper alternatives to Input Tag Helper
 Expression names 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-<<<<<<< HEAD
 表达式名称
 ^^^^^^^^^^^^^^^
 
-The ``asp-for`` attribute value is a `ModelExpression <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/ModelExpression/index.html>`__ and the right hand side of a lambda expression. Therefore, ``asp-for="Property1"`` becomes ``m => m.Property1`` in the generated code which is why you don't need to prefix with ``Model``. You can use the "@" character to start an inline expression and move before the ``m.``:   
+The ``asp-for`` attribute value is a `ModelExpression <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/ModelExpression/index.html>`__ and the right hand side of a lambda expression. Therefore, ``asp-for="Property1"`` becomes ``m => m.Property1`` in the generated code which is why you don't need to prefix with ``Model``. You can use the "@" character to start an inline expression and move before the ``m.``: 
 
-``asp-for`` 属性值是一个 `ModelExpression` <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewFeatures/ModelExpression/index.html>`__ 同时也是 lambda 表达式右边的部分。因此，你不需要使用 ``Model`` 前缀，因为 ``asp-for="Property1"`` 在生成的代码中会变成 ``m => m.Property1`` 。
-=======
-The ``asp-for`` attribute value is a `ModelExpression <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/ModelExpression/index.html>`__ and the right hand side of a lambda expression. Therefore, ``asp-for="Property1"`` becomes ``m => m.Property1`` in the generated code which is why you don't need to prefix with ``Model``. You can use the "@" character to start an inline expression and move before the ``m.``:
->>>>>>> dotnetcore/dev
+``asp-for`` 属性值是一个 `ModelExpression` <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/ModelExpression/index.html>`__ 同时也是 lambda 表达式右边的部分。因此，你不需要使用 ``Model`` 前缀，因为 ``asp-for="Property1"`` 在生成的代码中会变成 ``m => m.Property1`` 。
 
 .. code-block:: HTML
 
@@ -358,16 +354,12 @@ The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 The Textarea Tag Helper
 -------------------------
 
-<<<<<<< HEAD
 Textarea Tag Helper
 ----------------------------
 
-The `Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ tag helper is  similar to the Input Tag Helper. 
+The `Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ tag helper is  similar to the Input Tag Helper. 
 
-`Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ 与 Input Tag Helper类似。
-=======
-The `Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ tag helper is  similar to the Input Tag Helper.  
->>>>>>> dotnetcore/dev
+`Textarea Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/TextAreaTagHelper/index.html>`__ 与 Input Tag Helper类似。
 
 - Generates the ``id`` and ``name`` attributes, and the data validation attributes from the model for a `<textarea> <http://www.w3.org/wiki/HTML/Elements/textarea>`__ element. 
 - Provides strong typing. 
@@ -416,16 +408,12 @@ Label Tag Helper
 - Generates the label caption and ``for`` attribute on a `<label> <https://www.w3.org/wiki/HTML/Elements/label>`__ element for an expression name
 - HTML Helper alternative: ``Html.LabelFor``.
 
-<<<<<<< HEAD
 - 根据表达式名称在 `<label> <https://www.w3.org/wiki/HTML/Elements/label>`__ 元素上生成标签文字和 ``for`` 属性。
 - HTML Helper 替代选项： ``Html.LabelFor`` 。
 
-The `Label Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__  provides the following benefits over a pure HTML label element:
-=======
 The `Label Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/LabelTagHelper/index.html>`__  provides the following benefits over a pure HTML label element:
->>>>>>> dotnetcore/dev
 
-`Label Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 相对于纯 HTML label 元素具有以下优势： 
+`Label Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 相对于纯 HTML label 元素具有以下优势： 
 
 - You automatically get the descriptive label value from the ``Display`` attribute. The intended display name might change over time, and the combination of ``Display`` attribute and Label Tag Helper will apply the ``Display`` everywhere it's used.
 - Less markup in source code
@@ -459,16 +447,12 @@ Label Tag Helper生成了 "Email" 的 ``for`` 属性值，也就是与 ``<input>
 The Validation Tag Helpers
 ---------------------------
 
-<<<<<<< HEAD
 验证Tag Helper
 ----------------------
 
-There are two Validation Tag Helpers. The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ (which displays a validation message for a single property on your model), and the `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ (which displays a summary of validation errors). The `Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ adds HTML5 client side validation attributes to input elements based on data annotation attributes on your model classes. Validation is also performed on the server. The Validation Tag Helper displays these error messages when a validation error occurs. 
-=======
 There are two Validation Tag Helpers. The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ (which displays a validation message for a single property on your model), and the `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ (which displays a summary of validation errors). The `Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/InputTagHelper/index.html>`__ adds HTML5 client side validation attributes to input elements based on data annotation attributes on your model classes. Validation is also performed on the server. The Validation Tag Helper displays these error messages when a validation error occurs. 
->>>>>>> dotnetcore/dev
 
-有两种验证Tag Helper。`Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ （用来显示模型上单个属性的验证信息），和 `Validation Summary Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ （用来显示验证错误汇总）。`Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/InputTagHelper/index.html>`__ 根据模型类的数据注释给 input 元素添加 HTML5 客户端验证属性。验证也在服务端执行。Validation Tag Helper会在验证发生错误的时候显示这些错误信息。
+有两种验证Tag Helper。`Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ （用来显示模型上单个属性的验证信息），和 `Validation Summary Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ （用来显示验证错误汇总）。`Input Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/InputTagHelper/index.html>`__ 根据模型类的数据注释给 input 元素添加 HTML5 客户端验证属性。验证也在服务端执行。Validation Tag Helper会在验证发生错误的时候显示这些错误信息。
 
 The Validation Message Tag Helper
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -480,17 +464,14 @@ Validaton Message Tag Helper
 - Validation also takes place on the server. Clients may have JavaScript disabled and some validation can only be done on the server side.
 - HTML Helper alternative: ``Html.ValidationMessageFor``
 
-<<<<<<< HEAD
+
 - 添加 `HTML5 <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5>`__  ``data-valmsg-for="property"`` 属性到 `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素，使验证错误信息附加到指定模型属性的 input 字段上。当客户端验证发生错误，`jQuery <https://jquery.com/>`__ 会在 ``<span>`` 元素里显示错误信息。
 - 验证也发生在服务端。客户端可能会禁用 JavaScript 那么验证就只能在服务端完成。
 - HTML Helper  替代选项： ``Html.ValidationMessageFor`` 
 
-The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  is used with the ``asp-validation-for`` attribute on a HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ element.
-=======
 The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  is used with the ``asp-validation-for`` attribute on a HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ element.
->>>>>>> dotnetcore/dev
 
-`Validaton Message Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 与 HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素上的 ``asp-validation-for`` 属性一起使用。
+`Validaton Message Tag Helper<https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__ 与 HTML `span <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span>`__ 元素上的 ``asp-validation-for`` 属性一起使用。
 
 .. code-block:: HTML
   
@@ -535,16 +516,13 @@ The Validation Summary Tag Helper
 - Targets ``<div>`` elements with the ``asp-validation-summary`` attribute 
 - HTML Helper alternative: ``@Html.ValidationSummary``
 
-<<<<<<< HEAD
 - 选取带有 ``asp-validation-summary`` 属性的 ``<div>`` 元素。
 - HTML Helper 替代选项：``@Html.ValidationSummary`` 。
 
-The `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__  is used to display a summary of validation messages. The ``asp-validation-summary`` attribute value can be any of the following:
-=======
-The `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__  is used to display a summary of validation messages. The ``asp-validation-summary`` attribute value can be any of the following:
->>>>>>> dotnetcore/dev
 
-`Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ 用来显示验证信息的摘要。 ``asp-validation-summary`` 属性值可以是下面任意一种：
+The `Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__  is used to display a summary of validation messages. The ``asp-validation-summary`` attribute value can be any of the following:
+
+`Validation Summary Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationSummaryTagHelper/index.html>`__ 用来显示验证信息的摘要。 ``asp-validation-summary`` 属性值可以是下面任意一种：
 
 +-------------------------------+--------------------------------+
 |asp-validation-summary         |  Validation messages displayed |  
@@ -604,15 +582,11 @@ Select Tag Helper
 - Generates `select <https://www.w3.org/wiki/HTML/Elements/select>`__ and associated `option <https://www.w3.org/wiki/HTML/Elements/option>`__ elements for properties of your model. 
 - Has an HTML Helper alternative ``Html.DropDownListFor`` and ``Html.ListBoxFor``
 
-<<<<<<< HEAD
 - 生成 `select <https://www.w3.org/wiki/HTML/Elements/select>`__ 和关联到你的模型属性的 `option  <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素。
 
-The `Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/SelectTagHelper/index.html>`__ ``asp-for`` specifies the model property  name for the `select <https://www.w3.org/wiki/HTML/Elements/select>`__ element  and ``asp-items`` specifies the `option <https://www.w3.org/wiki/HTML/Elements/option>`__ elements.  For example:
-=======
 The `Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/SelectTagHelper/index.html>`__ ``asp-for`` specifies the model property  name for the `select <https://www.w3.org/wiki/HTML/Elements/select>`__ element  and ``asp-items`` specifies the `option <https://www.w3.org/wiki/HTML/Elements/option>`__ elements.  For example:
->>>>>>> dotnetcore/dev
 
-`Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/SelectTagHelper/index.html>`__ 的 ``asp-for`` 为 `select <https://www.w3.org/wiki/HTML/Elements/select>`__ 元素指定模型的属性名称，而 ``asp-items`` 则指定 `option <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素。例如：
+`Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/SelectTagHelper/index.html>`__ 的 ``asp-for`` 为 `select <https://www.w3.org/wiki/HTML/Elements/select>`__ 元素指定模型的属性名称，而 ``asp-items`` 则指定 `option <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素。例如：
 
 .. literalinclude::   forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
@@ -683,16 +657,12 @@ The ``asp-for`` attribute value is a special case and doesn't require a ``Model`
 Enum binding
 ^^^^^^^^^^^^^^
 
-<<<<<<< HEAD
 枚举绑定
 ^^^^^^^^^^^^^^
 
-It's often convenient to use ``<select>`` with an ``enum`` property and generate the `SelectListItem <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListItem/index.html?highlight=selectlistitem>`__ elements from the ``enum`` values. 
-=======
 It's often convenient to use ``<select>`` with an ``enum`` property and generate the `SelectListItem <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListItem/index.html?highlight=selectlistitem>`__ elements from the ``enum`` values. 
->>>>>>> dotnetcore/dev
 
-将 ``enum`` 属性用于 ``<select>`` 并根据 ``enum`` 的值生成 `SelectListItem <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListItem/index.html?highlight=selectlistitem>`__ 元素通常是很方便的。
+将 ``enum`` 属性用于 ``<select>`` 并根据 ``enum`` 的值生成 `SelectListItem <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListItem/index.html?highlight=selectlistitem>`__ 元素通常是很方便的。
 
 
 示例：
@@ -746,16 +716,13 @@ The following HTML is generated:
 Option Group
 ^^^^^^^^^^^^^^^^^^^^^
 
-<<<<<<< HEAD
+
 选项分组
 ^^^^^^^^^^^^^^^^^^^^^
 
-The HTML  `<optgroup> <https://www.w3.org/wiki/HTML/Elements/optgroup>`__ element is generated when the view model contains one or more `SelectListGroup  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListGroup/index.html>`__ objects.
-=======
 The HTML  `<optgroup> <https://www.w3.org/wiki/HTML/Elements/optgroup>`__ element is generated when the view model contains one or more `SelectListGroup  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListGroup/index.html>`__ objects.
->>>>>>> dotnetcore/dev
 
-当视图模型包含一个或多个 `SelectListGroup <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectListGroup/index.html>`__ 对象时，会生成 HTML `<optgroup> <https://www.w3.org/wiki/HTML/Elements/optgroup>`__ 元素。
+当视图模型包含一个或多个 `SelectListGroup <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectListGroup/index.html>`__ 对象时，会生成 HTML `<optgroup> <https://www.w3.org/wiki/HTML/Elements/optgroup>`__ 元素。
 
 The ``CountryViewModelGroup`` groups the ``SelectListItem`` elements into the "North America" and "Europe" groups:
 
