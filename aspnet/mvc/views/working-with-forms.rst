@@ -77,14 +77,10 @@ Tag Helper 属性 ``asp-route`` 也能为 HTML ``action`` 属性生成标记。�
 
 Many of the views in the *Views/Account* folder (generated when you create a new web app with *Individual User Accounts*) contain the `asp-route-returnurl <http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper>`__ attribute: 
 
-<<<<<<< HEAD
  *Views/Account* 文件夹下的很多视图（在你创建一个带有 *个人用户账户* 的新 Web 应用时生成的）都含有 `asp-route-returnurl <http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper>`__ 属性: 
 
-.. code-block:: HTML
-=======
 .. code-block:: none
->>>>>>> dotnetcore/dev
-  :emphasize-lines: 2
+  :emphasize-lines: 4
   
   <form asp-controller="Account" asp-action="Login" 
     asp-route-returnurl="@ViewData["ReturnUrl"]" 
