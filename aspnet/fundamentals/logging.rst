@@ -253,6 +253,8 @@ To configure logging in your ASP.NET application, you should resolve ``ILoggerFa
   
 Once you've added ``ILoggerFactory`` as a parameter, you configure loggers within the ``Configure`` method by calling methods (or extension methods) on the logger factory. We have already seen an example of this configuration at the beginning of this article, when we added console logging by calling ``loggerFactory.AddConsole``.  
 
+一旦你以参数的形式添加了 ``ILoggerFactory``，就配置了一个带有日志记录器工厂方法（或扩展方法）的日志记录器。我们已经看到在这篇文章开头的配置例子里，我们通过调用 ``loggerFactory.AddConsole`` 添加控制台日志记录。
+
 .. note:: You can optionally configure logging when setting up :doc:`hosting`, rather than in ``Startup``.
 
 .. note:: 你可以选择配置日志记录，当设置 :doc:`hosting` 时，而不是在启动时。
@@ -292,7 +294,7 @@ First, be sure to add the ``Microsoft.Extensions.Logging.TraceSource`` package t
 
 The following example demonstrates how to configure a ``TraceSourceLogger`` instance for an application, logging only ``Warning`` or higher priority messages. Each call to ``AddTraceSource`` takes a ``TraceListener``. The call configures a ``TextWriterTraceListener`` to write to the console window. This log output will be in addition to the console logger that was already added to this sample, but its behavior is slightly different.
 
-在下例中演示了如何在一个应用程序中配置一个的 ``TraceSourceLogger`` 实例，日志都只记录 ``Warning`` 或者是更高级别的消息。每次调用 ``AddTraceSource`` 都需要一个 ``TraceListener`` 。调用配置了一个 ``TextWriterTraceListener``，第二次配置了一个 ``EventLogTraceListener``，两个监听器都用于写 ``Application`` 事件日志。这两个监听器在 .NET Core 中都不可用，因此它们的配置需要被包裹在条件编译语句中。
+在下例中演示了如何在一个应用程序中配置一个的 ``TraceSourceLogger`` 实例，日志都只记录 ``Warning`` 或者是更高级别的消息。每次调用 ``AddTraceSource`` 都需要一个 ``TraceListener`` 。调用配置了一个 ``TextWriterTraceListener``，用于将日志写到控制台窗体。这一日志输出将附加于已在本例中添加了的控制台日志，但它们的行为略有不同。
 
 .. literalinclude:: logging/sample/src/TodoApi/Startup.cs
   :language: c#
