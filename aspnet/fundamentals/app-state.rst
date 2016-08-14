@@ -32,11 +32,11 @@ Application State Options
 应用程序状态的可选方式
 ----------------------
 
-`应用程序状态` 指的是用于描述应用程序当前状况的任意数据。包括全局的和用户特有的数据。之前版本的ASP.NET（甚至ASP）都内建了对全局的 ``Application`` 和 ``State`` 以及其他很多种状态储存的支持。
+`应用程序状态` 指的是用于描述应用程序当前状况的任意数据。包括全局的和用户特有的数据。之前版本的ASP.NET（甚至ASP）都内建了对全局的 ``Application`` 和 ``State`` 以及其他很多种状态存储的支持。
 
 .. note:: The ``Application`` store had the same characteristics as the ASP.NET ``Cache``, with fewer capabilities. In ASP.NET Core, ``Application`` no longer exists; applications written for previous versions of ASP.NET that are migrating to ASP.NET Core replace ``Application`` with a :doc:`/performance/caching/index` implementation. 
 
-.. note:: 注意：``Application`` 储存和ASP.NET的 ``Cache`` 缓存的特性几乎一样，只是少了一些功能。在 ASP.NET Core 中，``Application`` 已经没有了；可以用 :doc:`/performance/caching/index` 的实现来代替 ``Application`` 的功能，从而把之前版本的 ASP.NET 应用程序升级到 ASP.NET Core 。
+.. note:: ``Application`` 储存和ASP.NET的 ``Cache`` 缓存的特性几乎一样，只是少了一些功能。在 ASP.NET Core 中，``Application`` 已经没有了；可以用 :doc:`/performance/caching/index` 的实现来代替 ``Application`` 的功能，从而把之前版本的 ASP.NET 应用程序升级到 ASP.NET Core 。
 
 Application developers are free to use different state storage providers depending on a variety of factors:
 
@@ -58,7 +58,7 @@ Application developers are free to use different state storage providers dependi
 
 Based on answers to these questions, application state in ASP.NET Core apps can be stored or managed in a variety of ways.
 
-根据这些问题的答案，可以选择不同的方式储存和管理 ASP.NET Core 应用程序状态。
+根据这些问题的答案，可以选择不同的方式储存和管理 ASP.NET Core 应用程序的状态。
 
 HttpContext.Items
 ^^^^^^^^^^^^^^^^^
@@ -68,17 +68,17 @@ The ``Items`` collection is the best location to store data that is only needed 
 HttpContext.Items
 ^^^^^^^^^^^^^^^^^
 
-当数据仅用于一个请求之中时，用 ``Items`` 集合储存是最好的方式。数据将在每个请求结束之后被丢弃。可以作为组件和中间件在一个请求期间的不同时间点进行互相通讯的最佳手段。
-
-QueryString 和 Post
-^^^^^^^^^^^^^^^^^^^^
-
-State from one request can be provided to another request by adding values to the new request's query string or by POSTing the data. These techniques should not be used with sensitive data, because these techniques require that the data be sent to the client and then sent back to the server. It is also best used with small amounts of data. Query strings are especially useful for capturing state in a persistent manner, allowing links with embedded state to be created and sent via email or social networks, for use potentially far into the future. However, no assumption can be made about the user making the request, since URLs with query strings can easily be shared, and care must also be taken to avoid `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ attacks (for instance, even assuming only authenticated users are able to perform actions using query string based URLs, an attacker could trick a user into visiting such a URL while already authenticated).
+当数据仅用于一个请求之中时，用 ``Items`` 集合储存是最好的方式。数据将在每个请求结束之后被丢弃。它可以作为组件和中间件在一个请求期间的不同时间点进行互相通讯的最佳手段。
 
 QueryString and Post
 ^^^^^^^^^^^^^^^^^^^^
 
-在查询字符串（ ``Querystring`` ）中添加数值、或利用 POST 发送数据，可以将一个请求的状态数据提供给另一个请求。这种技术不应该用于敏感数据，因为这需要将数据发送到客户端，然后再发送回服务器。这种方法也最好用于少量的数据。查询字符串对于持久地保留状态特别有用，可以将状态嵌入链接通过电子邮件或社交网络发出去，以备日后使用。然而，用户提交的请求是无法预期的，由于带有查询字符串的网址很容易被分享出去，所以必须小心以避免跨站请求伪装攻击（ `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ ）。(例如，即便设定了只有通过验证的用户才可以访问带有查询字符串的网址执行请求，攻击者还是可能会诱骗已经验证过的用户去访问这样的网址)。
+State from one request can be provided to another request by adding values to the new request's query string or by POSTing the data. These techniques should not be used with sensitive data, because these techniques require that the data be sent to the client and then sent back to the server. It is also best used with small amounts of data. Query strings are especially useful for capturing state in a persistent manner, allowing links with embedded state to be created and sent via email or social networks, for use potentially far into the future. However, no assumption can be made about the user making the request, since URLs with query strings can easily be shared, and care must also be taken to avoid `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ attacks (for instance, even assuming only authenticated users are able to perform actions using query string based URLs, an attacker could trick a user into visiting such a URL while already authenticated).
+
+QueryString 和 Post
+^^^^^^^^^^^^^^^^^^^^
+
+在查询字符串（ ``QueryString`` ）中添加数值、或利用 POST 发送数据，可以将一个请求的状态数据提供给另一个请求。这种技术不应该用于敏感数据，因为这需要将数据发送到客户端，然后再发送回服务器。这种方法也最好用于少量的数据。查询字符串对于持久地保留状态特别有用，可以将状态嵌入链接通过电子邮件或社交网络发出去，以备日后使用。然而，用户提交的请求是无法预期的，由于带有查询字符串的网址很容易被分享出去，所以必须小心以避免跨站请求伪装攻击（ `Cross-Site Request Forgery (CSRF) <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>`_ ）。(例如，即便设定了只有通过验证的用户才可以访问带有查询字符串的网址执行请求，攻击者还是可能会诱骗已经验证过的用户去访问这样的网址)。
 
 
 Cookies
@@ -169,7 +169,7 @@ and later in the pipeline, another piece of middleware could access it:
 
 .. note:: Since keys into ``Items`` are simple strings, if you are developing middleware that needs to work across many applications, you may wish to prefix your keys with a unique identifier to avoid key collisions (e.g. "MyComponent.isVerified" instead of just "isVerified").
 
-.. note::  ``Items`` 的键名是简单的字符串，所以如果你是在开发跨越多个应用程序工作的中间件，你可能要用一个唯一标识符作为前缀以避免键名冲突。（如：采用"MyComponent.isVerified"，而非简单的"isVerified"）。
+.. note::  ``Items`` 的键名是简单的字符串，所以如果你是在开发跨越多个应用程序工作的中间件，你可能要用一个唯一标识符作为前缀以避免键名冲突。（如：采用 “ MyComponent.isVerified ”，而非简单的 “ isVerified ”）。
 
 .. _session: 
 
@@ -230,7 +230,7 @@ Session uses a cookie to track and disambiguate between requests from different 
 实现细节
 ^^^^^^^^^
 
-Session 利用一个 cookie 来跟踪和区分不同浏览器发出的请求。默认情况下，这个 cookie 命名为 ".AspNet.Session" 并使用路径 "/"。此外，在默认情况下这个 cookie 不指定域，而且对于页面的客户端脚本是不可使用的（因为 ``CookieHttpOnly`` 的默认值是 ``True``）。
+Session 利用一个 cookie 来跟踪和区分不同浏览器发出的请求。默认情况下，这个 cookie 命名为 “.AspNet.Session” 并使用路径 "/"。此外，在默认情况下这个 cookie 不指定域，而且对于页面的客户端脚本是不可使用的（因为 ``CookieHttpOnly`` 的默认值是 ``True``）。
 
 These defaults, as well as the default ``IdleTimeout`` (used on the server independent from the cookie), can be overridden when configuring ``Session`` by using ``SessionOptions`` as shown here:
 这些默认值，包括 ``IdleTimeout`` （独立于 cookie 在服务端使用），都可以在通过 ``SessionOptions`` 配置 ``Session`` 的时候覆盖重写，如下所示：
@@ -245,11 +245,11 @@ These defaults, as well as the default ``IdleTimeout`` (used on the server indep
 
 The ``IdleTimeout`` is used by the server to determine how long a session can be idle before its contents are abandoned. Each request made to the site that passes through the Session middleware (regardless of whether Session is read from or written to within that middleware) will reset the timeout. Note that this is independent of the cookie's expiration.
 
-``IdleTimeout`` 在服务端用来决定在会话被抛弃之前可以闲置多久。任何来到网站的请求穿过 Session 中间件（无论这中间件对 Session 是读取还是写入）都会重置会话的超时时间。
+``IdleTimeout`` 在服务端用来决定在会话被抛弃之前可以闲置多久。任何来到网站的请求通过 Session 中间件（无论这中间件对 Session 是读取还是写入）都会重置会话的超时时间。
 
 .. note:: ``Session`` is *non-locking*, so if two requests both attempt to modify the contents of session, the last one will win. Further, ``Session`` is implemented as a *coherent session*, which means that all of the contents are stored together. This means that if two requests are modifying different parts of the session (different keys), they may still impact each other.
 
-.. note:: ``Session`` 是 *无锁* 的，因此如果两个请求都尝试修改会话的内容，最后一个会成功。此外，``Session`` 被实现为一个*内容连贯的会话*，就是说所有的内容都是一起储存的。这就意味着，如果两个请求是在修改会话中不同的部分（不同的键），他们还是会互相造成影响。
+.. note:: ``Session`` 是 *无锁* 的，因此如果两个请求都尝试修改会话的内容，最后一个会成功。此外，``Session`` 被实现为一个 *内容连贯的会话* ，就是说所有的内容都是一起储存的。这就意味着，如果两个请求是在修改会话中不同的部分（不同的键），他们还是会互相造成影响。
 
 ISession
 ^^^^^^^^^
@@ -361,11 +361,11 @@ Fetching the current instance of ``RequestEntryCollection`` is done via the ``Ge
 
 When the entry for the object exists in ``Session``, it is retrieved as a ``byte[]`` type, and then deserialized using a ``MemoryStream`` and a ``BinaryFormatter``, as shown above. If the object isn't in ``Session``, the method returns a new instance of the ``RequestEntryCollection``.
 
-如果对象实体存在于 ``Session`` 中，则会以 ``byte[]`` 字节流的类型获取，然后利用 ``MemoryStream`` 和 ``BinaryFormatter`` 将它反序列化，如上所示。如果``Session``中没有这个对象，这个方法则返回一个新的 ``RequestEntryCollection`` 实例。
+如果对象实体存在于 ``Session`` 中，则会以 ``byte[]`` 字节流的类型获取，然后利用 ``MemoryStream`` 和 ``BinaryFormatter`` 将它反序列化，如上所示。如果 ``Session`` 中没有这个对象，这个方法则返回一个新的 ``RequestEntryCollection`` 实例。
 
 In the browser, clicking the Establish session hyperlink makes a request to the path "/session", and returns this result:
 
-在浏览器中，点击"建立会话"链接发起一个对路径"/session"的访问请求，然后得到如下结果：
+在浏览器中，点击“建立会话”链接发起一个对路径“/session”的访问请求，然后得到如下结果：
 
 .. image:: app-state/_static/session-established-cn.png
 
@@ -414,4 +414,4 @@ The sample includes one more piece of middleware worth mentioning, which is mapp
 
 Note that this middleware is configured **before** the call to ``app.UseSession()`` is made (on line 13). Thus, the ``Session`` feature is not available to this middleware, and requests made to it do not reset the session ``IdleTimeout``. You can confirm this behavior in the sample application by refreshing the untracked path several times within 10 seconds, and then return to the application root. You will find that your session has expired, despite no more than 10 seconds having passed between your requests to the application.
 
-注意这个中间件是在 ``app.UseSession`` 被调用（第13行）**之前** 就配置好的。因此， ``Session`` 的功能在中间件中还不能用，那么访问到这个中间件的请求将不会重置会话的 ``IdleTimeout`` 。为了证实这一点，你可以在 /untracked 页面上反复刷新10秒钟，再回到首页查看。你会发现会话已经超时了，即使你最后一次刷新到现在根本没有超过10秒钟。
+注意这个中间件是在 ``app.UseSession`` 被调用（第13行）*之前* 就配置好的。因此， ``Session`` 的功能在中间件中还不能用，那么访问到这个中间件的请求将不会重置会话的 ``IdleTimeout`` 。为了证实这一点，你可以在 /untracked 页面上反复刷新10秒钟，再回到首页查看。你会发现会话已经超时了，即使你最后一次刷新到现在根本没有超过10秒钟。
