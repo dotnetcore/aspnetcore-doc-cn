@@ -9,6 +9,7 @@ Open Web Interface for .NET (OWIN)
 By `Steve Smith`_ and  `Rick Anderson`_
 
 作者 `Steve Smith`_ 、 `Rick Anderson`_
+
 翻译：  谢炀(kiler)
 
 ASP.NET Core supports OWIN, the Open Web Interface for .NET, which allows web applications to be decoupled from web servers. In addition, OWIN defines a standard way for middleware to be used in a pipeline to handle individual requests and associated responses. ASP.NET Core applications and middleware can interoperate with OWIN-based applications, servers, and middleware.
@@ -98,7 +99,7 @@ OWIN-based servers can host ASP.NET applications. One such server is `Nowin <htt
 
 ``IServer`` is an interface that requires an ``Features`` property and a ``Start`` method.
 
-``IServer`` 是一个需要 ``Features`` 属性和 ``Start``方法的接口。
+``IServer`` 是一个需要 ``Features`` 属性和 ``Start`` 方法的接口。
 
 ``Start`` is responsible for configuring and starting the server, which in this case is done through a series of fluent API calls that set addresses parsed from the IServerAddressesFeature. Note that the fluent configuration of the ``_builder`` variable specifies that requests will be handled by the ``appFunc`` defined earlier in the method. This ``Func`` is called on each request to process incoming requests.
 
@@ -132,7 +133,7 @@ Run ASP.NET Core on an OWIN-based server and use its WebSockets support
 
 Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets. The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application. The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.
 
-如何基于OWIN的服务器“功能，可以通过ASP.NET核心加以利用另一个例子是获得像WebSockets的功能。在前面的例子中使用的.NET OWIN Web服务器具有内置的网络插座，可通过一个ASP.NET的核心应用加以利用的支持。下面的例子显示了支持网络套接字和简单的回显然后直接通过WebSockets发送到服务器的任何一个简单的Web应用程序。
+如何基于OWIN的服务器功能，可以通过ASP.NET核心加以利用另一个例子是获得像WebSockets的功能。在前面的例子中使用的.NET OWIN Web服务器具有内置的网络插座，可通过一个ASP.NET的核心应用加以利用的支持。下面的例子显示了支持网络套接字和简单的回显然后直接通过WebSockets发送到服务器的任何一个简单的Web应用程序。
 
 .. literalinclude:: owin/sample/src/NowinWebSockets/Startup.cs
   :lines: 11-
