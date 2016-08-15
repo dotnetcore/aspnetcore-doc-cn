@@ -128,7 +128,7 @@ Learn more about ASP.NET :doc:`/fundamentals/servers`.
 Run ASP.NET Core on an OWIN-based server and use its WebSockets support
 -----------------------------------------------------------------------
 
-在 OWIN-based 服务器上运行 ASP.NET Core 并使用 WebSockets 支持
+在 OWIN-based 服务器上运行 ASP.NET Core 并使用 WebSockets 支持 
 -----------------------------------------------------------------------
 
 Another example of how OWIN-based servers' features can be leveraged by ASP.NET Core is access to features like WebSockets. The .NET OWIN web server used in the previous example has support for Web Sockets built in, which can be leveraged by an ASP.NET Core application. The example below shows a simple web app that supports Web Sockets and echoes back everything sent to the server through WebSockets.
