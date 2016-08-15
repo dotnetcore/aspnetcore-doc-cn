@@ -6,14 +6,13 @@ Servers
 服务器
 =======
 
+原文：`Servers <https://docs.asp.net/en/latest/fundamentals/servers.html>`_
 
-By `Steve Smith`_
+作者：`Steve Smith`_  
 
-作者： `Steve Smith`_  
+翻译：`谢炀（Kiler） <https://github.com/kiler398/>`_ 
 
-翻译 `谢炀（Kiler） <https://github.com/kiler398/aspnetcore>`_ 
-
-校对 `姚阿勇(Dr.Yao) <https://github.com/mengshuaiyang>`_  
+校对：`许登洋(Seay) <https://github.com/SeayXu>`_、`姚阿勇(Dr.Yao) <https://github.com/mengshuaiyang>`_  
 
 ASP.NET Core is completely decoupled from the web server environment that hosts the application. ASP.NET Core supports hosting in IIS and IIS Express, and self-hosting scenarios using the Kestrel and WebListener HTTP servers. Additionally, developers and third party software vendors can create custom servers to host their ASP.NET Core apps.
 
@@ -51,7 +50,6 @@ ASP.NET Core 不直接监听请求，而是依靠 HTTP 服务器的实现将请�
 The default web host for ASP.NET apps developed using Visual Studio is IIS Express functioning as a reverse proxy server for Kestrel. The "Microsoft.AspNetCore.Server.Kestrel" and "Microsoft.AspNetCore.Server.IISIntegration" dependencies are included in *project.json* by default, even with the Empty web site template. Visual Studio provides support for multiple profiles, associated with IIS Express. You can manage these profiles and their settings in the **Debug** tab of your web application project's Properties menu or from the *launchSettings.json* file.
 
 Visual Studio开发应用程序默认Web托管服务器为采用了Kestrel做反向代理服务器的IIS Express ，*project.json*文件默认包含“Microsoft.AspNetCore.Server.Kestrel”和“Microsoft.AspNetCore.Server.IISIntegration”依赖，即使采用空网站模板。Visual Studio也提供了多种方式来把网站关联到IISExpress。你可以在你的web应用程序项目的属性菜单的**Debug**选项卡中或者*launchSettings.json*文件中管理这些配置和参数，
-
 
 .. image:: /fundamentals/servers/_static/serverdemo-properties.png
 
@@ -264,7 +262,7 @@ WebListener是ASP.NET Core的Windows专用HTTP服务器。它直接运行在`Htt
 
 You can add support for WebListener to your ASP.NET application by adding the "Microsoft.AspNetCore.Server.WebListener" dependency in *project.json* and the following command:
 
-您可以通过在 *project.json* 里面添加 "Microsoft.AspNetCore.Server.WebListener" 依赖以及下面的命令让你的 ASP.NET 应用程序支持 WebListener：
+你可以通过在 *project.json* 里面添加 "Microsoft.AspNetCore.Server.WebListener" 依赖以及下面的命令让你的 ASP.NET 应用程序支持 WebListener：
 
 .. code-block:: javascript
 
@@ -301,7 +299,7 @@ Choosing a server
 
 If you intend to deploy your application on a Windows server, you should run IIS as a reverse proxy server that manages and proxies requests to Kestrel. If deploying on Linux, you should run a comparable reverse proxy server such as Apache or Nginx to proxy requests to Kestrel (see :doc:`/publishing/linuxproduction`).
 
-如果您打算在Windows服务器上部署部署你的应用程序，您应该用IIS作为反向代理服务器来管理和代理发送到Kestrel的请求。如果在Linux上部署，您应该运行类似反向代理服务器，如Apache或Nginx的来代理发送到Kestrel的请求 (更多参考 :doc:`/publishing/linuxproduction`)。
+如果你打算在Windows服务器上部署部署你的应用程序，你应该用IIS作为反向代理服务器来管理和代理发送到Kestrel的请求。如果在Linux上部署，你应该运行类似反向代理服务器，如Apache或Nginx的来代理发送到Kestrel的请求 (更多参考 :doc:`/publishing/linuxproduction`)。
 
 Custom Servers
 --------------
@@ -315,7 +313,7 @@ You can create your own server in which to host ASP.NET apps, or use other open 
 
 Since Kestrel is open source, it makes an excellent starting point if you need to implement your own custom server. Like all of ASP.NET Core, you're welcome to `contribute <https://github.com/aspnet/KestrelHttpServer/blob/dev/CONTRIBUTING.md>`_ any improvements you make back to the project.
 
-因为Kestrel是开源的，如果你需要实现自己的自定义服务器，只是一个不错的起点。像所有的ASP.NET Core，欢迎您`贡献 <https://github.com/aspnet/KestrelHttpServer/blob/dev/CONTRIBUTING.md>`自己的提交来回馈和改进这个项目。
+因为Kestrel是开源的，如果你需要实现自己的自定义服务器，只是一个不错的起点。像所有的ASP.NET Core，欢迎你`贡献 <https://github.com/aspnet/KestrelHttpServer/blob/dev/CONTRIBUTING.md>`自己的提交来回馈和改进这个项目。
 
 Kestrel currently supports a limited number of feature interfaces, but additional features will be added in the future. 
 
