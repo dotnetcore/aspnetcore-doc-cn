@@ -1,9 +1,16 @@
 Views Overview
 ==============
 
-By `Steve Smith`_
+视图概述
+==============
+
+作者： `Steve Smith`_
+
+翻译：`姚阿勇（Dr.Yao） <https://github.com/YaoaY>`_
 
 ASP.NET MVC Core controllers can return formatted results using *views*.
+
+ASP.NET MVC Core 的控制器可以利用 *视图* 返回格式化结果。
 
 .. contents:: Sections
   :local:
@@ -12,15 +19,24 @@ ASP.NET MVC Core controllers can return formatted results using *views*.
 What are Views?
 ---------------
 
+什么是视图？
+---------------
+
 In the Model-View-Controller (MVC) pattern, the *view* encapsulates the presentation details of the user's interaction with the app. Views are HTML templates with embedded code that generate content to send to the client. Views use :doc:`Razor syntax <razor>`, which allows code to interact with HTML with minimal code or ceremony.
 
+在模型-视图-控制器（MVC）模式中，*视图* 封装用户与应用交互的表现细节。视图是带有嵌入代码的 HTML 模版，用以生成发送给客户端的内容。视图采用 :doc:`Razor 语法 <razor>` ，该语法允许以最小的代码量或复杂度与 HTML 进行编码交互。
+
 ASP.NET Core MVC views are *.cshtml* files stored by default in a *Views* folder within the application. Typically, each controller will have its own folder, in which are views for specific controller actions. 
+
+ASP.NET Core MVC 视图默认以 *.cshtml* 文件保存在应用程序的 *Views* 文件夹里面。通常，每个控制器都会有自己的文件夹，里面是对应控制器操作的视图。
 
 .. image:: overview/_static/views_solution_explorer.png
   :height: 100
   :width: 200
 
 In addition to action-specific views, :doc:`partial views <partial>`, :doc:`layouts, and other special view files <layout>` can be used to help reduce repetition and allow for reuse within the app's views.
+
+除了对应操作的视图，:doc:`部分视图 <partial>`, :doc:`布局，以及其他特定视图文件 <layout>` 可以用来帮助减少重复并允许在应用视图里重用。
 
 Benefits of Using Views
 -----------------------
