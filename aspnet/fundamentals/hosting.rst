@@ -10,9 +10,7 @@ Hosting
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： 
-
-（译者注：本章节提到的服务器均指 Web Server ，并非物理设备）
+校对： `何镇汐 <http://github.com/utilcore>`_、`许登洋(Seay) <https://github.com/SeayXu>`_
 
 To run an ASP.NET Core app, you need to configure and launch a host using `WebHostBuilder <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Hosting/WebHostBuilder/index.html>`_.
 
@@ -30,7 +28,7 @@ What is a Host?
 
 ASP.NET Core apps require a *host* in which to execute. A host must implement the :dn:iface:`~Microsoft.AspNetCore.Hosting.IWebHost` interface, which exposes collections of features and services, and a ``Start`` method. The host is typically created using an instance of a :dn:class:`~Microsoft.AspNetCore.Hosting.WebHostBuilder`, which builds and returns a  :dn:class:`~Microsoft.AspNetCore.Hosting.Internal.WebHost` instance. The ``WebHost`` references the server that will handle requests. Learn more about :doc:`servers <servers>`.
 
-ASP.NET Core 应用程序需要在宿主执行。宿主必须实现 :dn:iface:`~Microsoft.AspNetCore.Hosting.IWebHost` 接口，这个接口暴露了功能和服务的集合，以及 ``Start`` 方法。宿主通常使用 :dn:class:`~Microsoft.AspNetCore.Hosting.WebHostBuilder` 的实例进行创建，该实例构建并返回一个 :dn:class:`~Microsoft.AspNetCore.Hosting.Internal.WebHost` 实例。``WebHost`` 引用服务器会处理请求。学习更多关于 :doc:`服务器 <servers>`。
+ASP.NET Core 应用程序需要在宿主中执行。宿主必须实现 :dn:iface:`~Microsoft.AspNetCore.Hosting.IWebHost` 接口，这个接口暴露了功能和服务的集合，以及 ``Start`` 方法。宿主通常使用 :dn:class:`~Microsoft.AspNetCore.Hosting.WebHostBuilder` 的实例进行创建，该实例构建并返回一个 :dn:class:`~Microsoft.AspNetCore.Hosting.Internal.WebHost` 实例。``WebHost`` 引用服务器来处理请求。学习更多关于 :doc:`服务器 <servers>`。
 
 What is the difference between a host and a server?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,12 +43,12 @@ The host is responsible for application startup and lifetime management. The ser
 Setting up a Host
 -----------------
 
-设置一个宿主
+设置宿主
 -----------------
 
 You create a host using an instance of ``WebHostBuilder``. This is typically done in your app's entry point: ``public static void Main``, (which in the project templates is located in a *Program.cs* file). A typical *Program.cs*, shown below, demonstrates how to use a ``WebHostBuilder`` to build a host. 
 
-使用 ``WebHostBuilder`` 实例创建一个宿主。这通常是在你的应用程序入口点：``public static void Main``，（在项目模板中是在 *Program.cs* 文件中）。一个典型的 *Program.cs* 如下所示，演示如何使用 ``WebHostBuilder`` 来构建一个宿主。
+使用 ``WebHostBuilder`` 实例创建一个宿主。这通常是在你的应用程序入口点：``public static void Main``，（在项目模板的 *Program.cs* 文件中）。一个典型的 *Program.cs* 如下所示，演示如何使用 ``WebHostBuilder`` 来构建一个宿主。
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Program.cs
   :emphasize-lines: 14-21
@@ -62,7 +60,7 @@ The ``WebHostBuilder`` is responsible for creating the host that will bootstrap 
 
 The server's *content root* determines where it searches for content files, like MVC View files. The default content root is the folder from which the application is run. 
 
-服务器的 *内容根 content root* 决定它将在哪里搜索内容文件，比如 MVC 视图文件。默认的内容根是应用程序运行的文件夹。
+服务器的 *内容根 ( content root )* 决定它将在哪里搜索内容文件，比如 MVC 视图文件。默认的内容根是应用程序运行的文件夹。
 
 .. note:: Specifying ``Directory.GetCurrentDirectory`` as the content root will use the web project's root folder as the app's content root when the app is started from this folder (for example, calling ``dotnet run`` from the web project folder). This is the default used in Visual Studio and ``dotnet new`` templates.
 
@@ -70,11 +68,11 @@ The server's *content root* determines where it searches for content files, like
 
 If the app should work with IIS, the ``UseIISIntegration`` method should be called as part of building the host. Note that this does not configure a *server*, like ``UseKestrel`` does. To use IIS with ASP.NET Core, you must specify both ``UseKestrel`` and ``UseIISIntegration``. Kestrel is designed to be run behind a proxy and should not be deployed directly facing the Internet. ``UseIISIntegration`` specifies IIS as the reverse proxy server.
 
-如果应用程序需要使用 IIS，需要在构建宿主时调用 ``UseIISIntegration`` 方法。注意这不是像 ``UseKestrel`` 那样配置一个 *服务器*。为了让 ASP.NET Core 使用 IIS，你必须同时指定 ``UseKestrel`` 和 ``UseIISIntegration``。Kestrel 设计为在代理后运行而不应该直接部署面对互联网。
+如果应用程序需要使用 IIS，需要在构建宿主时调用 ``UseIISIntegration`` 方法。注意这不是像 ``UseKestrel`` 那样配置一个 *服务器*。为了让 ASP.NET Core 使用 IIS，你必须同时指定 ``UseKestrel`` 和 ``UseIISIntegration``。Kestrel 被设计为在代理后运行而不应该直接部署到互联网。``UseIISIntegration`` 指定 IIS 为反向代理服务器。
 
 .. note:: ``UseKestrel`` and ``UseIISIntegration`` are very different actions. IIS is only used as a reverse proxy. ``UseKestrel`` creates the web server and hosts the code. ``UseIISIntegration`` specifies IIS as the reverse proxy server. It also examines environment variables used by IIS/IISExpress and makes decisions like which dynamic port use, which headers to set, etc. However, it doesn't deal with or create an ``IServer``.
 
-.. note:: ``UseKestrel`` 与 ``UseIISIntegration`` 行为区别非常大。IIS 只是作为一个反向代理。``UseKestrel`` 创建 Web 服务器并且对代码进行托管。``UseIISIntegration`` 指定 IIS 作为反响代理服务器。它同时也检查了 IIS/IISExpress 使用的环境变量并做出比如使用哪个动态端口，设置什么 Header 等决定。然而它不处理或者创建 ``IServer``。
+.. note:: ``UseKestrel`` 与 ``UseIISIntegration`` 行为区别非常大。IIS 只是作为一个反向代理。``UseKestrel`` 创建 Web 服务器并且对代码进行托管。``UseIISIntegration`` 指定 IIS 作为反向代理服务器。它同时也检查了 IIS/IISExpress 使用的环境变量并做出比如使用哪个动态端口，设置什么 Header 等决定。然而它不处理或者创建 ``IServer``。
 
 A minimal implementation of configuring a host (and an ASP.NET Core app) would include just a server and configuration of the app's request pipeline:
 
@@ -149,7 +147,7 @@ Detailed Errors ``bool``
     Key: ``detailedErrors``. Defaults to ``false``. When ``true`` (or when Environment is set to "Development"), the app will display details of startup exceptions, instead of just a generic error page. Set using ``UseSetting``.
 
 详细错误 ``bool``
-    键： ``detailedErrors``。默认是 ``false``。当值是 ``true`` 时（或者当环境设置为“Development”时），应用程序会显示详细的启动错误信息，而不是仅仅一个一般的错误页。可使用 ``UseSetting`` 设置。
+    键： ``detailedErrors``。默认是 ``false``。当值是 ``true`` 时（或者当环境设置为“Development”时），应用程序会显示详细的启动错误信息，而不仅仅是一般的错误页。可使用 ``UseSetting`` 设置。
 
 .. code-block:: c#
 
