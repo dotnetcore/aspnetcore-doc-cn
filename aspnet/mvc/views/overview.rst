@@ -41,21 +41,38 @@ In addition to action-specific views, :doc:`partial views <partial>`, :doc:`layo
 Benefits of Using Views
 -----------------------
 
+使用视图的好处
+-----------------------
+
 Views provide `separation of concerns <http://deviq.com/separation-of-concerns/>`_ within an MVC app, encapsulating user interface level markup separately from business logic. ASP.NET MVC views use :doc:`Razor syntax <razor>` to make switching between HTML markup and server side logic painless. Common, repetitive aspects of the app's user interface can easily be reused between views using :doc:`layout and shared directives <layout>` or :doc:`partial views <partial>`.
+
+视图在 MVC 应用中提供 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ ，将用户界面层级的标记从业务逻辑中封装出来。ASP.NET MVC 视图采用 :doc:`Razor 语法 <razor>` 在 HTML 标记和服务端逻辑之间进行轻松切换。通常，可以通过 :doc:`布局与共享指令 <layout>` 或者 :doc:`部分视图 <partial>` 对应用的用户界面中重复的外观轻松地进行复用。
+
 
 Creating a View
 ---------------
 
+创建视图
+---------------
+
 Views that are specific to a controller are created in the *Views/[ControllerName]* folder. Views that are shared among controllers are placed in the */Views/Shared* folder. Name the view file the same as its associated controller action, and add the *.cshtml* file extension. For example, to create a view for the *About* action on the *Home* controller, you would create the *About.cshtml* file in the */Views/Home* folder.
 
+属于某个控制器的视图创建在 *Views/[ControllerName]* 文件夹下。在控制器之间共用的视图则放在 */Views/Shared* 文件夹下。将视图文件命名为与其关联的控制器操作一样的名字，并添加 *.cshtml* 文件扩展名。例如，为 *Home* 控制器的 *About* 操作创建一个视图，你应该在 */Views/Home* 文件夹下创建一个 *About.cshtml* 文件。
+
 A sample view file (*About.cshtml*):
+
+一个示例视图文件 （ *About.cshtml* ）：
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Views/Home/About.cshtml
    :language: html
 
 *Razor* code is denoted by the ``@`` symbol. C# statements are run within Razor code blocks set off by curly braces (``{`` ``}``), such as the assignment of "About" to the ``ViewData["Title"]`` element shown above. Razor can be used to display values within HTML by simply referencing the value with the ``@`` symbol, as shown within the ``<h2>`` and ``<h3>`` elements above.
 
+``@`` 符号代表 *Razor* 代码。 C# 语句在大括号（ ``{`` ``}`` ）包裹的 Razor 代码块中运行，就像上面展示的用 “About” 给 ``ViewData["Title"]`` 元素进行的赋值操作那样。Razor 可以通过简单地用 ``@`` 符号对值进行引用从而在 HTML 里显示它们，就像上面 ``<h2>`` 和 ``<h3>`` 元素里面展示的那样。
+
 This view focuses on just the portion of the output for which it is responsible. The rest of the page's layout, and other common aspects of the view, are specified elsewhere. Learn more about :doc:`layout and shared view logic <layout>`.
+
+这个视图只关心由它负责的这部分输出。而页面布局的其余部分，以及视图中的通用外观，则在别的地方指定。了解更多关于 :doc:`布局与共享视图逻辑 <layout>` 。
 
 How do Controllers Specify Views?
 ---------------------------------
