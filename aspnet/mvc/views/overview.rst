@@ -77,7 +77,12 @@ This view focuses on just the portion of the output for which it is responsible.
 How do Controllers Specify Views?
 ---------------------------------
 
+控制器如何指定视图？
+---------------------------------
+
 Views are typically returned from actions as a :dn:cls:`~Microsoft.AspNetCore.Mvc.ViewResult`. Your action method can create and return a ``ViewResult`` directly, but more commonly if your controller inherits from :dn:cls:`~Microsoft.AspNetCore.Mvc.Controller`, you'll simply use the ``View`` helper method, as this example demonstrates:
+
+视图通常作为一个 :dn:cls:`~Microsoft.AspNetCore.Mvc.ViewResult` 从操作中返回。你的操作方法可以直接返回一个 ``ViewResult`` ，但是更常见的是如果你的控制器是继承自 :dn:cls:`~Microsoft.AspNetCore.Mvc.Controller` 的，那么可以简单地使用 ``View`` 辅助方法，如下例所示：
 
 *HomeController.cs*
 
@@ -89,29 +94,53 @@ Views are typically returned from actions as a :dn:cls:`~Microsoft.AspNetCore.Mv
   
 The ``View`` helper method has several overloads to make returning views easier for app developers. You can optionally specify a view to return, as well as a model object to pass to the view.
 
+ 这个 ``View`` 辅助方法有多个重载版本以便于帮助应用开发人员返回视图。你可以有选择性地指定一个返回的视图，还可以给视图传递一个模型对象。
+
 When this action returns, the *About.cshtml* view shown above is rendered:
+
+当这个操作返回时，上面展示的 *About.cshtml* 视图将会被渲染：
 
 .. image:: overview/_static/about-page.png
 
 View Discovery
 ^^^^^^^^^^^^^^
 
+视图发现
+^^^^^^^^^^^^^^
+
 When an action returns a view, a process called *view discovery* takes place. This process determines which view file will be used. Unless a specific view file is specified, the runtime looks for a controller-specific view first, then looks for matching view name in the *Shared* folder.
+
+当操作返回视图的时，会进行一个叫做 *视图发现* 的过程。这个过程决定哪个视图文件将被采用。如果没有指定特定的视图文件，运行时首先会寻找与控制器对应的视图，然后再去 *Shared* 文件夹里寻找匹配的视图名称。
 
 When an action returns the ``View`` method, like so ``return View();``, the action name is used as the view name. For example, if this were called from an action method named "Index", it would be equivalent to passing in a view name of "Index". A view name can be explicitly passed to the method (``return View("SomeView");``). In both of these cases, view discovery searches for a matching view file in:
 
+当操作返回 ``View`` 方法，就像 ``return View();`` 这样，这个操作的名字则被用作视图名称。例如，假如这是从一个叫做 “ Index ” 的操作方法调用的，那么它就等价于传递了一个视图名称 “ Index ” 。也可以给这个方法传递一个明确的视图名称（ ``return View("SomeView");`` ）。在这两种情况中，视图探寻都会在以下位置搜索匹配的视图文件：
+
   1. Views/<ControllerName>/<ViewName>.cshtml
   2. Views/Shared/<ViewName>.cshtml
+
+  1. Views/<控制器名称>/<视图名称>.cshtml
+  2. Views/Shared/<视图名称>.cshtml
   
 .. tip:: We recommend following the convention of simply returning ``View()`` from actions when possible, as it results in more flexible, easier to refactor code.
 
+.. tip:: 我们推荐遵循惯例，在可能的情况下简单地从操作中返回 ``View()`` ，这样会更加灵活，更易于重构代码。
+
 A view file path can be provided, instead of a view name. In this case, the *.cshtml* extension must be specified as part of the file path. The path should be relative to the application root (and can optionally start with "/" or "~/"). For example: ``return View("Views/Home/About.cshtml");``
+
+可以提供视图文件路径，而非视图名。在这种情况下，*.cshtml* 扩展名必须作为文件路径的一部分明确指定。路径可以是相对于应用程序根目录的（可以选择性地以 “ / ” 或者 “ ~/ ” 开头）。例如： ``return View("Views/Home/About.cshtml");``
 
 .. note:: :doc:`Partial views <partial>` and :doc:`view components <view-components>` use similar (but not identical) discovery mechanisms.
 
+.. note:: :doc:`部分视图 <partial>`  以及 :doc:`视图组件 <view-components>` 采用了类似（但不完全一致）的发现机制。
+
 .. note:: You can customize the default convention regarding where views are located within the app by using a custom :dn:iface:`~Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander`.
 
+.. note:: 你可以通过自定义的 :dn:iface:`~Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander` 来定制关于应用中的视图位于哪里的默认约定。
+
 .. tip:: View names may be case sensitive depending on the underlying file system. For compatibility across operating systems, always match case between controller and action names and associated view folders and filenames.
+
+.. tip:: 取决于基本文件系统，视图名称可能会区分大小写。为了跨系统的兼容性，应当总是保持控制器与操作名称同相关联的视图文件夹与文件名之间保持大小写一致。
 
 Passing Data to Views
 ---------------------
