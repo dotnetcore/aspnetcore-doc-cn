@@ -201,9 +201,9 @@ ASP.NET 提供了 ``IDistributedCache`` 的多种实现， in-memory 是其中�
   services.AddSession();
 
 
-Then, add the following to ``Configure`` and you're ready to use session in your application code:
+Then, add the following to ``Configure`` **before** ``app.UseMVC()``  and you're ready to use session in your application code:
 
-然后，将下面的代码添加到 ``Configure`` 中，你就可以在程序代码里使用会话了：
+然后，将下面的代码添加到 ``Configure`` 中 ``app.UseMVC()`` **之前** ，你就可以在程序代码里使用会话了：
 
 .. code-block:: c#
 
