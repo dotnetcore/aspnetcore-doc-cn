@@ -14,7 +14,7 @@ By `Steve Smith`_ and  `Rick Anderson`_
 
 ASP.NET Core supports OWIN, the Open Web Interface for .NET, which allows web applications to be decoupled from web servers. In addition, OWIN defines a standard way for middleware to be used in a pipeline to handle individual requests and associated responses. ASP.NET Core applications and middleware can interoperate with OWIN-based applications, servers, and middleware.
 
-ASP.NET Core 支持 OWIN（即 Open Web Server Interface for .NET 的首字母缩写），OWIN的目标是用于解耦Web Server和Web Application。此外， OWIN为中间件定义了一个标准方法用处理单个请求以及相关联的响应。ASP.NET Core 的程序和中间件可以和 OWIN-based 应用程序、服务器以及中间件相互交互。
+ASP.NET Core 支持 OWIN（即 Open Web Server Interface for .NET 的首字母缩写），OWIN的目标是用于解耦Web Server和Web Application。此外， OWIN为中间件定义了一个标准方法用来处理单个请求以及相关联的响应。ASP.NET Core 的程序和中间件可以和 OWIN-based 应用程序、服务器以及中间件相互交互。
 
 .. contents:: Sections:
   :local:
