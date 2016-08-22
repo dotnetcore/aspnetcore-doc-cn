@@ -82,11 +82,9 @@ The default key lifetime is 90 days, though this is configurable as in the follo
 
 .. code-block:: c#
 
-  services.ConfigureDataProtection(configure =>
-  {
+  services.AddDataProtection()
       // use 14-day lifetime instead of 90-day lifetime
-      configure.SetDefaultKeyLifetime(TimeSpan.FromDays(14));
-  });
+      .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
 
 An administrator can also change the default system-wide, though an explicit call to SetDefaultKeyLifetime will override any system-wide policy. The default key lifetime cannot be shorter than 7 days.
 
@@ -121,7 +119,7 @@ The sample below demonstrates using the IKeyManager interface to inspect and man
 下例演示了使用 IKeyManager 接口来检查和操作密钥环，包括撤销现有的密钥以及手工生成新密钥。
 
 .. literalinclude:: key-management/samples/key-management.cs
-        :language: c#
+        :language: none
         :linenos:
 
 Key storage
