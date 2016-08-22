@@ -41,7 +41,7 @@ ASP.NET Core 对于 OWIN 的支持基于 ``Microsoft.AspNetCore.Owin`` 包。你
 
 OWIN middleware conforms to the `OWIN specification <http://owin.org/spec/spec/owin-1.0.0.html>`_, which requires a ``Func<IDictionary<string, object>, Task>`` interface, and specific keys be set (such as ``owin.ResponseBody``). The following simple OWIN middleware displays "Hello World":
 
-OWIN 中间件遵循 `OWIN 标准 <http://owin.org/spec/spec/owin-1.0.0.html>`_， OWIN 标准定义了一系列 ``IDictionary<string, object>`` 需要用到的属性接口， 并且规定了某些键值必须被设置 (例如 ``owin.ResponseBody``)。 下面的简单的中间件的例子来显示 "Hello World"：
+OWIN 中间件遵循 `OWIN 标准 <http://owin.org/spec/spec/owin-1.0.0.html>`_， OWIN 标准定义了一系列 ``Func<IDictionary<string, object>, Task>`` 需要用到的属性接口， 并且规定了某些键值必须被设置 (例如 ``owin.ResponseBody``)。 下面的简单的中间件的例子来显示 "Hello World"：
 
 .. literalinclude:: owin/sample/src/OwinSample/Startup.cs
   :language: c#
