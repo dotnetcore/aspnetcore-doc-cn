@@ -80,7 +80,7 @@ Many of the views in the *Views/Account* folder (generated when you create a new
  *Views/Account* 文件夹下的很多视图（在你创建一个带有 *个人用户账户* 的新 Web 应用时生成的）都含有 `asp-route-returnurl <http://docs.asp.net/en/latest/mvc/views/working-with-forms.html#the-form-tag-helper>`__ 属性: 
 
 .. code-block:: none
-  :emphasize-lines: 4
+  :emphasize-lines: 2
   
   <form asp-controller="Account" asp-action="Login" 
     asp-route-returnurl="@ViewData["ReturnUrl"]" 
@@ -103,7 +103,7 @@ Input Tag Helper将 HTML  `<input> <https://www.w3.org/wiki/HTML/Elements/input>
 
   <input asp-for="<Expression Name>" /> 
 
-Input Tag Helper:
+The Input Tag Helper:
 
 - Generates the ``id`` and ``name`` HTML attributes for the expression name specified in the ``asp-for`` attribute.  ``asp-for="Property1.Property2"`` is equivalent to ``m => m.Property1.Property2``, that is the attribute value literally is part of an expression. The name of the expression is what's used for the ``asp-for`` attribute value.
 - Sets the HTML ``type`` attribute value based on the model type and  `data annotation <https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx>`__ attributes applied to the model property
@@ -250,13 +250,13 @@ You can also navigate to child properties using the property path of the view mo
 
 你还可以通过视图模型的属性路径定位到子属性。考虑这个更复杂的模型，它包含了一个 ``Address`` 子属性。
 
-.. literalinclude::  forms/sample/final/ViewModels/AddressViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/AddressViewModel.cs
   :language: c#
   :lines: 5-8
   :dedent: 3
   :emphasize-lines: 1-
 
-.. literalinclude::  forms/sample/final/ViewModels/RegisterAddressViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/RegisterAddressViewModel.cs
   :language: c#
   :lines: 5-14
   :dedent: 3
@@ -266,7 +266,7 @@ In the view, we bind to ``Address.AddressLine1``:
 
 在视图中，我们绑定了 ``Address.AddressLine1`` ：
 
-.. literalinclude::  forms/sample/final/Views/Demo/RegisterAddress.cshtml 
+.. literalinclude::  working-with-forms/sample/final/Views/Demo/RegisterAddress.cshtml 
   :language: HTML
   :emphasize-lines: 6
 
@@ -288,7 +288,7 @@ Sample, a model containing an array of ``Colors``:
 
 示例，包含一个 ``Colors`` 数组的模型：
 
-.. literalinclude::  forms/sample/final/ViewModels/Person.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/Person.cs
   :language: c#
   :lines: 5-10
   :dedent: 3
@@ -310,21 +310,21 @@ The following Razor shows how you access a specific ``Color`` element:
 
 下面的 Razor 代码展示了如何访问指定的 ``Color`` 元素：
 
-.. literalinclude::   forms/sample/final/Views/Demo/EditColor.cshtml 
+.. literalinclude::   working-with-forms/sample/final/Views/Demo/EditColor.cshtml 
   :language: HTML
 
 The *Views/Shared/EditorTemplates/String.cshtml* template:
 
 *Views/Shared/EditorTemplates/String.cshtml* 模版：
 
-.. literalinclude::   forms/sample/final/Views/Shared/EditorTemplates/String.cshtml 
+.. literalinclude::   working-with-forms/sample/final/Views/Shared/EditorTemplates/String.cshtml 
   :language: HTML
   
 Sample using ``List<T>``:
 
 使用 ``List<T>`` 的例子：
 
-.. literalinclude::  forms/sample/final/ViewModels/ToDoItem.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/ToDoItem.cs
   :language: c#
   :lines: 3-7
   :dedent: 3
@@ -333,14 +333,14 @@ The following Razor shows how to iterate over a collection:
 
 下面的 Razor 代码展示了如何遍历一个集合：
 
-.. literalinclude::   forms/sample/final/Views/Demo/Edit.cshtml 
+.. literalinclude::   working-with-forms/sample/final/Views/Demo/Edit.cshtml 
   :language: none
 
 The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 
 *Views/Shared/EditorTemplates/ToDoItem.cshtml* 模版：
 
-.. literalinclude::   forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml 
+.. literalinclude::   working-with-forms/sample/final/Views/Shared/EditorTemplates/ToDoItem.cshtml 
   :language: HTML
   
 :Note: Always use ``for`` (and *not* ``foreach``) to iterate over a list. Evaluating an indexer in a LINQ expression can be expensive and should be minimized.
@@ -373,10 +373,10 @@ Sample:
 
 示例：
 
-.. literalinclude::  forms/sample/final/ViewModels/DescriptionViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/DescriptionViewModel.cs
   :language: c#
 
-..  literalinclude::  forms/sample/final/Views/Demo/RegisterTextArea.cshtml
+..  literalinclude::  working-with-forms/sample/final/Views/Demo/RegisterTextArea.cshtml
   :language: HTML
   :emphasize-lines: 4
   
@@ -425,10 +425,10 @@ Sample:
 
 示例：
 
-.. literalinclude::  forms/sample/final/ViewModels/SimpleViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/SimpleViewModel.cs
   :language: c#
 
-..  literalinclude::  forms/sample/final/Views/Demo/RegisterLabel.cshtml
+..  literalinclude::  working-with-forms/sample/final/Views/Demo/RegisterLabel.cshtml
   :language: HTML
   :emphasize-lines: 4
 
@@ -475,7 +475,7 @@ The `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/
 
 .. code-block:: HTML
   
-  <span asp-validation-for="Email">
+  <span asp-validation-for="Email"></span>
   
 The Validation Message Tag Helper will generate the following HTML:
 
@@ -485,7 +485,7 @@ Validation Message Tag Helper将生成以下 HTML ：
 
     <span class="field-validation-valid" 
       data-valmsg-for="Email" 
-      data-valmsg-replace="true">
+      data-valmsg-replace="true"></span>
 
 You generally use the `Validation Message Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ValidationMessageTagHelper/index.html>`__  after an ``Input`` Tag Helper for the same property. Doing so displays any validation error messages near the input that caused the error.
 
@@ -541,10 +541,10 @@ In the following example, the data model is decorated with ``DataAnnotation`` at
 
 在以下示例中，数据模型装饰了 ``DataAnnotation`` 特性，用以在 ``<input>`` 元素上生成验证错误信息。当发生验证错误的时候， Validation Tag Helper显示错误信息：
 
-.. literalinclude::  forms/sample/final/ViewModels/RegisterViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/RegisterViewModel.cs
   :language: c#
 
-..  literalinclude::  forms/sample/final/Views/Demo/RegisterValidation.cshtml
+..  literalinclude::  working-with-forms/sample/final/Views/Demo/RegisterValidation.cshtml
   :language: HTML
   :emphasize-lines: 4,6,8
   :lines: 1-10
@@ -588,21 +588,21 @@ The `Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Micr
 
 `Select Tag Helper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/SelectTagHelper/index.html>`__ 的 ``asp-for`` 为 `select <https://www.w3.org/wiki/HTML/Elements/select>`__ 元素指定模型的属性名称，而 ``asp-items`` 则指定 `option <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素。例如：
 
-.. literalinclude::   forms/sample/final/Views/Home/Index.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
   :lines: 4
   :dedent: 3
   
 示例：
 
-.. literalinclude::  forms/sample/final/ViewModels/CountryViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/CountryViewModel.cs
   :language: c#
   
 The ``Index`` method initializes the ``CountryViewModel``, sets the selected country and passes it to the ``Index`` view.
 
 ``Index`` 方法初始化 ``CountryViewModel`` ，设置已选国家然后把它传给 ``Index`` 视图。
 
-.. literalinclude:: forms/sample/final/Controllers/HomeController.cs
+.. literalinclude:: working-with-forms/sample/final/Controllers/HomeController.cs
   :language: c#
   :lines: 8-13
   :dedent: 6
@@ -611,7 +611,7 @@ The HTTP POST ``Index`` method displays the selection:
 
 HTTP POST ``Index`` 方法显示选择的项：
 
-.. literalinclude::  forms/sample/final/Controllers/HomeController.cs
+.. literalinclude::  working-with-forms/sample/final/Controllers/HomeController.cs
   :language: c#
   :lines: 15-27
   :dedent: 6
@@ -620,7 +620,7 @@ The ``Index`` view:
 
 ``Index`` 视图：
 
-.. literalinclude:: forms/sample/final/Views/Home/Index.cshtml
+.. literalinclude:: working-with-forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
   :emphasize-lines: 4
   
@@ -649,7 +649,7 @@ The ``asp-for`` attribute value is a special case and doesn't require a ``Model`
 
 ``asp-for`` 属性值是一个特例，不需要 ``Model`` 前缀，而其他的 Tag Helper 属性则需要（比如 ``asp-items`` ）。
 
-.. literalinclude::   forms/sample/final/Views/Home/Index.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/Index.cshtml
   :language: HTML
   :lines: 4
   :dedent: 3  
@@ -667,20 +667,18 @@ It's often convenient to use ``<select>`` with an ``enum`` property and generate
 
 示例：
 
-.. literalinclude::  forms/sample/final/ViewModels/CountryEnumViewModel.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/CountryEnumViewModel.cs
   :language: c#
   :lines: 3-6
   :dedent: 3
   
-.. literalinclude::  forms/sample/final/ViewModels/CountryEnum.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/CountryEnum.cs
   :language: c#
   :lines: 1-4,6,8-
 
 The `GetEnumSelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/IHtmlHelper/index.html>`__ method generates a `SelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/Rendering/SelectList/index.html>`__ object for an enum.
 
-`GetEnumSelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/IHtmlHelper/index.html>`__ 方法为枚举生成一个 `SelectList <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/Rendering/SelectList/index.html>`__ 对象。
-
-.. literalinclude::   forms/sample/final/Views/Home/IndexEnum.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/IndexEnum.cshtml
   :language: HTML
   :emphasize-lines: 5
 
@@ -688,7 +686,7 @@ You can decorate your enumerator list with the ``Display`` attribute to get a ri
 
 你可以使用 ``Display`` 特性装饰你的枚举数从而获得更丰富的 UI ：
 
-.. literalinclude::  forms/sample/final/ViewModels/CountryEnum.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/CountryEnum.cs
   :language: c#
   :emphasize-lines: 5,7
 
@@ -728,7 +726,7 @@ The ``CountryViewModelGroup`` groups the ``SelectListItem`` elements into the "N
 
 ``CountryViewModelGroup`` 把 ``SelectListItem`` 元素分到 "North America" 和 "Europe" 分组中：
 
-.. literalinclude::  forms/sample/final/ViewModels/CountryViewModelGroup.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/CountryViewModelGroup.cs
   :language: c#
   :lines: 6-59
   :dedent: 3
@@ -739,7 +737,7 @@ The two groups are shown below:
 下面展示了这两个分组：
 
 
-.. image:: forms/_static/grp.png
+.. image:: working-with-forms/_static/grp.png
 
 The generated HTML:
 
@@ -775,7 +773,7 @@ The Select Tag Helper  will automatically generate the `multiple = "multiple" <h
 
 如果 ``asp-for`` 属性中指定的模型属性是一个 ``IEnumerable`` 类型， Select Tag Helper 将会自动生成 `multiple = "multiple" <https://www.w3.org/TR/html-markup/select.html#select.attrs.multiple>`__ 。例如，已知以下模型：
 
-.. literalinclude::  forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs
+.. literalinclude::  working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs
   :language: c#
   :emphasize-lines: 6
 
@@ -783,7 +781,7 @@ With the following view:
 
 使用以下视图：
 
-.. literalinclude::   forms/sample/final/Views/Home/IndexMultiSelect.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/IndexMultiSelect.cshtml
   :language: HTML
   :emphasize-lines: 4
   
@@ -818,7 +816,7 @@ To allow for no selection, add a "not specified" option to the select list. If t
 
 想要允许无选择，可添加一个 “未选择” 项到选择列表。如果该模型属性是一个 `值类型 <https://msdn.microsoft.com/en-us/library/s1ax56ch.aspx>`__ ，则需要使其为可空值 `nullable<https://msdn.microsoft.com/en-us/library/2cf62fcy.aspx>`__ 。
 
-.. literalinclude::   forms/sample/final/Views/Home/IndexEmpty.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/IndexEmpty.cshtml
   :language: HTML
   :emphasize-lines: 5
 
@@ -826,7 +824,7 @@ If you find yourself using the "not specified" option in multiple pages, you can
 
 如果你在多个页面里使用“未选择”项，可以创建一个模版避免重复的 HTML：
 
-.. literalinclude::   forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/IndexEmptyTemplate.cshtml
   :language: HTML
 
   :emphasize-lines: 5
@@ -835,19 +833,19 @@ The *Views/Shared/EditorTemplates/CountryViewModel.cshtml* template:
 
 *Views/Shared/EditorTemplates/CountryViewModel.cshtml* 模版：
 
-.. literalinclude::   forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml
   :language: HTML
 
 Adding HTML `<option> <https://www.w3.org/wiki/HTML/Elements/option>`__ elements is not limited to the *No selection* case. For example, the following view and action method will generate HTML similar to the code above:
 
 添加 HTML `<option> <https://www.w3.org/wiki/HTML/Elements/option>`__ 元素并不局限于 *无选择* 的情况。比如，下面的视图和 Action 方法会生成和上面类似的 HTML ：
 
-.. literalinclude:: forms/sample/final/Controllers/HomeController.cs
+.. literalinclude:: working-with-forms/sample/final/Controllers/HomeController.cs
   :language: c#
   :lines: 114-119
   :dedent: 6
 
-.. literalinclude::   forms/sample/final/Views/Home/IndexOption.cshtml
+.. literalinclude::   working-with-forms/sample/final/Views/Home/IndexOption.cshtml
   :language: HTML
  
 The correct ``<option>`` element will be selected ( contain the ``selected="selected"`` attribute) depending on the current ``Country`` value. 
