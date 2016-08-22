@@ -54,7 +54,7 @@ OWIN 最简单的方法签名是接收一个 ``IDictionary<string, object>`` 输
 
 Adding OWIN middleware to the ASP.NET pipeline is most easily done using the ``UseOwin`` extension method. Given the ``OwinHello`` method shown above, adding it to the pipeline is a simple matter:
 
-添加 OWIN 中间到 ASP.NET 管道是最简单的办法是使用 ``UseOwin`` 扩展方法完成。参考上面所示的 ``OwinHello`` 方法，将它添加到管道是一个简单的事情：
+添加 OWIN 中间件到 ASP.NET 管道是最简单的办法是使用 ``UseOwin`` 扩展方法完成。参考上面所示的 ``OwinHello`` 方法，将它添加到管道是一个简单的事情：
 
 .. literalinclude:: owin/sample/src/OwinSample/Startup.cs
   :language: c#
