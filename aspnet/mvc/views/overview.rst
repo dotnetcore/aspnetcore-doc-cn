@@ -145,7 +145,13 @@ A view file path can be provided, instead of a view name. In this case, the *.cs
 Passing Data to Views
 ---------------------
 
+给视图传递数据
+---------------------
+
 You can pass data to views using several mechanisms. The most robust approach is to specify a *model* type in the view (commonly referred to as a *viewmodel*, to distinguish it from business domain model types), and then pass an instance of this type to the view from the action. We recommend you use a model or view model to pass data to a view. This allows the view to take advantage of strong type checking. You can specify a model for a view using the ``@model`` directive:
+
+你可以使用多种机制给视图传递数据。最健壮的方式就是在视图中指定一个 *模型* 类型（通常称为 *视图模型* ，以区别于业务领域的模型类型 ），然后从操作中给视图传递一个该类型的实例。我们推荐你采用模型或视图模型给视图传递数据。这使得视图可以利用到强类型检查的优势。你可以通过 ``@model`` 指令为视图指定一个模型：
+
 
 .. code-block:: html
     :emphasize-lines: 1
@@ -160,6 +166,8 @@ You can pass data to views using several mechanisms. The most robust approach is
     </address>
 
 Once a model has been specified for a view, the instance sent to the view can be accessed in a strongly-typed manner using ``@Model`` as shown above. To provide an instance of the model type to the view, the controller passes it as a parameter:
+
+一旦为视图指定了模型，就可以像上面展示的那样，通过 ``@Model`` 以强类型的方式访问发送给视图的实例。为了给视图提供模型类型的实例，控制器将其作为参数传递进去：
 
 .. code-block:: c#
     :emphasize-lines: 13
@@ -181,6 +189,8 @@ Once a model has been specified for a view, the instance sent to the view can be
 
 There are no restrictions on the types that can be provided to a view as a model. We recommend passing Plain Old CLR Object (POCO) view models with little or no behavior, so that business logic can be encapsulated elsewhere in the app. An example of this approach is the *Address* viewmodel used in the example above:
 
+对于能够作为模型提供给视图的类型没有限制。我们推荐传递具有少量行为或者没有行为的普通旧 CLR 对象（Plain Old CLR Object，POCO）视图模型，这样就可以在应用的其他地方封装业务逻辑。这种方法的一个例子就是上面示例中的 *Address* 视图模型：
+
 .. code-block:: c#
     :emphasize-lines: 13
    
@@ -198,14 +208,25 @@ There are no restrictions on the types that can be provided to a view as a model
 
 .. note:: Nothing prevents you from using the same classes as your business model types and your display model types. However, keeping them separate allows your views to vary independently from your domain or persistence model, and can offer some security benefits as well (for models that users will send to the app using :doc:`model binding </mvc/models/model-binding>`).
 
+.. note:: 虽然你可以使用相同的类作为你的业务模型类型和显示模型类型。然而，将它们与你的领域或持久模型区分开来可以使视图独立地变化，并且还可以提供一些安全上的收益（对于那些用户通过 :doc:`模型绑定 </mvc/models/model-binding>` 发送给应用的模型）。
+
 Loosely Typed Data
+^^^^^^^^^^^^^^^^^^
+
+弱类型数据
 ^^^^^^^^^^^^^^^^^^
 
 In addition to strongly typed views, all views have access to a loosely typed collection of data. This same collection can be referenced through either the ``ViewData`` or ``ViewBag`` properties on controllers and views. The ``ViewBag`` property is a wrapper around ``ViewData`` that provides a dynamic view over that collection. It is not a separate collection.
 
+除了强类型视图之外，所有的视图都可以访问弱类型的数据集合。这个集合可以通过控制器和视图的 ``ViewData`` 或者 ``ViewBag`` 属性来引用。``ViewBag`` 属性是对 ``ViewData`` 的封装用以在集合上提供动态视图。它不是一个独立的集合。  
+
 ``ViewData`` is a dictionary object accessed through ``string`` keys. You can store and retrieve objects in it, and you'll need to cast them to a specific type when you extract them. You can use ``ViewData`` to pass data from a controller to views, as well as within views (and partial views and layouts). String data can be stored and used directly, without the need for a cast.
 
+``ViewData`` 是一个通过 ``string`` 键访问的字典对象。你可以在里面储存和查询对象，并且在提取它们的时候无需转换成特定的类型。可以利用 ``ViewData`` 从控制器传递数据给视图，以及在视图之间（还有部分视图与布局）。字符串数据可以直接储存和使用，无需进行转换。
+
 Set some values for ``ViewData`` in an action:
+
+在操作中为 ``ViewData`` 设置一些值：
 
 .. code-block:: c#
 
@@ -226,6 +247,8 @@ Set some values for ``ViewData`` in an action:
 
 Work with the data in a view:
 
+在视图中使用数据：
+
 .. code-block:: html
     :emphasize-lines: 3,6
    
@@ -244,6 +267,10 @@ Work with the data in a view:
 
 The ``ViewBag`` objects provides dynamic access to the objects stored in ``ViewData``. This can be more convenient to work with, since it doesn't require casting. The same example as above, using ``ViewBag`` instead of a strongly typed ``address`` instance in the view:
 
+``ViewBag`` 对象为储存在 ``ViewData`` 里的对象提供动态访问。这样使用起来就更方便了，因为不需要转换。与上面的例子一样，在视图中采用了 ``ViewBag`` 而不是强类型的 ``Address`` 实例： 
+
+``ViewBag``
+
 .. code-block:: html
     :emphasize-lines: 1,4-6
 
@@ -257,10 +284,17 @@ The ``ViewBag`` objects provides dynamic access to the objects stored in ``ViewD
 
 .. note:: Since both refer to the same underlying ``ViewData`` collection, you can mix and match between ``ViewData`` and ``ViewBag`` when reading and writing values, if convenient.
 
+.. note:: 由于二者引用的是相同的底层 ``ViewData`` 集合，在你读取和写入值的时候，可以根据方便与否来协调混用 ``ViewData`` 和 ``ViewBag`` 。
+
 Dynamic Views
 ^^^^^^^^^^^^^
 
+动态视图
+^^^^^^^^^^^^^
+
 Views that do not declare a model type but have a model instance passed to them can reference this instance dynamically. For example, if an instance of ``Address`` is passed to a view that doesn't declare an ``@model``, the view would still be able to refer to the instance's properties dynamically as shown:
+
+对于没有声明模型类型但给它们传递了模型实例的视图，可以动态地引用这个实例。例如，如果将一个 ``Address`` 实例传给了一个并没有声明 ``@model`` 的视图，那么这个视图还是能够像下面展示的那样去引用这个实例的属性：
 
 .. code-block:: html
     :emphasize-lines: 13,16-18
@@ -274,11 +308,22 @@ Views that do not declare a model type but have a model instance passed to them 
 
 This feature can offer some flexibility, but does not offer any compilation protection or IntelliSense. If the property doesn't exist, the page will fail at runtime.
 
+这种特性能提供一些灵活性，但无法提供编译保护和智能提示。如果属性并不存在，页面将在运行时出错。
+
 More View Features
+------------------
+
+更多视图特性
 ------------------
 
 :doc:`Tag helpers <tag-helpers/intro>` make it easy to add server-side behavior to existing HTML tags, avoiding the need to use custom code or helpers within views. Tag helpers are applied as attributes to HTML elements, which are ignored by editors that aren't familiar with them, allowing view markup to be edited and rendered in a variety of tools. Tag helpers have many uses, and in particular can make :doc:`working with forms <working-with-forms>` much easier.
 
+:doc:`Tag helpers <tag-helpers/intro>` 便于给已有的 HTML 标记添加服务端行为，不需要视图中的自定义代码或助手代码。Tag helper 是作为 HTML 元素的属性启用的，会被不认识它们的编辑器忽略掉，使得视图标签可以被很多的工具编辑和渲染。Tag helper 有很多用途，尤其是非常便于 :doc:`使用表单 <working-with-forms>` 。 
+
 Generating custom HTML markup can be achieved with many built-in :doc:`HTML Helpers <html-helpers>`, and more complex UI logic (potentially with its own data requirements) can be encapsulated in :doc:`view-components`. View components provide the same separation of concerns that controllers and views offer, and can eliminate the need for actions and views to deal with data used by common UI elements.
 
+可以用很多内置的 :doc:`HTML Helpers <html-helpers>` 生成自定义的 HTML 标记，更复杂的 UI 逻辑（可能有它自己的数据需求）可以在 :doc:`view-components` 中封装。与控制器和视图一样，视图组件也提供关注点分离，并且无需操作和视图就可以处理通用 UI 元素用到的数据。
+
 Like many other aspects of ASP.NET Core, views support :doc:`dependency injection </fundamentals/dependency-injection>`, allowing services to be :doc:`injected into views <dependency-injection>`.
+
+与 ASP.NET Core 的很多方面一样，视图也支持 :doc:`依赖注入 </fundamentals/dependency-injection>` ，允许将服务 :doc:`注入到视图 <dependency-injection>` 。
