@@ -3,9 +3,18 @@
 Overview of ASP.NET Core MVC
 ============================
 
+ASP.NET Core MVC 概览
+=======================
+
 By `Steve Smith`_
 
+作者：`Steve Smith`_
+
+翻译：`张海龙(jiechen) <http://github.com/ijiechen>`_
+
 ASP.NET Core MVC is a rich framework for building web apps and APIs using the Model-View-Controller design pattern.
+
+ASP.NET Core MVC 是使用模型-视图-控制器（Model-View-Controller） 设计模式构建网页应用与 API 的丰富的框架。
 
 .. contents:: Sections:
   :local:
@@ -14,41 +23,78 @@ ASP.NET Core MVC is a rich framework for building web apps and APIs using the Mo
 What is the MVC pattern?
 ------------------------
 
+什么是 MVC 模式？
+-------------------
+
 The Model-View-Controller (MVC) architectural pattern separates an application into three main groups of components: Models, Views, and Controllers. This pattern helps to achieve `separation of concerns <http://deviq.com/separation-of-concerns/>`_. Using this pattern, user requests are routed to a Controller which is responsible for working with the Model to perform user actions and/or retrieve results of queries. The Controller chooses the View to display to the user, and provides it with any Model data it requires.
+
+模型-视图-控制器（MVC）架构模式将一个应用区分为三部分主要组件：模型、视图、与控制器。这种模式有助实现 `关注分离 <http://deviq.com/separation-of-concerns/>`_。使用这种模式，用户请求被引导到控制器，控制器负责与模型（Model）协作以执行用户操作和/或返回请求结果。控制器（Controller）选择视图（View），展示给用户，而给视图提供其所需要的任何模型（Model）。
 
 The following diagram shows the three main components and which ones reference the others:
 
+下面的图表展示了相互引用的三个主要组件：
+
 .. image:: overview/_static/mvc.png
 
-This delineation of responsibilities helps you scale the application in terms of complexity because it��s easier to code, debug, and test something (model, view, or controller) that has a single job (and follows the `Single Responsibility Principle <http://deviq.com/single-responsibility-principle/>`_). It's more difficult to update, test, and debug code that has dependencies spread across two or more of these three areas. For example, user interface logic tends to change more frequently than business logic. If presentation code and business logic are combined in a single object, you have to modify an object containing business logic every time you change the user interface. This is likely to introduce errors and require the retesting of all business logic after every minimal user interface change.
+This delineation of responsibilities helps you scale the application in terms of complexity because it��s easier to code, debug, and test something (model, view, or controller) that has a single job (and follows the `Single Responsibility Principle <http://deviq.com/single-responsibility-principle/>`_). It's more difficult to update, test, and debug code that has dependencies spread across two or more of these three areas. For example, user interface logic tends to change more frequently than business logic. If presentation code and business logic are combined in a single object, you have to modify an object containing business logic every time you change the user interface. This is likely to introduce errors and require the retesting of all business logic after every minimal user interface change.
+
+这个职责示意图帮你规划你的应用的复杂程度，因为其更容易编码、调试、与测试一些（模型、视图、控制器）有单一功能的模块 （进一步了解 `单一职责原则 <http://deviq.com/single-responsibility-principle/>`_）。存在两者或者此三者之间广泛依赖是非常难更新、测试、调试代码的。例如，用户接口逻辑与业务逻辑相比倾向于变化更频繁。如果表现代码与业务逻辑混杂在一个对象内，在你每次改变用户接口的时候都需要修改一个包含业务逻辑的对象。这也就更容易引入错误，并使得你在每次做一个很小的用户接口改动后都要进行完整的业务逻辑测试。
 
 .. note:: Both the view and the controller depend on the model. However, the model depends on neither the view nor the controller. This is one the key benefits of the separation. This separation allows the model to be built and tested independent of the visual presentation.
+
+.. 说明:: 视图与控制器都依赖于模型。尽管如此，模型并不依赖于视图，也不依赖于控制器。这是分离的一大优势。这样分离允许模型被创建并可以依赖于虚拟的表现中测试。
 
 Model Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^
 
+模型（Model）职责
+^^^^^^^^^^^^^^^^^^^^^^
+
 The Model in an MVC application represents the state of the application and any business logic or operations that should be performed by it. Business logic should be encapsulated in the model, along with any implementation logic for persisting the state of the application. Strongly-typed views will typically use ViewModel types specifically designed to contain the data to display on that view; the controller will create and populate these ViewModel instances from the model.
 
+MVC 应用中的模型代表了应用的状态和业务逻辑或其可以展现的一些操作。业务逻辑应该封装在模型，连同应用持久化状态实现逻辑。强类型视图一般使用特别设计的视图模型（ViewModel）类型，它包含了视图显示需要的数据；控制器将创建并从模型填充这些视图模型。
+
 .. note:: There are many ways to organize the model in an app that uses the MVC architectural pattern. Learn more about some `different kinds of model types <http://deviq.com/kinds-of-models/>`_.
+
+.. 说明:: 有许多种方法组织 MVC 架构形式的应用中的模型。了解更多关于 `不同类型的模型 <http://deviq.com/kinds-of-models/>`_。
 
 View Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^
 
+视图（职责）
+^^^^^^^^^^^^^^^^^^^^^
+
 Views are responsible for presenting content through the user interface. They use the `Razor view engine`_ to embed .NET code in HTML markup. There should be minimal logic within views, and any logic in them should relate to presenting content. If you find the need to perform a great deal of logic in view files in order to display data from a complex model, consider using a :doc:`View Component </mvc/views/view-components>`, ViewModel, or view template to simplify the view.
+
+视图负责在用户接口呈现内容。它们使用 `Razor 视图引擎`_ 在 HTML 标记中嵌入 .NET 代码。视图中应仅包含少量的逻辑，而这些逻辑应该是与呈现内容相关的。如果你发现需求，要在视图文件中完成大量的逻辑任务，以便从复杂的模型展示数据，请考虑使用 :doc:`视图组件 </mvc/views/view-components>` 、视图模型、或视图模板来简化视图。
 
 Controller Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+控制器（Controller）职责
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Controllers are the components that handle user interaction, work with the model, and ultimately select a view to render. In an MVC application, the view only displays information; the controller handles and responds to user input and interaction. In the MVC pattern, the controller is the initial entry point, and is responsible for selecting which model types to work with and which view to render (hence its name - it controls how the app responds to a given request).
+
+控制器是承载用户交互、模型运转、并最终选择视图进行渲染的组件。在 MVC 应用中，视图只显示信息；控制器处理并对用户输入和交互做出响应。在 MVC 模式，控制器是最初的入口，负责选择同哪一个模型类型协作和选择哪一个视图用来呈现（就如其名：它控制应用对所给的请求如何做出响应）。
 
 .. note:: Controllers should not be overly complicated by too many responsibilities. To keep controller logic from becoming overly complex, use the `Single Responsibility Principle <http://deviq.com/single-responsibility-principle/>`_ to push business logic out of the controller and into the domain model.
 
+.. 说明:: 控制器不应该有太多职责而过于复杂。 为避免控制器逻辑过于复杂，请使用 `单一职责原则 <http://deviq.com/single-responsibility-principle/>`_ 将业务逻辑从控制器移到领域模型。
+
 .. tip:: If you find that your controller actions frequently perform the same kinds of actions, you can follow the `Don't Repeat Yourself principle <http://deviq.com/don-t-repeat-yourself/>`_ by moving these common actions into `filters`_.
+
+.. tip:: 如果你发现你的控制器方法频繁执行相同类型的方法，你可以依照 `不要让自己重复原则 <http://deviq.com/don-t-repeat-yourself/>`_ 将这些通用方法移入 `过滤器（filters）`_.
 
 What is ASP.NET Core MVC
 ------------------------
 
+什么是 ASP.NET Core MVC
+------------------------
+
 The ASP.NET Core MVC framework is a lightweight, open source, highly testable presentation framework optimized for use with ASP.NET Core.
+
+ASP.NET Core MVC 框架是一个轻量级、开源、高度可测试的表现框架
 
 ASP.NET Core MVC provides a patterns-based way to build dynamic websites that enables a clean separation of concerns. It gives you full control over markup, supports TDD-friendly development and uses the latest web standards.
 
@@ -135,7 +181,7 @@ A controller action:
 
 .. code-block:: c#
   :emphasize-lines: 3
-  
+
   public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
   {
       if (ModelState.IsValid)
@@ -189,7 +235,7 @@ Web APIs
 
 In addition to being a great platform for building web sites, ASP.NET Core MVC has great support for building Web APIs. You can build services that can reach a broad range of clients including browsers and mobile devices.
 
-The framework includes support for HTTP content-negotiation with built-in support for :doc:`formatting data </mvc/models/formatting>` as JSON or XML. Write :doc:`custom formatters </mvc/models/custom-formatters>` to add support for your own formats. 
+The framework includes support for HTTP content-negotiation with built-in support for :doc:`formatting data </mvc/models/formatting>` as JSON or XML. Write :doc:`custom formatters </mvc/models/custom-formatters>` to add support for your own formats.
 
 Use link generation to enable support for hypermedia. Easily enable support for `cross-origin resource sharing (CORS) <http://www.w3.org/TR/cors/>`__ so that your Web APIs shared across multiple Web applications.
 
@@ -223,9 +269,9 @@ For example, the following view defines a model of type ``IEnumerable<Product>``
 .. code-block:: html
 
   @model IEnumerable<Product>
-  <ul> 
-      @foreach (Product p in Model) 
-      { 
+  <ul>
+      @foreach (Product p in Model)
+      {
           <li>@p.Name</li>
       }
   </ul>
@@ -239,9 +285,9 @@ There are many built-in Tag Helpers for common tasks - such as creating forms, l
 
 .. code-block:: html
   :emphasize-lines: 3
-  
+
   <p>
-      Thank you for confirming your email. 
+      Thank you for confirming your email.
       Please <a asp-controller="Account" asp-action="Login">Click here to Log in</a>.
   </p>
 
@@ -266,4 +312,3 @@ View Components
 ^^^^^^^^^^^^^^^
 
 :doc:`View Components </mvc/views/view-components>` allow you to package rendering logic and reuse it throughout the application. They're similar to :doc:`partial views </mvc/views/partial>`, but with associated logic.
-
