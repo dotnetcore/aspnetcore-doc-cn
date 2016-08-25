@@ -2,9 +2,19 @@
 
 Testing Controller Logic
 ========================
+
+测试控制器逻辑
+========================
+
 By `Steve Smith`_
 
+作者： `Steve Smith`_ 
+
+翻译：`姚阿勇（Dr.Yao） <https://github.com/YaoaY>`_
+
 Controllers in ASP.NET MVC apps should be small and focused on user-interface concerns. Large controllers that deal with non-UI concerns are more difficult to test and maintain.
+
+ASP.NET MVC 应用程序的控制器应当小巧并专注于用户界面。涉及了非 UI 事务的大控制器更难于测试和维护。
 
 .. contents:: Sections
 	:local:
@@ -12,14 +22,25 @@ Controllers in ASP.NET MVC apps should be small and focused on user-interface co
 	
 `View or download sample from GitHub <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/testing/sample>`_
 
+`在 GitHub 上查看或下载示例 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/testing/sample>`_
+
 Why Test Controllers
+--------------------
+
+为什么要测试控制器
 --------------------
 
 Controllers are a central part of any ASP.NET Core MVC application. As such, you should have confidence they behave as intended for your app. Automated tests can provide you with this confidence and can detect errors before they reach production. It's important to avoid placing unnecessary responsibilities within your controllers and ensure your tests focus only on controller responsibilities.
 
+控制器是所有 ASP.NET Core MVC 应用程序的核心部分。因此，你应当确保它们的行为符合应用的预期。 自动化测试可以为你提供这样的保障并能够在进入生产环境之前将错误检测出来。重要的一点是，避免将非必要的职责加入你的控制器并且确保测试只关注在控制器的职责上。
+
 Controller logic should be minimal and not be focused on business logic or infrastructure concerns (for example, data access). Test controller logic, not the framework. Test how the controller *behaves* based on valid or invalid inputs. Test controller responses based on the result of the business operation it performs.
 
+控制器的逻辑应当最小化并且不要去关心业务逻辑或基础事务（如，数据访问）。要测试控制器的逻辑，而不是框架。根据有效或无效的输入去测试控制器的 *行为* 如何。根据其执行业务操作的返回值去测试控制器的响应。
+
 Typical controller responsibilities:
+
+典型的控制器职责：
 
 - Verify ``ModelState.IsValid``
 - Return an error response if ``ModelState`` is invalid
@@ -27,6 +48,13 @@ Typical controller responsibilities:
 - Perform an action on the business entity
 - Save the business entity to persistence
 - Return an appropriate ``IActionResult``
+
+- 验证 ``ModelState.IsValid``
+- 如果 ``ModelState`` 无效则返回一个错误响应
+- 从持久层获取一个业务实体
+- 在业务实体上执行一个操作
+- 将业务实体保存到持久层
+- 返回一个合适的 ``IActionResult``
 
 Unit Testing
 ------------
