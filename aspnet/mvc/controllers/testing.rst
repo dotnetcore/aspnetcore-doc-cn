@@ -59,13 +59,26 @@ Typical controller responsibilities:
 Unit Testing
 ------------
 
+单元测试
+------------
+
 `Unit testing`_ involves testing a part of an app in isolation from its infrastructure and dependencies. When unit testing controller logic, only the contents of a single action is tested, not the behavior of its dependencies or of the framework itself. As you unit test your controller actions, make sure you focus only on its behavior. A controller unit test avoids things like :doc:`filters <filters>`, :doc:`routing </fundamentals/routing>`, or :doc:`model binding </mvc/models/model-binding>`. By focusing on testing just one thing, unit tests are generally simple to write and quick to run. A well-written set of unit tests can be run frequently without much overhead. However, unit tests do not detect issues in the interaction between components, which is the purpose of :ref:`integration testing <integration-testing>`.
+
+`单元测试`_ 包括对应用中独立于基础结构和依赖项之外的某一部分的测试。对控制器逻辑进行单元测试的时候，只测试一个操作的内容，而不测试其依赖项或框架本身的行为。就是说对你的控制器操作进行测试时，要确保只聚焦于操作本身的行为。控制器单元测试避开诸如 :doc:`过滤器 <filters>`， :doc:`路由 </fundamentals/routing>`, or :doc:`模型绑定 </mvc/models/model-binding>` 这些内容。由于只专注于测试某一项内容，单元测试通常编写简单而运行快捷。一组编写良好的单元测试可以无需过多开销地频繁运行。然而，单元测试并不检测组件之间交互的问题，那是 :ref:`集成测试 <integration-testing>` 的目的。
+
+
 
 If you've writing custom filters, routes, etc, you should unit test them, but not as part of your tests on a particular controller action. They should be tested in isolation.
 
+如果你在编写自定义的过滤器，路由，诸如此类，你应该对它们进行单元测试，但不是作为某个控制器操作测试的一部分。它们应该单独进行测试。
+
 .. tip:: `Create and run unit tests with Visual Studio <https://www.visualstudio.com/en-us/get-started/code/create-and-run-unit-tests-vs>`__.
 
+.. tip:: `使用 Visual Studio 创建并运行单元测试 <https://www.visualstudio.com/en-us/get-started/code/create-and-run-unit-tests-vs>`__.
+
 To demonstrate unit testing, review the following controller. It displays a list of brainstorming sessions and allows new brainstorming sessions to be created with a POST:
+
+为演示单元测试，请查看下面的控制器。它显示一个头脑风暴讨论会的列表，并且可以用 POST 请求创建新的头脑风暴讨论会：
 
 .. literalinclude:: testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/HomeController.cs
   :language: c#
@@ -73,14 +86,21 @@ To demonstrate unit testing, review the following controller. It displays a list
 
 The controller is following the `explicit dependencies principle <http://deviq.com/explicit-dependencies-principle/>`_, expecting dependency injection to provide it with an instance of ``IBrainstormSessionRepository``. This makes it fairly easy to test using a mock object framework, like `Moq <https://www.nuget.org/packages/Moq/>`_. The ``HTTP GET Index`` method has no looping or branching and only calls one method. To test this ``Index`` method, we need to verify that a ``ViewResult`` is returned, with a ``ViewModel`` from the repository's ``List`` method.
 
+这个控制器遵循 `显式依赖原则 <http://deviq.com/explicit-dependencies-principle/>`_，期望依赖注入为其提供一个 ``IBrainstormSessionRepository`` 的实例。这样就非常容易用一个 Mock 对象框架来进行测试，比如 `Moq <https://www.nuget.org/packages/Moq/>`_ 。``HTTP GET Index`` 方法没有循环或分支，只是调用了一个方法。要测试这个 ``Index`` 方法，我们需要验证是否返回了一个 ``ViewResult`` ，其中包含一个来自存储库的 ``List`` 方法的 ``ViewModel`` 。 
+
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs
   :language: c#
   :emphasize-lines: 17-18
 
 The ``HTTP POST Index`` method (shown below) should verify:
 
+``HTPP POST Index`` 方法（下面所示）应当验证：
+
 - The action method returns a ``ViewResult`` with the appropriate data when ``ModelState.IsValid`` is ``false``
 - The ``Add`` method on the repository is called and a ``RedirectToActionResult`` is returned with the correct arguments when ``ModelState.IsValid`` is true.
+
+- 当 ``ModelState.IsValid`` 为 ``false`` 时，操作方法返回一个包含适当数据的 ``ViewResult``。
+- 当 ``ModelState.IsValid`` 为 ``true`` 时，存储库的 ``Add`` 方法被调用，然后返回一个包含正确变量内容的 ``RedirectToActionResult`` 。
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs
   :language: c#
