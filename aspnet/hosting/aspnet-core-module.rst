@@ -45,6 +45,106 @@ Configuration Attributes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 +---------------------------+----------------------------------------------------+
+| Attribute                 |     Description                                    |
++===========================+====================================================+
+| processPath               | | Required string attribute.                       |
+|                           | |                                                  |
+|                           | | Path to the executable or script that will launch|
+|                           | | a process listening for HTTP requests.           |
+|                           | | Relative paths are supported. If the path        |
+|                           | | begins with '.', the path is considered to be    |
+|                           | | relative to the site root.                       |
+|                           | |                                                  |
+|                           | | There is no default value.                       |
++---------------------------+----------------------------------------------------+
+| arguments                 | | Optional string attribute.                       |
+|                           | |                                                  |
+|                           | | Arguments to the executable or script            |
+|                           | | specified in **processPath**.                    |
+|                           | |                                                  |
+|                           | | The default value is an empty string.            |
++---------------------------+----------------------------------------------------+
+| startupTimeLimit          | | Optional integer attribute.                      |
+|                           | |                                                  |
+|                           | | Duration in seconds for which the                |
+|                           | | the handler will wait for the executable or      |
+|                           | | script to start a process listening on           |
+|                           | | the port. If this time limit is exceeded,        |
+|                           | | the handler will kill the process and attempt to |
+|                           | | launch it again **startupRetryCount** times.     |
+|                           | |                                                  |
+|                           | | The default value is 120.                        |
++---------------------------+----------------------------------------------------+
+| shutdownTimeLimit         | | Optional integer attribute.                      |
+|                           | |                                                  |
+|                           | | Duration in seconds for which the                |
+|                           | | the handler will wait for the executable or      |
+|                           | | script to gracefully shutdown when the           |
+|                           | | *app_offline.htm* file is detected               |
+|                           | |                                                  |
+|                           | | The default value is 10.                         |
++---------------------------+----------------------------------------------------+
+| rapidFailsPerMinute       | | Optional integer attribute.                      |
+|                           | |                                                  |
+|                           | | Specifies the number of times the process        |
+|                           | | specified in **processPath** is allowed to crash |
+|                           | | per minute. If this limit is exceeded,           |
+|                           | | the handler will stop launching the              |
+|                           | | process for the remainder of the minute.         |
+|                           | |                                                  |
+|                           | | The default value is 10.                         |
++---------------------------+----------------------------------------------------+
+| requestTimeout            | | Optional timespan attribute.                     |
+|                           | |                                                  |
+|                           | | Specifies the duration for which the             |
+|                           | | ASP.NET Core Module will wait for a response     |
+|                           | | from the process listening on                    |
+|                           | | %ASPNETCORE_PORT%.                               |
+|                           | |                                                  |
+|                           | | The default value is "00:02:00".                 |
++---------------------------+----------------------------------------------------+
+| stdoutLogEnabled          | | Optional Boolean attribute.                      |
+|                           | |                                                  |
+|                           | | If true, **stdout** and **stderr** for the       |
+|                           | | process specified in **processPath** will be     |
+|                           | | redirected to the file specified in              |
+|                           | | **stdoutLogFile**.                               |
+|                           | |                                                  |
+|                           | | The default value is false.                      |
++---------------------------+----------------------------------------------------+
+| stdoutLogFile             | | Optional string attribute.                       |
+|                           | |                                                  |
+|                           | | Specifies the relative or absolute file path for |
+|                           | | which **stdout** and **stderr** from the process |
+|                           | | specified in **processPath** will be logged.     |
+|                           | | Relative paths are relative to the root of the   |
+|                           | | site. Any path starting with '.' will be         |
+|                           | | relative to the site root and all other paths    |
+|                           | | will be treated as absolute paths.               |
+|                           | |                                                  |
+|                           | | The default value is ``aspnetcore-stdout``.      |
++---------------------------+----------------------------------------------------+
+| forwardWindowsAuthToken   | | True or False.                                   |
+|                           | |                                                  |
+|                           | | If  true, the token will be forwarded to the     |
+|                           | | child process listening on %ASPNETCORE_PORT% as a|
+|                           | | header 'MS-ASPNETCORE-WINAUTHTOKEN' per request. |
+|                           | | It is the responsibility of that process to call |
+|                           | | CloseHandle on this token per request.           |
+|                           | |                                                  |
+|                           | | The default value is false.                      |
++---------------------------+----------------------------------------------------+
+| disableStartUpErrorPage   | | True or False.                                   |
+|                           | |                                                  |
+|                           | | If true, the **502.5 - Process Failure** page    |
+|                           | | will be supressed and the 502 status code page   |
+|                           | | configured in your *web.config* will take        |
+|                           | | precedence.                                      |
+|                           | |                                                  |
+|                           | | The default value is false.                      |
++---------------------------+----------------------------------------------------+
+
++---------------------------+----------------------------------------------------+
 | 属性                      |     描述                                            |
 +===========================+====================================================+
 | processPath               | | 必填  字符串字段。                                |
@@ -131,6 +231,17 @@ Child Elements
 
 子元素
 ^^^^^^^^^^^^^^^
+
++---------------------------+----------------------------------------------------+
+| Attribute                 |     Description                                    |
++===========================+====================================================+
+| environmentVariables      | | Configures **environmentVariables** collection   |
+|                           | | for the process specified in **processPath**.    |
++---------------------------+----------------------------------------------------+
+| recycleOnFileChange       | | Specify a list of files to monitor. If any of    |
+|                           | | these files are updated/deleted, the Core Module |
+|                           | | will restart the backend process.                |
++---------------------------+----------------------------------------------------+
 
 +---------------------------+----------------------------------------------------+
 | 属性                      |     描述                                            |
