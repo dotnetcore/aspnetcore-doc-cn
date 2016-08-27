@@ -18,6 +18,37 @@ In ASP.NET Core, the application directory, *publish*, is comprised of applicati
 在 ASP.NET Core中，应用程序目录，*publish*，是由应用程序文件，配置文件，静态资源，包和运行时（对于独立应用程序）。这是和之前的 ASP.NET 相同的目录结构，整个应用程序存放于Web根目录中。
 
 +----------------+------------------------------------------------+
+| App Type       | Directory Structure                            |
++================+================================================+
+| Portable       | - publish*                                     |
+|                |                                                |
+|                |   - logs* (if included in publishOptions)      |
+|                |   - refs*                                      |
+|                |   - runtimes*                                  |
+|                |   - Views* (if included in publishOptions)     |
+|                |   - wwwroot* (if included in publishOptions)   |
+|                |   - .dll files                                 |
+|                |   - myapp.deps.json                            |
+|                |   - myapp.dll                                  |
+|                |   - myapp.pdb                                  |
+|                |   - myapp.runtimeconfig.json                   |
+|                |   - web.config (if included in publishOptions) |
++----------------+------------------------------------------------+
+| Self-contained | - publish*                                     |
+|                |                                                |
+|                |   - logs* (if included in publishOptions)      |
+|                |   - refs*                                      |
+|                |   - Views* (if included in publishOptions)     |
+|                |   - wwwroot* (if included in publishOptions)   |
+|                |   - .dll files                                 |
+|                |   - myapp.deps.json                            |
+|                |   - myapp.exe                                  |
+|                |   - myapp.pdb                                  |
+|                |   - myapp.runtimeconfig.json                   |
+|                |   - web.config (if included in publishOptions) |
++----------------+------------------------------------------------+
+
++----------------+------------------------------------------------+
 | 应用类型       | 目录结构                                        |
 +================+================================================+
 | 便携软件        | - publish*                                     |
