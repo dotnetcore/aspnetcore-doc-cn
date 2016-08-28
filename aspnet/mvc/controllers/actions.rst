@@ -34,14 +34,14 @@ In ASP.NET Core MVC, a controller can be any instantiable class that ends in "Co
 By convention, controller classes:
 
 * Are located in the root-level "Controllers" folder
-* Inherit from Microsoft.AspNet.Mvc.Controller
+* Inherit from Microsoft.AspNetCore.Mvc.Controller
 
 These two conventions are not required.
 
 按照惯例，控制器应当：
 
 * 放在根目录下的“Controllers”文件夹中
-* 继承自 Microsoft.AspNet.Mvc.Controller
+* 继承自 Microsoft.AspNetCore.Mvc.Controller
 
 这两个惯例不是强制要求。
 

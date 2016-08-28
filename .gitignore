@@ -8,7 +8,7 @@ _build/
 *.user
 *.userosscache
 *.sln.docstates
-
+*.vscode/
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -201,4 +201,3 @@ project.lock.json
 **/sample/**/wwwroot/lib/
 **/samples/**/wwwroot/lib/
 __pycache__/
-.vscode/settings.json

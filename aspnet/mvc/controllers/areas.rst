@@ -1,13 +1,30 @@
 Areas
-=====
+======
 
-作者：`Tom Archer`
+作者：`Dhananjay Kumar <https://twitter.com/debug_mode>`__  and `Rick Anderson`_
 
 翻译：`耿晓亮(Blue)`
 
 Areas 提供了一种分离大型 MVC 应用程序的 models ,views 和 controllers 语义相关分组的方式，让我们看一个示例来说明 Areas 如何创建和使用。假设你有一个存储程序包含了两个不同分组的 controllers 和 views ：Products 和 Services。
 
 替换 Controllers 文件夹下所有的 controllers 和 Views 文件夹下所有的 views，你可以使用 Areas 将视图和控制器根据关联的领域来分组（或者用逻辑分组）。
+
+reas provide a way to partition a large ASP.NET Core MVC Web app into smaller functional groupings. An area is effectively an MVC structure inside an application. In an MVC project, logical components like Model, Controller, and View are kept in different folders, and MVC uses naming conventions to create the relationship between these components. For a large app, it may be advantageous to partition the  app into separate high level areas of functionality. For instance, an e-commerce app with multiple business units, such as checkout, billing, and search etc. Each of these units have their own logical component views, controllers, and models. In this scenario, you can use Areas to physically partition the business components in the same project.
+
+An area can be defined as smaller functional units in an ASP.NET Core MVC project with its own set of controllers, views, and models.
+
+Consider using Areas in an MVC project when:
+
+- Your application is made of multiple high-level functional components that should be logically separated
+- You want to partition your MVC project so that each functional area can be worked on independently
+
+Area features:
+
+- An ASP.NET Core MVC app can have any number of areas
+- Each area has its own controllers, models, and views
+- Allows you to organize large MVC projects into multiple high-level components that can be worked on independently
+
+Let's take a look at an example to illustrate how Areas are created and used. Let's say you have a store app that has two distinct groupings of controllers and views: Products and Services. A typical folder structure for that using MVC areas looks like below:
 
 - Project name
 
@@ -19,9 +36,15 @@ Areas 提供了一种分离大型 MVC 应用程序的 models ,views 和 controll
 
         - HomeController.cs
 
+        - ManageController.cs
+
       - Views
 
         - Home
+
+          - Index.cshtml
+
+        - Manage
 
           - Index.cshtml
 

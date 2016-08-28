@@ -32,7 +32,7 @@ If you need these settings to kick in earlier than the next automatic key rollin
 如果你需要这些设置在下次自动启用前发挥作用，可以考虑显式调用 IKeyManager.CreateNewKey 来强制创建一个新的密钥。谨记要提供一个明确的调用的激活时间（比如 { now + 2 days } 就是个不错的经验值，以适应变化传播时间）和过期时间。
 
 .. TIP::
-  All applications touching the repository should specify the same settings in the call to ConfigureDataProtection, otherwise the properties of the persisted key will be dependent on the particular application that invoked the key generation routines.
+  All applications touching the repository should specify the same settings with the IDataProtectionBuilder extension methods, otherwise the properties of the persisted key will be dependent on the particular application that invoked the key generation routines.
   
 .. TIP::
   连接同一仓库的所有应用程序在调用 ConfigureDataProtection 中必须指定相同的配置，不然持久化密钥的属性将依赖于调用密钥创建程序的特定应用程序
