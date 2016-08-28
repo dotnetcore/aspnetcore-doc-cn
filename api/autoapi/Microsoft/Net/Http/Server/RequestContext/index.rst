@@ -5,12 +5,17 @@ RequestContext Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Net.Http.Server`
+Assemblies
+    * Microsoft.Net.Http.Server
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +38,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public sealed class RequestContext : IDisposable
+    public sealed class RequestContext : IDisposable
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/weblistener/blob/master/src/Microsoft.Net.Http.Server/RequestProcessing/RequestContext.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Net.Http.Server.RequestContext
+    :hidden:
 
 .. dn:class:: Microsoft.Net.Http.Server.RequestContext
 
@@ -65,87 +67,7 @@ Methods
         
         .. code-block:: csharp
     
-           public void Abort()
-    
-    .. dn:method:: Microsoft.Net.Http.Server.RequestContext.AcceptWebSocketAsync()
-    
-        
-        :rtype: System.Threading.Tasks.Task{System.Net.WebSockets.WebSocket}
-    
-        
-        .. code-block:: csharp
-    
-           public Task<WebSocket> AcceptWebSocketAsync()
-    
-    .. dn:method:: Microsoft.Net.Http.Server.RequestContext.AcceptWebSocketAsync(System.String)
-    
-        
-        
-        
-        :type subProtocol: System.String
-        :rtype: System.Threading.Tasks.Task{System.Net.WebSockets.WebSocket}
-    
-        
-        .. code-block:: csharp
-    
-           public Task<WebSocket> AcceptWebSocketAsync(string subProtocol)
-    
-    .. dn:method:: Microsoft.Net.Http.Server.RequestContext.AcceptWebSocketAsync(System.String, System.Int32, System.TimeSpan)
-    
-        
-        
-        
-        :type subProtocol: System.String
-        
-        
-        :type receiveBufferSize: System.Int32
-        
-        
-        :type keepAliveInterval: System.TimeSpan
-        :rtype: System.Threading.Tasks.Task{System.Net.WebSockets.WebSocket}
-    
-        
-        .. code-block:: csharp
-    
-           public Task<WebSocket> AcceptWebSocketAsync(string subProtocol, int receiveBufferSize, TimeSpan keepAliveInterval)
-    
-    .. dn:method:: Microsoft.Net.Http.Server.RequestContext.AcceptWebSocketAsync(System.String, System.Int32, System.TimeSpan, System.ArraySegment<System.Byte>)
-    
-        
-        
-        
-        :type subProtocol: System.String
-        
-        
-        :type receiveBufferSize: System.Int32
-        
-        
-        :type keepAliveInterval: System.TimeSpan
-        
-        
-        :type internalBuffer: System.ArraySegment{System.Byte}
-        :rtype: System.Threading.Tasks.Task{System.Net.WebSockets.WebSocket}
-    
-        
-        .. code-block:: csharp
-    
-           public Task<WebSocket> AcceptWebSocketAsync(string subProtocol, int receiveBufferSize, TimeSpan keepAliveInterval, ArraySegment<byte> internalBuffer)
-    
-    .. dn:method:: Microsoft.Net.Http.Server.RequestContext.AcceptWebSocketAsync(System.String, System.TimeSpan)
-    
-        
-        
-        
-        :type subProtocol: System.String
-        
-        
-        :type keepAliveInterval: System.TimeSpan
-        :rtype: System.Threading.Tasks.Task{System.Net.WebSockets.WebSocket}
-    
-        
-        .. code-block:: csharp
-    
-           public Task<WebSocket> AcceptWebSocketAsync(string subProtocol, TimeSpan keepAliveInterval)
+            public void Abort()
     
     .. dn:method:: Microsoft.Net.Http.Server.RequestContext.Dispose()
     
@@ -154,17 +76,17 @@ Methods
         
         .. code-block:: csharp
     
-           public void Dispose()
+            public void Dispose()
     
     .. dn:method:: Microsoft.Net.Http.Server.RequestContext.UpgradeAsync()
     
         
-        :rtype: System.Threading.Tasks.Task{System.IO.Stream}
+        :rtype: System.Threading.Tasks.Task<System.Threading.Tasks.Task`1>{System.IO.Stream<System.IO.Stream>}
     
         
         .. code-block:: csharp
     
-           public Task<Stream> UpgradeAsync()
+            public Task<Stream> UpgradeAsync()
     
 
 Properties
@@ -179,6 +101,7 @@ Properties
     
         
     
+        
         The authentication challengest that will be added to the response if the status code is 401.
         This must be a subset of the AuthenticationSchemes enabled on the server.
     
@@ -188,7 +111,7 @@ Properties
         
         .. code-block:: csharp
     
-           public AuthenticationSchemes AuthenticationChallenges { get; set; }
+            public AuthenticationSchemes AuthenticationChallenges { get; set; }
     
     .. dn:property:: Microsoft.Net.Http.Server.RequestContext.DisconnectToken
     
@@ -198,7 +121,7 @@ Properties
         
         .. code-block:: csharp
     
-           public CancellationToken DisconnectToken { get; }
+            public CancellationToken DisconnectToken { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.RequestContext.IsUpgradableRequest
     
@@ -208,17 +131,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool IsUpgradableRequest { get; }
-    
-    .. dn:property:: Microsoft.Net.Http.Server.RequestContext.IsWebSocketRequest
-    
-        
-        :rtype: System.Boolean
-    
-        
-        .. code-block:: csharp
-    
-           public bool IsWebSocketRequest { get; }
+            public bool IsUpgradableRequest { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.RequestContext.Request
     
@@ -228,7 +141,7 @@ Properties
         
         .. code-block:: csharp
     
-           public Request Request { get; }
+            public Request Request { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.RequestContext.Response
     
@@ -238,7 +151,7 @@ Properties
         
         .. code-block:: csharp
     
-           public Response Response { get; }
+            public Response Response { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.RequestContext.TraceIdentifier
     
@@ -248,7 +161,7 @@ Properties
         
         .. code-block:: csharp
     
-           public Guid TraceIdentifier { get; }
+            public Guid TraceIdentifier { get; }
     
     .. dn:property:: Microsoft.Net.Http.Server.RequestContext.User
     
@@ -258,6 +171,6 @@ Properties
         
         .. code-block:: csharp
     
-           public ClaimsPrincipal User { get; }
+            public ClaimsPrincipal User { get; }
     
 

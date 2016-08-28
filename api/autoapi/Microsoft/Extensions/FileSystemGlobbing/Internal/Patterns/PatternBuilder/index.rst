@@ -5,12 +5,17 @@ PatternBuilder Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns`
+Assemblies
+    * Microsoft.Extensions.FileSystemGlobbing
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +38,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class PatternBuilder
+    public class PatternBuilder
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/filesystem/blob/master/src/Microsoft.Extensions.FileSystemGlobbing/Internal/Patterns/PatternBuilder.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns.PatternBuilder
+    :hidden:
 
 .. dn:class:: Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns.PatternBuilder
 
@@ -65,19 +67,19 @@ Constructors
         
         .. code-block:: csharp
     
-           public PatternBuilder()
+            public PatternBuilder()
     
     .. dn:constructor:: Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns.PatternBuilder.PatternBuilder(System.StringComparison)
     
         
-        
+    
         
         :type comparisonType: System.StringComparison
     
         
         .. code-block:: csharp
     
-           public PatternBuilder(StringComparison comparisonType)
+            public PatternBuilder(StringComparison comparisonType)
     
 
 Methods
@@ -91,7 +93,7 @@ Methods
     .. dn:method:: Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns.PatternBuilder.Build(System.String)
     
         
-        
+    
         
         :type pattern: System.String
         :rtype: Microsoft.Extensions.FileSystemGlobbing.Internal.IPattern
@@ -99,7 +101,7 @@ Methods
         
         .. code-block:: csharp
     
-           public IPattern Build(string pattern)
+            public IPattern Build(string pattern)
     
 
 Properties
@@ -118,6 +120,6 @@ Properties
         
         .. code-block:: csharp
     
-           public StringComparison ComparisonType { get; }
+            public StringComparison ComparisonType { get; }
     
 

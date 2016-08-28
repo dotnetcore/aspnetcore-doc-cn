@@ -36,6 +36,34 @@ Microsoft.Extensions.DiagnosticAdapter Namespace
 
 
 
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+
 
 
 
@@ -44,25 +72,33 @@ Microsoft.Extensions.DiagnosticAdapter Namespace
 .. dn:namespace:: Microsoft.Extensions.DiagnosticAdapter
 
 
-    .. rubric:: Classes
-
-
-    class :dn:cls:`Microsoft.Extensions.DiagnosticAdapter.DiagnosticNameAttribute`
-        
-
-
-    class :dn:cls:`Microsoft.Extensions.DiagnosticAdapter.DiagnosticSourceAdapter`
-        
-
-
-    class :dn:cls:`Microsoft.Extensions.DiagnosticAdapter.ProxyDiagnosticSourceMethodAdapter`
-        
-
-
     .. rubric:: Interfaces
 
 
-    interface :dn:iface:`Microsoft.Extensions.DiagnosticAdapter.IDiagnosticSourceMethodAdapter`
+    interface :dn:iface:`IDiagnosticSourceMethodAdapter`
+        .. object: type=interface name=Microsoft.Extensions.DiagnosticAdapter.IDiagnosticSourceMethodAdapter
+
+        
+
+
+    .. rubric:: Classes
+
+
+    class :dn:cls:`DiagnosticNameAttribute`
+        .. object: type=class name=Microsoft.Extensions.DiagnosticAdapter.DiagnosticNameAttribute
+
+        
+
+
+    class :dn:cls:`DiagnosticSourceAdapter`
+        .. object: type=class name=Microsoft.Extensions.DiagnosticAdapter.DiagnosticSourceAdapter
+
+        
+
+
+    class :dn:cls:`ProxyDiagnosticSourceMethodAdapter`
+        .. object: type=class name=Microsoft.Extensions.DiagnosticAdapter.ProxyDiagnosticSourceMethodAdapter
+
         
 
 

@@ -1,46 +1,9 @@
-贡献
+Contribute
 ----------
 
-本文档英文版由许许多多 `志愿者 <https://github.com/aspnet/docs/contributors>`_ 手工编写而成。
+The documentation on this site is the handiwork of our many `contributors <https://github.com/aspnet/docs/contributors>`_.
 
-本文档简体中文翻译版离不开以下贡献者的努力：
+**We accept pull requests!** But you're more likely to have yours accepted if you follow these guidelines:
 
-参与翻译、校对与审稿的贡献者
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-（以下排序按照贡献者本名的汉语拼音排列）
-
-	+ `陈计节 <https://github.com/jijiechen/>`_
-	+ `高会军(布莱恩特) <https://github.com/iyacontrol>`_
-	+ `高嵩(Jack) <https://github.com/jack2gs>`_
-	+ `郭远博(tkb至简) <https://github.com/Farb>`_
-	+ `耿晓亮(Blue) <https://github.com/heyixiaoran>`_
-	+ `何镇汐 <https://github.com/UtilCore>`_
-	+ `江振宇(江大渔) <https://github.com/kerryjiang>`_
-	+ `凌军州(喵喵) <https://github.com/XCoderLing>`_
-	+ `刘浩杨(L) <https://github.com/liuhaoyang>`_
-	+ `刘怡(AlexLEWIS/Forerunner) <https://github.com/alexinea>`_
-	+ `娄宇(Lyrics) <https://github.com/xbuilder>`_
-	+ `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_
-	+ `王健(冷酒少) <https://github.com/wjhgzx>`_
-	+ `王绍明(Shaoming) <https://github.com/ShaomingCode>`_
-	+ `魏美娟(初见) <https://github.com/ChujianA>`_
-	+ `夏申斌 <https://github.com/xiashenbin>`_
-	+ `谢炀(Kiler) <https://github.com/kiler398>`_
-	+ `许登洋(Seay) <https://github.com/SeayXu>`_
-	+ `姚阿勇(Mr.Yao) <https://github.com/YaoaY>`_
-	+ `张剑 <https://github.com/garfieldzf8>`_
-	+ `张仁建(Stoneqiu) <https://github.com/stoneniqiu>`_
-	+ `张善友 <https://github.com/geffzhang>`_
-	+ `赵亮(悲梦) <https://github.com/BeiMeng>`_
-	+ `赵志刚(ぶた旺旺) <https://github.com/rdzzg>`_
-
-其它类型贡献者
-^^^^^^^^^^^^^^^
-
-	+ `吴亦双(莫名) <https://github.com/yesan>`_
-
-**我们接受 pull requests！** 不过我们建议你首先看下面两篇指南：
-
-	1. 阅读 https://github.com/dotnetcore/aspnetcore-doc-cn/blob/master/CONTRIBUTING.md
-	2. 移步 :ref:`ASP.NET 文档风格指南 <style-guide>`
+	1. Read https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md
+	2. Follow the :ref:`ASP.NET Docs Style Guide <style-guide>`

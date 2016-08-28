@@ -5,12 +5,17 @@ NameValueHeaderValue Class
 
 
 
-.. contents:: 
+
+
+Namespace
+    :dn:ns:`Microsoft.Net.Http.Headers`
+Assemblies
+    * Microsoft.Net.Http.Headers
+
+----
+
+.. contents::
    :local:
-
-
-
-
 
 
 
@@ -33,20 +38,17 @@ Syntax
 
 .. code-block:: csharp
 
-   public class NameValueHeaderValue
+    public class NameValueHeaderValue
 
 
 
 
 
-GitHub
-------
-
-`View on GitHub <https://github.com/aspnet/httpabstractions/blob/master/src/Microsoft.Net.Http.Headers/NameValueHeaderValue.cs>`_
 
 
 
-
+.. dn:class:: Microsoft.Net.Http.Headers.NameValueHeaderValue
+    :hidden:
 
 .. dn:class:: Microsoft.Net.Http.Headers.NameValueHeaderValue
 
@@ -61,29 +63,29 @@ Constructors
     .. dn:constructor:: Microsoft.Net.Http.Headers.NameValueHeaderValue.NameValueHeaderValue(System.String)
     
         
-        
+    
         
         :type name: System.String
     
         
         .. code-block:: csharp
     
-           public NameValueHeaderValue(string name)
+            public NameValueHeaderValue(string name)
     
     .. dn:constructor:: Microsoft.Net.Http.Headers.NameValueHeaderValue.NameValueHeaderValue(System.String, System.String)
     
         
-        
+    
         
         :type name: System.String
-        
+    
         
         :type value: System.String
     
         
         .. code-block:: csharp
     
-           public NameValueHeaderValue(string name, string value)
+            public NameValueHeaderValue(string name, string value)
     
 
 Methods
@@ -98,6 +100,7 @@ Methods
     
         
     
+        
         Provides a copy of this object without the cost of re-validating the values.
     
         
@@ -107,7 +110,7 @@ Methods
         
         .. code-block:: csharp
     
-           public NameValueHeaderValue Copy()
+            public NameValueHeaderValue Copy()
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.CopyAsReadOnly()
     
@@ -117,12 +120,12 @@ Methods
         
         .. code-block:: csharp
     
-           public NameValueHeaderValue CopyAsReadOnly()
+            public NameValueHeaderValue CopyAsReadOnly()
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.Equals(System.Object)
     
         
-        
+    
         
         :type obj: System.Object
         :rtype: System.Boolean
@@ -130,15 +133,15 @@ Methods
         
         .. code-block:: csharp
     
-           public override bool Equals(object obj)
+            public override bool Equals(object obj)
     
-    .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.Find(System.Collections.Generic.ICollection<Microsoft.Net.Http.Headers.NameValueHeaderValue>, System.String)
+    .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.Find(System.Collections.Generic.IList<Microsoft.Net.Http.Headers.NameValueHeaderValue>, System.String)
     
         
+    
         
-        
-        :type values: System.Collections.Generic.ICollection{Microsoft.Net.Http.Headers.NameValueHeaderValue}
-        
+        :type values: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{Microsoft.Net.Http.Headers.NameValueHeaderValue<Microsoft.Net.Http.Headers.NameValueHeaderValue>}
+    
         
         :type name: System.String
         :rtype: Microsoft.Net.Http.Headers.NameValueHeaderValue
@@ -146,7 +149,7 @@ Methods
         
         .. code-block:: csharp
     
-           public static NameValueHeaderValue Find(ICollection<NameValueHeaderValue> values, string name)
+            public static NameValueHeaderValue Find(IList<NameValueHeaderValue> values, string name)
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.GetHashCode()
     
@@ -156,12 +159,12 @@ Methods
         
         .. code-block:: csharp
     
-           public override int GetHashCode()
+            public override int GetHashCode()
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.Parse(System.String)
     
         
-        
+    
         
         :type input: System.String
         :rtype: Microsoft.Net.Http.Headers.NameValueHeaderValue
@@ -169,20 +172,33 @@ Methods
         
         .. code-block:: csharp
     
-           public static NameValueHeaderValue Parse(string input)
+            public static NameValueHeaderValue Parse(string input)
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.ParseList(System.Collections.Generic.IList<System.String>)
     
         
+    
         
-        
-        :type input: System.Collections.Generic.IList{System.String}
-        :rtype: System.Collections.Generic.IList{Microsoft.Net.Http.Headers.NameValueHeaderValue}
+        :type input: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{System.String<System.String>}
+        :rtype: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{Microsoft.Net.Http.Headers.NameValueHeaderValue<Microsoft.Net.Http.Headers.NameValueHeaderValue>}
     
         
         .. code-block:: csharp
     
-           public static IList<NameValueHeaderValue> ParseList(IList<string> input)
+            public static IList<NameValueHeaderValue> ParseList(IList<string> input)
+    
+    .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.ParseStrictList(System.Collections.Generic.IList<System.String>)
+    
+        
+    
+        
+        :type input: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{System.String<System.String>}
+        :rtype: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{Microsoft.Net.Http.Headers.NameValueHeaderValue<Microsoft.Net.Http.Headers.NameValueHeaderValue>}
+    
+        
+        .. code-block:: csharp
+    
+            public static IList<NameValueHeaderValue> ParseStrictList(IList<string> input)
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.ToString()
     
@@ -192,15 +208,15 @@ Methods
         
         .. code-block:: csharp
     
-           public override string ToString()
+            public override string ToString()
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.TryParse(System.String, out Microsoft.Net.Http.Headers.NameValueHeaderValue)
     
         
-        
+    
         
         :type input: System.String
-        
+    
         
         :type parsedValue: Microsoft.Net.Http.Headers.NameValueHeaderValue
         :rtype: System.Boolean
@@ -208,23 +224,39 @@ Methods
         
         .. code-block:: csharp
     
-           public static bool TryParse(string input, out NameValueHeaderValue parsedValue)
+            public static bool TryParse(string input, out NameValueHeaderValue parsedValue)
     
     .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.TryParseList(System.Collections.Generic.IList<System.String>, out System.Collections.Generic.IList<Microsoft.Net.Http.Headers.NameValueHeaderValue>)
     
         
+    
         
+        :type input: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{System.String<System.String>}
+    
         
-        :type input: System.Collections.Generic.IList{System.String}
-        
-        
-        :type parsedValues: System.Collections.Generic.IList{Microsoft.Net.Http.Headers.NameValueHeaderValue}
+        :type parsedValues: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{Microsoft.Net.Http.Headers.NameValueHeaderValue<Microsoft.Net.Http.Headers.NameValueHeaderValue>}
         :rtype: System.Boolean
     
         
         .. code-block:: csharp
     
-           public static bool TryParseList(IList<string> input, out IList<NameValueHeaderValue> parsedValues)
+            public static bool TryParseList(IList<string> input, out IList<NameValueHeaderValue> parsedValues)
+    
+    .. dn:method:: Microsoft.Net.Http.Headers.NameValueHeaderValue.TryParseStrictList(System.Collections.Generic.IList<System.String>, out System.Collections.Generic.IList<Microsoft.Net.Http.Headers.NameValueHeaderValue>)
+    
+        
+    
+        
+        :type input: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{System.String<System.String>}
+    
+        
+        :type parsedValues: System.Collections.Generic.IList<System.Collections.Generic.IList`1>{Microsoft.Net.Http.Headers.NameValueHeaderValue<Microsoft.Net.Http.Headers.NameValueHeaderValue>}
+        :rtype: System.Boolean
+    
+        
+        .. code-block:: csharp
+    
+            public static bool TryParseStrictList(IList<string> input, out IList<NameValueHeaderValue> parsedValues)
     
 
 Properties
@@ -243,7 +275,7 @@ Properties
         
         .. code-block:: csharp
     
-           public bool IsReadOnly { get; }
+            public bool IsReadOnly { get; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.NameValueHeaderValue.Name
     
@@ -253,7 +285,7 @@ Properties
         
         .. code-block:: csharp
     
-           public string Name { get; }
+            public string Name { get; }
     
     .. dn:property:: Microsoft.Net.Http.Headers.NameValueHeaderValue.Value
     
@@ -263,6 +295,6 @@ Properties
         
         .. code-block:: csharp
     
-           public string Value { get; set; }
+            public string Value { get; set; }
     
 

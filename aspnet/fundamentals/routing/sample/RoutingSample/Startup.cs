@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Routing;
-using Microsoft.AspNet.Routing.Template;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -11,67 +8,56 @@ namespace RoutingSample
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRouting();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app,
-            ILoggerFactory loggerFactory)
+        // Routes must configured in Configure
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(minLevel: LogLevel.Verbose);
-            app.UseIISPlatformHandler();
+            var trackPackageRouteHandler = new RouteHandler(context =>
+            {
+                var routeValues = context.GetRouteData().Values;
+                return context.Response.WriteAsync(
+                    $"Hello! Route values: {string.Join(", ", routeValues)}");
+            });
 
-            var routeBuilder = new RouteBuilder();
-            routeBuilder.ServiceProvider = app.ApplicationServices;
-
-            routeBuilder.Routes.Add(new TemplateRoute(
-                new HelloRouter(),
-                "hello/{name:alpha}",
-                app.ApplicationServices.GetService<IInlineConstraintResolver>()));
-
-            var endpoint1 = new DelegateRouter(async (context) =>
-                            await context
-                                .HttpContext
-                                .Response
-                                .WriteAsync("Hello world! Route Values: " +
-                                    string.Join("", context.RouteData.Values)));
-
-            routeBuilder.DefaultHandler = endpoint1;
+            var routeBuilder = new RouteBuilder(app, trackPackageRouteHandler);
 
             routeBuilder.MapRoute(
                 "Track Package Route",
-                "package/{operation:regex(track|create|detonate)}/{id:int}");
+                "package/{operation:regex(^track|create|detonate$)}/{id:int}");
 
-            app.UseRouter(routeBuilder.Build());
+            routeBuilder.MapGet("hello/{name}", context =>
+            {
+                var name = context.GetRouteValue("name");
+                // This is the route handler when HTTP GET "hello/<anything>"  matches
+                // To match HTTP GET "hello/<anything>/<anything>, 
+                // use routeBuilder.MapGet("hello/{*name}"
+                return context.Response.WriteAsync($"Hi, {name}!");
+            });            
 
-            // demonstrate link generation
-            var trackingRouteCollection = new RouteCollection();
-            trackingRouteCollection.Add(routeBuilder.Routes[1]); // "Track Package Route"
+            var routes = routeBuilder.Build();
+            app.UseRouter(routes);
 
+            // Show link generation when no routes match.
             app.Run(async (context) =>
             {
                 var dictionary = new RouteValueDictionary
                 {
-                    {"operation","create" },
-                    {"id",123}
+                    { "operation", "create" },
+                    { "id", 123}
                 };
 
-                var vpc = new VirtualPathContext(context,
-                    null, dictionary, "Track Package Route");
+                var vpc = new VirtualPathContext(context, null, dictionary, "Track Package Route");
+                var path = routes.GetVirtualPath(vpc).VirtualPath;
 
                 context.Response.ContentType = "text/html";
                 await context.Response.WriteAsync("Menu<hr/>");
-                await context.Response.WriteAsync(@"<a href='" +
-                    trackingRouteCollection.GetVirtualPath(vpc).VirtualPath +
-                    "'>Create Package 123</a><br/>");
+                await context.Response.WriteAsync($"<a href='{path}'>Create Package 123</a><br/>");
             });
+            // End of app.Run
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

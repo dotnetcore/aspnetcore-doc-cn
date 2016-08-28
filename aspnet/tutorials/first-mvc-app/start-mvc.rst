@@ -59,14 +59,14 @@ Alternatively, you can use the menus to create a new project. Tap **File > New >
 Complete the **New Project** dialog:
 
 - In the left pane, tap **Web**
-- In the center pane, tap **ASP.NET Core Web Application**
+- In the center pane, tap **ASP.NET Core Web Application (.NET Core)**
 - Name the project "MvcMovie" (It's important to name the project "MvcMovie" so when you copy code, the namespace will match. )
 - Tap **OK**
 
 按以下步骤完成 **新建项目(New Project)** 对话框的设置：
 
 - 在左边的窗格, 点击 **Web**
-- 在中间的窗格, 点击 **ASP.NET Core Web Application**
+- 在中间的窗格, 点击 **ASP.NET Core Web Application (.NET Core)**
 - 将项目命名为 "MvcMovie" (将项目命名为 "MvcMovie" 非常重要，当你复制代码的时候，命名空间才会匹配 )
 - 点击 **确定(OK)**
 
@@ -75,10 +75,6 @@ Complete the **New Project** dialog:
 In the **New ASP.NET Core Web Application - MvcMovie** dialog, tap **Web Application**, and then tap **OK**.
 
 在 **New ASP.NET Core Web Application - MvcMovie** 对话框中，点击 **Web 应用程序(Web Application)**，然后点击 **确定(OK)**。
-
-.. Warning:: You must have the **Authentication** set to **Individual User Accounts** in this release for the scaffolding engine to work.
-
-.. Warning:: 在本教程中，你必须将 **身份验证(Authentication)** 设置为 **个人用户账户(Individual User Accounts)** ，以便基架引擎能正常工作（译者注：不同的身份认证通过基架引擎生成的代码不一样，为了教程顺利进行，此处必须选用个人用户账户的认证方式)。
 
 .. image:: start-mvc/_static/p3.png
 
@@ -107,7 +103,7 @@ Visual Studio 给刚才创建的 MVC 项目提供了默认模板，输入项目�
 
 .. image:: start-mvc/_static/iis_express.png
 
-The default template gives you working **Home, Contact, About, Register** and **Log in** links. The browser image above doesn't show theses links. Depending on the size of your browser, you might need to click the navigation icon to show them. 
+The default template gives you working **Home, Contact, About, Register** and **Log in** links. The browser image above doesn't show these links. Depending on the size of your browser, you might need to click the navigation icon to show them. 
 
 默认的模板提供 **Home、Contact、About、Register** 和 **Log in** 链接。下面的浏览器图片没有显示这些链接。根据您的浏览器的尺寸，您可能需要点击导航图标来显示他们。
 

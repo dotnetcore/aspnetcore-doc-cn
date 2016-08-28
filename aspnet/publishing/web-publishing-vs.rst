@@ -18,7 +18,7 @@ To create a publish profile in Visual Studio, right click on the project in Solu
 
 The following image shows a visualization of this process.
 
-.. image:: web-publishing-vs/_static/image-1.png
+.. image:: web-publishing-vs/_static/image-1b.png
 
 In the image above each black circle ● indicates an extension point, we will cover each extension point later in this document.
 
@@ -67,7 +67,7 @@ The publish module version, denoted by ``$publishModuleVersion``, defines the ve
 
 The call to Publish-AspNet moves the files from your local machine to the final destination. Publish-AspNet will be passed all the properties defined in the .pubxml file, even custom properties. For Web Deploy publish, msdeploy.exe will be called to publish the files to the destination. Publish-AspNet is passed the same parameters as the original script. You can get more info on the parameters for Publish-AspNet use Get-Help Publish-AspNet. If you get an error that the publish-module is not loaded, you can load it with
 
-.. code-block:: powershell
+.. code-block:: none
 
   Import-Module “${env:ProgramFiles(x86)}\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Web Tools\Publish\Scripts\1.0.1\publish-module.psm1"
 
@@ -76,7 +76,7 @@ from a machine which has Visual Studio installed. Now let’s move on to discuss
 How to customize publishing
 In the previous section we saw the visualization of the publish process. The image is shown again to make this easier to follow.
 
-.. image:: web-publishing-vs/_static/image-1.png
+.. image:: web-publishing-vs/_static/image-1b.png
 
 The image above shows the three main extension points, you’re most likely to use is #3.
 
