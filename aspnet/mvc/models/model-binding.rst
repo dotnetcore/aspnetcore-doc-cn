@@ -104,7 +104,7 @@ Once model binding is complete, `validation <https://docs.asp.net/projects/mvc/e
 一旦模型绑定完成。就会进行 `验证 <https://docs.asp.net/projects/mvc/en/latest/models/validation.html>`_ 。默认的模型绑定适合绝大多数开发场景。它也是可扩展的，所以如果您有独特的需求，您可以自定义内置的行为。
 
 Customize model binding behavior with attributes
-------------------------------------------------
+--------------------------------------------------------
 
 通过 Attributes 自定义模型绑定行为
 ----------------------------------
@@ -140,6 +140,8 @@ Binding formatted data from the request body
 Request data can come in a variety of formats including JSON, XML and many others. When you use the [FromBody] attribute to indicate that you want to bind a parameter to data in the request body, MVC uses a configured set of formatters to handle the request data based on its content type. By default MVC includes a ``JsonInputFormatter`` class for handling JSON data, but you can add additional formatters for handling XML and other custom formats. 
 
 HTTP 请求数据能够支持各种各样的格式，包括 JSON 、 XML 以及许多其它的格式。当你使用 [FromBody] 特性的时候表示你想要从 HTTP 请求的 Body 中绑定参数， MVC 使用一个格式化器的配置集来处理与 HTTP 请求的 Content-Type 对应的请求数据。默认情况下 MVC 包含一个 ``JsonInputFormatter`` 类用来处理 JSON 数据，但是你可以添加额外的格式化器来处理 XML 或者其它自定义格式。
+
+.. Note:: There can be at most one parameter per action decorated with ``[FromBody]``. The ASP.NET Core MVC run-time delegates the responsibility of reading the request stream to the formatter. Once the request stream is read for a parameter, it's generally not possible to read the request stream again for binding other ``[FromBody]`` parameters.
 
 .. Note:: The ``JsonInputFormatter`` is the default formatter and it is based off of `Json.NET <http://www.newtonsoft.com/json>`_.
 
