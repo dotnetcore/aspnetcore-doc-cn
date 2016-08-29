@@ -139,7 +139,7 @@ Routing
 
 ASP.NET Core MVC is built on top of :doc:`ASP.NET Core's routing </fundamentals/routing>`, a powerful URL-mapping component that lets you build applications that have comprehensible and searchable URLs. This enables you to define your application's URL naming patterns that work well for search engine optimization (SEO) and for link generation, without regard for how the files on your web server are organized. You can define your routes using a convenient route template syntax that supports route value constraints, defaults and optional values.
 
-ASP.NET Core MVC 是建立在 :doc: `ASP.NET Core 路由 </fundamentals/routing>` 上的，一项强大的 URL 映射组件，助你建立拥有可理解的、可搜索的 URL 的应用。这使得你可以定义你的应用的 URL 命名形式，使得它对搜索引擎优化（SEO）和链接生成中运行良好，而不用关心你的 WEB 服务器上的文件如何组织。你可以使用方便的路由模板语法定义你的路由，路由模板语法支持路由值约束、默认值和可选值。
+ASP.NET Core MVC 是建立在 :doc:`ASP.NET Core 路由 </fundamentals/routing>` 上的，一项强大的 URL 映射组件，助你建立拥有可理解的、可搜索的 URL 的应用。这使得你可以定义你的应用的 URL 命名形式，使得它对搜索引擎优化（SEO）和链接生成中运行良好，而不用关心你的 WEB 服务器上的文件如何组织。你可以使用方便的路由模板语法定义你的路由，路由模板语法支持路由值约束、默认值和可选值。
 
 *Convention-based routing* enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.
 
