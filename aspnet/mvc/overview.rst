@@ -402,9 +402,9 @@ Tag Helper 提供友好的 HTML 开发体验和创建 HTML 与 Razor 标记时�
 View Components
 ^^^^^^^^^^^^^^^
 
-视图组件
-^^^^^^^^^^^^
+视图组件（View Components）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :doc:`View Components </mvc/views/view-components>` allow you to package rendering logic and reuse it throughout the application. They're similar to :doc:`partial views </mvc/views/partial>`, but with associated logic.
 
-:doc:`View Components </mvc/views/view-components>` 允许你打包渲染逻辑并在应用中重用它。它们与 :doc:`局部视图 </mvc/views/partial>` 类似，但具有相关的逻辑。
+:doc:`视图组件 </mvc/views/view-components>` 允许你打包渲染逻辑并在应用中重用它。它们与 :doc:`局部视图 </mvc/views/partial>` 类似，但具有相关的逻辑。
