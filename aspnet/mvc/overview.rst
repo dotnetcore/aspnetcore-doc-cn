@@ -174,7 +174,7 @@ Model binding
 
 ASP.NET Core MVC :doc:`model binding </mvc/models/model-binding>` converts client request data  (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.
 
-ASP.NET Core MVC :doc:`模型绑定 </mvc/models/model-binding>` 转换客户端请求数据（从值、路由数据、请求字符参数、HTTP 标头）为控制器可以处理的对象。所以，你的控制器逻辑不需要做识别出传入请求数据的工作；使得参数数据传入到操作方法简单化。
+ASP.NET Core MVC :doc:`模型绑定 </mvc/models/model-binding>` 转换客户端请求数据（从值、路由数据、请求字符参数、HTTP 标头）为控制器可以处理的对象。所以，你的控制器逻辑不需要做识别传入请求数据的工作；使得参数数据传入到操作方法简单化。
 
 .. code-block:: C#
 
@@ -188,7 +188,7 @@ Model validation
 
 ASP.NET Core MVC supports :doc:`validation </mvc/models/validation>` by decorating your model object with data annotation validation attributes. The validation attributes are check on the client side before values are posted to the server, as well as on the server before the controller action is called.
 
-ASP.NET Core MVC 支持 :doc:`校验 </mvc/models/validation>` ，以为你的模型对象添加数据批注校验特性装饰。校验特性在客户端数值传到服务器之前被检查，同时在控制器方法被调用之前也会检查。
+ASP.NET Core MVC 支持 :doc:`校验 </mvc/models/validation>` ，通过为你的模型对象添加数据批注校验特性装饰。校验特性在客户端数值传到服务器之前被检查，同时在控制器方法被调用之前也会检查。
 
 .. code-block:: c#
   :emphasize-lines: 4-5,8-9
@@ -227,7 +227,7 @@ A controller action:
 
 The framework will handle validating request data both on the client and on the server. Validation logic specified on model types is added to the rendered views as unobtrusive annotations and is enforced in the browser with `jQuery Validation <http://jqueryvalidation.org/>`__.
 
-框架在客户端和服务端都将处理请求数据校验。在模型上指定的验证逻辑被添加到渲染后的视图中作为隐藏脚本，且利用 `jQuery Validation <http://jqueryvalidation.org/>`__在浏览器中被强制执行。
+框架在客户端和服务端都将处理请求数据校验。在模型上指定的验证逻辑被添加到渲染后的视图中作为隐藏脚本，且利用 `jQuery Validation <http://jqueryvalidation.org/>`__ 在浏览器中被强制执行。
 
 Dependency injection
 ^^^^^^^^^^^^^^^^^^^^
