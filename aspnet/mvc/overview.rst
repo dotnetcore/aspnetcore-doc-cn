@@ -237,7 +237,7 @@ Dependency injection
 
 ASP.NET Core has built-in support for :doc:`dependency injection (DI) </fundamentals/dependency-injection>`. In ASP.NET Core MVC, :doc:`controllers </mvc/controllers/dependency-injection>` can request needed services through their constructors, allowing them to follow the `Explicit Dependencies Principle <http://deviq.com/explicit-dependencies-principle/>`_.
 
-ASP.NET Core 内置了对 :doc:`依赖注入 (DI) </fundamentals/dependency-injection>`的支持。在 ASP.NET Core MVC 中 :doc:`控制器 </mvc/controllers/dependency-injection>` 能通过它们的构造函数请求所需的服务，允许它们遵循 `显式依赖项原则（Explicit Dependencies Principle） <http://deviq.com/explicit-dependencies-principle/>`_。
+ASP.NET Core 内置了对 :doc:`依赖注入 (DI) </fundamentals/dependency-injection>` 的支持。在 ASP.NET Core MVC 中 :doc:`控制器 </mvc/controllers/dependency-injection>` 能通过它们的构造函数请求所需的服务，允许它们遵循 `显式依赖项原则（Explicit Dependencies Principle） <http://deviq.com/explicit-dependencies-principle/>`_。
 
 Your app can also use :doc:`dependency injection in view files </mvc/views/dependency-injection>`, using the ``@inject`` directive:
 
@@ -330,7 +330,7 @@ Razor 视图引擎
 
 Using the Razor view engine you can define :doc:`layouts </mvc/views/layout>`, :doc:`partial views </mvc/views/partial>` and replaceable sections.
 
-使用 Razor 视图引擎你可以定义 :doc:`布局模板 </mvc/views/layout>`, :doc:`部分视图 </mvc/views/partial>` 及可替换的区块。
+使用 Razor 视图引擎你可以定义 :doc:`布局模板 </mvc/views/layout>`, :doc:`局部视图 </mvc/views/partial>` 及可替换的区块。
 
 Strongly typed views
 ^^^^^^^^^^^^^^^^^^^^
@@ -407,4 +407,4 @@ View Components
 
 :doc:`View Components </mvc/views/view-components>` allow you to package rendering logic and reuse it throughout the application. They're similar to :doc:`partial views </mvc/views/partial>`, but with associated logic.
 
-:doc:`View Components </mvc/views/view-components>` 允许你打包渲染逻辑并在应用中重用它。它们与 :doc:`部分视图 </mvc/views/partial>` 类似，但具有相关的逻辑。
+:doc:`View Components </mvc/views/view-components>` 允许你打包渲染逻辑并在应用中重用它。它们与 :doc:`局部视图 </mvc/views/partial>` 类似，但具有相关的逻辑。
