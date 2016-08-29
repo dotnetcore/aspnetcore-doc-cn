@@ -1,7 +1,9 @@
 :version: 1.0.0
 
+
 Overview of ASP.NET Core MVC
 ============================
+
 
 ASP.NET Core MVC 概览
 =======================
@@ -20,15 +22,17 @@ ASP.NET Core MVC 是使用模型-视图-控制器（Model-View-Controller）设�
   :local:
   :depth: 1
 
+
 What is the MVC pattern?
 ------------------------
+
 
 什么是 MVC 模式？
 -------------------
 
 The Model-View-Controller (MVC) architectural pattern separates an application into three main groups of components: Models, Views, and Controllers. This pattern helps to achieve `separation of concerns <http://deviq.com/separation-of-concerns/>`_. Using this pattern, user requests are routed to a Controller which is responsible for working with the Model to perform user actions and/or retrieve results of queries. The Controller chooses the View to display to the user, and provides it with any Model data it requires.
 
-模型-视图-控制器（MVC）架构模式将一个应用区分为三部分主要组件：模型、视图、与控制器。这种模式有助实现 `关注分离 <http://deviq.com/separation-of-concerns/>`_。使用这种模式，用户请求被引导到控制器，控制器负责与模型（Model）协作以执行用户操作和/或返回请求结果。控制器（Controller）选择视图（View），展示给用户，而给视图提供其所需要的任何模型（Model）。
+模型-视图-控制器（MVC）架构模式将一个应用区分为三部分主要组件：模型、视图、与控制器。这种模式有助实现 `关注分离 <http://deviq.com/separation-of-concerns/>`_。使用这种模式，用户请求被路由到控制器，控制器负责与模型（Model）协作以执行用户操作和/或返回请求结果。控制器（Controller）选择视图（View），展示给用户，而给视图提供其所需要的任何模型（Model）。
 
 The following diagram shows the three main components and which ones reference the others:
 
@@ -38,11 +42,11 @@ The following diagram shows the three main components and which ones reference t
 
 This delineation of responsibilities helps you scale the application in terms of complexity because it��s easier to code, debug, and test something (model, view, or controller) that has a single job (and follows the `Single Responsibility Principle <http://deviq.com/single-responsibility-principle/>`_). It's more difficult to update, test, and debug code that has dependencies spread across two or more of these three areas. For example, user interface logic tends to change more frequently than business logic. If presentation code and business logic are combined in a single object, you have to modify an object containing business logic every time you change the user interface. This is likely to introduce errors and require the retesting of all business logic after every minimal user interface change.
 
-这个职责示意图帮你掌控你的应用的复杂程度，因为其更容易编码、调试、与测试一些（模型、视图、控制器）有单一功能的模块 （进一步了解 `单一职责原则 <http://deviq.com/single-responsibility-principle/>`_）。存在两者或者此三者之间的广泛依赖是非常难更新、测试、调试代码的。例如，用户接口逻辑与业务逻辑相比倾向于变化更频繁。如果表现代码与业务逻辑混杂在一个对象内，在你每次改变用户接口的时候都需要修改一个包含业务逻辑的对象。这也就更容易引入错误，并使得你在每次做一个很小的用户接口改动后都要进行完整的业务逻辑测试。
+这个职责示意图帮你掌控你的应用的复杂程度，因为其更容易编码、调试、与测试一些（模型、视图、控制器）有单一功能的模块 （进一步了解 `单一职责原则 <http://deviq.com/single-responsibility-principle/>`_）。存在两者或者此三者之间的广泛依赖是非常难更新、测试、调试代码的。例如，用户界面逻辑与业务逻辑相比倾向于变化更频繁。如果表现代码与业务逻辑混杂在一个对象内，在你每次改变用户接口的时候都需要修改一个包含业务逻辑的对象。这也就更容易引入错误，并使得你在每次做一个很小的用户接口改动后都要进行完整的业务逻辑测试。
 
 .. note:: Both the view and the controller depend on the model. However, the model depends on neither the view nor the controller. This is one the key benefits of the separation. This separation allows the model to be built and tested independent of the visual presentation.
 
-.. 说明:: 视图与控制器都依赖于模型。尽管如此，模型并不依赖于视图，也不依赖于控制器。这是分离的一大优势。这样分离允许模型被创建并可以依赖于虚拟的表现中测试。
+.. note:: 视图与控制器都依赖于模型。尽管如此，模型并不依赖于视图，也不依赖于控制器。这是分离的一大优势。这样分离允许模型被创建并可以依赖于虚拟的表现中测试。
 
 Model Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -56,7 +60,7 @@ MVC 应用中的模型代表了应用的状态和业务逻辑或其可以展现�
 
 .. note:: There are many ways to organize the model in an app that uses the MVC architectural pattern. Learn more about some `different kinds of model types <http://deviq.com/kinds-of-models/>`_.
 
-.. 说明:: 有许多种方法组织 MVC 架构形式的应用中的模型。了解更多关于 `不同类型的模型 <http://deviq.com/kinds-of-models/>`_。
+.. note:: 有许多种方法组织 MVC 架构形式的应用中的模型。了解更多关于 `不同类型的模型 <http://deviq.com/kinds-of-models/>`_。
 
 View Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^
@@ -66,7 +70,7 @@ View Responsibilities
 
 Views are responsible for presenting content through the user interface. They use the `Razor view engine`_ to embed .NET code in HTML markup. There should be minimal logic within views, and any logic in them should relate to presenting content. If you find the need to perform a great deal of logic in view files in order to display data from a complex model, consider using a :doc:`View Component </mvc/views/view-components>`, ViewModel, or view template to simplify the view.
 
-视图负责在用户接口呈现内容。它们使用 `Razor 视图引擎`_ 在 HTML 标记中嵌入 .NET 代码。视图中应仅包含少量的逻辑，而这些逻辑应该是与呈现内容相关的。如果你发现需求，要在视图文件中完成大量的逻辑任务，以便从复杂的模型展示数据，请考虑使用 :doc:`视图组件 </mvc/views/view-components>` 、视图模型、或视图模板来简化视图。
+视图负责在用户界面呈现内容。它们使用 `Razor 视图引擎`_ 在 HTML 标记中嵌入 .NET 代码。视图中应仅包含少量的逻辑，而这些逻辑应该是与呈现内容相关的。如果你发现需要在视图文件中完成大量的逻辑任务，以便从复杂的模型展示数据，请考虑使用 :doc:`视图组件 </mvc/views/view-components>` 、视图模型、或视图模板来简化视图。
 
 Controller Responsibilities
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -80,14 +84,16 @@ Controllers are the components that handle user interaction, work with the model
 
 .. note:: Controllers should not be overly complicated by too many responsibilities. To keep controller logic from becoming overly complex, use the `Single Responsibility Principle <http://deviq.com/single-responsibility-principle/>`_ to push business logic out of the controller and into the domain model.
 
-.. 说明:: 控制器不应该有太多职责而过于复杂。 为避免控制器逻辑过于复杂，请使用 `单一职责原则 <http://deviq.com/single-responsibility-principle/>`_ 将业务逻辑从控制器移到领域模型。
+.. note:: 控制器不应该有太多职责而过于复杂。 为避免控制器逻辑过于复杂，请使用 `单一职责原则 <http://deviq.com/single-responsibility-principle/>`_ 将业务逻辑从控制器移到领域模型。
 
 .. tip:: If you find that your controller actions frequently perform the same kinds of actions, you can follow the `Don't Repeat Yourself principle <http://deviq.com/don-t-repeat-yourself/>`_ by moving these common actions into `filters`_.
 
 .. tip:: 如果你发现你的控制器方法频繁执行相同类型的方法，你可以依照 `不要让自己重复原则 <http://deviq.com/don-t-repeat-yourself/>`_ 将这些通用方法移入 `过滤器（filters）`_.
 
+
 What is ASP.NET Core MVC
 ------------------------
+
 
 什么是 ASP.NET Core MVC
 ------------------------
@@ -98,10 +104,12 @@ ASP.NET Core MVC 框架是一个为使用 ASP.NET Core 优化的轻量级、开�
 
 ASP.NET Core MVC provides a patterns-based way to build dynamic websites that enables a clean separation of concerns. It gives you full control over markup, supports TDD-friendly development and uses the latest web standards.
 
-ASP.NET Core MVC 提供了一种基于模式的、使用干净的关注分离的方式构建动态网站。它使你能对标签完全控制，支持有好的测试驱动设计/开发（TDD）开发方式并且使用最新的 Web 标准。
+ASP.NET Core MVC 提供了一种基于模式的、使用干净的关注分离的方式构建动态网站。它使你能对标签完全控制，支持有好的测试驱动开发（TDD）开发方式并且使用最新的 Web 标准。
+
 
 Features
 --------
+
 
 功能特点
 ---------
@@ -131,7 +139,7 @@ Routing
 
 ASP.NET Core MVC is built on top of :doc:`ASP.NET Core's routing </fundamentals/routing>`, a powerful URL-mapping component that lets you build applications that have comprehensible and searchable URLs. This enables you to define your application's URL naming patterns that work well for search engine optimization (SEO) and for link generation, without regard for how the files on your web server are organized. You can define your routes using a convenient route template syntax that supports route value constraints, defaults and optional values.
 
-ASP.NET Core MVC 是建立在 :doc:`ASP.NET Core 路由 </fundamentals/routing>`上的，一项强大的 URL 映射组件，助你建立拥有可理解的、可搜索的的 URL 的应用。这使得你可以定义你的应用的 URL 命名形式，使得它对搜索引擎优化（SEO）和链接生成中运行良好，而不用关心你的 WEB 服务器上的文件如何组织。你可以使用方便的路由模板语法定义你的路由，路由模板语法支持路由值约束、默认值和可选值。
+ASP.NET Core MVC 是建立在 :doc:`ASP.NET Core 路由 </fundamentals/routing>` 上的，一项强大的 URL 映射组件，助你建立拥有可理解的、可搜索的 URL 的应用。这使得你可以定义你的应用的 URL 命名形式，使得它对搜索引擎优化（SEO）和链接生成中运行良好，而不用关心你的 WEB 服务器上的文件如何组织。你可以使用方便的路由模板语法定义你的路由，路由模板语法支持路由值约束、默认值和可选值。
 
 *Convention-based routing* enables you to globally define the URL formats that your application accepts and how each of those formats maps to a specific action method on given controller. When an incoming request is received, the routing engine parses the URL and matches it to one of the defined URL formats, and then calls the associated controller's action method.
 
@@ -166,7 +174,7 @@ Model binding
 
 ASP.NET Core MVC :doc:`model binding </mvc/models/model-binding>` converts client request data  (form values, route data, query string parameters, HTTP headers) into objects that the controller can handle. As a result, your controller logic doesn't have to do the work of figuring out the incoming request data; it simply has the data as parameters to its action methods.
 
-ASP.NET Core MVC :doc:`模型建立 </mvc/models/model-binding>` 转换客户端请求数据（从值、路由数据、请求字符参数、HTTP 标头）为控制器可以处理的对象。所以，你的控制器逻辑不需要做识别出传入请求数据的工作；使得参数数据传入到操作方法简单化。
+ASP.NET Core MVC :doc:`模型绑定 </mvc/models/model-binding>` 转换客户端请求数据（从值、路由数据、请求字符参数、HTTP 标头）为控制器可以处理的对象。所以，你的控制器逻辑不需要做识别传入请求数据的工作；使得参数数据传入到操作方法简单化。
 
 .. code-block:: C#
 
@@ -180,7 +188,7 @@ Model validation
 
 ASP.NET Core MVC supports :doc:`validation </mvc/models/validation>` by decorating your model object with data annotation validation attributes. The validation attributes are check on the client side before values are posted to the server, as well as on the server before the controller action is called.
 
-ASP.NET Core MVC 支持 :doc:`校验 </mvc/models/validation>` ，以为你的模型对象添加数据批注校验特性装饰。校验特性在客户端数值传到服务器之前被检查，同时在控制器方法被调用之前也会检查。
+ASP.NET Core MVC 支持 :doc:`校验 </mvc/models/validation>` ，通过为你的模型对象添加数据批注校验特性装饰。校验特性在客户端数值传到服务器之前被检查，同时在控制器方法被调用之前也会检查。
 
 .. code-block:: c#
   :emphasize-lines: 4-5,8-9
@@ -191,11 +199,11 @@ ASP.NET Core MVC 支持 :doc:`校验 </mvc/models/validation>` ，以为你的�
       [Required]
       [EmailAddress]
       public string Email { get; set; }
-
+    
       [Required]
       [DataType(DataType.Password)]
       public string Password { get; set; }
-
+    
       [Display(Name = "Remember me?")]
       public bool RememberMe { get; set; }
   }
@@ -219,7 +227,7 @@ A controller action:
 
 The framework will handle validating request data both on the client and on the server. Validation logic specified on model types is added to the rendered views as unobtrusive annotations and is enforced in the browser with `jQuery Validation <http://jqueryvalidation.org/>`__.
 
-框架在客户端和服务端都将处理请求数据校验。在模型上指定的验证逻辑被添加到渲染后的视图中作为隐藏脚本，且利用 `jQuery Validation <http://jqueryvalidation.org/>`__在浏览器中被强制执行。
+框架在客户端和服务端都将处理请求数据校验。在模型上指定的验证逻辑被添加到渲染后的视图中作为隐藏脚本，且利用 `jQuery Validation <http://jqueryvalidation.org/>`__ 在浏览器中被强制执行。
 
 Dependency injection
 ^^^^^^^^^^^^^^^^^^^^
@@ -229,7 +237,7 @@ Dependency injection
 
 ASP.NET Core has built-in support for :doc:`dependency injection (DI) </fundamentals/dependency-injection>`. In ASP.NET Core MVC, :doc:`controllers </mvc/controllers/dependency-injection>` can request needed services through their constructors, allowing them to follow the `Explicit Dependencies Principle <http://deviq.com/explicit-dependencies-principle/>`_.
 
-ASP.NET Core 内置了对 :doc:`依赖注入 (DI) </fundamentals/dependency-injection>`的支持。在 ASP.NET Core MVC 中 :doc:`控制器 </mvc/controllers/dependency-injection>` 能通过它们的构造函数请求所需的服务，允许它们遵循 `显式依赖项原则（Explicit Dependencies Principle） <http://deviq.com/explicit-dependencies-principle/>`_。
+ASP.NET Core 内置了对 :doc:`依赖注入 (DI) </fundamentals/dependency-injection>` 的支持。在 ASP.NET Core MVC 中 :doc:`控制器 </mvc/controllers/dependency-injection>` 能通过它们的构造函数请求所需的服务，允许它们遵循 `显式依赖项原则（Explicit Dependencies Principle） <http://deviq.com/explicit-dependencies-principle/>`_。
 
 Your app can also use :doc:`dependency injection in view files </mvc/views/dependency-injection>`, using the ``@inject`` directive:
 
@@ -290,7 +298,7 @@ The framework includes support for HTTP content-negotiation with built-in suppor
 
 Use link generation to enable support for hypermedia. Easily enable support for `cross-origin resource sharing (CORS) <http://www.w3.org/TR/cors/>`__ so that your Web APIs shared across multiple Web applications.
 
-使用链接生成可以启用对超媒体的支持。简便的启用对 `跨域资源共享 (CORS) <http://www.w3.org/TR/cors/>`__ 的支持，可使得你的 Web APIs 能在多个应用间共享。
+使用链接生成可以启用对超媒体的支持。简单地启用对 `跨域资源共享 (CORS) <http://www.w3.org/TR/cors/>`__ 的支持，可使得你的 Web APIs 能在多个应用间共享。
 
 Testability
 ^^^^^^^^^^^
@@ -310,7 +318,7 @@ Razor 视图引擎
 
 :doc:`ASP.NET Core MVC views </mvc/views/overview>` use the the :doc:`Razor view engine </mvc/views/razor>` to render views. Razor is a compact, expressive and fluid template markup language for defining views using embedded C# code. Razor is used to dynamically generate web content on the server. You can cleanly mix server code with client side content and code.
 
-:doc:`ASP.NET Core MVC 视图 </mvc/views/overview>` use the the :doc:`Razor 视图引擎 </mvc/views/razor>` 渲染视图。 Razor 是一种紧凑的、表达能力好且流畅的模板标记语言，用来使用嵌入的 C# 代码定义视图。Razor 被用来在服务器动态生成 Web 内容。你可以清晰的将服务端代码和客户端代码跟内容混合在一起。
+:doc:`ASP.NET Core MVC 视图 </mvc/views/overview>` 使用 :doc:`Razor 视图引擎 </mvc/views/razor>` 渲染视图。 Razor 是一种紧凑的、表达能力好且流畅的模板标记语言，用来使用嵌入的 C# 代码定义视图。Razor 被用来在服务器动态生成 Web 内容。你可以清晰地将服务端代码和客户端代码跟内容混合在一起。
 
 .. code-block:: text
 
@@ -322,7 +330,7 @@ Razor 视图引擎
 
 Using the Razor view engine you can define :doc:`layouts </mvc/views/layout>`, :doc:`partial views </mvc/views/partial>` and replaceable sections.
 
-使用 Razor 视图引擎你可以定义 :doc:`布局模板 </mvc/views/layout>`, :doc:`分部视图 </mvc/views/partial>` 及可替换的区块。
+使用 Razor 视图引擎你可以定义 :doc:`布局模板 </mvc/views/layout>`, :doc:`局部视图 </mvc/views/partial>` 及可替换的区块。
 
 Strongly typed views
 ^^^^^^^^^^^^^^^^^^^^
@@ -360,7 +368,7 @@ Tag Helpers
 
 There are many built-in Tag Helpers for common tasks - such as creating forms, links, loading assets and more - and even more available in public GitHub repositories and as NuGet packages. Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or parent tag. For example, the built-in LinkTagHelper can be used to create a link to the ``Login`` action of the ``AccountsController``:
 
-有很多内置的 Tag Helper 应对常用任务，比如创建表单、链接、加载资源等，并且在公共的 GitHub 仓库或作为 NuGet 包，还有更多可用的。Tag Helper 是用 C# 创作的，它们指向 HTML 元素基于元素名、属性名或父标签。例如，内置的 LinkTagHelper 可被用来创建一个链接指向到 ``AccountsController`` 的  ``Login`` 方法：
+有很多内置的 Tag Helper 应对常用任务，比如创建表单、链接、加载资源等，并且在公共的 GitHub 仓库或作为 NuGet 包，还有更多可用的。Tag Helper 是用 C# 创作的，它们通过元素名、属性名或父标签定位 HTML 元素。例如，内置的 LinkTagHelper 可被用来创建一个链接指向到 ``AccountsController`` 的  ``Login`` 方法：
 
 .. code-block:: html
   :emphasize-lines: 3
@@ -394,9 +402,9 @@ Tag Helper 提供友好的 HTML 开发体验和创建 HTML 与 Razor 标记时�
 View Components
 ^^^^^^^^^^^^^^^
 
-视图组件
-^^^^^^^^^^^^
+视图组件（View Components）
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 :doc:`View Components </mvc/views/view-components>` allow you to package rendering logic and reuse it throughout the application. They're similar to :doc:`partial views </mvc/views/partial>`, but with associated logic.
 
-:doc:`View Components </mvc/views/view-components>` 允许你打包渲染逻辑并在应用中重用它。它们与 :doc:`分部视图 </mvc/views/partial>` 类似，但具有相关的逻辑。
+:doc:`视图组件 </mvc/views/view-components>` 允许你打包渲染逻辑并在应用中重用它。它们与 :doc:`局部视图 </mvc/views/partial>` 类似，但具有相关的逻辑。
