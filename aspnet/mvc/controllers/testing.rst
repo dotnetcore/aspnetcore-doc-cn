@@ -110,11 +110,19 @@ The ``HTTP POST Index`` method (shown below) should verify:
 
 The first test confirms when ``ModelState`` is not valid, the same ``ViewResult`` is returned as for a ``GET`` request. Note that the test doesn't attempt to pass in an invalid model. That wouldn't work anyway since model binding isn't running - we're just calling the method directly. However, we're not trying to test model binding - we're only testing what our code in the action method does. The simplest approach is to add an error to ``ModelState``.
 
+第一个测试确定当 ``ModelState`` 无效时，返回一个与 ``GET`` 请求一样的 ``ViewResult`` 。注意，测试不会尝试传递一个无效模型进去。那样是没有作用的，因为模型绑定并没有运行 - 我们只是直接调用了操作方法。然而，我们并不想去测试模型绑定 —— 我们只是在测试操作方法里的代码行为。最简单的方法就是在 ``ModelState`` 中添加一个错误。
+
 The second test verifies that when ``ModelState`` is valid, a new ``BrainstormSession`` is added (via the repository), and the method returns a ``RedirectToActionResult`` with the expected properties. Mocked calls that aren't called are normally ignored, but calling ``Verifiable`` at the end of the setup call allows it to be verified in the test. This is done with the call to ``mockRepo.Verify``.
+
+第二个测试验证当 ``ModelState`` 有效时，新的 ``BrainstormSession`` 被添加（通过存储库），并且该方法返回一个带有预期属性值的 ``RedirectToActionResult`` 。未被执行到的 mock 调用通常就被忽略了，但是在设定过程的最后调用 ``Verifiable`` 则允许其在测试中被验证。这是通过调用 ``mockRepo.Verify`` 实现的。
 
 .. note:: The Moq library used in this sample makes it easy to mix verifiable, or "strict", mocks with non-verifiable mocks (also called "loose" mocks or stubs). Learn more about `customizing Mock behavior with Moq <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_.
 
+.. note:: 这个例子中所采用的 Moq 库便于将可验证的，或者说 “严格的”，与不可验证的 mock （也称为 “宽松的” mock 或 stub）混合进行 mock 。了解更多关于 `使用 Moq 自定义 Mock 行为 <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_ 。
+
 Another controller in the app displays information related to a particular brainstorming session. It includes some logic to deal with invalid id values:
+
+应用程序里的另外一个控制器显示指定头脑风暴讨论会的相关信息。它包含一些处理无效 id 值的逻辑：
 
 .. literalinclude:: testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs
   :language: c#
@@ -122,11 +130,15 @@ Another controller in the app displays information related to a particular brain
 
 The controller action has three cases to test, one for each ``return`` statement:
 
+这个控制器操作有三种情况要测试，每条 ``return`` 语句一种：
+
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs
   :language: c#
   :emphasize-lines: 16,26,39
 
 The app exposes functionality as a web API (a list of ideas associated with a brainstorming session and a method for adding new ideas to a session):
+
+这个应用程序以 Web API （一个头脑风暴讨论会的意见列表以及一个给讨论会添加新意见的方法）的形式公开功能：
 
 .. _ideas-controller:
 
@@ -136,7 +148,11 @@ The app exposes functionality as a web API (a list of ideas associated with a br
 
 The ``ForSession`` method returns a list of ``IdeaDTO`` types, with property names camel cased to match JavaScript conventions. Avoid returning your business domain entities directly via API calls, since frequently they include more data than the API client requires, and they unnecessarily couple your app's internal domain model with the API you expose externally. Mapping between domain entities and the types you will return over the wire can be done manually (using a LINQ ``Select`` as shown here) or using a library like `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_
 
+``ForSession`` 方法返回一个 ``IdeaDTO`` 类型的列表，该类型有着符合 JavaScript 惯例的驼峰命名法的属性名。从而避免直接通过 API 调用返回你业务领域的实体，因为通常它们都包含了 API 客户端并不需要的更多数据，而且它们将你的应用程序的内部领域模型与外部公开的 API 不必要地耦合起来。可以手动将业务领域实体与你想要返回的类型连接映射起来（使用这里展示的 LINQ ``Select``），或者使用诸如 `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_ 的类库。
+
 The unit tests for the ``Create`` and ``ForSession`` API methods:
+
+``Create`` 和 ``ForSession`` API 方法的单元测试：
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs
   :language: c#
@@ -144,9 +160,15 @@ The unit tests for the ``Create`` and ``ForSession`` API methods:
 
 As stated previously, to test the behavior of the method when ``ModelState`` is invalid, add a model error to the controller as part of the test. Don't try to test model validation or model binding in your unit tests - just test your action method's behavior when confronted with a particular ``ModelState`` value.
 
+如前所述，要测试这个方法在 ``ModelState`` 无效时的行为，可以将一个模型错误作为测试的一部分添加到控制器。不要在单元测试尝试测试模型验证或者模型绑定 —— 仅仅测试应对特定 ``ModelState`` 值的时候，你的操作方法的行为。
+
 The second test depends on the repository returning null, so the mock repository is configured to return null. There's no need to create a test database (in memory or otherwise) and construct a query that will return this result - it can be done in a single line as shown.
 
+第二项测试需要存储库返回 null ，因此将模拟的存储库配置为返回 null 。没有必要去创建一个测试数据库（内存中的或其他的）并构建一条能返回这个结果的查询 —— 就像展示的那样，一行代码就可以了。
+
 The last test verifies that the repository's ``Update`` method is called. As we did previously, the mock is called with ``Verifiable`` and then the mocked repository's ``Verify`` method is called to confirm the verifiable method was executed. It's not a unit test responsibility to ensure that the ``Update`` method saved the data; that can be done with an integration test.
+
+最后一项测试验证存储库的 ``Update`` 方法是否被调用。像我们之前做过的那样，在调用 mock 时调用了 ``Verifiable`` ，然后模拟存储库的 ``Verify`` 方法被调用，用以确认可验证的方法已被执行。确保 ``Update`` 保存了数据并不是单元测试的职责；那是集成测试做的事。
 
 .. _integration-testing:
 
