@@ -1,7 +1,11 @@
 Introduction to Tag Helpers
 =========================================
 
+Tag Helpers 介绍
+==================
 By `Rick Anderson`_ 
+
+翻译： `刘浩杨 <http://github.com/liuhaoyang>`_
 
 .. _issue: https://github.com/aspnet/Docs/issues/125
 
@@ -16,6 +20,8 @@ By `Rick Anderson`_
 
 What are Tag Helpers?
 ------------------------------------
+什么是 Tag Helpers ？
+-----------------------
 
 Tag Helpers enable server-side code to participate in creating and rendering HTML elements in Razor files. For example, the built-in `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ImageTagHelper/index.html>`__ can append a version number to the image name. Whenever the image changes, the server generates a new unique version for the image, so clients are guaranteed to get the current image (instead of a stale cached image). There are many built-in Tag Helpers for common tasks - such as creating forms, links, loading assets and more - and even more available in public GitHub repositories and as NuGet packages.
 Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or parent tag. For example, the built-in `LabelTagHelper  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/LabelTagHelper/index.html>`__ can target the HTML ``<label>`` element when the ``LabelTagHelper`` attributes are applied. 
