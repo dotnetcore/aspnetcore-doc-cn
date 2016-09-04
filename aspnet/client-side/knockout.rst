@@ -132,9 +132,15 @@ However, if we change the value in the textbox, the corresponding value in the `
 
  The issue is that nothing notified the ``<span>`` that it needed to be updated. Simply updating the ViewModel isn't by itself sufficient, unless the ViewModel's properties are wrapped in a special type. We need to use **observables** in the ViewModel for any properties that need to have changes automatically updated as they occur. By changing the ViewModel to use ``ko.observable("value")`` instead of just "value", the ViewModel will update any HTML elements that are bound to its value whenever a change occurs. Note that input boxes don't update their value until they lose focus, so you won't see changes to bound elements as you type.
 
+问题是没有任何机制可以通知的 ``<span>`` 它需要进行更新。只是简单的更新视图模型本身不够的，除非视图模型的属性被包装为一种特殊类型。我们需要在视图模型里面需要自动更新的属性上使用 **observables** 。通过修改视图模型使用 ``ko.observable("value")`` 来替代 "value"，每当其绑定到任何 HTML 元素的值发生变化时，视图模型将自动更新。请注意，在文本框失去焦点在之前是不会更新自己的值的，所以你在绑定的元素上不会看到任何您键入更改。
+
 .. note:: Adding support for live updating after each keypress is simply a matter of adding ``valueUpdate: "afterkeydown"`` to the ``data-bind`` attribute's contents.
 
+.. note:: 增加按键点击以后数据实时更新功能的支持只是简单地添加 ``valueUpdate: "afterkeydown"`` 设置到 ``data-bind`` 属性的内容。
+
 Our viewModel, after updating it to use ko.observable:
+
+我们的视图模型，在使用 ko.observable 更新以后之后：
 
 .. code-block:: javascript
   :emphasize-lines: 2
@@ -146,7 +152,11 @@ Our viewModel, after updating it to use ko.observable:
 
 Knockout supports a number of different kinds of bindings. So far we've seen how to bind to ``text`` and to ``value``. You can also bind to any given attribute. For instance, to create a hyperlink with an anchor tag, the ``src`` attribute can be bound to the viewModel. Knockout also supports binding to functions. To demonstrate this, let's update the viewModel to include the author's twitter handle, and display the twitter handle as a link to the author's twitter page. We'll do this in three stages.
 
+Knockout 支持多种不同类型的数据绑定方式。到目前为止，我们已经了解了如何绑定到 ``text`` 属性到 ``value`` 字段。你也也可以绑定到任何给定的属性。例如，要创建一个超链接标签时， ``src`` 属性可以绑定到视图模型。Knockout 还支持函数绑定功能。为了演示这个特性，让我们更新视图模型，包括作者的 Twitter 用户名，并显示 Twitter 用户名连接到作者的 Twitter 页面。我们通过三个阶段来做到这一点。
+
 First, add the HTML to display the hyperlink, which we'll show in parentheses after the author's name:
+
+首先，添加 HTML 来显示超链接，我们将在作者名字放在后面的括号中显示：
 
 .. code-block:: html
   :emphasize-lines: 4
@@ -158,6 +168,8 @@ First, add the HTML to display the hyperlink, which we'll show in parentheses af
   </p>
 
 Next, update the viewModel to include the twitterUrl and twitterAlias properties:
+
+接下来，更新视图模型包含 twitterUrl 以及 twitterAlias 属性：
 
 .. code-block:: javascript
   :emphasize-lines: 3-6
@@ -173,7 +185,11 @@ Next, update the viewModel to include the twitterUrl and twitterAlias properties
 
 Notice that at this point we haven't yet updated the twitterUrl to go to the correct URL for this twitter alias – it's just pointing at twitter.com. Also notice that we're using a new Knockout function, ``computed``, for twitterUrl. This is an observable function that will notify any UI elements if it changes. However, for it to have access to other properties in the viewModel, we need to change how we are creating the viewModel, so that each property is its own statement.
 
+注意，在这节点上，我们还没有更新 twitterUrl 以便让twitter 别名连接到正确的url - 它只是指向 twitter.com 。还要注意，我们对 twitterUrl 使用了新的 Knockout 功能，``computed``。这是一个监控的功能，如果它的值发生变化将通知任何UI元素。然而，因为它能够访问在视图模型所有属性，我们需要改变我们如何创建视图模型的方式，使每个属性都具备自己的声明。
+
 The revised viewModel declaration is shown below. It is now declared as a function. Notice that each property is its own statement now, ending with a semicolon. Also notice that to access the twitterAlias property value, we need to execute it, so its reference includes ().
+
+修订后的视图模型声明代码如下所示。计算字段被声明为一个函数。请注意，现在每个属性是具备自己的声明的，并以分号结尾。还注意到，如需访问 twitterAlias 属性值，就必需要执行它，因此它的引用包括()。
 
 .. code-block:: javascript
   :emphasize-lines: 6
@@ -190,9 +206,15 @@ The revised viewModel declaration is shown below. It is now declared as a functi
 
 The result works as expected in the browser:
 
+浏览器预期的结果如下：
+
 .. image:: knockout/_static/hyperlink-screenshot.png
 
 Knockout also supports binding to certain UI element events, such as the click event. This allows you to easily and declaratively bind UI elements to functions within the application's viewModel. As a simple example, we can add a button that, when clicked, modifies the author's twitterAlias to be all caps.
+
+Knockout also supports binding to certain UI element events, such as the click event. This allows you to easily and declaratively bind UI elements to functions within the application's viewModel. As a simple example, we can add a button that, when clicked, modifies the author's twitterAlias to be all caps.
+
+First, we add the button, binding to the button's click event, and referencing the function name we're going to add to the viewModel:
 
 First, we add the button, binding to the button's click event, and referencing the function name we're going to add to the viewModel:
 
@@ -202,6 +224,8 @@ First, we add the button, binding to the button's click event, and referencing t
   <p>
     <button data-bind="click: capitalizeTwitterAlias">Capitalize</button>
   </p>
+
+Then, add the function to the viewModel, and wire it up to modify the viewModel's state. Notice that to set a new value to the twitterAlias property, we call it as a method and pass in the new value.
 
 Then, add the function to the viewModel, and wire it up to modify the viewModel's state. Notice that to set a new value to the twitterAlias property, we call it as a method and pass in the new value.
 
@@ -225,10 +249,17 @@ Then, add the function to the viewModel, and wire it up to modify the viewModel'
 
 Running the code and clicking the button modifies the displayed link as expected:
 
+Running the code and clicking the button modifies the displayed link as expected:
+
 .. image:: knockout/_static/hyperlink-caps-screenshot.png
 
 Control Flow
 ------------
+
+控制流程
+------------
+
+Knockout includes bindings that can perform conditional and looping operations. Looping operations are especially useful for binding lists of data to UI lists, menus, and grids or tables. The foreach binding will iterate over an array. When used with an observable array, it will automatically update the UI elements when items are added or removed from the array, without re-creating every element in the UI tree. The following example uses a new viewModel which includes an observable array of game results. It is bound to a simple table with two columns using a ``foreach`` binding on the ``<tbody>`` element. Each ``<tr>`` element within ``<tbody>`` will be bound to an element of the gameResults collection.
 
 Knockout includes bindings that can perform conditional and looping operations. Looping operations are especially useful for binding lists of data to UI lists, menus, and grids or tables. The foreach binding will iterate over an array. When used with an observable array, it will automatically update the UI elements when items are added or removed from the array, without re-creating every element in the UI tree. The following example uses a new viewModel which includes an observable array of game results. It is bound to a simple table with two columns using a ``foreach`` binding on the ``<tbody>`` element. Each ``<tr>`` element within ``<tbody>`` will be bound to an element of the gameResults collection.
 
@@ -274,7 +305,11 @@ Knockout includes bindings that can perform conditional and looping operations. 
 
 Notice that this time we're using ViewModel with a capital “V" because we expect to construct it using “new" (in the applyBindings call). When executed, the page results in the following output:
 
+Notice that this time we're using ViewModel with a capital “V" because we expect to construct it using “new" (in the applyBindings call). When executed, the page results in the following output:
+
 .. image:: knockout/_static/record-screenshot.png
+
+To demonstrate that the observable collection is working, let's add a bit more functionality. We can include the ability to record the results of another game to the ViewModel, and then add a button and some UI to work with this new function.  First, let's create the addResult method:
 
 To demonstrate that the observable collection is working, let's add a bit more functionality. We can include the ability to record the results of another game to the ViewModel, and then add a button and some UI to work with this new function.  First, let's create the addResult method:
 
@@ -287,9 +322,13 @@ To demonstrate that the observable collection is working, let's add a bit more f
 
 Bind this method to a button using the ``click`` binding:
 
+Bind this method to a button using the ``click`` binding:
+
 .. code-block:: html
 
   <button data-bind="click: addResult">Add New Result</button>
+
+Open the page in the browser and click the button a couple of times, resulting in a new table row with each click:
 
 Open the page in the browser and click the button a couple of times, resulting in a new table row with each click:
 
@@ -369,18 +408,20 @@ Knockout also supports other templating engines, such as the jQuery.tmpl library
 Components
 ----------
 
-Components
+组件
 ----------
 
 Components allow you to organize and reuse UI code, usually along with the ViewModel data on which the UI code depends. To create a component, you simply need to specify its template and its viewModel, and give it a name. This is done by calling ``ko.components.register()``. In addition to defining the templates and viewmodel inline, they can be loaded from external files using a library like require.js, resulting in very clean and efficient code.
 
-Communicating with APIs
------------------------
+组件允许你组织和重用 UI 代码，通常 UI 代码伴随着所依赖的视图模型的数据。要创建一个组件，您只需指定其模板及其对应的视图模型，并给它一个名字。这是一切通过调用 ``ko.components.register()`` 来完成的。除了内部定义的模板和视图模型，它们还可以使用诸如 require.js 这样的库从外部文件加载，使得代码更为高效整洁。
 
 Communicating with APIs
 -----------------------
 
-Knockout can work with any data in JSON format. A common way to retrieve and save data using Knockout is with jQuery, which supports the ``$.getJSON()`` function to retrieve data, and the ``$.post()`` method to send data from the browser to an API endpoint. Of course, if you prefer a different way to send and receive JSON data, Knockout will work with it as well.
+与 API 通讯
+-----------------------
+
+Knockout 可以很好的和 JSON 格式的数据进行交互。使用 Knockout 获取和保存数据的最普遍的方式是用 jQuery，jQuery 支持用 ``$.getJSON()`` 来获取数据，使用 ``$.post()`` 方法把数据从浏览器发送到 API 终端，当然，如果你有其他方法来发送或者获取 JSON 数据, Knockout 也能与之很好的协同工作。
 
 Summary
 -------
@@ -388,4 +429,7 @@ Summary
 总结
 -------
 
-Knockout provides a simple, elegant way to bind UI elements to the current state of the client application, defined in a ViewModel. Knockout's binding syntax uses the data-bind attribute, applied to HTML elements that are to be processed. Knockout is able to efficiently render and update large data sets by tracking UI elements and only processing changes to affected elements. Large applications can break up UI logic using templates and components, which can be loaded on demand from external files. Currently version 3, Knockout is a stable JavaScript library that can improve web applications that require rich client interactivity.
+Knockout provides a simple, elegant way to bind UI elements to the current state of the client application, defined in a ViewModel. Knockout's binding syntax uses the data-bind attribute, applied to HTML elements that are to be processed. 
+Knockout is able to efficiently render and update large data sets by tracking UI elements and only processing changes to affected elements. Large applications can break up UI logic using templates and components, which can be loaded on demand from external files. Currently version 3, Knockout is a stable JavaScript library that can improve web applications that require rich client interactivity.
+
+Knockout 提供了一个简单和优雅的方式在视图模型定义中来把UI元素绑定到客户端应用程序当前状态的功能。Knockout 的绑定语法使用 data-bind 属性，附加到要需要被操作的 HTML 元素之上。Knockout 能够通过对UI元素的跟踪有效地渲染已经更新数据集，并只对需要影响的元素进行更新，只处理变化受影响的元素更新大型数据集。大的应用程序可以将 UI 逻辑拆分到模版和组件，这样可以从外部文件按需加载。Knockout 当前版本是 3， Knockout 是一个稳定的 JavaScript 库可以提升 web 应用程序的富客户端交互体验。
