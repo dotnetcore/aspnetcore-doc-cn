@@ -1,11 +1,13 @@
 格式化响应数据
 ========================
 
-作者： `Steve Smith`_
+原文：`Formatting Response Data <https://docs.asp.net/en/latest/mvc/models/formatting.html>`_
 
-翻译： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_
+作者：`Steve Smith`_
 
-校对：
+翻译：`刘怡(AlexLEWIS) <https://github.com/alexinea>`_
+
+校对：`许登洋(Seay) <https://github.com/SeayXu>`_
 
 ASP.NET Core MVC has built-in support for formatting response data, using fixed formats or in response to client specifications.
 
@@ -24,11 +26,11 @@ ASP.NET Core MVC 内建支持对相应数据（response data）的格式化，�
 
 Some action result types are specific to a particular format, such as ``JsonResult`` and ``ContentResult``. Actions can return specific results that are always formatted in a particular manner. For example, returning a ``JsonResult`` will return JSON-formatted data, regardless of client preferences. Likewise, returning a ``ContentResult`` will return plain-text-formatted string data (as will simply returning a string).
 
-某些操作结果（Action result）的类型是具有格式针对性的，比如 ``JsonResult`` 或 ``ContentResult``。Action 可以返回格式化为特定方式的具体结果。比如返回 ``JsonResult`` 将返回 JSON 格式化数据，而不是客户端要求的的格式。同样地，返回 ``ContentResult`` 将返回纯文本格式的字符串数据（就像是简单第返回一个字符串那样）。
+某些操作结果（Action result）的类型是指定的特定格式，比如 ``JsonResult`` 或 ``ContentResult``。Action 可以返回格式化为特定方式的具体结果。比如返回 ``JsonResult`` 将返回 JSON 格式化数据，而不是客户端要求的的格式。同样地，返回 ``ContentResult`` 将返回纯文本格式的字符串数据（就像是简单第返回一个字符串那样）。
 
 .. note:: An action isn't required to return any particular type; MVC supports any object return value. If an action returns an ``IActionResult`` implementation and the controller inherits from ``Controller``, developers have many helper methods corresponding to many of the choices. Results from actions that return objects that are not ``IActionResult`` types will be serialized using the appropriate ``IOutputFormatter`` implementation.
 
-.. note:: Action 并不强制要求返回一个特定的类型，MVC 支持任何对象作为返回值。如果 Action 返回的是 ``IActionResult`` 的某个实现并且控制器继承自 `Controller``，那么开发人员就可以使用很多辅助方法（对应地就会有很多选择）。从 Action 返回的结果如果不是 ``IActionResult`` 类型的对象的话将使用适当的 ``IOutputFormatter`` 实现序列化。
+.. note:: Action 并不强制要求返回一个特定的类型，MVC 支持任何对象作为返回值。如果 Action 返回的是 ``IActionResult`` 的某个实现并且控制器继承自 ``Controller`` ，那么开发人员就可以使用很多辅助方法（对应地就会有很多选择）。从 Action 返回的结果如果不是 ``IActionResult`` 类型的对象的话将使用适当的 ``IOutputFormatter`` 实现序列化。
 
 To return data in a specific format from a controller that inherits from the ``Controller`` base class, use the built-in helper method ``Json`` to return JSON and ``Content`` for plain text. Your action method should return either the specific result type (for instance, ``JsonResult``) or ``IActionResult``.
 
@@ -72,7 +74,7 @@ A response from this action:
 
 Note in this case the ``Content-Type`` returned is ``text/plain``. You can also achieve this same behavior using just a string response type:
 
-注意在此情况下，``Content-Type`` 将返回 ``test/plain``。你也可以实现通过一个字符串来响应这一相同行为：
+注意在此情况下， ``Content-Type`` 将返回 ``test/plain``。你也可以通过一个字符串来实现响应这一相同行为：
 
 .. literalinclude:: formatting/sample/src/ResponseFormattingSample/Controllers/Api/AuthorsController.cs
   :language: c#
@@ -90,7 +92,7 @@ Note in this case the ``Content-Type`` returned is ``text/plain``. You can also 
 Content negotiation (*conneg* for short) occurs when the client specifies an `Accept header <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html>`_. The default format used by ASP.NET Core MVC is JSON. Content negotiation is implemented by ``ObjectResult``. It is also built into the status code specific action results returned from the helper methods (which are all based on ``ObjectResult``). You can also return a model type (a class you've defined as your data transfer type) and the framework will automatically wrap it in an ``ObjectResult`` for you.
 
 内容协商（简写为 *conneg*）是指：当客户端在 `Accept 头 <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html>`_ 中指定接受要求时会发生的过程。ASP.NET Core
-MVC 默认的个试试 JSON。内容写上由 ``ObjectResult`` 实现，它还内置了从辅助方法（它们尽数基于 ``ObjectResult``）为指定的 Action 结果返回状态码的功能。你也可以返回一个模型类型（你自行定义的数据传输类），框架将自动为你将其包装在 ``ObjectResult`` 内。
+MVC 默认格式使用的是 JSON。内容协商由 ``ObjectResult`` 实现，它还内置了从辅助方法（它们尽数基于 ``ObjectResult``）为指定的 Action 结果返回状态码的功能。你也可以返回一个模型类型（你自行定义的数据传输类），框架将自动为你将其包装在 ``ObjectResult`` 内。
 
 The following action method uses the ``Ok`` and ``NotFound`` helper methods:
 
@@ -104,7 +106,7 @@ The following action method uses the ``Ok`` and ``NotFound`` helper methods:
 
 A JSON-formatted response will be returned unless another format was requested and the server can return the requested format. You can use a tool like `Fiddler <http://www.telerik.com/fiddler>`_ to create a request that includes an Accept header and specify another format. In that case, if the server has a *formatter* that can produce a response in the requested format, the result will be returned in the client-preferred format.
 
-除非要求返回另一种服务器可以返回的格式，不然将返回 JSON 格式的响应。你可以使用像 `Fiddler <http://www.telerik.com/fiddler>`_ 这样的工具来创建包含 Accept 头的、并且指定另一种格式的请求。在这种情况下，如果服务器具有生产出请求中指定格式的 *formatter*，那么该结果将按客户端所选的格式返回。
+除非要求返回另一种服务器可以返回的格式，不然将返回 JSON 格式的响应。你可以使用像 `Fiddler <http://www.telerik.com/fiddler>`_ 这样的工具来创建包含 Accept 头的、并且指定另一种格式的请求。在这种情况下，如果服务器具有创建请求中指定格式的 *formatter*，那么该结果将按客户端所选的格式返回。
 
 .. image:: formatting/_static/fiddler-composer.png
 
@@ -165,7 +167,7 @@ If you would prefer your application honor browser accept headers, you can confi
 
 If your application needs to support additional formats beyond the default of JSON, you can add these as additional dependencies in *project.json* and configure MVC to support them. There are separate formatters for input and output. Input formatters are used by :doc:`model-binding`; output formatters are used to format responses. You can also configure :doc:`custom-formatters`.
 
-如果你的应用程序需要支持默认的 JSON 之外的格式，那么你需要在 *project.json* 文件中添加这些额外的依赖项，并在 MVC 中配置以支持它们。输入和输出的格式是可以隔离的。输入格式通过使用 :doc:`model-binding`，输出格式通过使用格式化响应。你也可以配置 :doc:`custom-formatters` 。
+如果你的应用程序需要支持默认的 JSON 之外的格式，那么你需要在 *project.json* 文件中添加这些额外的依赖项，并配置 MVC 来支持它们。输入和输出的格式是可以隔离的。输入格式通过使用 :doc:`model-binding`，输出格式通过使用格式化响应。你也可以配置 :doc:`custom-formatters` 。
 
 添加对 XML 格式的支持
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -247,7 +249,7 @@ The ``[Produces]`` filter will force all actions within the ``AuthorsController`
 
 Some special cases are implemented using built-in formatters. By default, ``string`` return types will be formatted as `text/plain` (`text/html` if requested via ``Accept`` header). This behavior can be removed by removing the ``TextOutputFormatter``. You remove formatters in the ``Configure`` method in *Startup.cs* (shown below). Actions that have a model object return type will return a 204 No Content response when returning ``null``. This behavior can be removed by removing the ``HttpNoContentOutputFormatter``. The following code removes the ``TextOutputFormatter`` and ``HttpNoContentOutputFormatter`` .
 
-一些特殊情况下使用的是内建的格式化实现。默认情况下，返回类型为 ``string`` 将格式化为 ``text/plain``（如果通过 ``Accept`` 头的话则是 ``text/html``）。这种行为可以通过移除 ``TextOutputFormatter`` 来改变。如果你如下例代码这般在 *Startup.cs* 的 ``Configure`` 方法中移除了 ``HttpNoContentOutputFormatter``，那么当你某个返回类型为模型对象的 Action 返回了 ``null`` 时将返回 204 No Content 响应。下列代码移除了 ``TextOutputFormatter`` 和 ``HttpNoContentOutputFormatter`` 。
+一些特殊情况下使用的是内建的格式化实现。默认情况下，返回类型为 ``string`` 将格式化为 ``text/plain`` （如果通过 ``Accept`` 头的话则是 ``text/html`` ）。这种行为可以通过移除 ``TextOutputFormatter`` 来改变。如果你如下例代码这般在 *Startup.cs* 的 ``Configure`` 方法中移除了 ``HttpNoContentOutputFormatter``，那么当你某个返回类型为模型对象的 Action 返回了 ``null`` 时将返回 204 No Content 响应。下列代码移除了 ``TextOutputFormatter`` 和 ``HttpNoContentOutputFormatter`` 。
 
 .. code-block:: c#
 
@@ -263,7 +265,7 @@ Without the ``TextOutputFormatter``, ``string`` return types return 406 Not Acce
 
 Without the ``HttpNoContentOutputFormatter``, null objects are formatted using the configured formatter. For example, the JSON formatter will simply return a response with a body of ``null``, while the XML formatter will return an empty XML element with the attribute ``xsi:nil="true"`` set.
 
-如果没有 ``HttpNoContentOutputFormatter``，空对象将使用配置的格式进行格式化。比如 JSON 格式将简单滴返回主体信息为 ``null`` 的响应，而 XML 格式将返回一个空的带有 ``xsi:nil="true"`` 特性集的 XML 元素。
+如果没有 ``HttpNoContentOutputFormatter``，空对象将使用配置的格式进行格式化。比如 JSON 格式将简单的返回主体信息为 ``null`` 的响应，而 XML 格式将返回一个空的带有 ``xsi:nil="true"`` 特性集的 XML 元素。
 
 
 响应格式 URL 映射
