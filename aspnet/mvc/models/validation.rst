@@ -49,7 +49,7 @@ Below is an annotated ``Movie`` model from an app that stores information about 
 
 Simply reading through the model reveals the rules about data for this app, making it easier to maintain the code. Below are several popular built-in validation attributes:
 
-简单地通过阅读模型了解了这个应用程序的数据规则，(这种编码方式)让维护代码变得更简单。一下是几个常用的内置验证 Attribute ：
+简单地通过阅读模型了解了这个应用程序的数据规则，(这种编码方式)让维护代码变得更简单。以下是几个常用的内置验证 Attribute ：
 
 - ``[CreditCard]``: Validates the property has a credit card format.
 - ``[Compare]``: Validates two properties in a model match. 
