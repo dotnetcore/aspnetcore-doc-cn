@@ -175,9 +175,16 @@ The last test verifies that the repository's ``Update`` method is called. As we 
 Integration Testing
 -------------------
 
+集成测试
+-------------------
+
 :doc:`Integration testing </testing/integration-testing>` is done to ensure separate modules within your app work correctly together. Generally, anything you can test with a unit test, you can also test with an integration test, but the reverse isn't true. However, integration tests tend to be much slower than unit tests. Thus, it's best to test whatever you can with unit tests, and use integration tests for scenarios that involve multiple collaborators.
 
+:doc:`集成测试 </testing/integration-testing>` 是为了确保你应用程序里各独立模块能够正确地一起工作。通常，能进行单元测试的东西，都能进行集成测试，但反之则不行。不过，集成测试往往比集成测试慢得多。因此，最好尽量采用单元测试，在涉及到多方合作的情况下再进行集成测试。
+
 Although they may still be useful, mock objects are rarely used in integration tests. In unit testing, mock objects are an effective way to control how collaborators outside of the unit being tested should behave for the purposes of the test. In an integration test, real collaborators are used to confirm the whole subsystem works together correctly.
+
+尽管 mock 对象仍然有用，但在集成测试中很少用到它们。在单元测试中，mock 对象是一种有效的方式，根据测试目的去控制测试单元外的合作者应当有怎样的行为。在集成测试中，则采用真实的合作者来确定整个子系统能够正确地一起工作。
 
 Application State
 ^^^^^^^^^^^^^^^^^
