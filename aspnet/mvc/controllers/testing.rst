@@ -189,9 +189,16 @@ Although they may still be useful, mock objects are rarely used in integration t
 Application State
 ^^^^^^^^^^^^^^^^^
 
+应用程序状态
+^^^^^^^^^^^^^^^^^
+
 One important consideration when performing integration testing is how to set your app's state. Tests need to run independent of one another, and so each test should start with the app in a known state. If your app doesn't use a database or have any persistence, this may not be an issue. However, most real-world apps persist their state to some kind of data store, so any modifications made by one test could impact another test unless the data store is reset. Using the built-in ``TestServer``, it's very straightforward to host ASP.NET Core apps within our integration tests, but that doesn't necessarily grant access to the data it will use. If you're using an actual database, one approach is to have the app connect to a test database, which your tests can access and ensure is reset to a known state before each test executes.
 
+在执行集成测试的时候，一个重要的考虑因素就是如何设置你的应用程序的状态。各个测试需要独立地运行，所以每个测试都应该在已知状态下随应用程序启动。如果你的应用没有使用数据库或者任何持久层，这可能不是个问题。然而，大多数真实的应用程序都会将它们的状态持久化到某种数据存储中，所以某个测试对其有任何改动都可能影响到其他测试，除非重置了数据存储。使用内置的 ``TestServer`` ，它可以直接托管我们集成测试中的 ASP.NET Core 应用程序，但又无须对我们将使用的数据授权访问。如果你正在使用真实的数据库，一种方法是让应用程序连接到测试数据库，你的测试可以访问它并且确保在每个测试执行之前会重置到一个已知的状态。
+
 In this sample application, I'm using Entity Framework Core's InMemoryDatabase support, so I can't just connect to it from my test project. Instead, I expose an ``InitializeDatabase`` method from the app's ``Startup`` class, which I call when the app starts up if it's in the ``Development`` environment. My integration tests automatically benefit from this as long as they set the environment to ``Development``. I don't have to worry about resetting the database, since the InMemoryDatabase is reset each time the app restarts.
+
+在这个示例应用程序里，我采用了 Entity Framework Core 的 InMemoryDatabase 支持，因此我可以直接把我的测试项目连接到它。实际上，我在应用程序的 ``Startup`` 类里公开了一个 ``InitializeDatabase`` 方法，我可以在开发（ ``Development`` ）环境中启动应用程序的时候调用这个方法。我的集成测试只要把环境设置为 ``Development`` ，就能自动从中受益。我不需要担心重置数据库，因为 InMemoryDatabase 会在应用程序每次重启的时候重置。
 
 The ``Startup`` class:
 
@@ -200,6 +207,8 @@ The ``Startup`` class:
   :emphasize-lines: 19-20,38-39,47,56
 
 You'll see the ``GetTestSession`` method used frequently in the integration tests below.
+
+在下面的集成测试中，你会看到 ``GetTestSession`` 方法被频繁使用。
 
 Accessing Views
 ^^^^^^^^^^^^^^^
