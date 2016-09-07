@@ -21,7 +21,7 @@ Razor 是一种基于服务器端代码的可以转换为网页的标记语法�
 
 The default Razor language is HTML. Rendering HTML from Razor is no different than in an HTML file. A Razor file with the following markup:
 
-Razor 的默认语言是 HTML。从 Razor 渲染为 HTML 和直接一个 HTML 文件没啥区别，这种 Razor 文件包含下面这种标记：
+Razor 的默认语言是 HTML。从 Razor 渲染为 HTML 和直接一个 HTML 文件没啥区别，这种 Razor 文件包含下面的标记：
 
 .. code-block:: html
 
@@ -29,7 +29,7 @@ Razor 的默认语言是 HTML。从 Razor 渲染为 HTML 和直接一个 HTML �
 
 Is rendered unchanged as ``<p>Hello World</p>`` by the server.
 
-服务器最后渲染出的页面也是 ``<p>Hello World</p>``，没有任何不改变。
+服务器最后渲染出的页面也是 ``<p>Hello World</p>``，没有任何改变。
 
 Razor 语法
 ----------------------
@@ -42,7 +42,7 @@ Razor 支持 C# 并通过使用 ``@`` 符号从 HTML 切换到 C#。Razor 运算
 
 HTML containing ``@`` symbols may need to be escaped with a second ``@`` symbol. For example:
 
-HTML 如果需要包含 ``@`` 符号的话需要使用两个 ``@@`` 符号来进行转移，比如：
+HTML 如果需要包含 ``@`` 符号的话需要使用两个 ``@@`` 符号来进行转义，比如：
 
 .. code-block:: html
 
@@ -50,7 +50,7 @@ HTML 如果需要包含 ``@`` 符号的话需要使用两个 ``@@`` 符号来进
 
 would render the following HTML:
 
-这样将渲染成这样一段 HTML：
+这样将渲染成下面的 HTML：
 
 .. code-block:: html
 
@@ -103,7 +103,7 @@ Any content within the @() parenthesis is evaluated and rendered to the output.
 
 Implicit expressions generally cannot contain spaces. For example, in the code below, one week is not subtracted from the current time:
 
-隐式表达式通常不能包含空格，比如在下面这段代码，上周的时间并不能通过减去当前时间来获得：
+隐式表达式通常不能包含空格，比如下面这段代码，上周的时间并不能通过减去当前时间来获得：
 
 .. literalinclude:: razor/sample/Views/Home/Contact.cshtml
   :language: html
@@ -164,7 +164,7 @@ Which the browser renders as:
 
 :dn:cls:`~Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper` :dn:method:`~Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.Raw` output is not encoded but rendered as HTML markup.
 
-:dn:cls:`~Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper` :dn:method:`~Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.Raw` 的输出不会被转码但会被渲染为 HTML 标记。
+:dn:cls:`~Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper` :dn:method:`~Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.Raw` 的输出不会被编码但会被渲染为 HTML 标记。
 
 .. warning:: Using ``HtmlHelper.Raw`` on unsanitized user input is a security risk. User input might contain malicious JavaScript or other exploits. Sanitizing user input is difficult, avoid using ``HtmlHelper.Raw`` on user input.
 
@@ -193,7 +193,7 @@ Razor 代码块
 
 Razor code blocks start with ``@`` and are enclosed by ``{}``. Unlike expressions, C# code inside code blocks is not rendered. Code blocks and expressions in a Razor page share the same scope and are defined in order (that is, declarations in a code block will be in scope for later code blocks and expressions).
 
-Razor 代码块起于 ``@`` 并通过 ``{}`` 闭包。不像表达式，代码块内的 C# 代码不会被渲染到页面中。Razor 页面中的代码块和表达式将共享同一个作用域，并按顺序定义（也就是说，之前在代码块中声明的对象可以在之后的代码块与表达式中使用）。
+Razor 代码块起于 ``@`` 并用 ``{}`` 包围起来。不像表达式，代码块内的 C# 代码不会被渲染到页面中。Razor 页面中的代码块和表达式将共享同一个作用域，并按顺序定义（也就是说，之前在代码块中声明的对象可以在之后的代码块与表达式中使用）。
 
 .. code-block:: none
 
@@ -218,7 +218,7 @@ Would render:
 
 The default language in a code block is C#, but you can transition back to HTML. HTML within a code block will transition back into rendering HTML:
 
-代码块的默认语言是 C#，但你可以随时过渡回 HTML。代码块内的 HTML 可以正确渲染。
+代码块的默认语言是 C#，但你可以随时切换到 HTML。代码块内的 HTML 可以正确渲染。
 
 .. code-block:: none
 
@@ -234,7 +234,7 @@ The default language in a code block is C#, but you can transition back to HTML.
 
 To define a sub-section of a code block that should render HTML, surround the characters to be rendered with the Razor ``<text>`` tag:
 
-为定义在代码块中可渲染出 HTML，应在需要渲染的字符周围用 Razor ``<text>`` 标签环绕：
+为了在代码块中定义可渲染 HTML 的子区域，应在需要渲染的字符周围用 Razor ``<text>`` 标签环绕：
 
 .. code-block:: none
   :emphasize-lines: 4
@@ -247,7 +247,7 @@ To define a sub-section of a code block that should render HTML, surround the ch
 
 You generally use this approach when you want to render HTML that is not surrounded by an HTML tag. Without an HTML or Razor tag, you get a Razor runtime error.
 
-当你需要渲染一段不包含 HTML 标签的 HTML 内容时可以试试这种办法。不过如果即不包含 HTML 标签也不包含 Razor 标签的话，你的 Razor 页面会在运行时出错。
+当你需要渲染一段不包含 HTML 标签的 HTML 内容时可以试试这种办法。不过如果既不包含 HTML 标签也不包含 Razor 标签的话，你的 Razor 页面会在运行时出错。
 
 .. _explicit-line-transition-with-label:
 
@@ -278,7 +278,7 @@ Without the ``@:`` in the code above, you'd get a Razor run time error.
 
 Control structures are an extension of code blocks. All aspects of code blocks (transitioning to markup, inline C#) also apply to the following structures.
 
-控制结构（controller structures）是代码块表达式。所有类型的代码块（包括过渡表及、内联式C#）都适用以下结构：
+控制结构（controller structures）是代码块表达式。所有类型的代码块（包括过渡标记、内联式C#）都适用以下结构：
 
 ``@if``、``else if``、``else`` 与 ``@switch`` 条件
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -337,7 +337,7 @@ You can use a switch statement like this:
 
 You can render templated HTML with looping control statements. For example, to render a list of people:
 
-你可以使用循环控制语句宣传出经过排版的 HTML，比如人名表：
+你可以使用循环控制语句渲染出经过排版的 HTML，比如人名表：
 
 .. code-block:: none
 
@@ -453,7 +453,7 @@ Razor 能通过 lock 语句保护重要代码：
 
 Razor supports C# and HTML comments. The following markup:
 
-Razor 支持 C# 和 HTML 注释。这面这段标记：
+Razor 支持 C# 和 HTML 注释。比如下面的标记：
 
 .. code-block:: none
 
@@ -554,7 +554,7 @@ For example, if you create an ASP.NET Core MVC app with individual user accounts
 
 In the class example in :ref:`razor-directives-label`, the class generated inherits from ``RazorPage<dynamic>``. By adding an ``@model`` you control what’s inherited. For example
 
-在 :ref:`razor-directives-label` 的样例类被自动生成为继承了``RazorPage<dynamic>`` 的。通过添加 ``@model``，你可以控制继承什么，比如：
+在 :ref:`razor-directives-label` 样例类中，自动生成的类从 ``RazorPage<dynamic>`` 继承。通过添加 ``@model``，你可以控制继承什么，比如：
 
 .. code-block:: c#
 
@@ -585,7 +585,7 @@ The ``@model`` directive specified the type of this property (by specifying the 
 
 The ``@inherits`` directive gives you full control of the class your Razor page inherits:
 
-``@inherits`` 指令让使你具有你 Razor 页面所继承的类的完整控制权：
+``@inherits`` 指令让你具有 Razor 页面所继承类的完整控制权：
 
 .. code-block:: none
 
@@ -593,7 +593,7 @@ The ``@inherits`` directive gives you full control of the class your Razor page 
 
 For instance, let’s say we had the following custom Razor page type:
 
-例如让我们来看一下下面这个自定义的 Razor 页面类型：
+例如让我们来看下面这个自定义的 Razor 页面类型：
 
 .. literalinclude:: razor/sample/Classes/CustomRazorPage.cs
   :language: c#
@@ -641,7 +641,7 @@ When passed "Rick@contoso.com" in the model:
 
 The ``@inject`` directive enables you to inject a service from your :doc:`service container </fundamentals/dependency-injection>`  into your Razor page for use. See :doc:`/mvc/views/dependency-injection`.
 
-``@inject`` 指令让你可在 Razor 页面中自 :doc:`服务容器 </fundamentals/dependency-injection>` 注入服务，更多请查看 :doc:`/mvc/views/dependency-injection` 。
+``@inject`` 指令可让你在 Razor 页面中从 :doc:`服务容器 </fundamentals/dependency-injection>` 注入服务，更多请查看 :doc:`/mvc/views/dependency-injection` 。
 
 ``@functions``
 ^^^^^^^^^^^^^^
