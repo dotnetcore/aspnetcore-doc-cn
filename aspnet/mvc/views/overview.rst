@@ -94,7 +94,7 @@ Views are typically returned from actions as a :dn:cls:`~Microsoft.AspNetCore.Mv
   
 The ``View`` helper method has several overloads to make returning views easier for app developers. You can optionally specify a view to return, as well as a model object to pass to the view.
 
- 这个 ``View`` 辅助方法有多个重载版本以便于帮助应用开发人员返回视图。你可以有选择性地指定一个返回的视图，还可以给视图传递一个模型对象。
+这个 ``View`` 辅助方法有多个重载版本以便于帮助应用开发人员返回视图。你可以有选择性地指定一个返回的视图，还可以给视图传递一个模型对象。
 
 When this action returns, the *About.cshtml* view shown above is rendered:
 
@@ -124,7 +124,7 @@ When an action returns the ``View`` method, like so ``return View();``, the acti
   
 .. tip:: We recommend following the convention of simply returning ``View()`` from actions when possible, as it results in more flexible, easier to refactor code.
 
-.. tip:: 我们推荐遵循惯例，在可能的情况下简单地从操作中返回 ``View()`` ，这样会更加灵活，更易于重构代码。
+.. tip:: 我们推荐遵循约定，在可能的情况下简单地从操作中返回 ``View()`` ，这样会更加灵活，更易于重构代码。
 
 A view file path can be provided, instead of a view name. In this case, the *.cshtml* extension must be specified as part of the file path. The path should be relative to the application root (and can optionally start with "/" or "~/"). For example: ``return View("Views/Home/About.cshtml");``
 
@@ -268,8 +268,6 @@ Work with the data in a view:
 The ``ViewBag`` objects provides dynamic access to the objects stored in ``ViewData``. This can be more convenient to work with, since it doesn't require casting. The same example as above, using ``ViewBag`` instead of a strongly typed ``address`` instance in the view:
 
 ``ViewBag`` 对象为储存在 ``ViewData`` 里的对象提供动态访问。这样使用起来就更方便了，因为不需要转换。与上面的例子一样，在视图中采用了 ``ViewBag`` 而不是强类型的 ``Address`` 实例： 
-
-``ViewBag``
 
 .. code-block:: html
     :emphasize-lines: 1,4-6
