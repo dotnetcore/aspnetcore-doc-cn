@@ -3,7 +3,7 @@ Razor 语法参考
 
 作者： `Taylor Mullen <https://twitter.com/ntaylormullen>`__ 与 `Rick Anderson`_
 翻译： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_
-校对：
+校对： `何镇汐 <https://github.com/utilcore>`_
 
 .. contents:: Sections
   :local:
