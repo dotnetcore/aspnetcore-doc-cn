@@ -42,7 +42,7 @@ Routing uses *routes* (implementations of :dn:iface:`~Microsoft.AspNetCore.Routi
 - generate URLs used in responses
 - 生成响应中使用的 URLs
 
-Generally an app has a single collection of routes. The route collection is processed in order. Requests look for a match in the route collection by :ref:`URL-Matching-ref`. Responses use routing to genenerate URLs.
+Generally an app has a single collection of routes. The route collection is processed in order. Requests look for a match in the route collection by :ref:`URL-Matching-ref`. Responses use routing to generate URLs.
 
 一般来说，一个应用会有单个路由集合。这个集合会按顺序处理。请求会在这个路由集合里按照 :ref:`URL-Matching-ref` 来查找匹配。响应使用路由生成 URLs。
 
@@ -98,7 +98,7 @@ URL generation is the process by which routing can create a URL path based on a 
 URL 生成指的是路由基于一系列的路由值创建一个 URL 路径的过程。 这允许你的处理程序和能访问它们的 URL 之间有一个逻辑分离。
 
 
-URL generation follows a similar iterative process, but starts with user or framework code calling into the :dn:method:`~Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath` method of the route collection. Each *route* will then have its ``GetVirtualPath`` method called in sequence until until a non-null :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` is returned.
+URL generation follows a similar iterative process, but starts with user or framework code calling into the :dn:method:`~Microsoft.AspNetCore.Routing.IRouter.GetVirtualPath` method of the route collection. Each *route* will then have its ``GetVirtualPath`` method called in sequence until a non-null :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` is returned.
 
 路由生成遵循一个类似的迭代过程，但开始于用户或框架代码调用到路由集合的 GetVirtualPath 方法时。每个路由的 ``GetVirtualPath`` 方法都会被依次调用，直到返回一个不为空的 :dn:cls:`~Microsoft.AspNetCore.Routing.VirtualPathData` 。
 
@@ -316,7 +316,7 @@ Add routing to the service container in *Startup.cs*:
 .. literalinclude:: routing/sample/RoutingSample/Startup.cs
   :dedent: 8
   :language: c#
-  :lines: 14-17
+  :lines: 11-14
   :emphasize-lines: 3
 
 Routes must configured in the ``Configure`` method in the ``Startup`` class. The sample below uses these APIs:
@@ -335,7 +335,7 @@ Routes must configured in the ``Configure`` method in the ``Startup`` class. The
   :start-after: // Routes must configured in Configure
   :end-before: // Show link generation when no routes match.
 
-The table below shows the resposes with the given URIs.
+The table below shows the responses with the given URIs.
 
 已给 URLs 的响应列表。
 
@@ -406,7 +406,7 @@ You can use the ``*`` character as a prefix to a route parameter to bind to the 
 
 你可以使用 ``*`` 号作为一个路由参数的前缀去绑定其余的 URI - 这被叫做全捕获参数。例如， ``blog/{*slug}`` 将会匹配任何以 ``/blog`` 开头以及跟有任何值（将赋值给 ``slug`` 路由值）的 URI。全捕获型参数也能匹配空字符串。
 
-Route parameters may have *default values*, designated by specifying the default after the parameter name, separated by an ``=``. For example, ``{controller=Home}`` would define ``Home`` as the default value for ``controller``. The default value is used if no value is present in the URL for the parameter. In addition to default values, route parameters may be optional (specified by appending a ``?`` to the end of the parameter name, as in ``id?``). The difference between optional and "has default" is that a route parameter with a default value always produces a value; an optional parameter has a vaule only when one is provided.
+Route parameters may have *default values*, designated by specifying the default after the parameter name, separated by an ``=``. For example, ``{controller=Home}`` would define ``Home`` as the default value for ``controller``. The default value is used if no value is present in the URL for the parameter. In addition to default values, route parameters may be optional (specified by appending a ``?`` to the end of the parameter name, as in ``id?``). The difference between optional and "has default" is that a route parameter with a default value always produces a value; an optional parameter has a value only when one is provided.
 
 路由参数可以有默认值，方法是在参数名称后面指定默认值，用 ``=`` 号分开。例如， ``{controller=Home}`` 将 ``Home`` 作为 ``controller`` 的默认值。如果在 URL 中没有这个参数的值则使用默认值。除了默认值之外，路由参数还可以是可选的（通过在参数名称后加一个 ``?`` 来指定 ，比如 ``id?`` ）。参数可选和拥有默认值之间的区别就是拥有默认值的路由参数总是会提取一个值；而可选的参数只有在 URL 提供了值的时候才会有值。
 
@@ -554,13 +554,13 @@ The following table demonstrates some route constraints and their expected behav
     - Steve
     - String must consist of alphabetical characters.
   * - ``regex(expression)``
-    - {ssn:regex(\d{3}-\d{2}-\d{4})}
+    - {ssn:regex(^\d{3}-\d{2}-\d{4}$)}
     - 123-45-6789
     - String must match the provided regular expression.
   * - ``required``
     - {name:required}
     - Steve
-    - Used to enforce that a non-parameter value is present during during URL generation.
+    - Used to enforce that a non-parameter value is present during URL generation.
 
 
 
