@@ -24,14 +24,12 @@ In ASP.NET MVC, authentication and identity features are configured using ASP.NE
 
 在 ASP.NET MVC 中身份验证和识别功能由 ASP.NET Identity 来配置（在 Startup.Auth.cs 和 IdentityConfig.cs 文件中，这两文件则位于 App_Start 目录下）。在 ASP.NET Core 中这些功能在 *Startup.cs* 中配置。在获取服务并为其配置之前，我们首先需要将所需要的依赖项添加到项目之中。打开 *project.json* 文件，在 ``dependencies`` 节点中添加 ``Microsoft.AspNet.Identity.EntityFramework`` 和 ``Microsoft.AspNet.Identity.Cookies`` ：
 
-.. code-block:: json
+.. code-block:: none
 
   "dependencies": {
-    "Microsoft.AspNet.Server.IIS": "1.0.0-beta3",
-    "Microsoft.AspNet.Mvc": "6.0.0-beta3",
-    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta3",
-    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta3",
-    "Microsoft.AspNet.Security.Cookies": "1.0.0-beta3"
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Microsoft.AspNetCore.Identity.EntityFramework": "1.0.0",
+    "Microsoft.AspNetCore.Security.Cookies": "1.0.0"
   },
 
 Now, open Startup.cs and update the ConfigureServices() method to use Entity Framework and Identity services:
@@ -62,7 +60,7 @@ ApplicationUser.cs:
 
 .. code-block:: c#
 
-  using Microsoft.AspNet.Identity;
+  using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
   namespace NewMvc6Project.Models
   {
@@ -75,7 +73,7 @@ ApplicationDbContext.cs:
 
 .. code-block:: c#
 
-  using Microsoft.AspNet.Identity.EntityFramework;
+  using Microsoft.AspNetCore.Identity.EntityFramework;
   using Microsoft.Data.Entity;
 
   namespace NewMvc6Project.Models
@@ -102,7 +100,7 @@ ApplicationDbContext.cs:
     }
   }
 
-The ASP.NET MVC Starter Web project doesn't include much customization of users, or the ApplicationDbContext. When migrating a real application, you will also need to migrate all of the custom properties and methods of your application's user and DbContext classes, as well as any other Model classes your application utilizes (for example, if your DbContext has a DbSet<Album>, you will of course need to migrate the Album class).
+The ASP.NET Core MVC Starter Web project doesn't include much customization of users, or the ApplicationDbContext. When migrating a real application, you will also need to migrate all of the custom properties and methods of your application's user and DbContext classes, as well as any other Model classes your application utilizes (for example, if your DbContext has a DbSet<Album>, you will of course need to migrate the Album class).
 
 ASP.NET MVC 初始的 Web 项目并不包含太多使用者定制信息或 ApplicationDbContext。当迁移一个真实应用程序时，你同时需要迁移所有用户自己定制的属性和方法、DbContext 类以及其它应用程序所使用的 Model 类（假如你的 DbContext 有 DbSet<Album>，那么你就得迁移 Album 类）。
 
@@ -113,9 +111,9 @@ With these files in place, the Startup.cs file can be made to compile by updatin
 .. code-block:: c#
 
   using Microsoft.Framework.ConfigurationModel;
-  using Microsoft.AspNet.Hosting;
+  using Microsoft.AspNetCore.Hosting;
   using NewMvc6Project.Models;
-  using Microsoft.AspNet.Identity;
+  using Microsoft.AspNetCore.Identity;
 
 Our application is now ready to support authentication and identity services - it just needs to have these features exposed to users. 
 
@@ -132,7 +130,7 @@ Update _Layout.cshtml; uncomment the @Html.Partial line:
 
 更新 _Layout.cshtml 文件，把 @Html.Partial 这一行注释去掉：
 
-.. code-block:: c#
+.. code-block:: none
 
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
       </ul>

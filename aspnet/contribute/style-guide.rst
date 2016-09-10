@@ -161,10 +161,11 @@ Links should use HTTPS when possible. Inline hyperlinks are formatted like this:
 
 .. code-block:: rst
 
-  Learn more about `ASP.NET <http://www.asp.net>`_.
+  Learn more about `ASP.NET <https://www.asp.net>`_.
+
   欲知详情，请前往 `ASP.NET <http://www.asp.net>`_。
 
-Learn more about `ASP.NET <http://www.asp.net>`_.
+Learn more about `ASP.NET <https://www.asp.net>`_.
 
 欲知详情，请前往 `ASP.NET <http://www.asp.net>`_。
 
@@ -341,7 +342,7 @@ Here's an example using the above syntax:
 
 .. image:: style-guide/_static/asp-net.png
 
-Images are responsively sized according to the browser viewport when using this directive. Currently the maximum width supported by the http://docs.asp.net theme is 697px.
+Images are responsively sized according to the browser viewport when using this directive. Currently the maximum width supported by the https://docs.asp.net theme is 697px.
 
 使用本指令后，图片将根据浏览器视图自适应大小。目前 http://docs.asp.net 的最宽尺寸支持到 697px。
 
@@ -465,7 +466,7 @@ Summary
 总结
 ---------
 
-This style guide is intended to help contributors quickly create new articles for `docs.asp.net <http://docs.asp.net>`_. It includes the most common RST syntax elements that are used, as well as overall document organization guidance. If you discover mistakes or gaps in this guide, please `submit an issue <https://github.com/aspnet/docs/issues>`_.
+This style guide is intended to help contributors quickly create new articles for `docs.asp.net <https://docs.asp.net>`__. It includes the most common RST syntax elements that are used, as well as overall document organization guidance. If you discover mistakes or gaps in this guide, please `submit an issue <https://github.com/aspnet/docs/issues>`_.
 
 
 本指南的目的是帮助广大贡献者能为 `docs.asp.net <http://docs.asp.net>`_ 快速创建新文章。本指南包含了大部分常用的 RST 语法元素以及完整的文档组织指导。若你在阅读本指南时发现错误，请`通过 issue 提交给我们 <https://github.com/aspnet/docs/issues>`_ 。

@@ -36,7 +36,7 @@ ASP.NET Core MVC 视图默认以 *.cshtml* 文件保存在应用程序的 *Views
 
 In addition to action-specific views, :doc:`partial views <partial>`, :doc:`layouts, and other special view files <layout>` can be used to help reduce repetition and allow for reuse within the app's views.
 
-除了对应操作的视图，:doc:`部分视图 <partial>`, :doc:`布局，以及其他特定视图文件 <layout>` 可以用来帮助减少重复并允许在应用视图里重用。
+除了对应操作的视图，:doc:`局部视图 <partial>`, :doc:`布局，以及其他特定视图文件 <layout>` 可以用来帮助减少重复并允许在应用视图里重用。
 
 Benefits of Using Views
 -----------------------
@@ -46,7 +46,7 @@ Benefits of Using Views
 
 Views provide `separation of concerns <http://deviq.com/separation-of-concerns/>`_ within an MVC app, encapsulating user interface level markup separately from business logic. ASP.NET MVC views use :doc:`Razor syntax <razor>` to make switching between HTML markup and server side logic painless. Common, repetitive aspects of the app's user interface can easily be reused between views using :doc:`layout and shared directives <layout>` or :doc:`partial views <partial>`.
 
-视图在 MVC 应用中提供 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ ，将用户界面层级的标记从业务逻辑中封装出来。ASP.NET MVC 视图采用 :doc:`Razor 语法 <razor>` 在 HTML 标记和服务端逻辑之间进行轻松切换。通常，可以通过 :doc:`布局与共享指令 <layout>` 或者 :doc:`部分视图 <partial>` 对应用的用户界面中重复的外观轻松地进行复用。
+视图在 MVC 应用中提供 `关注点分离 <http://deviq.com/separation-of-concerns/>`_ ，将用户界面层级的标记从业务逻辑中封装出来。ASP.NET MVC 视图采用 :doc:`Razor 语法 <razor>` 在 HTML 标记和服务端逻辑之间进行轻松切换。通常，可以通过 :doc:`布局与共享指令 <layout>` 或者 :doc:`局部视图 <partial>` 对应用的用户界面中重复的外观轻松地进行复用。
 
 
 Creating a View
@@ -132,7 +132,7 @@ A view file path can be provided, instead of a view name. In this case, the *.cs
 
 .. note:: :doc:`Partial views <partial>` and :doc:`view components <view-components>` use similar (but not identical) discovery mechanisms.
 
-.. note:: :doc:`部分视图 <partial>`  以及 :doc:`视图组件 <view-components>` 采用了类似（但不完全一致）的发现机制。
+.. note:: :doc:`局部视图 <partial>`  以及 :doc:`视图组件 <view-components>` 采用了类似（但不完全一致）的发现机制。
 
 .. note:: You can customize the default convention regarding where views are located within the app by using a custom :dn:iface:`~Microsoft.AspNetCore.Mvc.Razor.IViewLocationExpander`.
 
@@ -222,7 +222,7 @@ In addition to strongly typed views, all views have access to a loosely typed co
 
 ``ViewData`` is a dictionary object accessed through ``string`` keys. You can store and retrieve objects in it, and you'll need to cast them to a specific type when you extract them. You can use ``ViewData`` to pass data from a controller to views, as well as within views (and partial views and layouts). String data can be stored and used directly, without the need for a cast.
 
-``ViewData`` 是一个通过 ``string`` 键访问的字典对象。你可以在里面储存和查询对象，并且在提取它们的时候无需转换成特定的类型。可以利用 ``ViewData`` 从控制器传递数据给视图，以及在视图之间（还有部分视图与布局）。字符串数据可以直接储存和使用，无需进行转换。
+``ViewData`` 是一个通过 ``string`` 键访问的字典对象。你可以在里面储存和查询对象，并且在提取它们的时候无需转换成特定的类型。可以利用 ``ViewData`` 从控制器传递数据给视图，以及在视图之间（还有局部视图与布局）。字符串数据可以直接储存和使用，无需进行转换。
 
 Set some values for ``ViewData`` in an action:
 

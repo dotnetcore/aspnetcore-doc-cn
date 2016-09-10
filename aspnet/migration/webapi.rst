@@ -11,7 +11,7 @@ Web APIs are HTTP services that reach a broad range of clients, including browse
 
 Web APIs 是一种可被包括浏览器和一种设备在内的广泛客户端所使用的 HTTP 服务。ASP.NET Core MVC（内部包含了对创建 Web APIs 的支持）为构建网络用用程序提供了一条单一且一致的路径。本文我们将一步步演示如何将 ASP.NET Web API 迁移到 ASP.NET Core MVC 的 Web API 实现之中。
 
-.. contents:: Sections::
+.. contents:: Sections:
   :local:
   :depth: 1
 
@@ -71,13 +71,13 @@ Now that we have a simple project from which to start, we can demonstrate how to
 创建目标项目
 ------------------------------
 
-Using Visual Studio, create a new, empty solution, and add the existing *ProductsApp* project to it. Then, add a new Web Project to the solution. Name the new project 'ProductsCore'.
+Using Visual Studio, create a new, empty solution, and name it *WebAPIMigration*. Add the existing *ProductsApp* project to it, then, add a new ASP.NET Core Web Application Project to the solution. Name the new project *ProductsCore*.
 
 在 Visual Studio 创建一个新的空坚决方案，把之前就存在的 *ProductsApp* 项目添加进去。然后添加一个新的 Web 项目到该解决方案内，取名为 `ProductsCore`。
 
 .. image:: webapi/_static/add-web-project.png
 
-Next, choose the ASP.NET Core Web API project template. We will migrate the *ProductsApp* contents to this new project.
+Next, choose the Web API project template. We will migrate the *ProductsApp* contents to this new project.
 
 接下来，选择 ASP.NET Core Web API 项目模板，我们将会把 *ProductsApp* 迁移到这个新项目中。
 
@@ -94,13 +94,13 @@ Delete the ``Project_Readme.html`` file from the new project. Your solution shou
 迁移 Configuration
 ---------------------
 
-ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders. Instead, all startup tasks are done in *Startup.cs* in the root of the project (see :doc:`/fundamentals/startup`). In ASP.NET Core MVC attribute-based routing is now included by default when ``UseMvc()`` is called and this is the recommended approach for configuring Web API routes (and is how the Web API starter project handles routing).
+ASP.NET Core no longer uses *Global.asax*, *web.config*, or *App_Start* folders. Instead, all startup tasks are done in *Startup.cs* in the root of the project (see :doc:`/fundamentals/startup`). In ASP.NET Core MVC, attribute-based routing is now included by default when ``UseMvc()`` is called; and, this is the recommended approach for configuring Web API routes (and is how the Web API starter project handles routing).
 
 ASP.NET Core 已经不再使用 *Global.asax*、*web.config* 或 *App_Start* 文件夹了。相反，所有的启动任务都由项目跟路径下的 *Startup.cs* 完成（参考 :doc:`/fundamentals/startup` ）。在 ASP.NET Core Mvc 中，只要调用了 ``UseMvc()`` 基于特性的路由机制就会被默认引入，而这也是 Web API 路由所推荐的做法（同时也是 Web API 初始项目默认的路由处理方法）。
 
 .. literalinclude:: webapi/sample/ProductsCore/Startup.cs
-  :language: c#
-  :emphasize-lines: 43
+  :language: none
+  :emphasize-lines: 40
   :linenos:
 
 Assuming you want to use attribute routing in your project going forward, no additional configuration is needed. Simply apply the attributes as needed to your controllers and actions, as is done in the sample ``ValuesController`` class that is included in the Web API starter project:
@@ -109,7 +109,7 @@ Assuming you want to use attribute routing in your project going forward, no add
 
 .. literalinclude:: webapi/sample/ProductsCore/Controllers/ValuesController.cs
   :language: c#
-  :emphasize-lines: 8,12,19,26,32,38
+  :emphasize-lines: 9,13,20,27,33,39
   :linenos:
 
 Note the presence of *[controller]* on line 8. Attribute-based routing now supports certain tokens, such as *[controller]* and *[action]*. These tokens are replaced at runtime with the name of the controller or action, respectively, to which the attribute has been applied. This serves to reduce the number of magic strings in the project, and it ensures the routes will be kept synchronized with their corresponding controllers and actions when automatic rename refactorings are applied.
@@ -164,7 +164,7 @@ Fortunately, these are all very easy to correct:
 
 所幸这些都很容易解决：
 
-- Change `ApiController` to `Controller` (you may need to add `using Microsoft.AspNet.Mvc`)
+- Change `ApiController` to `Controller` (you may need to add `using Microsoft.AspNetCore.Mvc`)
 - Delete any using statement referring to `System.Web.Http`
 - Change any method returning `IHttpActionResult` to return a `IActionResult`
 - Change `NotFound` to `HttpNotFound`
