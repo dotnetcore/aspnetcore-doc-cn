@@ -1,10 +1,10 @@
 .. _style-guide:
 
-ASP.NET Docs Style Guide 
+ASP.NET Docs Style Guide
 ========================
 
 ASP.NET 文档风格指南
-======================
+============================================
 
 作者： `Steve Smith`_
 
@@ -12,9 +12,9 @@ ASP.NET 文档风格指南
 
 校对： `孟帅洋(书缘) <https://github.com/mengshuaiyang>`_
 
-This document provides an overview of how articles published on `docs.asp.net <http://docs.asp.net>`_ should be formatted. You can actually use this file, itself, as a template when contributing articles.
+This document provides an overview of how articles published on `docs.asp.net <https://docs.asp.net>`__ should be formatted. You can actually use this file, itself, as a template when contributing articles.
 
-本文档提供了有关在 `docs.asp.net <http://docs.asp.net>`_ 发布文章所应遵循的格式的概览。实际上你贡献文章时，你可直接把本文件作为模板使用。
+本文档提供了有关在 `docs.asp.net <https://docs.asp.net>`_ 发布文章所应遵循的格式的概览。实际上你贡献文章时，你可直接把本文件作为模板使用。
 
 .. contents:: Sections:
   :local:
@@ -469,4 +469,4 @@ Summary
 This style guide is intended to help contributors quickly create new articles for `docs.asp.net <https://docs.asp.net>`__. It includes the most common RST syntax elements that are used, as well as overall document organization guidance. If you discover mistakes or gaps in this guide, please `submit an issue <https://github.com/aspnet/docs/issues>`_.
 
 
-本指南的目的是帮助广大贡献者能为 `docs.asp.net <http://docs.asp.net>`_ 快速创建新文章。本指南包含了大部分常用的 RST 语法元素以及完整的文档组织指导。若你在阅读本指南时发现错误，请`通过 issue 提交给我们 <https://github.com/aspnet/docs/issues>`_ 。
+本指南的目的是帮助广大贡献者能为 `docs.asp.net <http://docs.asp.net>`__ 快速创建新文章。本指南包含了大部分常用的 RST 语法元素以及完整的文档组织指导。若你在阅读本指南时发现错误，请`通过 issue 提交给我们 <https://github.com/aspnet/docs/issues>`_ 。
