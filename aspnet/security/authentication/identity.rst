@@ -5,7 +5,7 @@ By `Pranav Rastogi`_, `Rick Anderson`_, Tom Dykstra, Jon Galloway and `Erik Reit
 
 ASP.NET Core Identity is a membership system which allows you to add login functionality to your application. Users can create an account and login with a user name and password or they can use an external login providers such as Facebook, Google, Microsoft Account, Twitter and more.
 
-You can configure ASP.NET Core Identity to use a SQL Server database to store user names, passwords, and profile data. Alternatively, you can use your own persistent store to store data in another other persistent storage, such as Azure Table Storage.
+You can configure ASP.NET Core Identity to use a SQL Server database to store user names, passwords, and profile data. Alternatively, you can use your own persistent store to store data in another persistent storage, such as Azure Table Storage.
 
 Overview of Identity
 --------------------
@@ -53,7 +53,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
   .. literalinclude:: identity/sample/src/ASPNET-IdentityDemo/Controllers/AccountController.cs
     :language: c#
     :lines: 19-43
-    :emphasize-lines: 3,4,12,13,19,20
+    :emphasize-lines: 3,4,11,12,17,18
 
   Then, the **Register** action creates the user by calling ``CreateAsync`` function of the ``UserManager`` object, as shown below:
 

@@ -80,7 +80,7 @@ Configuration Attributes
 |                           | | Duration in seconds for which the                |
 |                           | | the handler will wait for the executable or      |
 |                           | | script to gracefully shutdown when the           |
-|                           | | *app_offline.htm* file is detected               |
+|                           | | *app_offline.htm* file is detected.              |
 |                           | |                                                  |
 |                           | | The default value is 10.                         |
 +---------------------------+----------------------------------------------------+
@@ -239,8 +239,8 @@ Child Elements
 |                           | | for the process specified in **processPath**.    |
 +---------------------------+----------------------------------------------------+
 | recycleOnFileChange       | | Specify a list of files to monitor. If any of    |
-|                           | | these files are updated/deleted, the Core Module |
-|                           | | will restart the backend process.                |
+|                           | | these files are updated/deleted, the ASP.NET     |
+|                           | | Core Module will restart the backend process.    |
 +---------------------------+----------------------------------------------------+
 
 +---------------------------+----------------------------------------------------+
@@ -263,7 +263,7 @@ If you place a file with the name *app_offline.htm* at the root of a web applica
 
 如果你把一个名为 *app_offline.htm* 的文件在Web应用程序的根目录下，ASP.NET Core 模块将尝试正常的关闭应用程序的操作，并停止处理任何新传入的请求。如果应用程序  ``shutdownTimeLimit`` 设置的秒数之后在仍在运行中，ASP.NET Core 模块将杀死正在运行的进程。
 
-While the *app_offline..htm* file is present, the ASP.NET Core Module will repond to all requests by sending back the contents of the *app_offline.htm* file. Once the *app_offline.htm* file is removed, the next request loads the application, which then responds to requests.
+While the *app_offline.htm* file is present, the ASP.NET Core Module will respond to all requests by sending back the contents of the *app_offline.htm* file. Once the *app_offline.htm* file is removed, the next request loads the application, which then responds to requests.
 
 当 *app_offline..htm* 文件存在的时候，ASP.NET Core 模块将通过发送 *app_offline.htm* 文件的内容来响应所有请求。一旦 *app_offline.htm* 文件被删除，下一个请求将会加载该应用程序，然后响应请求。
 

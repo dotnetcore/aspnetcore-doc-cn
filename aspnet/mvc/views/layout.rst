@@ -47,7 +47,7 @@ An example ``_Layout.cshtml``:
 
 这个布局为应用程序中的视图定义了一个顶层模版。布局对应用程序来说不是必须的，应用程序也可以定义多个模板供不同的视图使用。
 
-一个例子 ``_Layout.cshtml`` ：
+一个 ``_Layout.cshtml`` 例子：
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml
   :language: html
@@ -98,7 +98,7 @@ In the code above, validation scripts are added to the ``scripts`` section on a 
 
 Sections defined in a view are available only in its immediate layout page. They cannot be referenced from partials, view components, or other parts of the view system.
 
-定义在视图中的 Section 只在其相关的布局页中可用。它们不能在局部视图，视图组件，或视图系统的其他部分中引用。（译者注：Section 可以在任何视图系统中定义，但只能在布局视图中调用 RenderSection 进行渲染。）
+定义在视图中的 Section 只在其相关的布局页中可用。它们不能在局部视图、视图组件或视图系统的其他部分中引用。（译者注：Section 可以在任何视图系统中定义，但只能在布局视图中调用 RenderSection 进行渲染。）
 
 Ignoring sections
 ^^^^^^^^^^^^^^^^^

@@ -4,7 +4,7 @@
 Your First ASP.NET Core Application on a Mac Using Visual Studio Code
 =====================================================================
 
-作者 `Daniel Roth`_ 、`Steve Smith`_ 以及 `Rick Anderson`_
+作者 `Daniel Roth`_ 、`Steve Smith`_ 以及 `Rick Anderson`_、`Shayne Boyer`_
 
 翻译 `赵志刚 <https://github.com/rdzzg>`_ 
 
@@ -24,7 +24,7 @@ Setting Up Your Development Environment
 配置开发环境
 ---------------------------------------
 
-To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__.
+To setup your development machine download and install `.NET Core`_ and `Visual Studio Code`_ with the `C# extension <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__. Node.js and npm is also required. If not already installed visit `nodejs.org <https://nodejs.org/en/download/package-manager/#osx>`_. 
 
 在开发机中下载并安装 `.NET Core`_ 、和 `Visual Studio Code` 及 `C# 扩展 <https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp>`__ （在 VS Code 中通过命令 ``ext install csharp`` 安装，译者注）。
 
@@ -123,17 +123,13 @@ The sample is configured to use :ref:`Kestrel <kestrel>` for the web server. You
 本示例配置使用 :ref:`Kestrel <kestrel>` Web 服务器，可在 *project.json* 文件的 ``dependencies`` 节点中看到该项配置。
 
 .. code-block:: json
-  :emphasize-lines: 11-12
+  :emphasize-lines: 14
  
   {
-    "version": "1.0.0-*",
-    "compilationOptions": {
-      "emitEntryPoint": true
-    },
     "dependencies": {
       "Microsoft.NETCore.App": {
-        "type": "platform",
-        "version": "1.0.0-rc2-3002702"
+        "version": "1.0.0",
+        "type": "platform"
       },
       "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
       "Microsoft.AspNetCore.Server.Kestrel.Https": "1.0.0-rc2-final",
@@ -236,7 +232,7 @@ Record the Git URL for the Web App from the Azure portal:
 
 - 浏览刚才部署的 Web 应用程序，你应该看到输出结果： ``Hello world!`` 。
 
-.. .. image:: your-first-mac-aspnet/_static/azure.png 
+.. image:: your-first-mac-aspnet/_static/deployment.png 
 
 
 Additional Resources
