@@ -27,7 +27,7 @@ Tag Helpers enable server-side code to participate in creating and rendering HTM
 Tag Helpers are authored in C#, and they target HTML elements based on element name, attribute name, or parent tag. For example, the built-in `LabelTagHelper  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/LabelTagHelper/index.html>`__ can target the HTML ``<label>`` element when the ``LabelTagHelper`` attributes are applied. 
 If you're familiar with `HTML Helpers <http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers>`__, Tag Helpers reduce the explicit transitions between HTML and C# in Razor views. `Tag Helpers compared to HTML Helpers`_ explains the differences in more detail.
 
-在 Razor 文件中，Tag Helpers 能够让服务端代码参与创建和渲染 HTML 元素。例如，内置的 `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ImageTagHelper/index.html>`__ 能够在图像名称后面追加版本号。每当图像变化时，服务器为图像生成一个新的唯一的版本，所以保证客户端得到当前图像（而不是旧的缓存图像）。对于常见任务有许多内置的 Tag Helpers - 比如创建表单，链接，加载资产以及更多 - 在公共的 Github 存储库和以 NuGet 包的方式更容易获得。在 C# 里编写 Tag Helpers，它们的目标是基于元素名称，特性名称或者父标签的 HTML 元素。例如，当 ``LabelTagHelper`` 特性被应用时，内置的  `LabelTagHelper  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 能够作用于 HTML ``<label>`` 元素。如果你熟悉 `HTML Helpers <http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers>`__，Tag Helpers 在 Razor 视图中减少 HTML 和 C# 之间的显示转换。 `Tag Helpers compared to HTML Helpers`_ 解释了更详细的差异。
+在 Razor 文件中，Tag Helpers 能够让服务端代码参与创建和渲染 HTML 元素。例如，内置的 `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ImageTagHelper/index.html>`__ 能够在图像名称后面追加版本号。每当图像变化时，服务器为图像生成一个新的唯一的版本，因此保证客户端得到当前图像（而不是旧的缓存图像）。对于常见任务有许多内置的 Tag Helpers - 比如创建表单，链接，加载资产以及更多 - 在公共的 Github 存储库中的和以 NuGet 包的方式存在的可用资源。在 C# 里编写 Tag Helpers，它们的目标是基于元素名称，特性名称或者父标签的 HTML 元素。例如，当 ``LabelTagHelper`` 特性被应用时，内置的  `LabelTagHelper  <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/LabelTagHelper/index.html>`__ 能够作用于 HTML ``<label>`` 元素。如果你熟悉 `HTML Helpers <http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers>`__，Tag Helpers 在 Razor 视图中减少 HTML 和 C# 之间的显示转换。 `Tag Helpers compared to HTML Helpers`_ 解释了更详细的差异。
 
 What Tag Helpers provide
 ------------------------------------
@@ -49,7 +49,7 @@ Tag Helpers 提供了什么
 **A way to make you more productive and able to produce more robust, reliable, and maintainable code using information only available on the server**
  For example, historically the mantra on updating images was to change the name of the image when you change the image. Images should be aggressively cached for performance reasons, and unless you change the name of an image, you risk clients getting a stale copy. Historically, after an image was edited, the name had to be changed and each reference to the image in the web app needed to be updated. Not only is this very labor intensive, it's also error prone (you could miss a reference, accidentally enter the wrong string, etc.) The built-in `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ImageTagHelper/index.html>`__ can do this for you automatically. The ``ImageTagHelper`` can append a version number to the image name, so whenever the image changes, the server automatically generates a new unique version for the image. Clients are guaranteed to get the current image. This robustness and labor savings comes essentially free by using the ``ImageTagHelper``.  
 
-**一种让你使用仅在服务器上可用的信息来更有效并且能够生成更强大，可靠和可维护代码的方式。**
+**一种让你使用仅在服务器上可用的信息来更有效并且能够生成更强大，可靠和可维护代码的方式**
  例如，在之前当你更改图像的时候，更新图像的原则是更改图像的名称。出于性能原因应该主动缓存图像，除非你改变图像的名称，你的客户端有得到一份过期的副本的风险。在之前，一个图像被编辑后，它的名称必须改变并且在网络应用程序中图像的每一个引用都需要更新。这不仅是体力活，同时也容易出错（你可能漏掉一个引用，意外的输入错误字符串等）。内置的 `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ImageTagHelper/index.html>`__ 能够自动为你做这件事情。``ImageTagHelper`` 能够在图像名称后追加一个版本号，每当图像变化时，服务器为图像自动生成一个新的唯一的版本。客户端被保证得到当前的图像。通过使用 ``ImageTagHelper`` 这种健壮性和节省劳力基本上是无偿的。
 
 Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element. For example, the ``<input>`` element used in many of the views in the *Views/Account* folder contains the ``asp-for`` attribute, which extracts the name of the specified model property into the rendered HTML. The following Razor markup:
@@ -78,6 +78,7 @@ Managing Tag Helper scope
 ----------------------
 
 Tag Helpers scope is controlled by a combination of ``@addTagHelper``, ``@removeTagHelper``, and the "!" opt-out character.
+
 Tag Helpers 的范围由 ``@addTagHelper`` 和  ``@removeTagHelper`` 进行控制，并且 "!" 为退出字符。
 
 .. _add-helper-label:
@@ -90,7 +91,7 @@ Tag Helpers 的范围由 ``@addTagHelper`` 和  ``@removeTagHelper`` 进行控�
 
 If you create a new ASP.NET Core web app named *AuthoringTagHelpers* (with no authentication), the following *Views/_ViewImports.cshtml* file will be added to your project:
 
-如果你创建一个新的 ASP.NET Core web 应用命名为 *AuthoringTagHelpers* （无身份认证），下面的 *Views/_ViewImports.cshtml* 文件将被添加到你的项目：
+如果你创建一个新的 ASP.NET Core web 应用，命名为 *AuthoringTagHelpers* （无身份认证），下面的 *Views/_ViewImports.cshtml* 文件将被添加到你的项目：
 
 .. literalinclude:: authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml
    :language: html
@@ -99,11 +100,11 @@ If you create a new ASP.NET Core web app named *AuthoringTagHelpers* (with no au
 
 The ``@addTagHelper`` directive makes Tag Helpers available to the view. In this case, the view file is *Views/_ViewImports.cshtml*, which by default is inherited by all view files in the *Views* folder and sub-directories; making Tag Helpers available. The code above uses the wildcard syntax ("*") to specify that all Tag Helpers in the specified assembly (*Microsoft.AspNetCore.Mvc.TagHelpers*) will be available to every view file in the *Views* directory or sub-directory. The first parameter after ``@addTagHelper`` specifies the Tag Helpers to load (we are using "\*" for all Tag Helpers), and the second parameter "Microsoft.AspNetCore.Mvc.TagHelpers" specifies the assembly containing the Tag Helpers. *Microsoft.AspNetCore.Mvc.TagHelpers* is the assembly for the built-in ASP.NET Core Tag Helpers.
 
-``@addTagHelper`` 指示使 Tag Helpers 在视图中可用。在这种情况下，视图文件是 *Views/_ViewImports.cshtml* ，默认继承所有的视图文件在 *Views* 和子目录；使 Tag Helpers 可用。上面的代码使用通配符 ("*") 来指定在特定程序集（*Microsoft.AspNetCore.Mvc.TagHelpers*）中的所有的 Tag Helpers 在每一个 *Views* 目录和子目录中的视图文件中可用。 ``@addTagHelper`` 后面的第一个参数指定要加载的 Tag Helpers （我们使用 “*” 对于所有 Tag Helpers），第二个参数 “Microsoft.AspNetCore.Mvc.TagHelpers” 指定包含 Tag Helpers 的程序集。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是内置的 ASP.NET Core Tag Helpers 程序集。
+``@addTagHelper`` 指令使 Tag Helpers 在视图中可用。在这种情况下，视图文件是 *Views/_ViewImports.cshtml* ，默认继承所有的在 Views 和子目录中的视图文件；使 Tag Helpers 可用。上面的代码使用通配符 ("*") 来指定在特定程序集（*Microsoft.AspNetCore.Mvc.TagHelpers*）中的所有的 Tag Helpers 在每一个 *Views* 目录和子目录中的视图文件中可用。 ``@addTagHelper`` 后面的第一个参数指定要加载的 Tag Helpers （对于所有 Tag Helpers，我们使用 “*”），第二个参数 “Microsoft.AspNetCore.Mvc.TagHelpers” 指定包含 Tag Helpers 的程序集。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是内置的 ASP.NET Core Tag Helpers 程序集。
 
 To expose all of the Tag Helpers in this project (which creates an assembly named *AuthoringTagHelpers*), you would use the following:
 
-暴露这个项目中的所有 Tag Helpers （创建一个名称为 *AuthoringTagHelpers* 的程序集），你可以像下面一样使用：
+这个项目中，为了暴露所有的Tag Helpers（创建一个名称为 *AuthoringTagHelpers* 的程序集），你可以像下面一样使用：
 
 .. literalinclude:: authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml
    :language: html
@@ -124,7 +125,7 @@ If your project contains an ``EmailTagHelper`` with the default namespace (``Aut
 
 To add a Tag Helper to a view using an FQN, you first add the FQN (``AuthoringTagHelpers.TagHelpers.EmailTagHelper``), and then the assembly name (*AuthoringTagHelpers*). Most developers prefer to use the  "\*" wildcard syntax. The wildcard syntax allows you to insert the wildcard character "\*" as the suffix in an FQN. For example, any of the following directives will bring in the ``EmailTagHelper``:
 
-使用 FQN 在视图中添加一个 Tag Helper ，你首先添加 FQN （``AuthoringTagHelpers.TagHelpers.EmailTagHelper``），然后是程序集名称（*AuthoringTagHelpers*）。大多数开发者喜欢使用 "\*" 通配符语法。通配符语法允许你在 FQN 中插入通配符 "\*" 作为后缀。例如，下列指令将在 ``EmailTagHelper`` 中引入：
+为了使用 FQN 在视图中添加一个 Tag Helper，你首先添加 FQN （``AuthoringTagHelpers.TagHelpers.EmailTagHelper``），然后是程序集名称（*AuthoringTagHelpers*）。大多数开发者喜欢使用 "\*" 通配符语法。通配符语法允许你在 FQN 中插入通配符 "\*" 作为后缀。例如，下列指令将在 ``EmailTagHelper`` 中引入：
 
 .. code-block:: c#
 
@@ -154,11 +155,11 @@ Controlling Tag Helper scope with the *_ViewImports.cshtml* file
 
 You can add a *_ViewImports.cshtml* to any view folder, and the view engine adds the directives from that *_ViewImports.cshtml* file to those contained in the *Views/_ViewImports.cshtml* file. If you added an empty *Views/Home/_ViewImports.cshtml* file for the *Home* views, there would be no change because the *_ViewImports.cshtml* file is additive. Any ``@addTagHelper`` directives you add to the *Views/Home/_ViewImports.cshtml* file (that are not in the default *Views/_ViewImports.cshtml* file) would expose those Tag Helpers to views only in the *Home* folder.
 
-你可以在任何视图文件夹中添加一个 *_ViewImports.cshtml* ，并且视图引擎添加 *_ViewImports.cshtml* 文件中的指令到包含它们的 *Views/_ViewImports.cshtml* 文件中。如果你为 *Home* 视图添加一个空 *Views/Home/_ViewImports.cshtml* 文件，它们不会有任何变化因为 *_ViewImports.cshtml* 文件是附加的。你添加到 *Views/Home/_ViewImports.cshtml* 文件（不是默认的 *Views/_ViewImports.cshtml* 文件）的任何 ``@addTagHelper`` 指令将会只在 *Home* 文件夹中公开这些 Tag Helpers 。
+你可以在任何视图文件夹中添加一个 *_ViewImports.cshtml* ，并且视图引擎添加 *_ViewImports.cshtml* 文件中的指令到包含它们的 *Views/_ViewImports.cshtml* 文件中。如果你为 *Home* 视图添加一个空 *Views/Home/_ViewImports.cshtml* 文件，它们不会有任何变化因为 *_ViewImports.cshtml* 文件是追加的。你添加到 *Views/Home/_ViewImports.cshtml* 文件（不是默认的 *Views/_ViewImports.cshtml* 文件）的任何 ``@addTagHelper`` 指令将会只在 *Home* 文件夹中公开这些 Tag Helpers 。
 
 Opting out of individual elements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-选择退出个别元素
+禁用个别元素
 ^^^^^^^^^^^^^^^^^^
 
 You can disable a Tag Helper at the element level with the Tag Helper opt-out character ("!"). For example, ``Email`` validation is disabled in the ``<span>`` with the Tag Helper opt-out character:
@@ -171,7 +172,7 @@ You can disable a Tag Helper at the element level with the Tag Helper opt-out ch
 
 You must apply the Tag Helper opt-out character to the opening and closing tag. (The Visual Studio editor automatically adds the opt-out character to the closing tag when you add one to the opening tag). After you add the opt-out character, the element and Tag Helper attributes are no longer displayed in a distinctive font.
 
-你必须使用 Tag Helper 退出字符来打开和关闭标签。（当你添加一个打开标签时， Visual Studio 编辑器自动添加退出字符来关闭标签）。在你添加退出字符之后，元素和 Tag Helper 特性将不再显示在一个单独的字体中。
+你必须使用 Tag Helper 退出字符来打开和关闭标签。（当你添加一个打开标签时， Visual Studio 编辑器自动添加退出字符来关闭标签）。在你添加退出字符之后，元素和 Tag Helper 特性将不再以特殊的字体显示。
 
 .. _prefix-razor-directives-label:
 
@@ -182,7 +183,7 @@ Using ``@tagHelperPrefix`` to make Tag Helper usage explicit
 
 The ``@tagHelperPrefix`` directive allows you to specify a tag prefix string to enable Tag Helper support and to make Tag Helper usage explicit. In the code image below, the Tag Helper prefix is set to ``th:``, so only those elements using the prefix ``th:`` support Tag Helpers (Tag Helper-enabled elements have a distinctive font). The ``<label>`` and ``<input>`` elements have the Tag Helper prefix and are Tag Helper-enabled, while the ``<span>`` element does not.
 
-``@tagHelperPrefix`` 指令允许你指定一个标签前缀来启用 Tag Helper 支持和使 Tag Helper 用法明确。在下面的代码图片中， Tag Helper 前缀设置为``th:``，因此只有那些使用前缀 ``th:`` 的元素支持 Tag Helpers （Tag Helper可用的元素有独特的字体）。 ``<label>`` 和 ``<input>`` 元素使用 Tag Helper 前缀并且 Tag Helper 可用， ``<span>`` 元素不能使用 Tag Helper。
+``@tagHelperPrefix`` 指令允许你指定一个标签前缀来启用 Tag Helper 支持和使 Tag Helper 用法明确。在下面的代码图片中，Tag Helper 前缀设置为 ``th:``，因此只有那些使用前缀 ``th:`` 的元素支持 Tag Helpers （Tag Helper可用的元素有独特的字体）。 ``<label>`` 和 ``<input>`` 元素使用 Tag Helper 前缀并且 Tag Helper 可用， ``<span>`` 元素不能使用 Tag Helper。
 
 .. image:: intro/_static/thp.png 
 
@@ -212,13 +213,13 @@ Consider writing an HTML ``<label>`` element. As soon as you enter ``<l`` in the
 
 Not only do you get HTML help, but the icon (the "@" symbol with "<>" under it).
 
-你得到的不仅仅是 HTML 的帮助，而且图标（ "@" 和 "<>" 符合在下面）。
+你得到的不仅仅是 HTML 的帮助，而且图标（下面含有“<>” 的“@”符号）。
 
 .. image:: intro/_static/tagSym.png 
 
 identifies the element as targeted by Tag Helpers. Pure HTML elements (such as the ``fieldset``) display the "<>"icon. 
 
-有针对性的通过 Tag Helpers 标识元素。纯 HTML 元素（如 ``fieldse）显示 "<>" 图标。
+有针对性的通过 Tag Helpers 标识元素。纯 HTML 元素（如 ``fieldset``）显示 "<>" 图标。
 
 A pure HTML ``<label>`` tag displays the HTML tag (with the default Visual Studio color theme) in a brown font, the attributes in red, and the attribute values in blue.
 
@@ -234,7 +235,7 @@ After you enter ``<label``, IntelliSense lists the available HTML/CSS attributes
 
 IntelliSense statement completion allows you to enter the tab key to complete the statement with the selected value:
 
-智能感知声明完成允许你输入 tab 键来完成所选值的语句：
+智能感知语句完成允许你输入 tab 键来完成所选值的语句：
 
 .. image:: intro/_static/stmtcomplete.png
 
