@@ -50,6 +50,7 @@ Tag Helpers 提供了什么
  For example, historically the mantra on updating images was to change the name of the image when you change the image. Images should be aggressively cached for performance reasons, and unless you change the name of an image, you risk clients getting a stale copy. Historically, after an image was edited, the name had to be changed and each reference to the image in the web app needed to be updated. Not only is this very labor intensive, it's also error prone (you could miss a reference, accidentally enter the wrong string, etc.) The built-in `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ImageTagHelper/index.html>`__ can do this for you automatically. The ``ImageTagHelper`` can append a version number to the image name, so whenever the image changes, the server automatically generates a new unique version for the image. Clients are guaranteed to get the current image. This robustness and labor savings comes essentially free by using the ``ImageTagHelper``.  
 
 **一种让你使用仅在服务器上可用的信息来更有效并且能够生成更强大，可靠和可维护代码的方式**
+
  例如，在之前当你更改图像的时候，更新图像的原则是更改图像的名称。出于性能原因应该主动缓存图像，除非你改变图像的名称，你的客户端有得到一份过期的副本的风险。在之前，一个图像被编辑后，它的名称必须改变并且在网络应用程序中图像的每一个引用都需要更新。这不仅是体力活，同时也容易出错（你可能漏掉一个引用，意外的输入错误字符串等）。内置的 `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ImageTagHelper/index.html>`__ 能够自动为你做这件事情。``ImageTagHelper`` 能够在图像名称后追加一个版本号，每当图像变化时，服务器为图像自动生成一个新的唯一的版本。客户端被保证得到当前的图像。通过使用 ``ImageTagHelper`` 这种健壮性和节省劳力基本上是无偿的。
 
 Most of the built-in Tag Helpers target existing HTML elements and provide server-side attributes for the element. For example, the ``<input>`` element used in many of the views in the *Views/Account* folder contains the ``asp-for`` attribute, which extracts the name of the specified model property into the rendered HTML. The following Razor markup:
@@ -78,6 +79,7 @@ Managing Tag Helper scope
 ----------------------
 
 Tag Helpers scope is controlled by a combination of ``@addTagHelper``, ``@removeTagHelper``, and the "!" opt-out character.
+Tag Helpers 的范围由 ``@addTagHelper`` 和  ``@removeTagHelper`` 进行控制，并且 "!" 为退出字符。
 
 Tag Helpers 的范围由 ``@addTagHelper`` 和  ``@removeTagHelper`` 进行控制，并且 "!" 为退出字符。
 
@@ -409,8 +411,6 @@ You can customize the font and colorization from **Tools** > **Options** > **Env
 你可以在 **工具** > **选项** > **环境** > **字体和颜色** 中自定义字体和颜色：
 
 .. image:: intro/_static/fontoptions2.png
-
-
    
 Additional Resources
 ----------------------
@@ -421,4 +421,3 @@ Additional Resources
 - :doc:`Working with Forms (Tag Helpers) </mvc/views/tag-helpers/index>`
 - `TagHelperSamples on GitHub <https://github.com/dpaquette/TagHelperSamples>`__ contains Tag Helper samples for working with `Bootstrap <http://getbootstrap.com/>`__. 
 - `TagHelperSamples on GitHub <https://github.com/dpaquette/TagHelperSamples>`__ 包含 Tag Helper 样本和 `Bootstrap <http://getbootstrap.com/>`__  工作. 
-

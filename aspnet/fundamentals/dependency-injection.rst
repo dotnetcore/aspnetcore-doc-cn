@@ -61,6 +61,7 @@ Using Framework-Provided Services
 
 The ``ConfigureServices`` method in the ``Startup`` class is responsible for defining the services the application will use, including platform features like Entity Framework Core and ASP.NET Core MVC. Initially, the ``IServiceCollection`` provided to ``ConfigureServices`` has just a handful of services defined. Below is an example of how to add additional services to the container using a number of extensions methods like ``AddDbContext``, ``AddIdentity``, and ``AddMvc``.
 
+
 ``Startup`` 类的 ``ConfigureServices`` 方法负责定义应用程序将使用的服务，包括平台功能，比如 Entity Framework Core 和 ASP.NET Core MVC 。最初， ``IServiceCollection`` 只向 ``ConfigureServices`` 提供了几个服务定义。下面是一个如何使用一些扩展方法（如 ``AddDbContext``，``AddIdentity`` 和 ``AddMvc`` ）向容器中添加额外服务的例子。
 
 .. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Startup.cs

@@ -16,6 +16,7 @@ This tutorial will teach you the basics of building an ASP.NET Core MVC  web app
 
 这篇教程将告诉你如何使用 `Visual Studio 2015 <https://www.visualstudio.com/zh-cn/visual-studio-homepage-vs.aspx>`__ 构建一个 ASP.NET Core MVC Web 应用程序的基础知识。
 
+.. note:: For the tutorial using .NET Core on a Mac see :doc:`../your-first-mac-aspnet`. 
 
 Install Visual Studio and .NET Core
 ----------------------------------------
@@ -72,9 +73,11 @@ Complete the **New Project** dialog:
 
 .. image:: start-mvc/_static/new_project2.png
 
-In the **New ASP.NET Core Web Application - MvcMovie** dialog, tap **Web Application**, and then tap **OK**.
+Complete the **New ASP.NET Core Web Application - MvcMovie** dialog:
 
-在 **New ASP.NET Core Web Application - MvcMovie** 对话框中，点击 **Web 应用程序(Web Application)**，然后点击 **确定(OK)**。
+- Tap **Web Application**
+- Clear **Host in the cloud**
+- Tap **OK**.
 
 .. image:: start-mvc/_static/p3.png
 
