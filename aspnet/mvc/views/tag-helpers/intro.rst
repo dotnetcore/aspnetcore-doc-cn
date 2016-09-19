@@ -49,7 +49,7 @@ Tag Helpers 提供了什么
 **A way to make you more productive and able to produce more robust, reliable, and maintainable code using information only available on the server**
  For example, historically the mantra on updating images was to change the name of the image when you change the image. Images should be aggressively cached for performance reasons, and unless you change the name of an image, you risk clients getting a stale copy. Historically, after an image was edited, the name had to be changed and each reference to the image in the web app needed to be updated. Not only is this very labor intensive, it's also error prone (you could miss a reference, accidentally enter the wrong string, etc.) The built-in `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/TagHelpers/ImageTagHelper/index.html>`__ can do this for you automatically. The ``ImageTagHelper`` can append a version number to the image name, so whenever the image changes, the server automatically generates a new unique version for the image. Clients are guaranteed to get the current image. This robustness and labor savings comes essentially free by using the ``ImageTagHelper``.  
 
-**一种让你使用仅在服务器上可用的信息来更有效并且能够生成更强大，可靠和可维护代码的方式**
+**一种使用仅在服务器上可用的信息让你更高效并且能够生成更强大，可靠和可维护代码的方式**
 
  例如，在之前当你更改图像的时候，更新图像的原则是更改图像的名称。出于性能原因应该主动缓存图像，除非你改变图像的名称，你的客户端有得到一份过期的副本的风险。在之前，一个图像被编辑后，它的名称必须改变并且在网络应用程序中图像的每一个引用都需要更新。这不仅是体力活，同时也容易出错（你可能漏掉一个引用，意外的输入错误字符串等）。内置的 `ImageTagHelper <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Mvc/TagHelpers/ImageTagHelper/index.html>`__ 能够自动为你做这件事情。``ImageTagHelper`` 能够在图像名称后追加一个版本号，每当图像变化时，服务器为图像自动生成一个新的唯一的版本。客户端被保证得到当前的图像。通过使用 ``ImageTagHelper`` 这种健壮性和节省劳力基本上是无偿的。
 
@@ -268,7 +268,7 @@ Tag Helpers 和 HTML Helpers 比较
 
 Tag Helpers attach to HTML elements in Razor views, while `HTML Helpers <http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers>`__ are invoked as methods interspersed with HTML in Razor views. Consider the following Razor markup, which creates an HTML label with the CSS class "caption":
 
-HTML elements 在 Razor 视图中附加到 HTML 元素，而 `HTML Helpers <http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers>`__ 在 Razor 视图中作为穿插到 HTML 的方法被调用。考虑下面的 Razor 标记，它创建一个带有 "caption" CSS class的HTML label 标签：
+Tag Helpers 在 Razor 视图中附加到 HTML 元素，而 `HTML Helpers <http://stephenwalther.com/archive/2009/03/03/chapter-6-understanding-html-helpers>`__ 在 Razor 视图中作为穿插到 HTML 的方法被调用。考虑下面的 Razor 标记，它创建一个带有 "caption" CSS class的HTML label 标签：
 
 .. code-block:: html
 
@@ -276,7 +276,7 @@ HTML elements 在 Razor 视图中附加到 HTML 元素，而 `HTML Helpers <http
 
 The at (``@``) symbol tells Razor this is the start of code. The next two parameters ("FirstName" and "First Name:") are strings, so `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`_ can't help. The last argument:
 
-at (``@``) 符号告诉 Razor 这是代码的开始。接下来的连个参数（"FirstName" 和 "First Name:"）是字符串，所以 `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`_ 不能帮助。最后的参数：
+at (``@``) 符号告诉 Razor 这是代码的开始。接下来的两个参数（"FirstName" 和 "First Name:"）是字符串，所以 `IntelliSense <https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx>`_ 不能帮助。最后的参数：
 
 .. code-block:: html
 
@@ -284,7 +284,7 @@ at (``@``) 符号告诉 Razor 这是代码的开始。接下来的连个参数�
   
 Is an anonymous object used to represent attributes. Because **class** is a reserved keyword in C#, you use the ``@`` symbol to force C# to interpret "@class=" as a symbol (property name). To a front-end designer (someone familiar with HTML/CSS/JavaScript and other client technologies but not familiar with C# and Razor), most of the line is foreign. The entire line must be authored with no help from IntelliSense.
 
-是一个用于表示特性的匿名对象。因为 **class** 是一个 C# 的保留关键字，使用 ``@`` 符号强制 C# 解释 "@class=" 作为一个符号（属性名称）。一个前端设计师（一些人熟悉 HTML/CSS/JavaScript 和其他客户端技术但是不熟悉 C# 和 Razor），大部分的路线是不相关的。整行必须在没有智能感知的帮助下编写。
+是一个用于表示特性的匿名对象。因为 **class** 是一个 C# 的保留关键字，使用 ``@`` 符号强制 C# 解释 "@class=" 作为一个符号（属性名称）。对于一个前端设计师（一些人熟悉 HTML/CSS/JavaScript 和其他客户端技术但是不熟悉 C# 和 Razor）来讲，该行的大部分是陌生的。整行必须在没有智能感知的帮助下编写。
   
 Using the ``LabelTagHelper``, the same markup can be written as:
 
@@ -300,7 +300,7 @@ With the Tag Helper version, as soon as you enter ``<l`` in the Visual Studio ed
 
 IntelliSense helps you write the entire line. The ``LabelTagHelper`` also defaults to setting the content of the ``asp-for`` attribute value ("FirstName") to "First Name"; It converts camel-cased properties to a sentence composed of the property name with a space where each new upper-case letter occurs. In the following markup:
 
-智能感知帮助你写整行代码。 ``LabelTagHelper`` 也默认设置 ``asp-for`` 特性值（"FirstName"）的内容到 "First Name"；它转换驼峰名称属性到每一个首字母大写的属性名称组成的句子。在下面的标记中：
+智能感知帮助你写整行代码。 ``LabelTagHelper`` 也默认设置 ``asp-for`` 特性值（"FirstName"）的内容到 "First Name"；它转换驼峰名称属性到由每一个首字母大写的属性名称组成的句子。在下面的标记中：
 
 .. image:: intro/_static/label2.png 
 
@@ -364,7 +364,7 @@ Each of the "asp-" attributes has a value of "Email", but "Email" is not a strin
 
 The Visual Studio editor helps you write **all** of the markup in the Tag Helper approach of the register form, while Visual Studio provides no help for most of the code in the HTML Helpers approach. `IntelliSense support for Tag Helpers`_ goes into detail on working with Tag Helpers in the Visual Studio editor.
 
- Visual Studio 编辑器帮助你编写在 Tag Helper 注册表单中方法的 **all** 标记， Visual Studio 没有提供帮助给 HTML Helpers 方法的代码。 `IntelliSense support for Tag Helpers`_ 详细介绍 Tag Helpers 在 Visual Studio 编辑器中的工作。
+使用Tag Helper 注册表单中的方法，Visual Studio 编辑器会帮助你编写 **所有** 标记，而Visual Studio 没有给 HTML Helpers 方法的代码提供帮助 `IntelliSense support for Tag Helpers`_ 详细介绍 Tag Helpers 在 Visual Studio 编辑器中的工作。
 
 Tag Helpers compared to Web Server Controls
 -----------------------------------------------
@@ -377,13 +377,15 @@ Tag Helpers 和 Web 服务器控件比较
 
 - `Web Server controls <https://msdn.microsoft.com/en-us/library/zsyt68f1.aspx>`__ have a non-trivial lifecycle that can make developing and debugging difficult. 
 
+- `Web 服务器控件 <https://msdn.microsoft.com/en-us/library/zsyt68f1.aspx>`__ 有一个不一样的生命周期使得开发和调试困难。
+
 - Web Server controls allow you to add functionality to the client Document Object Model (DOM) elements by using a client control. Tag Helpers have no DOM. 
 
-- Web 服务器控件允许你给通过客户端控制的客户端文档对象模型（ocument Object Model ，DOM）添加功能。Tag Helpers 不具有 DOM。
+- Web 服务器控件允许你给通过客户端控件给客户端文档对象模型（ocument Object Model ，DOM）添加功能。Tag Helpers 不具有 DOM。
 
 - Web Server controls include automatic browser detection. Tag Helpers have no knowledge of the browser.
 
-- Web 服务器包含自动的浏览器检测。 Tag Helpers 不能识别浏览器。
+- Web 服务器控件包含自动的浏览器检测。 Tag Helpers 不能识别浏览器。
 
 - Multiple Tag Helpers can act on the same element (see `Avoiding Tag Helper conflicts <http://mvc.readthedocs.org/en/latest/views/tag-helpers/authoring.html#avoiding-tag-helper-conflicts>`__ ) while you typically can't compose Web Server controls.
 
@@ -420,4 +422,4 @@ Additional Resources
 - :doc:`/mvc/views/tag-helpers/authoring`
 - :doc:`Working with Forms (Tag Helpers) </mvc/views/tag-helpers/index>`
 - `TagHelperSamples on GitHub <https://github.com/dpaquette/TagHelperSamples>`__ contains Tag Helper samples for working with `Bootstrap <http://getbootstrap.com/>`__. 
-- `TagHelperSamples on GitHub <https://github.com/dpaquette/TagHelperSamples>`__ 包含 Tag Helper 样本和 `Bootstrap <http://getbootstrap.com/>`__  工作. 
+- `TagHelperSamples on GitHub <https://github.com/dpaquette/TagHelperSamples>`__ 包含与 `Bootstrap <http://getbootstrap.com/>`__ 一起工作的 Tag Helper 示例。
