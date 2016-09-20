@@ -4,19 +4,21 @@ Authoring Tag Helpers
 自定义标签辅助类（Tag Helpers）
 ===========================================
 
-By `Rick Anderson`_
+原文：`Authoring Tag Helpers <https://docs.asp.net/en/latest/mvc/views/tag-helpers/authoring.html>`_
 
 作者：`Rick Anderson`_
 
 翻译：`张海龙(jiechen) <http://github.com/ijiechen>`_
 
+校对：`许登洋(Seay) <https://github.com/SeayXu>`_
+
 .. contents:: Sections:
   :local:
   :depth: 1
 
-  `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/tag-helpers/authoring/sample>`__
+`View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/tag-helpers/authoring/sample>`__
 
-  `示例代码查看与下载 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/tag-helpers/authoring/sample>`__
+`示例代码查看与下载 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/tag-helpers/authoring/sample>`__
 
 Getting started with Tag Helpers
 ------------------------------------
@@ -26,15 +28,15 @@ Getting started with Tag Helpers
 
 This tutorial provides an introduction to programming Tag Helpers. :doc:`intro` describes the benefits that Tag Helpers provide.
 
-本篇教程是对 Tag Helper 编程作以介绍。 :doc: `intro` 描述了 Tag Helper 的作用。
+本篇教程是对 Tag Helper 编程作以介绍。 :doc:`intro` 描述了 Tag Helper 的优势。
 
 A tag helper is any class that implements the ``ITagHelper`` interface. However, when you author a tag helper, you generally derive from ``TagHelper``, doing so gives you access to the ``Process`` method. We will introduce the ``TagHelper`` methods and properties as we use them in this tutorial.
 
-Tag Helper 是任何对 ``ITagHelper`` 接口实现的类（Class）。然而，当你编写一个 Tag Helper，你通常是从 ``TagHelper`` 开始，这样做让你可以访问 ``Process`` 方法。我们将介绍 ``TagHelper`` 方法和属性，因为我们将在本教程使用它们。
+Tag Helper 是任何实现 ``ITagHelper`` 接口的类（Class）。然而，当你编写一个 Tag Helper，你通常是从 ``TagHelper`` 开始，这样做让你可以访问 ``Process`` 方法。我们将介绍 ``TagHelper`` 方法和属性，如同我们将在本教程使用它们的。
 
 #. Create a new ASP.NET Core project called **AuthoringTagHelpers**. You won't need authentication for this project.
 
-#. 创建一个命名为 **AuthoringTagHelpers** 的新 ASP.NET Core 项目。对该项目我们不需要添加身份验证。
+#. 创建一个命名为 **AuthoringTagHelpers** 的新 ASP.NET Core 项目。对该项目你不需要添加身份验证。
 
 #. Create a folder to hold the Tag Helpers called *TagHelpers*. The *TagHelpers* folder is *not* required, but it is a reasonable convention. Now let's get started writing some simple tag helpers.
 
@@ -64,7 +66,7 @@ The server will use our email tag helper to convert that markup into the followi
 
 That is, an anchor tag that makes this an email link. You might want to do this if you are writing a blog engine and need it to send email for marketing, support, and other contacts, all to the same domain.
 
-也就是，一个锚标签转为了一个 email 链接。如果你在写一个 blog 引擎，需要市场、支持、其他联系人用它发送邮件到相同域，你可能想要这样做。
+也就是，一个锚标签转为了一个 email 链接。如果你在写一个博客引擎，并且需要它为市场、支持、其他联系人发送邮件到相同的域，你可能想要这样做。
 
 #. Add the following ``EmailTagHelper`` class to the *TagHelpers* folder.
 
@@ -83,7 +85,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 - The ``EmailTagHelper`` class derives from ``TagHelper``. The ``TagHelper`` class provides the rich methods and properties we will examine in this tutorial.
 
--  ``EmailTagHelper`` 类来自  ``TagHelper`` 。 ``TagHelper`` 类提供了我们即将在本文探究的丰富的方法和属性。
+-  ``EmailTagHelper`` 类派生自  ``TagHelper`` 。 ``TagHelper`` 类提供了我们即将在本文探究的丰富的方法和属性。
 
 - The  overridden ``Process`` method controls what the tag helper does when executed. The ``TagHelper`` class also provides an asynchronous version (``ProcessAsync``) with the same parameters.
 
@@ -107,7 +109,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 2. To make the ``EmailTagHelper`` class available to all our Razor views, we will add the ``addTagHelper`` directive to the *Views/_ViewImports.cshtml* file:
 
-2. 为使 ``EmailTagHelper`` 类在我们所有 Razor 视图中有效，我们将把 ``addTagHelper`` 命令添加到 *Views/_ViewImports.cshtml* 文件：
+2. 为使 ``EmailTagHelper`` 类在我们所有 Razor 视图中可用，我们将把 ``addTagHelper`` 指令添加到 *Views/_ViewImports.cshtml* 文件：
 
 .. wildcard syntax
 
@@ -119,7 +121,7 @@ That is, an anchor tag that makes this an email link. You might want to do this 
 
 The code above uses the wildcard syntax to specify all the tag helpers in our assembly will be available. The first string after ``@addTagHelper`` specifies the tag helper to load (we are using "\*" for all tag helpers), and the second string "AuthoringTagHelpers" specifies the assembly the tag helper is in. Also, note that the second line brings in the ASP.NET Core MVC tag helpers using the wildcard syntax (those helpers are discussed in :doc:`intro`.) It's the ``@addTagHelper`` directive that makes the tag helper available to the Razor view. Alternatively, you can provide the fully qualified name (FQN) of a tag helper as shown below:
 
-以上代码我们使用了通配符表明所有的 tag helper 都将在我们的程序集中启用。 ``@addTagHelper`` 之后的第一个字符串指明了要加载的 tag helper（我们使用 "\*" 代表所有 tag helper ），第二个字符串 "AuthoringTagHelpers" 指明了此 tag helper 所在的程序集。除此之外要注意的是，使用通配符的第二行，引入了 ASP.NET Core MVC 的 tag helper（这些辅助类在 :doc:`intro` 中已经讨论过）。是 ``@addTagHelper`` 命令使 tag helper 在 Razor 视图中起作用的。你还可以使用如下所示的 tag helper 的完全限定名（FQN）：
+以上代码我们使用了通配符表明所有的 tag helper 都将在我们的程序集中启用。 ``@addTagHelper`` 之后的第一个字符串指明了要加载的 tag helper（我们使用 "\*" 代表所有 tag helper ），第二个字符串 "AuthoringTagHelpers" 指明了此 tag helper 所在的程序集。除此之外要注意的是，使用通配符的第二行，引入了 ASP.NET Core MVC 的 tag helper（这些辅助类在 :doc:`intro` 中已经讨论过）。是 ``@addTagHelper`` 命令使 tag helper 在 Razor 视图中起作用的。你还可以提供如下所示的 tag helper 的全名（FQN）：
 
 .. FQN syntax
 
@@ -145,7 +147,7 @@ To add a tag helper to a view using a FQN, you first add the FQN (``AuthoringTag
 
 4. Run the app and use your favorite browser to view the HTML source so you can verify that the email tags are replaced with anchor markup (For example, ``<a>Support</a>``). *Support* and *Marketing* are rendered as a links, but they don't have an ``href`` attribute to make them functional. We'll fix that in the next section.
 
-4.运行应用并使用你喜欢的浏览器查看 HTML 代码，你可以鉴别发现 email 标签都被替换成了链接标签（例如： ``<a>Support</a>``），*Support* 和 *Marketing* 被渲染为链接。
+4. 运行应用并使用你喜欢的浏览器查看 HTML 代码，你可以校验 email 标签都被替换成了链接标签（例如： ``<a>Support</a>``），*Support* 和 *Marketing* 被渲染为链接，但是，它们没有一个 ``href`` 属性能使其正常运行。我们将在下一节修复它。
 
 **Note:** Like `HTML tags and attributes <http://www.w3.org/TR/html-markup/documents.html#case-insensitivity>`__, tags, class names and attributes in Razor, and C# are not case-sensitive.
 
@@ -154,16 +156,16 @@ To add a tag helper to a view using a FQN, you first add the FQN (``AuthoringTag
 A working email Tag Helper
 ----------------------------------
 
-email Tag Helper 示例
+一个可工作的 email Tag Helper
 ---------------------------
 
 In this section, we will update the ``EmailTagHelper`` so that it will create a valid anchor tag for email. We'll update our tag helper to take information from a Razor view (in the form of a ``mail-to`` attribute) and use that in generating the anchor.
 
-在这一节中，我们将更改 ``EmailTagHelper`` 使其可以为 email 创建一个有效的锚链接标签。我们将修改我们的 tag helper 使其在 Razor 视图中附加信息（以 ``mail-to`` 属性的形式）并使用它生成链接。
+在这一节中，我们将更新 ``EmailTagHelper`` 使其可以为 email 创建一个有效的锚链接标签。我们将修改我们的 tag helper 使其在 Razor 视图中附加信息（以 ``mail-to`` 属性的形式）并使用它生成链接。
 
 Update the ``EmailTagHelper`` class with the following:
 
-参照以下代码修改 ``EmailTagHelper`` ：
+参照以下代码更新 ``EmailTagHelper`` ：
 
 .. literalinclude:: authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailTo.cs
   :lines: 5-24
@@ -172,15 +174,15 @@ Update the ``EmailTagHelper`` class with the following:
 
 **Notes:**
 
-**注意：**
+**说明：**
 
 -  Pascal-cased class and property names for tag helpers are translated into their `lower kebab case <http://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101#12273101>`__. Therefore, to use the ``MailTo`` attribute, you'll use ``<email mail-to="value"/>`` equivalent.
 
--  用在 tag helper 以 Pascal 大小写的类名及属性名会被翻译成他们的 ` kebab 小写形式 <http://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101#12273101>`__。因此，你使用 ``MailTo`` 属性，与使用 ``<email mail-to="value"/>`` 是等价的。
+-  以 Pascal 形式命名 tag helper 的类名及属性名会被翻译成它们的 `小写 kebab 形式 <http://stackoverflow.com/questions/11273282/whats-the-name-for-dash-separated-case/12273101#12273101>`__。因此，你使用 ``MailTo`` 属性，与使用 ``<email mail-to="value"/>`` 是等价的。
 
 - The last line sets the completed content for our minimally functional tag helper.
 
-- 最后一行设置了我们功能简单的 tag helper 的内容的结束。
+- 最后一行设置了我们 tag helper 完成的最小化功能的内容。
 
 - The following line shows the syntax for adding attributes:
 
@@ -211,7 +213,7 @@ That approach works for the attribute "href" as long as it doesn't currently exi
 
 **Note:** If you were to write the email tag self-closing (``<email mail-to="Rick" />``), the final output would also be self-closing. To enable the ability to write the tag with only a start tag (``<email mail-to="Rick">``) you must decorate the class with the following:
 
-**说明：** 如果你写的是自闭合的 email 标签（``<email mail-to="Rick" />``），最终的输出也将是自闭合的。
+**说明：** 如果你写的是自闭合的 email 标签（``<email mail-to="Rick" />``），最终的输出也将是自闭合的。为了启用写入仅是一个开始标签的功能（ ``<email mail-to="Rick">`` ），你必须如下设置类：
 
 .. literalinclude:: authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs
   :lines: 6
@@ -225,6 +227,7 @@ With a self-closing email tag helper, the output would be ``<a href="mailto:Rick
 .. In this section we will update the ``EmailTagHelper`` so that it gets the target ``mail-to`` from the content. Need to revert the contact.cshtml file back.
 
 .. 在这一节我们将更新 ``EmailTagHelper`` 使其从内容取到 ``mail-to`` 目标。需要撤销 contact.cshtml 文件更改。
+
 
 An asynchronous email helper
 _____________________________________
@@ -259,7 +262,7 @@ In this section we'll write an asynchronous email helper.
 
 2. Make the following change to the *Views/Home/Contact.cshtml* file so the tag helper can get the target email.
 
-2. 对 *Views/Home/Contact.cshtml* 文件做以下更改以使 tag helper 取得目标 email。
+2. 对 *Views/Home/Contact.cshtml* 文件做以下更改使 tag helper 取得目标 email。
 
 .. literalinclude::  authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml
   :language: html
@@ -268,7 +271,7 @@ In this section we'll write an asynchronous email helper.
 
 3. Run the app and verify that it generates valid email links.
 
-3. 运行应用可见生成了有效的 email 链接。
+3. 运行应用并验证生成了有效的 email 链接。
 
 The bold Tag Helper
 ---------------------------
@@ -289,11 +292,11 @@ The bold Tag Helper
 
 - The ``[HtmlTargetElement]`` attribute passes an attribute parameter that specifies that any HTML element that contains an HTML attribute named "bold" will match, and the ``Process`` override method in the class will run. In our sample, the ``Process``  method removes the "bold" attribute and surrounds the containing markup with ``<strong></strong>``.
 
--  ``[HtmlTargetElement]`` 属性传递一个属性参数，指示将匹配任何 HTML 元素包含名为 “bold” 的 HTML 属性，并且类中的 ``Process`` 重写方法将被执行。在我们的示例中， ``Process`` 方法删除了 “bold” 属性且以标记 ``<strong></strong>``包含其中内容。
+-  ``[HtmlTargetElement]`` 属性传递一个属性参数，指定为任何 HTML 元素包含名为 “bold” 的 HTML 属性，并且类中重写的 ``Process`` 方法将被执行。在我们的示例中， ``Process`` 方法删除了 “bold” 属性且以 ``<strong></strong>`` 标记包含其中内容。
 
 -  Because we don't want to replace the existing tag content, we must write the opening ``<strong>`` tag with the ``PreContent.SetHtmlContent`` method and the closing ``</strong>`` tag with the ``PostContent.SetHtmlContent`` method.
 
-- 因为我们不想替换已有标签内容，我们必须用 ``PreContent.SetHtmlContent`` 方法写 ``<strong>`` 开标签并用 ``PostContent.SetHtmlContent`` 方法写 ``</strong>`` 闭标签。
+- 因为我们不想替换已有标签内容，我们必须用 ``PreContent.SetHtmlContent`` 方法写 ``<strong>`` 开始标签并用 ``PostContent.SetHtmlContent`` 方法写 ``</strong>`` 闭合标签。
 
 2. Modify the *About.cshtml* view to contain a ``bold`` attribute value. The completed code is shown below.
 
@@ -318,7 +321,7 @@ The ``[HtmlTargetElement]`` attribute above only targets HTML markup that provid
 
 5. Run the app and verify that the ``<bold>`` tag is processed by the tag helper.
 
-5. 运行程序可看到 ``<bold>`` 标签已被 tag helper 发生作用。
+5. 运行程序可验证 ``<bold>`` 标签已被 tag helper 处理了。
 
 Decorating a class with multiple ``[HtmlTargetElement]`` attributes results in a logical-OR of the targets. For example, using the code below, a bold tag or a bold attribute will match.
 
@@ -374,11 +377,11 @@ Web site information Tag Helper
 
 - As mentioned previously, tag helpers translates Pascal-cased C# class names and properties for tag helpers into `lower kebab case <http://c2.com/cgi/wiki?KebabCase>`__. Therefore, to use the ``WebsiteInformationTagHelper`` in Razor, you'll write ``<website-information />``.
 
-- 如前文所述，tag helper 翻译 tag helper 的 Pascal 大小写 C# 类名为 `小写 kebab 形式 <http://c2.com/cgi/wiki?KebabCase>`__。尽管如此，在 Razor 中使用 ``WebsiteInformationTagHelper`` 你将能输出 ``<website-information />``。
+- 如前文所述，tag helper 将 tag helper 的 C# 类名和属性 Pascal 形式转换为 `小写 kebab 形式 <http://c2.com/cgi/wiki?KebabCase>`__。尽管如此，在 Razor 中使用 ``WebsiteInformationTagHelper`` 你将能输出 ``<website-information />``。
 
 - We are not explicitly identifying the target element with the ``[HtmlTargetElement]`` attribute, so the default of ``website-information`` will be targeted. If you applied the following attribute (note it's not kebab case but matches the class name):
 
-- 我们并非明确要使用 ``[HtmlTargetElement]`` 属性指定目标元素，因此， ``website-information`` 的默认方式将被作为目标。如果你使用下面的属性（注意：其并非kebab大小写但匹配到类名）：
+- 我们并非明确要使用 ``[HtmlTargetElement]`` 属性指定目标元素，因此， ``website-information`` 的默认方式将被作为目标。如果你使用下面的属性（注意它不是 kebab 形式而是匹配类名）：
 
 .. code-block:: c#
 
@@ -386,7 +389,7 @@ Web site information Tag Helper
 
 The lower kebab case tag ``<website-information />`` would not match. If you want use the ``[HtmlTargetElement]`` attribute, you would use kebab case as shown below:
 
-小写的kebab大小写标签 ``<website-information />`` 不会被匹配。如果你要使用 ``[HtmlTargetElement]`` 属性，你应该使用如下所示的 kebab 大小写方式：
+小写的 kebab 标签 ``<website-information />`` 不会被匹配。如果你要使用 ``[HtmlTargetElement]`` 属性，你应该使用如下所示的 kebab 形式：
 
 .. code-block:: c#
 
@@ -394,7 +397,7 @@ The lower kebab case tag ``<website-information />`` would not match. If you wan
 
 - Elements that are self-closing have no content. For this example, the Razor markup will use a self-closing tag, but the tag helper will be creating a `section <http://www.w3.org/TR/html5/sections.html#the-section-element>`__ element (which is not self-closing and we are writing content inside the ``section`` element). Therefore, we need to set ``TagMode`` to ``StartTagAndEndTag`` to write output. Alternatively, you can comment out the line setting ``TagMode`` and write markup with a closing tag. (Example markup is provided later in this tutorial.)
 
-- 自闭合元素没有内容。在这个例子，Razor 标记将使用自闭合标签，但 tag helper 将创建一个 `section <http://www.w3.org/TR/html5/sections.html#the-section-element>`__ 元素（是指非闭合的并且我们在 ``section`` 元素内部输出内容的元素）。因此，我们需要设置 ``TagMode`` 为 ``StartTagAndEndTag`` 来输出。换言之，你可以注释掉``TagMode`` 设置行，并用闭合标签书写标记。（示例标记在本教程下文中提供）
+- 自闭合元素没有内容。在这个例子，Razor 标记将使用自闭合标签，但 tag helper 将创建一个 `section <http://www.w3.org/TR/html5/sections.html#the-section-element>`__ 元素（是指非闭合的并且我们在 ``section`` 元素内部输出内容的元素）。因此，我们需要设置 ``TagMode`` 为 ``StartTagAndEndTag`` 来输出。换言之，你可以注释掉 ``TagMode`` 设置行，并用闭合标签书写标记。（示例标记在本教程下文中提供）
 
 - The ``$`` (dollar sign) in the following line uses an `interpolated string <https://msdn.microsoft.com/en-us/library/Dn961160.aspx>`__:
 
@@ -480,7 +483,7 @@ The condition tag helper renders output when passed a true value.
 
 **Note:** We use the `nameof <https://msdn.microsoft.com/en-us/library/dn986596.aspx>`_ operator to specify the attribute to target rather than specifying a string as we did with the bold tag helper:
 
-**说明：** 我们使用 `nameof <https://msdn.microsoft.com/en-us/library/dn986596.aspx>`_ 运算符来把属性识别为目标，而非像我们用 bold tag helper 所做的指明字符串。
+**说明：** 我们使用 `nameof <https://msdn.microsoft.com/en-us/library/dn986596.aspx>`_ 运算符来把属性识别为目标，而非像我们用 bold tag helper 所做的指定字符串。
 
 .. literalinclude:: authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/zConditionTagHelperCopy.cs
   :language: c#
@@ -490,7 +493,7 @@ The condition tag helper renders output when passed a true value.
 
 The `nameof <https://msdn.microsoft.com/en-us/library/dn986596.aspx>`_ operator will protect the code should it ever be refactored (we might want to change the name to RedCondition).
 
- `nameof <https://msdn.microsoft.com/en-us/library/dn986596.aspx>`_ 运算符可以在代码被重构的时候保护代码（我们可能想将名称改为 RedCondition）。
+`nameof <https://msdn.microsoft.com/en-us/library/dn986596.aspx>`_ 运算符可以在代码被重构的时候保护代码（我们可能想将名称改为 RedCondition）。
 
 Avoiding Tag Helper conflicts
 ______________________________
@@ -530,7 +533,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 3. Run the app and verify that the tag helper renders the anchor correctly.
 
-3. 运行程序可查看 tag helper 正确渲染了锚链接。
+3. 运行程序并验证 tag helper 正确渲染了锚链接。
 
 4. Update the ``AutoLinker`` class to include the ``AutoLinkerWwwTagHelper`` which will convert www text to an anchor tag that also contains the original www text. The updated code is highlighted below:
 
@@ -562,7 +565,7 @@ Because these two helpers are closely related and we may refactor them in the fu
 
 That is, we call ``GetChildContentAsync`` using the ``TagHelperOutput`` passed into the ``ProcessAsync`` method. As mentioned previously, because the output is cached, the last tag helper to run wins. We fixed that problem with the following code:
 
-也就是，我们使用 ``TagHelperOutput`` 调用 ``GetChildContentAsync`` 传入了 ``ProcessAsync`` 方法。如前面提到的，因为输出是缓存的，最终运行的 tag helper 赢了。我们使用下面的代码来修复这个问题：
+也就是，我们使用 ``TagHelperOutput`` 调用 ``GetChildContentAsync`` 传入了 ``ProcessAsync`` 方法。如前面提到的，因为输出是缓存的，最终运行的 tag helper 成功。我们使用下面的代码来修复这个问题：
 
 .. literalinclude:: authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/z2AutoLinkerCopy.cs
   :language: c#
