@@ -22,6 +22,8 @@ ASP.NET Core MVC 支持局部试图，这在你需要重用在不同视图间共
 
 `View or download sample code <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/partial/sample>`__
 
+`查看或下载示例代码 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/partial/sample>`__
+
 What are Partial Views?
 -----------------------
 
