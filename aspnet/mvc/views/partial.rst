@@ -46,11 +46,11 @@ When Should I Use Partial Views?
 
 Partial views are an effective way of breaking up large views into smaller components. They can reduce duplication of view content and allow view elements to be reused. Common layout elements should be specified in :doc:`_Layout.cshtml <layout>`. Non-layout reusable content can be encapsulated into partial views.
 
-局部视图是将庞大视图分解为更小的组件的有效方式。它们可以减少视图内容的重复，且使得视图元素可以被复用。通用的布局元素应该在 :doc:`_Layout.cshtml <layout>` 中指定。非布局层面重用的内容可以被封装到局部视图。
+局部视图是将庞大视图分解为由较小的组件组成的视图的有效方式。它们可以减少视图内容的重复，且使得视图元素可以被复用。通用的布局元素应该在 :doc:`_Layout.cshtml <layout>` 中指定。非布局层面重用的内容可以被封装到局部视图。
 
 If you have a complex page made up of several logical pieces, it can be helpful to work with each piece as its own partial view. Each piece of the page can be viewed in isolation from the rest of the page, and the view for the page itself becomes much simpler since it only contains the overall page structure and calls to render the partial views.
 
-如果你有一个复杂的页面由若干个逻辑块构成，它对在作为各自的局部视图的各个块之将协作是非常有用的。页面的每个块可以从页面的其它部分被独立展现，页面自身的视图在自从它只包含总体的页面结构和对局部视图的调用并渲染后变得非常简单。
+如果你有一个由若干个逻辑块构成的复杂页面，将各个逻辑块设计为拥有各自对应的局部视图是很有用的。页面的每个块可以从页面的其它部分被独立展现，页面自身的视图只包含总体的页面结构和对局部视图的调用与渲染，因而变得非常简单。
 
 .. tip:: Follow the `Don't Repeat Yourself Principle <http://deviq.com/don-t-repeat-yourself/>`_ in your views.
 
