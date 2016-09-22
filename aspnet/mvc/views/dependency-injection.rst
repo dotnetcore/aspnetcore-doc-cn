@@ -1,7 +1,7 @@
-Injecting Services Into Views
+Dependency injection into views
 =============================
 
-注入服务到视图中
+视图中的依赖注入
 ================
 
 作者： `Steve Smith`_
