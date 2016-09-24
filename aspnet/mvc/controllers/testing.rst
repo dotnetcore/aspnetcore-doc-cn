@@ -212,15 +212,26 @@ You'll see the ``GetTestSession`` method used frequently in the integration test
 
 Accessing Views
 ^^^^^^^^^^^^^^^
+访问视图
+^^^^^^^^^^^^^^^
 
 Each integration test class configures the ``TestServer`` that will run the ASP.NET Core app. By default, ``TestServer`` hosts the web app in the folder where it's running - in this case, the test project folder. Thus, when you attempt to test controller actions that return ``ViewResult``, you may see this error:
+
+每一个集成测试类都会配置 ``TestServer`` 来运行 ASP.NET Core 应用程序。默认情况下，``TestServer`` 在其运行的目录下承载 Web 应用程序 —— 在本例中，就是测试项目文件夹。因此，当你尝试测试返回 ``ViewResult`` 的控制器操作的时候，你会看见这样的错误：
 
 .. code-block:: none
 
   The view 'Index' was not found. The following locations were searched:
   (list of locations)
 
+.. code-block:: none
+
+  未找到视图 “Index”。已搜索以下位置：
+  （位置列表）
+
 To correct this issue, you need to configure the server to use the ``ApplicationBasePath`` and ``ApplicationName`` of the web project. This is done in the call to ``UseServices`` in the integration test class shown:
+
+要修正这个问题，你需要配置服务器使其采用 Web 项目的 ``ApplicationBasePath`` 和 ``ApplicationName`` 。这在所示的集成测试类中调用 ``UseServices`` 完成的：
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs
   :language: c#
@@ -228,10 +239,17 @@ To correct this issue, you need to configure the server to use the ``Application
 
 In the test above, the ``responseString`` gets the actual rendered HTML from the View, which can be inspected to confirm it contains expected results.
 
+在上面的测试中，``responseString`` 从视图获取真实渲染的 HTML ，可以用来检查确认其中是否包含期望的结果。
+
 API Methods
 ^^^^^^^^^^^
 
+API 方法
+^^^^^^^^^^^
+
 If your app exposes web APIs, it's a good idea to have automated tests confirm they execute as expected. The built-in ``TestServer`` makes it easy to test web APIs. If your API methods are using model binding, you should always check ``ModelState.IsValid``, and integration tests are the right place to confirm that your model validation is working properly. 
+
+如果你的应用程序有公开的 Web API，采用自动化测试来确保它们按期望执行是个好主意。内置的 ``TestServer`` 便于测试 Web API。如果你的 API 方法使用了模型绑定，那么你应该始终检查 ``ModelState.IsValid`` ，另外确认你的模型验证工作是否正常应当在集成测试里进行。
 
 The following set of tests target the ``Create`` method in the :ref:`IdeasController <ideas-controller>` class shown above:
 
@@ -239,8 +257,14 @@ The following set of tests target the ``Create`` method in the :ref:`IdeasContro
   :language: c#
   :lines: 37-142
 
+下面一组测试针对上文所示的 :ref:`IdeasController <ideas-controller>` 里的 ``Create`` 方法：
+
 Unlike integration tests of actions that returns HTML views, web API methods that return results can usually be deserialized as strongly typed objects, as the last test above shows. In this case, the test deserializes the result to a ``BrainstormSession`` instance, and confirms that the idea was correctly added to its collection of ideas.
 
+不同于对返回 HTML 视图的操作的集成测试，有返回值的 Web API 方法通常能够反序列化为强类型对象，就像上面所示的最后一个测试。在此例中，该测试将返回值反序列化为一个 ``BrainstormSession`` 实例，然后再确认意见是否被正确添加到了意见集合里。
+
 You'll find additional examples of integration tests in this article's `sample project <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/testing/sample>`_.
+
+你可以在 `sample project <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/controllers/testing/sample>`_ 这篇文章里找到更多的集成测试示例。
 
 .. _Unit testing: https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test
