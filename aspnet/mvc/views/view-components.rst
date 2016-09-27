@@ -10,7 +10,7 @@
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： `刘怡(AlexLEWIS) <https://github.com/alexinea>`_  
+校对： `高嵩 <https://github.com/jack2gs>`_  
 
 .. contents:: 章节:
   :local:
