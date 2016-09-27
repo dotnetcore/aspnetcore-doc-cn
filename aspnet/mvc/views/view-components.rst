@@ -33,7 +33,7 @@
 .. - Can have parameters and business logic
 .. - Is typically invoked from a layout page
 
-视图组件是 ASP.NET Core MVC 中的新特性，与部分视图相似，但是它们更加的强大。视图组件不使用模型绑定，只取决于调用它时所提供的数据。视图组件有以下特点：
+视图组件是 ASP.NET Core MVC 中的新特性，与局部视图相似，但是它们更加的强大。视图组件不使用模型绑定，只取决于调用它时所提供的数据。视图组件有以下特点：
 
 - 渲染一个块，而不是整个响应
 - 在控制器和视图之间同样包含了关注点分离和可测试性带来的好处
@@ -50,7 +50,7 @@
 .. - Sidebar content on a typical blog 
 .. - A login panel that would be rendered on every page and show either the links to log out or log in, depending on the log in state of the user
 
-视图组件可以用在任何需要重复逻辑且对部分视图来说过于复杂的情况，比如：
+视图组件可以用在任何需要重复逻辑且对局部视图来说过于复杂的情况，比如：
 
 - 动态导航菜单
 - 标签云 (需要从数据库查询时)
@@ -72,7 +72,7 @@
 
 .. This section contains the high level requirements to create a view component. Later in the article we'll examine each step in detail and create a view component.
 
-这个章节包含创建视图组件的高级需求。在稍后的文章中，我们将详细的检查每一个步骤，并创建一个视图组件。
+这个章节包含创建视图组件的高级需求。在稍后的文章中，我们将详细地检查每一个步骤，并创建一个视图组件。
 
 .. The view component class
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,10 +86,10 @@
 .. - Decorating a class with the ``[ViewComponent]`` attribute, or deriving from a class with the ``[ViewComponent]`` attribute
 .. - Creating a class where the name ends with the suffix *ViewComponent*
 
-一个试图组建类可以由以下任何一个方式创建：
+一个视图组件类可以由以下任何一个方式创建：
 
 - 派生自 `ViewComponent`
-- 使用 ``[ViewComponent]`` 特性, 或者其派生类来装饰一个类
+- 使用 ``[ViewComponent]`` 特性装饰一个类，或者这个类的派生类。
 - 创建一个类，并以 *ViewComponent* 作为后缀。
 
 .. Like controllers, view components must be public, non-nested, and non-abstract classes. The view component name is the class name with the "ViewComponent" suffix removed. It can also be explicitly specified using the `ViewComponentAttribute.Name`_ property.
@@ -104,7 +104,7 @@
 一个视图组件类：
 
 - 完全支持构造函数 :doc:`依赖注入 </fundamentals/dependency-injection>`
-- 不参与控制器生命周期, 意味着你不能在视图组件中使用 :doc:`过滤器 </mvc/controllers/filters>`
+- 不参与控制器生命周期，意味着你不能在视图组件中使用 :doc:`过滤器 </mvc/controllers/filters>`
 
 .. View component methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -120,13 +120,13 @@
 .. - Are not reachable directly as an HTTP endpoint, they are invoked from your code (usually in a view). A view component never handles a request
 .. - Are overloaded on the signature rather than any details from the current HTTP request
 
-视图组件在 ``InvokeAsync`` 方法中中定义逻辑，并返回 `IViewComponentResult <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IViewComponentResult/index.html>`__。参数直接来自视图组件的调用，而不是来自模型绑定。视图组件从来不直接处理请求。通常视图组件初始化模型并传递它到视图通过调用 `View <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html>`__ 方法。总之，视图组件方法有以下特点：
+视图组件在 ``InvokeAsync`` 方法中中定义逻辑，并返回 `IViewComponentResult <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/IViewComponentResult/index.html>`__。参数直接来自视图组件的调用，而不是来自模型绑定。视图组件从来不直接处理请求。通常视图组件初始化模型并通过调用 `View <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html>`__ 方法传递它到视图。总之，视图组件方法有以下特点：
 
-- 定义一个 `InvokeAsync`` 方法并返回 ``IViewComponentResult``
-- 通常初始化模型并传递它到视图通过调用 `ViewComponent <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html>`__  `View <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html>`__ 方法
+- 定义一个 ``InvokeAsync`` 方法并返回 ``IViewComponentResult``
+- 通常初始化模型并通过调用  `ViewComponent <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewComponent/index.html>`__  `View <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/ViewResult/index.html>`__ 方法传递它到视图
 - 参数来自调用方法，而不是 HTTP，没有模型绑定
-- 不可直接作为 HTTP 终结点, 它们从你的代码中调用（通常在视图中）。视图组件从不处理请求
-- 重载的签名，而不是当前 HTTP 请求中的任何细节。
+- 不可直接作为 HTTP 终结点，它们从你的代码中调用（通常在视图中）。视图组件从不处理请求
+- 重载的签名，而不是当前 HTTP 请求中的任何细节
 
 .. View search path
 ^^^^^^^^^^^^^^^^^^
@@ -193,7 +193,7 @@
 
 .. `Download <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/view-components/sample>`__, build and test the starter code. It's a simple project with a ``Todo`` controller that displays a list of *Todo* items.
 
-`下载 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/view-components/sample>`__, 生成并测试启动代码. 这是一个简单的项目，使用一个 ``Todo`` 控制器来显示 *Todo* 项列表。
+`下载 <https://github.com/aspnet/Docs/tree/master/aspnet/mvc/views/view-components/sample>`__，生成并测试启动代码。这是一个简单的项目，使用一个 ``Todo`` 控制器来显示 *Todo* 项列表。
 
 .. image:: view-components/_static/2dos.png
 
@@ -231,7 +231,7 @@
 
 - 视图组件类可以被放在项目中 **任何** 文件夹内。
 - 因为类命名为 ``PriorityListViewComponent``，以 **ViewComponent** 作为后缀结束，在运行时会从视图中使用 "PriorityList" 字符串来引用组件类。我会在后面详细解释。
-- ``[ViewComponent]`` 特性可以改变被用来引用视图组件的名字。比如,我们可以命名类为 ``XYZ``，然后应用 ``ViewComponent`` 特性：
+- ``[ViewComponent]`` 特性可以改变被用来引用视图组件的名字。比如，我们可以命名类为 ``XYZ``，然后应用 ``ViewComponent`` 特性：
 
   .. code-block:: c#
     
@@ -240,7 +240,7 @@
 
 - 上面的 ``[ViewComponent]`` 特性告知视图组件选择器在寻找与组件相关的视图时使用名字 ``PriorityList``，并且在从视图中引用组件类时使用 "PriorityList" 字符串。我会在后面详细解释。 
 - 组件使用 :doc:`依赖注入 </fundamentals/dependency-injection>` 使得数据上下文可用。 
-- ``InvokeAsync`` 暴露一个可以在视图中调用的方法, 并且它可以接受任意数量的参数。 
+- ``InvokeAsync`` 暴露一个可以在视图中调用的方法，并且它可以接受任意数量的参数。 
 - ``InvokeAsync`` 方法返回没有完成并优先级小于等于 ``maxPriority`` 的 ``ToDo`` 项的集合。
 
 .. Create the view component Razor view
@@ -254,7 +254,7 @@
 .. #. Create a *Views/Shared/Components/PriorityList/Default.cshtml* Razor view. 
 
 #. 创建 *Views/Shared/Components* 文件夹。这个文件夹 **必须** 命名为 *Components*。
-#. 创建 *Views/Shared/Components/PriorityList* 文件夹.。这个文件夹必须和视图组件类名字匹配，或者是类名去掉后缀（如果我们遵循了约定并且使用 *ViewComponent* 作为类名后缀）。如果你使用 ``ViewComponent`` 特性，类名需要匹配特性中指定的名字。
+#. 创建 *Views/Shared/Components/PriorityList* 文件夹。这个文件夹必须和视图组件类名字匹配，或者是类名去掉后缀（如果我们遵循了约定并且使用 *ViewComponent* 作为类名后缀）。如果你使用 ``ViewComponent`` 特性，类名需要匹配特性中指定的名字。
 #. 创建一个 *Views/Shared/Components/PriorityList/Default.cshtml* Razor 视图。 
 
 .. literalinclude:: view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml
@@ -266,7 +266,7 @@ Razor 视图取一组 ``TodoItem`` 并显示它们。如果视图组件的 ``Inv
 
 .. If the view component was controller specific, you could add it to the controller specific folder (*Views/Todo/Components/PriorityList/Default.cshtml*)
 
-如果视图组件是特定控制器的，你可以到特定控制器文件夹（*Views/Todo/Components/PriorityList/Default.cshtml*）。
+如果视图组件是特定控制器的，你可以添加到特定控制器文件夹（*Views/Todo/Components/PriorityList/Default.cshtml*）。
 
 .. 4. Add a ``div`` containing a call to the priority list component to the bottom of the *Views/Todo/index.cshtml* file:
 
@@ -375,7 +375,7 @@ Razor 视图取一组 ``TodoItem`` 并显示它们。如果视图组件的 ``Inv
 
 4. 复制 *Views/Shared/Components/PriorityList/Default.cshtml* 到 *Views/Todo/Components/PriorityList/Default.cshtml*。
 #. 添加一些标记到 *Todo* 视图组件视图来表明视图是来自 *Todo* 文件夹。
-#. 测试 **非共享** 组件视图.
+#. 测试 **非共享** 组件视图。
     
 .. image:: view-components/_static/shared.png
 
@@ -406,7 +406,7 @@ Razor 视图取一组 ``TodoItem`` 并显示它们。如果视图组件的 ``Inv
 .. Additional Resources
 ----------------------
 
-额外的资源
+附加的资源
 ----------------------
 
 - :doc:`dependency-injection`
