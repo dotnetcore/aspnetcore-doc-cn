@@ -64,7 +64,7 @@ Unit Testing
 
 `Unit testing`_ involves testing a part of an app in isolation from its infrastructure and dependencies. When unit testing controller logic, only the contents of a single action is tested, not the behavior of its dependencies or of the framework itself. As you unit test your controller actions, make sure you focus only on its behavior. A controller unit test avoids things like :doc:`filters <filters>`, :doc:`routing </fundamentals/routing>`, or :doc:`model binding </mvc/models/model-binding>`. By focusing on testing just one thing, unit tests are generally simple to write and quick to run. A well-written set of unit tests can be run frequently without much overhead. However, unit tests do not detect issues in the interaction between components, which is the purpose of :ref:`integration testing <integration-testing>`.
 
-`单元测试`_ 包括对应用中独立于基础结构和依赖项之外的某一部分的测试。对控制器逻辑进行单元测试的时候，只测试一个操作的内容，而不测试其依赖项或框架本身的行为。就是说对你的控制器操作进行测试时，要确保只聚焦于操作本身的行为。控制器单元测试避开诸如 :doc:`过滤器 <filters>`， :doc:`路由 </fundamentals/routing>`, or :doc:`模型绑定 </mvc/models/model-binding>` 这些内容。由于只专注于测试某一项内容，单元测试通常编写简单而运行快捷。一组编写良好的单元测试可以无需过多开销地频繁运行。然而，单元测试并不检测组件之间交互的问题，那是 :ref:`集成测试 <integration-testing>` 的目的。
+`单元测试`_ 包括对应用中独立于基础结构和依赖项之外的某一部分的测试。对控制器逻辑进行单元测试的时候，只测试一个操作的内容，而不测试其依赖项或框架本身的行为。就是说对你的控制器操作进行测试时，要确保只聚焦于操作本身的行为。控制器单元测试避开诸如 :doc:`过滤器 <filters>`， :doc:`路由 </fundamentals/routing>`，or :doc:`模型绑定 </mvc/models/model-binding>` 这些内容。由于只专注于测试某一项内容，单元测试通常编写简单而运行快捷。一组编写良好的单元测试可以无需过多开销地频繁运行。然而，单元测试并不检测组件之间交互的问题，那是 :ref:`集成测试 <integration-testing>` 的目的。
 
 
 
@@ -94,7 +94,7 @@ The controller is following the `explicit dependencies principle <http://deviq.c
 
 The ``HTTP POST Index`` method (shown below) should verify:
 
-``HTPP POST Index`` 方法（下面所示）应当验证：
+``HTTP POST Index`` 方法（下面所示）应当验证：
 
 - The action method returns a ``ViewResult`` with the appropriate data when ``ModelState.IsValid`` is ``false``
 - The ``Add`` method on the repository is called and a ``RedirectToActionResult`` is returned with the correct arguments when ``ModelState.IsValid`` is true.
@@ -118,7 +118,7 @@ The second test verifies that when ``ModelState`` is valid, a new ``BrainstormSe
 
 .. note:: The Moq library used in this sample makes it easy to mix verifiable, or "strict", mocks with non-verifiable mocks (also called "loose" mocks or stubs). Learn more about `customizing Mock behavior with Moq <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_.
 
-.. note:: 这个例子中所采用的 Moq 库便于将可验证的，或者说 “严格的”，与不可验证的 mock （也称为 “宽松的” mock 或 stub）混合进行 mock 。了解更多关于 `使用 Moq 自定义 Mock 行为 <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_ 。
+.. note:: 这个例子中所采用的 Moq 库能够简单地混合可验证的，“严格的”及带有不可验证mock（也称为 “宽松的” mock 或 stub）的mock。了解更多关于 `使用 Moq 自定义 Mock 行为 <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_ 。
 
 Another controller in the app displays information related to a particular brainstorming session. It includes some logic to deal with invalid id values:
 
@@ -180,7 +180,7 @@ Integration Testing
 
 :doc:`Integration testing </testing/integration-testing>` is done to ensure separate modules within your app work correctly together. Generally, anything you can test with a unit test, you can also test with an integration test, but the reverse isn't true. However, integration tests tend to be much slower than unit tests. Thus, it's best to test whatever you can with unit tests, and use integration tests for scenarios that involve multiple collaborators.
 
-:doc:`集成测试 </testing/integration-testing>` 是为了确保你应用程序里各独立模块能够正确地一起工作。通常，能进行单元测试的东西，都能进行集成测试，但反之则不行。不过，集成测试往往比集成测试慢得多。因此，最好尽量采用单元测试，在涉及到多方合作的情况下再进行集成测试。
+:doc:`集成测试 </testing/integration-testing>` 是为了确保你应用程序里各独立模块能够正确地一起工作。通常，能进行单元测试的东西，都能进行集成测试，但反之则不行。不过，集成测试往往比单元测试慢得多。因此，最好尽量采用单元测试，在涉及到多方合作的情况下再进行集成测试。
 
 Although they may still be useful, mock objects are rarely used in integration tests. In unit testing, mock objects are an effective way to control how collaborators outside of the unit being tested should behave for the purposes of the test. In an integration test, real collaborators are used to confirm the whole subsystem works together correctly.
 
