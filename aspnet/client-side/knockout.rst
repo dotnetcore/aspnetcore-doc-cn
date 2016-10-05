@@ -211,12 +211,12 @@ The result works as expected in the browser:
 .. image:: knockout/_static/hyperlink-screenshot.png
 
 Knockout also supports binding to certain UI element events, such as the click event. This allows you to easily and declaratively bind UI elements to functions within the application's viewModel. As a simple example, we can add a button that, when clicked, modifies the author's twitterAlias to be all caps.
-
-Knockout also supports binding to certain UI element events, such as the click event. This allows you to easily and declaratively bind UI elements to functions within the application's viewModel. As a simple example, we can add a button that, when clicked, modifies the author's twitterAlias to be all caps.
-
-First, we add the button, binding to the button's click event, and referencing the function name we're going to add to the viewModel:
+ 
+Knockout 也支持绑定特定 UI 元素的事件，比如 click 事件。 可以让你在应用程序的视图模型中轻松声明的绑定 UI 元素到函数。举个简单的例子，我们可以添加一个按钮，当点击按钮以后，修改作者的 twitterAlias 到全部大写。
 
 First, we add the button, binding to the button's click event, and referencing the function name we're going to add to the viewModel:
+
+首先，我们添加按钮，绑定到按钮的 Click 事件，并引用我们要添加到视图模型的函数名称：
 
 .. code-block:: html
   :emphasize-lines: 4
@@ -227,7 +227,7 @@ First, we add the button, binding to the button's click event, and referencing t
 
 Then, add the function to the viewModel, and wire it up to modify the viewModel's state. Notice that to set a new value to the twitterAlias property, we call it as a method and pass in the new value.
 
-Then, add the function to the viewModel, and wire it up to modify the viewModel's state. Notice that to set a new value to the twitterAlias property, we call it as a method and pass in the new value.
+然后，在视图模型中添加函数，并将其关联来修改 ViewModels 的状态。请注意，为了给 twitterAlias 属性设置一个新的值，我们会以方法的形式调用并传入新的值。
 
 .. code-block:: javascript
   :emphasize-lines: 6
@@ -249,7 +249,7 @@ Then, add the function to the viewModel, and wire it up to modify the viewModel'
 
 Running the code and clicking the button modifies the displayed link as expected:
 
-Running the code and clicking the button modifies the displayed link as expected:
+运行代码，点击按钮修改显示链接如我们预期的那样：
 
 .. image:: knockout/_static/hyperlink-caps-screenshot.png
 
@@ -388,7 +388,13 @@ This ``<div>`` will only be visible when the customerValue is over 100.
 Templates
 ---------
 
+模板
+---------
+
 Knockout has support for templates, so that you can easily separate your UI from your behavior, or incrementally load UI elements into a large application on demand. We can update our previous example to make each row its own template by simply pulling the HTML out into a template and specifying the template by name in the data-bind call on ``<tbody>``.
+
+
+Knockout 支持模板，让你可以轻松分离用户界面和操作，在大的应用程序按需逐步加载UI元素。我们可以更新我们前面的例子，只需在数据绑定呼叫拉出来的HTML到一个模板，然后指定模板的名字上``<TBODY>``，使每一行自己的模板。
 
  .. code-block:: none
   :emphasize-lines: 1,3
@@ -404,6 +410,8 @@ Knockout has support for templates, so that you can easily separate your UI from
   </script>
 
 Knockout also supports other templating engines, such as the jQuery.tmpl library and Underscore.js's templating engine.
+
+Knockout 也支持其他的模板引擎，例如如 jQuery.tmpl 库 和 Underscore.js 模板引擎。
 
 Components
 ----------
