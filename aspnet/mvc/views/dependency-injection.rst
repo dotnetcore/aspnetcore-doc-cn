@@ -1,7 +1,7 @@
-Injecting Services Into Views
+Dependency injection into views
 =============================
 
-注入服务到视图中
+视图中的依赖注入
 ================
 
 作者： `Steve Smith`_
@@ -42,7 +42,7 @@ An example of ``@inject`` in action:
 
 This view displays a list of ``ToDoItem`` instances, along with a summary showing overall statistics. The summary is populated from the injected ``StatisticsService``. This service is registered for dependency injection in ``ConfigureServices`` in *Startup.cs*:
 
-这个视图显示了一个 ``ToDoItem`` 实例的列表，和统计概览。概览信息是由注入的服务 ``StatisticsService`` 填入的。这个服务是在 *Startup.cs* 里的 ``ConfigureServices`` 方法中被注册到依赖注入项的。
+这个视图显示了一个 ``ToDoItem`` 实例的列表和统计概览。概览信息是由注入的服务 ``StatisticsService`` 填入的。这个服务是在 *Startup.cs* 里的 ``ConfigureServices`` 方法中被注册到依赖注入项的。
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Startup.cs
   :linenos:
@@ -130,7 +130,7 @@ In addition to injecting new services, this technique can also be used to overri
 
 As you can see, the default fields include ``Html``, ``Component``, and ``Url`` (as well as the ``StatsService`` that we injected). If for instance you wanted to replace the default HTML Helpers with your own, you could easily do so using ``@inject``:
 
-如你所见，默认的字段有 ``Html`` ， ``Component`` ， 和 ``Url`` （同样还有我们注入的 ``StatsService``）。假如你想要把默认的 HTML Helpers 替换成你自己的，你可以利用 ``@inject`` 轻松实现：
+如你所见，默认的字段有 ``Html`` ， ``Component`` 和 ``Url`` （同样还有我们注入的 ``StatsService``）。假如你想要把默认的 HTML Helpers 替换成你自己的，你可以利用 ``@inject`` 轻松实现：
 
 .. literalinclude:: dependency-injection/sample/src/ViewInjectSample/Views/Helper/Index.cshtml
   :linenos:

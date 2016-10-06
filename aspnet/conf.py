@@ -31,6 +31,7 @@ import datetime
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 sys.path.append(os.path.abspath('ext'))
+
 extensions = [
     'sphinx.ext.intersphinx',
     'sphinxcontrib.dotnetdomain',
@@ -109,6 +110,7 @@ rst_epilog = """
 .. _Entity Framework Core: https://docs.efproject.net
 .. _NuGet: https://nuget.org
 .. _xUnit: https://xunit.github.io
+.. _Swagger: http://swagger.io
 .. _Dependency Injection: :doc:`</fundamentals/dependency-injection>`
 """
 

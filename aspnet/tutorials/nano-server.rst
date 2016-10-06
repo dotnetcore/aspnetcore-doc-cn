@@ -56,7 +56,7 @@ Setting up the Nano Server Instance
 设置 Nano Server 实例
 -----------------------------------
 
-`Create a new Virtual Machine using Hyper-V <https://technet.microsoft.com/en-us/library/hh846766.aspx>`_ on your development machine using the previously downloaded VHD. The machine will require you to set an administator password before logging on. At the VM console, press F11 to set the password before the first logon.
+`Create a new Virtual Machine using Hyper-V <https://technet.microsoft.com/en-us/library/hh846766.aspx>`_ on your development machine using the previously downloaded VHD. The machine will require you to set an administrator password before logging on. At the VM console, press F11 to set the password before the first log in.
 
 在你的开发机上 `通过 Hyper-V 创建一个新的虚拟机 <https://technet.microsoft.com/en-us/library/hh846766.aspx>`_ 并使用之前下载的 VHD 。这个虚拟机需要你在登录前设置一个管理员密码。第一次登录前，在虚拟机(VM)控制台按 F11 设置密码。
 
@@ -145,7 +145,10 @@ Run the following commands in the PowerShell session that was created earlier:
 
   Install-PackageProvider NanoServerPackage
   Import-PackageProvider NanoServerPackage
+  Install-NanoServerPackage -Name Microsoft-NanoServer-Storage-Package
   Install-NanoServerPackage -Name Microsoft-NanoServer-IIS-Package
+
+.. Note:: Installing *Microsoft-NanoServer-Storage-Package* requires a reboot. This is a temporary work around and won't be required in the future.
 
 To quickly verify if IIS is setup correctly, you can visit the url ``http://<nanoserver-ip-address>/`` and should see a welcome page. When IIS is installed, by default a web site called ``Default Web Site`` listening on port 80 is created.
 
@@ -243,7 +246,13 @@ Run the following commands in the remote session to create a new site in IIS for
   Import-module IISAdministration
   New-IISSite -Name "AspNetCore" -PhysicalPath c:\PublishedApps\AspNetCoreSampleForNano -BindingInformation "*:8000:"
 
+Known issue running .NET Core CLI on Nano Server and Workaround
+---------------------------------------------------------------
+If you’re using Nano Server Technical Preview 5 with .NET Core CLI, you will need to copy all DLL files from ``c:\windows\system32\forwarders`` to ``c:\Program Files\dotnet\shared\Microsoft.NETCore.App\1.0.0\`` and your  .NET Core binaries directory ``c:\dotnet`` (in this example), due to a bug that has since been fixed in later releases.
 
+If you use ``dotnet publish``, make sure to copy all DLL files from ``c:\windows\system32\forwarders`` to your publish directory as well.
+
+If your Nano Server Technical Preview 5 build is updated or serviced, please make sure to repeat this process, in case any of the DLLs have been updated as well.
 
 Running the Application
 -----------------------

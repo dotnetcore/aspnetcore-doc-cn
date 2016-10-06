@@ -5,7 +5,7 @@
 
 作者： `Venkata Koppaka`_ 和 `Scott Addie`_
 
-翻译： `耿晓亮(Blue)`_
+翻译： `耿晓亮(Blue) <https://github.com/heyixiaoran>`_
 
 在本文中你会学到如何通过 AngularJS 构建一个 SPA-style ASP.NET 应用程序。
 
@@ -20,7 +20,7 @@
 
 `AngularJS <http://angularjs.org/>`_ 是 Google 通常用来处理单页面应用程序（SPAs）的一个现代化 JavaScript 框架。AngularJS 是遵从 MIT 协议的开源项目，并且 AngularJS 的开发进度可以跟踪 `GitHub 存储库 <https://github.com/angular/angular.js>`_。因为 HTML 使用尖角号所以命名 Angular。
 
-AngularJS 不是像 jQuery 一样的 DOM 操作库，但是它用了 jQuery 的一个叫 jQLite 的子集。AngularJS 主要是基于 HTML 特性的声明所有你可以添加到 HTML 标签里。你可以通过 `Code School 网站 <http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro>`_在浏览器里尝试 AngularJS。
+AngularJS 不是像 jQuery 一样的 DOM 操作库，但是它用了 jQuery 的一个叫 jQLite 的子集。AngularJS 主要是基于 HTML 特性的声明所有你可以添加到 HTML 标签里。你可以通过 `Code School 网站 <http://campus.codeschool.com/courses/shaping-up-with-angular-js/intro>`_ 在浏览器里尝试 AngularJS。
 
 当前稳定版是 1.5.x 并且 Angular 团队正在致力于 AngularJS 的一个大改动的 V2.0 版目前仍然在开发中。中。本文专注在 Angular 1.X 附带一些 Angular 2.0 方向的注释。
 
@@ -70,7 +70,7 @@ AngularJS 不是像 jQuery 一样的 DOM 操作库，但是它用了 jQuery 的�
 AngularJS 包含了大量的主要组件，例如 *directives*, *templates*, *repeaters*, *modules*, *controllers*, 和更多其他的组件。让我们来看看这些组件是如何协同工作以增加 web 页面的行为。
 
 指令（Directives）
-^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AngularJS 通过 `指令 <https://docs.angularjs.org/guide/directive>`_ 自定义的特性和元素来扩展 HTML。AngularJS 指令通过 ``data-ng-*`` 或者 ``ng-*`` 前缀定义 (``ng`` 是 angular 的简写). 有两种类型的 AngularJS 指令:
 
@@ -112,7 +112,7 @@ AngularJS 中的其他原始指令包括：
 AngularJS 支持的所有原始指令列表，请参见 `AngularJS 文档网站的指令文件章节 <https://docs.angularjs.org/api/ng/directive>`_。
 
 数据绑定（Data Binding）
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AngularJS 提供了 `数据绑定 <https://docs.angularjs.org/guide/databinding>`_ 支持预置通过 ``ng-bind`` 指令或者像 ``{{expression}}``。AngularJS 支持双向数据绑定保持 model 的数据和 view 模板一直同步。View 的任何改变会自动反映到 model 里。同样的，Model 的任何改变也会反映到 view 里。
 
@@ -128,7 +128,7 @@ AngularJS 提供了 `数据绑定 <https://docs.angularjs.org/guide/databinding>
 .. image:: angular/_static/simple-databinding.png
 
 模板（Templates）
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
 在 AngularJS 里 `模板 <https://docs.angularjs.org/guide/templates>`_ 只是用 AngularJS directives 和 artifacts 修饰的普通 HTML 页面。在 AngularJS里  template 混合了 directives，expressions，filters 和 controls 结合 view 中 HTML。
 
@@ -148,7 +148,7 @@ AngularJS 提供了 `数据绑定 <https://docs.angularjs.org/guide/databinding>
 .. image:: angular/_static/simple-templates-2.png
 
 表达式（Expressions）
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AngularJS 中的 `表达式 <https://docs.angularjs.org/guide/expression>`_ 是写在 ``{{ expression }}`` 语法中类似 JavaScript 的代码片段。这些表达式的数据以 ``ng-bind`` 指令同样的方式绑定到 HTML。AngularJS 表达式和正规的 JavaScript 表达式的主要不同是 AngularJS 表达式针对评估 AngularJS 中的 ``$scope`` 对象。 
 
@@ -164,7 +164,7 @@ AngularJS 中的 `表达式 <https://docs.angularjs.org/guide/expression>`_ 是�
 .. image:: angular/_static/simple-expressions.png
 
 中继器（Repeaters）
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 AngularJS 中的 repeating 是通过叫 ``ng-repeat`` 的原始指令完成的。``ng-repeat`` 指令用重复数据数组的长度重复 view 中一个给定的 HTML 元素。AngularJS 中的 repeaters 可以重复一个 string 数组或者 object 数组。这是一个 string 数组的简单重复的用法。
 
@@ -256,7 +256,7 @@ Modules
   <body ng-app="personApp">
 
 控制器（Controllers）
-^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 在 AngularJS 中 `Controllers <https://docs.angularjs.org/guide/controller>`_ 是代码入口的第一点。在 AngularJS 中调用 ``<module name>.controller()`` 函数 create 和 register controllers。``ng-controller`` 指令用来表示 HTML 页面上的一个 AngularJS controller。在 Angular 中 controller 的角色是设置状态和数据模型 （``$scope``）的行为。Controllers 不应该用于直接操作 DOM。
 
@@ -300,7 +300,7 @@ Services
   });
 
 使用 services 和 REST endpoint 通信
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 下面是一个使用 AngularJS 中的 services 和 ASP.NET Core Web API endpoint 端到端交互的示例。示例从 Web API 获取数据并且在 view template 中显示数据。让我们先从 view 开始：
 
@@ -351,9 +351,9 @@ Services
 
 你可以 `在 GitHub 上查看应用程序的实例 <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`_。
 
-.. 注意:: 更多 AngularJS 应用程序架构，参见 `John Papa's Angular 样式指南 <https://github.com/johnpapa/angular-styleguide>`_
+.. note:: 更多 AngularJS 应用程序架构，参见 `John Papa's Angular 样式指南 <https://github.com/johnpapa/angular-styleguide>`_
 
-.. 注意:: 为了更容易的创建 AngularJS module, controller, factory, directive 和 view 文件，请确认查阅 Sayed Hashimi 的 `SideWaffle template pack for Visual Studio <http://sidewaffle.com/>`_。Sayed Hashimi 微软 Visual Studio Web 团队的高级项目经理并且 SideWaffle templates 被认为是黄金标准。在写这篇文章的时候，SideWaffle 已经在 Visual Studio 2012, 2013, and 2015 可用。
+.. note:: 为了更容易的创建 AngularJS module, controller, factory, directive 和 view 文件，请确认查阅 Sayed Hashimi 的 `SideWaffle template pack for Visual Studio <http://sidewaffle.com/>`_。Sayed Hashimi 微软 Visual Studio Web 团队的高级项目经理并且 SideWaffle templates 被认为是黄金标准。在写这篇文章的时候，SideWaffle 已经在 Visual Studio 2012, 2013, and 2015 可用。
 
 路由和多视图
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -407,7 +407,7 @@ controller 是通过 ``personListController.js`` 中的 module 的 ``controller`
 你可以在 `GitHub <https://github.com/aspnet/Docs/tree/master/aspnet/client-side/angular/sample>`_ 上查看完整的源码和没有展示的任何文件。
 
 Event Handlers
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 在 AngularJS 中大量的指令添加 event-handling 能力到 HTML DOM 中到输入元素。下面是内置到 AngularJS 事件的列表。
 
@@ -423,7 +423,7 @@ Event Handlers
   - ``ng-keypress``
   - ``ng-change``
 
-.. 注意:: 你可以使用 `AngularJS 中的自定义指令功能 <https://docs.angularjs.org/guide/directive>`_ 添加自己的 event handlers。
+.. note:: 你可以使用 `AngularJS 中的自定义指令功能 <https://docs.angularjs.org/guide/directive>`_ 添加自己的 event handlers。
 
 让我们看看 ``ng-click`` 事件是如果连接起来的。创建一个叫 ``eventHandlerController.js`` 的新 JavaScript 文件，并把下面的代码添加进去：
 

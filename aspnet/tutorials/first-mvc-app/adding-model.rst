@@ -93,7 +93,8 @@ In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Nam
 
 .. literalinclude:: start-mvc/sample2/src/MvcMovie/Models/MovieNoEF.cs
   :language: c#
-  :lines: 4-16
+  :start-after: #region snippet_1
+  :end-before: #endregion
   :dedent: 0
   :emphasize-lines: 7
 
@@ -187,8 +188,7 @@ To Stop IIS Express:
 - 右键点击通知区域的 IIS Express 系统托盘图标
 
  .. image:: working-with-sql/_static/iisExIcon.png
-  :height: 100px
-  :width: 200 px
+   :scale: 100%
 
 - Tap **Exit** or **Stop Site**
 
@@ -243,11 +243,11 @@ dotnet ef commands
 dotnet ef 命令
 ^^^^^^^^^^^^^^^^^^^
 
-- ``dotnet`` (.NET Core) is a cross-platform implementation of .NET. You can read about it `here <http://go.microsoft.com/fwlink/?LinkId=798644>`__.
-- ``dotnet ef migrations add Initial`` Runs the Entity Framework .NET Core CLI migrations command and creates the initial migration. The parameter "Initial" is arbitrary, but customary for the first (*initial*) database migration. This operation creates the *Data/Migrations/<date-time>_Initial.cs* file containing the migration commands to add (or drop) the `Movie` table to the database.
-- ``dotnet ef database update``  Updates the database with the migration we just created.
+- ``dotnet`` (.NET Core) is a cross-platform implementation of .NET. You can read about it `here <http://go.microsoft.com/fwlink/?LinkID=517853>`__
+- ``dotnet ef migrations add Initial`` Runs the Entity Framework .NET Core CLI migrations command and creates the initial migration. The parameter "Initial" is arbitrary, but customary for the first (*initial*) database migration. This operation creates the *Data/Migrations/<date-time>_Initial.cs* file containing the migration commands to add (or drop) the `Movie` table to the database
+- ``dotnet ef database update``  Updates the database with the migration we just created
 
-- ``dotnet`` （.NET Core） 是 .NET 的跨平台实现。你可以在 `这里 <http://go.microsoft.com/fwlink/?LinkId=798644>`__ 了解它。
+- ``dotnet`` （.NET Core） 是 .NET 的跨平台实现。你可以在 `这里 <http://go.microsoft.com/fwlink/?LinkId=517853>`__ 了解它。
 - ``dotnet ef migrations add Initial`` 运行 Entity Framework .NET Core CLI 迁移命令并创建初始化迁移。参数 "Initial" 可以是任意值，但是通常用这个作为第一个（*初始的*） 数据库迁移。这个操作创建了一个 *Data/Migrations/<date-time>_Initial.cs* 文件，这个文件包含了添加（或删除）`Movie` 表到数据库的迁移命令。
 - ``dotnet ef database update`` dotnet ef database update 用我们刚刚创建的迁移来更新数据库。
 

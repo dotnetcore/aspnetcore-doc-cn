@@ -28,19 +28,19 @@ Feature interfaces
 
 ASP.NET Core defines a number of HTTP feature interfaces in :dn:ns:`Microsoft.AspNetCore.Http.Features` which are used by servers to identify the features they support. The following feature interfaces handle requests and return responses:
 
-ASP.NET Core 定义了许多 `HTTP 功能接口 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Http/Features/index.html>`, 给服务器用来判断支持哪些功能。Web 服务器最基础功能就是处理请求并返回响应，下面是实现这个功能所涉及的接口：
+ASP.NET Core 定义了许多 `HTTP 功能接口 <https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNet/Http/Features/index.html>`，给服务器用来判断支持哪些功能。Web 服务器最基础功能就是处理请求并返回响应，下面是实现这个功能所涉及的接口：
 
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpRequestFeature`
   Defines the structure of an HTTP request, including the protocol, path, query string, headers, and body.
   
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpRequestFeature`
-  定义HTTP请求的结构, 包括协议, 路径, 查询字符串, 请求头以及正文.
+  定义HTTP请求的结构，包括协议、路径、查询字符串、请求头以及正文。
 
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpResponseFeature`
   Defines the structure of an HTTP response, including the status code, headers, and body of the response.
   
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpResponseFeature`
-  定义HTTP响应的结构, 包括状态码, 响应头以及响应正文.
+  定义HTTP响应的结构，包括状态码、响应头以及响应正文。
 
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.Authentication.IHttpAuthenticationFeature`
   Defines support for identifying users based on a ``ClaimsPrincipal`` and specifying an authentication handler.
@@ -52,7 +52,7 @@ ASP.NET Core 定义了许多 `HTTP 功能接口 <https://docs.asp.net/projects/a
   Defines support for :rfc:`HTTP Upgrades <2616#section-14.42>`, which allow the client to specify which additional protocols it would like to use if the server wishes to switch protocols.
 
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpUpgradeFeature`
-  定义对 :rfc:`HTTP 升级 <2616#section-14.42>` 的支持, 允许客户端在服务器希望切换协议的时候指定自己想要使用的协议。
+  定义对 :rfc:`HTTP 升级 <2616#section-14.42>` 的支持，允许客户端在服务器希望切换协议的时候指定自己想要使用的协议。
 
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpBufferingFeature`
   Defines methods for disabling buffering of requests and/or responses.
@@ -63,7 +63,7 @@ ASP.NET Core 定义了许多 `HTTP 功能接口 <https://docs.asp.net/projects/a
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature`
   Defines properties for local and remote addresses and ports.
   
-:dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpBufferingFeature`
+:dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature`
   定义本地和远程地址以及端口的属性。
 
 :dn:iface:`~Microsoft.AspNetCore.Http.Features.IHttpRequestLifetimeFeature`
@@ -110,7 +110,7 @@ ASP.NET Core 定义了许多 `HTTP 功能接口 <https://docs.asp.net/projects/a
 
 .. note:: :dn:iface:`~Microsoft.AspNetCore.Http.Features.ISessionFeature` is not a server feature, but is implemented by the :dn:cls:`~Microsoft.AspNetCore.Session.SessionMiddleware` (see :doc:`/fundamentals/app-state`).
 
-.. note::  :dn:iface:`~Microsoft.AspNetCore.Http.Features.ISessionFeature` 不是一个服务器功能, 而是由 :dn:cls:`~Microsoft.AspNetCore.Session.SessionMiddleware` 实现的 （见 :doc:`/fundamentals/app-state`）。  
+.. note::  :dn:iface:`~Microsoft.AspNetCore.Http.Features.ISessionFeature` 不是一个服务器功能，而是由 :dn:cls:`~Microsoft.AspNetCore.Session.SessionMiddleware` 实现的 （见 :doc:`/fundamentals/app-state`）。  
   
 Feature collections
 -------------------

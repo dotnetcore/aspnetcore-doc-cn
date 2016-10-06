@@ -7,8 +7,12 @@ Knockout.js MVVM 框架
 By `Steve Smith`_
 
 作者 `Steve Smith`_
+<<<<<<< HEAD
 
 翻译 `kiler(谢炀)`_
+=======
+翻译 `kiler(谢炀) <https://github.com/kiler398>`_
+>>>>>>> fbbc725627682f098131afc6a63d2e88613e9359
 
 
 Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application's client-side behavior. The two main concepts one must learn when working with Knockout's MVVM implementation are Observables and Bindings.
@@ -410,10 +414,9 @@ Templates
 ---------
 
 Knockout has support for templates, so that you can easily separate your UI from your behavior, or incrementally load UI elements into a large application on demand. We can update our previous example to make each row its own template by simply pulling the HTML out into a template and specifying the template by name in the data-bind call on ``<tbody>``.
-
-
+ 
 Knockout 支持模板，让你可以轻松分离用户界面和操作，在大的应用程序按需逐步加载UI元素。我们可以更新我们前面的例子，只需在数据绑定呼叫拉出来的HTML到一个模板，然后指定模板的名字上``<TBODY>``，使每一行自己的模板。
-
+ 
  .. code-block:: none
   :emphasize-lines: 1,3
 

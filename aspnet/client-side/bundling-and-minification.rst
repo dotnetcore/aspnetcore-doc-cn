@@ -1,5 +1,5 @@
 Bundling（打包） 和 Minification（压缩）
-=========================
+==================================================
 
 By `Rick Anderson`_, `Erik Reitan`_ and `Daniel Roth`_
 
@@ -20,13 +20,13 @@ Bundling（打包） 和 Minification（压缩）是 ASP.NET 里面用来提升�
 打包和压缩主要是改善页面第一次请求请求加载时间。 一旦Web页面被请求, 浏览器会缓存资源文件 (JavaScript, CSS and 图片) 所有当再次请求同一个页面、获取同一个网站请求同样的资源文件的时候打包和压缩无法获取更快的加载速度. 如果你没有正确的设置你资源文件的过期头信息, 并且你也没有使用压缩和打包,几天以后浏览器的刷新机制会把资源文件设置为过期，并且浏览器会重新请求资源文件. 在这种情况下, Bundling（打包） 和 Minification（压缩）可以在首次访问资源之后依然能够提升性能.
 
 Bundling（打包）
---------
+----------------
 
 Bundling（打包）是一个可以轻松的把多个文件合并成一个文件功能。 因为Bundling（打包）可以将多个文件合并, 这可以有效降低查看显示页面资源（例如 Web 页面）所需要的请求数量。你可以创建 CSS, JavaScript 或者其他文件的打包，更少的文件意味着更少的浏览器到服务器或者应用程序服务的所需的 HTTP 请求。这将有效的提升页面首次加载性能。
 
 Bundling（打包）功能通过使用 `gulp-concat <https://www.npmjs.com/package/gulp-concat>`__ 插件完成，该插件通过 Node 包管理器 (`npm <https://www.npmjs.com/>`__) 安装。在你的 *package.json* 文件的 ``devDependencies`` 配置节中添加 ``gulp-concat`` 包.在解决方案管理器里面的 **Dependencies** 菜单里右击 **npm** 节点选择 **Open package.json** 来在 Visual Studio 里面编辑你的项目里面的 *package.json* 文件:
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/package.json
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json
   :language: json
   :emphasize-lines: 7
 
@@ -34,20 +34,20 @@ Bundling（打包）功能通过使用 `gulp-concat <https://www.npmjs.com/packa
 
 在 *gulpfile.js* 文件中导入 ``gulp-concat`` 模块:
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/gulpfile.js
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js
   :language: js
   :lines: 4-8
   :emphasize-lines: 3
 
 使用 `globbing <http://www.tldp.org/LDP/abs/html/globbingref.html>`__ 模式来制定你所需要打包或者压缩的文件:
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/gulpfile.js
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js
   :language: js
   :lines: 12-19
 
 你可以定义 gulp 任务在目标文件上 运行 ``concat`` 来输出文件到根目录 :
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/gulpfile.js
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js
   :language: js
   :lines: 31-43
   :emphasize-lines: 3, 10
@@ -55,7 +55,7 @@ Bundling（打包）功能通过使用 `gulp-concat <https://www.npmjs.com/packa
 The `gulp.src <https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpsrcglobs-options>`__ function emits a stream of files that can be `piped <http://nodejs.org/api/stream.html#stream_readable_pipe_destination_options>`__ to gulp plugins. An array of globs specifies the files to emit using `node-glob syntax <https://github.com/isaacs/node-glob>`__. The glob beginning with ``!`` excludes matching files from the glob results up to that point.
 
 Minification（压缩）
-------------
+------------------------
 
 
 压缩执行各种代码优化来减少请求所需的资源（如CSS，图像，JavaScript文件）的文件大小。常用的优化方式是移除不必要的空格和注释，以及缩短变量名到一个字符。
@@ -93,20 +93,20 @@ imageElement        r
 
 你可以使用 `gulp-uglify <https://www.npmjs.com/package/gulp-uglify>`__ 插件来压缩的你的 JavaScript 脚本. 对于 CSS 可以使用 `gulp-cssmin <https://www.npmjs.com/package/gulp-cssmin>`__ 插件. 在此之前使用 npm 安装以下包 :
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/package.json
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/package.json
   :language: json
   :emphasize-lines: 8-9
 
 把 ``gulp-uglify`` 以及 ``gulp-cssmin`` 模块导入到你的 *gulpfile.js* 文件:
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/gulpfile.js
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js
   :language: js
   :lines: 4-8
   :emphasize-lines: 4, 5
 
 添加 ``uglify`` 来压缩打包你的 JavaScript 文件、 ``cssmin`` 用来压缩打包 CSS 文件.
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/gulpfile.js
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/gulpfile.js
   :language: js
   :lines: 31-43
   :emphasize-lines: 4, 11
@@ -143,25 +143,25 @@ Load Time (MS)      885         2360          167%
 
 在 ``开发`` 环境中运行时，以下 environment tag 将呈现未处理的CSS文件：
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml
   :language: html
   :linenos:
   :lines: 8-11
-  :dedent: 8
+  :dedent: 4
   :emphasize-lines: 3
 
 
 在 ``生产`` or ``迭代`` 环境运行时，这个 environment tag 只会显示压缩打包的 CSS 文件：
 
-.. literalinclude:: /../common/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml
+.. literalinclude:: bundling-and-minification/samples/WebApplication1/src/WebApplication1/Views/Shared/_Layout.cshtml
   :language: html
   :linenos:
   :lines: 12-17
-  :dedent: 8
+  :dedent: 4
   :emphasize-lines: 5
 
 参考资源
---------
+----------------
 - :doc:`using-gulp`
 - :doc:`using-grunt`
 - :doc:`/fundamentals/environments`
