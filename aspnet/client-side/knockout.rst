@@ -261,7 +261,8 @@ Control Flow
 
 Knockout includes bindings that can perform conditional and looping operations. Looping operations are especially useful for binding lists of data to UI lists, menus, and grids or tables. The foreach binding will iterate over an array. When used with an observable array, it will automatically update the UI elements when items are added or removed from the array, without re-creating every element in the UI tree. The following example uses a new viewModel which includes an observable array of game results. It is bound to a simple table with two columns using a ``foreach`` binding on the ``<tbody>`` element. Each ``<tr>`` element within ``<tbody>`` will be bound to an element of the gameResults collection.
 
-Knockout includes bindings that can perform conditional and looping operations. Looping operations are especially useful for binding lists of data to UI lists, menus, and grids or tables. The foreach binding will iterate over an array. When used with an observable array, it will automatically update the UI elements when items are added or removed from the array, without re-creating every element in the UI tree. The following example uses a new viewModel which includes an observable array of game results. It is bound to a simple table with two columns using a ``foreach`` binding on the ``<tbody>`` element. Each ``<tr>`` element within ``<tbody>`` will be bound to an element of the gameResults collection.
+Knockout 包括可以进行条件和循环操作绑定。循环操作在把列表数据绑定到UI列表，菜单，或者网格数据的时候特别有用。foreach绑定会遍历数组。使用可观察数组的时候，当数据行在数组中被添加或删除的时候，UI元素会自动更新而无需在UI树中重建每一个UI元素。下面的示例使用一个新的视图模型，其中包括比赛结果作为可观察者数组。
+它会使用 ``foreach`` 绑定到一个具有2个列的简单的表格的 ``<TBODY>`` 元素中。``<tbody>`` 中的每个 ``<tr>`` 元素中会被绑定到 gameResults 集合中的一个数据行。
 
 .. code-block:: html
   :emphasize-lines: 9,11-12,17-34
@@ -305,13 +306,13 @@ Knockout includes bindings that can perform conditional and looping operations. 
 
 Notice that this time we're using ViewModel with a capital “V" because we expect to construct it using “new" (in the applyBindings call). When executed, the page results in the following output:
 
-Notice that this time we're using ViewModel with a capital “V" because we expect to construct it using “new" (in the applyBindings call). When executed, the page results in the following output:
+注意，这一次我们使用视图模型用大写字母“V”，是因为我们希望通过“新”的方法（在applyBindings调用）构造它。当页面执行时候，会产生以下输出：
 
 .. image:: knockout/_static/record-screenshot.png
 
 To demonstrate that the observable collection is working, let's add a bit more functionality. We can include the ability to record the results of another game to the ViewModel, and then add a button and some UI to work with this new function.  First, let's create the addResult method:
 
-To demonstrate that the observable collection is working, let's add a bit more functionality. We can include the ability to record the results of another game to the ViewModel, and then add a button and some UI to work with this new function.  First, let's create the addResult method:
+为了证明可观察者集合在工作，让我们添加更多的功能。我们添加记录另一场比赛结果到视图模型，然后添加一个按钮，以及对应新功能的UI。首先，让我们创建 addResult 方法：
 
 .. code-block:: javascript
 
@@ -322,7 +323,7 @@ To demonstrate that the observable collection is working, let's add a bit more f
 
 Bind this method to a button using the ``click`` binding:
 
-Bind this method to a button using the ``click`` binding:
+使用 ``click`` 绑定把方法绑定到按钮：
 
 .. code-block:: html
 
@@ -330,11 +331,13 @@ Bind this method to a button using the ``click`` binding:
 
 Open the page in the browser and click the button a couple of times, resulting in a new table row with each click:
 
-Open the page in the browser and click the button a couple of times, resulting in a new table row with each click:
+在浏览器中打开页面并多次点击按钮，每一次点击会在表格中产生一个新行：
 
 .. image:: knockout/_static/record-addresult-screenshot.png
 
 There are a few ways to support adding new records in the UI, typically either inline or in a separate form. We can easily modify the table to use textboxes and dropdownlists so that the whole thing is editable. Just change the ``<tr>`` element as shown:
+
+有几种方式支持在UI中添加新的数据，常用的是内联或单独的形式。我们可以很容易地修改表格使用文本框和 dropdownlists 使得其变为可编辑的。唯一做的事情只是改变 ``<tr>`` 中的元素，如下所示：
 
 .. code-block:: html
 
@@ -348,13 +351,21 @@ There are a few ways to support adding new records in the UI, typically either i
 
 Note that ``$root`` refers to the root ViewModel, which is where the possible choices are exposed. ``$data`` refers to whatever the current model is within a given context - in this case it refers to an individual element of the resultChoices array, each of which is a simple string.
 
+注意 ``$root`` 指代页面的根 ViewModel, 暴露出数据选择的接口。 ``$data`` 指代当前上下文中的 ViewModel - 在本例中指代独立的 resultChoices 苏组， 每一行数据项都是简单的字符串。
+
 With this change, the entire grid becomes editable:
+
+通过上述修改，表格变得可编辑了。
 
 .. image:: knockout/_static/editable-grid-screenshot.png
 
 If we weren't using Knockout, we could achieve all of this using jQuery, but most likely it would not be nearly as efficient. Knockout tracks which bound data items in the ViewModel correspond to which UI elements, and only updates those elements that need to be added, removed, or updated. It would take significant effort to achieve this ourselves using jQuery or direct DOM manipulation, and even then if we then wanted to display aggregate results (such as a win-loss record) based on the table's data, we would need to once more loop through it and parse the HTML elements.  With Knockout, displaying the win-loss record is trivial. We can perform the calculations within the ViewModel itself, and then display it with a simple text binding and a ``<span>``.
 
+如果我们不使用 Knockout，我们依旧可以使用 jQuery 做到这一切，但很有可能它没有办法如此的高效。Knockout 会跟踪 ViewModel 中 绑定数据项对应于哪个UI元素，并且仅更新那些需要被添加，移除或更新的元素。如果使用jQuery或直接DOM来操作基于表的数据实现同样的效果，我们需要付出更多的工作量，即便如果我们当时就仅仅想显示汇总结果（如输赢记录），我们还是需要通过一次或者更多的循环并解析HTML元素。在 Knockout 里面，显示输赢记录非常简单。我们可以在视图模型本身进行计算，然后用一个 ``<span>`` 绑定数据来显示它。
+
 To build the win-loss record string, we can use a computed observable. Note that references to observable properties within the ViewModel must be function calls, otherwise they will not retrieve the value of the observable (i.e. ``gameResults()`` not ``gameResults`` in the code shown):
+
+如果需要构造输赢记录的字符串，我们可以使用一个观察者计算字段。请注意，在视图模型中观察者属性引用必须是函数调用，否则不会取得观察者值（所示的代码中使用 ``gameResults()`` 而不是 ``gameResults```）：
 
 .. code-block:: javascript
 
@@ -367,23 +378,29 @@ To build the win-loss record string, we can use a computed observable. Note that
 
 Bind this function to a span within the ``<h1>`` element at the top of the page:
 
+在页面的顶部把这个函数绑定到一个 span 的  ``<h1>`` 元素：
+
  .. code-block:: html
 
   <h1>Record <span data-bind="text: displayRecord"></span></h1>
 
-The result:
+结果如下：
 
 .. image:: knockout/_static/record-winloss-screenshot.png
 
 Adding rows or modifying the selected element in any row's Result column will update the record shown at the top of the window.
 
+添加行或修改所选元素结果列会在窗口顶部显示。
+
 In addition to binding to values, you can also use almost any legal JavaScript expression within a binding. For example, if a UI element should only appear under certain conditions, such as when a value exceeds a certain threshold, you can specify this logically within the binding expression:
+
+支出绑定到值，你也可以用其他几乎所有的合法的JavaScript表达式来做绑定。例如，如果UI元素只在某些条件或者某个值超过指定阈值的时候显示，我们可指定绑定逻辑：
 
  .. code-block:: html
 
   <div data-bind="visible: customerValue > 100"></div>
 
-This ``<div>`` will only be visible when the customerValue is over 100.
+这个 ``<div>`` 只会在 customerValue 超过 100的时候显示。
 
 Templates
 ---------
