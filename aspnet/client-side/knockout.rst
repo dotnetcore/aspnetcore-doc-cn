@@ -68,6 +68,7 @@ To include Knockout on a page that will use it, simply add a ``<script>`` elemen
 
   <script type="text/javascript" src="knockout-3.3.0.js"></script>
 
+
 Observables, ViewModels, and Simple Binding
 -------------------------------------------
 
