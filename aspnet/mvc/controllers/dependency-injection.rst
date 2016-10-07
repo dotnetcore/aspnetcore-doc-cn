@@ -8,6 +8,7 @@ Dependency Injection and Controllers
 ====================================
 
 作者： `Steve Smith`_
+
 翻译： `刘浩杨 <http://github.com/liuhaoyang>`_
 
 ASP.NET Core MVC controllers should request their dependencies explicitly via their constructors. In some instances, individual controller actions may require a service, and it may not make sense to request at the controller level. In this case, you can also choose to inject a service as a parameter on the action method.
@@ -80,7 +81,7 @@ This error occurs when we have not configured a service in the ``ConfigureServic
   
 .. note:: This particular service could be implemented using any of several different lifetime options (``Transient``, ``Scoped``, or ``Singleton``). See :doc:`/fundamentals/dependency-injection` to understand how each of these scope options will affect the behavior of your service.
 
-.. note:: 这个特殊的服务可以使用任何不同的生命周期选项来实现（``Transient``, ``Scoped``, or ``Singleton``）。参考 :doc:`/fundamentals/dependency-injection` 来了解每一个作用域选项将如何影响你的服务的行为。
+.. note:: 这个特殊的服务可以使用任何不同的生命周期选项来实现（``Transient`` 、 ``Scoped`` 或 ``Singleton``）。参考 :doc:`/fundamentals/dependency-injection` 来了解每一个作用域选项将如何影响你的服务的行为。
 
 Once the service has been configured, running the application and navigating to the home page should display the time-based message as expected:
 
