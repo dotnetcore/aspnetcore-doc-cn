@@ -1,4 +1,4 @@
-:version: 1.0.0-rc1
+:version: 1.0.0
 
 Testing Controller Logic
 ========================
@@ -90,9 +90,10 @@ The controller is following the `explicit dependencies principle <http://deviq.c
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs
   :language: c#
+  :lines: 1-33,77-95
   :emphasize-lines: 17-18
 
-The ``HTTP POST Index`` method (shown below) should verify:
+The ``HomeController`` ``HTTP POST Index`` method (shown above) should verify:
 
 ``HTTP POST Index`` 方法（下面所示）应当验证：
 
@@ -104,9 +105,9 @@ The ``HTTP POST Index`` method (shown below) should verify:
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs
   :language: c#
-  :lines: 29-57
-  :dedent: 4
-  :emphasize-lines: 1-2,10-12,15-16,19,24-25,28
+  :lines: 35-75
+  :dedent: 8
+  :emphasize-lines: 8,15-16,37-39
 
 The first test confirms when ``ModelState`` is not valid, the same ``ViewResult`` is returned as for a ``GET`` request. Note that the test doesn't attempt to pass in an invalid model. That wouldn't work anyway since model binding isn't running - we're just calling the method directly. However, we're not trying to test model binding - we're only testing what our code in the action method does. The simplest approach is to add an error to ``ModelState``.
 
@@ -126,7 +127,7 @@ Another controller in the app displays information related to a particular brain
 
 .. literalinclude:: testing/sample/TestingControllersSample/src/TestingControllersSample/Controllers/SessionController.cs
   :language: c#
-  :emphasize-lines: 16,20,25,33
+  :emphasize-lines: 19-22,25-28
 
 The controller action has three cases to test, one for each ``return`` statement:
 
@@ -134,7 +135,7 @@ The controller action has three cases to test, one for each ``return`` statement
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/SessionControllerTests.cs
   :language: c#
-  :emphasize-lines: 16,26,39
+  :emphasize-lines: 27-29,46-47,64-68
 
 The app exposes functionality as a web API (a list of ideas associated with a brainstorming session and a method for adding new ideas to a session):
 
@@ -144,7 +145,7 @@ The app exposes functionality as a web API (a list of ideas associated with a br
 
 .. literalinclude:: testing/sample/TestingControllersSample/src/TestingControllersSample/Api/IdeasController.cs
   :language: c#
-  :emphasize-lines: 20-22,27,29-36,39-41,45,50,60
+  :emphasize-lines: 21-22,27,30-36,41-42,46,52,65
 
 The ``ForSession`` method returns a list of ``IdeaDTO`` types, with property names camel cased to match JavaScript conventions. Avoid returning your business domain entities directly via API calls, since frequently they include more data than the API client requires, and they unnecessarily couple your app's internal domain model with the API you expose externally. Mapping between domain entities and the types you will return over the wire can be done manually (using a LINQ ``Select`` as shown here) or using a library like `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_
 
@@ -156,7 +157,8 @@ The unit tests for the ``Create`` and ``ForSession`` API methods:
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/ApiIdeasControllerTests.cs
   :language: c#
-  :emphasize-lines: 16-17,26-27,37-38,65-66,76-77
+  :lines: 1-83,121-135
+  :emphasize-lines: 18,23,29,33,38-39,43,50,58-59,68-70,76-78
 
 As stated previously, to test the behavior of the method when ``ModelState`` is invalid, add a model error to the controller as part of the test. Don't try to test model validation or model binding in your unit tests - just test your action method's behavior when confronted with a particular ``ModelState`` value.
 
@@ -255,7 +257,6 @@ The following set of tests target the ``Create`` method in the :ref:`IdeasContro
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs
   :language: c#
-  :lines: 37-142
 
 下面一组测试针对上文所示的 :ref:`IdeasController <ideas-controller>` 里的 ``Create`` 方法：
 

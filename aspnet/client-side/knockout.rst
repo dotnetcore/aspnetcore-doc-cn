@@ -7,12 +7,8 @@ Knockout.js MVVM 框架
 By `Steve Smith`_
 
 作者 `Steve Smith`_
-<<<<<<< HEAD
 
-翻译 `kiler(谢炀)`_
-=======
 翻译 `kiler(谢炀) <https://github.com/kiler398>`_
->>>>>>> fbbc725627682f098131afc6a63d2e88613e9359
 
 
 Knockout is a popular JavaScript library that simplifies the creation of complex data-based user interfaces. It can be used alone or with other libraries, such as jQuery. Its primary purpose is to bind UI elements to an underlying data model defined as a JavaScript object, such that when changes are made to the UI, the model is updated, and vice versa. Knockout facilitates the use of a Model-View-ViewModel (MVVM) pattern in a web application's client-side behavior. The two main concepts one must learn when working with Knockout's MVVM implementation are Observables and Bindings.
