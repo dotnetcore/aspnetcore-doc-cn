@@ -40,16 +40,15 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/project.json
   :linenos:
   :language: javascript
-  :lines: 21-26
+  :lines: 9-14
   :dedent: 2
   :emphasize-lines: 5
 
 当Microsoft.AspNet.TestHost包被包含在项目中，您将能够在您的测试中创建和配置TESTSERVER。下面的测试演示了如何验证一个对网站的根节点提出了请求并返回的“Hello World！”，并且应该利用Visual Studio中创建的默认ASP.NET空Web模板中成功运行。
 
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebDefaultRequestShould.cs
-  :linenos:
   :language: c#
-  :lines: 10-32
+  :lines: 11-33
   :dedent: 8
   :emphasize-lines: 6-7
 
@@ -61,9 +60,8 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 现在我们可以添加一些附加的集成测试，来确认通过web应用程序的素数检测功能性工作：
 
 .. literalinclude:: integration-testing/sample/test/PrimeWeb.IntegrationTests/PrimeWebCheckPrimeShould.cs
-  :linenos:
   :language: c#
-  :lines: 10-68
+  :lines: 9-66
   :dedent: 4
   :emphasize-lines: 8-9
 
@@ -81,14 +79,11 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 重构是改变一个应用程序的代码，以提高其设计而不改变其行为的过程。当有一套通过的测试，重构将理想的进行，因为这些有助于确保系统的行为在重构之前和之后保持不变。看看素数检测逻辑在我们的web应用程序中的实现方式，我们发现：
 
 .. code-block:: c#
-  :linenos:
-  :emphasize-lines: 13-33
+  :emphasize-lines: 11-31
 
     public void Configure(IApplicationBuilder app,
         IHostingEnvironment env)
     {
-        // Add the platform handler to the request pipeline.
-        app.UseIISPlatformHandler();
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -137,20 +132,18 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 .. tip:: 由于我们的中间件取决于 ``PrimeService`` 服务，我们也通过构造函数请求该服务的实例。该框架通过依赖注入来提供这项服务，查看 :doc:`/fundamentals/dependency-injection` ，假设已经进行了配置(例如在 ``ConfigureServices`` 中)。
 
 .. literalinclude:: integration-testing/sample/src/PrimeWeb/Middleware/PrimeCheckerMiddleware.cs
-  :linenos:
-  :language: c#
-  :emphasize-lines: 39-62
+  :language: none
+  :emphasize-lines: 39-63
 
 .. tip:: 由于这个中间件作为请求委托链的一个endpoint,当它的路径匹配时，在这种情况下这个中间件处理请求时并没有调用 ``_next.Invoke`` 
 
 有了合适的中间件和一写有用的扩展方法，使配置更加容易。重构过的 ``Configure`` 方法看起来像这样：
 
 .. literalinclude:: integration-testing/sample/src/PrimeWeb/Startup.cs
-  :linenos:
   :language: c#
-  :lines: 18-34
+  :lines: 19-33
   :dedent: 8
-  :emphasize-lines: 11
+  :emphasize-lines: 9
 
 在这重构之后，我们有信心Web应用程序仍然像之前一样工作，因为我们的集成测试都是通过的。
 
@@ -164,5 +157,7 @@ ASP.NET包括可添加到集成测试项目的测试宿主和用于托管ASP.NET
 附加的资源
 ---------
 
-- :doc: `unit-testing`
-- :doc: `/fundamentals/middleware`
+- `Unit testing`_
+- :doc:`/fundamentals/middleware`
+
+.. _Unit testing: https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test
