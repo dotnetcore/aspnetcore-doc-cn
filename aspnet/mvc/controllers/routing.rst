@@ -1,114 +1,195 @@
-Routing to Controller Actions
+.. Routing to Controller Actions
 ========================================
 
-By `Ryan Nowak`_ and `Rick Anderson`_
+控制器操作路由
+========================================
 
-ASP.NET Core MVC uses the Routing :doc:`middleware </fundamentals/middleware>` to match the URLs of incoming requests and map them to actions. Routes are defined in startup code or attributes. Routes describe how URL paths should be matched to actions. Routes are also used to generate URLs (for links) sent out in responses.
+作者： `Ryan Nowak`_ 、 `Rick Anderson`_
 
-This document will explain the interactions between MVC and routing, and how typical MVC apps make use of routing features. See :doc:`Routing </fundamentals/routing>` for details on advanced routing.
+翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-.. contents:: Sections:
+校对： 
+
+.. ASP.NET Core MVC uses the Routing :doc:`middleware </fundamentals/middleware>` to match the URLs of incoming requests and map them to actions. Routes are defined in startup code or attributes. Routes describe how URL paths should be matched to actions. Routes are also used to generate URLs (for links) sent out in responses.
+
+ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹配传入请求的 URL 并映射到具体的操作。路由通过启动代码或者特性定义。路由描述 URL 路径应该如何匹配到操作。路由也同样用于生成相应中返回的 URL（用于链接）。
+
+.. This document will explain the interactions between MVC and routing, and how typical MVC apps make use of routing features. See :doc:`Routing </fundamentals/routing>` for details on advanced routing.
+
+这篇文章将解释 MVC 和路由之间的相互作用，以及典型的 MVC 应用程序如何使用路由特性。查看 :doc:`路由 </fundamentals/routing>` 获取更多高级路由信息。
+
+.. .. contents:: Sections:
+..  :local:
+..  :depth: 1
+
+.. contents:: 章节:
   :local:
   :depth: 1
 
-Setting up Routing Middleware
+.. Setting up Routing Middleware
 ------------------------------
 
-In your `Configure` method you may see code similar to::
+配置路由中间件
+------------------------------
+
+.. In your `Configure` method you may see code similar to::
+
+在你的 `Configure` 方法中也许能看到以下代码::
 
   app.UseMvc(routes =>
   {
      routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
   });
 
-Inside the call to :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc`, :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` is used to create a single route, which we'll refer to as the ``default`` route. Most MVC apps will use a route with a template similar to the ``default`` route.
+.. Inside the call to :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc`, :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` is used to create a single route, which we'll refer to as the ``default`` route. Most MVC apps will use a route with a template similar to the ``default`` route.
 
-The route template ``"{controller=Home}/{action=Index}/{id?}"`` can match a URL path like ``/Products/Details/5`` and will extract the route values ``{ controller = Products, action = Details, id = 5 }`` by tokenizing the path. MVC will attempt to locate a controller named ``ProductsController`` and run the action ``Details``::
+其中对 :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc`， :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` 的调用用来创建单个路由，我们称之为 ``default`` 路由。大部分 MVC 应用程序使用路由模板类似 ``default`` 路由。
+
+.. The route template ``"{controller=Home}/{action=Index}/{id?}"`` can match a URL path like ``/Products/Details/5`` and will extract the route values ``{ controller = Products, action = Details, id = 5 }`` by tokenizing the path. MVC will attempt to locate a controller named ``ProductsController`` and run the action ``Details``::
+
+路由模板 ``"{controller=Home}/{action=Index}/{id?}"`` 能够匹配路由比如 ``/Products/Details/5`` 并会通过标记路径提取路由值 ``{ controller = Products, action = Details, id = 5 }``。MVC 将尝试定位名为 ``ProductsController`` 的控制器并运行操作 ``Details``::
 
   public class ProductsController : Controller
   {
      public IActionResult Details(int id) { ... }
   }
 
-Note that in this example, model binding would use the value of ``id = 5`` to set the ``id`` parameter to ``5`` when invoking this action. See the :doc:`/mvc/models/model-binding` for more details.
+.. Note that in this example, model binding would use the value of ``id = 5`` to set the ``id`` parameter to ``5`` when invoking this action. See the :doc:`/mvc/models/model-binding` for more details.
 
-Using the ``default`` route::
+注意这个例子，当调用这个操作时，模型绑定会使用 ``id = 5`` 的值来将 ``id`` 参数设置为 ``5``。查看 :doc:`/mvc/models/model-binding` 获取更多信息。
+
+.. Using the ``default`` route::
+
+使用 ``default`` 路由::
 
    routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-The route template:
+.. The route template:
 
-- ``{controller=Home}`` defines ``Home`` as the default ``controller``
-- ``{action=Index}`` defines ``Index`` as the default ``action``
-- ``{id?}`` defines ``id`` as optional
+.. - ``{controller=Home}`` defines ``Home`` as the default ``controller``
+.. - ``{action=Index}`` defines ``Index`` as the default ``action``
+.. - ``{id?}`` defines ``id`` as optional
 
-Default and optional route parameters do not need to be present in the URL path for a match. See the  :doc:`Routing </fundamentals/routing>` for a detailed description of route template syntax.
+路由模板：
 
-``"{controller=Home}/{action=Index}/{id?}"`` can match the URL path ``/`` and will produce the route values ``{ controller = Home, action = Index }``. The values for ``controller`` and ``action`` make use of the default values, ``id`` does not produce a value since there is no corresponding segment in the URL path. MVC would use these route values to select the ``HomeController`` and ``Index`` action::
+- ``{controller=Home}`` 定义 ``Home`` 作为默认的 ``controller``
+- ``{action=Index}`` 定义 ``Index`` 作为默认的 ``action``
+- ``{id?}`` 定义 ``id`` 为可选项
+
+.. Default and optional route parameters do not need to be present in the URL path for a match. See the  :doc:`Routing </fundamentals/routing>` for a detailed description of route template syntax.
+
+默认和可选路由参数不需要出现在 URL 路径，查看 :doc:`Routing </fundamentals/routing>` 获取路由模板语法的详细描述。
+
+.. ``"{controller=Home}/{action=Index}/{id?}"`` can match the URL path ``/`` and will produce the route values ``{ controller = Home, action = Index }``. The values for ``controller`` and ``action`` make use of the default values, ``id`` does not produce a value since there is no corresponding segment in the URL path. MVC would use these route values to select the ``HomeController`` and ``Index`` action::
+
+``"{controller=Home}/{action=Index}/{id?}"`` 可以匹配 URL 路径 ``/`` 并产生路由值 ``{ controller = Home, action = Index }``。 ``controller`` 和 ``action`` 使用默认值，因为在 URL 路径中没有响应的片段，所以 ``id`` 不会产生值。MVC会使用这些路由值选择 ``HomeController`` 和 ``Index`` 操作::
 
   public class HomeController : Controller
   {
     public IActionResult Index() { ... }
   }
 
-Using this controller definition and route template, the ``HomeController.Index`` action would be executed for any of the following URL paths:
+.. Using this controller definition and route template, the ``HomeController.Index`` action would be executed for any of the following URL paths:
+
+使用这个控制器和路由模板， ``HomeController.Index`` 操作会被以下任一 URL 路径执行：
 
 - ``/Home/Index/17``
 - ``/Home/Index``
 - ``/Home``
 - ``/``
 
-The convenience method :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute`::
+.. The convenience method :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute`::
+
+简便的方法 :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute`::
 
   app.UseMvcWithDefaultRoute();
 
-Can be used to replace::
+.. Can be used to replace::
+
+可以被替换为::
 
   app.UseMvc(routes =>
   {
      routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
   });
 
-``UseMvc`` and ``UseMvcWithDefaultRoute`` add an instance of :dn:cls:`~Microsoft.AspNetCore.Builder.RouterMiddleware` to the middleware pipeline. MVC doesn't interact directly with middleware, and uses routing to handle requests. MVC is connected to the routes through an instance of :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.MvcRouteHandler`. The code inside of ``UseMvc`` is similar to the following::
+.. ``UseMvc`` and ``UseMvcWithDefaultRoute`` add an instance of :dn:cls:`~Microsoft.AspNetCore.Builder.RouterMiddleware` to the middleware pipeline. MVC doesn't interact directly with middleware, and uses routing to handle requests. MVC is connected to the routes through an instance of :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.MvcRouteHandler`. The code inside of ``UseMvc`` is similar to the following::
+
+``UseMvc`` 和 ``UseMvcWithDefaultRoute`` 添加一个 :dn:cls:`~Microsoft.AspNetCore.Builder.RouterMiddleware` 的实例到中间件管道。MVC 不直接与中间件交互，使用路由来处理请求。MVC 通过 :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.MvcRouteHandler` 的实例连接到路由。``UseMvc`` 中的代码类似于下面::
 
    var routes = new RouteBuilder(app);
 
-   // Add connection to MVC, will be hooked up by calls to MapRoute.
+   // 添加连接到 MVC，将通过调用 MapRoute 连接。
    routes.DefaultHandler = new MvcRouteHandler(...);
 
-   // Execute callback to register routes.
+   // 执行回调来注册路由。
    // routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-   // Create route collection and add the middleware.
+   // 创建路由集合并添加中间件。
    app.UseRouter(routes.Build());
 
-:dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc` does not directly define any routes, it adds a placeholder to the route collection for the ``attribute`` route. The overload ``UseMvc(Action<IRouteBuilder>)`` lets you add your own routes and also supports attribute routing.  ``UseMvc`` and all of its variations adds a placeholder for the attribute route - attribute routing is always available regardless of how you configure ``UseMvc``. :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute` defines a default route and supports attribute routing. The :ref:`attribute-routing-ref-label` section includes more details on attribute routing.
+..   var routes = new RouteBuilder(app);
+
+..   // Add connection to MVC, will be hooked up by calls to MapRoute.
+..   routes.DefaultHandler = new MvcRouteHandler(...);
+
+..   // Execute callback to register routes.
+..   // routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+..   // Create route collection and add the middleware.
+..   app.UseRouter(routes.Build());
+  
+.. :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc` does not directly define any routes, it adds a placeholder to the route collection for the ``attribute`` route. The overload ``UseMvc(Action<IRouteBuilder>)`` lets you add your own routes and also supports attribute routing.  ``UseMvc`` and all of its variations adds a placeholder for the attribute route - attribute routing is always available regardless of how you configure ``UseMvc``. :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute` defines a default route and supports attribute routing. The :ref:`attribute-routing-ref-label` section includes more details on attribute routing.
+
+:dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc` 不会直接定义任何路由，它为 ``特性`` 路由在路由集合中添加了一个占位符。``UseMvc(Action<IRouteBuilder>)`` 这个重载让你添加自己的路由并且也支持特性路由。``UseMvc`` 和它所有的重载都为特性路由添加占位符，不管你如何配置 ``UseMvc`` ，特性路由总是可用的。 :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute` 定义一个默认路由并支持特性路由。:ref:`attribute-routing-ref-label` 章节包含了特性路由的信息。
 
 .. _routing-conventional-ref-label:
 
-Conventional routing
+.. Conventional routing
 ---------------------
 
-The ``default`` route::
+常规路由
+---------------------
+
+.. The ``default`` route::
+
+``default`` 路由::
 
   routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
-is an example of a *conventional routing*. We call this style *conventional routing* because it establishes a *convention* for URL paths:
+.. is an example of a *conventional routing*. We call this style *conventional routing* because it establishes a *convention* for URL paths:
 
--  the first path segment maps to the controller name
--  the second maps to the action name.
--  the third segment is used for an optional ``id`` used to map to a model entity
+是一个 *常规路由* 的例子。我们将这种风格称为 *常规路由* 因为它为 URL 路径建立了一个 *约定* ：
 
-Using this ``default`` route, the URL path ``/Products/List`` maps to the ``ProductsController.List`` action, and ``/Blog/Article/17`` maps to ``BlogController.Article``. This mapping is based on the controller and action names **only** and is not based on namespaces, source file locations, or method parameters.
+.. -  the first path segment maps to the controller name
+.. -  the second maps to the action name.
+.. -  the third segment is used for an optional ``id`` used to map to a model entity
 
-.. Tip:: Using conventional routing with the default route allows you to build the application quickly without having to come up with a new URL pattern for each action you define. For an application with CRUD style actions, having consistency for the URLs across your controllers can help simplify your code and make your UI more predictable.
+-  第一个路径片段映射控制器名。
+-  第二个片段映射操作名。
+-  第三个片段是一个可选的 ``id`` 用于映射到模型实体。
 
-.. warning:: The ``id`` is defined as optional by the route template, meaning that your actions can execute without the ID provided as part of the URL. Usually what will happen if ``id`` is omitted from the URL is that it will be set to ``0`` by model binding, and as a result no entity will be found in the database matching ``id == 0``. Attribute routing can give you fine-grained control to make the ID required for some actions and not for others. By convention the documentation will include optional parameters like ``id`` when they are likely to appear in correct usage.
+.. Using this ``default`` route, the URL path ``/Products/List`` maps to the ``ProductsController.List`` action, and ``/Blog/Article/17`` maps to ``BlogController.Article``. This mapping is based on the controller and action names **only** and is not based on namespaces, source file locations, or method parameters.
 
-Multiple Routes
+使用这个 ``default`` 路由，URL 路径 ``/Products/List`` 映射到 ``ProductsController.List`` 操作，``/Blog/Article/17`` 映射到 ``BlogController.Article``。这个映射只基于控制器名和操作名，与命名空间、源文件位置或者方法参数无关。
+
+.. .. Tip:: Using conventional routing with the default route allows you to build the application quickly without having to come up with a new URL pattern for each action you define. For an application with CRUD style actions, having consistency for the URLs across your controllers can help simplify your code and make your UI more predictable.
+
+.. Tip:: 使用默认路由的常规路由使你可以快速构建应用程序，而不必为你定义的每一个操作想新的 URL 模式。对于 CRUD 风格操作的应用程序，保持访问控制器 URL 的一致性可以帮助简化你的代码并使你的 UI 更加可预测。
+
+.. .. warning:: The ``id`` is defined as optional by the route template, meaning that your actions can execute without the ID provided as part of the URL. Usually what will happen if ``id`` is omitted from the URL is that it will be set to ``0`` by model binding, and as a result no entity will be found in the database matching ``id == 0``. Attribute routing can give you fine-grained control to make the ID required for some actions and not for others. By convention the documentation will include optional parameters like ``id`` when they are likely to appear in correct usage.
+
+.. warning:: ``id`` 在路由模板中定义为可选，意味着你可以执行操作且不需要在 URL 中提供 ID。通常在 URL 中忽略 ``id`` 会通过模型绑定设置为 ``0``，并且没有实体会通过在数据库中匹配 ``id == 0`` 被找到。特性路由可以提供细粒度控制使 ID 在某些操作中必传以及其他操作中不必传。按照惯例，当可选参数可能出现在正确的用法时，文档将包括它们，比如 ``id``。
+
+.. Multiple Routes
 -------------------
 
-You can add multiple routes inside ``UseMvc`` by adding more calls to ``MapRoute``. Doing so allows you to define multiple conventions, or to add conventional routes that are dedicated to a specific action, such as::
+多路由
+-------------------
+
+.. You can add multiple routes inside ``UseMvc`` by adding more calls to ``MapRoute``. Doing so allows you to define multiple conventions, or to add conventional routes that are dedicated to a specific action, such as::
+
+你可以在 ``UseMvc`` 中通过添加 ``MapRoute`` 调用来添加多个路由。这样做让你可以定义多个约定，或者添加专用于一个特定操作的常规路由，比如::
 
    app.UseMvc(routes =>
    {
@@ -117,11 +198,17 @@ You can add multiple routes inside ``UseMvc`` by adding more calls to ``MapRoute
       routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
    }
 
-The ``blog`` route here is a *dedicated conventional route*, meaning that it uses the conventional routing system, but is dedicated to a specific action. Since ``controller`` and ``action`` don't appear in the route template as parameters, they can only have the default values, and thus this route will always map to the action ``BlogController.Article``.
+.. The ``blog`` route here is a *dedicated conventional route*, meaning that it uses the conventional routing system, but is dedicated to a specific action. Since ``controller`` and ``action`` don't appear in the route template as parameters, they can only have the default values, and thus this route will always map to the action ``BlogController.Article``.
 
-Routes in the route collection are ordered, and will be processed in the order they are added. So in this example, the ``blog`` route will be tried before the ``default`` route.
+``blog`` 路由在这里是一个 *专用常规路由*，意味着它使用常规路由系统，但是专用于一个特殊的操作。由于 ``controller`` 和 ``action`` 不会作为参数出现在路由模板中，它们只能拥有默认值，因此这个路由将总是映射到操作 ``BlogController.Article``。
 
-.. note:: *Dedicated conventional routes* often use catch-all route parameters like ``{*article}`` to capture the remaining portion of the URL path. This can make a route 'too greedy' meaning that it matches URLs that you intended to be matched by other routes. Put the 'greedy' routes later in the route table to solve this.
+.. Routes in the route collection are ordered, and will be processed in the order they are added. So in this example, the ``blog`` route will be tried before the ``default`` route.
+
+路由在路由集合中是有序的，并将按照它们添加的顺序处理。所以在这个例子中，``blog`` 路由会在 ``default`` 路由之前尝试。
+
+.. .. note:: *Dedicated conventional routes* often use catch-all route parameters like ``{*article}`` to capture the remaining portion of the URL path. This can make a route 'too greedy' meaning that it matches URLs that you intended to be matched by other routes. Put the 'greedy' routes later in the route table to solve this.
+
+.. note:: *专用常规路由* 通常捕捉所有参数，比如使用 ``{*article}`` 捕捉 URL 路径的剩余部分。这样使得路由 '太贪婪'，这意味着它将匹配所有你打算与其他路由规则匹配的路由。把 'greedy' 路由在路由表中置后来解决这个问题。
 
 Fallback
 ^^^^^^^^^
