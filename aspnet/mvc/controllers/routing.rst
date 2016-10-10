@@ -1,7 +1,7 @@
 .. Routing to Controller Actions
 ========================================
 
-控制器操作路由
+控制器操作的路由
 ========================================
 
 作者： `Ryan Nowak`_ 、 `Rick Anderson`_
@@ -210,15 +210,22 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 
 .. note:: *专用常规路由* 通常捕捉所有参数，比如使用 ``{*article}`` 捕捉 URL 路径的剩余部分。这样使得路由 '太贪婪'，这意味着它将匹配所有你打算与其他路由规则匹配的路由。把 'greedy' 路由在路由表中置后来解决这个问题。
 
-Fallback
+回退机制
 ^^^^^^^^^
 
-As part of request processing, MVC will verify that the route values can be used to find a controller and action in your application. If the route values don't match an action then the route is not considered a match, and the next route will be tried. This is called *fallback*, and it's intended to simplify cases where conventional routes overlap.
+.. As part of request processing, MVC will verify that the route values can be used to find a controller and action in your application. If the route values don't match an action then the route is not considered a match, and the next route will be tried. This is called *fallback*, and it's intended to simplify cases where conventional routes overlap.
 
-Disambiguating Actions
+作为请求处理的一部分，MVC 将验证路由值是否可以用来在你的应用程序中找到控制器和操作。如果路由值不匹配任何操作，则不会认为路由匹配成功，将会尝试下一个路由。这叫做 *回退机制*，它的目的是简化路由重叠的情况。
+
+.. Disambiguating Actions
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-When two actions match through routing, MVC must disambiguate to choose the 'best' candidate or else throw an exception. For example::
+消除歧义操作
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. When two actions match through routing, MVC must disambiguate to choose the 'best' candidate or else throw an exception. For example::
+
+当两个操作通过路由匹配，MVC 必须消除歧义来选择‘最好的’候选，或者抛出一个异常，比如::
 
    public class ProductsController : Controller
    {
@@ -228,20 +235,33 @@ When two actions match through routing, MVC must disambiguate to choose the 'bes
       public IActionResult Edit(int id, Product product) { ... }
    }
 
-This controller defines two actions that would match the URL path ``/Products/Edit/17`` and route data ``{ controller = Products, action = Edit, id = 17 }``. This is a typical pattern for MVC controllers where ``Edit(int)`` shows a form to edit a product, and ``Edit(int, Product)`` processes  the posted form. To make this possible MVC would need to choose ``Edit(int, Product)`` when the request is an HTTP ``POST`` and ``Edit(int)`` when the HTTP verb is anything else.
+.. This controller defines two actions that would match the URL path ``/Products/Edit/17`` and route data ``{ controller = Products, action = Edit, id = 17 }``. This is a typical pattern for MVC controllers where ``Edit(int)`` shows a form to edit a product, and ``Edit(int, Product)`` processes  the posted form. To make this possible MVC would need to choose ``Edit(int, Product)`` when the request is an HTTP ``POST`` and ``Edit(int)`` when the HTTP verb is anything else.
 
-The :dn:cls:`~Microsoft.AspNetCore.Mvc.HttpPostAttribute` ( ``[HttpPost]`` ) is an implementation of :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` that will only allow the action to be selected when the HTTP verb is ``POST``. The presence of an ``IActionConstraint`` makes the ``Edit(int, Product)`` a 'better' match than ``Edit(int)``, so ``Edit(int, Product)`` will be tried first. See :ref:`iactionconstraint-ref-label` for details.
+这个控制器定义两个操作，它们都会匹配 URL 路径 ``/Products/Edit/17`` 以及路由数据是 ``{ controller = Products, action = Edit, id = 17 }``。这是 MVC 控制器中一个典型模式，其中 ``Edit(int)`` 显示编辑产品的表单，``Edit(int, Product)`` 处理提交上来的表单。为了确保这样可行，MVC 需要在请求是 HTTP ``POST`` 时选择 ``Edit(int, Product)``，并在其他 HTTP 谓词时选择 ``Edit(int)``。
 
-You will only need to write custom ``IActionConstraint`` implementations in specialized scenarios, but it's important to understand the role of attributes like ``HttpPostAttribute``  - similar attributes are defined for other HTTP verbs. In conventional routing it's common for actions to use the same action name when they are part of a ``show form -> submit form`` workflow. The convenience of this pattern will become more apparent after reviewing the :ref:`routing-url-gen-ref-label` section.
+.. The :dn:cls:`~Microsoft.AspNetCore.Mvc.HttpPostAttribute` ( ``[HttpPost]`` ) is an implementation of :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` that will only allow the action to be selected when the HTTP verb is ``POST``. The presence of an ``IActionConstraint`` makes the ``Edit(int, Product)`` a 'better' match than ``Edit(int)``, so ``Edit(int, Product)`` will be tried first. See :ref:`iactionconstraint-ref-label` for details.
 
-If multiple routes match, and MVC can't find a 'best' route, it will throw an :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.AmbiguousActionException`.
+:dn:cls:`~Microsoft.AspNetCore.Mvc.HttpPostAttribute` ( ``[HttpPost]`` ) 是 :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` 的一个实现，它仅允许 HTTP 谓词为 ``POST`` 的请求访问操作。``IActionConstraint`` 的存在使得 ``Edit(int, Product)`` 比 ``Edit(int)`` 更好匹配，所以会先首先尝试 ``Edit(int, Product)``。查看 :ref:`iactionconstraint-ref-label` 获取更多信息。
+
+.. You will only need to write custom ``IActionConstraint`` implementations in specialized scenarios, but it's important to understand the role of attributes like ``HttpPostAttribute``  - similar attributes are defined for other HTTP verbs. In conventional routing it's common for actions to use the same action name when they are part of a ``show form -> submit form`` workflow. The convenience of this pattern will become more apparent after reviewing the :ref:`routing-url-gen-ref-label` section.
+
+你只会在专门的场景才需要编写自定义的 ``IActionConstraint`` 实现，但重要的是要理解特性的作用，比如 ``HttpPostAttribute`` - 以及为其他 HTTP 谓词定义的类似的特性。在常规路由中，当操作是“现实表单 -> 提交表单”工作流时，操作使用相同的名字是很常见的。在回顾 :ref:`routing-url-gen-ref-label` 章节后，这种模式的方便将变得更加明显。
+
+.. If multiple routes match, and MVC can't find a 'best' route, it will throw an :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.AmbiguousActionException`.
+
+如果多个路由都匹配，并且 MVC 不能找到‘最好的’路由，将会抛出一个 :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.AmbiguousActionException` 异常。
 
 .. _routing-route-name-ref-label:
 
-Route Names
+.. Route Names
 ^^^^^^^^^^^
 
-The strings  ``"blog"`` and ``"default"`` in the following examples are route names::
+路由名称
+^^^^^^^^^^^
+
+.. The strings  ``"blog"`` and ``"default"`` in the following examples are route names::
+
+在下面例子中的 ``"blog"`` 和 ``"default"`` 字符串是路由名称::
 
   app.UseMvc(routes =>
   {
@@ -250,16 +270,25 @@ The strings  ``"blog"`` and ``"default"`` in the following examples are route na
      routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
   });
 
-The route names give the route a logical name so that the named route can be used for URL generation. This greatly simplifies URL creation when the ordering of routes could make URL generation complicated. Routes names must be unique application-wide.
+.. The route names give the route a logical name so that the named route can be used for URL generation. This greatly simplifies URL creation when the ordering of routes could make URL generation complicated. Routes names must be unique application-wide.
 
-Route names have no impact on URL matching or handling of requests; they are used only for URL generation. :doc:`Routing </fundamentals/routing>` has more detailed information on URL generation including URL generation in MVC-specific helpers.
+路由名称给予路由一个逻辑名称，以便被命名的路由可以用来生成 URL。这在路由命令可能使生成的 URL 变得复杂时，大大简化了 URL 的创建。路由名称在应用程序内必须唯一。
+
+.. Route names have no impact on URL matching or handling of requests; they are used only for URL generation. :doc:`Routing </fundamentals/routing>` has more detailed information on URL generation including URL generation in MVC-specific helpers.
+
+路由名称对 URL 匹配或者处理请求没有任何影响；它们只用于生成 URL 。:doc:`路由 </fundamentals/routing>` 有更多关于生成 URL 的信息，包括在具体的 MVC 帮助器中生成 URL。
 
 .. _attribute-routing-ref-label:
 
-Attribute Routing
+.. Attribute Routing
 -------------------------
 
-Attribute routing uses a set of attributes to map actions directly to route templates. In the following example, ``app.UseMvc();`` is used in the ``Configure`` method and no route is passed. The ``HomeController`` will match a set of URLs similar to what the default route ``{controller=Home}/{action=Index}/{id?}`` would match:
+特性路由
+-------------------------
+
+.. Attribute routing uses a set of attributes to map actions directly to route templates. In the following example, ``app.UseMvc();`` is used in the ``Configure`` method and no route is passed. The ``HomeController`` will match a set of URLs similar to what the default route ``{controller=Home}/{action=Index}/{id?}`` would match:
+
+特性路由使用一组特性来直接将操作映射到路由模板。在下面的例子中，在 ``Configure`` 中使用 ``app.UseMvc();`` 且没有传入路由。``HomeController`` 会匹配一组类似于 ``{controller=Home}/{action=Index}/{id?}`` 的默认路由 URL：
 
 .. code-block:: c#
 
@@ -284,11 +313,17 @@ Attribute routing uses a set of attributes to map actions directly to route temp
      }
   }
 
-The ``HomeController.Index()`` action will be executed for any of the URL paths ``/``, ``/Home``, or ``/Home/Index``.
+.. The ``HomeController.Index()`` action will be executed for any of the URL paths ``/``, ``/Home``, or ``/Home/Index``.
 
-.. note:: This example highlights a key programming difference between attribute routing and conventional routing. Attribute routing requires more input to specify a route; the conventional default route handles routes more succinctly. However, attribute routing allows (and requires) precise control of which route templates apply to each action.
+``HomeController.Index()`` 操作会被 ``/``、``/Home`` 或者 ``/Home/Index`` 中任一 URL 路径执行。
 
-With attribute routing the controller name and action names play **no** role in which action is selected. This example will match the same URLs as the previous example.
+.. .. note:: This example highlights a key programming difference between attribute routing and conventional routing. Attribute routing requires more input to specify a route; the conventional default route handles routes more succinctly. However, attribute routing allows (and requires) precise control of which route templates apply to each action.
+
+.. note:: 这个例子突出了特性路由于常规路由一个关键的不同之处。特性路由需要更多的输入来指定一个路由；常规路由处理路由更加的简洁。然而，特性路由允许（也必须）精确控制每个操作的路由模板。
+
+.. With attribute routing the controller name and action names play **no** role in which action is selected. This example will match the same URLs as the previous example.
+
+控制器名和操作名在特性路由中是 **不会** 影响选择哪个操作的。这个例子会匹配与上个例子相同的 URL。
 
 .. code-block:: c#
 
@@ -313,9 +348,13 @@ With attribute routing the controller name and action names play **no** role in 
      }
   }
 
-.. note:: The route templates  above doesn't define route parameters for ```action``, ``area``, and ``controller``. In fact, these route parameters are not allowed in attribute routes. Since the route template is already assocated with an action, it wouldn't make sense to parse the action name from the URL.
+.. .. note:: The route templates  above doesn't define route parameters for ```action``, ``area``, and ``controller``. In fact, these route parameters are not allowed in attribute routes. Since the route template is already assocated with an action, it wouldn't make sense to parse the action name from the URL.
 
-Attribute routing can also make use of the ``HTTP[Verb]`` attributes such as :dn:cls:`~Microsoft.AspNetCore.Mvc.HttpPostAttribute`. All of these attributes can accept a route template. This example shows two actions that match the same route template:
+.. note:: 上面的路由模板没有定义针对 ``action``、``area`` 以及 ``controller`` 的路由参数。实际上，这些参数不允许出现在特性路由中。因为路由模板已经关联了一个操作，解析 URL 中的操作名是没有意义的。
+
+.. Attribute routing can also make use of the ``HTTP[Verb]`` attributes such as :dn:cls:`~Microsoft.AspNetCore.Mvc.HttpPostAttribute`. All of these attributes can accept a route template. This example shows two actions that match the same route template:
+
+特性路由也可以使用 ``HTTP[Verb]`` 特性，比如 :dn:cls:`~Microsoft.AspNetCore.Mvc.HttpPostAttribute`。所有这些特性都可以接受路由模板。这个例子展示两个操作匹配同一个路由模板：
 
 .. code-block:: c#
 
@@ -331,11 +370,17 @@ Attribute routing can also make use of the ``HTTP[Verb]`` attributes such as :dn
       // ...
    }
 
-For a URL path like ``/products`` the ``ProductsApi.ListProducts`` action will be executed when the HTTP verb is ``GET`` and ``ProductsApi.CreateProduct`` will be executed when the HTTP verb is ``POST``. Attribute routing first matches the URL against the set of route templates defined by route attributes. Once a route template matches,   :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` constraints are applied to determine which actions can be executed.
+.. For a URL path like ``/products`` the ``ProductsApi.ListProducts`` action will be executed when the HTTP verb is ``GET`` and ``ProductsApi.CreateProduct`` will be executed when the HTTP verb is ``POST``. Attribute routing first matches the URL against the set of route templates defined by route attributes. Once a route template matches,   :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` constraints are applied to determine which actions can be executed.
 
-.. Tip:: When building a REST API, it's rare that you will want to use ``[Route(...)]`` on an action method. It's better to use the more specific ``Http*Verb*Attributes`` to be precise about what your API supports. Clients of REST APIs are expected to know what paths and HTTP verbs map to specific logical operations.
+对于 ``/products`` 这个 URL 路径来说，``ProductsApi.ListProducts`` 操作会在 HTTP 谓词是 ``GET`` 时执行，``ProductsApi.CreateProduct`` 会在 HTTP 谓词是 ``POST`` 时执行。特性路由首先匹配路由模板集合中通过路由特性定义的 URL。一旦路由模板匹配，:dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` 约束会应用与决定执行哪个操作。
 
-Since an attribute route applies to a specific action, it's easy to make parameters required as part of the route template definition. In this example, ``id`` is required as part of the URL path.
+.. .. Tip:: When building a REST API, it's rare that you will want to use ``[Route(...)]`` on an action method. It's better to use the more specific ``Http*Verb*Attributes`` to be precise about what your API supports. Clients of REST APIs are expected to know what paths and HTTP verbs map to specific logical operations.
+
+.. Tip:: 当构建一个 REST API，你几乎不会想在操作方法上使用 ``[Route(...)]``。最好是使用更加具体的 ``Http*Verb*Attributes`` 来精确的说明你的 API 支持什么。REST API 的客户端期望知道映射到具体逻辑操作上的路径和 HTTP 谓词。
+
+.. Since an attribute route applies to a specific action, it's easy to make parameters required as part of the route template definition. In this example, ``id`` is required as part of the URL path.
+
+由于一个特性路由应用于一个特定操作，很容易使参数作为路由模板定义中必须的一部分。在这个例子中，``id`` 是必须作为 URL 路径中一部分的。
 
 .. code-block:: c#
 
@@ -345,11 +390,17 @@ Since an attribute route applies to a specific action, it's easy to make paramet
       public IActionResult GetProduct(int id) { ... }
    }
 
-The ``ProductsApi.GetProducts(int)`` action will be executed for a URL path like ``/products/3`` but not for a URL path like ``/products``. See :doc:`Routing </fundamentals/routing>` for a full description of route templates and related options.
+.. The ``ProductsApi.GetProducts(int)`` action will be executed for a URL path like ``/products/3`` but not for a URL path like ``/products``. See :doc:`Routing </fundamentals/routing>` for a full description of route templates and related options.
 
-This route attribute also defines a *route name* of ``Products_List``. Route names can be used to generate a URL based on a specific route. Route names have no impact on the URL matching behavior of routing and are only used for URL generation. Route names must be unique application-wide.
+``ProductsApi.GetProducts(int)`` 操作会被 URL 路径 ``/products/3`` 执行，但不会被 URL 路径 ``/products`` 执行。查看 :doc:`路由 </fundamentals/routing>` 获取路由模板以及相关选项的完整描述。
 
-.. note:: Contrast this with the conventional *default route*, which defines the ``id`` parameter as optional (``{id?}``). This ability to precisely specify APIs has advantages, such as  allowing ``/products`` and ``/products/5`` to be dispatched to different actions.
+.. This route attribute also defines a *route name* of ``Products_List``. Route names can be used to generate a URL based on a specific route. Route names have no impact on the URL matching behavior of routing and are only used for URL generation. Route names must be unique application-wide.
+
+这个路由特性同时也定义一个 ``Products_List`` 的 *路由名称*。路由名称可以用来生成基于特定路由的 URL。路由名称对路由的 URL 匹配行为没有影响，只用于生成 URL。路由名称必须在应用程序内唯一。
+
+.. .. note:: Contrast this with the conventional *default route*, which defines the ``id`` parameter as optional (``{id?}``). This ability to precisely specify APIs has advantages, such as  allowing ``/products`` and ``/products/5`` to be dispatched to different actions.
+
+.. note:: 常规的 *默认路由* 定义 ``id`` 参数作为可选项 (``{id?}``)。而特性路由的这种精确指定 API 的能力更有优势，比如把 ``/products`` 和 ``/products/5`` 分配到不同的操作。
 
 .. _routing-combining-ref-label:
 
