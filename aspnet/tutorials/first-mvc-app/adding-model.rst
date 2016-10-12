@@ -54,7 +54,7 @@ Complete the **New Project** dialog:
 - 在左窗格，点击 **Web**
 - 在中间窗格，点击 **ASP.NET Core Web Application (.NET Core)**
 - 将位置更改为你创建的前一个项目的不同目录，否则你将遇到错误
-- 命名项目为“MvcMovie”（将项目命名为“MvcMovie”非常重要，当你复制带啊名时，命名空间将会匹配）
+- 命名项目为“MvcMovie”（将项目命名为“MvcMovie”非常重要，当你复制代码时，命名空间将会匹配）
 - 点击 **确定（OK）**
 
 .. image:: start-mvc/_static/new_project2.png
