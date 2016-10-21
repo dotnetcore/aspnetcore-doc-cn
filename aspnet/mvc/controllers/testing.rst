@@ -64,7 +64,7 @@ Unit Testing
 
 `Unit testing`_ involves testing a part of an app in isolation from its infrastructure and dependencies. When unit testing controller logic, only the contents of a single action is tested, not the behavior of its dependencies or of the framework itself. As you unit test your controller actions, make sure you focus only on its behavior. A controller unit test avoids things like :doc:`filters <filters>`, :doc:`routing </fundamentals/routing>`, or :doc:`model binding </mvc/models/model-binding>`. By focusing on testing just one thing, unit tests are generally simple to write and quick to run. A well-written set of unit tests can be run frequently without much overhead. However, unit tests do not detect issues in the interaction between components, which is the purpose of :ref:`integration testing <integration-testing>`.
 
-`单元测试`_ 包括对应用中独立于基础结构和依赖项之外的某一部分的测试。对控制器逻辑进行单元测试的时候，只测试一个操作的内容，而不测试其依赖项或框架本身的行为。就是说对你的控制器操作进行测试时，要确保只聚焦于操作本身的行为。控制器单元测试避开诸如 :doc:`过滤器 <filters>`， :doc:`路由 </fundamentals/routing>`，or :doc:`模型绑定 </mvc/models/model-binding>` 这些内容。由于只专注于测试某一项内容，单元测试通常编写简单而运行快捷。一组编写良好的单元测试可以无需过多开销地频繁运行。然而，单元测试并不检测组件之间交互的问题，那是 :ref:`集成测试 <integration-testing>` 的目的。
+`单元测试`_ 包括对应用中独立于基础结构和依赖项之外的某一部分的测试。对控制器逻辑进行单元测试的时候，只测试一个操作的内容，而不测试其依赖项或框架本身的行为。就是说对你的控制器操作进行测试时，要确保只聚焦于操作本身的行为。控制器单元测试避开诸如 :doc:`过滤器 <filters>`， :doc:`路由 </fundamentals/routing>`, or :doc:`模型绑定 </mvc/models/model-binding>` 这些内容。由于只专注于测试某一项内容，单元测试通常编写简单而运行快捷。一组编写良好的单元测试可以无需过多开销地频繁运行。然而，单元测试并不检测组件之间交互的问题，那是 :ref:`集成测试 <integration-testing>` 的目的。
 
 
 
@@ -95,13 +95,17 @@ The controller is following the `explicit dependencies principle <http://deviq.c
 
 The ``HomeController`` ``HTTP POST Index`` method (shown above) should verify:
 
-``HTTP POST Index`` 方法（下面所示）应当验证：
+``HomeController`` 的 ``HTPP POST Index`` 方法（如上所示）应当验证：
 
-- The action method returns a ``ViewResult`` with the appropriate data when ``ModelState.IsValid`` is ``false``
+- The action method returns a Bad Request ``ViewResult`` with the appropriate data when ``ModelState.IsValid`` is ``false``
 - The ``Add`` method on the repository is called and a ``RedirectToActionResult`` is returned with the correct arguments when ``ModelState.IsValid`` is true.
 
-- 当 ``ModelState.IsValid`` 为 ``false`` 时，操作方法返回一个包含适当数据的 ``ViewResult``。
+- 当 ``ModelState.IsValid`` 为 ``false`` 时，操作方法返回一个包含相应数据的错误请求的 ``ViewResult``。
 - 当 ``ModelState.IsValid`` 为 ``true`` 时，存储库的 ``Add`` 方法被调用，然后返回一个包含正确变量内容的 ``RedirectToActionResult`` 。
+
+Invalid model state can be tested by adding errors using ``AddModelError`` as shown in the first test below.
+
+如下面第一个测试所示，可以通过利用 ``AddModelError`` 添加一些错误来测试无效的模型状态。
 
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/UnitTests/HomeControllerTests.cs
   :language: c#
@@ -109,17 +113,17 @@ The ``HomeController`` ``HTTP POST Index`` method (shown above) should verify:
   :dedent: 8
   :emphasize-lines: 8,15-16,37-39
 
-The first test confirms when ``ModelState`` is not valid, the same ``ViewResult`` is returned as for a ``GET`` request. Note that the test doesn't attempt to pass in an invalid model. That wouldn't work anyway since model binding isn't running - we're just calling the method directly. However, we're not trying to test model binding - we're only testing what our code in the action method does. The simplest approach is to add an error to ``ModelState``.
+The first test confirms when ``ModelState`` is not valid, the same ``ViewResult`` is returned as for a ``GET`` request. Note that the test doesn't attempt to pass in an invalid model. That wouldn't work anyway since model binding isn't running (though an :ref:`integration test <integration-testing>` would use exercise model binding). In this case, model binding is not being tested. These unit tests are only testing what the code in the action method does.
 
-第一个测试确定当 ``ModelState`` 无效时，返回一个与 ``GET`` 请求一样的 ``ViewResult`` 。注意，测试不会尝试传递一个无效模型进去。那样是没有作用的，因为模型绑定并没有运行 - 我们只是直接调用了操作方法。然而，我们并不想去测试模型绑定 —— 我们只是在测试操作方法里的代码行为。最简单的方法就是在 ``ModelState`` 中添加一个错误。
+第一个测试验证当 ``ModelState`` 无效时，将返回一个与响应 ``GET`` 请求时一样的 ``ViewResult`` 。注意，测试不会尝试传递一个无效模型进去。那样是没有作用的，因为模型绑定并没有运行（不过 :ref:`集成测试 <integration-testing>` 中将会运用模型绑定）。在本例中，不会测试模型绑定。这些单元测试只测试 action 方法中的代码行为。
 
-The second test verifies that when ``ModelState`` is valid, a new ``BrainstormSession`` is added (via the repository), and the method returns a ``RedirectToActionResult`` with the expected properties. Mocked calls that aren't called are normally ignored, but calling ``Verifiable`` at the end of the setup call allows it to be verified in the test. This is done with the call to ``mockRepo.Verify``.
+The second test verifies that when ``ModelState`` is valid, a new ``BrainstormSession`` is added (via the repository), and the method returns a ``RedirectToActionResult`` with the expected properties. Mocked calls that aren't called are normally ignored, but calling ``Verifiable`` at the end of the setup call allows it to be verified in the test. This is done with the call to ``mockRepo.Verify``, which will fail the test if the expected method was not called.
 
-第二个测试验证当 ``ModelState`` 有效时，新的 ``BrainstormSession`` 被添加（通过存储库），并且该方法返回一个带有预期属性值的 ``RedirectToActionResult`` 。未被执行到的 mock 调用通常就被忽略了，但是在设定过程的最后调用 ``Verifiable`` 则允许其在测试中被验证。这是通过调用 ``mockRepo.Verify`` 实现的。
+第二个测试验证当 ``ModelState`` 有效时，新的 ``BrainstormSession`` 被添加（通过存储库），并且该方法返回一个带有预期属性值的 ``RedirectToActionResult`` 。未被执行到的 mock 调用通常就被忽略了，但是在设定过程的最后调用 ``Verifiable`` 则允许其在测试中被验证。这是通过调用 ``mockRepo.Verify`` 实现的，如果预期的方法没有被调用，它将使测试失败。
 
 .. note:: The Moq library used in this sample makes it easy to mix verifiable, or "strict", mocks with non-verifiable mocks (also called "loose" mocks or stubs). Learn more about `customizing Mock behavior with Moq <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_.
 
-.. note:: 这个例子中所采用的 Moq 库能够简单地混合可验证的，“严格的”及带有不可验证mock（也称为 “宽松的” mock 或 stub）的mock。了解更多关于 `使用 Moq 自定义 Mock 行为 <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_ 。
+.. note:: 这个例子中所采用的 Moq 库便于将可验证的，或者说 “严格的”，与不可验证的 mock （也称为 “宽松的” mock 或 stub）混合进行 mock 。了解更多关于 `使用 Moq 自定义 Mock 行为 <https://github.com/Moq/moq4/wiki/Quickstart#customizing-mock-behavior>`_ 。
 
 Another controller in the app displays information related to a particular brainstorming session. It includes some logic to deal with invalid id values:
 
@@ -147,9 +151,9 @@ The app exposes functionality as a web API (a list of ideas associated with a br
   :language: c#
   :emphasize-lines: 21-22,27,30-36,41-42,46,52,65
 
-The ``ForSession`` method returns a list of ``IdeaDTO`` types, with property names camel cased to match JavaScript conventions. Avoid returning your business domain entities directly via API calls, since frequently they include more data than the API client requires, and they unnecessarily couple your app's internal domain model with the API you expose externally. Mapping between domain entities and the types you will return over the wire can be done manually (using a LINQ ``Select`` as shown here) or using a library like `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_
+The ``ForSession`` method returns a list of ``IdeaDTO`` types. Avoid returning your business domain entities directly via API calls, since frequently they include more data than the API client requires, and they unnecessarily couple your app's internal domain model with the API you expose externally. Mapping between domain entities and the types you will return over the wire can be done manually (using a LINQ ``Select`` as shown here) or using a library like `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_
 
-``ForSession`` 方法返回一个 ``IdeaDTO`` 类型的列表，该类型有着符合 JavaScript 惯例的驼峰命名法的属性名。从而避免直接通过 API 调用返回你业务领域的实体，因为通常它们都包含了 API 客户端并不需要的更多数据，而且它们将你的应用程序的内部领域模型与外部公开的 API 不必要地耦合起来。可以手动将业务领域实体与你想要返回的类型连接映射起来（使用这里展示的 LINQ ``Select``），或者使用诸如 `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_ 的类库。
+``ForSession`` 方法返回一个 ``IdeaDTO`` 类型的列表。从而避免直接通过 API 调用返回你业务领域的实体，因为通常它们都包含了 API 客户端并不需要的更多数据，而且它们将你的应用程序的内部领域模型与外部公开的 API 不必要地耦合起来。可以手动将业务领域实体与你想要返回的类型连接映射起来（使用这里展示的 LINQ ``Select``），或者使用诸如 `AutoMapper <https://github.com/AutoMapper/AutoMapper>`_ 的类库。
 
 The unit tests for the ``Create`` and ``ForSession`` API methods:
 
@@ -164,7 +168,7 @@ As stated previously, to test the behavior of the method when ``ModelState`` is 
 
 如前所述，要测试这个方法在 ``ModelState`` 无效时的行为，可以将一个模型错误作为测试的一部分添加到控制器。不要在单元测试尝试测试模型验证或者模型绑定 —— 仅仅测试应对特定 ``ModelState`` 值的时候，你的操作方法的行为。
 
-The second test depends on the repository returning null, so the mock repository is configured to return null. There's no need to create a test database (in memory or otherwise) and construct a query that will return this result - it can be done in a single line as shown.
+The second test depends on the repository returning null, so the mock repository is configured to return null. There's no need to create a test database (in memory or otherwise) and construct a query that will return this result - it can be done in a single statement as shown.
 
 第二项测试需要存储库返回 null ，因此将模拟的存储库配置为返回 null 。没有必要去创建一个测试数据库（内存中的或其他的）并构建一条能返回这个结果的查询 —— 就像展示的那样，一行代码就可以了。
 
@@ -182,7 +186,7 @@ Integration Testing
 
 :doc:`Integration testing </testing/integration-testing>` is done to ensure separate modules within your app work correctly together. Generally, anything you can test with a unit test, you can also test with an integration test, but the reverse isn't true. However, integration tests tend to be much slower than unit tests. Thus, it's best to test whatever you can with unit tests, and use integration tests for scenarios that involve multiple collaborators.
 
-:doc:`集成测试 </testing/integration-testing>` 是为了确保你应用程序里各独立模块能够正确地一起工作。通常，能进行单元测试的东西，都能进行集成测试，但反之则不行。不过，集成测试往往比单元测试慢得多。因此，最好尽量采用单元测试，在涉及到多方合作的情况下再进行集成测试。
+:doc:`集成测试 </testing/integration-testing>` 是为了确保你应用程序里各独立模块能够正确地一起工作。通常，能进行单元测试的东西，都能进行集成测试，但反之则不行。不过，集成测试往往比集成测试慢得多。因此，最好尽量采用单元测试，在涉及到多方合作的情况下再进行集成测试。
 
 Although they may still be useful, mock objects are rarely used in integration tests. In unit testing, mock objects are an effective way to control how collaborators outside of the unit being tested should behave for the purposes of the test. In an integration test, real collaborators are used to confirm the whole subsystem works together correctly.
 
@@ -235,6 +239,28 @@ To correct this issue, you need to configure the server to use the ``Application
 
 要修正这个问题，你需要配置服务器使其采用 Web 项目的 ``ApplicationBasePath`` 和 ``ApplicationName`` 。这在所示的集成测试类中调用 ``UseServices`` 完成的：
 
+.. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/TestFixture.cs
+  :language: text
+  :emphasize-lines: 32,35
+
+The ``TestFixture`` class is responsible for configuring and creating the ``TestServer``, setting up an ``HttpClient`` to communicate with the ``TestServer``. Each of the integration tests uses the ``Client`` property to connect to the test server and make a request.
+
+``TestFixture`` 类负责配置和创建 ``TestServer``，建立一个与 ``TestServer`` 通讯的 ``HttpClient`` 。 每个集成测试都使用 ``Client`` 属性连接到测试服务器并发起一个请求。
+
+.. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs
+  :language: c#
+  :emphasize-lines: 20,26,29-31,35,38-41,44,47-48
+
+In the first test above, the ``responseString`` holds the actual rendered HTML from the View, which can be inspected to confirm it contains expected results.
+
+在上面的第一个测试中，``responseString`` 包含来自视图实际渲染的 HTML，可以用来检查是否包括有预期的结果。 
+
+The second test constructs a form POST with a unique session name and POSTs it to the app, then verifies that the expected redirect is returned.
+
+第二个测试构建一个带有唯一会话名称的表单请求，并且将它 POST 给应用程序，然后验证是否返回了正确的重定向。
+
+
+
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/HomeControllerTests.cs
   :language: c#
   :emphasize-lines: 20,22-32,36-37,42
@@ -255,10 +281,10 @@ If your app exposes web APIs, it's a good idea to have automated tests confirm t
 
 The following set of tests target the ``Create`` method in the :ref:`IdeasController <ideas-controller>` class shown above:
 
+下面一组测试针对上文所示的 :ref:`IdeasController <ideas-controller>` 里的 ``Create`` 方法：
+
 .. literalinclude:: testing/sample/TestingControllersSample/tests/TestingControllersSample.Tests/IntegrationTests/ApiIdeasControllerTests.cs
   :language: c#
-
-下面一组测试针对上文所示的 :ref:`IdeasController <ideas-controller>` 里的 ``Create`` 方法：
 
 Unlike integration tests of actions that returns HTML views, web API methods that return results can usually be deserialized as strongly typed objects, as the last test above shows. In this case, the test deserializes the result to a ``BrainstormSession`` instance, and confirms that the idea was correctly added to its collection of ideas.
 
