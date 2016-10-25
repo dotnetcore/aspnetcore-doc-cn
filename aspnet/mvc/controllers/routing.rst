@@ -8,11 +8,11 @@
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： 
+校对： `何镇汐 <http://github.com/utilcore>`_
 
 .. ASP.NET Core MVC uses the Routing :doc:`middleware </fundamentals/middleware>` to match the URLs of incoming requests and map them to actions. Routes are defined in startup code or attributes. Routes describe how URL paths should be matched to actions. Routes are also used to generate URLs (for links) sent out in responses.
 
-ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹配传入请求的 URL 并映射到具体的操作。路由通过启动代码或者特性定义。路由描述 URL 路径应该如何匹配到操作。路由也同样用于生成相应中返回的 URL（用于链接）。
+ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹配传入请求的 URL 并映射到具体的操作。路由通过启动代码或者特性定义。路由描述 URL 路径应该如何匹配到操作。路由也同样用于生成响应中返回的 URL（用于链接）。
 
 .. This document will explain the interactions between MVC and routing, and how typical MVC apps make use of routing features. See :doc:`Routing </fundamentals/routing>` for details on advanced routing.
 
@@ -43,7 +43,7 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 
 .. Inside the call to :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc`, :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` is used to create a single route, which we'll refer to as the ``default`` route. Most MVC apps will use a route with a template similar to the ``default`` route.
 
-其中对 :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc`， :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` 的调用用来创建单个路由，我们称之为 ``default`` 路由。大部分 MVC 应用程序使用路由模板类似 ``default`` 路由。
+其中对 :dn:method:`~Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc`， :dn:method:`~Microsoft.AspNetCore.Builder.MapRouteRouteBuilderExtensions.MapRoute` 的调用用来创建单个路由，我们称之为 ``default`` 路由。大部分 MVC 应用程序使用的路由模板类似 ``default`` 路由。
 
 .. The route template ``"{controller=Home}/{action=Index}/{id?}"`` can match a URL path like ``/Products/Details/5`` and will extract the route values ``{ controller = Products, action = Details, id = 5 }`` by tokenizing the path. MVC will attempt to locate a controller named ``ProductsController`` and run the action ``Details``::
 
@@ -249,7 +249,7 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 
 .. You will only need to write custom ``IActionConstraint`` implementations in specialized scenarios, but it's important to understand the role of attributes like ``HttpPostAttribute``  - similar attributes are defined for other HTTP verbs. In conventional routing it's common for actions to use the same action name when they are part of a ``show form -> submit form`` workflow. The convenience of this pattern will become more apparent after reviewing the :ref:`routing-url-gen-ref-label` section.
 
-你只会在专门的场景才需要编写自定义的 ``IActionConstraint`` 实现，但重要的是要理解特性的作用，比如 ``HttpPostAttribute`` —— 以及为其他 HTTP 谓词定义的类似的特性。在常规路由中，当操作是“现实表单 -> 提交表单”工作流时，操作使用相同的名字是很常见的。在回顾 :ref:`routing-url-gen-ref-label` 章节后，这种模式的方便将变得更加明显。
+你只会在专门的场景才需要编写自定义的 ``IActionConstraint`` 实现，但重要的是要理解特性的作用，比如 ``HttpPostAttribute`` —— 以及为其他 HTTP 谓词定义的类似的特性。在常规路由中，当操作是“显示表单 -> 提交表单”工作流时，操作使用相同的名字是很常见的。在回顾 :ref:`routing-url-gen-ref-label` 章节后，这种模式的方便将变得更加明显。
 
 .. If multiple routes match, and MVC can't find a 'best' route, it will throw an :dn:cls:`~Microsoft.AspNetCore.Mvc.Internal.AmbiguousActionException`.
 
@@ -280,7 +280,7 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 
 .. Route names have no impact on URL matching or handling of requests; they are used only for URL generation. :doc:`Routing </fundamentals/routing>` has more detailed information on URL generation including URL generation in MVC-specific helpers.
 
-路由名称对 URL 匹配或者处理请求没有任何影响；它们只用于 URL 的生成。:doc:`路由 </fundamentals/routing>` 有更多关于 URL 的生成的信息，包括在具体的 MVC 帮助器中生成 URL。
+路由名称对 URL 匹配或者处理请求没有任何影响；它们只用于 URL 的生成。更多关于 URL 生成的详细信息参见 :doc:`路由 </fundamentals/routing>` ，包括在具体的 MVC 帮助器中生成 URL。
 
 .. Attribute Routing
 .. -------------------------
@@ -323,7 +323,7 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 
 .. .. note:: This example highlights a key programming difference between attribute routing and conventional routing. Attribute routing requires more input to specify a route; the conventional default route handles routes more succinctly. However, attribute routing allows (and requires) precise control of which route templates apply to each action.
 
-.. note:: 这个例子突出了特性路由于常规路由一个关键的不同之处。特性路由需要更多的输入来指定一个路由；常规路由处理路由更加的简洁。然而，特性路由允许（也必须）精确控制每个操作的路由模板。
+.. note:: 这个例子突出了特性路由与常规路由一个关键的不同之处。特性路由需要更多的输入来指定一个路由；常规路由处理路由更加的简洁。然而，特性路由允许（也必须）精确控制每个操作的路由模板。
 
 .. With attribute routing the controller name and action names play **no** role in which action is selected. This example will match the same URLs as the previous example.
 
@@ -400,7 +400,7 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 
 .. This route attribute also defines a *route name* of ``Products_List``. Route names can be used to generate a URL based on a specific route. Route names have no impact on the URL matching behavior of routing and are only used for URL generation. Route names must be unique application-wide.
 
-这个路由特性同时也定义一个 ``Products_List`` 的 *路由名称*。路由名称可以用来生成基于特定路由的 URL。路由名称对路由的 URL 匹配行为没有影响，只用于 URL 的生成。路由名称必须在应用程序内唯一。
+这个路由特性同时也定义了一个 ``Products_List`` 的 *路由名称*。路由名称可以用来生成基于特定路由的 URL。路由名称对路由的 URL 匹配行为没有影响，只用于 URL 的生成。路由名称必须在应用程序内唯一。
 
 .. .. note:: Contrast this with the conventional *default route*, which defines the ``id`` parameter as optional (``{id?}``). This ability to precisely specify APIs has advantages, such as  allowing ``/products`` and ``/products/5`` to be dispatched to different actions.
 
@@ -581,7 +581,7 @@ ASP.NET Core MVC 使用路由 :doc:`中间件 </fundamentals/middleware>` 来匹
 .. All of the route attributes provided in the framework ( ``[Route(...)]``, ``[HttpGet(...)]`` , etc.) implement the :dn:iface:`~Microsoft.AspNetCore.Mvc.Routing.IRouteTemplateProvider`
 interface. MVC looks for attributes on controller classes and action methods when the app starts and uses the ones that implement ``IRouteTemplateProvider`` to build the initial set of routes.
 
-所有框架提供的路由特性（``[Route(...)]``， ``[HttpGet(...)]`` 等等。）都实现了 :dn:iface:`~Microsoft.AspNetCore.Mvc.Routing.IRouteTemplateProvider` 接口。当应用程序启动时，MVC 查找控制器类和操作方法上实现了``IRouteTemplateProvider`` 接口的特性来构建初始路由集合。
+框架提供的所有路由特性（``[Route(...)]``， ``[HttpGet(...)]`` 等等。）都实现了 :dn:iface:`~Microsoft.AspNetCore.Mvc.Routing.IRouteTemplateProvider` 接口。当应用程序启动时，MVC 查找控制器类和操作方法上实现了 ``IRouteTemplateProvider`` 接口的特性来构建初始路由集合。
 
 .. You can implement ``IRouteTemplateProvider`` to define your own route attributes. Each ``IRouteTemplateProvider`` allows you to define a single route with a custom route template, order, and name:
 
@@ -600,7 +600,7 @@ interface. MVC looks for attributes on controller classes and action methods whe
 
 .. The attribute from the above example automatically sets the ``Template`` to ``"api/[controller]"`` when ``[MyApiController]`` is applied.
 
-上面例子中，当 ``[MyApiController]``特性被应用，会自动设置 ``Template`` 为 ``"api/[controller]"``。
+上面例子中，当 ``[MyApiController]`` 特性被应用，会自动设置 ``Template`` 为 ``"api/[controller]"``。
 
 .. Using Application Model to customize attribute routes
 .. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -635,7 +635,7 @@ MVC 应用程序可以混合使用常规路由和特性路由。对于给浏览�
 
 .. .. Note:: What distinguishes the two types of routing systems is the process applied after a URL matches a route template. In conventional routing, the route values from the match are used to choose the action and controller from a lookup table of all conventional routed actions. In attribute routing, each template is already associated with an action, and no further lookup is needed.
 
-.. Note:: 这两种路由系统的区别是通过 URL 匹配路由模板的过程。在常规路由中，匹配中的路由值被用来在所有常规路由操作的查找表中选择操作以及控制器。在特性路有中，每个模板已经关联了一个操作，进一步查找是没必要的。
+.. Note:: 这两种路由系统的区别是通过 URL 匹配路由模板的过程。在常规路由中，匹配中的路由值被用来在所有常规路由操作的查找表中选择操作以及控制器。在特性路由中，每个模板已经关联了一个操作，进一步查找是没必要的。
 
 .. URL Generation
 .. ---------------
@@ -647,7 +647,7 @@ URL 的生成
 
 .. MVC applications can use routing's URL generation features to generate URL links to actions. Generating URLs eliminates hardcoding URLs, making your code more robust and maintainable. This section focuses on the URL generation features provided by MVC and will only cover basics of how URL generation works. See :doc:`Routing </fundamentals/routing>` for a detailed description of URL generation.
 
-MVC 应用程序可以使用路由 URL 的生成特性来生成 URL 链接到操作。生成 URL 消除硬编码 URL，使你的代码健壮和易维护。这个章节关注于 MVC 提供的 URL 的生成特性，并只覆盖如何生成 URL 的基本知识。查看 :doc:`Routing </fundamentals/routing>` 获取 URL 的生成的详细描述。
+MVC 应用程序可以使用路由 URL 的生成特性来生成 URL 链接到操作。生成 URL 消除硬编码 URL，使你的代码健壮和易维护。这个章节关注 MVC 提供的 URL 生成特性，并只覆盖如何生成 URL 的基本知识。查看 :doc:`Routing </fundamentals/routing>` 获取 URL 生成的详细描述。
 
 .. The :dn:iface:`~Microsoft.AspNetCore.Mvc.IUrlHelper` interface is the underlying piece of infrastructure between MVC and routing for URL generation. You'll find an instance of ``IUrlHelper`` available through the ``Url`` property in controllers, views, and view components.
 
@@ -664,7 +664,7 @@ MVC 应用程序可以使用路由 URL 的生成特性来生成 URL 链接到操
 
 .. If the application is using the default conventional route, the value of the ``url`` variable will be the URL path string ``/UrlGeneration/Destination``. This URL path is created by routing by combining the route values from the current request (ambient values), with the values passed to ``Url.Action`` and substituting those values into the route template::
 
-如果应用程序使用默认的常规路由，``url`` 变量的值会是 URL 路径字符串 ``/UrlGeneration/Destination``。这个 URL 路径是由将路由值与当前请求（环境值）相结合而成的路由创建，并将值传递给 ``Url.Action`` 并替换这些值到路由模板::
+如果应用程序使用默认的常规路由，``url`` 变量的值会是 URL 路径字符串 ``/UrlGeneration/Destination``。这个 URL 路径是将路由值与当前请求（环境值）相结合而成的，并将值传递给 ``Url.Action`` 并替换这些值到路由模板::
 
    ambient values: { controller = "UrlGeneration", action = "Source" }
    values passed to Url.Action: { controller = "UrlGeneration", action = "Destination" }
@@ -706,7 +706,7 @@ MVC 构建了一个所有特性路由操作的查找表并且会匹配 ``control
 
 .. ``Url.Action`` (:dn:iface:`~Microsoft.AspNetCore.Mvc.IUrlHelper` . :dn:method:`~Microsoft.AspNetCore.Mvc.IUrlHelper.Action`) and all related overloads all are based on that idea that you want to specify what you're linking to by specifying a controller name and action name.
 
-``Url.Action`` （:dn:iface:`~Microsoft.AspNetCore.Mvc.IUrlHelper` 、 :dn:method:`~Microsoft.AspNetCore.Mvc.IUrlHelper.Action`）以及所有相关的重载都是基于通过指定控制器名和操作名来指定想要链接到的地方的点子。
+``Url.Action`` （:dn:iface:`~Microsoft.AspNetCore.Mvc.IUrlHelper` 、 :dn:method:`~Microsoft.AspNetCore.Mvc.IUrlHelper.Action`）以及所有相关的重载都是基于通过指定控制器名和操作名来指定想要链接到的地方的。
 
 .. .. note:: When using ``Url.Action``, the current route values for ``controller`` and ``action`` are specified for you - the value of ``controller`` and ``action`` are part of both *ambient values* **and** *values*. The method ``Url.Action``, always uses the current values of ``action`` and ``controller`` and will generate a URL path that routes to the current action.
 
@@ -782,7 +782,7 @@ TagHelper 通过 ``form`` 和 ``<a>`` TagHelper 生成 URL。这些 都使用了
 
 .. The ``ControllerBase`` and ``Controller`` base classes provide convenience methods for action results that reference another action. One typical usage is to redirect after accepting user input.
 
-``ControllerBase`` 和 ``Controller`` 基类针对引用其他操作的操作结果提供了方便的方法。一个典型的使用时接受用户输入后重定向。
+``ControllerBase`` 和 ``Controller`` 基类针对引用其他操作的操作结果提供了方便的方法。一个典型的使用是接受用户输入后重定向。
 
 .. code-block:: c#
 
@@ -903,7 +903,7 @@ The following example configures MVC to use the default conventional route and a
 
 .. When executing an action inside an area, the route value for ``area`` will be available as an *ambient value* for routing to use for URL generation. This means that by default areas act *sticky* for URL generation as demonstrated by the following sample.
 
-当执行一个区域内的操作时，``area`` 的路由值可作为用于录用生成 URL 的 *环境值*。这意味着默认情况下区域针对 URL 的生成有 *黏性* ，如下面例子所示。
+当执行一个区域内的操作时，``area`` 的路由值可作为用于生成 URL 的 *环境值*。这意味着默认情况下区域针对 URL 的生成有 *黏性* ，如下面例子所示。
 
 .. literalinclude:: routing/sample/AreasRouting/Startup.cs
   :language: c#
@@ -928,7 +928,7 @@ The following example configures MVC to use the default conventional route and a
 
 .. You have likely already used :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` even if you're not familiar with the interface. The ``[HttpGet]`` Attribute and similar ``[Http-VERB]`` attributes implement ``IActionConstraint`` in order to limit the execution of an action method.
 
-你可能已经使用 :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` 即使你不熟悉这个借口。``[HttpGet]`` 特性以及类似的 ``[Http-VERB]`` 特性实现 ``IActionConstraint`` 接口以用于限制操作方法的执行。
+你可能已经使用 :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` 即使你不熟悉这个接口。``[HttpGet]`` 特性以及类似的 ``[Http-VERB]`` 特性实现 ``IActionConstraint`` 接口以用于限制操作方法的执行。
 
 .. code-block:: c#
 
@@ -962,7 +962,7 @@ The following example configures MVC to use the default conventional route and a
 
 .. The simplest way to implement an :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` is to create a class derived from ``System.Attribute`` and place it on your actions and controllers. MVC will automatically discover any ``IActionConstraint`` that are applied as attributes. You can use the application model to apply constraints, and this is probably the most flexible approach as it allows you to metaprogram how they are applied.
 
-实现 :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` 最简单的方式是创建一个类派生自 ``System.Attribute`` 并且将它放置到你的操作和控制器上。MVC 会自动发现任何作为特性被应用的 ``IActionConstraint``。你可以使用应用程序模型来应用约束，并且这可能使最灵活的方法，因为它可以允许你对它们如何被应用进行元编程。
+实现 :dn:iface:`~Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint` 最简单的方式是创建一个类派生自 ``System.Attribute`` 并且将它放置到你的操作和控制器上。MVC 会自动发现任何作为特性被应用的 ``IActionConstraint``。你可以使用应用程序模型来应用约束，并且这可能是最灵活的方法，因为它可以允许你对它们如何被应用进行元编程。
 
 .. In the following example a constraint chooses an action based on a *country code* from the route data. The `full sample on GitHub <https://github.com/aspnet/Entropy/blob/dev/samples/Mvc.ActionConstraintSample.Web/CountrySpecificAttribute.cs>`__.
 
