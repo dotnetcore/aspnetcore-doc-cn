@@ -136,27 +136,35 @@ Open *Views/Shared/_Layout.cshtml* and make the following changes:
 
 In *Views/Home/Index.cshtml*, replace the contents of the file with the following code to replace the text about ASP.NET and MVC with text about this application:
 
-在 *Views/Home/Index.cshtml* 视图中， replace the contents of the file with the following code to replace the text about ASP.NET and MVC with text about this application:
+在 *Views/Home/Index.cshtml* 视图中，使用以下代码替换文件中关于此应用程序的有关ASP.NET和MVC的文本。
 
 .. literalinclude::  intro/samples/cu/Views/Home/Index.cshtml
    :language: html
 
-Press CTRL+F5 to run the project or choose **Debug > Start Without Debugging** from the menu. You see the home page with tabs for the pages you'll create in these tutorials.
+按下 CTRL+F5 运行项目在菜单中选择 **Debug > Start Without Debugging** 。你会看到你在本教程创建的首页在tab页中显示。
 
 .. image:: intro/_static/home-page.png
-   :alt: Contoso University home page
+   :alt: Contoso University 首页
 
 Entity Framework Core NuGet packages
 ------------------------------------
 
-Because you used the **Individual User Accounts** option when you created the project, support for EF Core has already been installed.
+Entity Framework Core NuGet 包管理
+------------------------------------
 
-If you want to add EF Core support to a new project that you create without the **Individual User Accounts** option, install the following NuGet packages:
+因为你在创建项目的时候应用了 **Individual User Accounts** 选项。所以项目直接就预装了 EF Core 的支持。
+
+如果你希望添加 EF Core 支持到一个新的项目但是你在创建项目的时候没有选择 **Individual User Accounts** 选项，安装以下NuGet 包：
 
 * The package for the database provider you want to target. To use SQL Server, the package is `Microsoft.EntityFrameworkCore.SqlServer <https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/>`__. For a list of available providers see `Database Providers <https://docs.efproject.net/en/latest/providers/index.html>`__. 
 * The package for the EF command-line tools:   `Microsoft.EntityFrameworkCore.Tools <https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/1.0.0-preview2-final>`__. This package is a preview release, so to install it you have to enable preview release installation. After installing the package, you also have to add a reference to it in the ``tools`` collection in the *project.json* file.
 
+* 首先你要指定包的数据库提供者。如果是使用 SQL Server, 包是 `Microsoft.EntityFrameworkCore.SqlServer <https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/>`__. 其它可用的数据库提供者请参考 `Database Providers <https://docs.efproject.net/en/latest/providers/index.html>`__. 
+* EF 命令行工具包 :   `Microsoft.EntityFrameworkCore.Tools <https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/1.0.0-preview2-final>`__ 。这个包是预发行版本的，所以如果你想安装不得不开启预览版安装可用。 装完这个包以后。你需要在 *project.json* 的 ``tools`` 集合里面添加一个引用。
+
 If you open the *project.json* file, you'll see that these packages are already installed.
+
+如果你打开 *project.json* 文件， 你会发现所有的包都安装好了。
 
 .. literalinclude::  intro/samples/cu/project1.json
   :language: javascript
@@ -170,20 +178,31 @@ Create the data model
 
 Next you'll create entity classes for the Contoso University application. You'll start with the following three entities.
 
+下面你将建立用于Contoso大学网站的实体类。你将从以下三个类开始：
+
 .. image:: intro/_static/data-model-diagram.png
-   :alt: Course-Enrollment-Student data model diagram
+   :alt: Course-Enrollment-Student 数据模型图
 
 There's a one-to-many relationship between ``Student`` and ``Enrollment`` entities, and there's a one-to-many relationship between ``Course`` and ``Enrollment`` entities. In other words, a student can be enrolled in any number of courses, and a course can have any number of students enrolled in it.
 
+注意 ``Student`` 和``Enrollment``存在一对多的关联关系。同样``Course``和``Enrollment``也是如此。换句话说，一个学生可以参加任意数量的课程，而一门课程也被任意数量的学生参加。
+
 In the following sections you'll create a class for each one of these entities.
 
+在下面的章节中我们将开始创建这些实体类。
+
 The Student entity
+^^^^^^^^^^^^^^^^^^
+
+The Student entity （学员实体类）
 ^^^^^^^^^^^^^^^^^^
 
 .. image:: intro/_static/student-entity.png
    :alt: Student entity diagram
 
 In the *Models* folder, create a class file named *Student.cs* and replace the template code with the following code. 
+
+在 *Models* 文件夹中，创建名为 *Student.cs* 的类并使用以下的代码替换模版代码：
 
 .. literalinclude::  intro/samples/cu/Models/Student.cs
   :language: c#
@@ -192,17 +211,28 @@ In the *Models* folder, create a class file named *Student.cs* and replace the t
 
 The ``ID`` property will become the primary key column of the database table that corresponds to this class. By default, the Entity Framework interprets a property that's named ``ID`` or ``classnameID`` as the primary key.
 
+ ``ID`` 属性将成为数据表中对应该类的主键字段。默认情况下，Entity Framework 将命名为 ``ID`` 或 ``classnameID`` 的属性用作主键字段。
+ 
 The ``Enrollments`` property is a navigation property. Navigation properties hold other entities that are related to this entity. In this case, the ``Enrollments`` property of a ``Student entity`` will hold all of the ``Enrollment`` entities that are related to that ``Student`` entity. In other words, if a given Student row in the database has two related Enrollment rows (rows that contain that student's primary key value in their StudentID foreign key column), that ``Student`` entity's ``Enrollments`` navigation property will contain those two ``Enrollment`` entities.
 
+ ``Enrollments`` 属性是一个导航属性。导航属性建立本实体类相关的其他实体类之间的关联。在本例中，一个 ``Student entity``的 ``Enrollments`` 属性将容纳所有与 ``Student`` 实体相关联的 ``Enrollments`` 实体。换而言之，如果一个 ``Student`` 在数据库中有两个相关的 ``Enrollments`` 行(字段使用使用该学生的主键值作为外键)，即 ``Student`` 实体的``Enrollments``属性将包含这两个关联的``Enrollments``实体类。
+ 
 If a navigation property can hold multiple entities (as in many-to-many or one-to-many relationships), its type must be a list in which entries can be added, deleted, and updated, such as ``ICollection<T>``.  You can specify ``ICollection<T>`` or a type such as ``List<T>`` or ``HashSet<T>``. If you specify ``ICollection<T>``, EF creates a ``HashSet<T>`` collection by default.
+
+如果导航属性持有多个实体（如在多对多或者1对多关系中），其类型必须是一个集合，以便实现实体的增加、删除和更新，例如 ``ICollection<T>``。你可以指定``ICollection<T>``或者诸如``List<T>``、``HashSet<T>``的类型。如果你指定了``ICollection<T>``，EF会缺省创建一个``HashSet<T>``集合。
 
 The Enrollment entity
 ^^^^^^^^^^^^^^^^^^^^^
 
+The Enrollment entity（排课实体类）
+^^^^^^^^^^^^^^^^^^^^^
+
 .. image:: intro/_static/enrollment-entity.png
-   :alt: Enrollment entity diagram
+   :alt: Enrollment 实体类图
 
 In the *Models* folder, create *Enrollment.cs* and replace the existing code with the following code:
+
+在 *Models* 目录中， 创建 *Enrollment.cs* 代码文件并使用下列代码做替换：
 
 .. literalinclude::  intro/samples/cu/Models/Enrollment.cs
   :language: c#
@@ -211,21 +241,34 @@ In the *Models* folder, create *Enrollment.cs* and replace the existing code wit
 
 The ``EnrollmentID`` property will be the primary key; this entity uses the ``classnameID`` pattern instead of ``ID`` by itself as you saw in the ``Student`` entity. Ordinarily you would choose one pattern and use it throughout your data model. Here, the variation illustrates that you can use either pattern. In a later tutorial, you'll see how using ID without classname makes it easier to implement inheritance in the data model.
 
+ ``EnrollmentID`` 属性将作为主键，它使用了 ``classnameID`` 模式而不是你在 ``Student`` 中直接使用 ``ID`` 本身的方法。通常情况下你应当在这两种方式中选择一种作为整个项目的统一命名方式，在这里我们只是演示了这两种方式的使用。在后面的教程中你将看到如何使用不带类名的 ID 从而更容易地在数据模型中实现继承。
+
 The ``Grade`` property is an ``enum``. The question mark after the ``Grade`` type declaration indicates that the ``Grade`` property is nullable. A grade that's null is different from a zero grade -- null means a grade isn't known or hasn't been assigned yet.
+
+ ``Grade`` 属性是一个 ``枚举``。属性后的问号表示这是一个可为空的属性。Null 表示一个未知或没有分配的级别。
 
 The ``StudentID`` property is a foreign key, and the corresponding navigation property is ``Student``. An ``Enrollment`` entity is associated with one ``Student`` entity, so the property can only hold a single ``Student`` entity (unlike the ``Student.Enrollments`` navigation property you saw earlier, which can hold multiple ``Enrollment`` entities).
 
+``StudentID``是一个外键，相应的导航属性是``Student``。一个``Enrollment``实体关联到一个Student实体。所以属性只能容纳一个``Student``实体(而不像之前的``Student.Enrollments``导航属性，它可以容纳多个``Enrollment``实体)。
+
 The ``CourseID`` property is a foreign key, and the corresponding navigation property is ``Course``. An ``Enrollment`` entity is associated with one ``Course`` entity.
 
+同样``CourseID``也是一个外键，关联到一个``Course``实体。
+
 Entity Framework interprets a property as a foreign key property if it's named ``<navigation property name><primary key property name>`` (for example, ``StudentID`` for the ``Student`` navigation property since the ``Student`` entity's primary key is ``ID``). Foreign key properties can also be named simply ``<primary key property name>`` (for example, ``CourseID`` since the ``Course`` entity's primary key is ``CourseID``).
+
+如果一个属性的命名方式为``<导航属性名><主键属性名>``，Entity Framework 便会将该属性视为外键属性。(例如，``StudentID``实体的主键为``ID``，则``StudentID``被视为为 ``Student``导航属性的外键)。外键的属性也可以命名为简单的``<主键属性名>``(例如，``Course``实体的主键为``CourseID``)。
 
 The Course entity
 ^^^^^^^^^^^^^^^^^
 
-.. image:: intro/_static/course-entity.png
-   :alt: Course entity diagram
+The Course entity（课程实体类）
+^^^^^^^^^^^^^^^^^
 
-In the *Models* folder, create *Course.cs* and replace the existing code with the following code:
+.. image:: intro/_static/course-entity.png
+   :alt: Course 实体类图
+
+在 *Models* 目录中， 创建 *Course.cs* 类并用下面的代码做替换：
 
 .. literalinclude::  intro/samples/cu/Models/Course.cs
   :language: c#
@@ -234,14 +277,25 @@ In the *Models* folder, create *Course.cs* and replace the existing code with th
 
 The ``Enrollments`` property is a navigation property. A ``Course`` entity can be related to any number of ``Enrollment`` entities.
 
+ ``Enrollments`` 属性是导航属性。 ``Course`` 实体可与任意数量的 ``Enrollment`` 实体相关联
+
 We'll say more about the ``DatabaseGenerated`` attribute in a later tutorial in this series. Basically, this attribute lets you enter the primary key for the course rather than having the database generate it.
+
+我们将在后续的课程中讨论更多的 ``DatabaseGenerated`` 属性。基本上，该属性让你为 course 生成主键而不是让数据库生成它。
 
 Create the Database Context
 ---------------------------
 
+创建数据库上下文
+---------------------------
+
 The main class that coordinates Entity Framework functionality for a given data model is the database context class. You create this class by deriving from the ``System.Data.Entity.DbContext`` class. In your code you specify which entities are included in the data model. You can also customize certain Entity Framework behavior. In this project, the class is named ``SchoolContext``.
 
+在一个数据模型中负责协调 Entity Framework 功能的主类被称为数据库上下文类。您可以通过派生自 ``System.Data.Entity.DbContext`` 类来创建。你可以在代码中指定那些实体被包含在数据模型中。您可以可以自定义某些 Entity Framework 的行为。在本项目中，上下文类被命名为 ``SchoolContext``。
+
 In the *Data* folder create a new class file named *SchoolContext.cs*, and replace the template code with the following code:
+
+在 *Data* 目录中创建一个名为 *SchoolContext.cs* 的类， 使用下面的代码替换模版代码：
 
 .. literalinclude::  intro/samples/cu/Data/SchoolContext.cs
   :language: c#
@@ -250,9 +304,15 @@ In the *Data* folder create a new class file named *SchoolContext.cs*, and repla
 
 This code creates a ``DbSet`` property for each entity set. In Entity Framework terminology, an entity set typically corresponds to a database table, and an entity corresponds to a row in the table.
 
+每个实体类里面会创建一个 ``DbSet`` 属性。在 Entity Framework 术语中。实体 set 一般对应于数据库表，实体记录对应于表中的行。 
+
 You could have omitted the ``DbSet<Enrollment>`` and ``DbSet<Course>`` statements and it would work the same. The Entity Framework would include them implicitly because the ``Student`` entity references the ``Enrollment`` entity and the ``Enrollment`` entity references the ``Course`` entity.
 
+你可以省略 ``DbSet<Enrollment>`` 和 ``DbSet<Course>`` ，Entity Framework 将自动把它们包含进来。因为Student实体引用了``Enrollment``实体类，并且``Enrollment``实体类引用了``Course``实体类。
+
 When the database is created, EF creates tables that have names the same as the ``DbSet`` property names. Property names for collections are typically plural (Students rather than Student), but developers disagree about whether table names should be pluralized or not. For these tutorials you'll override the default behavior by specifying singular table names in the DbContext. To do that, add the following highlighted code after the last DbSet property.
+
+当创建数据库时，EF创建了与 ``DbSet`` 属性名相同的表。集合的属性名通常使用复数形式（使用Students而不是Student），但是是由开发者同意是否将表名使用复数形式。在本教程中，你将用 DbContext 中表名的单数形式覆盖缺省的行为。为此，在最新的 DbSet 属性后增加下列高亮代码。
 
 .. literalinclude::  intro/samples/cu/Data/SchoolContext.cs
   :language: c#
@@ -263,9 +323,16 @@ When the database is created, EF creates tables that have names the same as the 
 Register the context with dependency injection
 ----------------------------------------------
 
+依赖注入中注册上下文
+----------------------------------------------
+
 ASP.NET Core implements :doc:`dependency injection </fundamentals/dependency-injection>` by default. Services (such as the EF database context) are registered with dependency injection during application startup. Components that require these services (such as MVC controllers) are provided these services via constructor parameters. You'll see the controller constructor code that gets a context instance later in this tutorial.
 
+ASP.NET默认使用:doc:`依赖注入 </fundamentals/dependency-injection>`。在应用启动期间，启动依赖注入等服务（例如EF数据库上下文）。通过构造器参数提供了需要这些服务（例如 MVC 控制器）的组件。本教程后续内容中，你将看到取得上下文实例的控制器构造代码。
+
 To register ``SchoolContext`` as a service, open *Startup.cs*, and add the highlighted lines to the ``ConfigureServices`` method.
+
+为了把 ``SchoolContext`` 注册为一个服务， 打开 *Startup.cs*文件，添加高亮行到 ``ConfigureServices`` 方法。
 
 .. literalinclude::  intro/samples/cu/Startup.cs
   :language: c#
@@ -276,26 +343,43 @@ To register ``SchoolContext`` as a service, open *Startup.cs*, and add the highl
 
 The name of the connection string is passed in to the context by calling a method on a ``DbContextOptionsBuilder`` object. For local development, the :doc:`ASP.NET Core configuration system </fundamentals/configuration>` reads the connection string from the *appsettings.json* file. The connection string is highlighted in the following *appsettings.json* example. 
 
+通过调用``DbContextOptionsBuilder``对象的一个方法，将连接字符串的名称传递给上下文。本地开发时，:doc:`ASP.NET Core 配置系统 </fundamentals/configuration>` 从 *appsettings.json* 文件读取连接字符串。连接字符串高亮显示于下面的 *appsettings.json* 例子中。
+
 .. literalinclude::  intro/samples/cu/appsettings1.json
   :language: json
   :emphasize-lines: 2-3
 
 The connection string created by the Visual Studio new-project template has a generated database name with a numeric suffix to guarantee uniqueness. You don't have to change that name.
 
+由 Visual Studio 新建项目模板创建的连接字符串，有与生成的数据库相同的名字，该数据库名字以数字结尾确保不重复。你不必修改这个名字。
+
 SQL Server Express LocalDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
 
 The connection string specifies a SQL Server LocalDB database. LocalDB is a lightweight version of the SQL Server Express Database Engine and is intended for application development, not production use. LocalDB starts on demand and runs in user mode, so there is no complex configuration. By default, LocalDB creates *.mdf* database files in the ``C:/Users/<user>`` directory.
+
+链接字符串指定一个SQL Server LocalDB 数据库，LocalDB是SQL Server Express的一个轻量版本，非常适合用来进行本地测试，但不建议在生产中使用。LocalDB 并以用户模式的方式按需启动运行，因此默认没有复杂的配置。
 
 Add code to initialize the database with test data
 ---------------------------------------------------
 
+添加代码给数据库初始化测试数据
+---------------------------------------------------
+
 The Entity Framework will create an empty database for you.  In this section, you write a method that is called after the database is created in order to populate it with test data.
+
+Entity Framwork 将为你创建一个空数据库。本节中，你要编写一个方法，以便实现对包含测试数据的数据库的调用。
 
 Here you'll use the ``EnsureCreated`` method to automatically create the database. In a later tutorial you'll see how to handle model changes by using Code First Migrations to change the database schema instead of dropping and re-creating the database.
 
+在这里，你将使用 ``EnsureCreated`` 方法自动创建数据库。在后面的教程中，你将看到如何使用 Code Frist 迁移功能来变更数据库 schema，而不是采用删除、再重建数据库的发放，最终实现模型变更的处理。
+
 In the *Data* folder, create a new class file named *DbInitializer.cs* and replace the template code with the
 following code, which causes a database to be created when needed and loads test data into the new database.
+
+在 *Data* 文件夹中，创建一个名为 *DbInitializer.cs* 的类文件，然后用下面的代码替换模板内容，以便需要时可以加载新的数据库。
+
 
 .. literalinclude::  intro/samples/cu/Data/DbInitializer.cs
   :language: c#
@@ -304,7 +388,11 @@ following code, which causes a database to be created when needed and loads test
 
 The code checks if there are any students in the database, and if not, it assumes the database is new and needs to be seeded with test data.  It loads test data into arrays rather than ``List<T>`` collections to optimize performance. 
 
+这段代码检测数据库中是否有学生的记录，如果没有，将假定数据库是新的，后然用测试数据初始化。将测试数据加载到数组中，而不是 ``List<T>`` 集合中，这可优化性能。
+
 In *Startup.cs*, modify the ``Configure`` method to call this seed method on application startup. First, add the context to the method signature so that ASP.NET dependency injection can provide it to your ``DbInitializer`` class.
+
+在 *Startup.cs* 文件中，修改 ``Configure``方法，以便应用启动时调用这些初始化方法。首先，向方法中增加上下文，以便ASP.NET依赖注入可向你的 ``DbInitializer`` 类提供该上下文。
 
 .. literalinclude::  intro/samples/cu/Startup.cs
   :language: c#
@@ -315,6 +403,8 @@ In *Startup.cs*, modify the ``Configure`` method to call this seed method on app
 
 Then call your ``DbInitializer.Initialize`` method at the end of the ``Configure`` method.
 
+接着，在 ``Configure`` 方法结尾处调用 ``DbInitializer.Initialize`` 方法。
+
 .. literalinclude::  intro/samples/cu/Startup.cs
   :language: c#
   :start-after: snippet_RouteAndSeed
@@ -324,18 +414,35 @@ Then call your ``DbInitializer.Initialize`` method at the end of the ``Configure
 
 Now the first time you run the application the database will be created and seeded with test data. Whenever you change your data model, you can delete the database, update your seed method, and start afresh with a new database the same way. In later tutorials you'll see how to modify the database when the data model changes, without deleting and re-creating it.
 
+现在第一次运行应用，数据库将被创建，测试数据将被初始化。修改数据模型时，你可删除数据库、更新seed方法，并且用同样的方法开始刷新新的数据库。在后续的教程中，当数据模型变化时，你将看到如何修改数据库，而不是用删除再重建的方法。
+
 Create a controller and views
+-----------------------------
+
+创建控制器和视图
 -----------------------------
 
 Next, you'll use the scaffolding engine in Visual Studio to add an MVC controller and views that will use EF to query and save data. 
 
+接下来，你将使用 Visual Studio 的基架引擎来增加 MVC 的控制器和视图，以实现通过 EF 进行查询和存储数据。
+
 The automatic creation of CRUD action methods and views is known as scaffolding. Scaffolding differs from code generation in that the scaffolded code is a starting point that you can modify to suit your own requirements, whereas you typically don't modify generated code. When you need to customize generated code, you use partial classes or you regenerate the code when things change.
+
+自动创建 CRUD 方法和视图的功能被称为基架。基架模式不同于直接编写代码的方式，通过基架生成的代码是一个开端，基于此你可以进一步修改代码以适合自己的应用，然而典型情况下你也可不修改生成的代码。当需要定制生成的代码时，你可使用部分的类，或者当事情变化是重新生成代码。
 
 * Right-click the **Controllers** folder in **Solution Explorer** and select **Add > New Scaffolded Item**.
 * In the **Add Scaffold** dialog box:
 
   * Select **MVC controller with views, using Entity Framework**.
   * Click **Add**.
+
+* 在 **Solution Explorer** 面板右击 **Controllers** 并且选择 **Add > New Scaffolded Item**.
+* 在 **Add Scaffold** 对话框中：
+ 
+  * 选择 **MVC controller with views, using Entity Framework**.
+  * 点击 **Add**.
+
+
 
 * In the **Add Controller** dialog box:
 
@@ -344,14 +451,28 @@ The automatic creation of CRUD action methods and views is known as scaffolding.
   * Accept the default **StudentsController.cs** as the name.
   * Click **Add**.
 
+
+* 在 **Add Controller** 对话框中：
+
+  * 在 **Model class** 中选择 **Student**.
+  * 在 **Data context class** 中选择 **SchoolContext**.
+  * 接受 **StudentsController.cs** 作为文件名.
+  * 点击 **Add**.
+
 .. image:: intro/_static/scaffold-student.png
    :alt: Scaffold Student
 
 When you click **Add**, the Visual Studio scaffolding engine creates a *StudentsController.cs* file and a set of views (*.cshtml* files) that work with the controller. 
 
+当你点击**Add**时，VS基架引擎创建一个 *StudentsController.cs* 文件，并且创建了一套视图（*.cshtml*/files），该套视图与这个控制器一同工作。
+
 (The scaffolding engine can also create the database context for you if you don't create it manually first as you did earlier for this tutorial. You can specify a new context class in the **Add Controller** box by clicking the plus sign to the right of **Data context class**.  Visual Studio will then create your ``DbContext`` class as well as the controller and views.)
 
+（如果你没有像该教程前面要求的创建上下文的话，基架引擎也会为你创建一个数据库上下文。你可在 **Add Controller**对话框内点击 **Data context class** 后面的加号，从而指定一个新的上下文类。VS然后将会你自己定义的 ``DbContext`` 类，以及控制器和视图）
+
 You'll notice that the controller takes a ``SchoolContext`` as a constructor parameter. 
+
+你会注意到控制器将 ``SchoolContext`` 作为一个构造参数。
 
 .. literalinclude::  intro/samples/cu/Controllers/StudentsController.cs
   :language: c#
@@ -361,7 +482,11 @@ You'll notice that the controller takes a ``SchoolContext`` as a constructor par
 
 ASP.NET dependency injection will take care of passing an instance of ``SchoolContext`` into the controller. You configured that in the *Startup.cs* file earlier.
 
+ASP.NET依赖注入将会考虑向控制器传递一个 ``SchoolContext`` 实例。前面，你将其配置进 *Startup.cs* 。
+
 The controller contains an ``Index`` action method, which displays all students in the database. The method gets a list of students from the Students entity set by reading the ``Students`` property of the database context instance:
+
+控制器包含了一个 ``Index`` 方法，该方法显示数据库中所有的 ``Students`` 数据。通过读取Students属性，该方法从 ``Students`` 实体中得到一个 ``Students`` 表。
 
 .. literalinclude::  intro/samples/cu/Controllers/StudentsController.cs
   :language: c#
@@ -372,14 +497,22 @@ The controller contains an ``Index`` action method, which displays all students 
 
 You'll learn about the asynchronous programming elements in this code later in the tutorial.
 
+你将在该教程的后面，学习异步编程的方法。
+
 The *Views/Students/Index.cshtml* view displays this list in a table:
+
+视图 *Views/Students/Index.cshtml* 在表格中显示一个列表：
 
 .. literalinclude::  intro/samples/cu/Views/Students/Index1.cshtml
   :language: html
 
 Press CTRL+F5 to run the project or choose **Debug > Start Without Debugging** from the menu.
 
+按下 CTRL+F5 运行项目，选择 **Debug > Start Without Debugging** 菜单。
+
 Click the Students tab to see the test data that the ``DbInitializer.Initialize`` method inserted. Depending on how narrow your browser window is, you'll see the ``Student`` tab link at the top of the page or you'll have to click the navigation icon in the upper right corner to see the link.
+
+点击学院选项卡查看 ``DbInitializer.Initialize`` 方法插入的测试数据。根据浏览器窗口的实际宽度，您将在页面顶部看到 ``Student`` 选项卡链接，或者您需要点击右上角的导航图标以查看链接。
 
 .. image:: intro/_static/home-page-narrow.png
    :alt: Contoso University home page narrow
@@ -390,50 +523,91 @@ Click the Students tab to see the test data that the ``DbInitializer.Initialize`
 View the Database
 -----------------
 
+查看数据库
+-----------------
+
 When you started the application, the ``DbInitializer.Initialize`` method calls ``EnsureCreated``. EF saw that there was no database and so it created one, then the remainder of the ``Initialize`` method code populated the database with data. You can use **SQL Server Object Explorer** (SSOX) to view the database in Visual Studio. 
+
+当启动该应用时，``DbInitializer.Initialize`` 方法调用 ``EnsureCreated``。EF看到没有数据库，进而创建了一个数据库，接着``Initialize``方法中剩余的代码使用提供的数据发布了数据库。你可以在VS中使用 **SQL Server Object Explorer** (SSOX)浏览该数据库。
 
 Close the browser. 
 
+关闭浏览器。
+
 If the SSOX window isn't already open, select it from the **View** menu in Visual Studio.
+
+如果 SSOX 窗体已经打开了，在 Visual Studio 里面选择 **View** 菜单
 
 In SSOX, click **(localdb)\\MSSQLLocalDB > Databases**, and then click the entry for the database name that is in the connection string in your *appsettings.json* file.
 
+在 SSOX 中， 点击 **(localdb)\\MSSQLLocalDB > Databases**， 点击你在 *appsettings.json* 文件的连接字符串中配置好数据库名。
+
 Expand the **Tables** node to see the tables in your database.
+
+展开 **Tables** 节点查看数据库中的表。
 
 .. image:: intro/_static/ssox-tables.png
    :alt: Tables in SSOX
 
 Right-click the **Student** table and click **View Data** to see the columns that were created and the rows that were inserted into the table. 
 
+右击 **Student** 表点击 **View Data** 菜单查看我们创建的数据库列以及插入的数据。 
+
 .. image:: intro/_static/ssox-student-table.png
    :alt: Student table in SSOX
 
-The *.mdf* and *.ldf* database files are in the `C:\Users\<yourusername>` folder.
+数据文件 *.mdf* 以及 *.ldf* 位于 `C:\Users\<yourusername>` 目录下。
 
 Because you're calling ``EnsureCreated`` in the initializer method that runs on app start, you could now make a change to the ``Student class``, delete the database, run the application again, and the database would automatically be re-created to match your change. For example, if you add an ``EmailAddress`` property to the ``Student`` class, you'll see a new ``EmailAddress`` column in the re-created table.
+
+因为在应用启动时调用了 initializer 方法中的 ``EnsureCreated`` ，你现在可以修改 ``Student class``，然后删除数据库，再次运行应用，数据库将按照改动自动再次创建了。例如，如果你向``Student``类中增加了``EmailAddress``属性，你将看到在重新创建的表中多了EmailAddress列。
 
 Conventions
 -----------
 
+约定
+-----------
+
 The amount of code you had to write in order for the Entity Framework to be able to create a complete database for you is minimal because of the use of conventions, or assumptions that the Entity Framework makes. 
+
+为了 Entity Framework 能创建一个完整的数据库，你已经写了一定数量的代码，但是这些代码是极少量的，因为用了一些约定，或者说是 Entity Framework 承担了一部分工作。
 
 * The names of ``DbSet`` properties are used as table names. For entities not referenced by a ``DbSet`` property, entity class names are used as table names.
 * Entity property names are used for column names.
 * Entity properties that are named ID or classnameID are recognized as primary key properties. 
 * A property is interpreted as a foreign key property if it's named `<navigation property name><primary key property name>` (for example, ``StudentID`` for the ``Student`` navigation property since the ``Student`` entity's primary key is ``ID``). Foreign key properties can also be named simply `<primary key property name>` (for example, ``EnrollmentID`` since the ``Enrollment`` entity's primary key is ``EnrollmentID``).
 
+*  ``DbSet`` 属性的名字被用于表名。因为实体没有引用 ``DbSet`` 属性，实体类名被用于表名。
+* 实体属性名被用于字段名。
+* 被命名为 ID 或者 classnameID 的实体属性被当作主键属性。
+* 如果一个属性被命名为`<navigation property name><primary key property name>`，则该属性被当作外键。（例如：例如：``StudentID``对于``Student``导航属性，因为Student实体的主键是``ID``）。外键属性也可被命名为相同的简单的`<primary key property name>`（例如： ``EnrollmentID``，因为``Enrollment``实体的主键是``EnrollmentID``。）
+
 Conventional behavior can be overridden. For example, you can explicitly specify table names, as you saw earlier in this tutorial. And you can set column names and set any property as primary key or foreign key, as you'll see in a later tutorial in this series.
+
+约束的行为可以被覆盖。 比如， 你可以显示指定表名，如同你在先前的教程里面看到的一样。 你也可以设置列名设置属性名作为主键或者外键， 你在后续的系列教程里面将会看到如何这样做。
 
 Asynchronous code
 -----------------
 
+异步代码
+-----------------
+
 Asynchronous programming is the default mode for ASP.NET Core and EF Core.
+
+异步编程是 Asp.net Core 和 EF Core 的默认模式。
 
 A web server has a limited number of threads available, and in high load situations all of the available threads might be in use. When that happens, the server can't process new requests until the threads are freed up. With synchronous code, many threads may be tied up while they aren't actually doing any work because they're waiting for I/O to complete. With asynchronous code, when a process is waiting for I/O to complete, its thread is freed up for the server to use for processing other requests. As a result, asynchronous code enables server resources to be use more efficiently, and the server is enabled to handle more traffic without delays.
 
+一个WEB服务器只有很有限的可用线程资源，并且在高负载的情况下，可能所有的线程都会在使用中。当发生这种情况时，服务器将无法处理新的请求，直到有线程被释放。在同步代码的情况下，多个线程可能会关联起来，但实际上它们并不作任何工作而只是在等待IO完成。使用异步代码，当一个进程正在等待IO完成时，它的线程可以服务器腾出从而用于处理其他请求。因此，异步代码可以更高效地使用服务器资源，并且服务器能够在不延迟的情况下处理更多的流量。
+
 Asynchronous code does introduce a small amount of overhead at run time, but for low traffic situations the performance hit is negligible, while for high traffic situations, the potential performance improvement is substantial.
 
+异步代码在运行时引入系统开销比较小，但是在低流量情况下，性能的提升是可以忽略不计的，而对于高流量情况，潜在的系统性能改进是巨大的。
+
+
 In the following code, the ``async`` keyword, ``Task<T>`` return value, ``await`` keyword, and ``ToListAsync`` method make the code execute asynchronously.
+
+下面的代码里，   ``async`` 关键字， ``Task<T>`` 返回值， ``await``关键字， 以及 ``ToListAsync`` 方法将会使得代码异步执行。
 
 .. literalinclude::  intro/samples/cu/Controllers/StudentsController.cs
   :language: c#
@@ -446,13 +620,28 @@ In the following code, the ``async`` keyword, ``Task<T>`` return value, ``await`
 * The ``await`` keyword causes the compiler to split the method into two parts. The first part ends with the operation that is started asynchronously. The second part is put into a callback method that is called when the operation completes.
 * ``ToListAsync`` is the asynchronous version of the ``ToList`` extension method.
 
+* 关键字 ``async``通知编译器将方法体的代码生成回调并且自动创建 ``Task<IActionResult>`` 对象返回。
+* 返回类型 ``Task<IActionResult>`` 把即将执行操作的结果作为 ``IActionResult`` 返回。
+* ``await``关键字使编译器将方法分成两个部分。第一个部分以开始异步为结尾。第二个部分被放进一个回调方法，当操作完成时该方法被调用。
+* ``ToListAsync``方法是 ``ToList`` 方法的异步扩展版本。
+ 
 Some things to be aware of when you are writing asynchronous code that uses the Entity Framework:
+
+在使用 Entity Framework 编写异步代码时需要注意一些事情：
 
 * Only statements that cause queries or commands to be sent to the database are executed asynchronously. That includes, for example, ``ToListAsync``, ``SingleOrDefaultAsync``, and ``SaveChangesAsync``.  It does not include, for example, statements that just change an ``IQueryable``, such as ``var students = *context.Students.Where(s => s.LastName = "Davolio")``.
 * An EF context is not thread safe: don't try to do multiple operations in parallel. When you call any async EF method, always use the ``await`` keyword.
 * If you want to take advantage of the performance benefits of async code, make sure that any library packages that you're using (such as for paging), also use async if they call any Entity Framework methods that cause queries to be sent to the database.
 
+
+* 只有导致查询或SQL语句发送到数据库的代码是异步执行的。 包括，例如，``ToListAsync``，``SingleOrDefaultAsync``和``SaveChangesAsync``。 不包括，例如，只是更改 ``IQueryable``的语句，如``var students = *context.Students.Where(s => s.LastName = "Davolio")``。
+* EF上下文不是线程安全的：不要尝试并行执行多个操作。 当你调用一个异步EF方法时，总是使用 ``await`` 关键字。
+* 如果您想利用异步代码的性能优势，请确保您正在使用的任何库包（如分页），如果他们调用任何导致查询的 Entity Framework 方法发送到 数据库。
+
+
 For more information about asynchronous programming in .NET, see `Async Overview <https://docs.microsoft.com/en-us/dotnet/articles/standard/async>`__.
+
+更多关于.NET异步编程的信息吗，请参考 `异步概览 <https://docs.microsoft.com/en-us/dotnet/articles/standard/async>`__。
 
 Summary
 -------
@@ -461,3 +650,5 @@ Summary
 -------
 
 You've now created a simple application that uses the Entity Framework Core and SQL Server Express LocalDB to store and display data. In the following tutorial, you'll learn how to perform basic CRUD (create, read, update, delete) operations. 
+
+现在，您已经创建了一个使用 Entity Framework Core 和SQL Server Express LocalDB 来存储和显示数据的简单 Web 应用程序，在后面的教程中，您将学习如何执行基本的 CRUD (创建, 读取, 更新, 删除)操作。
