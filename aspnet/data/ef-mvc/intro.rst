@@ -165,6 +165,9 @@ If you open the *project.json* file, you'll see that these packages are already 
 Create the data model
 ---------------------
 
+创建数据模型
+---------------------
+
 Next you'll create entity classes for the Contoso University application. You'll start with the following three entities.
 
 .. image:: intro/_static/data-model-diagram.png
