@@ -135,7 +135,7 @@ The sample code (shown below) uses the ``SetAbsoluteExpiration`` method on ``Mem
 
 In addition to setting an absolute expiration, a sliding expiration can be used to keep frequently requested items in the cache:
 
-除设置绝对过期时间之外，滑动过期时间可以保持在缓存中项目能被请求：
+除设置绝对过期时间之外，使用滑动过期时间可以在缓存中持续保留被频繁请求的项：
 
 .. code-block:: c#
 
