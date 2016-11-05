@@ -111,7 +111,7 @@ There are two methods for accessing cache entries:
   ``Get`` will return the value if it exists, but otherwise returns ``null``.
 
 ``Get``
-  ``Get`` 将在值存在时返回值，否在返回 ``null``.
+  ``Get`` 将在值存在时返回值，否则返回 ``null``.
 
 ``TryGet``
   ``TryGet`` will assign the cached value to an ``out`` parameter and return true if the entry exists. Otherwise it returns false.
