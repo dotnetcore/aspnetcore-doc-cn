@@ -8,7 +8,7 @@
 
 翻译： `娄宇(Lyrics) <http://github.com/xbuilder>`_
 
-校对： `何镇汐 <http://github.com/utilcore>`_
+校对： `何镇汐 <http://github.com/utilcore>`_ 、`姚阿勇(Dr.Yao) <https://github.com/yaoay>`_
 
 .. ASP.NET Core MVC uses the Routing :doc:`middleware </fundamentals/middleware>` to match the URLs of incoming requests and map them to actions. Routes are defined in startup code or attributes. Routes describe how URL paths should be matched to actions. Routes are also used to generate URLs (for links) sent out in responses.
 
