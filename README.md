@@ -26,6 +26,7 @@
 + [谢炀(Kiler)](https://github.com/kiler398)
 + [许登洋(Seay)](https://github.com/SeayXu)
 + [姚阿勇(Dr.Yao)](https://github.com/YaoaY)
++ [张海龙(jiechen)](http://github.com/ijiechen)
 
 ### 支持与顾问
 
