@@ -5,7 +5,7 @@
 
 翻译： `刘怡(AlexLEWIS) <http://github.com/alexinea>`_
 
-校对：`何镇汐 <http://github.com/utilcore>`_ 、`姚阿勇(Dr.Yao) <https://github.com/yaoay>`_
+校对：`何镇汐 <http://github.com/utilcore>`_
 
 *Filters* in ASP.NET MVC allow you to run code before or after a particular stage in the execution pipeline. Filters can be configured globally, per-controller, or per-action.
 
