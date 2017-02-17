@@ -1,5 +1,5 @@
-﻿---
-title: Building Your First Web API with ASP.NET Core MVC and Visual Studio | Microsoft Docs
+---
+title: Build a web API with ASP.NET Core MVC and Visual Studio | Microsoft Docs
 author: rick-anderson
 description: 
 keywords: ASP.NET Core,
@@ -43,7 +43,7 @@ Here is the API that you’ll create:
     
 The following diagram shows the basic design of the app.
 
-![app basic design](first-web-api/_static/architecture.png)
+![The client is represented by a box on the left and submits a request and receives a response from the application, a box drawn on the right. Within the application box, three boxes represent the controller, the model, and the data access layer. The request comes into the application's controller, and read/write operations occur between the controller and the data access layer. The model is serialized and returned to the client in the response.](first-web-api/_static/architecture.png)
 
 * The client is whatever consumes the web API (browser, mobile app, and so forth). We aren’t writing a client in this tutorial. We'll use [Postman](https://www.getpostman.com/) to test the app.
 
@@ -59,11 +59,11 @@ Start Visual Studio. From the **File** menu, select **New** > **Project**.
 
 Select the **ASP.NET Core Web Application (.NET Core)** project template. Name the project `TodoApi`, clear **Host in the cloud**, and tap **OK**.
 
-![New web app](first-web-api/_static/new-project.png)
+![New project dialog](first-web-api/_static/new-project.png)
 
 In the **New ASP.NET Core Web Application (.NET Core) - TodoApi** dialog, select the **Web API** template. Tap **OK**.
 
-![Select Web API](first-web-api/_static/web-api-project.png)
+![New ASP.NET Web Application dialog with Web API project template selected from ASP.NET Core Templates](first-web-api/_static/web-api-project.png)
 
 ## Add a model class
 
@@ -71,7 +71,7 @@ A model is an object that represents the data in your application. In this case,
 
 Add a folder named "Models". In Solution Explorer, right-click the project. Select **Add** > **New Folder**. Name the folder *Models*.
 
-![Add > New Folder](first-web-api/_static/add-folder.png)
+![Contextual menu](first-web-api/_static/add-folder.png)
 
 > [!NOTE]
 > You can put model classes anywhere in your project, but the *Models* folder is used by convention.
@@ -195,11 +195,11 @@ We'll add `Create`, `Update`, and `Delete` methods to the controller. These are 
 
 This is an HTTP POST method, indicated by the [`[HttpPost]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/HttpPostAttribute/index.html) attribute. The [`[FromBody]`](https://docs.asp.net/projects/api/en/latest/autoapi/Microsoft/AspNetCore/Mvc/FromBodyAttribute/index.html) attribute tells MVC to get the value of the to-do item from the body of the HTTP request.
 
-The `CreatedAtRoute` method returns a 201 response, which is the standard response for an HTTP POST method that creates a new resource on the server. `CreateAtRoute` also adds a Location header to the response. The Location header specifies the URI of the newly created to-do item. See [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+The `CreatedAtRoute` method returns a 201 response, which is the standard response for an HTTP POST method that creates a new resource on the server. `CreatedAtRoute` also adds a Location header to the response. The Location header specifies the URI of the newly created to-do item. See [10.2.2 201 Created](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
 
 ### Use Postman to send a Create request
 
-![image](first-web-api/_static/pmc.png)
+![Postman console](first-web-api/_static/pmc.png)
 
 * Set the HTTP method to `POST`
 
@@ -215,7 +215,7 @@ The `CreatedAtRoute` method returns a 201 response, which is the standard respon
 
 Tap the Headers tab and copy the **Location** header:
 
-![image](first-web-api/_static/pmget.png)
+![Headers tab of the Postman console](first-web-api/_static/pmget.png)
 
 You can use the Location header URI to access the resource you just created. Recall the `GetById` method created the `"GetTodo"` named route:
 
@@ -230,7 +230,7 @@ public IActionResult GetById(string id)
 
 `Update` is similar to `Create`, but uses HTTP PUT. The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). According to the HTTP spec, a PUT request requires the client to send the entire updated entity, not just the deltas. To support partial updates, use HTTP PATCH.
 
-![image](first-web-api/_static/pmcput.png)
+![Postman console showing 204 (No Content) response](first-web-api/_static/pmcput.png)
 
 ### Delete
 
@@ -238,7 +238,7 @@ public IActionResult GetById(string id)
 
 The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
 
-![image](first-web-api/_static/pmd.png)
+![Postman console showing 204 (No Content) response](first-web-api/_static/pmd.png)
 
 ## Next steps
 

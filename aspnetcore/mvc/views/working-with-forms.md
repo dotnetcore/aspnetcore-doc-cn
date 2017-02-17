@@ -1,21 +1,18 @@
 ﻿---
-title: Working with Forms | Microsoft Docs
+title: Using tag helpers in forms | Microsoft Docs
 author: rick-anderson
-description: 
-keywords: ASP.NET Core,
+description: Describes the built-in Tag Helpers used with Forms.
+keywords: ASP.NET Core, Tag Helper, TagHelper, HTML Form, Forms
 ms.author: riande
 manager: wpickett
-ms.date: 10/14/2016
+ms.date: 02/14/2017
 ms.topic: article
 ms.assetid: 25595059-4fac-4785-8152-f88590e3169b
 ms.technology: aspnet
 ms.prod: aspnet-core
 uid: mvc/views/working-with-forms
 ---
-# Working with Forms
-
->[!WARNING]
-> This page documents version 1.0.0-rc1 and has not yet been updated for version 1.0.0
+# Using tag helpers in forms
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT), [Dave Paquette](https://twitter.com/Dave_Paquette), and [Jerrie Pelser](https://github.com/jerriep)
 
@@ -227,7 +224,7 @@ Sample using `List<T>`:
 
 The following Razor shows how to iterate over a collection:
 
-[!code-none[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
+[!code-HTML[Main](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
 The *Views/Shared/EditorTemplates/ToDoItem.cshtml* template:
 
@@ -513,7 +510,7 @@ The generated HTML:
 
 ### Multiple select
 
-The Select Tag Helper  will automatically generate the [multiple = "multiple"](https://www.w3.org/TR/html-markup/select.html#select.attrs.multiple)  attribute if the property specified in the `asp-for` attribute is an `IEnumerable`. For example, given the following model:
+The Select Tag Helper  will automatically generate the [multiple = "multiple"](http://w3c.github.io/html-reference/select.html)  attribute if the property specified in the `asp-for` attribute is an `IEnumerable`. For example, given the following model:
 
 [!code-csharp[Main](../../mvc/views/working-with-forms/sample/final/ViewModels/CountryViewModelIEnumerable.cs?highlight=6)]
 

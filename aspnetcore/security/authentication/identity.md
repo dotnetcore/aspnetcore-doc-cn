@@ -28,12 +28,12 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
     In Visual Studio, select **File** -> **New** -> **Project**. Then, select the **ASP.NET Web Application** from the **New Project** dialog box. Continue by selecting an ASP.NET Core **Web Application** with **Individual User Accounts** as the authentication method.
  
-    ![image](identity/_static/01-mvc.png)
+    ![New Project dialog](identity/_static/01-mvc.png)
  
     The created project contains the `Microsoft.AspNetCore.Identity.EntityFrameworkCore` package, which will persist the identity data and schema to SQL Server using [Entity Framework Core](https://docs.efproject.net).
  
     > [!NOTE]
-    >In Visual Studio, you can view NuGet packages details by selecting **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**. You also see a list of packages in the dependencies section of the *project.json* file within your project.
+    >In Visual Studio, you can view NuGet packages details by selecting **Tools** -> **NuGet Package Manager** -> **Manage NuGet Packages for Solution**.
  
     The identity services are added to the application in the `ConfigureServices` method in the `Startup` class:
  
@@ -51,7 +51,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
  
     Launch the application from Visual Studio (**Debug** -> **Start Debugging**) and then click on the **Register** link in the browser to create a user. The following image shows the Register page which collects the user name and password.
  
-    ![image](identity/_static/02-reg.png)
+    ![Register page with user input fields for Email (Username), Password, and Confirm Password](identity/_static/02-reg.png)
  
     When the user clicks the **Register** link, the `UserManager` and `SignInManager` services are injected into the Controller:
  
@@ -97,7 +97,7 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
 
     After stopping the application, view the user database from Visual Studio by selecting **View** -> **SQL Server Object Explorer**. Then, expand the following within the **SQL Server Object Explorer**:
     
-    * (localdb)MSSQLLocalDB
+    * (localdb)\MSSQLLocalDB
     
     * Databases
     
@@ -107,13 +107,13 @@ In this topic, you'll learn how to use ASP.NET Core Identity to add functionalit
     
     Next, right-click the **dbo.AspNetUsers** table and select **View Data** to see the properties of the user you created.
     
-    ![image](identity/_static/04-db.png)
+    ![Contextual menu on AspNetUsers database table](identity/_static/04-db.png)
 
 ## Identity Components
 
 The primary reference assembly for the identity system is `Microsoft.AspNetCore.Identity`. This package contains the core set of interfaces for ASP.NET Core Identity.
 
-![image](identity/_static/05-dependencies.png)
+![Project references of ASP.NET Core Identity](identity/_static/05-dependencies.png)
 
 These dependencies are needed to use the identity system in ASP.NET Core applications:
 
