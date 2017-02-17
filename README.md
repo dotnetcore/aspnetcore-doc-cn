@@ -1,20 +1,19 @@
-# ASP.NET Core Documentation 翻译计划
+ASP.NET 简体中文文档
+==================
 
-[![Join the chat at https://gitter.im/dotnetcore/aspnetcore-doc-cn](https://badges.gitter.im/dotnetcore/aspnetcore-doc-cn.svg)](https://gitter.im/dotnetcore/aspnetcore-doc-cn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+*本项目仅翻译 ASP.NET Core 文档，ASP.NET 文档可见官方中文版本。*
 
-本项目为 ASP.NET Core Documentaction 翻译计划的工作项目，非本项目的成员不要直接向仓库推送 Pull Request（正式发表之前，暂不接受外部贡献）。
+本项目为 [docs.asp.net](http://docs.asp.net/) 提供源文件，你可以在 [Home](https://github.com/aspnet/home) 仓库中深入了解 ASP.NET Core。如想为文档做贡献（包括英文文档和简体中文文档），请先阅读[贡献指南](CONTRIBUTING.md)和[问题清单](\https://github.com/aspnet/Docs/issues)。
 
-简体中文翻译文档的正式发布地址暂不对外公布。
+API PR ( *api/autoapi/...* ) 并不在此。对 API 文档的任何修改，都应在源仓库中直接修改三斜杠 /// 后的注释。
 
-## 翻译计划 ##
+本项目（此处指英文版本）已被 [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) 采用。更多信息可以查阅 [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) ，如有任何问题或意见可以联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
 
-五月中旬 .NET Core RC2 如期发布，我们遂决定翻译 ASP.NET Core 文档。我们在[　何镇汐](http://home.cnblogs.com/u/xiadao521)先生、[　悲梦](http://home.cnblogs.com/u/beimeng)先生、[　张仁建](http://home.cnblogs.com/u/stoneniqiu/)先生和　雷欧纳德先生的群中发布了翻译计划招募信息，并召集到一群小伙伴，从六月开始翻译文档，目前已完成前两章，并将按计划以连载的方式逐篇公布。当翻译计划完成后，所有文档将整合到一个在线阅读站点上，提供 epub 和 pdf 版本。
+***
 
-**官方 Core 文档还在更新，我们也将持续更新文档。**
+## 简体中文版文档贡献者名单
 
-## 贡献者 ##
-
-（以下排序按照贡献者本名的汉语拼音排列）
+*以下排序按照贡献者本名的汉语拼音排列*
 
 ### 主要贡献者
 
@@ -48,21 +47,3 @@
 + [张剑](https://github.com/garfieldzf8)
 + [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
 + [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
-
-## 关于 ##
-
-### 加入我们
-
-如果您想加入到翻译、审稿以及后续维护工作并愿意为之付出一定的业余时间的，可以前往 dotNet Core Studying Group（群号 436035237）联系我们。
-
-### 反馈
-
-**QQ交流群:**
-
-**dotNET Core Studying Group:** 436035237
-
-**Group of dotNET Translation:** secret
-
-### 后续计划
-
-这个项目完成后，我们还会考虑其它文档的翻译工作，如：EF Core、Castle，等。

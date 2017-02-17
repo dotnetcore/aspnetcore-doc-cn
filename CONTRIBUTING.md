@@ -1,228 +1,122 @@
-<!--# Contributing #-->
+# Contributing to the ASP.NET documentation
 
-# 贡献 #
+The document covers the process for contributing to the articles and code samples that are hosted on the [ASP.NET documentation site](https://docs.microsoft.com/aspnet/). Contributions may be as simple as typo corrections or as complex as new articles.
 
-翻译：[刘怡(AlexLEWIS)](http://github.com/alexinea)
+## How to make a simple correction or suggestion
 
-校对：[刘浩杨(L)](https://github.com/liuhaoyang)，[孟帅洋(书缘)](https://github.com/mengshuaiyang)
+Articles are stored in the repository as Markdown files. Simple changes to the content of a Markdown file can be made in the browser by selecting the **Edit** link in the upper right corner of the browser window. (In narrow browser windows you'll need to expand the **options** bar to see the **Edit** link.) Follow the directions to create a pull request (PR). We will review the PR and accept it or suggest changes.
 
-<!--Information on contributing to this repo is in the [Contributing Guide](https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md) in the Home repo.-->
+## How to make a more complex submission
 
-关于向本仓库贡献的详细阐述位于 aspnet 组织 Home 仓库的 [贡献指南（Contributing Guide）](https://github.com/aspnet/Home/blob/dev/CONTRIBUTING.md) 中（[点击此处查看中文版](https://github.com/dotnetcore/AspNetCore-Docs-CN/blob/master/CONTRIBUTING_HOME.md)）。
+You'll need a basic understanding of [Git and GitHub.com](https://guides.github.com/activities/hello-world/).
 
-<!--The documentation is built using [Sphinx](http://sphinx-doc.org) and [reStructuredText](http://sphinx-doc.org/rest.html), and then hosted by [ReadTheDocs](http://aspnet.readthedocs.org).-->
+* Open an [issue](https://github.com/aspnet/Docs/issues/new) describing what you want to do, such as change an existing article or create a new one. Wait for approval from the team before you invest much time. 
+* Fork the [aspnet/Docs](https://github.com/aspnet/Docs/) repo and create a branch for your changes.
+* Submit a pull request (PR) to master with your changes.
+* If your PR has the label 'cla-required' assigned, [complete the Contribution License Agreement (CLA)](https://cla2.dotnetfoundation.org/)
+* Respond to PR feedback.
 
-文档基于 [Sphinx](http://sphinx-doc.org) 和 [reStructuredText](http://sphinx-doc.org/rest.html) 生成，并托管于 [ReadTheDocs](http://aspnet.readthedocs.org)。
+For an example where this process led to publication of a new article, see [issue 67](https://github.com/dotnet/docs/issues/67) and [pull request 798](https://github.com/dotnet/docs/pull/798) in the .NET repository. The new article is [Documenting your code](https://docs.microsoft.com/dotnet/articles/csharp/codedoc).
 
-<!--## Video: Getting Started ##-->
-## 视频：入门 ##
+## Markdown syntax
 
-<!--[Watch a video](http://ardalis.com/contributing-to-asp-net-5-documentation) showing how to get started building the documentation locally.-->
+Articles are written in [DocFx-flavored Markdown](http://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html), which is a superset of [GitHub-flavored Markdown (GFM)](https://guides.github.com/features/mastering-markdown/). For examples of DFM syntax for UI features commonly used in the ASP.NET documentation, see [Metadata and Markdown Template](https://github.com/dotnet/docs/blob/master/styleguide/template.md) in the .NET repo style guide. 
 
-[请观看本视频](http://ardalis.com/contributing-to-asp-net-5-documentation)，视频展示了如何在本地生成文档。
+## Folder structure conventions
 
-<!--## Building the Docs ##-->
-## 生成文档 ##
+For each Markdown file there may be a folder for images and a folder for sample code. For example, if the article is [fundamentals/configuration.md](https://github.com/aspnet/Docs/blob/master/aspnetcore/fundamentals/configuration.md), the images are in [fundamentals/configuration/\_static](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/_static) and the sample application project files are in [fundamentals/configuration/sample](https://github.com/aspnet/Docs/tree/master/aspnetcore/fundamentals/configuration/sample).  An image in the *fundamentals/configuration.md* file is rendered by the following Markdown.
 
-<!--Once you have cloned the Docs to your local machine, the following instructions will walk you through installing the tools necessary to build and test.-->
+```
+![description of image for alt attribute](configuration/_static/imagename.png)
+```
 
-一旦你将 Docs 项目克隆（clone）到本地计算机，按照下面步骤安装必要的工具，你就能生成文档并测试。
+**All** images should have [alt text](https://en.wikipedia.org/wiki/Alt_attribute).
 
-<!--
-1. [Download python](https://www.python.org/downloads/) version 2.7.10 or higher (Version 3.4 is recommended).
-2. If you are installing on Windows, ensure both the Python install directory and the Python scripts directory have been added to your `PATH` environment variable. For example, if you install Python into the c:\python34 directory, you would add `c:\python34;c:\python34\scripts` to your `PATH` environment variable.
-3. Install Sphinx by opening a command prompt and running the following Python command. (Note that this operation might take a few minutes to complete.)
-4. By default, when you install Sphinx, it will install the ReadTheDocs custom theme automatically. If you need to update the installed version of this theme, you should run:
-5. Install the Sphinx .NET domain:
-6. Navigate to one of the main project subdirectories in the Docs repo - such as `mvc`, `aspnet`, or `webhooks`.
-7. Run ``make`` (make.bat on Windows, Makefile on Mac/Linux)
-8. Once make completes, the generated docs will be in the .../docs/<project>/_build/html directory. Simply open the `index.html` file in your browser to see the built docs for that project.
--->
+## Code snippets
 
+Articles frequently contain code snippets to illustrate points. DFM lets you copy code into the Markdown file or refer to a separate code file. We prefer to use separate code files whenever possible, to minimize the chance of errors in the code. The code files should be stored in the repo using the folder structure described above for sample projects. 
 
-1. [下载 python](https://www.python.org/downloads/) 2.7.10+（推荐安装 3.4）。
+Here are some examples of [DFM code snippet syntax](http://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html#code-snippet) that would be used in a *configuration.md* file.
 
-2. 如果你是在 Windows 上安装，请同时确认 Python 的安装目录和 Python scripts 目录已被添加到 `PATH` 环境变量中。比如你把 Python 安装到了 C:\python34 目录，那么你需要把 `c:\python34;c:\python34\scripts` 添加到 `PATH` 环境变量中。
+To render an entire code file as a snippet:
 
-3. 通过命令行提示安装 Sphinx ，需要在 Python 命令下运行：（注，此操作需花费几分钟）
+```
+[!code-csharp[Main](configuration/sample/Program.cs)]
+```
 
-    ```pip install sphinx```
+To render a portion of a file as a snippet by using line numbers:
+
+```
+[!code-csharp[Main](configuration/sample/Program.cs?range=1-10,20,30,40-50]
+[!code-html[Main](configuration/sample/Views/Home/Index.cshtml?range=1-10,20,30,40-50]
+```
+
+For C# snippets, you can reference a [C# region](https://msdn.microsoft.com/en-us/library/9a1ybwek.aspx). Whenever possible, use regions rather than line numbers, because line numbers in a code file tend to change and get out of sync with line number references in Markdown. C# regions can be nested, and if you reference the outer region, the inner `#region` and `#endregion` directives are not rendered in a snippet. 
+
+To render a C# region named "snippet_Example":
+
+```
+[!code-csharp[Main](configuration/sample/Program.cs?name=snippet_Example)]
+```
+
+To highlight selected lines in a rendered snippet (usually renders as yellow background color):
+
+```
+[!code-csharp[Main](configuration/sample/Program.cs?name=snippet_Example&highlight=1-3,10,20-25)]
+[!code-csharp[Main](configuration/sample/Program.cs?range=10-20&highlight=1-3]
+[!code-html[Main](configuration/sample/Views/Home/Index.cshtml?range=10-20&highlight=1-3]
+[!code-javascript[Main](configuration/sample/Project.json?range=10-20&highlight=1-3]
+```
+
+## Test your changes with DocFX
+
+Test your changes with the [DocFX command-line tool](https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool), which creates a locally hosted version of the site. DocFX doesn't render style and site extensions created for docs.microsoft.com.
+
+DocFX requires the .NET Framework on Windows, or Mono for Linux or macOS. 
+
+### Windows instructions
+
+* Download and unzip *docfx.zip* from [DocFX releases](https://github.com/dotnet/docfx/releases).
+* Add DocFX to your PATH.
+* In a command-line window, navigate to the appropriate folder that contains the *docfx.json* file (*aspnet* for ASP.NET content or *aspnetcore* for ASP.NET Core content) and run the following command:
+
+   ```
+   docfx -t default --serve
+   ```
 	
-4. 默认情况下，当你安装 Sphinx 时会自动安装 ReadTheDocs 风格的自定义主题。如果你要更新已安装的该主题版本，可以这样：
+* In a browser, navigate to `http://localhost:8080`.
 
-    ```pip install -U sphinx_rtd_theme```
-	
-5. 安装 Sphinx .NET domain：
+### Mono instructions
 
-    ```pip install sphinxcontrib-dotnetdomain```
-	
-6. 导航到 Docs 仓库主项目的子目录中的一个，比如 `mvc`、`aspnet` 或 `webhooks`。
+* Install Mono via Homebrew - `brew install mono`.
+* Download the [latest version of DocFX](https://github.com/dotnet/docfx/releases).
+* Extract to `\bin\docfx`.
+* Create an alias for **docfx**:
 
-7. 运行 ``make``（Windows 上的 make.bat，Mac/Linux 上的 Makefile）
+  ```
+  function docfx {
+    mono $HOME/bin/docfx/docfx.exe
+  }
+    
+  function docfx-serve {
+    mono $HOME/bin/docfx/docfx.exe serve _site
+  }
+  ```
 
-    ```make html```
-	
-8. 当 make 完成后，生成的文档将位于 .../docs/&lt;project&gt;/_build/html 目录下。直接用浏览器打开 `index.html` 就能看到所生成的该项目的文档了。
+* Run **docfx** in the `Docs\aspnet` or `Docs\aspnetcore` directory to build the site, and **docfx-serve** to view the site at `http://localhost:8080`.
 
-<!--## Use autobuild to easily view site changes locally ##-->
-## 使用自动生成，轻松在本地浏览 ##
+## Voice and tone
 
-<!--
-You can also install [sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild) which will run a local web server and automatically refresh whenever changes to the source files are detected. To do so:
--->
+Our goal is to write documentation that is easily understandable by the widest possible audience. To that end we have established guidelines for writing style that we ask our contributors to follow. For more information, see [Voice and tone guidelines](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) in the .NET repo.
 
-安装 [sphinx-autobuild](https://github.com/GaretJax/sphinx-autobuild) 后，将在本地运行一个 web 服务器，当源文件发生变化时将自动更新，只需要这么做：
-   
-<!--
-1. Install sphinx-autobuild
-2. Navigate to one of the main project subdirectories in the Docs repo - such as `mvc`, `aspnet`, or `webhooks`.
-3. Run ``make`` (make.bat on Windows, Makefile on Mac/Linux)
-4. Browse to `http://127.0.0.1:8000` to see the locally built documentation. 
-5. Hit `^C` to stop the local server.
--->
+## Redirects
 
-1. 安装 sphinx-autobuild
+If you delete an article, change its file name, or move it to a different folder, create a redirect so that people who bookmarked the article won't get 404s.  To set up a redirect, create a file that has the redirect target URL as shown below, and put it in the original file's location. 
 
-    ```pip install sphinx-autobuild```
-	
-2. 导航到 Docs 仓库主项目的子目录中的一个，比如 `mvc`、`aspnet` 或 `webhooks`。
+```
+---
+redirect_url: /aspnet/core/location-of-target-for-redirect
+---
+```
 
-3. 运行 ``make``（Windows 上的 make.bat，Mac/Linux 上的 Makefile）
-
-    ```make livehtml```
-	
-4. 访问 `http://127.0.0.1:8000` 阅读本地生成的文档。
-
-5. 敲击 `^C` 关闭本地服务器。
-
-<!--## Adding Content ##-->
-## 增加内容 ##
-
-<!--
-Before adding content, submit an issue with a suggestion for your proposed article. Provide detail on what the article would discuss, and how it would relate to existing documentation.
--->
-
-在添加内容之前，把你打算写的文章的一些想法以问题（issue）的形式提交上去，里面提供文章将要讨论的详细内容，以及它将如何与现有的文档相关联。
-
-<!--
-Also, please review the following style guides:
--->
-
-同样的，请回顾一下这些样式指南：
-
-<!--
-- [Sphinx Style Guide](http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html)
-- [ASP.NET Docs Style Guide](http://docs.asp.net/en/latest/contribute/style-guide.html)
--->
-
-- [Sphinx 样式指南](http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html)
-- [ASP.NET 文档样式指南](http://docs.asp.net/en/latest/contribute/style-guide.html)
-
-<!--
-Articles should be organized into logical groups or sections. Each section should be given a named folder (e.g. /yourfirst). That section contains the rst files for all articles in the section. For images and other static resources, create a subfolder that matches the name of the article. Within this subfolder, create a ``sample`` folder for code samples and a  ``_static`` folder for images and other static content.
--->
-
-文章应该在逻辑上被组织成若干个组或节，每一个节都需要指定一个具名文件夹（比如 /yourfirst）。该节包含了所有文章的 rst 格式文件。对于图片和其它静态资源而言，创建一个子文件夹（名字与文章的名字一致）。在这个子文件夹中，创建一个 ``smaple`` 文件夹来放代码样例，以及一个 ``_static`` 文件夹来放图片和其它静态内容。
-
-<!--### Example Structure ###-->
-### 结构举例 ###
-
-	docs
-		/client-side
-			/angular
-				/_static
-					controllers.png
-					events.png
-					...
-				/sample
-					(sample code)
-			/bootstrap
-				/_static
-					about-page.png
-					...
-			angular.rst
-			bootstrap.rst
-
-<!--
-**Note:** Sphinx will automatically fix duplicate image names, such as the about-page.png files shown above. There is no need to try to ensure uniqueness of static files beyond an individual article.
--->
-
-**注意：** Sphinx 会自动填充同名图片，比如上文所示的 about-page.png 文件。这表明我们不再需要去刻意检查每个文章的静态资源是否唯一的了。
-
-<!--
-Author information should be placed in the _authors folder following the example of steve-smith.rst. Place photos in the photos folder - size them to be no more than 125px wide or tall.
--->
-
-作者信息需要放在 _authors 文件夹下，具体参考 steve-smith.rst。把照片都放进 photos 文件夹，并将照片的尺寸控制下长宽均小于 125 像素以内。
-
-<!--## Process for Contributing ##-->
-## 贡献的步骤##
-
-<!--
-**Step 1:** Open an Issue describing the article you wish to write and how it relates to existing content. Get approval to write your article.
--->
-
-**第一步：** 新建一个 Issue，给我们描述一下你想写的文章以及它与现有内容之间的关联。如果我们同意了，你就可以去写这篇文章了。
-
-<!--**Step 2:** Fork the `/aspnet/docs` repo.-->
-
-**第二步：** fork `/aspnet/docs` 仓库。
-
-<!--**Step 3:** Create a `branch` for your article.-->
-
-**第三步：** 给你的文章创建一个`分支（branch）`
-
-<!--
-**Step 4:** Write your article, placing the article in its own folder and any needed images in a _static folder located in the same folder as the article. Be sure to follow the [ASP.NET Docs Style Guide](http://docs.asp.net/en/latest/contribute/style-guide.html). If you have code samples, place them in a folder within the `/samples/` folder.
--->
-
-**第四步：** 开始编写。把文章放在对应的文件夹下，所有的图片放在文件夹下的 _static 子文件夹中。确保你已遵循了 [ASP.NET 文档样式指南](http://docs.asp.net/en/latest/contribute/style-guide.html) 的要求。如果你还附有代码样例，则把样例放在 `/samples/` 文件夹内。
-
-<!--
-**Step 5:** Submit a Pull Request from your branch to `aspnet/docs/master`.
--->
-
-**第五步：** 从你的分支提交 Pull Request 到 `aspnet/docs/master`。
-
-<!--
-**Step 6:** Discuss the Pull Request with the ASP.NET team; make any requested updates to your branch. When they are ready to accept the PR, they will add a :shipit: (`:shipit:`) comment.
--->
-
-**第六步：** 针对提交的信息与 ASP.NET 团队展开有关 Pull Request（PR） 的讨论。若是他们决定接受你的请求，则会给你个 :shipit: (`:shipit:`) 评论。
-
-<!--
-**Step 7:** The last step before your Pull Request is accepted is to [squash all commits](http://stackoverflow.com/questions/14534397/squash-all-my-commits-into-one-for-github-pull-request) into a single commit message. Do this in your branch, using the `rebase` git command. For example, if you want to squash the last 4 commits into a single commit, you would use:
--->
-
-**第七步：** 接受 Pull Request 前的最后步骤是 [合并所有提交](http://stackoverflow.com/questions/14534397/squash-all-my-commits-into-one-for-github-pull-request)。这一操作在你的分支项目中完成，使用 `rebase` 指令。举个例子，如果你想把最后四个提交合并为一个提交，你可以这么做：
-
-	git rebase -i HEAD~4
-
-
-<!--
-The `-i` option stands for "interactive" and should open a text editor showing the last N commits, preceded with "pick ".  Change all but the first instance of "pick " to "squash " and save the file and exit the editor. A more detailed answer is [available here](http://stackoverflow.com/a/6934882).
--->
-
-`-i` 参数表示「interactive」，它会用记事本软件显示最后 N 条以「pick」开头的提交。把除了第一个以外的所有「pick」改为「squash」，保存文件并退出编辑器（[更多信息请访问这里](http://stackoverflow.com/a/6934882)）。
-
-
-<!--## Common Pitfalls ##-->
-##常见错误##
-
-<!--Below are some common pitfalls you should try to avoid:-->
-
-下列错误你当竭力避免：
-
-<!--
-- Don't forget to submit an issue before starting work on an article
-- Don't forget to create a separate branch before working on your article
-- Don't update or `merge` your branch after you submit your pull request
-- Don't forget to squash your commits once your pull request is ready to be accepted
-- If updating code samples in `/samples/`, be sure any line number references in your article remain correct
--->
-
-- 写文章之前别忘了先提交一个 Issue；
-- 别忘记先建立独立的分支项目，再写文章；
-- 当你提交了 pull request 后，不要再去更新或 `merge` 你的分支；
-- 一旦 pull request 被接受，及时跟进合并提交；
-- 如果你更新了 `/samples/` 下的代码样例，一定要再三确保你在文章中所引用的行号是正确无误的。
+For an example, see the [redirect file](https://github.com/aspnet/Docs/blob/master/aspnetcore/security/authentication/sociallogins.md) that redirects `/security/authentication/sociallogins` to `/security/authentication/social/index`.
