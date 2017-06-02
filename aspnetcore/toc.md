@@ -1,4 +1,4 @@
-# [Introduction](index.md)
+# [简介](index.md)
 
 # [Getting Started](getting-started.md)
 ## [Your first ASP.NET Core application on a Mac using Visual Studio Code](tutorials/your-first-mac-aspnet.md)
