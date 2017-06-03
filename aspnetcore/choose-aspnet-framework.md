@@ -1,5 +1,5 @@
 ---
-title: "Choose between ASP.NET and ASP.NET Core | Microsoft Docs"
+title: "选择 .NET Core 还是 .NET Framework | Microsoft 文档（民间汉化）"
 author: rick-anderson
 description: "How to choose between ASP.NET and ASP.NET Core."
 ms.author: aspnetcontent
@@ -13,7 +13,7 @@ msc.legacyurl: /learn
 msc.type: content
 ---
 
-# Choose between ASP.NET and ASP.NET Core 
+# 选择 .NET Core 还是 .NET Framework
 
 No matter the web application you are creating, ASP.NET has a solution for you: from enterprise web applications targeting Windows Server, to small microservices targeting Linux containers, and everything in between.
 

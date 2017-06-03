@@ -70,7 +70,7 @@ ASP.NET Core 有一些架构上的改变，这些改变会使它成为一个更�
 
 * [Tag Helpers](mvc/views/tag-helpers/intro.md) 能使用服务器端代码在 Razor 文件中部分创建以及呈现 HTML 元素
 
-* [Model Binding](mvc/models/model-binding.md) 自动把 HTTP 请求的数据映射到 action 方法参数
+* [Model 绑定](mvc/models/model-binding.md) 自动把 HTTP 请求的数据映射到 action 方法参数
 
 * [Model 验证](mvc/models/validation.md) 执行执行客户端以及服务器端验证
 
@@ -78,7 +78,7 @@ ASP.NET Core 有一些架构上的改变，这些改变会使它成为一个更�
 
 ASP.NET Core 设计上无缝的集成了各种客户端框架， 包括 [AngularJS](client-side/angular.md), [KnockoutJS](client-side/knockout.md) 以及 [Bootstrap](client-side/bootstrap.md)。参考 [客户端开发](client-side/index.md) 获取更多细节。
 
-## 后续步骤
+## 下一步
 
 继续开始学习教程， 参考 [ASP.NET Core 指南](tutorials/index.md)
 
