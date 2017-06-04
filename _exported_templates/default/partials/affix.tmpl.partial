@@ -15,8 +15,16 @@
           <a href="{{sourceurl}}" class="contribution-link">{{__global.viewSource}}</a>
         </li>
         {{/sourceurl}}
-		                                <li>
-                                    <div style="margin-left: 10px; margin-top: 3px; margin-bottom: 3px;" class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a></div>
+                                <li>
+                                    <div style="margin-left: 10px; margin-top: 3px; margin-bottom: 3px;" class="bdsharebuttonbox">
+                                        <a href="#" class="bds_more" data-cmd="more"></a>
+                                        <a href="#" class="bds_mshare" data-cmd="mshare" title="分享到一键分享"></a>
+                                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                                        <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+                                        <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+                                        <a href="#" class="bds_print" data-cmd="print" title="分享到打印"></a>
+                                    </div>
                                 </li>
       </ul>
     </div>

@@ -1,7 +1,7 @@
 ---
 title: "选择 .NET Core 还是 .NET Framework | Microsoft 文档（民间汉化）"
 author: rick-anderson
-description: "How to choose between ASP.NET and ASP.NET Core."
+description: "选择 .NET Core 还是 .NET Framework."
 ms.author: aspnetcontent
 manager: wpickett
 ms.date: 03/12/2010
@@ -25,7 +25,7 @@ ASP.NET Core is a new open-source and cross-platform .NET framework for building
 
 ASP.NET is a mature web platform that provides all the services that you require to build enterprise-class server-based web applications using .NET on Windows.
 
-## Which one is right for me?
+## 哪一个适合我？
 
 | ASP.NET Core | ASP.NET |
 |---|---|
@@ -37,18 +37,18 @@ ASP.NET is a mature web platform that provides all the services that you require
 |Ultra performance|High performance|
 |[Choose .NET Framework or .NET Core runtime](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server)|Use .NET Framework runtime|
 
-## ASP.NET Core scenarios
+## ASP.NET Core 系列
 
-* [Websites](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/)
+* [网站](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/)
 * [APIs](https://docs.microsoft.com/aspnet/core/tutorials/first-web-api)
 
-## ASP.NET scenarios
+## ASP.NET 系列
 
-* [Websites](https://docs.microsoft.com/aspnet/mvc)
+* [网站](https://docs.microsoft.com/aspnet/mvc)
 * [APIs](https://docs.microsoft.com/aspnet/web-api)
-* [Real-time](https://docs.microsoft.com/aspnet/signalr)
+* [实时](https://docs.microsoft.com/aspnet/signalr)
 
-## Resources
+## 资源
 
-* [Introduction to ASP.NET](https://docs.microsoft.com/aspnet/overview)
-* [Introduction to ASP.NET Core](index.md)
+* [介绍 ASP.NET](https://docs.microsoft.com/aspnet/overview)
+* [介绍 ASP.NET Core](index.md)
