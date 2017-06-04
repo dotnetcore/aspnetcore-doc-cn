@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core tutorials | Microsoft Docs
+title: ASP.NET Core 指南 | Microsoft 文档（民间汉化）
 author: tdykstra
-description: A list of step-by-step guides for learning how to develop ASP.NET Core applications.
+description: 逐步学习如何开发一个 ASP.NET Core 应用程序的教程清单
 keywords: ASP.NET Core,
 ms.author: tdykstra
 manager: wpickett
@@ -12,11 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/index
 ---
-# ASP.NET Core tutorials
+# ASP.NET Core 指南
 
-The following step-by-step guides for developing ASP.NET Core applications are available:
+以下教程将逐步引导您开发一个 ASP.NET Core 应用程序：
 
-## Building web applications
+## 构建 Web 应用
 * [Create an ASP.NET Core MVC app with Visual Studio Code on Mac or Linux ](xref:tutorials/first-mvc-app-xplat/index)
 * [Create an ASP.NET Core MVC app with Visual Studio](xref:tutorials/first-mvc-app/index)
 * [Getting started with ASP.NET Core and Entity Framework Core using Visual Studio](../data/ef-mvc/index.md)
@@ -26,42 +26,42 @@ The following step-by-step guides for developing ASP.NET Core applications are a
 * [Creating a simple view component](../mvc/views/view-components.md#walkthrough-creating-a-simple-view-component)
 * [Developing ASP.NET Core applications using dotnet watch](dotnet-watch.md)
 
-## Building web APIs
+## 构建 web APIs
 * [Create a Web API with ASP.NET Core and Visual Studio for Mac](xref:tutorials/first-web-api-mac)
 * [Create a Web API with ASP.NET Core and Visual Studio for Windows](first-web-api.md)
 * [Create a Web API with ASP.NET Core and Visual Studio Code](web-api-vsc.md)
 * [ASP.NET Web API Help Pages using Swagger](web-api-help-pages-using-swagger.md)
 * [Creating backend web services for native mobile applications](../mobile/native-mobile-backend.md)
 
-## Working with data
+## 处理数据
 * [Getting started with ASP.NET Core and Entity Framework Core using Visual Studio](../data/ef-mvc/index.md)
 * [ASP.NET Core with EF Core - new database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
 * [ASP.NET Core with EF Core - existing database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
 
-## Authentication and authorization
+## 验证和授权
 * [Enabling authentication using Facebook, Google and other external providers](../security/authentication/social/index.md)
 * [Account Confirmation and Password Recovery](../security/authentication/accconfirm.md)
 * [Two-factor authentication with SMS](../security/authentication/2fa.md)
 
-## Client-side development
-* [Using Gulp](../client-side/using-gulp.md)
-* [Using Grunt](../client-side/using-grunt.md)
-* [Manage client-side packages with Bower](../client-side/bower.md)
-* [Building beautiful, responsive sites with Bootstrap](../client-side/bootstrap.md)
+## 客户端开发
+* [使用 Gulp](../client-side/using-gulp.md)
+* [使用 Grunt](../client-side/using-grunt.md)
+* [使用 Bower 管理客户端包](../client-side/bower.md)
+* [[使用 Bootstrap 构建美观、响应式网站](../client-side/bootstrap.md)
 
-## Testing
-* [Unit Testing in .NET Core using dotnet test](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
+## 测试
+* [在 .NET Core 中使用 dotnet test 单元测试](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
-## Publishing and deployment
+## 发布与部署
 * [Deploy an ASP.NET Core web app to Azure using Visual Studio](publish-to-azure-webapp-using-vs.md)
 * [Publishing to an Azure Web App with Continuous Deployment](../publishing/azure-continuous-deployment.md)
 * [Deploy an ASP.NET container to a remote Docker host](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
 * [Use VSTS to Build and Publish to an Azure Web App with Continuous Deployment](../publishing/vsts-continuous-deployment.md)
-* [ASP.NET Core on Nano Server](nano-server.md)
-* [ASP.NET Core and Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-add-a-web-frontend)
+* [ASP.NET Core 部署到 Nano Server](nano-server.md)
+* [ASP.NET Core 以及 Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-add-a-web-frontend)
 
 <a name="download"></a> 
-## How to download a sample
-1. [Download the ASP.NET repository zip file](https://github.com/aspnet/docs/archive/master.zip).
-1. Unzip the *Docs-master.zip* file.
-1. Use the URL in the sample link to help you navigate to the sample directory. 
+## 如何下载示例
+1. [下载 ASP.NET 仓库压缩代码](https://github.com/aspnet/docs/archive/master.zip)。
+1. 解压 *Docs-master.zip* 文件。
+1. 使用示例链接中的 URL 帮你导航到示例目录。 
