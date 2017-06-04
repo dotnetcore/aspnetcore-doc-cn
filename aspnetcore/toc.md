@@ -102,7 +102,7 @@
 ## [远程调试](https://docs.microsoft.com/visualstudio/debugger/remote-debugging-azure)
 
 # [第七章 数据操作](data/index.md)
-## [使用 Visual Studio 开发 ASP.NET Core 和 Entity Framework Core 入门 ](data/ef-mvc/index.md)
+## [使用 Visual Studio 开发 ASP.NET Core 和 Entity Framework Core 入门](data/ef-mvc/index.md)
 ## [ASP.NET Core 与 EF Core - 新建数据库](https://docs.microsoft.com/ef/core/get-started/aspnetcore/new-db)
 ## [ASP.NET Core 与  EF Core - 现有数据库](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)
 ## [ASP.NET Core 和 Entity Framework 6 入门](data/entity-framework-6.md)
@@ -146,3 +146,5 @@
 ## [VS 2015/project.json 文档](https://docs.microsoft.com/dotnet/articles/project-json)
 
 # [贡献](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md)
+
+# [中文PDF文档](http://dotnetcore.github.io/aspnet_core_doc_cn.pdf)
