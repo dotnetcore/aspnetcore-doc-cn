@@ -17,4 +17,4 @@ uid: tutorials/first-mvc-app/validation
 
 >[!div class="step-by-step"]
 [Previous](new-field.md)
-[Next](details.md)  
+[下一节](details.md)  

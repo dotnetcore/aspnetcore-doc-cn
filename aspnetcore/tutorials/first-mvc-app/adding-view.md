@@ -34,5 +34,5 @@ uid: tutorials/first-mvc-app/adding-view
 [!INCLUDE[adding-view22](../../includes/mvc-intro/adding_view2.md)]
 
 >[!div class="step-by-step"]
-[Previous](adding-controller.md)
+[上一节](adding-controller.md)
 [Next](adding-model.md)

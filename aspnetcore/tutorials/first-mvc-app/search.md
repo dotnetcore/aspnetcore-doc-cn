@@ -42,5 +42,5 @@ Notice the distinctive font in the `<form>` tag. That distinctive font indicates
 [!INCLUDE[adding-model](../../includes/mvc-intro/search3.md)]
 
 >[!div class="step-by-step"]
-[Previous](controller-methods-views.md)
-[Next](new-field.md)  
+[上一节](controller-methods-views.md)
+[下一节](new-field.md)  
