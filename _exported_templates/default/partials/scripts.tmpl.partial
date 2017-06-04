@@ -7,8 +7,13 @@
 <script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 <script>
  
+    var url = window.location.href;
+    
+    url = url.replace(window.location.hash,"");
+    url = url.replace(window.location.search, "");
+
     var cloudTieConfig = {
-        url: '{{/docurl}}', 
+        url: url, 
         sourceId: "",
         productKey: "1f2ab3895f9d44a0b3b90ab7a8c4e01b",
         target: "cloud-tie-wrapper"
