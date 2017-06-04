@@ -1,7 +1,7 @@
 ---
-title: Getting started with ASP.NET Core MVC and Visual Studio | Microsoft Docs
+title: ASP.NET Core MVC 和 Visual Studio 入门 | Microsoft 文档（民间汉化）
 author: rick-anderson
-description: Getting started with ASP.NET Core MVC and Visual Studio
+description: ASP.NET Core MVC 和 Visual Studio 入门
 keywords: ASP.NET Core, MVC
 ms.author: riande
 manager: wpickett
@@ -12,79 +12,84 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: tutorials/first-mvc-app/start-mvc
 ---
-# Getting started with ASP.NET Core MVC and Visual Studio
+# ASP.NET Core MVC 和 Visual Studio 入门
 
-By [Rick Anderson](https://twitter.com/RickAndMSFT)
+作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-This tutorial will teach you the basics of building an ASP.NET Core MVC web app using [Visual Studio 2017](https://www.visualstudio.com/).
+翻译： [娄宇(Lyrics)](https://github.com/xbuilder) 
+
+校对： [刘怡(AlexLEWIS)](https://github.com/alexinea)、[夏申斌](https://github.com/xiashenbin)、[张硕(Apple)](#)  
+
+这篇教程将告诉你如何使用 [Visual Studio 2017](https://www.visualstudio.com/) 构建一个 ASP.NET Core MVC Web 应用程序的基础知识。
+
 
 > [!NOTE]
-> See [Your First ASP.NET Core Application on a Mac Using Visual Studio Code](../your-first-mac-aspnet.md) for a Mac tutorial.
+> 参考 [用 Visual Studio Code 在 mac 上创建首个 ASP.NET Core 应用程序](../your-first-mac-aspnet.md) 做为 Mac 系统开发教程。
 
-For the Visual Studio 2015 version of this tutorial, see the [VS 2015 version of ASP.NET Core documentation in PDF format](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf).
+如果需要 Visual Studio 2015 版本的教程，参考 [VS 2015 版本ASP.NET Core 文档 PDF 格式](https://github.com/aspnet/Docs/blob/master/aspnetcore/common/_static/aspnet-core-project-json.pdf).
 
-## Install Visual Studio and .NET Core
+## 安装 Visual Studio 和 .NET Core
 
-Install Visual Studio Community 2017. Select the Community download. Skip this step if you have Visual Studio 2017 installed.
+安装 Visual Studio Community 2017。选择社区版下载。如果你已经安装了 Visual Studio 2017 ，略过这一步。
 
-  * [Visual Studio 2017 Home page installer](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+  * [Visual Studio 2017 主页安装程序](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
 
-Run the installer and select the following workloads:
- - **ASP.NET and web development** (under **Web & Cloud**)
- - **.NET Core cross-platform development** (under **Other Toolsets**)
+运行安装程序安装一下模块：
+ - **ASP.NET and web development** (在 **Web & Cloud** 目录)
+ - **.NET Core cross-platform development** (在 **Other Toolsets** 目录)
 
-![**ASP.NET and web development** (under **Web & Cloud**)](start-mvc/_static/web_workload.png)
+![**ASP.NET and web development** (在 **Web & Cloud** 目录)](start-mvc/_static/web_workload.png)
 
-![**.NET Core cross-cross-platfrom development** (under **Other Toolsets**)](start-mvc/_static/x_plat_wl.png)
+![**.NET Core cross-cross-platfrom development** (在 **Other Toolsets** 目录)](start-mvc/_static/x_plat_wl.png)
 
 
-## Create a web app
+## 创建 Web 应用程序
 
-From Visual Studio, select  **File > New > Project**.
+在 Visual Studio 中, 选择  **File > New > Project**.
 
 ![File > New > Project](start-mvc/_static/alt_new_project.png)
 
-Complete the **New Project** dialog:
+按以下步骤完成  **New Project** 对话框设置：
 
-* In the left pane, tap **.NET Core**
-* In the center pane, tap **ASP.NET Core Web Application (.NET Core)**
-* Name the project "MvcMovie" (It's important to name the project "MvcMovie" so when you copy code, the namespace will match.)
+* 在右侧面板,点击 **.NET Core**
+* 在中间面板，点击 **ASP.NET Core Web Application (.NET Core)**
+* 项目命名为 "MvcMovie" (请确保项目名必须是 "MvcMovie"， 这样当你拷贝代码的时候， 名称空间可以保持一致。)
 * Tap **OK**
 
-![New project dialog, .Net core in left pane, ASP.NET Core web ](start-mvc/_static/new_project2.png)
+![新建项目对话框  .Net core 在右侧面板,选择 ASP.NET Core web ](start-mvc/_static/new_project2.png)
 
-Complete the **New ASP.NET Core Web Application (.NET Core) - MvcMovie** dialog:
+按以下步骤完成  **New ASP.NET Core Web Application (.NET Core) - MvcMovie** 对话框设置：
 
-* In the version selector drop-down box tap **ASP.NET Core 1.1**
-* Tap **Web Application**
-* Keep the default **No Authentication**
-* Tap **OK**.
+* 在版本选择下拉框中选择 **ASP.NET Core 1.1**
+* 点击 **Web Application**
+* 保持默认 **No Authentication** 选项
+* 店家 **OK**.
 
-![New ASP.NET Core web app](start-mvc/_static/p3.png)
+![新建 ASP.NET Core web 应用程序](start-mvc/_static/p3.png)
 
-Visual Studio used a default template for the MVC project you just created. You have a working app right now by entering a project name and selecting a few options. This is a simple starter project, and it's a good place to start,
+Visual Studio 给刚才创建的 MVC 项目提供了默认模板，输入项目名并选择一些选项后便可得到一个应用程序。这就是一个简单的起步项目，一个很好的开始。
 
-Tap **F5** to run the app in debug mode or **Ctrl-F5** in non-debug mode.
+按下 **F5** 以 Debug 模式运行这个应用程序，或者按下 **Ctrl+F5** 以非 Debug 模式运行。
 <!-- These images are also used by uid: tutorials/first-mvc-app-xplat/start-mvc -->
-![running app](start-mvc/_static/1.png)
+![运行应用程序](start-mvc/_static/1.png)
 
-* Visual Studio starts [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) and runs your app. Notice that the address bar shows `localhost:port#` and not something like `example.com`. That's because `localhost` is the standard hostname for your local computer. When Visual Studio creates a web project, a random port is used for the web server. In the image above, the port number is 5000. When you run the app, you'll see a different port number.
-* Launching the app with **Ctrl+F5** (non-debug mode) allows you to make code changes, save the file, refresh the browser, and see the code changes. Many developers prefer to use non-debug mode to quickly launch the app and view changes.
-* You can launch the app in debug or non-debug mode from the **Debug** menu item:
+* Visual Studio 启动 [IIS Express](http://www.iis.net/learn/extensions/introduction-to-iis-express/iis-express-overview) 并且运行你的应用程序。注意地址栏显示的 `localhost:端口#` 而不是像 `example.com`。 那是因为 `localhost`  总是指向本地计算机，在本例中也就是运行你这个应用程序的计算机。当 Visual Studio 创建一个 Web 项目，Web 服务器使用随机的端口。如上图所示，端口号是 5000。当你运行这个应用程序，你可能会看到不同的端口号。
+* 通过 **Ctrl+F5** (非调试模式)启动这个应用程序允许你进行代码更改，保存文件，刷新浏览器，之后查看代码改变。许多开发者更倾向于使用非调试模式来快速启动应用程序和查看变化。
+* 你可以通过 **Debug** 菜单项选择以调试模式或者非调试模式启动应用程序：
 
-![Debug menu](start-mvc/_static/debug_menu.png)
+![调试菜单](start-mvc/_static/debug_menu.png)
 
-* You can debug the app by tapping the **IIS Express** button
+* 你可以通过点击 **IIS Express** 按钮调试应用程序
 
 ![IIS Express](start-mvc/_static/iis_express.png)
 
-The default template gives you working **Home, About** and **Contact** links. The browser image above doesn't show these links. Depending on the size of your browser, you might need to click the navigation icon to show them.
+默认的模板提供  **Home, About** 以及 **Contact** 链接。下面的浏览器图片没有显示这些链接。根据您的浏览器的尺寸，您可能需要点击导航图标来显示他们。
 
-![navigation icon in upper right](start-mvc/_static/2.png)
+![右上角导航图标](start-mvc/_static/2.png)
 
-If you were running in debug mode, tap **Shift-F5** to stop debugging.
+如果你当前在调试模式运行， 可以点击 **Shift-F5** 停止调试。
 
-In the next part of this tutorial, we'll learn about MVC and start writing some code.
+我们将在本教程下一节中学习 MVC 并尝试写些代码。
 
 >[!div class="step-by-step"]
-[Next](adding-controller.md)  
+[下一节](adding-controller.md)  
