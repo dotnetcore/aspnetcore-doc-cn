@@ -16,5 +16,5 @@ uid: tutorials/first-mvc-app/validation
 [!INCLUDE[validation](../../includes/mvc-intro/validation.md)]
 
 >[!div class="step-by-step"]
-[Previous](new-field.md)
+[上一节](new-field.md)
 [下一节](details.md)  

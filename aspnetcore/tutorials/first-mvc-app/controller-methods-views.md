@@ -49,5 +49,5 @@ The updated code:
 [!INCLUDE[adding-model](../../includes/mvc-intro/controller-methods-views.md)]
 
 >[!div class="step-by-step"]
-[Previous](working-with-sql.md)
+[上一节](working-with-sql.md)
 [Next](search.md)  
