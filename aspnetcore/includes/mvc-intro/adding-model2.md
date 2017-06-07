@@ -1,8 +1,8 @@
-## Add initial migration and update the database
+## 添加初始化迁移并更新数据库
 
-* Open a command prompt and navigate to the project directory. (The directory containing the *Startup.cs* file).
+* 打开命令提示符并导航到项目目录. (项目目录包含 *Startup.cs* 文件)。
 
-* Run the following commands in the command prompt:
+* 在命令提示符中运行以下脚本：
 
   ```console
   dotnet restore
@@ -10,10 +10,10 @@
   dotnet ef database update
   ```
   
-  [.NET Core](http://go.microsoft.com/fwlink/?LinkID=517853) is a cross-platform implementation of .NET. Here is what these commands do:
+  [.NET Core](http://go.microsoft.com/fwlink/?LinkID=517853) 是跨平台的.NET实现。 包含以下命令行：
 
-  * `dotnet restore`: Downloads the NuGet packages specified in the *.csproj* file.
-  * `dotnet ef migrations add Initial` Runs the Entity Framework .NET Core CLI migrations command and creates the initial migration. The parameter after "add" is a name that you assign to the migration. Here you're naming the migration "Initial" because it's the initial database migration. This operation creates the *Data/Migrations/\<date-time>_Initial.cs* file containing the migration commands to add the *Movie* table to the database.
-  * `dotnet ef database update`  Updates the database with the migration we just created.
+  * `dotnet restore`: 下载 *.csproj* 文件中指定的 NuGet 包。
+  * `dotnet ef migrations add Initial` 运行 Entity Framework .NET Core CLI 迁移命令并创建初始化迁移。参数 "Initial" 可以是任意值，但是通常用这个作为第一个"初始的" 数据库迁移。这个操作创建了一个 *Data/Migrations/<date-time>_Initial.cs* 文件，这个文件包含了添加（或删除）*Movie* 表到数据库的迁移命令。
+  * `dotnet ef database update`  用我们刚刚创建的迁移来更新数据库。
 
-You'll learn about the database and connection string in the next tutorial. You'll learn about data model changes in the [Add a field](xref:tutorials/first-mvc-app/new-field) tutorial.
+你将会在下一节教程中歇息到数据库和连接字符创。 你会在教程 [添加字段](xref:tutorials/first-mvc-app/new-field) 学习到如何变更数据模型。
