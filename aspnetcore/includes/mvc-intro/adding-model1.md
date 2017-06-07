@@ -1,13 +1,17 @@
-# Adding a model
+# 添加模型
 
-By [Rick Anderson](https://twitter.com/RickAndMSFT) and [Tom Dykstra](https://github.com/tdykstra)
+作者： [Rick Anderson](https://twitter.com/RickAndMSFT) 以及 [Tom Dykstra](https://github.com/tdykstra)
 
-In this section you'll add some classes for managing movies in a database. These classes will be the "**M**odel" part of the **M**VC app.
+翻译： [娄宇(Lyrics)](http://github.com/xbuilder) 
 
-You’ll use these classes with the [Entity Framework Core](https://docs.microsoft.com/ef/core) (EF Core) to work with a database. EF Core is an object-relational mapping (ORM) framework that simplifies the data-access code that you have to write. For this tutorial you'll use SQLite, but [EF Core supports many database engines](https://docs.microsoft.com/ef/core/providers/).
+校对： [许登洋(Seay)](https://github.com/SeayXu) 、[姚阿勇(Mr.Yao)](https://github.com/YaoaY) 、[夏申斌](https://github.com/xiashenbin) 、[孟帅洋(书缘)](https://github.com/mengshuaiyang)  
 
-The model classes you'll create are known as POCO classes (from "plain-old CLR objects") because they don't have any dependency on EF Core.  They just define the properties of the data that will be stored in the database.
+在这一节里，你将添加一些类来管理数据库中的电影数据。这些类将成为 **M**VC 应用程序中的 "**M**odel" 部分。
 
-In this tutorial you'll write the model classes first, and EF Core will create the database. An alternate approach not covered here is to generate model classes from an already-existing database. For information about that approach, see [ASP.NET Core - Existing Database](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db).
+你将使用 .NET Framework 中名为 [Entity Framework Core](https://docs.microsoft.com/ef/core) (EF Core) 的数据库访问技术来使用这些数据模型类。EF Core 是一种可以用来简化数据访问代码的关系对象映射 (ORM) 框架。本教程中你会使用到 SQLite 数据库，但是[EF Core 还支持更多的数据库](https://docs.microsoft.com/ef/core/providers/)。
 
-## Add a data model class
+你创建的模型类也被称为 POCO 类 (源自 "plain-old CLR objects." )，这些类无需和 EF Core 有任何依赖。他们的作用仅仅是定义数据库属性并且能够存储到数据库。
+
+本文中你将先编写一些数据模型类，然后 EF Core 根据你的类创建数据库。另外一种没有介绍的方式是从已经存在的数据库生成模型类，关于这个方式的信息，参考 [ASP.NET Core - 已存在数据库](https://docs.microsoft.com/ef/core/get-started/aspnetcore/existing-db)。
+
+## 添加数据模型类

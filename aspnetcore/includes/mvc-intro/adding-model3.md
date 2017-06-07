@@ -1,104 +1,105 @@
 
-## Test the app
+## 测试一下
 
-* Run the app and tap the **Mvc Movie** link.
-* Tap the **Create New** link and create a movie.
+* 运行应用程序并点击 **Mvc Movie** 链接。
+* 点击 **Create New** 链接并创建电影记录。
 
-  ![Create view with fields for genre, price, release date, and title](../../tutorials/first-mvc-app/adding-model/_static/movies.png)
+  ![创建视图界面包含字段 genre, price, release date, 以及 title](../../tutorials/first-mvc-app/adding-model/_static/movies.png)
 
-* You may not be able to enter decimal points or commas in the `Price` field. To support [jQuery validation](http://jqueryvalidation.org/) for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See [Additional resources](#additional-resources) for more information. For now, just enter whole numbers like 10.
+* 你也许不能在 `Price` 字段中输入小数点或逗号。为了实现对非英语环境中用逗号(",")来表示小数点，以及非美国英语日期格式的 [jQuery 验证](http://jqueryvalidation.org/) ，你必须采取措施国际化你的应用程序。查看 [额外的资源](#additional-resources) 获取更多的信息。现在仅仅输入完整的数字，比如10。
 
 <a name=displayformatdatelocal></a>
 
-* In some locales you'll need to specify the date format. See the highlighted code below.
+* 在某些地区你需要指定日期格式。查看下方高亮代码。
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateFormat.cs?name=snippet_1&highlight=2,10)]
 
-We'll talk about `DataAnnotations` later in the tutorial.
+我们在后续的教程会谈到 `DataAnnotations`。
 
-Tapping **Create** causes the form to be posted to the server, where the movie information is saved in a database. You are then redirected to the */Movies* URL, where you can see the newly created movie in the listing.
+点击 **Create** 提交表单到服务器，将电影数据保存到数据库中。然后重定向到 */Movies* URL ，你可以在列表中看到新创建的电影。
 
-![Movies view showing newly created movie listing](../../tutorials/first-mvc-app/adding-model/_static/h.png)
+![Movie 视图显示最新创建的电影列表](../../tutorials/first-mvc-app/adding-model/_static/h.png)
 
-Create a couple more movie entries. Try the **Edit**, **Details**, and **Delete** links, which are all functional.
+再创建几个电影条目。尝试 **Edit** 、 **Details** 、 **Delete** 链接来执行各个功能。
 
-## Dependency Injection
+## 依赖注入
 
-Open the *Startup.cs* file and examine `ConfigureServices`:
+打开 *Startup.cs* 类文件查看 `ConfigureServices`:
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?name=snippet_cs&highlight=7-8)]
 
-The highlighted code above shows the movie database context being added to the [Dependency Injection](xref:fundamentals/dependency-injection) container. The line following `services.AddDbContext<MvcMovieContext>(options =>` is not shown (see your code). It specifies the database to use and the connection string. `=>` is a [lambda operator](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator).
+上面高亮代码显示 movie 数据库上下文已经倍添加到 [依赖注入](xref:fundamentals/dependency-injection) 容器。 代码 `services.AddDbContext<MvcMovieContext>(options =>` 后面的没有被现实(查看代码)，使用连接字符串来指定数据库。`=>` is a [lambda 操作](https://docs.microsoft.com/dotnet/articles/csharp/language-reference/operators/lambda-operator).
 
-Open the *Controllers/MoviesController.cs* file and examine the constructor:
+打开 *Controllers/MoviesController.cs* 文件查看构造器：
 
 <!-- l.. Make copy of Movies controller because we comment out the initial index method and update it later  -->
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_1)] 
 
-The constructor uses [Dependency Injection](xref:fundamentals/dependency-injection) to inject the database context (`MvcMovieContext `) into the controller. The database context is used in each of the [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.
+构造器使用 [依赖注入](xref:fundamentals/dependency-injection) 来注入数据库上下文 (`MvcMovieContext `) 到控制器， 数据库上下文在控制器的所有的 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) 方法中使用。
 
 <a name=strongly-typed-models-keyword-label></a>
 
-## Strongly typed models and the @model keyword
+## 强类型模型与 @model 关键字
 
-Earlier in this tutorial, you saw how a controller can pass data or objects to a view using the `ViewData` dictionary. The `ViewData` dictionary is a dynamic object that provides a convenient late-bound way to pass information to a view.
+在之前的教程中，你看到了控制器（Controller）如何通过 `ViewData` 字典传递数据到一个视图（View）。 `ViewData` 字典是一个动态类型对象，它提供了一种便捷的后期绑定方式将信息传递给视图。
 
-MVC also provides the ability to pass strongly typed model objects to a view. This strongly typed approach enables better compile-time checking of your code and richer [IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx). The scaffolding mechanism used this approach (that is, passing a strongly typed model) with the `MoviesController` class and views when it created the methods and views.
+MVC 也提供了传递强类型数据给视图的能力。这种强类型的方式可以提供给你更好的代码编译时检查，并在 Visual Studio（VS） 中具有更丰富的 [智能感知](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) 。VS 中的基架机制在为 `MoviesController` 类创建方法（Action）和视图（View）的时候就采用了这种方式（即，传递强类型模型）。
 
-Examine the generated `Details` method in the *Controllers/MoviesController.cs* file:
+检查在 *Controllers/MoviesController.cs* 文件中生成的 `Details` 方法：
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippet_details)]
 
-The `id` parameter is generally passed as route data. For example `http://localhost:5000/movies/details/1` sets:
+`id` 参数一般作为路由数据传递，例如 `http://localhost:5000/movies/details/1` 将：
 
-* The controller to the `movies` controller (the first URL segment).
-* The action to `details` (the second URL segment).
-* The id to 1 (the last URL segment).
+* 设置为 `movies`（对应第一个 URL 段）
+* Action 设置为 `details`（对应第二个 URL 段）
+* id 设置为 1（对应最后一个 URL 段）
 
-You could also pass in the `id` with a query string as follows:
+你也可以向下面一样通过查询字符串（Query String）传递 `id` ：
 
 `http://localhost:1234/movies/details?id=1`
 
-The `id` parameter is defined as a [nullable type](https://docs.microsoft.com/dotnet/csharp/programming-guide/nullable-types/index) (`int?`) in case an ID value is not provided.
-
-A [lambda expression](https://docs.microsoft.com/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions) is passed in to `SingleOrDefaultAsync` to select movie entities that match the route data or query string value.
+`id` 参数被定义为 [可空类型](https://docs.microsoft.com/dotnet/csharp/programming-guide/nullable-types/index) (`int?`) 来对应没有ID值的情况。
+ 
+[lambda 表达式](https://docs.microsoft.com/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions) 传给 `SingleOrDefaultAsync` 方法来选择匹配路由数据以及查询字符串的电影实体类。
 
 ```csharp
 var movie = await _context.Movie
     .SingleOrDefaultAsync(m => m.ID == id);
 ```
 
-If a movie is found, an instance of the `Movie` model is passed to the `Details` view:
+如果电影被找到了， `Movie` 模型（Model）的实例将被传递给 `Details` 视图（View）。
 
 ```csharp
 return View(movie);
    ```
 
-Examine the contents of the *Views/Movies/Details.cshtml* file:
+查看  *Views/Movies/Details.cshtml* 文件的内容：
 
 [!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/DetailsOriginal.cshtml)]
 
-By including a `@model` statement at the top of the view file, you can specify the type of object that the view expects. When you created the movie controller, Visual Studio automatically included the following `@model` statement at the top of the *Details.cshtml* file:
+通过在视图（View）文件顶部加入一个 `@model` 语句，你可以指定视图（View）所期望的对象类型。当你创建这个 MoviesController 时， Visual Studio 自动在 *Details.cshtml* 顶部加入了 `@model` 语句后面的部分。
 
 ```HTML
 @model MvcMovie.Models.Movie
    ```
 
-This `@model` directive allows you to access the movie that the controller passed to the view by using a `Model` object that's strongly typed. For example, in the *Details.cshtml* view, the code passes each movie field to the `DisplayNameFor` and `DisplayFor` HTML Helpers with the strongly typed `Model` object. The `Create` and `Edit` methods and views also pass a `Movie` model object.
+`@model` 指令允许你访问从控制器（Controller）传递给视图（View）的这个强类型电影 `Model` 对象。例如，在 *Details.cshtml* 视图中，代码用强类型 `Model` 对象传递所有的电影字段到 `DisplayNameFor` 和 `DisplayFor`  HTML 帮助类（HTML Helper）里。 `Create` 和 `Edit` 方法和视图（View）也传递一个 `Movie` 模型（Model）对象。
 
-Examine the *Index.cshtml* view and the `Index` method in the Movies controller. Notice how the code creates a `List` object when it calls the `View` method. The code passes this `Movies` list from the `Index` action method to the view:
+检查 *Index.cshtml* 视图（View）和 MoviesController 里的 `Index`方法。注意观察代码在调用 `View` 方法时，是如何创建一个 `列表（List）`  对象的。这段代码将s `Movies` 列表从 `Index` Action 方法传递给视图（View）：
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MC1.cs?name=snippet_index)]
 
-When you created the movies controller, scaffolding automatically included the following `@model` statement at the top of the *Index.cshtml* file:
+当你创建这个 MoviesController 时，Visual Studio 自动在 *Index.cshtml* 顶部加入以下 `@model` 语句:
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
 [!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?range=1)]
 
-The `@model` directive allows you to access the list of movies that the controller passed to the view by using a `Model` object that's strongly typed. For example, in the *Index.cshtml* view, the code loops through the movies with a `foreach` statement over the strongly typed `Model` object:
+ `@model` 指令允许你访问电影列表这个从控制器（Controller）传递给视图（View）的强类型 `Model` 对象。例如，在 *Index.cshtml* 视图中，代码通过 `foreach` 语句遍历了电影列表这个强类型的  `模型（Model）` 对象。
 
 [!code-html[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
-Because the `Model` object is strongly typed (as an `IEnumerable<Movie>` object), each item in the loop is typed as `Movie`. Among other benefits, this means that you get compile-time checking of the code and full [IntelliSense](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) support in the code editor:
+因为 `模型（Model）` 对象是强类型的（作为 `IEnumerable<Movie>` 对象），循环中的每一个 item 的类型被类型化为 `Movie` 。除了其他好处外，这意味着你将获得代码的编译时检查以及在代码编辑器里得到完整的 [智能感知](https://msdn.microsoft.com/en-us/library/hcw1s69b.aspx) 支持：
+ 
