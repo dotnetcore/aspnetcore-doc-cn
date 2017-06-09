@@ -1,7 +1,7 @@
 ---
 title: 添加验证 | Microsoft 文档（民间汉化）
 author: rick-anderson
-description: How to add validation to a simple ASP.NET Core app.
+description: 如何在一个 ASP.NET Core MVC 应用程序中添加验证功能
 keywords: ASP.NET Core, validation, DataAnnotations
 ms.author: riande
 manager: wpickett
