@@ -86,11 +86,11 @@ movie controller 的所有 `HttpGet` 方法都遵循类似的模式。它们获�
 ## 其他资源
 
 * [全球化于本地化](xref:fundamentals/localization)
-* [Introduction to Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [介绍 Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Authoring Tag Helpers](xref:mvc/views/tag-helpers/authoring)
 * [Anti-Request Forgery](xref:security/anti-request-forgery)
 * Protect your controller from [over-posting](http://www.asp.net/mvc/overview/getting-started/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost)
-* [ViewModels](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
+* [视图模型](http://rachelappel.com/use-viewmodels-to-manage-data-amp-organize-code-in-asp-net-mvc-applications/)
 * [Form Tag Helper](xref:mvc/views/working-with-forms)
 * [Input Tag Helper](xref:mvc/views/working-with-forms)
 * [Label Tag Helper](xref:mvc/views/working-with-forms)

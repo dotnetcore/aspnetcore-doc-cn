@@ -3,7 +3,7 @@
 # [第一章 入门](getting-started.md)
 ## [用 Visual Studio Code 在 mac 或者 linux 上创建首个 ASP.NET Core 应用程序](tutorials/your-first-mac-aspnet.md)
 ## [用 Visual Studio 创建 ASP.NET Core MVC 应用程序](tutorials/first-mvc-app/index.md)
-## [使用 dotnet watch 开发 ASP.NET Core 应用程序](tutorials/dotnet-watch.md)
+## [使用 dotnet watch 开发 ASP.NET Core 应用程序](tutorials/first-mvc-app/tutorials/dotnet-watch.md)
 
 # [第二章 指南](tutorials/index.md)
 
