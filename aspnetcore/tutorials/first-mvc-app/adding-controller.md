@@ -49,11 +49,9 @@ MVC 模式帮助你创建一个分离不同方面的应用程序(输入逻辑，
 
 HTTP 端点是 Web 应用程序中的可定位 URL，例如 `http://localhost:1234/HelloWorld`，并结合使用的协议：HTTP，Web服务器的网络位置（包括TCP端口） `localhost:1234` 和目标URI `HelloWorld`。
 
-第一条注释指出这是一个通过在 URL 后添加 "/HelloWorld/" 调用的 [HTTP GET](http://www.w3schools.com/tags/ref_httpmethods.asp) 方法，。第二条指出这是一个通过在 URL 后添加 "/HelloWorld/Welcome/" 调用的 [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 方法 。之后的教程我们将使用基架引擎来生成e `HTTP POST` 方法。
+第一条注释指出这是一个通过在 URL 后添加 "/HelloWorld/" 调用的 [HTTP GET](http://www.w3schools.com/tags/ref_httpmethods.asp) 方法，。第二条指出这是一个通过在 URL 后添加 "/HelloWorld/Welcome/" 调用的 [HTTP GET](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 方法 。之后的教程我们将使用基架引擎来生成 `HTTP POST` 方法。
 
-Run the app in non-debug mode (press Ctrl+F5) and append "HelloWorld" to the path in the address bar. (In the image below, `http://localhost:5000/HelloWorld` is used, but you'll have to replace *5000* with the port number of your app.) The `Index` method returns a string. You told the system to return some HTML, and it did!
-
-使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 `http://localhost:5000/HelloWorld`，但是你必须用你的应用程序端口替换 *1234* )。 `Index` 方法返回一段字符串，系统将这段字符串转换为 HTML 返回给浏览器。
+使用非调试模式(Ctrl+F5)运行应用程序，并在浏览器地址栏路径后添加 "HelloWorld" (在下面的图片中，使用了 `http://localhost:5000/HelloWorld`，但是你必须用你的应用程序端口替换 *5000* )。 `Index` 方法返回一段字符串，系统将这段字符串转换为 HTML 返回给浏览器。
 
 ![这是我的默认操作浏览器窗口显示的应用程序响应](adding-controller/_static/hell1.png)
 
