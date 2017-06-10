@@ -58,7 +58,7 @@ LocalDB是针对程序开发阶段使用的一个SQL Server Express轻量级版�
 
 [!code-csharp[Main](start-mvc/sample/MvcMovie/Models/SeedData.cs?name=snippet_1)]
 
-注意，如果数据库上下文中存在movies，填充初始化器返回。
+注意，如果数据库中存在movies，填充初始化器返回。
 
 ```csharp
 if (context.Movie.Any())
