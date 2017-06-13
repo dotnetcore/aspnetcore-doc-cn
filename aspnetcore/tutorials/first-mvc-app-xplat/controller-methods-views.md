@@ -13,7 +13,7 @@ ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/controller-methods-views
 ---
 
-# ontroller 方法与视图
+# Controller 方法与视图
 
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
