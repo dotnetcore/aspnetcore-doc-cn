@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC with EF Core - CRUD - 2 of 10 | Microsoft Docs
+title: ASP.NET Core MVC 与 EF Core - 实现CRUD - 2 of 10 | Microsoft 文档（民间汉化）
 author: tdykstra
 description: 
-keywords: ASP.NET Core, Entity Framework Core, CRUD, create, read, update, delete
+keywords: ASP.NET Core, Entity Framework Core, CRUD, 读取, read, 更新, 删除
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -14,16 +14,16 @@ uid: data/ef-mvc/crud
 ---
 # Create, Read, Update, and Delete - EF Core with ASP.NET Core MVC tutorial (2 of 10)
 
-By [Tom Dykstra](https://github.com/tdykstra) and [Rick Anderson](https://twitter.com/RickAndMSFT)
+作者 [Tom Dykstra](https://github.com/tdykstra) 、 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-The Contoso University sample web application demonstrates how to create ASP.NET Core 1.1 MVC web applications using Entity Framework Core 1.1 and Visual Studio 2017. For information about the tutorial series, see [the first tutorial in the series](intro.md).
+Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 以及 Visual Studio 2017 来创建 ASP.NET Core 1.1 MVC Web 应用程序。更多信息请参考 [第一节教程](intro.md).
 
-In the previous tutorial you created an MVC application that stores and displays data using the Entity Framework and SQL Server LocalDB. In this tutorial you'll review and customize the CRUD (create, read, update, delete) code that the MVC scaffolding automatically creates for you in controllers and views.
+在之前的教程中，我们使用 Entity Framework 及 SQL Server LocalDB 创建了一个用来存储和显示数据的MVC应用程序。在本教程中，你将审阅并定义 MVC 基架在控制器和视图中自动为您创建的 CRUD (创建、读取、更新、删除)代码。
 
 > [!NOTE] 
-> It's a common practice to implement the repository pattern in order to create an abstraction layer between your controller and the data access layer. To keep these tutorials simple and focused on teaching how to use the Entity Framework itself, they don't use repositories. For information about repositories with EF, see [the last tutorial in this series](advanced.md).
+> 按照惯例我们应该实现仓储模式，即在你的控制器和数据存取层之间创建一个抽象层来存取数据。但是为了保持教程的简洁并将注意力聚焦在如何使用 Entity Framework 本身，我们在本教程中没有使用仓储模式。更多的信息请参阅 [最后一节教程](advanced.md)。
 
-In this tutorial, you'll work with the following web pages:
+在本教程中，你将建立以下Web页面：
 
 ![Student Details page](crud/_static/student-details.png)
 
@@ -33,20 +33,21 @@ In this tutorial, you'll work with the following web pages:
 
 ![Student Delete page](crud/_static/student-delete.png)
 
-## Customize the Details page
+## 创建一个详细页面
 
-The scaffolded code for the Students Index page left out the `Enrollments` property, because that property holds a collection. In the **Details** page you'll display the contents of the collection in an HTML table.
+基架代码将 `Enrollments` 属性排除在学生索引页面外，因为该属性是一个集合。在 **详细** 页面中，我们将在 HTML 表格中显示集合中的内容。
 
-In *Controllers/StudentsController.cs*, the action method for the Details view uses the `SingleOrDefaultAsync` method to retrieve a single `Student` entity. Add code that calls `Include`. `ThenInclude`,  and `AsNoTracking` methods, as shown in the following highlighted code.
+在 *Controllers/StudentsController.cs* 代码中，详细视图的 action 方法使用 `SingleOrDefaultAsync` 方法来读取单个 `Student` 实体。 按照下面的高亮代码添加代码调用 `Include`. `ThenInclude`， 以及 `AsNoTracking` 方法。
 
 [!code-csharp[Main](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_Details&highlight=8-12)]
 
-The `Include` and `ThenInclude` methods cause the context to load the `Student.Enrollments` navigation property, and within each enrollment the `Enrollment.Course` navigation property.  You'll learn more about these methods in the [reading related data](read-related-data.md) tutorial.
+ `Include` 和 `ThenInclude` 方法会导致 context 加载 `Student.Enrollments` 导航属性，并且每个 Enrollment 的 `Enrollment.Course` 导航属性也会加载。 关于这个方法的更多内容请参考 [读取关联数据](read-related-data.md) 教程。
 
-The `AsNoTracking` method improves performance in scenarios where the entities returned will not be updated in the current context's lifetime. You'll learn more about `AsNoTracking` at the end of this tutorial.
+“AsNoTracking” 方法在当前上下文生命周期内返回的实体不会更新的情况下可以提高性能，在本教程最后你可以了解更多关于 `AsNoTracking` 的信息。
 
-### Route data
+### 路由数据
 
+传递给 `Details` 方法的键值来自 **路由数据** ，路由数据
 The key value that is passed to the `Details` method comes from *route data*. Route data is data that the model binder found in a segment of the URL. For example, the default route specifies controller, action, and id segments:
 
 [!code-csharp[Main](intro/samples/cu/Startup.cs?name=snippet_RouteAndSeed&highlight=5)]
@@ -287,12 +288,12 @@ You can disable tracking of entity objects in memory by calling the `AsNoTrackin
 
 * You want to attach an entity in order to update it, but earlier you retrieved the same entity for a different purpose. Because the entity is already being tracked by the database context, you can't attach the entity that you want to change. One way to handle this situation is to call `AsNoTracking` on the earlier query.
 
-For more information, see [Tracking vs. No-Tracking](https://docs.microsoft.com/en-us/ef/core/querying/tracking).
+更多信息请参考 [Tracking 对比 No-Tracking](https://docs.microsoft.com/en-us/ef/core/querying/tracking).
 
-## Summary
+## 总结
 
-You now have a complete set of pages that perform simple CRUD operations for Student entities. In the next tutorial you'll expand the functionality of the **Index** page by adding sorting, filtering, and paging.
+您现在拥有一套针对 Student 实体完成的 CRUD 操作的页面。在下一节教程中，我们会扩展 **Index** 页面增加排序，分组，过滤以及分页的功能。
 
 >[!div class="step-by-step"]
-[Previous](intro.md)
-[Next](sort-filter-page.md)  
+[上一节](intro.md)
+[下一节](sort-filter-page.md)  
