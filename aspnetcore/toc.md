@@ -96,7 +96,7 @@
 # [Razor 页面](razor-pages/index.md)
 
 # [第六章 测试与调试](testing/index.md)
-## [单元测试](https://docs.microsoft.com/en-us/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
+## [单元测试](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 ## [集成测试](testing/integration-testing.md)
 ## [控制器测试](mvc/controllers/testing.md)
 ## [远程调试](https://docs.microsoft.com/visualstudio/debugger/remote-debugging-azure)
