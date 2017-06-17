@@ -16,7 +16,7 @@ uid: data/ef-mvc/sort-filter-page
 
 作者 [Tom Dykstra](https://github.com/tdykstra) ， [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 以及 Visual Studio 2017 来创建 ASP.NET Core 1.1 MVC Web 应用程序。更多信息请参考 [第一节教程](intro.md).
 

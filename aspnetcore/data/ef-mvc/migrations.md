@@ -17,6 +17,8 @@ uid: data/ef-mvc/migrations
 
 作者 [Tom Dykstra](https://github.com/tdykstra) 、 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
+
 Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 以及 Visual Studio 2017 来创建 ASP.NET Core 1.1 MVC Web 应用程序。更多信息请参考 [第一节教程](intro.md).
 
 在本教程中，你将开始使用 EF Core 数据迁移功能来管理数据模型的变动。在后续的教程中，会根据数据模型的变动添加更多的迁移。
@@ -31,7 +33,6 @@ Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 �
 
  
 要使用迁移，可以使用 **Package Manager Console** (PMC) 或者 command-line interface (CLI)。 下面教程显示如何使用CLI命令。 有关PMC的信息是[在本教程的末尾](#pmc).。
-
 
 命令行界面（CLI）的EF工具在 [Microsoft.EntityFrameworkCore.Tools.DotNet](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools.DotNet) 包中提供。 要安装此软件包，请将其添加到 *.csproj* 文件中的 `DotNetCliToolReference` 集合中，如图所示。 **Note:** 您必须通过编辑 *.csproj* 文件来安装此软件包。 您不能使用 `install-package` 命令或包管理器GUI。 您可以通过在 **Solution Explorer**  中右键单击项目名称并选择**Edit ContosoUniversity.csproj**文件。
 
