@@ -2,7 +2,7 @@
 title: Building projects with Yeoman in ASP.NET Core | Microsoft Docs
 author: spboyer
 description: This article walks through building an ASP.NET Core web application using the Yeoman generator on macOS.
-keywords: ASP.NET Core, Yeoman, Cross Platform, yo aspnet
+keywords: ASP.NET Core 中文文档, Yeoman, Cross Platform, yo aspnet
 ms.author: spboyer
 manager: wpickett
 ms.date: 02/21/2017

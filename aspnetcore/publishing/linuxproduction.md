@@ -4,7 +4,7 @@ description: Describes how to setup nginx as a reverse proxy on Ubuntu 16.04 to 
 keywords: ASP.NET, .NET, Linux, nginx, Ubuntu, Reverse Proxy
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 03/20/2017

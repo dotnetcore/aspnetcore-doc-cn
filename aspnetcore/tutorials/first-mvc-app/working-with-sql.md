@@ -1,8 +1,8 @@
 ---
-title: 使用 SQL Server LocalDB | Microsoft 文档（民间汉化）
+title: 使用 SQL Server LocalDB | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 如何在一个 ASP.NET Core MVC 应用程序中使用 SQL Server LocalDB
-keywords: ASP.NET Core,SQL Server LocalDB, SQL Server, LocalDB 
+keywords: ASP.NET Core 中文文档,SQL Server LocalDB, SQL Server, LocalDB 
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017

@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core 介绍 | Microsoft 文档（民间汉化）
+title: ASP.NET Core 介绍 | Microsoft 文档（中文文档）
 author: rick-anderson,江振宇(Kerry Jiang)
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016

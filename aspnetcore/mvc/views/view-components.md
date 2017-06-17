@@ -2,7 +2,7 @@
 title: View components | Microsoft Docs
 author: rick-anderson
 description: View Components are intended anywhere you have reusable rendering logic.
-keywords: ASP.NET Core,view components, partial view
+keywords: ASP.NET Core 中文文档,view components, partial view
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017

@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC 与 EF Core - 迁移 - 4 of 10 | Microsoft 文档（民间汉化）
+title: ASP.NET Core MVC 与 EF Core - 迁移 - 4 of 10 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 在本教程中， 您将开始使用 EF Core 迁移功能来管理 ASP.NET Core MVC 应用程序中的数据模型更改。
-keywords: ASP.NET Core, Entity Framework Core, migrations
+keywords: ASP.NET Core 中文文档, Entity Framework Core, migrations
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017

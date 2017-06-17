@@ -2,7 +2,7 @@
 title: Browser Link in ASP.NET Core | Microsoft Docs
 author: ncarandini
 description: A Visual Studio feature that links the development environment with one or more web browsers
-keywords: ASP.NET Core, browser link, CSS sync
+keywords: ASP.NET Core 中文文档, browser link, CSS sync
 ms.author: riande
 manager: wpickett
 ms.date: 12/28/2016

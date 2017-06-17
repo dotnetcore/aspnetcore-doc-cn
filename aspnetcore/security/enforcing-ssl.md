@@ -2,7 +2,7 @@
 title: Enforcing SSL in an ASP.NET Core app | Microsoft Docs
 author: rick-anderson
 description: Shows how to require SSL in a web app and how to set IIS Express to use SSL
-keywords: ASP.NET Core, SSL, HTTPS, RequireHttpsAttribute, IIS Express
+keywords: ASP.NET Core 中文文档, SSL, HTTPS, RequireHttpsAttribute, IIS Express
 ms.author: riande
 manager: wpickett
 ms.date: 03/19/2017

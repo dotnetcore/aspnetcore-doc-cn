@@ -2,7 +2,7 @@
 title: Areas | Microsoft Docs
 author: rick-anderson
 description: Shows how to work with areas.
-keywords: ASP.NET Core, areas, routing, views
+keywords: ASP.NET Core 中文文档, areas, routing, views
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017

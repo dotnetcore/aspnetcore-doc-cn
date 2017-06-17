@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC 与 EF Core - 排序， 过滤， 分页 - 3 of 10 | Microsoft 文档（民间汉化）
+title: ASP.NET Core MVC 与 EF Core - 排序， 过滤， 分页 - 3 of 10 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 在本教程中你将通过使用 ASP.NET Core 和 Entity Framework Core 添加排序， 过滤， 分页功能到页面
-keywords: ASP.NET Core, Entity Framework Core, sort, filter, paging, grouping
+keywords: ASP.NET Core 中文文档, Entity Framework Core, sort, filter, paging, grouping
 ms.author: tdykstra
 ms.date: 03/15/2017
 ms.topic: get-started-article

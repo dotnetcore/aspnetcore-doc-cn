@@ -2,7 +2,7 @@
 title: Advanced topics for ASP.NET Core MVC | Microsoft Docs
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 01/05/2016

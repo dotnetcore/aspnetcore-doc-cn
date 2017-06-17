@@ -2,7 +2,7 @@
 title: URL Rewriting Middleware in ASP.NET Core | Microsoft Docs
 author: guardrex
 description: An introduction to URL rewriting and redirecting with instructions on how to use URL Rewriting Middleware in ASP.NET Core applications.
-keywords: ASP.NET Core, URL rewriting, URL rewrite, URL redirecting, URL redirect, middleware, apache_mod
+keywords: ASP.NET Core 中文文档, URL rewriting, URL rewrite, URL redirecting, URL redirect, middleware, apache_mod
 ms.author: riande
 manager: wpickett
 ms.date: 03/13/2017

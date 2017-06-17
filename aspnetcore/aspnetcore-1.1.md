@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core 1.1 更新 | Microsoft 文档（民间汉化）
+title: ASP.NET Core 1.1 更新 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: ASP.NET Core 1.1 更新
-keywords: ASP.NET Core, bower
+keywords: ASP.NET Core 中文文档, bower
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017

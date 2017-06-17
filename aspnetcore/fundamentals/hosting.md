@@ -2,7 +2,7 @@
 title: Hosting in ASP.NET Core| Microsoft Docs
 author: ardalis
 description: Introduction to web hosts in ASP.NET Core.
-keywords: ASP.NET Core, web host, IWebHost
+keywords: ASP.NET Core 中文文档, web host, IWebHost
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016

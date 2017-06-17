@@ -1,8 +1,8 @@
 ---
-title: Controller 方法与视图 | Microsoft 文档（民间汉化）
+title: Controller 方法与视图 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 学习控制器方法， 视图以及 DataAnnotations
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 04/07/2017

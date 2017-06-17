@@ -1,8 +1,8 @@
 ---
-title: 使用 Visual Studio 开发 ASP.NET Core 和 Entity Framework Core 入门 | Microsoft 文档（民间汉化）
+title: 使用 Visual Studio 开发 ASP.NET Core 和 Entity Framework Core 入门 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017

@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC 与 EF Core - 实现CRUD - 2 of 10 | Microsoft 文档（民间汉化）
+title: ASP.NET Core MVC 与 EF Core - 实现CRUD - 2 of 10 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 
-keywords: ASP.NET Core, Entity Framework Core, CRUD, 读取, read, 更新, 删除
+keywords: ASP.NET Core 中文文档, Entity Framework Core, CRUD, 读取, read, 更新, 删除
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -16,7 +16,7 @@ uid: data/ef-mvc/crud
 
 作者 [Tom Dykstra](https://github.com/tdykstra) 、 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 以及 Visual Studio 2017 来创建 ASP.NET Core 1.1 MVC Web 应用程序。更多信息请参考 [第一节教程](intro.md).
 

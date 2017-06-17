@@ -1,8 +1,8 @@
 ---
-title: 在 Mac 或者 Linux 上开发 ASP.NET Core MVC | Microsoft 文档（民间汉化）
+title: 在 Mac 或者 Linux 上开发 ASP.NET Core MVC | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 在 Mac 或者上开发 ASP.NET Core MVC 
-keywords: ASP.NET Core, MVC, VS Code, Visual Studio Code, Mac, Linux
+keywords: ASP.NET Core 中文文档, MVC, VS Code, Visual Studio Code, Mac, Linux
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -15,7 +15,7 @@ uid: tutorials/first-mvc-app-xplat/start-mvc
 # 在 Mac 或者 Linux 上开发 ASP.NET Core MVC
 
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 
 这篇教程将告诉你如何使用 [Visual Studio Code](https://code.visualstudio.com) (VS Code) 构建一个 ASP.NET Core MVC Web 应用程序的基础知识。本教程你假定熟悉 VS Code，参考 [Getting started with VS Code](https://code.visualstudio.com/docs) 以及 [Visual Studio Code 帮助](#visual-studio-code-help) 获取更多信息。

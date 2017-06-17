@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core 指南 | Microsoft 文档（民间汉化）
+title: ASP.NET Core 指南 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 逐步学习如何开发一个 ASP.NET Core 应用程序的教程清单
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: tdykstra
 manager: wpickett
 ms.date: 10/14/2016

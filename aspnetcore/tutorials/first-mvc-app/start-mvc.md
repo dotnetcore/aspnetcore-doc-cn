@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC 和 Visual Studio 入门 | Microsoft 文档（民间汉化）
+title: ASP.NET Core MVC 和 Visual Studio 入门 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: ASP.NET Core MVC 和 Visual Studio 入门
-keywords: ASP.NET Core, MVC
+keywords: ASP.NET Core 中文文档, MVC
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017

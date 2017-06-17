@@ -1,8 +1,8 @@
 ---
-title: 添加新字段 | Microsoft 文档（民间汉化）
+title: 添加新字段 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 04/14/2017
@@ -16,7 +16,7 @@ uid: tutorials/first-mvc-app-xplat/new-field
 
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 在这个教程里将会添加一个新的字段到  `Movies` 表，当我们改动数据库结构（添加一个字段）的时候，我们会删除数据库并重建一个新的库。这个工作流程在早期开发环境且没有任何生产数据要保留的情况下会工作的比较良好。
 
