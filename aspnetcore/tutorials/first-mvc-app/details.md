@@ -1,8 +1,8 @@
 ---
-title: 检查自动生成的Detail方法和Delete方法 | Microsoft 文档（民间汉化）
+title: 检查自动生成的Detail方法和Delete方法 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 如何在一个 ASP.NET Core MVC 应用程序中编写控制器详细信息方法和视图
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -16,7 +16,7 @@ uid: tutorials/first-mvc-app/details
 
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 校对 [许登洋(Seay)](https://github.com/SeayXu) 、[姚阿勇(Dr.Yao)](https://github.com/YaoaY)
 

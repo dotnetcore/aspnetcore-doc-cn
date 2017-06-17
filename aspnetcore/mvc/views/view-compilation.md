@@ -2,7 +2,7 @@
 title: Razor view compilation and precompilation
 author: rick-anderson
 description: View compilation and precompilation in ASP.NET Core
-keywords: ASP.NET Core,Razor view compilation, Razor pre-compilation, Razor precompilation
+keywords: ASP.NET Core 中文文档,Razor view compilation, Razor pre-compilation, Razor precompilation
 ms.author: riande
 manager: wpickett
 ms.date: 5/24/2017

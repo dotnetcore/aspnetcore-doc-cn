@@ -2,7 +2,7 @@
 
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 校对 [孟帅洋（书缘](https://github.com/mengshuaiyang)、[娄宇(Lyrics)](https://github.com/xbuilder)、[许登洋(Seay)](https://github.com/SeayXu)
 

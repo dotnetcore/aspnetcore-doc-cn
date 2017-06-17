@@ -2,7 +2,7 @@
 title: Microsoft Account external login setup | Microsoft Docs
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 11/2/2016

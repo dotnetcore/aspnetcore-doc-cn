@@ -2,7 +2,7 @@
 title: Configuration in ASP.NET Core | Microsoft Docs
 author: rick-anderson
 description: Demonstrates the configuration API
-keywords: ASP.NET Core, configuration, JSON
+keywords: ASP.NET Core 中文文档, configuration, JSON
 ms.author: riande
 manager: wpickett
 ms.date: 11/29/2016

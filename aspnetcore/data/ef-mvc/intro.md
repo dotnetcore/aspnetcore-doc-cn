@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC 与 Entity Framework Core - 教程 1 / 10 | Microsoft 文档（民间汉化）
+title: ASP.NET Core MVC 与 Entity Framework Core - 教程 1 / 10 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 
-keywords: ASP.NET Core, Entity Framework Core, 教程
+keywords: ASP.NET Core 中文文档, Entity Framework Core, 教程
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -16,11 +16,12 @@ uid: data/ef-mvc/intro
 
 作者 [Tom Dykstra](https://github.com/tdykstra) 、 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 以及 Visual Studio 2017 来创建 ASP.NET Core 1.1 MVC Web 应用程序。
 
 本演示程序是为虚拟的 Contoso 大学创建了一个网站。 包含诸如学生管理，课程创建，教师指派等功能。 本系列教程展示了如何从基架创建 Contoso 大学演示网站。这是本系列教程中的第一节，介绍了如何从基架创建 Contoso 大学演示网站。  
+
 
 [下载或者查看完整的应用程序。](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)
 

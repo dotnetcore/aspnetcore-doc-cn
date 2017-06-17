@@ -1,8 +1,8 @@
 ---
-title: 使用 dotnet watch 开发 ASP.NET Core 应用程序 | Microsoft 文档（民间汉化）
+title: 使用 dotnet watch 开发 ASP.NET Core 应用程序 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 展示如何使用 dotnet watch.
-keywords: ASP.NET Core, 使用 dotnet watch
+keywords: ASP.NET Core 中文文档, 使用 dotnet watch
 ms.author: riande
 manager: wpickett
 ms.date: 03/09/2017

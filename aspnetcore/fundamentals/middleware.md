@@ -2,7 +2,7 @@
 title: ASP.NET Core Middleware | Microsoft Docs
 author: rick-anderson
 description: Explains middleware and the request pipeline.
-keywords: ASP.NET Core, Middleware, pipeline, delegate
+keywords: ASP.NET Core 中文文档, Middleware, pipeline, delegate
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017

@@ -1,5 +1,5 @@
 ---
-title: "选择 .NET Core 还是 .NET Framework | Microsoft 文档（民间汉化）"
+title: "选择 .NET Core 还是 .NET Framework | Microsoft 文档（中文文档）"
 author: rick-anderson
 description: "选择 .NET Core 还是 .NET Framework."
 ms.author: aspnetcontent

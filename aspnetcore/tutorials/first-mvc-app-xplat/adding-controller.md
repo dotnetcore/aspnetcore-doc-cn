@@ -1,8 +1,8 @@
 ---
-title: 添加控制器 | Microsoft 文档（民间汉化）
+title: 添加控制器 | Microsoft 文档（中文文档）
 author: rick-anderson 
 description: 如何在一个 ASP.NET Core MVC 应用程序中添加控制器
-keywords: ASP.NET Core, MVC
+keywords: ASP.NET Core 中文文档, MVC
 ms.author: riande
 manager: wpickett
 ms.date: 02/28/2017

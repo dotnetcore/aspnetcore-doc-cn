@@ -1,8 +1,8 @@
 ---
-title: 添加新字段 | Microsoft 文档（民间汉化）
+title: 添加新字段 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -16,7 +16,7 @@ uid: tutorials/first-mvc-app/new-field
 
 By [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 校对 [许登洋(Seay)](https://github.com/SeayXu) 、[姚阿勇(Dr.Yao)](https://github.com/YaoaY)
 

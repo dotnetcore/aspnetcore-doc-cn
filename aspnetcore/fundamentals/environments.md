@@ -2,7 +2,7 @@
 title: Working with Multiple Environments | Microsoft Docs
 author: ardalis
 description: 
-keywords: ASP.NET Core, Environment settings, ASPNETCORE_ENVIRONMENT
+keywords: ASP.NET Core 中文文档, Environment settings, ASPNETCORE_ENVIRONMENT
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016

@@ -2,7 +2,7 @@
 title: File uploads | Microsoft Docs
 author: ardalis
 description: How to use model binding and streaming to upload files in ASP.NET Core MVC.
-keywords: ASP.NET Core, file upload, model binding, IFormFile, streaming
+keywords: ASP.NET Core 中文文档, file upload, model binding, IFormFile, streaming
 ms.author: riande
 manager: wpickett
 ms.date: 11/10/2016

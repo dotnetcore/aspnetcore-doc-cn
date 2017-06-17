@@ -1,8 +1,8 @@
 ---
-title: ASP.NET Core MVC 与 EF Core - 数据模型 - 5 of 10 | Microsoft 文档（民间汉化）
+title: ASP.NET Core MVC 与 EF Core - 数据模型 - 5 of 10 | Microsoft 文档（中文文档）
 author: tdykstra
 description: 在本节教程中，您可以添加更多实体和关系，并且通过指定格式、验证和数据库映射规则来自定义数据模型。
-keywords: ASP.NET Core, Entity Framework Core, data annotations
+keywords: ASP.NET Core 中文文档, Entity Framework Core, data annotations
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/15/2017
@@ -570,5 +570,5 @@ You now have a more complex data model and corresponding database. In the follow
 现在你就有了一个更复杂的数据模型和对应的数据库了。在接下来的教程中，你将学习更多有关如何访问相关数据的知识。
  
 >[!div class="step-by-step"]
-[Previous](migrations.md)
-[Next](read-related-data.md)  
+[上一节](migrations.md)
+[下一节](read-related-data.md)  

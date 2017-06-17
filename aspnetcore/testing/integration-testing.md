@@ -2,7 +2,7 @@
 title: Integration testing | Microsoft Docs
 author: ardalis
 description: How to use ASP.NET Core integration testing to ensure that an application's components function correctly.
-keywords: ASP.NET Core, integration testing
+keywords: ASP.NET Core 中文文档, integration testing
 ms.author: riande
 manager: wpickett
 ms.date: 02/14/2017

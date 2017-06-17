@@ -1,8 +1,8 @@
 ---
-title: Controller 方法与视图 | Microsoft 文档（民间汉化）
+title: Controller 方法与视图 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 学习控制器方法， 视图以及 DataAnnotations
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 03/07/2017
@@ -17,7 +17,7 @@ uid: tutorials/first-mvc-app/controller-methods-views
 
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-翻译 [谢炀（Kiler](https://github.com/kiler398/) 
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
 校对 [孟帅洋(书缘)](https://github.com/mengshuaiyang)、[张仁建(第二年.夏)](https://github.com/stoneniqiu)、[许登洋(Seay)](https://github.com/SeayXu) 、[姚阿勇(Dr.Yao)](https://github.com/YaoaY) 、[娄宇(Lyrics)](https://github.com/xbuilder) 
 

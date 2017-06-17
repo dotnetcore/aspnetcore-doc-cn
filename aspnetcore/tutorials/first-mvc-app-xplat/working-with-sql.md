@@ -1,8 +1,8 @@
 ---
-title: 使用  SQLite | Microsoft 文档（民间汉化）
+title: 使用  SQLite | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 如何在一个 ASP.NET Core MVC 应用程序中使用 SQLite
-keywords: ASP.NET Core,SQLite, SQL Server 
+keywords: ASP.NET Core 中文文档,SQLite, SQL Server 
 ms.author: riande
 manager: wpickett
 ms.date: 04/07/2017

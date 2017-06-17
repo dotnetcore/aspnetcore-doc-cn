@@ -2,7 +2,7 @@
 title: WebListener web server implementation in ASP.NET Core | Microsoft Docs
 author: rick-anderson
 description: Introduces WebListener, a web server for ASP.NET Core on Windows. Built on the Http.Sys kernel mode driver, WebListener is an alternative to Kestrel that can be used for direct connection to the Internet without IIS.
-keywords: ASP.NET Core, WebListener, HttpListener, url prefixes, SSL 
+keywords: ASP.NET Core 中文文档, WebListener, HttpListener, url prefixes, SSL 
 ms.author: riande
 manager: wpickett
 ms.date: 10/27/2016

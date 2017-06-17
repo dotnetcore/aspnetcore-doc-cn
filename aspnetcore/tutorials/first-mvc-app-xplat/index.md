@@ -1,8 +1,8 @@
 ---
-title: 使用 Visual Studio Code 创建 ASP.NET Core MVC 应用程序 | Microsoft 文档（民间汉化）
+title: 使用 Visual Studio Code 创建 ASP.NET Core MVC 应用程序 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 使用 Visual Studio Code 创建 ASP.NET Core MVC 应用程序目录页面
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 5/17/2017

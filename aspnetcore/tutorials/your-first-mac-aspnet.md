@@ -1,8 +1,8 @@
 ---
-title: 用 Visual Studio Code 在 mac 或者 linux 上创建首个 ASP.NET Core 应用程序 | Microsoft 文档（民间汉化）
+title: 用 Visual Studio Code 在 mac 或者 linux 上创建首个 ASP.NET Core 应用程序 | Microsoft 文档（中文文档）
 author: spboyer
 description: 本文将引导您使用 ASP.NET Core 的 dotnet CLI 以及 Visual Studio Code Mac 上创建您的第一个 Web 应用程序
-keywords: ASP.NET Core, macOS, Yeoman, generator-aspnet, Visual Studio Code, Linux, VS Code
+keywords: ASP.NET Core 中文文档, macOS, Yeoman, generator-aspnet, Visual Studio Code, Linux, VS Code
 ms.author: riande
 manager: wpickett
 ms.date: 03/09/2017

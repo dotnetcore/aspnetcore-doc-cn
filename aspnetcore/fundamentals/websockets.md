@@ -2,7 +2,7 @@
 title: WebSockets support in ASP.NET Core | Microsoft Docs
 author: tdykstra
 description: What is WebSockets support in ASP.NET Core and how to use it.
-keywords: ASP.NET Core, WebSockets
+keywords: ASP.NET Core 中文文档, WebSockets
 ms.author: tdykstra
 manager: wpickett
 ms.date: 03/25/2017

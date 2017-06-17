@@ -2,7 +2,7 @@
 title: Authoring Tag Helpers in ASP.NET Core | Microsoft Docs
 author: rick-anderson
 description: Learn how to author Tag Helpers in ASP.NET Core.
-keywords: ASP.NET Core, tag helpers
+keywords: ASP.NET Core 中文文档, tag helpers
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
