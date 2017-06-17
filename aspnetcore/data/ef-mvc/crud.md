@@ -12,9 +12,11 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: data/ef-mvc/crud
 ---
-# Create, Read, Update, and Delete - EF Core with ASP.NET Core MVC tutorial (2 of 10)
+# 创建、读取、更新与删除 - ASP.NET Core MVC 与 EF Core MVC 教程 (2 of 10)
 
 作者 [Tom Dykstra](https://github.com/tdykstra) 、 [Rick Anderson](https://twitter.com/RickAndMSFT)
+
+翻译 [谢炀（Kiler](https://github.com/kiler398/) 
 
 Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 以及 Visual Studio 2017 来创建 ASP.NET Core 1.1 MVC Web 应用程序。更多信息请参考 [第一节教程](intro.md).
 
