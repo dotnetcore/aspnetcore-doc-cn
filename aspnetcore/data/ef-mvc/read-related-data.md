@@ -26,7 +26,7 @@ Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 �
 在上一篇教程中，你已经完成了 School 数据模型的设计。在本教程中你将读取并显示关联数据——也就是说由 Entity Framework 加载到导航属性中的数据。
  
 <!--The following illustrations show the pages that you'll work with.-->
-下图展示了你将使用的页面。
+下图展示了你将使用到的页面：
 
 ![Courses Index page](read-related-data/_static/courses-index.png)
 
