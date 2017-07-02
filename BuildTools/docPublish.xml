@@ -20,7 +20,7 @@
    <Target Name="build">
  
   <CallTarget Targets="buildwebsite"/> 
-  <!--<CallTarget Targets="pubish2githubIo"/> -->
+  <CallTarget Targets="pubish2githubIo"/> 
  
   
   </Target>
