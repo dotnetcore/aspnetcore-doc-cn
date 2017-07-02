@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!--配置参数-->
+    <WorkDir>src</WorkDir>
+    <webDir>website</webDir>
+    <webName>dotnetcore.github.io</webName>
+    <domainName>aspnet.docs.dotnet-china.org</domainName>
+    <baiduCode>Bh1NXh3smd</baiduCode>
+    <webrepUrl>https://github.com/dotnetcore/dotnetcore.github.io</webrepUrl>
+    <docfxPath>"$(MSBuildProjectDirectory)\$(WorkDir)\aspnetcore\docfx.json"</docfxPath>    
+    <templatePath>"$(MSBuildProjectDirectory)\$(WorkDir)\_exported_templates\default"</templatePath>
+    <sitePath>"$(MSBuildProjectDirectory)\$(WorkDir)\aspnetcore\_site"</sitePath>
+    <sourcePath>$(MSBuildProjectDirectory)\$(WorkDir)\aspnetcore</sourcePath>
+    <pubsitePath>"$(MSBuildProjectDirectory)\$(webDir)\$(webName)"</pubsitePath> 
+    <pubsitelocalWebsitePath>"C:\Websites\coredoc"</pubsitelocalWebsitePath>
+    <pubpdfPath>"$(MSBuildProjectDirectory)\pdf"</pubpdfPath>    
+    <pdfresourcePath>"$(MSBuildProjectDirectory)\pdfresource"</pdfresourcePath>   
+  </PropertyGroup>
+
+ 
+   <Target Name="build">
+ 
+  <CallTarget Targets="buildwebsite"/> 
+  <!--<CallTarget Targets="pubish2githubIo"/> -->
+
+  <!--<CallTarget Targets="pubish2localserver"/> -->
+  
+  </Target>
+
+
+  <!--生成网站-->
+  <Target Name="buildwebsite">
+ 
+    <Message Text="开始重建工作目录"></Message>
+
+    <!--<RemoveDir Directories="$(WorkDir)" />  
+    <MakeDir Directories="$(WorkDir)"/>-->
+
+    <Message Text="重建工作目录结束"></Message>
+
+    <Message Text="开始编译网站"></Message>
+ 
+    <!--<Exec Command="docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(MSBuildProjectDirectory)\$(WorkDir)\"   ></Exec> -->
+
+    <Message Text="编译网站结束"></Message>
+
+    <Message Text="开始修复网站文件"></Message>
+ 
+    <!--<Exec Command="FixSite.exe $(sitePath) "  ></Exec>-->
+
+    <Message Text="修复网站文件结束"></Message>
+
+  </Target>
+
+
+<!--发布网站到githubio-->
+  <Target Name="pubish2githubIo">
+
+    <RemoveDir Directories="$(webDir)" />  
+    <MakeDir Directories="$(webDir)"/>
+
+    <Exec Command="git clone --progress $(webrepUrl) "  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\" />
+
+    <Exec Command="git rm * -r"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+
+    <Exec Command="xcopy.exe  $(sitePath) $(pubsitePath) /e" />
+    
+    <Exec Command="echo $(domainName) > CNAME"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+
+    <Exec Command="echo $(baiduCode) > baidu_verify_Bh1NXh3smd.html"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    
+
+    <Exec Command="git add -A"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+
+    <Exec Command="git commit -m &quot;提交网站&quot;"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+
+    <Exec Command="git push --progress -u origin master "  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+ 
+  </Target>
+
+
+  <Target Name="buildPdf">
+
+    <!--<RemoveDir Directories="$(MSBuildProjectDirectory)\pdf\" />  
+    <MakeDir Directories="$(MSBuildProjectDirectory)\pdf\"/>-->
+
+ 
+    <!--<Exec Command="xcopy.exe  $(sourcePath) $(pubpdfPath) /e /s" />-->
+
+    <Exec Command="xcopy.exe $(pdfresourcePath) $(sourcePath) /e /s" />
+
+    <Exec Command="$(MSBuildProjectDirectory)\docfx.console\tools\docfx.exe pdf docfxpdf.json"  WorkingDirectory="$(sourcePath)" />
+
+    <Exec Command="move $(sourcePath)\_site-pdf\aspnetcore_toc.pdf $(sourcePath)\_site\aspnet_core_doc_cn.pdf"/>
+
+  </Target>
+
+ 
+
+</Project>
