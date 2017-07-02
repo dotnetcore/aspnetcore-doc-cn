@@ -22,14 +22,20 @@ uid: tutorials/web-api-vsc
 <!--## Set up your development environment-->
 ## 设置好你的开发环境
 
-Download and install:
+<!--Download and install:
 - [.NET Core](https://microsoft.com/net/core)
 - [Visual Studio Code](https://code.visualstudio.com)
-- Visual Studio Code [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+- Visual Studio Code [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)-->
+下载并安装:
+- [.NET Core](https://microsoft.com/net/core)
+- [Visual Studio Code](https://code.visualstudio.com)
+- Visual Studio Code [C# 插件](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 
-## Create the project
+<!--## Create the project-->
+## 创建项目
 
-From a console, run the following commands:
+<!--From a console, run the following commands:-->
+在命令行控制台， 运行一下命令：
 
 ```console
 mkdir TodoApi
