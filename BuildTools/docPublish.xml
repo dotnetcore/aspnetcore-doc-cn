@@ -4,7 +4,7 @@
     <!--配置参数-->
     <WorkDir>C:\projects\aspnetcore-doc-cn\</WorkDir>
     <DocfxDir>c:\application\docfx\</DocfxDir>
-    <webDir>C:\projects\website\</webDir>
+    <webDir>C:\website\aspnetcore-doc-cn\</webDir>
     <webName>dotnetcore.github.io</webName>
     <domainName>aspnet.docs.dotnet-china.org</domainName>
     <baiduCode>Bh1NXh3smd</baiduCode>
