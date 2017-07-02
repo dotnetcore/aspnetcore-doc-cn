@@ -32,12 +32,12 @@
   <!--生成网站-->
   <Target Name="buildwebsite">
  
-    <Message Text="开始重建工作目录"></Message>
+    <Message Text="Start to rebuild directory."></Message>
 
     <!--<RemoveDir Directories="$(WorkDir)" />  
     <MakeDir Directories="$(WorkDir)"/>-->
 
-    <Message Text="重建工作目录结束"></Message>
+    <Message Text="Rebuild directory successfully."></Message>
 
     <Message Text="开始编译网站"></Message>
  
