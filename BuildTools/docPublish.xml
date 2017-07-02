@@ -2,16 +2,17 @@
 <Project DefaultTargets="build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <!--配置参数-->
-    <WorkDir>src</WorkDir>
-    <webDir>website</webDir>
+    <WorkDir>C:\projects\aspnetcore-doc-cn\</WorkDir>
+    <DocfxDir>$(WorkDir)BuildTools\docfx\</DocfxDir>
+    <webDir>C:\projects\website\</webDir>
     <webName>dotnetcore.github.io</webName>
     <domainName>aspnet.docs.dotnet-china.org</domainName>
     <baiduCode>Bh1NXh3smd</baiduCode>
     <webrepUrl>https://github.com/dotnetcore/dotnetcore.github.io</webrepUrl>
-    <docfxPath>"$(MSBuildProjectDirectory)\$(WorkDir)\aspnetcore\docfx.json"</docfxPath>    
-    <templatePath>"$(MSBuildProjectDirectory)\$(WorkDir)\_exported_templates\default"</templatePath>
-    <sitePath>"$(MSBuildProjectDirectory)\$(WorkDir)\aspnetcore\_site"</sitePath>
-    <sourcePath>$(MSBuildProjectDirectory)\$(WorkDir)\aspnetcore</sourcePath>
+    <docfxPath>"$(WorkDir)aspnetcore\docfx.json"</docfxPath>    
+    <templatePath>"$(WorkDir)_exported_templates\default"</templatePath>
+    <sitePath>"$(WorkDir)aspnetcore\_site"</sitePath>
+    <sourcePath>$(WorkDir)aspnetcore</sourcePath>
     <pubsitePath>"$(MSBuildProjectDirectory)\$(webDir)\$(webName)"</pubsitePath> 
     <pubsitelocalWebsitePath>"C:\Websites\coredoc"</pubsitelocalWebsitePath>
     <pubpdfPath>"$(MSBuildProjectDirectory)\pdf"</pubpdfPath>    
@@ -23,8 +24,7 @@
  
   <CallTarget Targets="buildwebsite"/> 
   <!--<CallTarget Targets="pubish2githubIo"/> -->
-
-  <!--<CallTarget Targets="pubish2localserver"/> -->
+ 
   
   </Target>
 
@@ -32,24 +32,17 @@
   <!--生成网站-->
   <Target Name="buildwebsite">
  
-    <Message Text="Start to rebuild directory."></Message>
-
-    <!--<RemoveDir Directories="$(WorkDir)" />  
-    <MakeDir Directories="$(WorkDir)"/>-->
-
-    <Message Text="Rebuild directory successfully."></Message>
-
-    <Message Text="开始编译网站"></Message>
+    <Message Text="Start to build website"></Message>
  
-    <!--<Exec Command="docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(MSBuildProjectDirectory)\$(WorkDir)\"   ></Exec> -->
+    <Exec Command="$(DocfxDir)docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(WorkDir)"   ></Exec> 
 
-    <Message Text="编译网站结束"></Message>
+    <Message Text="Build website successfully."></Message>
 
-    <Message Text="开始修复网站文件"></Message>
+    <Message Text="Start to fix website files"></Message>
  
     <!--<Exec Command="FixSite.exe $(sitePath) "  ></Exec>-->
 
-    <Message Text="修复网站文件结束"></Message>
+    <Message Text="Fix website files"></Message>
 
   </Target>
 
@@ -79,23 +72,7 @@
  
   </Target>
 
-
-  <Target Name="buildPdf">
-
-    <!--<RemoveDir Directories="$(MSBuildProjectDirectory)\pdf\" />  
-    <MakeDir Directories="$(MSBuildProjectDirectory)\pdf\"/>-->
-
  
-    <!--<Exec Command="xcopy.exe  $(sourcePath) $(pubpdfPath) /e /s" />-->
-
-    <Exec Command="xcopy.exe $(pdfresourcePath) $(sourcePath) /e /s" />
-
-    <Exec Command="$(MSBuildProjectDirectory)\docfx.console\tools\docfx.exe pdf docfxpdf.json"  WorkingDirectory="$(sourcePath)" />
-
-    <Exec Command="move $(sourcePath)\_site-pdf\aspnetcore_toc.pdf $(sourcePath)\_site\aspnet_core_doc_cn.pdf"/>
-
-  </Target>
-
  
 
 </Project>
