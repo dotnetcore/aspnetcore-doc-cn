@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <!--ÅäÖÃ²ÎÊý-->
+    <!--é…ç½®å‚æ•°-->
     <WorkDir>src</WorkDir>
     <webDir>website</webDir>
     <webName>dotnetcore.github.io</webName>
@@ -29,7 +29,7 @@
   </Target>
 
 
-  <!--Éú³ÉÍøÕ¾-->
+  <!--ç”Ÿæˆç½‘ç«™-->
   <Target Name="buildwebsite">
  
     <Message Text="Start to rebuild directory."></Message>
@@ -39,22 +39,22 @@
 
     <Message Text="Rebuild directory successfully."></Message>
 
-    <Message Text="¿ªÊ¼±àÒëÍøÕ¾"></Message>
+    <Message Text="å¼€å§‹ç¼–è¯‘ç½‘ç«™"></Message>
  
     <!--<Exec Command="docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(MSBuildProjectDirectory)\$(WorkDir)\"   ></Exec> -->
 
-    <Message Text="±àÒëÍøÕ¾½áÊø"></Message>
+    <Message Text="ç¼–è¯‘ç½‘ç«™ç»“æŸ"></Message>
 
-    <Message Text="¿ªÊ¼ÐÞ¸´ÍøÕ¾ÎÄ¼þ"></Message>
+    <Message Text="å¼€å§‹ä¿®å¤ç½‘ç«™æ–‡ä»¶"></Message>
  
     <!--<Exec Command="FixSite.exe $(sitePath) "  ></Exec>-->
 
-    <Message Text="ÐÞ¸´ÍøÕ¾ÎÄ¼þ½áÊø"></Message>
+    <Message Text="ä¿®å¤ç½‘ç«™æ–‡ä»¶ç»“æŸ"></Message>
 
   </Target>
 
 
-<!--·¢²¼ÍøÕ¾µ½githubio-->
+<!--å‘å¸ƒç½‘ç«™åˆ°githubio-->
   <Target Name="pubish2githubIo">
 
     <RemoveDir Directories="$(webDir)" />  
@@ -73,7 +73,7 @@
 
     <Exec Command="git add -A"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
 
-    <Exec Command="git commit -m &quot;Ìá½»ÍøÕ¾&quot;"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="git commit -m &quot;æäº¤ç½‘ç«™&quot;"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
 
     <Exec Command="git push --progress -u origin master "  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
  
