@@ -13,10 +13,7 @@
     <templatePath>"$(WorkDir)_exported_templates\default"</templatePath>
     <sitePath>"$(WorkDir)aspnetcore\_site"</sitePath>
     <sourcePath>$(WorkDir)aspnetcore</sourcePath>
-    <pubsitePath>"$(MSBuildProjectDirectory)\$(webDir)\$(webName)"</pubsitePath> 
-    <pubsitelocalWebsitePath>"C:\Websites\coredoc"</pubsitelocalWebsitePath>
-    <pubpdfPath>"$(MSBuildProjectDirectory)\pdf"</pubpdfPath>    
-    <pdfresourcePath>"$(MSBuildProjectDirectory)\pdfresource"</pdfresourcePath>   
+    <pubsitePath>"$(webDir)$(webName)"</pubsitePath> 
   </PropertyGroup>
 
  
@@ -40,7 +37,7 @@
 
     <Message Text="Start to fix website files"></Message>
  
-    <!--<Exec Command="FixSite.exe $(sitePath) "  ></Exec>-->
+    <Exec Command="FixSite.exe $(sitePath) "></Exec>
 
     <Message Text="Fix website files"></Message>
 
@@ -49,26 +46,23 @@
 
 <!--发布网站到githubio-->
   <Target Name="pubish2githubIo">
+ 
+    <Exec Command="git clone --progress $(webrepUrl) "  WorkingDirectory="$(webDir)" />
 
-    <RemoveDir Directories="$(webDir)" />  
-    <MakeDir Directories="$(webDir)"/>
-
-    <Exec Command="git clone --progress $(webrepUrl) "  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\" />
-
-    <Exec Command="git rm * -r"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="git rm * -r"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
 
     <Exec Command="xcopy.exe  $(sitePath) $(pubsitePath) /e" />
     
-    <Exec Command="echo $(domainName) > CNAME"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="echo $(domainName) > CNAME"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
 
-    <Exec Command="echo $(baiduCode) > baidu_verify_Bh1NXh3smd.html"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="echo $(baiduCode) > baidu_verify_Bh1NXh3smd.html"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
     
 
-    <Exec Command="git add -A"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="git add -A"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
 
-    <Exec Command="git commit -m &quot;提交网站&quot;"  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="git commit -m &quot;submit new website&quot;"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
 
-    <Exec Command="git push --progress -u origin master "  WorkingDirectory="$(MSBuildProjectDirectory)\$(webDir)\$(webName)"   ></Exec>
+    <Exec Command="git push --progress -u origin master "  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
  
   </Target>
 
