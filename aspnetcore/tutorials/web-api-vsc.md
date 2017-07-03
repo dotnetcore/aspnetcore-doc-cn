@@ -1,7 +1,7 @@
 ---
-title: 用 ASP.NET Core MVC 和 Visual Studio Code 创建你的第一个 Web API
+title: 用 ASP.NET Core MVC 和 Visual Studio Code 创建你的第一个 Web API | Microsoft 文档（中文文档）
 author: rick-anderson
-description: Build a web API on macOS, Linux, or Windows with ASP.NET Core MVC and Visual Studio Code
+description: 在  Linux, macOS, 以及 Windows平台 用 ASP.NET Core MVC 和 Visual Studio Code 创建你的第一个 Web API
 keywords: ASP.NET Core 中文文档, WebAPI, Web API, REST, Mac, Linux,HTTP, Service, HTTP Service
 ms.author: riande
 manager: wpickett
@@ -98,17 +98,25 @@ In VS Code, press F5 to launch the app. Navigate to  http://localhost:5000/api/t
 
 [!INCLUDE[last part of web API](../includes/webApi/end.md)]
 
-## Visual Studio Code help
+<!--## Visual Studio Code help-->
+## Visual Studio Code 帮助
 
-- [Getting started](https://code.visualstudio.com/docs)
+<!--- [Getting started](https://code.visualstudio.com/docs)
 - [Debugging](https://code.visualstudio.com/docs/editor/debugging)
 - [Integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
-- [Keyboard shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
+- [Keyboard shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)-->
+- [入门](https://code.visualstudio.com/docs)
+- [调试](https://code.visualstudio.com/docs/editor/debugging)
+- [集成终端](https://code.visualstudio.com/docs/editor/integrated-terminal)
+- [键盘快捷键](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-shortcuts-reference)
 
-  - [Mac keyboard shortcuts](https://go.microsoft.com/fwlink/?linkid=832143)
+  <!--- [Mac keyboard shortcuts](https://go.microsoft.com/fwlink/?linkid=832143)
   - [Linux keyboard shortcuts](https://go.microsoft.com/fwlink/?linkid=832144)
-  - [Windows keyboard shortcuts](https://go.microsoft.com/fwlink/?linkid=832145)
+  - [Windows keyboard shortcuts](https://go.microsoft.com/fwlink/?linkid=832145)-->
+  - [Mac 键盘快捷键](https://go.microsoft.com/fwlink/?linkid=832143)
+  - [Linux 键盘快捷键](https://go.microsoft.com/fwlink/?linkid=832144)
+  - [Windows 键盘快捷键](https://go.microsoft.com/fwlink/?linkid=832145)
 
-[!INCLUDE[next steps](../includes/webApi/next.md)]
+[!INCLUDE[后续章节](../includes/webApi/next.md)]
 
 
