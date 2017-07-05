@@ -48,7 +48,10 @@
 ![Headers tab of the Postman console](../../tutorials/first-web-api/_static/pmget.png)
 
 <!--You can use the Location header URI to access the resource you just created. Recall the `GetById` method created the `"GetTodo"` named route:-->
-You can use the Location header URI to access the resource you just created. Recall the `GetById` method created the `"GetTodo"` named route:
+你可以使用 Location响应头(Location header URI) 来访问你刚才创建的资源。 重新调用 `GetById` 方法创建的 `"GetTodo"` 命名路由：
+
+
+
 
 ```csharp
 [HttpGet("{id}", Name = "GetTodo")]
@@ -59,7 +62,9 @@ public IActionResult GetById(long id)
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
-`Update` is similar to `Create`, but uses HTTP PUT. The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). According to the HTTP spec, a PUT request requires the client to send the entire updated entity, not just the deltas. To support partial updates, use HTTP PATCH.
+<!--`Update` is similar to `Create`, but uses HTTP PUT. The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). According to the HTTP spec, a PUT request requires the client to send the entire updated entity, not just the deltas. To support partial updates, use HTTP PATCH.-->
+`Update` 类似于 `Create` ,但是使用 HTTP PUT 。响应是 [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) 。
+根据 HTTP 规范, PUT 请求要求客户端发送整个实体更新，而不仅仅是增量。为了支持局部更新，请使用 HTTP PATCH 。
 
 ![Postman console showing 204 (No Content) response](../../tutorials/first-web-api/_static/pmcput.png)
 
@@ -67,6 +72,7 @@ public IActionResult GetById(long id)
 
 [!code-csharp[Main](../../tutorials/first-web-api/sample/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
-The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+<!--The response is [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).-->
+方法返回 [204 (No Content)](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 
 
 ![Postman console showing 204 (No Content) response](../../tutorials/first-web-api/_static/pmd.png)
