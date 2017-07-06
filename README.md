@@ -1,6 +1,7 @@
 # ASP.NET Core Documentation 翻译计划
 
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/bqrlghode84ym5e4?svg=true)](https://ci.appveyor.com/project/kiler398/aspnetcore-doc-cn)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/bqrlghode84ym5e4?svg=true)](https://ci.appveyor.com/project/kiler398/aspnetcore-doc-cn) [![GitHub license](https://img.shields.io/badge/license-creativecommons4-blue.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)
+
 
 本项目为 ASP.NET Core Documentaction 翻译计划的工作项目，非本项目的成员不要直接向仓库推送 Pull Request（正式发表之前，暂不接受外部贡献）。
 
