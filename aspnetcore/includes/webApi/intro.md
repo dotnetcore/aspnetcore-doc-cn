@@ -1,6 +1,6 @@
 作者 [Rick Anderson](https://twitter.com/RickAndMSFT) 、 [Mike Wasson](https://github.com/mikewasson)
 
-翻译 [谢炀（Kiler)](https://github.com/kiler398/aspnetcore)  
+翻译 [谢炀（Kiler)](https://github.com/kiler398/)  
 
 <!--HTTP is not just for serving up web pages. It’s also a powerful platform for building APIs that expose services and data. HTTP is flexible and ubiquitous. Almost any platform that you can think of has an HTTP library, so HTTP services can reach a broad range of clients, including browsers, mobile devices, and traditional desktop apps.-->
 HTTP协议 不仅仅提供网页服务. 它也是一个构建公开服务和数据 API 的强大平台。HTTP 协议是简单、灵活、无处不在的。 几乎你能想到的任何平台上都有HTTP支持, 所以HTTP服务能够发送到多种客户端, 包括浏览器，移动设备和传统的桌面应用程序。
