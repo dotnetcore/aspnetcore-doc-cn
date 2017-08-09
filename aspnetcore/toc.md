@@ -147,4 +147,4 @@
 
 # [贡献](https://github.com/aspnet/Docs/blob/master/CONTRIBUTING.md)
 
-# [中文PDF文档](http://dotnetcore.github.io/aspnet_core_doc_cn.pdf)
+# [中文PDF文档](http://aspnet.docs.dotnet-china.org/aspnet_core_doc_cn.pdf)
