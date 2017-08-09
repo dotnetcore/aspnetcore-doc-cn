@@ -32,16 +32,16 @@ uid: tutorials/publish-to-azure-webapp-using-vs
 > [!NOTE]
 > 如果你的机器之前任何依赖都没有安装过，SDK 的安装时间将会超过30分钟。
 
-* Install [.NET Core + Visual Studio tooling](http://go.microsoft.com/fwlink/?LinkID=798306)
-* Install [.NET Core + Visual Studio tooling](http://go.microsoft.com/fwlink/?LinkID=798306)
+<!-- * Install [.NET Core + Visual Studio tooling](http://go.microsoft.com/fwlink/?LinkID=798306) -->
+* 安装 [.NET Core + Visual Studio 工具](http://go.microsoft.com/fwlink/?LinkID=798306)
 
-* Verify your [Azure account](https://portal.azure.com/). You can [open a free Azure account](https://azure.microsoft.com/pricing/free-trial/) or [Activate Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
-* Verify your [Azure account](https://portal.azure.com/). You can [open a free Azure account](https://azure.microsoft.com/pricing/free-trial/) or [Activate Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
+<!-- * Verify your [Azure account](https://portal.azure.com/). You can [open a free Azure account](https://azure.microsoft.com/pricing/free-trial/) or [Activate Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). -->
+* 检查你的 [Azure 账户](https://portal.azure.com/). You can [open a free Azure account](https://azure.microsoft.com/pricing/free-trial/) or [Activate Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-## Create a web app
-## Create a web app
+<!-- ## Create a web app -->
+## 创建 Web 应用程序
 
-In the Visual Studio Start Page, tap **New Project...**.
+<!-- In the Visual Studio Start Page, tap **New Project...**. -->
 In the Visual Studio Start Page, tap **New Project...**.
 
 ![Start Page](publish-to-azure-webapp-using-vs/_static/new_project.png)
