@@ -1,4 +1,5 @@
-# Contributing to the ASP.NET documentation
+<!-- # Contributing to the ASP.NET documentation -->
+# 如何贡献 ASP.NET 翻译文档
 
 This document covers the process for contributing to the articles and code samples that are hosted on the [ASP.NET documentation site](https://docs.microsoft.com/aspnet/). Contributions may be as simple as typo corrections or as complex as new articles.
 
