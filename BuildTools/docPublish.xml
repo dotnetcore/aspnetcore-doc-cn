@@ -74,7 +74,7 @@
 
     <Exec Command="docfx.exe pdf docfxpdf.json"  WorkingDirectory="$(sourcePath)" />
 
-    <Exec Command="move $(sourcePath)\_site-pdf\aspnetcore_toc.pdf $(sourcePath)\_site\aspnet_core_doc_cn.pdf"/>
+    <Exec Command="move $(sourcePath)\_site-pdf\aspnetcore.pdf $(sourcePath)\_site\aspnet_core_doc_cn.pdf"/>
 
   </Target>
 
