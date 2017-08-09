@@ -2,7 +2,7 @@
 title: Using AngularJS for Single Page Applications (SPAs) | Microsoft Docs
 author: rick-anderson
 description: Learn how to build a SPA-style ASP.NET application using AngularJS
-keywords: ASP.NET Core, AngularJS, SPA
+keywords: ASP.NET Core 中文文档, AngularJS, SPA
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016

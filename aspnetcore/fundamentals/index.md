@@ -2,7 +2,7 @@
 title: ASP.NET Core fundamentals | Microsoft Docs
 author: rick-anderson
 description: Overview of fundamental concpepts in ASP.NET Core.
-keywords: ASP.NET Core, fundamentals, overview
+keywords: ASP.NET Core 中文文档, fundamentals, overview
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016

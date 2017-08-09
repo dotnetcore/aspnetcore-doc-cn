@@ -1,8 +1,8 @@
 ---
-title: Adding Validation | Microsoft Docs
+title: 添加验证 | Microsoft 文档（中文文档）
 author: rick-anderson
-description: How to add validation to a simple ASP.NET Core app.
-keywords: ASP.NET Core, validation, DataAnnotations
+description: 如何在一个 ASP.NET Core MVC 应用程序中添加验证功能
+keywords: ASP.NET Core 中文文档, validation, DataAnnotations
 ms.author: riande
 manager: wpickett
 ms.date: 04/13/2017
@@ -16,5 +16,5 @@ uid: tutorials/first-mvc-app/validation
 [!INCLUDE[validation](../../includes/mvc-intro/validation.md)]
 
 >[!div class="step-by-step"]
-[Previous](new-field.md)
-[Next](details.md)  
+[上一节](new-field.md)
+[下一节](details.md)  

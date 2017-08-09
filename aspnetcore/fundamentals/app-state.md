@@ -2,7 +2,7 @@
 title: Session and application state in ASP.NET Core  | Microsoft Docs
 author: rick-anderson
 description: Approaches to preserving application and user (session) state between requests.
-keywords: ASP.NET Core, Application state, session state, querystring, post
+keywords: ASP.NET Core 中文文档, Application state, session state, querystring, post
 ms.author: riande
 manager: wpickett
 ms.date: 03/08/2017

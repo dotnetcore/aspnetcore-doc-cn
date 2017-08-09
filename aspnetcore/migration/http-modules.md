@@ -2,7 +2,7 @@
 title: Migrating HTTP handlers and modules to ASP.NET Core middleware | Microsoft Docs
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: tdykstra
 manager: wpickett
 ms.date: 12/07/2016

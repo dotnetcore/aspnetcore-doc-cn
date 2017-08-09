@@ -1,122 +1,129 @@
-# Adding validation
+# 添加验证
 
-By [Rick Anderson](https://twitter.com/RickAndMSFT)
+作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-In this section you'll add validation logic to the `Movie` model, and you'll ensure that the validation rules are enforced any time a user creates or edits a movie.
+翻译 [谢炀（Kiler）](https://github.com/kiler398/) 
 
-## Keeping things DRY
+校对 [孟帅洋（书缘](https://github.com/mengshuaiyang)、[娄宇(Lyrics)](https://github.com/xbuilder)、[许登洋(Seay)](https://github.com/SeayXu)
 
-One of the design tenets of MVC is [DRY](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself) ("Don't Repeat Yourself"). ASP.NET MVC encourages you to specify functionality or behavior only once, and then have it be reflected everywhere in an app. This reduces the amount of code you need to write and makes the code you do write less error prone, easier to test, and easier to maintain.
+在本章节中你将为 `Movie` 模型类添加验证逻辑，以确保用户在试图创建或编辑影片数据时强制执行验证规则。
 
-The validation support provided by MVC and Entity Framework Core Code First is a good example of the DRY principle in action. You can declaratively specify validation rules in one place (in the model class) and the rules are enforced everywhere in the app.
+## 保持DRY原则
 
-## Adding validation rules to the movie model
+ASP.NET MVC 的核心原则之一是 [DRY](http://en.wikipedia.org/wiki/Don%27t_repeat_yourself) （"不要重复自己"）。ASP.NET MVC 鼓励你只指定一次行为或者功能，然后可以在应用程序里面到处使用，这样大大的减少了需要编写的代码量，并且使你编写不容易出错，更容易测试，以及更容易维护的代码。
 
-Open the *Movie.cs* file. DataAnnotations provides a built-in set of validation attributes that you apply declaratively to any class or property. (It also contains formatting attributes like `DataType` that help with formatting and don't provide any validation.)
+ASP.NET MVC 和 Entity Framework Core Code First 中的验证功能，是 DRY 原则实际应用的一个很好的实例。你可以在某个位置（模型类）声明指定方式的验证规则，验证规则可以在整个应用程序中生效。 
 
-Update the `Movie` class to take advantage of the built-in `Required`, `StringLength`, `RegularExpression`, and `Range` validation attributes.
+## 向 Movie 模型中添加验证规则
+
+打开 *Movie.cs* 文件。DataAnnotations 提供了一组内置的验证特性，你可以对任何类或属性应用。（它也同时包含了一些格式化特性比如 `DataType` 用来帮你格式化数据而非提供验证功能。) 
+
+现在修改 `Movie` 类，利用内置的 `Required`, `StringLength`, `RegularExpression`, 以及 `Range`验证特性。
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?name=snippet1)]
 
-The validation attributes specify behavior that you want to enforce on the model properties they are applied to. The `Required` and `MinimumLength` attributes indicates that a property must have a value; but nothing prevents a user from entering white space to satisfy this validation. The `RegularExpression` attribute is used to limit what characters can be input. In the code above, `Genre` and `Rating` must use only letters (white space, numbers and special characters are not allowed). The `Range` attribute constrains a value to within a specified range. The `StringLength` attribute lets you set the maximum length of a string property, and optionally its minimum length. Value types (such as `decimal`, `int`, `float`, `DateTime`) are inherently required and don't need the `[Required]` attribute.
+验证特性指定了你想要应用到模型属性上的验证行为。 `Required` 以及 `MinimumLength` 特性表示属性不能为空，但无法阻止用户用填写空格的方式来满足此验证条件。 `RegularExpression` 特性用来限制用户输入的文字类型。 在上面的例子中， `Genre` 以及 `Rating` 只能输入字母（不允许输入空格、数字以及特殊字符）。 `Range` 特性限制值在指定的范围内。 `StringLength` 特性可以设置字符串最大长度，以及最小长度（可选）。值类型（如decimal， int， float， DateTime）本身是必须的，并不需要 `[Required]` 特性。
 
-Having validation rules automatically enforced by ASP.NET helps make your app more robust. It also ensures that you can't forget to validate something and inadvertently let bad data into the database.
+ASP.NET 自动执行的验证规则将有助于使你的应用程序更加健壮。它还确保提醒你不要忘记验证数据，让非法数据进入到数据库中。
 
-## Validation Error UI in MVC
+## MVC 中的验证错误 UI
 
-Run the app and navigate to the Movies controller.
+运行程序并导航到 Movies controller。 
 
-Tap the **Create New** link to add a new movie. Fill out the form with some invalid values. As soon as jQuery client side validation detects the error, it displays an error message.
+点击 **Create New** 链接创建一个新的 Movie。在表单中填写一些无效的数据，jQuery 客户端验证马上就会发现错误，立刻呈现到界面上。
 
 ![Movie view form with multiple jQuery client side validation errors](../../tutorials/first-mvc-app/validation/_static/val.png)
 
 > [!NOTE]
-> You may not be able to enter decimal points or commas in the `Price` field. To support [jQuery validation](http://jqueryvalidation.org/) for non-English locales that use a comma (",") for a decimal point, and non US-English date formats, you must take steps to globalize your app. See [Additional resources](#additional-resources) for more information. For now, just enter whole numbers like 10.
+> 你也许无法在 `Price` 字段中输入小数点或者逗号。为了让 [jQuery validation](http://jqueryvalidation.org/) 支持非英语环境使用逗号（","）代替小数点，以及非美式英语日期格式，你必须采取措施国际化你的应用程序。参考 [额外的资源](#additional-resources)  获取更多信息。 现在仅仅输入整数，比如 10。
 
-Notice how the form has automatically rendered an appropriate validation error message in each field containing an invalid value. The errors are enforced both client-side (using JavaScript and jQuery) and server-side (in case a user has JavaScript disabled).
+你也许无法在 `Price` 字段中输入小数点或者逗号。为了让 [jQuery validation](http://jqueryvalidation.org/) 支持非英语环境使用逗号（","）代替小数点，以及非美式英语日期格式，你必须采取措施国际化你的应用程序。参考 [额外的资源](#additional-resources)  获取更多信息。 现在仅仅输入整数，比如 10。
 
-A significant benefit is that you didn't need to change a single line of code in the `MoviesController` class or in the *Create.cshtml* view in order to enable this validation UI. The controller and views you created earlier in this tutorial automatically picked up the validation rules that you specified by using validation attributes on the properties of the `Movie` model class. Test validation using the `Edit` action method, and the same validation is applied.
+请注意，表单在包含无效值的每个字段下自动呈现一个适当的验证错误消息。错误包括客户端（使用 JavaScript 和 jQuery ）和服务器端（以防用户已禁用 JavaScript）。
 
-The form data is not sent to the server until there are no client side validation errors. You can verify this by putting a break point in the `HTTP Post` method, by using the [Fiddler tool](http://www.telerik.com/fiddler) , or the [F12 Developer tools](https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/).
+一个显而易见的好处是，你并不需要改变 `MoviesController` 类或者 *Create.cshtml* 视图中的一行代码，就可以实现验证界面。你在本教程前面创建的控制器和视图，自动使用你指定的 `Movie` 模型类的属性上的验证特性的验证规则。使用 `Edit` 操作方法测试验证，（与Create 方法）同样的验证生效。
 
-## How validation works
+表单数据不会被发送到服务器直到没有客户端验证错误。你可以在 `HTTP Post` 方法中设置断点，并通过使用 [Fiddler 工具](http://www.telerik.com/fiddler) 或者 [F12 开发者工具](https://dev.windows.com/en-us/microsoft-edge/platform/documentation/f12-devtools-guide/) 访问这个方法来验证这一点。
 
-You might wonder how the validation UI was generated without any updates to the code in the controller or views. The follow code shows the two `Create` methods.
+## 验证模块是如何工作的
+
+也许你会好奇生成的控制器或视图中的代码没有任何更新的情况下验证界面是如何产生的。下一个清单显示的是两个 `Create` 方法。
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
 
-The first (HTTP GET) `Create` action method displays the initial Create form. The second (`[HttpPost]`) version handles the form post. The second `Create` method (The `[HttpPost]` version) calls `ModelState.IsValid` to check whether the movie has any validation errors. Calling this method evaluates any validation attributes that have been applied to the object. If the object has validation errors, the `Create` method re-displays the form. If there are no errors, the method saves the new movie in the database. In our movie example, the form is not posted to the server when there are validation errors detected on the client side; the second `Create` method is never called when there are client side validation errors. If you disable JavaScript in your browser, client validation is disabled and you can test the HTTP POST `Create` method `ModelState.IsValid` detecting any validation errors.
+第一个（HTTP GET） `Create` 的操作方法显示初始创建表单。第二个（`[HttpPost]`）版本的操作方法负责处理 post 请求。第二个 `Create` 的方法（HttpPost 版本）调用 `ModelState.IsValid` 检查是否有任何验证错误。调用该方法将检查任何已应用到对象属性上的验证。如果对象的 `Create` 方法验证错误，重新显示表单。如果没有错误，该方法在数据库中保存新的 movie。在我们的 movie 例子中，在客户端验证检测到错误时，表单将不会发送到服务器，第二个  `Create` 方法不会被调用。如果你的浏览器禁用了JavaScript，客户端验证被禁用，HTTP POST 版本的 `Create` 方法调用 `ModelState.IsValid` ，以检查是否存在任何验证错误。
 
-You can set a break point in the `[HttpPost] Create` method and verify the method is never called, client side validation will not submit the form data when validation errors are detected. If you disable JavaScript in your browser, then submit the form with errors, the break point will be hit. You still get full validation without JavaScript. 
+你可以在 `[HttpPost] Create` 方法中设置一个断点，用来验证该方法不会被调用，客户端验证发现错误时将不提交表单数据。如果你的浏览器禁用了 JavaScript ，然后提交有错误的表单，断点会被命中。不支持 JavaScript 的情况下，你仍然可以得到充分验证。下面的图片展示了如何在 IE 浏览器中禁用 JavaScript 脚本。
 
-The following image shows how to disable JavaScript in the FireFox browser.
+下面的图片展示了如何在 FireFox 浏览器中禁用 JavaScript 脚本。
 
 ![Firefox: On the Content tab of Options, uncheck the Enable Javascript checkbox.](../../tutorials/first-mvc-app/validation/_static/ff.png)
 
-The following image shows how to disable JavaScript in the Chrome browser.
+下面的图片展示了如何在 Chrome 浏览器中禁用 JavaScript 脚本。
 
 ![Google Chrome: In the Javascript section of Content settings, select Do not allow any site to run JavaScript.](../../tutorials/first-mvc-app/validation/_static/chrome.png)
 
-After you disable JavaScript, post invalid data and step through the debugger.
+在禁用 JavaScript 脚本之后，post 非法数据并在调试器中单步调试。
 
 ![While debugging on a post of invalid data, Intellisense on ModelState.IsValid shows the value is false.](../../tutorials/first-mvc-app/validation/_static/ms.png)
 
-Below is portion of the *Create.cshtml* view template that you scaffolded earlier in the tutorial. It's used by the action methods shown above both to display the initial form and to redisplay it in the event of an error.
+下面是你在本教程前面用基架生成的 *Create.cshtml* 视图模板的一部分。它使用上面展示的两种 action 方法来显示初始表单并且在发生错误时重新显示。
 
 [!code-HTML[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Views/Movies/CreateRatingBrevity.cshtml)]
 
-The [Input Tag Helper](xref:mvc/views/working-with-forms) uses the [DataAnnotations](http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx) attributes and produces HTML attributes needed for jQuery Validation on the client side. The [Validation Tag Helper](xref:mvc/views/working-with-forms#the-validation-tag-helpers) displays validation errors. See [Validation](xref:mvc/models/validation) for more information.
+[Input Tag Helper](xref:mvc/views/working-with-forms)  消费  [DataAnnotations](http://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.aspx)  特性和产生jQuery验证所需要在客户端生成的 HTML 属性。[Validation Tag Helper](xref:mvc/views/working-with-forms#the-validation-tag-helpers) 负责显示错误信息。更多请参考 [Validation](xref:mvc/models/validation)。
 
-What's really nice about this approach is that neither the controller nor the `Create` view template knows anything about the actual validation rules being enforced or about the specific error messages displayed. The validation rules and the error strings are specified only in the `Movie` class. These same validation rules are automatically applied to the `Edit` view and any other views templates you might create that edit your model.
+非常棒的是控制器和 `Create` 视图模板不知道实际执行的验证规则或显示的具体错误消息。只需要在 `Create` 类里指定验证规则和错误字符串，同样的验证规则会自动应用到 `Movie` 视图和任何其他视图模板，你可以创建、编辑你的模型。
 
-When you need to change validation logic, you can do so in exactly one place by adding validation attributes to the model (in this example, the `Movie` class). You won't have to worry about different parts of the application being inconsistent with how the rules are enforced — all validation logic will be defined in one place and used everywhere. This keeps the code very clean, and makes it easy to maintain and evolve. And it means that that you'll be fully honoring the DRY principle.
+如果你想更改验证逻辑，你可以限定在一处地方（在本例中，是指 `Movie` 类），为模型添加验证特性。你不需要担心应用程序的不同部分执行的规则不一致 —— 所有的验证逻辑在同一个地方定义然后在各处使用
+。这样可以使得代码很干净，而且易于维护和改进。这意味着，你充分遵循了 DRY 原则。
 
-## Using DataType Attributes
+## 使用 DataType 特性
 
-Open the *Movie.cs* file and examine the `Movie` class. The `System.ComponentModel.DataAnnotations` namespace provides formatting attributes in addition to the built-in set of validation attributes. We've already applied a `DataType` enumeration value to the release date and to the price fields. The following code shows the `ReleaseDate` and `Price` properties with the appropriate `DataType` attribute.
+打开 *Movie.cs* 文件，并查看 `Movie` 类。 `System.ComponentModel.DataAnnotations` 命名空间提供了除了内置的验证特性以外的一套格式化特性。我们已经应用了 ``DataType`` 枚举值到发布日期和价格字段。下面的代码显示了  `ReleaseDate` 和 `Price` 字段如何使用 `DataType` 特性。
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
-The `DataType` attributes only provide hints for the view engine to format the data (and supply attributes such as `<a>` for URL's and `<a href="mailto:EmailAddress.com">` for email. You can use the `RegularExpression` attribute to validate the format of the data. The `DataType` attribute is used to specify a data type that is more specific than the database intrinsic type, they are not validation attributes. In this case we only want to keep track of the date, not the time. The `DataType` Enumeration provides for many data types, such as Date, Time, PhoneNumber, Currency, EmailAddress and more. The `DataType` attribute can also enable the application to automatically provide type-specific features. For example, a `mailto:` link can be created for `DataType.EmailAddress`, and a date selector can be provided for `DataType.Date` in browsers that support HTML5. The `DataType` attributes emits HTML 5 `data-` (pronounced data dash) attributes that HTML 5 browsers can understand. The
-`DataType` attributes do **not** provide any validation.
+`DataType` 特性只用于视图引擎对数据进行格式化（或者提供给诸如 `<a>` 标签 的Url或者 `<a href="mailto:EmailAddress.com">` 提供的电子邮件），你可以使用 `RegularExpression` 特性来验证数据的格式，`DataType` 特性用于指定比数据库的自带类型更为具体的数据类型，它们不是验证特性，在本示例中我们只想跟踪日期，而不需要具体时间。在 `DataType` 枚举提供了许多数据类型，如日期、时间、手机号码、货币、电子邮件地址等 `DataType` 特性一样可以让应用程序具备自动提供特定数据类型的功能。例如，一个`mailto:` 链接可以使用 `DataType.EmailAddress`数据类型创建，在支持 Html5 的浏览器中并且日期选择器可以提供   `DataType.Date` 的值。`DataType` 特性向浏览器发送 HTML 5 标签 `data-` （pronounced data dash）。`DataType` 特性 **无法**  提供任何验证。
 
-`DataType.Date` does not specify the format of the date that is displayed. By default, the data field is displayed according to the default formats based on the server's `CultureInfo`.
+`DataType.Date` 不指定日期的显示格式。默认情况下，数据字段默认的显示格式基于服务器的 `CultureInfo` 设置来决定的。
 
-The `DisplayFormat` attribute is used to explicitly specify the date format:
+`DisplayFormat` 特性被用来格式化日期：
 
 ```csharp
 [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
 public DateTime ReleaseDate { get; set; }
 ```
 
-The `ApplyFormatInEditMode` setting specifies that the formatting should also be applied when the value is displayed in a text box for editing. (You might not want that for some fields — for example, for currency values, you probably do not want the currency symbol in the text box for editing.)
+`ApplyFormatInEditMode` 用来指定格式是否应用到文本框编辑。（你可能不希望在某些字段中使用这个功能——例如，对于货币值，你可能不希望在文本框中对货币符号进行编辑。）
 
-You can use the `DisplayFormat` attribute by itself, but it's generally a good idea to use the `DataType` attribute. The `DataType` attribute conveys the semantics of the data as opposed to how to render it on a screen, and provides the following benefits that you don't get with DisplayFormat:
+你可以直接使用 `DisplayFormat` 特性本身，但是更好的方式是建议使用 `DataType` ， `DataType` 特性仅仅传递数据的语义，并不会通知浏览器如何呈现，如果不使用  DisplayFormat 有以下好处：
 
-* The browser can enable HTML5 features (for example to show a calendar control, the locale-appropriate currency symbol, email links, etc.)
+* 浏览器可以启用 HTML5 功能（例如显示日历控件，设置本地化的货币符号，电子邮件中的链接，等等）。
 
-* By default, the browser will render data using the correct format based on your [locale](http://msdn.microsoft.com/en-us/library/vstudio/wyzd2bce.aspx)
+* 默认情况下，浏览器将基于你的 [本地环境](http://msdn.microsoft.com/en-us/library/vstudio/wyzd2bce.aspx) 使用正确的格式渲染数据。
 
-* The `DataType` attribute can enable MVC to choose the right field template to render the data (the `DisplayFormat` if used by itself uses the string template).
+* `DataType` 特性可以使 MVC 选择正确的字段模板来呈现数据（比如 `DisplayFormat` 如果单独使用 string 模板）。
 
 > [!NOTE]
-> jQuery validation does not work with the `Range` attribute and `DateTime`. For example, the following code will always display a client side validation error, even when the date is in the specified range:
+> 当 `Range` 特性同时使用 `DateTime` 类型的时候 jQuery 验证无法生效。例如，下面的代码将始终显示客户端验证错误，即使日期在指定范围内：
+
 
 ```csharp
 [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]
    ```
 
-You will need to disable jQuery date validation to use the `Range` attribute with `DateTime`. It's generally not a good practice to compile hard dates in your models, so using the `Range` attribute and `DateTime` is discouraged.
+你需要禁止在 `DateTime` 上使用 `Range` 特性来进行 JQuery 日期验证。在你的模型中编译具体日期通常不是一个好的做法，所以不建议在 `Range` 特性中使用 `DateTime` 。
 
-The following code shows combining attributes on one line:
+下面的代码展示了如何将各种验证特性合并在一行显示：
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDAmult.cs?name=snippet1)]
 
-In the next part of the series, we'll review the application and make some improvements to the automatically generated `Details` and `Delete` methods.
+在下一个系列教程里面, 我们会重新审视应用程序，为自动生成的 `Details` 以及 `Delete` 方法做一些提升。
 
-## Additional resources
+## 附加资源
 
 * [Working with Forms](xref:mvc/views/working-with-forms)
-* [Globalization and localization](xref:fundamentals/localization)
-* [Introduction to Tag Helpers](xref:mvc/views/tag-helpers/intro)
+* [全球化和本地化](xref:fundamentals/localization)
+* [介绍 Tag Helpers](xref:mvc/views/tag-helpers/intro)
 * [Authoring Tag Helpers](xref:mvc/views/tag-helpers/authoring)

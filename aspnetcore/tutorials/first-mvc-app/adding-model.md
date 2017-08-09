@@ -1,8 +1,8 @@
 ---
-title: Adding a model | Microsoft Docs
+title: 添加模型 | Microsoft 文档（中文文档）
 author: rick-anderson
-description: Add a model to a simple ASP.NET Core app.
-keywords: ASP.NET Core,
+description: 如何在一个 ASP.NET Core MVC 应用程序中添加模型
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 03/30/2017
@@ -14,59 +14,60 @@ uid: tutorials/first-mvc-app/adding-model
 ---
 
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model1.md)]
-
-In Solution Explorer, right click the **MvcMovie** project > **Add** > **New Folder**. Name the folder *Models*.
-
-In Solution Explorer, right click the *Models* folder > **Add** > **Class**. Name the class **Movie** and add the following properties:
+ 
+在解决方案资源管理器中，右击 **MvcMovie** 项目 > **Add** > **New Folder** （新建文件夹）。 把文件夹命名为 *Models*。
+ 
+在解决方案资源管理器中，右键点击 *Models* 文件夹 > **添加** > **类** 。将类名命名为 **Movie** 并且添加以下属性：
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieNoEF.cs?name=snippet_1)]
 
-The `ID` field is required by the database for the primary key. 
+`ID` 字段需要用来作为数据库主键
 
-Build the project to verify you don't have any errors, and you've finally added a **M**odel to your **M**VC app.
+编译项目并且检查是否有错误，最后我们成功的把 **M**odel 添加到了你的 **M**VC 应用程序。
 
-## Scaffolding a controller
+## 通过基架生成一个控制器（Controller）
 
-In **Solution Explorer**, right-click the *Controllers* folder **> Add > Controller**.
+在 **解决方案资源管理器** 中，右键点击 *Controllers* 文件夹 **> 添加 > 控制器**
 
-![view of above step](adding-model/_static/add_controller.png)
+![上一个步骤截图](adding-model/_static/add_controller.png)
 
-In the **Add MVC Dependencies** dialog, select **Minimal Dependencies**, and select **Add**.
+在 **Add MVC Dependencies** （添加MVC依赖） 对话框中，select **Minimal Dependencies** （最小依赖） ，点击 **添加** 。
 
-![view of above step](adding-model/_static/add_depend.png)
+![上一个步骤截图](adding-model/_static/add_depend.png)
 
-Visual Studio adds the dependencies needed to scaffold a controller, but the controller itself is not created. The next invoke of **> Add > Controller** creates the controller. 
+Visual Studio 会自动添加基架控制器所需的依赖，但是控制器本身并没有被创建，下一步点击 **> Add > Controller** 创建控制器。
 
-In **Solution Explorer**, right-click the *Controllers* folder **> Add > Controller**.
+在 **解决方案资源管理器** 中，右键点击 *Controllers* 文件夹 **> 添加 > 控制器**
 
-![view of above step](adding-model/_static/add_controller.png)
+![上一个步骤截图](adding-model/_static/add_controller.png)
 
-In the **Add Scaffold** dialog, tap **MVC Controller with views, using Entity Framework > Add**.
+在 **添加基架** 对话框中，点击 **MVC Controller with with views, using Entity Framework > 添加** 。
 
-![Add Scaffold dialog](adding-model/_static/add_scaffold2.png)
+![添加基架对话框](adding-model/_static/add_scaffold2.png)
 
-Complete the **Add Controller** dialog:
+完成 **添加控制器（Add Controller）** 对话框
 
-* **Model class:** *Movie (MvcMovie.Models)*
-* **Data context class:** Select the **+** icon and add the default **MvcMovie.Models.MvcMovieContext**
+* **模型类（Model class）：** *Movie(MvcMovie.Models)*
+* **数据上下文类 (Data context class):** 点击 **+** 图标添加默认 **MvcMovie.Models.MvcMovieContext**
 
-![Add Data context](adding-model/_static/dc.png)
+![添加数据上下文](adding-model/_static/dc.png)
 
-* **Views:** Keep the default of each option checked
-* **Controller name:** Keep the default *MoviesController*
-* Tap **Add**
+* **Views:** 保持默认的选项
+* **Controller name:** 保持默认的 *MoviesController*
+* 点击 **Add**
 
-![Add Controller dialog](adding-model/_static/add_controller2.png)
+![添加控制器对话框](adding-model/_static/add_controller2.png)
 
-Visual Studio creates:
+Visual Studio 基架引擎创建的东西如下：
 
-* An Entity Framework Core [database context class](xref:data/ef-mvc/intro#create-the-database-context) (*Models/MvcMovieContext*)
-* A movies controller (*Controllers/MoviesController.cs*)
-* Razor view files for Create, Delete, Details, Edit and Index pages (*Views/Movies/\*.cshtml*)
+* Entity Framework Core [数据库上下文类](xref:data/ef-mvc/intro#create-the-database-context) (*Models/MvcMovieContext*)
+* 一个电影控制器（Controller）（*Controllers/MoviesController.cs*）
+* Create、Delete、Details、Edit 以及 Index 的 Razor 视图文件（Views/Movies）
 
-The automatic creation of the database context and [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) (create, read, update, and delete) action methods and views is known as *scaffolding*. You'll soon have a fully functional web application that lets you manage a movie database.
 
-If you run the app and click on the **Mvc Movie** link, you'll get an error similar to the following:
+Visual Studio 为你自动创建 数据库上下文以及 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)（创建、读取、更新以及删除）Action 方法和视图（View）（自动创建 CRUD Action 方法和 View 视图被称为 *搭建基架（scaffolding）*）。很快你将拥有一个可以让你创建、查看、编辑以及删除电影条目的完整功能的 Web 应用程序。
+
+如果你运行这个应用程序并且点击 **Mvc Movie** 链接。你将遇到以下错误：
 
 ```
 An unhandled exception occurred while processing the request.
@@ -75,33 +76,33 @@ requested by the login. The login failed.
 Login failed for user Rick
 ```
 
-You need to create the database, and you'll use the EF Core [Migrations](xref:data/ef-mvc/migrations) feature to do that. Migrations lets you create a database that matches your data model and update the database schema when your data model changes.
+你必须要创建数据，你可以使用 EF Core 的 [Migrations](xref:data/ef-mvc/migrations) 功能来完成这个工作。Migrations 允许你根据数据模型自动创建数据库，并且当你的数据模型发生变化的时候更新数据库的结构。
 
-## Add EF tooling for Migrations
+## 添加 EF 工具来做迁移（Migration）
 
-- In Solution Explorer, right click the **MvcMovie** project > **Edit MvcMovie.csproj**.
+- 在解决方案资源管理器中，右击 ***MvcMovie** 项目 > **Edit MvcMovie.csproj**。
 
-   ![SE meu showing Edit MvcMovie.csproj](adding-model/_static/edit_csproj.png)
+   ![MvcMovie.csproj 右键菜单](adding-model/_static/edit_csproj.png)
 
-- Add the `"Microsoft.EntityFrameworkCore.Tools.DotNet"` NuGet package:
+- 添加 `"Microsoft.EntityFrameworkCore.Tools.DotNet"` NuGet 包：
 
 [!code-xml[Main](start-mvc/sample/MvcMovie/MvcMovie.csproj?range=22-25&highlight=3)] 
 
-Note: The version numbers shown above were correct at the time of writing.
+注意: 上述版本号在写入的时候是正确的.
 
-Save your changes. 
+保存修改。 
 
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model2.md)]
 
 [!INCLUDE[adding-model](../../includes/mvc-intro/adding-model3.md)]
 
-![Intellisense contextual menu on a Model item listing the available properties for ID, Price, Release Date, and Title](adding-model/_static/ints.png)
+![智能感知上下文菜单，其中列出了数据模型的可用属性，ID、价格、发布日期和标题](adding-model/_static/ints.png)
 
-## Additional resources
+## 其他资源
 
 * [Tag Helpers](xref:mvc/views/tag-helpers/intro)
-* [Globalization and localization](xref:fundamentals/localization)
+* [全球化与本地化](xref:fundamentals/localization)
 
 >[!div class="step-by-step"]
-[Previous Adding a View](adding-view.md)
-[Next Working with SQL](working-with-sql.md)  
+[上一节 添加视图](adding-view.md)
+[下一节 处理SQL](working-with-sql.md)  

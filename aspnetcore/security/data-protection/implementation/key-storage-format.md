@@ -2,7 +2,7 @@
 title: Key Storage Format | Microsoft Docs
 author: tdykstra
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016

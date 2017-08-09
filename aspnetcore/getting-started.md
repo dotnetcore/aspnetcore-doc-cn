@@ -1,8 +1,8 @@
 ---
-title: Getting Started with ASP.NET Core | Microsoft Docs
+title: ASP.NET Core 入门 | Microsoft 文档（中文文档）
 author: rick-anderson
 description: 
-keywords: ASP.NET Core,
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 10/14/2016
@@ -12,11 +12,15 @@ ms.technology: aspnet
 ms.prod: asp.net-core
 uid: getting-started
 ---
-# Getting Started with ASP.NET Core
+# ASP.NET Core 入门
 
-1.  Install [.NET Core](https://microsoft.com/net/core)
+翻译 [娄宇(Lyrics)](http://github.com/xbuilder)
 
-2.  Create a new .NET Core project:
+校对 [刘怡(AlexLEWIS)](http://github.com/alexinea) 
+
+1.  安装 [.NET Core](https://microsoft.com/net/core)
+
+2.  创建一个新的 .NET Core 项目：
 
     ```terminal
     mkdir aspnetcoreapp
@@ -24,28 +28,28 @@ uid: getting-started
     dotnet new web
     ```
     
-    Notes: 
-    - On macOS and Linux, open a terminal window. On Windows, open a command prompt.
-    - Previous versions of .NET Core required a `t` parameter, that is   `dotnet new -t web`. If you get an error running `dotnet new web`, install the latest [.NET Core](https://microsoft.com/net/core).  `dotnet` (with no parameters)  will display the .NET Core version.
+    注意: 
+    - 在 macOS 或者 Linux 系统上，打开一个终端窗口。 在 Windows 系统上， 打开命令行窗口。
+    - 早期版本的 .NET Core 需要一个 `t` 参数，比如   `dotnet new -t web`。 如果你运行 `dotnet new web` 出错， 安装最新版本的 [.NET Core](https://microsoft.com/net/core).  输入 `dotnet` (不需要参数) 将会显示 .NET Core 版本。
 
-3.  Restore the packages:
+3.  还原包：
 
     ```terminal
     dotnet restore
     ```
 
-4.  Run the app  (the `dotnet run` command will build the app when it's out of date):
+4.  运行应用程序（ `dotnet run`  命令在应用程序过期（配置或代码发生变更）时重新生成它）：
 
     ```terminal
     dotnet run
     ```
 
-5.  Browse to `http://localhost:5000`
+5.  浏览 `http://localhost:5000`
 
-## Next steps
+## 下一步
 
-For more getting-started tutorials, see [ASP.NET Core Tutorials](tutorials/index.md)
+想学习更多的入门指南， 参考 [ASP.NET Core 指南](tutorials/index.md)
 
-For an introduction to ASP.NET Core concepts and architecture, see [ASP.NET Core Introduction](index.md) and [ASP.NET Core Fundamentals](fundamentals/index.md).
+想了解 ASP.NET Core 概念和架构，参看 [ASP.NET Core 介绍](index.md) 以及 [ASP.NET Core 原理](fundamentals/index.md).
 
-An ASP.NET Core app can use the .NET Core or .NET Framework runtime. For more information, see [Choosing between .NET Core and .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).
+ASP.NET Core 应用可以使用 .NET Core 或者 .NET Framework 运行时。更多信息，请参考 [选择 .NET Core 还是 .NET Framework](https://docs.microsoft.com/dotnet/articles/standard/choosing-core-framework-server).

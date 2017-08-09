@@ -1,8 +1,8 @@
 ---
-title: Controller methods and views | Microsoft Docs
+title: Controller 方法与视图 | Microsoft 文档（中文文档）
 author: rick-anderson
-description: Working with controller methods, views and DataAnnotations
-keywords: ASP.NET Core,
+description: 学习控制器方法， 视图以及 DataAnnotations
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 04/07/2017
@@ -13,19 +13,21 @@ ms.prod: asp.net-core
 uid: tutorials/first-mvc-app-xplat/controller-methods-views
 ---
 
-# Controller methods and views
+# Controller 方法与视图
 
-By [Rick Anderson](https://twitter.com/RickAndMSFT)
+作者 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-We have a good start to the movie app, but the presentation is not ideal. We don't want to see the time (12:00:00 AM in the image below) and **ReleaseDate** should be two words.
+翻译 [谢炀（Kiler)](https://github.com/kiler398/aspnetcore) 
+
+我们已经初步的创建了一个 movie 应用程序，但是展示并不理想。我们不希望看到 release date 字段显示时间并且 **ReleaseDate** 应该是两个单词。
 
 ![Index view: Release Date is one word (no space) and every movie release date shows a time of 12 AM](../../tutorials/first-mvc-app/working-with-sql/_static/m55.png)
 
-Open the *Models/Movie.cs* file and add the highlighted lines shown below:
+打开 *Models/Movie.cs* 文件并添加下面高亮的代码行：
 
 [!code-csharp[Main](../../tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDate.cs?name=snippet_1&highlight=2,11-12)]
 
-Build and run the app.
+编译并运行程序
 
 <!-- include start
 ![MVC Movie application open browser showing movie data](../../tutorials/first-mvc-app/working-with-sql/_static/m55.png)
@@ -35,5 +37,5 @@ Build and run the app.
 [!INCLUDE[adding-model](../../includes/mvc-intro/controller-methods-views.md)]
 
 >[!div class="step-by-step"]
-[Previous - Working with SQLite](working-with-sql.md)
-[Next - Add search](search.md)  
+[上一节 - 使用 SQLite](working-with-sql.md)
+[下一节 - 添加搜索](search.md)  

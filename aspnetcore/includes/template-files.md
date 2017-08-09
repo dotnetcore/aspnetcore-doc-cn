@@ -1,12 +1,12 @@
-* Startup.cs : [Startup Class](../fundamentals/startup.md) - class configures the request pipeline that handles all requests made to the application.
-* Program.cs : [Program Class](../fundamentals/index.md) that contains the Main entry point of the application.
-* firstapp.csproj : [Project file](https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/tools/csproj) MSBuild Project file format for ASP.NET Core applications. Contains Project to Project references, NuGet References and other project related items.
-* appsettings.json / appsettings.Development.json : Environment base app settings configuration file. [See Configuration](xref:fundamentals/configuration).
-* bower.json : Bower package dependencies for the project.
-* .bowerrc : Bower configuration file which defines where to install the components when Bower downloads the assets.
-* bundleconfig.json : configuration files for bundling and minifying front-end JavaScript and CSS assets.
-* Views : Contains the Razor views. Views are the components that display the app's user interface (UI). Generally, this UI displays the model data.
-* Controllers : Contains MVC Controllers, initially *HomeController.cs*. Controllers are classes that handle browser requests.
-* wwwroot : Web application root folder.
+* Startup.cs : [Startup 类](../fundamentals/startup.md) - 配置请求管道的类，处理所有所有由应用程序产生的管道请求。
+* Program.cs : [Program 类](../fundamentals/index.md) 应用程序的主入口点。
+* firstapp.csproj : [Project 文件](https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/tools/csproj) ASP.NET Core 应用程序的 MSBuild 格式项目文件。包含项目间的引用， NuGet引用以及其他项目关联项。
+* appsettings.json / appsettings.Development.json : 基于环境的应用配置文件。 [参考配置](xref:fundamentals/configuration)。
+* bower.json : 项目 Bower 依赖包。
+* .bowerrc : 当 Bower 下载文件时用来定义组件安装位置的配置文件。
+* bundleconfig.json : 设置前端 JavaScript 和 CSS 文件压缩绑定的配置文件。
+* Views : 包含 Razor 视图，视图是显示应用程序用户界面的组件，用户界面会呈现模型数据。
+* Controllers : 包含 MVC 控制器， 默认控制器为 *HomeController.cs*。控制器是处理请求的类。
+* wwwroot : Web 应用程序根目录。
 
-For more information see [The MVC pattern](xref:mvc/overview).
+更多信息请参考 [The MVC 模式](xref:mvc/overview).

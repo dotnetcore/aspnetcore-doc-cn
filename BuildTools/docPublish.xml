@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!--配置参数-->
+    <WorkDir>C:\projects\aspnetcore-doc-cn\</WorkDir>
+    <DocfxDir>c:\application\docfx\</DocfxDir>
+    <webDir>C:\website\aspnetcore-doc-cn\</webDir>
+    <webName>dotnetcore.github.io</webName>
+    <domainName>aspnet.docs.dotnet-china.org</domainName>
+    <baiduCode>Bh1NXh3smd</baiduCode>
+    <webrepUrl>https://github.com/dotnetcore/dotnetcore.github.io</webrepUrl>
+    <docfxPath>"$(WorkDir)aspnetcore\docfx.json"</docfxPath>    
+    <templatePath>"$(WorkDir)_exported_templates\default"</templatePath>
+    <sitePath>"$(WorkDir)aspnetcore\_site"</sitePath>
+    <sourcePath>$(WorkDir)aspnetcore</sourcePath>
+    <pubsitePath>"$(webDir)$(webName)"</pubsitePath> 
+  </PropertyGroup>
+
+
+ 
+   <Target Name="build">
+ 
+  <CallTarget Targets="buildwebsite"/> 
+  <CallTarget Targets="pubish2githubIo"/> 
+ 
+  
+  </Target>
+
+
+  <!--生成网站-->
+  <Target Name="buildwebsite">
+ 
+    <Message Text="Start to build website"></Message>
+ 
+    <Exec Command="$(DocfxDir)docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(WorkDir)"   ></Exec> 
+
+    <Message Text="Build website successfully."></Message>
+
+    <Message Text="Start to fix website files"></Message>
+ 
+    <Exec Command="FixSite.exe $(sitePath) "></Exec>
+
+    <Message Text="Fix website files"></Message>
+
+  </Target>
+
+
+<!--发布网站到githubio-->
+  <Target Name="pubish2githubIo">
+ 
+    <Exec Command="git clone --progress $(webrepUrl) "  WorkingDirectory="$(webDir)" />
+
+    <Exec Command="git rm * -r"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+
+    <Exec Command="xcopy.exe  $(sitePath) $(pubsitePath) /e" />
+    
+    <Exec Command="echo $(domainName) > CNAME"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+
+    <Exec Command="echo $(baiduCode) > baidu_verify_Bh1NXh3smd.html"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+    
+
+    <Exec Command="git add -A"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+
+    <Exec Command="git commit -m &quot;submit new website&quot;"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+
+    <Exec Command="git push --progress -u origin master "  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+ 
+  </Target>
+
+ 
+ 
+
+</Project>

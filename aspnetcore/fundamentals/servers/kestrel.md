@@ -2,7 +2,7 @@
 title: Kestrel web server implementation in ASP.NET Core | Microsoft Docs
 author: tdykstra
 description: Introduces Kestrel, the cross-platform web server for ASP.NET Core based on libuv.
-keywords: ASP.NET Core, Kestrel, libuv, url prefixes
+keywords: ASP.NET Core 中文文档, Kestrel, libuv, url prefixes
 ms.author: tdykstra
 manager: wpickett
 ms.date: 10/27/2016

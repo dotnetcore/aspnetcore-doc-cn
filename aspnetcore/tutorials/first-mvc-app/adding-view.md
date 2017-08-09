@@ -1,8 +1,8 @@
 ---
-title: Adding a view | Microsoft Docs
+title: 添加视图 | Microsoft 文档（中文文档）
 author: rick-anderson
-description: Adding a view to a simple ASP.NET Core MVC app
-keywords: ASP.NET Core,
+description: 如何在一个 ASP.NET Core MVC 应用程序中添加视图
+keywords: ASP.NET Core 中文文档,
 ms.author: riande
 manager: wpickett
 ms.date: 03/04/2017
@@ -15,24 +15,25 @@ uid: tutorials/first-mvc-app/adding-view
 
 [!INCLUDE[adding-view](../../includes/mvc-intro/adding_view1.md)]
 
-* Right click on the *Views* folder, and then **Add > New Folder** and name the folder *HelloWorld*.
 
-* Right click on the *Views/HelloWorld* folder, and then **Add > New Item**.
+* 右键点击 *Views* （视图）文件夹，选择 **Add > New Folder** （添加 > 新建文件夹），然后将文件夹命名为 *HelloWorld* 。
 
-* In the **Add New Item - MvcMovie** dialog
+* 右键点击 *Views/HelloWorld* 文件夹，选择 **Add > New Item** （添加 > 新建项）。
 
-  * In the search box in the upper-right, enter *view*
+* 在 **Add New Item - MvcMovie** （添加新建项 - MvcMovie）对话框中：
 
-  * Tap **MVC View Page**
+  * 在右上方的搜索框中输入 *view*
 
-  * In the **Name** box, change the name if necessary to *Index.cshtml*.
+  * 点击 **MVC View Page** （MVC 视图页）
 
-  * Tap **Add**
+  * 在 **Name** （名称）框中, 保持默认的 *Index.cshtml*
 
-![Add New Item dialog](adding-view/_static/add_view.png)
+  * 点击 **Add** （添加）
+
+![添加新项对话框](adding-view/_static/add_view.png)
 
 [!INCLUDE[adding-view22](../../includes/mvc-intro/adding_view2.md)]
 
 >[!div class="step-by-step"]
-[Previous](adding-controller.md)
-[Next](adding-model.md)
+[上一节](adding-controller.md)
+[下一节](adding-model.md)

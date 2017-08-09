@@ -2,7 +2,7 @@
 title: Introduction to Razor Pages in ASP.NET Core | Microsoft Docs
 author: Rick-Anderson
 description: Overview of Razor Pages in ASP.NET Core | Microsoft Docs
-keywords: ASP.NET Core, Razor Pages
+keywords: ASP.NET Core 中文文档, Razor Pages
 ms.author: riande
 manager: wpickett
 ms.date: 05/10/2017

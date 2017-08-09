@@ -1,18 +1,69 @@
-## Microsoft Open Source Code of Conduct
+# ASP.NET Core Documentation 翻译计划
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/bqrlghode84ym5e4?svg=true)](https://ci.appveyor.com/project/kiler398/aspnetcore-doc-cn) [![GitHub license](https://img.shields.io/badge/license-creativecommons4-blue.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)
 
-ASP.NET Docs
-============
 
-This project provides the source for [docs.asp.net](http://docs.asp.net/). You can learn more about ASP.NET Core at the [Home](https://github.com/aspnet/home) repo. See the [Contributing Guide](CONTRIBUTING.md) and the [issues list](\https://github.com/aspnet/Docs/issues) if you would like to help out.
+本项目为 ASP.NET Core Documentaction 翻译计划的工作项目，非本项目的成员不要直接向仓库推送 Pull Request（正式发表之前，暂不接受外部贡献）。
 
-API PR's ( *api/autoapi/...* ) should not be made here. Changes to API documentation should be made in the source repository against the triple slash /// comments. 
+简体中文翻译文档的正式发布地址暂不对外公布。
 
-This project has adopted the [Microsoft Open Source Code of
-Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct
-FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com)
-with any additional questions or comments.
+## 翻译计划 ##
+
+五月中旬 .NET Core RC2 如期发布，我们遂决定翻译 ASP.NET Core 文档。我们在[　何镇汐](http://home.cnblogs.com/u/xiadao521)先生、[　悲梦](http://home.cnblogs.com/u/beimeng)先生、[　张仁建](http://home.cnblogs.com/u/stoneniqiu/)先生和　雷欧纳德先生的群中发布了翻译计划招募信息，并召集到一群小伙伴，从六月开始翻译文档，目前已完成前两章，并将按计划以连载的方式逐篇公布。当翻译计划完成后，所有文档将整合到一个在线阅读站点上，提供 epub 和 pdf 版本。
+
+**官方 Core 文档还在更新，我们也将持续更新文档。**
+
+## 贡献者 ##
+
+（以下排序按照贡献者本名的汉语拼音排列）
+
+### 主要贡献者
+
++ [何镇汐](https://github.com/UtilCore)
++ [刘浩杨(L)](https://github.com/liuhaoyang)
++ [刘怡(AlexLEWIS/Forerunner)](https://github.com/alexinea)
++ [娄宇(Lyrics)](https://github.com/xbuilder)
++ [孟帅洋(书缘)](https://github.com/mengshuaiyang)
++ [谢炀(Kiler)](https://github.com/kiler398)
++ [许登洋(Seay)](https://github.com/SeayXu)
++ [姚阿勇(Dr.Yao)](https://github.com/YaoaY)
++ [张海龙(jiechen)](http://github.com/ijiechen)
+
+### 支持与顾问
+
++ [陈计节](https://github.com/jijiechen/)
++ [江振宇(江大渔)](https://github.com/kerryjiang)
++ [张善友](https://github.com/geffzhang)
+
+### 贡献者
+
++ [高会军(布莱恩特)](https://github.com/iyacontrol)
++ [高嵩(Jack)](https://github.com/jack2gs)
++ [郭远博(tkb至简)](https://github.com/Farb)
++ [耿晓亮(Blue)](https://github.com/heyixiaoran)
++ [王健(冷酒少)](https://github.com/wjhgzx)
++ [王绍明(Shaoming)](https://github.com/ShaomingCode)
++ [魏美娟(初见)](https://github.com/ChujianA)
++ [吴亦双(莫名)](https://github.com/yesan)
++ [夏申斌](https://github.com/xiashenbin)
++ [张剑](https://github.com/garfieldzf8)
++ [张仁建(Stoneqiu)](https://github.com/stoneniqiu)
++ [赵志刚(ぶた旺旺)](https://github.com/rdzzg)
+
+## 关于 ##
+
+### 加入我们
+
+如果您想加入到翻译、审稿以及后续维护工作并愿意为之付出一定的业余时间的，可以前往 dotNet Core Studying Group（群号 436035237）联系我们。
+
+### 反馈
+
+**QQ交流群:**
+
+**dotNET Core Studying Group:** 436035237
+
+**Group of dotNET Translation:** secret
+
+### 后续计划
+
+这个项目完成后，我们还会考虑其它文档的翻译工作，如：EF Core、Castle，等。
