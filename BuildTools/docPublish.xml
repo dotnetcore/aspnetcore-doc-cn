@@ -13,6 +13,7 @@
     <sitePath>"$(WorkDir)aspnetcore\_site"</sitePath>
     <sourcePath>$(WorkDir)aspnetcore</sourcePath>
     <pubsitePath>"$(webDir)$(webName)"</pubsitePath> 
+    <pdfresourcePath>"$(WorkDir)\pdfresource"</pdfresourcePath>   
   </PropertyGroup>
 
  
