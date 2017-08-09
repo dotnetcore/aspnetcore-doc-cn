@@ -3,7 +3,6 @@
   <PropertyGroup>
     <!--配置参数-->
     <WorkDir>C:\projects\aspnetcore-doc-cn\</WorkDir>
-    <DocfxDir>c:\application\docfx\</DocfxDir>
     <webDir>C:\website\aspnetcore-doc-cn\</webDir>
     <webName>dotnetcore.github.io</webName>
     <domainName>aspnet.docs.dotnet-china.org</domainName>
@@ -32,7 +31,7 @@
  
     <Message Text="Start to build website"></Message>
  
-    <Exec Command="$(DocfxDir)docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(WorkDir)"   ></Exec> 
+    <Exec Command="docfx build $(docfxPath) -t $(templatePath) "  WorkingDirectory="$(WorkDir)"   ></Exec> 
 
     <Message Text="Build website successfully."></Message>
 

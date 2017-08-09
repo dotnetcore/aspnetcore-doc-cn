@@ -53,7 +53,7 @@ uid: tutorials/index
 * [在 .NET Core 中使用 dotnet test 单元测试](https://docs.microsoft.com/dotnet/articles/core/testing/unit-testing-with-dotnet-test)
 
 ## 发布与部署
-* [使用 Visual Studio 把 ASP.NET Core Web 应用程序发布到](publish-to-azure-webapp-using-vs.md)
+* [使用 Visual Studio 把 ASP.NET Core Web 应用程序发布到Azure 云](publish-to-azure-webapp-using-vs.md)
 * [使用持续发布发布到 Azure Web 应用](../publishing/azure-continuous-deployment.md)
 * [把 ASP.NET 容器发布到一个远程的 Docker 托管](https://docs.microsoft.com/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)
 * [VSTS 使用持续发布编译发布到 Azure Web 应用](../publishing/vsts-continuous-deployment.md)
