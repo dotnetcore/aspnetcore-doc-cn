@@ -20,6 +20,7 @@
    <Target Name="build">
  
   <CallTarget Targets="buildwebsite"/> 
+  <CallTarget Targets="buildPdf"/>
   <CallTarget Targets="pubish2githubIo"/> 
  
   
@@ -64,6 +65,17 @@
 
     <Exec Command="git push --progress -u origin master "  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
  
+  </Target>
+
+
+    <Target Name="buildPdf">
+
+    <Exec Command="xcopy.exe $(pdfresourcePath) $(sourcePath) /e /s" />
+
+    <Exec Command="docfx.exe pdf docfxpdf.json"  WorkingDirectory="$(sourcePath)" />
+
+    <Exec Command="move $(sourcePath)\_site-pdf\aspnetcore_toc.pdf $(sourcePath)\_site\aspnet_core_doc_cn.pdf"/>
+
   </Target>
 
  
