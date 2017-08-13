@@ -13,7 +13,9 @@
     <sitePath>"$(WorkDir)aspnetcore\_site"</sitePath>
     <sourcePath>$(WorkDir)aspnetcore</sourcePath>
     <pubsitePath>"$(webDir)$(webName)"</pubsitePath> 
-    <pdfresourcePath>"$(WorkDir)\pdfresource"</pdfresourcePath>   
+    <pdfresourcePath>"$(WorkDir)\pdfresource"</pdfresourcePath>
+    <SubDirName>aspnetcoredoccn</ProjectDir>   
+    <ProjectDir>$(webDir)$(webName)\$(SubDirName)\</ProjectDir>  
   </PropertyGroup>
 
 
@@ -51,13 +53,19 @@
  
     <Exec Command="git clone --progress $(webrepUrl) "  WorkingDirectory="$(webDir)" />
 
-    <Exec Command="git rm * -r"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+    <!-- <Exec Command="git rm * -r"  WorkingDirectory="$(webDir)$(webName)"   ></Exec> -->
 
-    <Exec Command="xcopy.exe  $(sitePath) $(pubsitePath) /e" />
+    <RemoveDir Directories="$(ProjectDir)" />  
+ 
+    <MakeDir  Directories="$(ProjectDir)"/>  
+
+    <Delete Files="$(ProjectDir)" />  
+
+    <Exec Command="xcopy.exe  $(sitePath) $(ProjectDir) /e" />
     
-    <Exec Command="echo $(domainName) > CNAME"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+    <!-- <Exec Command="echo $(domainName) > CNAME"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
 
-    <Exec Command="echo $(baiduCode) > baidu_verify_Bh1NXh3smd.html"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
+    <Exec Command="echo $(baiduCode) > baidu_verify_Bh1NXh3smd.html"  WorkingDirectory="$(webDir)$(webName)"   ></Exec> -->
     
 
     <Exec Command="git add -A"  WorkingDirectory="$(webDir)$(webName)"   ></Exec>
