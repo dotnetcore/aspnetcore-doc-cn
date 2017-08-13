@@ -14,7 +14,7 @@
     <sourcePath>$(WorkDir)aspnetcore</sourcePath>
     <pubsitePath>"$(webDir)$(webName)"</pubsitePath> 
     <pdfresourcePath>"$(WorkDir)\pdfresource"</pdfresourcePath>
-    <SubDirName>aspnetcoredoccn</ProjectDir>   
+    <SubDirName>aspnetcoredoccn</SubDirName>   
     <ProjectDir>$(webDir)$(webName)\$(SubDirName)\</ProjectDir>  
   </PropertyGroup>
 
