@@ -39,7 +39,7 @@ EF Core 1.1 是 EF 的最新版本，但是并未包括所有EF 6.X的所有功�
 如果在演练的过程中遇到了不能解决的问题，你通常可以通过比对你自己写的代码和下载的[完整项目代码](https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-mvc/intro/samples/cu-final)来解决。对于一些常见的错误及其解决方法，请参看[the Troubleshooting section of the last tutorial in the series](advanced.md#common-errors)。如果没有发现你所需要的，你可以在 StackOverflow.com 发帖咨询 [ASP.NET Core](http://stackoverflow.com/questions/tagged/asp.net-core) 或者 [EF Core](http://stackoverflow.com/questions/tagged/entity-framework-core) 相关问题。
 
 > [!TIP] 
-> 这是一个包含10个章节的系类教程， 教程的每一个章节都是前后关联的。注意每成功的完成一个章节以后，将项目做一个完整的复制备份。当你遇到问题的时候， 当你遇到问题的时候又可以回到原来教程的程序版本而不需要从头走一遍教程。
+> 这是一个包含10个章节的系列教程， 教程的每一个章节都是前后关联的。注意每成功的完成一个章节以后，将项目做一个完整的复制备份。当你遇到问题的时候， 当你遇到问题的时候又可以回到原来教程的程序版本而不需要从头走一遍教程。
 
 ## Contoso 大学网站应用程序
 
