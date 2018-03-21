@@ -105,7 +105,7 @@ Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 �
 * 配置 Entity Framework，在 Update 或 Delete 的 Where 子句中包含表中每一列的原始值。
 
      <!--As in the first option, if anything in the row has changed since the row was first read, the Where clause won't return a row to update, which the Entity Framework interprets as a concurrency conflict. For database tables that have many columns, this approach can result in very large Where clauses, and can require that you maintain large amounts of state. As noted earlier, maintaining large amounts of state can affect application performance. Therefore this approach is generally not recommended, and it isn't the method used in this tutorial.-->
-     与第一个选项一样，如果第一次读取后行中任何内容发生变化，则 Where 子句将不会返回要更新的行，Entity Framework 将解释其为并发冲突。对于具有多行记录的数据库来讲，这个方法可能会导致大体积的 Where 子句，并且可能会需要维护大量状态。如前所述，维护大量状态将导致应用程序的性能问题。因此此方法通常不推荐使用，它也不会在本教程中使用。
+     与第一个选项一样，如果第一次读取后行中任何内容发生变化，则 Where 子句将不会返回要更新的行，Entity Framework 将解释其为并发冲突。对于有许多列的数据库表来讲，这个方法可能会导致大体积的 Where 子句，并且可能会需要维护大量状态。如前所述，维护大量状态将导致应用程序的性能问题。因此此方法通常不推荐使用，它也不会在本教程中使用。
 
      <!--If you do want to implement this approach to concurrency, you have to mark all non-primary-key properties in the entity you want to track concurrency for by adding the `ConcurrencyCheck` attribute to them. That change enables the Entity Framework to include all columns in the SQL Where clause of Update and Delete statements.-->
      如果你想实现这种方法来应对并发，你需要标记需要跟踪并发性的实体内所有非主键属性添加 `ConcurrencyCheck` 特性。这一改变将使 Entity Framework 能将所有列包含在 Update 和 Delete 语句的 Where 子句之中。
