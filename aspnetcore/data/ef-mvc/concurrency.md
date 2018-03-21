@@ -78,13 +78,13 @@ Contoso 大学 Web应用程序演示了如何使用 Entity Framework Core 1.1 �
      在示例场景中，不会丢失任何数据，因为两个用户更新的属性并不相同。下一次某人浏览英语系的时候他就能看到约翰和珍妮所做的修改——开始时间为 8/8/2013，预算为 0 美元。这种更新方法可以减少冲突的发生，但如果对实体的相同属性进行竞争性的更改，则不可避免地会导致数据丢失。Entity Framework 是否以此机制运行取决于其实如何实现代码的。这在 Web 应用程序中通常不实用，因为它可能会需要维持大量的状态以便能跟踪实体的所有属性的旧值和新值。维护大量的状态可能会导致程序的性能问题，因为这需要消费服务器资源，或者必须包含在网页本身（如隐藏字段）或 Cookie 中。
 
 <!--* You can let John's change overwrite Jane's change.-->
-* Y你可以让珍妮所做的修改覆盖约翰的修改。
+* 你可以让珍妮所做的修改覆盖约翰的修改。
 
      <!--The next time someone browses the English department, they'll see 9/1/2013 and the restored $350,000.00 value. This is called a *Client Wins* or *Last in Wins* scenario. (All values from the client take precedence over what's in the data store.) As noted in the introduction to this section, if you don't do any coding for concurrency handling, this will happen automatically.-->
      下次某人浏览英语系的时候，他们将看到的是 8/8/2013 和 $350,000.00。这叫做 *Client Wins* 或 *Last in Wins* 场景（所有来自客户端的值都优先于数据库中存储的值）。如本节介绍中所述，如果你没有对并发处理进行任何编码，则会自动发生。
 
 <!--* You can prevent John's change from being updated in the database.-->
-* 你可以组织珍妮所做的修改在数据库更新之后写入数据库。
+* 你可以阻止珍妮所做的修改在数据库更新之后写入数据库。
 
      <!--Typically, you would display an error message, show him the current state of the data, and allow him to reapply his changes if he still wants to make them. This is called a *Store Wins* scenario. (The data-store values take precedence over the values submitted by the client.) You'll implement the Store Wins scenario in this tutorial. This method ensures that no changes are overwritten without a user being alerted to what's happening.-->
      通常来讲，你会看到一条错误消息，向她显示当前的数据状态并允许他重新应用其修改（如果她仍然想更改的话）。这叫做 *Store Wins* 场景（数据库存储的值优先于客户端提交的值）。在本教程中你将实现 Store Wins 场景。此方法确保不会覆盖任何变更，且不会向用户发出任何警告。
