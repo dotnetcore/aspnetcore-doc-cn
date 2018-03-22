@@ -181,7 +181,7 @@ ORDER BY [s0].[ID]
 * EF 上下文可以充当你利用 EF 更新数据库时的工作单元类。
 
 <!--* EF includes features for implementing TDD without writing repository code.-->
-* EF 包含不编写存储库代码时实现 TDD 的功能。
+* EF包含了用于实现TDD而无需编写存储库代码的功能。
 
 <!--For information about how to implement the repository and unit of work patterns, see [Entity Framework 5 系列教程](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application).-->
 有关如何实现存储库与工作单元模式的资料，请参见 [Entity Framework 5 系列教程](https://docs.microsoft.com/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application)。
